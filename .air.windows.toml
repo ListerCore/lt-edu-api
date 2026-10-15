@@ -1,0 +1,23 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+  bin = "./tmp/server.exe"
+  entrypoint = ["./tmp/server.exe"]
+  cmd = "go build -o ./tmp/server.exe ./cmd/server"
+  delay = 1000
+  exclude_dir = ["assets", "tmp", "vendor", "docs", "bin", "migrations"]
+  exclude_regex = ["_test.go"]
+  exclude_unspecified = false
+  follow_symlink = false
+  include_ext = ["go", "tpl", "tmpl", "html"]
+  kill_delay = "2s"
+  log = "build-errors.log"
+  send_interrupt = false
+  stop_on_error = false
+
+[log]
+  time = false
+
+[misc]
+  clean_on_exit = true

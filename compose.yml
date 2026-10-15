@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgres:18-alpine
+    container_name: ${APP__DB__CONTAINER:-joseph-db}
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${APP__DB__USER:-joseph}
+      POSTGRES_PASSWORD: ${APP__DB__PASSWORD:-joseph_dev}
+      POSTGRES_DB: ${APP__DB__NAME:-joseph_db}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale-provider=icu --icu-locale=es-PE --locale=C.UTF-8"
+      TZ: America/Lima
+      PGTZ: America/Lima
+    ports:
+      - "${APP__DB__PORT:-5432}:5432"
+    volumes:
+      - db_data:/var/lib/postgresql
+    networks:
+      - svc
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${APP__DB__USER:-joseph} -d ${APP__DB__NAME:-joseph_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:8-alpine
+    container_name: ${APP__REDIS__CONTAINER:-joseph-redis}
+    restart: unless-stopped
+    environment:
+      TZ: America/Lima
+    ports:
+      - "${APP__REDIS__PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - svc
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+networks:
+  svc:
+    name: ${APP__NETWORK__NAME:-joseph-net}
+    external: true
+
+volumes:
+  db_data:
+  redis_data:
