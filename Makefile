@@ -17,7 +17,7 @@ endif
 .PHONY: dev dev/run build test lint fmt vet health \
         network/create \
         up setup down \
-        db/start redis/start db/stop redis/stop db/psql redis/cli \
+        db/start redis/start db/stop redis/stop db/psql db/seed redis/cli \
         migrate/up migrate/down migrate/adopt \
         logs
 
@@ -62,6 +62,10 @@ db/stop:
 
 db/psql:
 	docker exec -it $(APP__DB__CONTAINER) psql -U $(APP__DB__USER) -d $(APP__DB__NAME)
+
+# Loads client configuration (institutions, study plans); idempotent.
+db/seed:
+	docker exec -i $(APP__DB__CONTAINER) psql -U $(APP__DB__USER) -d $(APP__DB__NAME) -v ON_ERROR_STOP=1 -1 < seeds/ceba_joseph_lister.sql
 
 redis/start: network/create
 	docker compose up -d --wait redis
