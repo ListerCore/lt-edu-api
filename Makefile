@@ -17,8 +17,7 @@ endif
 .PHONY: dev dev/run build test lint fmt vet health \
         network/create \
         up setup down \
-        db/start redis/start db/stop redis/stop db/psql db/seed redis/cli \
-        migrate/up migrate/down migrate/adopt \
+        db/start redis/start db/stop redis/stop db/psql redis/cli \
         logs
 
 dev:
@@ -33,7 +32,6 @@ dev/run:
 
 build:
 	go build -o bin/server ./cmd/server
-	go build -o bin/migrate ./cmd/migrations
 
 test:
 	go test ./...
@@ -63,10 +61,6 @@ db/stop:
 db/psql:
 	docker exec -it $(APP__DB__CONTAINER) psql -U $(APP__DB__USER) -d $(APP__DB__NAME)
 
-# Loads client configuration (institutions, study plans); idempotent.
-db/seed:
-	docker exec -i $(APP__DB__CONTAINER) psql -U $(APP__DB__USER) -d $(APP__DB__NAME) -v ON_ERROR_STOP=1 -1 < seeds/ceba_joseph_lister.sql
-
 redis/start: network/create
 	docker compose up -d --wait redis
 
@@ -76,23 +70,12 @@ redis/stop:
 redis/cli:
 	docker exec -it $(APP__REDIS__CONTAINER) redis-cli
 
-migrate/up:
-	go run ./cmd/migrations up
-
-migrate/down:
-	go run ./cmd/migrations down
-
-migrate/adopt:
-	go run ./cmd/migrations adopt
-
 up: network/create
 	docker compose up -d --wait db redis
-	$(MAKE) migrate/up
 	@echo "Infra lista — corré 'make dev' para levantar la API con live reload."
 
 setup: network/create
 	docker compose up -d --wait db redis
-	$(MAKE) migrate/up
 
 down:
 	docker compose down -v
