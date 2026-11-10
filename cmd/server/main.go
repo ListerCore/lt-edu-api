@@ -14,8 +14,13 @@ import (
 	inboundhttp "api/internal/adapter/inbound/http"
 	"api/internal/adapter/inbound/http/handler"
 	"api/internal/adapter/logging"
+	"api/internal/adapter/outbound/google"
+	"api/internal/adapter/outbound/mailer"
+	"api/internal/adapter/outbound/password"
 	"api/internal/adapter/outbound/postgres"
 	"api/internal/adapter/outbound/redisclient"
+	"api/internal/adapter/outbound/secretbox"
+	"api/internal/adapter/outbound/turnstile"
 	"api/internal/config"
 	"api/internal/core/port"
 	"api/internal/core/service"
@@ -40,6 +45,35 @@ func main() {
 	healthService := service.NewHealthService(dbClient, redisClient, cfg.AppName, cfg.PingTimeout)
 	healthHandler := handler.NewHealthHandler(healthService, logger)
 
+	production := cfg.AppEnv == "production"
+	captcha := turnstile.New(cfg.TurnstileSecretKey, production, logger)
+	secrets, err := secretbox.New(cfg.SecretsKey, 1)
+	if err != nil {
+		logger.Fatal().Err(err).Msg("invalid secrets key")
+	}
+	if !secrets.Ready() {
+		logger.Warn().Msg("APP__SECRETS__KEY is empty: authenticator apps (TOTP) cannot be enrolled or checked")
+	}
+	mail, err := mailer.New(mailer.Config{Host: cfg.SMTPHost, Port: cfg.SMTPPort, User: cfg.SMTPUser, Password: cfg.SMTPPassword, From: cfg.SMTPFrom}, production, logger)
+	if err != nil {
+		logger.Fatal().Err(err).Msg("invalid smtp settings")
+	}
+	googleOAuth := google.New(cfg.GoogleClientID, cfg.GoogleClientSecret, cfg.GoogleRedirectURL)
+	if !googleOAuth.Configured() {
+		logger.Warn().Msg("APP__GOOGLE__OAUTH__* is incomplete: sign in with Google is off")
+	}
+	authService, err := service.NewAuthService(postgres.NewAuthRepository(dbClient), password.NewArgon2id(), captcha, secrets, mail, googleOAuth,
+		service.AuthConfig{SessionTTL: cfg.SessionTTL, SiteURL: cfg.SiteURL, Production: production}, logger)
+	if err != nil {
+		logger.Fatal().Err(err).Msg("failed to initialize auth service")
+	}
+	seedCtx, cancelSeed := context.WithTimeout(context.Background(), 10*time.Second)
+	if err := authService.EnsureSuperadmin(seedCtx, cfg.AdminEmail, cfg.AdminPassword); err != nil {
+		logger.Error().Err(err).Msg("superadmin seed failed")
+	}
+	cancelSeed()
+	authHandler := handler.NewAuthHandler(authService, logger)
+
 	// Live events go out through Redis Streams, so open pages refresh without polling:
 	// liveService.Notify(ctx, service.EventSystemPing, map[string]string{"id": "..."})
 	liveService := service.NewLiveService(redisclient.NewLiveBus(redisClient), logger)
@@ -60,8 +94,10 @@ func main() {
 
 	inboundhttp.RegisterRoutes(app, inboundhttp.Handlers{
 		Health:           healthHandler,
+		Auth:             authHandler,
 		Live:             liveHandler,
 		WebSocketOrigins: cfg.WSOrigins,
+		Development:      !production,
 	})
 
 	// gRPC for joseph-app's server, on its own port next to the HTTP API
@@ -69,7 +105,7 @@ func main() {
 	if err != nil {
 		logger.Fatal().Err(err).Str("port", cfg.GRPCPort).Msg("failed to open grpc port")
 	}
-	grpcServer := inboundgrpc.New(inboundgrpc.Services{Health: healthService}, inboundgrpc.Config{TrustedProxies: cfg.TrustedProxies, Development: cfg.AppEnv != "production"}, logger)
+	grpcServer := inboundgrpc.New(inboundgrpc.Services{Health: healthService}, inboundgrpc.Config{TrustedProxies: cfg.TrustedProxies, Development: !production}, logger)
 	defer grpcServer.GracefulStop()
 	go func() {
 		logger.Info().Str("port", cfg.GRPCPort).Msg("starting grpc server")

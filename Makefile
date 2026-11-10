@@ -16,6 +16,7 @@ else
 endif
 
 .PHONY: dev dev/run build test lint fmt vet health proto grpc/health grpc/list live/ping \
+        migrate/up migrate/down migrate/version migrate/create \
         network/create \
         up setup down \
         db/start redis/start db/stop redis/stop db/psql redis/cli \
@@ -48,6 +49,20 @@ fmt:
 
 health:
 	curl -s "http://localhost:$(APP__HOST__PORT)/api/v1/health?db=true&redis=true" | python3 -m json.tool
+
+# Database schema (migrations/*.sql, embedded in the binary)
+migrate/up:
+	go run ./cmd/migrate up
+
+migrate/down:
+	go run ./cmd/migrate down
+
+migrate/version:
+	go run ./cmd/migrate version
+
+# make migrate/create name=create_institutions
+migrate/create:
+	go run ./cmd/migrate create $(name)
 
 # Regenerates internal/adapter/inbound/grpc/gen from proto/ (needs buf, protoc-gen-go and protoc-gen-go-grpc)
 proto:
@@ -89,6 +104,7 @@ redis/cli:
 
 up: network/create
 	docker compose up -d --wait db redis
+	go run ./cmd/migrate up
 	@echo "Infra lista — corré 'make dev' para levantar la API con live reload."
 
 setup: network/create
