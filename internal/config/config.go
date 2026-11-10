@@ -25,6 +25,26 @@ type Config struct {
 	// Browser origins allowed to open the live WebSocket (joseph-app's public origin)
 	WSOrigins []string
 
+	// Public URL of joseph-app (links in mail)
+	SiteURL    string
+	SessionTTL time.Duration
+	// Base64 of 32 bytes: encrypts TOTP secrets at rest
+	SecretsKey string
+	// Superadmin created on start when missing
+	AdminEmail    string
+	AdminPassword string
+
+	// Google OAuth client (sign in with Google); the redirect is joseph-app's /api/auth/google/callback
+	GoogleClientID     string
+	GoogleClientSecret string
+	GoogleRedirectURL  string
+
+	SMTPHost     string
+	SMTPPort     int
+	SMTPUser     string
+	SMTPPassword string
+	SMTPFrom     string
+
 	TurnstileSecretKey string
 
 	StorageEndpoint  string
@@ -64,6 +84,20 @@ func Load() Config {
 
 	v.SetDefault("APP__HEALTH__PING_TIMEOUT", "2s")
 
+	v.SetDefault("APP__SITE__URL", "http://localhost:5173")
+	v.SetDefault("APP__SESSION__TTL", "168h")
+	v.SetDefault("APP__SECRETS__KEY", "")
+	v.SetDefault("APP__ADMIN__EMAIL", "")
+	v.SetDefault("APP__ADMIN__PASSWORD", "")
+	v.SetDefault("APP__GOOGLE__OAUTH__CLIENT_ID", "")
+	v.SetDefault("APP__GOOGLE__OAUTH__CLIENT_SECRET", "")
+	v.SetDefault("APP__GOOGLE__OAUTH__REDIRECT_URL", "http://localhost:5173/api/auth/google/callback")
+	v.SetDefault("APP__GOOGLE__SMTP__HOST", "")
+	v.SetDefault("APP__GOOGLE__SMTP__PORT", "587")
+	v.SetDefault("APP__GOOGLE__SMTP__USER", "")
+	v.SetDefault("APP__GOOGLE__SMTP__PASSWORD", "")
+	v.SetDefault("APP__GOOGLE__SMTP__FROM", "")
+
 	v.SetDefault("APP__TURNSTILE__SECRET_KEY", "")
 
 	v.SetDefault("APP__STORAGE__ENDPOINT", "localhost:9000")
@@ -101,6 +135,22 @@ func Load() Config {
 
 		TrustedProxies: splitList(v.GetString("APP__HTTP__TRUSTED_PROXIES")),
 		WSOrigins:      splitList(v.GetString("APP__WS__ORIGINS")),
+
+		SiteURL:       v.GetString("APP__SITE__URL"),
+		SessionTTL:    v.GetDuration("APP__SESSION__TTL"),
+		SecretsKey:    v.GetString("APP__SECRETS__KEY"),
+		AdminEmail:    v.GetString("APP__ADMIN__EMAIL"),
+		AdminPassword: v.GetString("APP__ADMIN__PASSWORD"),
+
+		GoogleClientID:     v.GetString("APP__GOOGLE__OAUTH__CLIENT_ID"),
+		GoogleClientSecret: v.GetString("APP__GOOGLE__OAUTH__CLIENT_SECRET"),
+		GoogleRedirectURL:  v.GetString("APP__GOOGLE__OAUTH__REDIRECT_URL"),
+
+		SMTPHost:     v.GetString("APP__GOOGLE__SMTP__HOST"),
+		SMTPPort:     v.GetInt("APP__GOOGLE__SMTP__PORT"),
+		SMTPUser:     v.GetString("APP__GOOGLE__SMTP__USER"),
+		SMTPPassword: v.GetString("APP__GOOGLE__SMTP__PASSWORD"),
+		SMTPFrom:     v.GetString("APP__GOOGLE__SMTP__FROM"),
 
 		TurnstileSecretKey: v.GetString("APP__TURNSTILE__SECRET_KEY"),
 

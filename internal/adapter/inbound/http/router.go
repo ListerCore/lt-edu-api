@@ -1,21 +1,59 @@
 package http
 
 import (
+	"time"
+
 	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/middleware/limiter"
 
 	"api/internal/adapter/inbound/http/handler"
 )
 
 type Handlers struct {
 	Health *handler.HealthHandler
+	Auth   *handler.AuthHandler
 	Live   *handler.LiveHandler
 	// Browser origins allowed to open the live WebSocket (joseph-app's origin, through its proxy)
 	WebSocketOrigins []string
+	// Development relaxes the per-IP brake, for testing
+	Development bool
 }
 
 func RegisterRoutes(app *fiber.App, h Handlers) {
 	v1 := app.Group("/api/v1")
 	v1.Get("/health", h.Health.Check)
+
+	// Brute-force brake per client IP on everything that takes a password or a code (the per-account lockout and
+	// the per-challenge attempt budget live in the service)
+	credentialMax := 10
+	if h.Development {
+		credentialMax = 100
+	}
+	credentialLimit := limiter.New(limiter.Config{
+		Max:          credentialMax,
+		Expiration:   time.Minute,
+		KeyGenerator: func(c fiber.Ctx) string { return c.IP() },
+		LimitReached: func(c fiber.Ctx) error {
+			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": fiber.Map{"code": "rate_limited", "message": "Demasiados intentos desde tu conexión. Espera un minuto."}})
+		},
+	})
+
+	auth := v1.Group("/auth")
+	auth.Post("/sign-in", credentialLimit, h.Auth.SignIn)
+	auth.Post("/sign-in/verify", credentialLimit, h.Auth.VerifySignIn)
+	auth.Post("/sign-in/resend", credentialLimit, h.Auth.ResendCode)
+	auth.Post("/sign-up", credentialLimit, h.Auth.SignUp)
+	auth.Post("/google/authorize", credentialLimit, h.Auth.GoogleAuthorize)
+	auth.Post("/google/callback", credentialLimit, h.Auth.GoogleCallback)
+	auth.Post("/password/forgot", credentialLimit, h.Auth.ForgotPassword)
+	auth.Post("/password/reset", credentialLimit, h.Auth.ResetPassword)
+	auth.Post("/password/change", credentialLimit, h.Auth.ChangePassword)
+	auth.Get("/me", h.Auth.Me)
+	auth.Put("/me/active-role", h.Auth.SetActiveRole)
+	auth.Post("/sign-out", h.Auth.SignOut)
+	auth.Post("/mfa/totp", h.Auth.BeginTOTP)
+	auth.Post("/mfa/totp/confirm", credentialLimit, h.Auth.ConfirmTOTP)
+	auth.Post("/mfa/totp/disable", credentialLimit, h.Auth.DisableTOTP)
 
 	// Live events for open pages (joseph-app relays /ws/live here); events carry ids only
 	v1.Get("/live", h.Live.Stream(h.WebSocketOrigins))
