@@ -1,0 +1,10 @@
+version: v2
+# Local plugins: go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+#                go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+plugins:
+  - local: protoc-gen-go
+    out: internal/adapter/inbound/grpc/gen
+    opt: module=api/internal/adapter/inbound/grpc/gen
+  - local: protoc-gen-go-grpc
+    out: internal/adapter/inbound/grpc/gen
+    opt: module=api/internal/adapter/inbound/grpc/gen

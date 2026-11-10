@@ -23,7 +23,8 @@ RUN chmod +x ./main && \
     chown -R app:app /app
 
 USER app
-EXPOSE 8080
+# HTTP API and gRPC (APP__HOST__PORT, APP__GRPC__PORT)
+EXPOSE 8080 9090
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
   CMD wget -q --spider "http://127.0.0.1:${APP_PORT:-8080}/api/v1/health" || exit 1

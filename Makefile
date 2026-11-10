@@ -4,6 +4,7 @@ APP__DB__NAME := joseph_db
 APP__DB__CONTAINER := joseph-db
 APP__REDIS__CONTAINER := joseph-redis
 APP__HOST__PORT := 5050
+APP__GRPC__PORT := 5051
 APP__NETWORK__NAME := joseph-net
 
 ifeq ($(OS),Windows_NT)
@@ -14,7 +15,7 @@ else
     AIR_CONFIG  := .air.toml
 endif
 
-.PHONY: dev dev/run build test lint fmt vet health \
+.PHONY: dev dev/run build test lint fmt vet health proto grpc/health grpc/list live/ping \
         network/create \
         up setup down \
         db/start redis/start db/stop redis/stop db/psql redis/cli \
@@ -47,6 +48,22 @@ fmt:
 
 health:
 	curl -s "http://localhost:$(APP__HOST__PORT)/api/v1/health?db=true&redis=true" | python3 -m json.tool
+
+# Regenerates internal/adapter/inbound/grpc/gen from proto/ (needs buf, protoc-gen-go and protoc-gen-go-grpc)
+proto:
+	buf lint
+	buf generate
+
+# Needs grpcurl; reflection is on outside production
+grpc/list:
+	grpcurl -plaintext localhost:$(APP__GRPC__PORT) list
+
+grpc/health:
+	grpcurl -plaintext -d '{"include_db": true, "include_redis": true}' localhost:$(APP__GRPC__PORT) joseph.system.v1.SystemService/GetHealth
+
+# Publishes a test event on the live stream; open pages receive it through /ws/live
+live/ping:
+	docker exec $(APP__REDIS__CONTAINER) redis-cli XADD joseph:live MAXLEN '~' 1000 '*' type system.ping data '{}'
 
 network/create:
 	-@docker network create --driver bridge $(APP__NETWORK__NAME) > $(NULL_DEVICE) 2>&1 || true

@@ -12,12 +12,18 @@ type Config struct {
 	AppEnv        string
 	AppName       string
 	Port          string
+	GRPCPort      string
 	LogLevel      string
 	DatabaseURL   string
 	RedisAddr     string
 	RedisPassword string
 	RedisDB       int
 	PingTimeout   time.Duration
+
+	// Proxies allowed to set X-Forwarded-For besides loopback and private ranges (IPs or CIDRs)
+	TrustedProxies []string
+	// Browser origins allowed to open the live WebSocket (joseph-app's public origin)
+	WSOrigins []string
 
 	TurnstileSecretKey string
 
@@ -40,6 +46,9 @@ func Load() Config {
 	v.SetDefault("APP__NAME", "joseph-api")
 	v.SetDefault("APP__HOST__PORT", "8080")
 	v.SetDefault("APP__LOG__LEVEL", "debug")
+	v.SetDefault("APP__GRPC__PORT", "9090")
+	v.SetDefault("APP__HTTP__TRUSTED_PROXIES", "")
+	v.SetDefault("APP__WS__ORIGINS", "")
 
 	v.SetDefault("APP__DB__HOST", "localhost")
 	v.SetDefault("APP__DB__PORT", "5432")
@@ -82,12 +91,16 @@ func Load() Config {
 		AppEnv:        v.GetString("APP__ENV"),
 		AppName:       v.GetString("APP__NAME"),
 		Port:          v.GetString("APP__HOST__PORT"),
+		GRPCPort:      v.GetString("APP__GRPC__PORT"),
 		LogLevel:      v.GetString("APP__LOG__LEVEL"),
 		DatabaseURL:   databaseURL,
 		RedisAddr:     redisAddr,
 		RedisPassword: v.GetString("APP__REDIS__PASSWORD"),
 		RedisDB:       v.GetInt("APP__REDIS__DB"),
 		PingTimeout:   v.GetDuration("APP__HEALTH__PING_TIMEOUT"),
+
+		TrustedProxies: splitList(v.GetString("APP__HTTP__TRUSTED_PROXIES")),
+		WSOrigins:      splitList(v.GetString("APP__WS__ORIGINS")),
 
 		TurnstileSecretKey: v.GetString("APP__TURNSTILE__SECRET_KEY"),
 
@@ -98,4 +111,15 @@ func Load() Config {
 		StorageRegion:    v.GetString("APP__STORAGE__REGION"),
 		StorageBucket:    v.GetString("APP__STORAGE__BUCKET"),
 	}
+}
+
+// splitList reads a comma-separated value, trimming spaces and trailing slashes of origins
+func splitList(raw string) []string {
+	var out []string
+	for _, item := range strings.Split(raw, ",") {
+		if item = strings.TrimSuffix(strings.TrimSpace(item), "/"); item != "" {
+			out = append(out, item)
+		}
+	}
+	return out
 }
