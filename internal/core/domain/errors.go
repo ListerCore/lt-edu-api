@@ -62,5 +62,8 @@ var (
 	ErrSecretsNotConfigured = newError(KindUnavailable, "secrets_not_configured", "La verificación con app autenticadora no está disponible por ahora.")
 	ErrGoogleFailed         = newError(KindUnauthenticated, "google_failed", "No pudimos ingresar con Google. Inténtalo de nuevo o usa tu correo.")
 	ErrGoogleNotConfigured  = newError(KindUnavailable, "google_not_configured", "El ingreso con Google no está disponible por ahora.")
+	ErrForbidden            = newError(KindForbidden, "forbidden", "Tu rol no tiene permiso para esta acción.")
+	ErrInstitutionRequired  = newError(KindInvalid, "institution_required", "Elige un rol de institución para ver sus comunicados.")
+	ErrStorageUnavailable   = newError(KindUnavailable, "storage_unavailable", "No pudimos guardar los archivos por ahora. Inténtalo en unos minutos.")
 	ErrMailUnavailable      = newError(KindUnavailable, "mail_unavailable", "No pudimos enviar el correo. Inténtalo de nuevo en unos minutos.")
 )
