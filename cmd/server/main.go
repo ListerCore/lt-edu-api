@@ -67,11 +67,6 @@ func main() {
 	if err != nil {
 		logger.Fatal().Err(err).Msg("failed to initialize auth service")
 	}
-	seedCtx, cancelSeed := context.WithTimeout(context.Background(), 10*time.Second)
-	if err := authService.EnsureSuperadmin(seedCtx, cfg.AdminEmail, cfg.AdminPassword); err != nil {
-		logger.Error().Err(err).Msg("superadmin seed failed")
-	}
-	cancelSeed()
 	authHandler := handler.NewAuthHandler(authService, logger)
 
 	// Live events go out through Redis Streams, so open pages refresh without polling:

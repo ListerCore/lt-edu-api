@@ -16,7 +16,7 @@ else
 endif
 
 .PHONY: dev dev/run build test lint fmt vet health proto grpc/health grpc/list live/ping \
-        migrate/up migrate/down migrate/version migrate/create \
+        migrate/up migrate/down migrate/version migrate/create seed \
         network/create \
         up setup down \
         db/start redis/start db/stop redis/stop db/psql redis/cli \
@@ -34,6 +34,8 @@ dev/run:
 
 build:
 	go build -o bin/server ./cmd/server
+	go build -o bin/migrate ./cmd/migrate
+	go build -o bin/seed ./cmd/seed
 
 test:
 	go test ./...
@@ -59,6 +61,10 @@ migrate/down:
 
 migrate/version:
 	go run ./cmd/migrate version
+
+# Datos iniciales (migrations/seed, cada archivo una sola vez) y el superadmin de APP__ADMIN__*
+seed:
+	go run ./cmd/seed
 
 # make migrate/create name=create_institutions
 migrate/create:
@@ -102,13 +108,18 @@ redis/stop:
 redis/cli:
 	docker exec -it $(APP__REDIS__CONTAINER) redis-cli
 
+# Infra + esquema + datos iniciales; idempotente, se puede correr las veces que haga falta
 up: network/create
 	docker compose up -d --wait db redis
 	go run ./cmd/migrate up
+	go run ./cmd/seed
 	@echo "Infra lista — corré 'make dev' para levantar la API con live reload."
 
 setup: network/create
 	docker compose up -d --wait db redis
+	go run ./cmd/migrate up
+	go run ./cmd/seed
+	@echo "Setup listo: base migrada y con datos iniciales."
 
 down:
 	docker compose down -v
