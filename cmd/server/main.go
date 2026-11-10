@@ -16,6 +16,7 @@ import (
 	"api/internal/adapter/logging"
 	"api/internal/adapter/outbound/google"
 	"api/internal/adapter/outbound/mailer"
+	"api/internal/adapter/outbound/objectstore"
 	"api/internal/adapter/outbound/password"
 	"api/internal/adapter/outbound/postgres"
 	"api/internal/adapter/outbound/redisclient"
@@ -74,8 +75,29 @@ func main() {
 	liveService := service.NewLiveService(redisclient.NewLiveBus(redisClient), logger)
 	liveHandler := handler.NewLiveHandler(liveService, logger)
 
+	// Files of announcements live in AIStor; the bucket is created on first start
+	store, err := objectstore.New(objectstore.Config{Endpoint: cfg.StorageEndpoint, AccessKey: cfg.StorageAccessKey, SecretKey: cfg.StorageSecretKey, UseSSL: cfg.StorageUseSSL, Region: cfg.StorageRegion, Bucket: cfg.StorageBucket})
+	if err != nil {
+		logger.Fatal().Err(err).Msg("invalid storage settings")
+	}
+	if !store.Ready() {
+		logger.Warn().Msg("APP__STORAGE__* is incomplete: announcements cannot carry files")
+	} else {
+		bucketCtx, cancelBucket := context.WithTimeout(context.Background(), 10*time.Second)
+		if err := store.EnsureBucket(bucketCtx); err != nil {
+			logger.Warn().Err(err).Str("bucket", cfg.StorageBucket).Msg("storage bucket check failed")
+		} else {
+			logger.Info().Str("component", "storage").Str("bucket", cfg.StorageBucket).Msg("connection established")
+		}
+		cancelBucket()
+	}
+	announcementService := service.NewAnnouncementService(postgres.NewAnnouncementRepository(dbClient), authService, store, liveService, logger)
+	announcementHandler := handler.NewAnnouncementHandler(announcementService, logger)
+
 	app := fiber.New(fiber.Config{
 		AppName: cfg.AppName,
+		// Announcements carry up to 40 MB of images and PDFs; larger bodies never reach a handler
+		BodyLimit: 45 << 20,
 		// Client IP comes from X-Forwarded-For only when the request arrives from a trusted proxy (joseph-app)
 		TrustProxy:         true,
 		TrustProxyConfig:   fiber.TrustProxyConfig{Proxies: cfg.TrustedProxies, Loopback: true, Private: true},
@@ -90,6 +112,7 @@ func main() {
 	inboundhttp.RegisterRoutes(app, inboundhttp.Handlers{
 		Health:           healthHandler,
 		Auth:             authHandler,
+		Announcements:    announcementHandler,
 		Live:             liveHandler,
 		WebSocketOrigins: cfg.WSOrigins,
 		Development:      !production,
@@ -100,7 +123,7 @@ func main() {
 	if err != nil {
 		logger.Fatal().Err(err).Str("port", cfg.GRPCPort).Msg("failed to open grpc port")
 	}
-	grpcServer := inboundgrpc.New(inboundgrpc.Services{Health: healthService}, inboundgrpc.Config{TrustedProxies: cfg.TrustedProxies, Development: !production}, logger)
+	grpcServer := inboundgrpc.New(inboundgrpc.Services{Health: healthService, Announcements: announcementService}, inboundgrpc.Config{TrustedProxies: cfg.TrustedProxies, Development: !production}, logger)
 	defer grpcServer.GracefulStop()
 	go func() {
 		logger.Info().Str("port", cfg.GRPCPort).Msg("starting grpc server")
