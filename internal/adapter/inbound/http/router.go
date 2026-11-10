@@ -62,6 +62,8 @@ func RegisterRoutes(app *fiber.App, h Handlers) {
 
 	// Announcements with images and PDFs: publishing from the panel, and the files (public ones for anyone)
 	v1.Post("/panel/announcements", credentialLimit, h.Announcements.Create)
+	v1.Put("/panel/announcements/:id", credentialLimit, h.Announcements.Update)
+	v1.Delete("/panel/announcements/:id", credentialLimit, h.Announcements.Delete)
 	v1.Get("/announcements/:id/attachments/:attachmentId", h.Announcements.Attachment)
 
 	// Live events for open pages (joseph-app relays /ws/live here); events carry ids only

@@ -43,6 +43,22 @@ func (s *announcementServer) ListAnnouncements(ctx context.Context, req *announc
 	return &announcementsv1.ListAnnouncementsResponse{Announcements: toAnnouncements(feed.Announcements), CanPublish: feed.CanPublish}, nil
 }
 
+func (s *announcementServer) GetAnnouncement(ctx context.Context, req *announcementsv1.GetAnnouncementRequest) (*announcementsv1.GetAnnouncementResponse, error) {
+	a, editable, err := s.announcements.PanelGet(ctx, bearer(ctx), req.GetInstitutionSlug(), req.GetSlug())
+	if err != nil {
+		return nil, s.fail("GetAnnouncement", err)
+	}
+	return &announcementsv1.GetAnnouncementResponse{Announcement: toAnnouncement(a), CanEdit: editable}, nil
+}
+
+func (s *announcementServer) ListFeaturedAnnouncements(ctx context.Context, req *announcementsv1.ListFeaturedAnnouncementsRequest) (*announcementsv1.ListFeaturedAnnouncementsResponse, error) {
+	items, err := s.announcements.PublicFeatured(ctx, req.GetInstitutionSlug())
+	if err != nil {
+		return nil, s.fail("ListFeaturedAnnouncements", err)
+	}
+	return &announcementsv1.ListFeaturedAnnouncementsResponse{Announcements: toAnnouncements(items)}, nil
+}
+
 func (s *announcementServer) fail(method string, err error) error {
 	var de *domain.Error
 	if !errors.As(err, &de) {
@@ -64,8 +80,13 @@ func toAnnouncement(a domain.Announcement) *announcementsv1.Announcement {
 	for i, att := range a.Attachments {
 		attachments[i] = &announcementsv1.Attachment{Id: att.ID, Kind: att.Kind, FileName: att.FileName, ContentType: att.ContentType, SizeBytes: att.SizeBytes, Position: int32(att.Position)}
 	}
-	return &announcementsv1.Announcement{
+	out := &announcementsv1.Announcement{
 		Id: a.ID, Slug: a.Slug, Kind: a.Kind, Audience: a.Audience, Title: a.Title, Body: a.Body, IsPublic: a.IsPublic, Pinned: a.Pinned,
 		AuthorName: a.AuthorName, PublishedAt: timestamppb.New(a.PublishedAt), InstitutionSlug: a.InstitutionSlug, Attachments: attachments,
+		CtaLabel: a.CTALabel, CtaUrl: a.CTAURL, UpdatedAt: timestamppb.New(a.UpdatedAt),
 	}
+	if a.FeaturedFrom != nil && a.FeaturedUntil != nil {
+		out.FeaturedFrom, out.FeaturedUntil = timestamppb.New(*a.FeaturedFrom), timestamppb.New(*a.FeaturedUntil)
+	}
+	return out
 }

@@ -127,7 +127,15 @@ type Announcement struct {
 	PublishedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
 	InstitutionSlug string                 `protobuf:"bytes,11,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
 	// In order; the first image is the cover
-	Attachments   []*Attachment `protobuf:"bytes,12,rep,name=attachments,proto3" json:"attachments,omitempty"`
+	Attachments []*Attachment `protobuf:"bytes,12,rep,name=attachments,proto3" json:"attachments,omitempty"`
+	// Validity window of the home modal (unset: not featured)
+	FeaturedFrom  *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=featured_from,json=featuredFrom,proto3,oneof" json:"featured_from,omitempty"`
+	FeaturedUntil *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=featured_until,json=featuredUntil,proto3,oneof" json:"featured_until,omitempty"`
+	// Ir | Continuar (empty when not featured)
+	CtaLabel string `protobuf:"bytes,15,opt,name=cta_label,json=ctaLabel,proto3" json:"cta_label,omitempty"`
+	// Where the button leads: a site path or an https address; empty means the announcement's own page
+	CtaUrl        string                 `protobuf:"bytes,16,opt,name=cta_url,json=ctaUrl,proto3" json:"cta_url,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -242,6 +250,41 @@ func (x *Announcement) GetInstitutionSlug() string {
 func (x *Announcement) GetAttachments() []*Attachment {
 	if x != nil {
 		return x.Attachments
+	}
+	return nil
+}
+
+func (x *Announcement) GetFeaturedFrom() *timestamppb.Timestamp {
+	if x != nil {
+		return x.FeaturedFrom
+	}
+	return nil
+}
+
+func (x *Announcement) GetFeaturedUntil() *timestamppb.Timestamp {
+	if x != nil {
+		return x.FeaturedUntil
+	}
+	return nil
+}
+
+func (x *Announcement) GetCtaLabel() string {
+	if x != nil {
+		return x.CtaLabel
+	}
+	return ""
+}
+
+func (x *Announcement) GetCtaUrl() string {
+	if x != nil {
+		return x.CtaUrl
+	}
+	return ""
+}
+
+func (x *Announcement) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
 	}
 	return nil
 }
@@ -519,6 +562,199 @@ func (x *ListAnnouncementsResponse) GetCanPublish() bool {
 	return false
 }
 
+type GetAnnouncementRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	Slug  string                 `protobuf:"bytes,1,opt,name=slug,proto3" json:"slug,omitempty"`
+	// Empty: the institution of the active role
+	InstitutionSlug string `protobuf:"bytes,2,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *GetAnnouncementRequest) Reset() {
+	*x = GetAnnouncementRequest{}
+	mi := &file_joseph_announcements_v1_announcements_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAnnouncementRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAnnouncementRequest) ProtoMessage() {}
+
+func (x *GetAnnouncementRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_announcements_v1_announcements_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAnnouncementRequest.ProtoReflect.Descriptor instead.
+func (*GetAnnouncementRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_announcements_v1_announcements_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetAnnouncementRequest) GetSlug() string {
+	if x != nil {
+		return x.Slug
+	}
+	return ""
+}
+
+func (x *GetAnnouncementRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+type GetAnnouncementResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Announcement  *Announcement          `protobuf:"bytes,1,opt,name=announcement,proto3" json:"announcement,omitempty"`
+	CanEdit       bool                   `protobuf:"varint,2,opt,name=can_edit,json=canEdit,proto3" json:"can_edit,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAnnouncementResponse) Reset() {
+	*x = GetAnnouncementResponse{}
+	mi := &file_joseph_announcements_v1_announcements_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAnnouncementResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAnnouncementResponse) ProtoMessage() {}
+
+func (x *GetAnnouncementResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_announcements_v1_announcements_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAnnouncementResponse.ProtoReflect.Descriptor instead.
+func (*GetAnnouncementResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_announcements_v1_announcements_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetAnnouncementResponse) GetAnnouncement() *Announcement {
+	if x != nil {
+		return x.Announcement
+	}
+	return nil
+}
+
+func (x *GetAnnouncementResponse) GetCanEdit() bool {
+	if x != nil {
+		return x.CanEdit
+	}
+	return false
+}
+
+type ListFeaturedAnnouncementsRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *ListFeaturedAnnouncementsRequest) Reset() {
+	*x = ListFeaturedAnnouncementsRequest{}
+	mi := &file_joseph_announcements_v1_announcements_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListFeaturedAnnouncementsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListFeaturedAnnouncementsRequest) ProtoMessage() {}
+
+func (x *ListFeaturedAnnouncementsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_announcements_v1_announcements_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListFeaturedAnnouncementsRequest.ProtoReflect.Descriptor instead.
+func (*ListFeaturedAnnouncementsRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_announcements_v1_announcements_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ListFeaturedAnnouncementsRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+type ListFeaturedAnnouncementsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Announcements []*Announcement        `protobuf:"bytes,1,rep,name=announcements,proto3" json:"announcements,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListFeaturedAnnouncementsResponse) Reset() {
+	*x = ListFeaturedAnnouncementsResponse{}
+	mi := &file_joseph_announcements_v1_announcements_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListFeaturedAnnouncementsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListFeaturedAnnouncementsResponse) ProtoMessage() {}
+
+func (x *ListFeaturedAnnouncementsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_announcements_v1_announcements_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListFeaturedAnnouncementsResponse.ProtoReflect.Descriptor instead.
+func (*ListFeaturedAnnouncementsResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_announcements_v1_announcements_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ListFeaturedAnnouncementsResponse) GetAnnouncements() []*Announcement {
+	if x != nil {
+		return x.Announcements
+	}
+	return nil
+}
+
 var File_joseph_announcements_v1_announcements_proto protoreflect.FileDescriptor
 
 const file_joseph_announcements_v1_announcements_proto_rawDesc = "" +
@@ -532,7 +768,7 @@ const file_joseph_announcements_v1_announcements_proto_rawDesc = "" +
 	"\fcontent_type\x18\x04 \x01(\tR\vcontentType\x12\x1d\n" +
 	"\n" +
 	"size_bytes\x18\x05 \x01(\x03R\tsizeBytes\x12\x1a\n" +
-	"\bposition\x18\x06 \x01(\x05R\bposition\"\x93\x03\n" +
+	"\bposition\x18\x06 \x01(\x05R\bposition\"\xb7\x05\n" +
 	"\fAnnouncement\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04slug\x18\x02 \x01(\tR\x04slug\x12\x12\n" +
@@ -547,7 +783,15 @@ const file_joseph_announcements_v1_announcements_proto_rawDesc = "" +
 	"\fpublished_at\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampR\vpublishedAt\x12)\n" +
 	"\x10institution_slug\x18\v \x01(\tR\x0finstitutionSlug\x12E\n" +
-	"\vattachments\x18\f \x03(\v2#.joseph.announcements.v1.AttachmentR\vattachments\"K\n" +
+	"\vattachments\x18\f \x03(\v2#.joseph.announcements.v1.AttachmentR\vattachments\x12D\n" +
+	"\rfeatured_from\x18\r \x01(\v2\x1a.google.protobuf.TimestampH\x00R\ffeaturedFrom\x88\x01\x01\x12F\n" +
+	"\x0efeatured_until\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampH\x01R\rfeaturedUntil\x88\x01\x01\x12\x1b\n" +
+	"\tcta_label\x18\x0f \x01(\tR\bctaLabel\x12\x17\n" +
+	"\acta_url\x18\x10 \x01(\tR\x06ctaUrl\x129\n" +
+	"\n" +
+	"updated_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\x10\n" +
+	"\x0e_featured_fromB\x11\n" +
+	"\x0f_featured_until\"K\n" +
 	"\x1eListPublicAnnouncementsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"n\n" +
 	"\x1fListPublicAnnouncementsResponse\x12K\n" +
@@ -561,11 +805,23 @@ const file_joseph_announcements_v1_announcements_proto_rawDesc = "" +
 	"\x19ListAnnouncementsResponse\x12K\n" +
 	"\rannouncements\x18\x01 \x03(\v2%.joseph.announcements.v1.AnnouncementR\rannouncements\x12\x1f\n" +
 	"\vcan_publish\x18\x02 \x01(\bR\n" +
-	"canPublish2\xa9\x03\n" +
+	"canPublish\"W\n" +
+	"\x16GetAnnouncementRequest\x12\x12\n" +
+	"\x04slug\x18\x01 \x01(\tR\x04slug\x12)\n" +
+	"\x10institution_slug\x18\x02 \x01(\tR\x0finstitutionSlug\"\x7f\n" +
+	"\x17GetAnnouncementResponse\x12I\n" +
+	"\fannouncement\x18\x01 \x01(\v2%.joseph.announcements.v1.AnnouncementR\fannouncement\x12\x19\n" +
+	"\bcan_edit\x18\x02 \x01(\bR\acanEdit\"M\n" +
+	" ListFeaturedAnnouncementsRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"p\n" +
+	"!ListFeaturedAnnouncementsResponse\x12K\n" +
+	"\rannouncements\x18\x01 \x03(\v2%.joseph.announcements.v1.AnnouncementR\rannouncements2\xb4\x05\n" +
 	"\x13AnnouncementService\x12\x8c\x01\n" +
 	"\x17ListPublicAnnouncements\x127.joseph.announcements.v1.ListPublicAnnouncementsRequest\x1a8.joseph.announcements.v1.ListPublicAnnouncementsResponse\x12\x86\x01\n" +
 	"\x15GetPublicAnnouncement\x125.joseph.announcements.v1.GetPublicAnnouncementRequest\x1a6.joseph.announcements.v1.GetPublicAnnouncementResponse\x12z\n" +
-	"\x11ListAnnouncements\x121.joseph.announcements.v1.ListAnnouncementsRequest\x1a2.joseph.announcements.v1.ListAnnouncementsResponseBGZEapi/internal/adapter/inbound/grpc/gen/announcementsv1;announcementsv1b\x06proto3"
+	"\x11ListAnnouncements\x121.joseph.announcements.v1.ListAnnouncementsRequest\x1a2.joseph.announcements.v1.ListAnnouncementsResponse\x12t\n" +
+	"\x0fGetAnnouncement\x12/.joseph.announcements.v1.GetAnnouncementRequest\x1a0.joseph.announcements.v1.GetAnnouncementResponse\x12\x92\x01\n" +
+	"\x19ListFeaturedAnnouncements\x129.joseph.announcements.v1.ListFeaturedAnnouncementsRequest\x1a:.joseph.announcements.v1.ListFeaturedAnnouncementsResponseBGZEapi/internal/adapter/inbound/grpc/gen/announcementsv1;announcementsv1b\x06proto3"
 
 var (
 	file_joseph_announcements_v1_announcements_proto_rawDescOnce sync.Once
@@ -579,35 +835,48 @@ func file_joseph_announcements_v1_announcements_proto_rawDescGZIP() []byte {
 	return file_joseph_announcements_v1_announcements_proto_rawDescData
 }
 
-var file_joseph_announcements_v1_announcements_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_joseph_announcements_v1_announcements_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_joseph_announcements_v1_announcements_proto_goTypes = []any{
-	(*Attachment)(nil),                      // 0: joseph.announcements.v1.Attachment
-	(*Announcement)(nil),                    // 1: joseph.announcements.v1.Announcement
-	(*ListPublicAnnouncementsRequest)(nil),  // 2: joseph.announcements.v1.ListPublicAnnouncementsRequest
-	(*ListPublicAnnouncementsResponse)(nil), // 3: joseph.announcements.v1.ListPublicAnnouncementsResponse
-	(*GetPublicAnnouncementRequest)(nil),    // 4: joseph.announcements.v1.GetPublicAnnouncementRequest
-	(*GetPublicAnnouncementResponse)(nil),   // 5: joseph.announcements.v1.GetPublicAnnouncementResponse
-	(*ListAnnouncementsRequest)(nil),        // 6: joseph.announcements.v1.ListAnnouncementsRequest
-	(*ListAnnouncementsResponse)(nil),       // 7: joseph.announcements.v1.ListAnnouncementsResponse
-	(*timestamppb.Timestamp)(nil),           // 8: google.protobuf.Timestamp
+	(*Attachment)(nil),                        // 0: joseph.announcements.v1.Attachment
+	(*Announcement)(nil),                      // 1: joseph.announcements.v1.Announcement
+	(*ListPublicAnnouncementsRequest)(nil),    // 2: joseph.announcements.v1.ListPublicAnnouncementsRequest
+	(*ListPublicAnnouncementsResponse)(nil),   // 3: joseph.announcements.v1.ListPublicAnnouncementsResponse
+	(*GetPublicAnnouncementRequest)(nil),      // 4: joseph.announcements.v1.GetPublicAnnouncementRequest
+	(*GetPublicAnnouncementResponse)(nil),     // 5: joseph.announcements.v1.GetPublicAnnouncementResponse
+	(*ListAnnouncementsRequest)(nil),          // 6: joseph.announcements.v1.ListAnnouncementsRequest
+	(*ListAnnouncementsResponse)(nil),         // 7: joseph.announcements.v1.ListAnnouncementsResponse
+	(*GetAnnouncementRequest)(nil),            // 8: joseph.announcements.v1.GetAnnouncementRequest
+	(*GetAnnouncementResponse)(nil),           // 9: joseph.announcements.v1.GetAnnouncementResponse
+	(*ListFeaturedAnnouncementsRequest)(nil),  // 10: joseph.announcements.v1.ListFeaturedAnnouncementsRequest
+	(*ListFeaturedAnnouncementsResponse)(nil), // 11: joseph.announcements.v1.ListFeaturedAnnouncementsResponse
+	(*timestamppb.Timestamp)(nil),             // 12: google.protobuf.Timestamp
 }
 var file_joseph_announcements_v1_announcements_proto_depIdxs = []int32{
-	8, // 0: joseph.announcements.v1.Announcement.published_at:type_name -> google.protobuf.Timestamp
-	0, // 1: joseph.announcements.v1.Announcement.attachments:type_name -> joseph.announcements.v1.Attachment
-	1, // 2: joseph.announcements.v1.ListPublicAnnouncementsResponse.announcements:type_name -> joseph.announcements.v1.Announcement
-	1, // 3: joseph.announcements.v1.GetPublicAnnouncementResponse.announcement:type_name -> joseph.announcements.v1.Announcement
-	1, // 4: joseph.announcements.v1.ListAnnouncementsResponse.announcements:type_name -> joseph.announcements.v1.Announcement
-	2, // 5: joseph.announcements.v1.AnnouncementService.ListPublicAnnouncements:input_type -> joseph.announcements.v1.ListPublicAnnouncementsRequest
-	4, // 6: joseph.announcements.v1.AnnouncementService.GetPublicAnnouncement:input_type -> joseph.announcements.v1.GetPublicAnnouncementRequest
-	6, // 7: joseph.announcements.v1.AnnouncementService.ListAnnouncements:input_type -> joseph.announcements.v1.ListAnnouncementsRequest
-	3, // 8: joseph.announcements.v1.AnnouncementService.ListPublicAnnouncements:output_type -> joseph.announcements.v1.ListPublicAnnouncementsResponse
-	5, // 9: joseph.announcements.v1.AnnouncementService.GetPublicAnnouncement:output_type -> joseph.announcements.v1.GetPublicAnnouncementResponse
-	7, // 10: joseph.announcements.v1.AnnouncementService.ListAnnouncements:output_type -> joseph.announcements.v1.ListAnnouncementsResponse
-	8, // [8:11] is the sub-list for method output_type
-	5, // [5:8] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	12, // 0: joseph.announcements.v1.Announcement.published_at:type_name -> google.protobuf.Timestamp
+	0,  // 1: joseph.announcements.v1.Announcement.attachments:type_name -> joseph.announcements.v1.Attachment
+	12, // 2: joseph.announcements.v1.Announcement.featured_from:type_name -> google.protobuf.Timestamp
+	12, // 3: joseph.announcements.v1.Announcement.featured_until:type_name -> google.protobuf.Timestamp
+	12, // 4: joseph.announcements.v1.Announcement.updated_at:type_name -> google.protobuf.Timestamp
+	1,  // 5: joseph.announcements.v1.ListPublicAnnouncementsResponse.announcements:type_name -> joseph.announcements.v1.Announcement
+	1,  // 6: joseph.announcements.v1.GetPublicAnnouncementResponse.announcement:type_name -> joseph.announcements.v1.Announcement
+	1,  // 7: joseph.announcements.v1.ListAnnouncementsResponse.announcements:type_name -> joseph.announcements.v1.Announcement
+	1,  // 8: joseph.announcements.v1.GetAnnouncementResponse.announcement:type_name -> joseph.announcements.v1.Announcement
+	1,  // 9: joseph.announcements.v1.ListFeaturedAnnouncementsResponse.announcements:type_name -> joseph.announcements.v1.Announcement
+	2,  // 10: joseph.announcements.v1.AnnouncementService.ListPublicAnnouncements:input_type -> joseph.announcements.v1.ListPublicAnnouncementsRequest
+	4,  // 11: joseph.announcements.v1.AnnouncementService.GetPublicAnnouncement:input_type -> joseph.announcements.v1.GetPublicAnnouncementRequest
+	6,  // 12: joseph.announcements.v1.AnnouncementService.ListAnnouncements:input_type -> joseph.announcements.v1.ListAnnouncementsRequest
+	8,  // 13: joseph.announcements.v1.AnnouncementService.GetAnnouncement:input_type -> joseph.announcements.v1.GetAnnouncementRequest
+	10, // 14: joseph.announcements.v1.AnnouncementService.ListFeaturedAnnouncements:input_type -> joseph.announcements.v1.ListFeaturedAnnouncementsRequest
+	3,  // 15: joseph.announcements.v1.AnnouncementService.ListPublicAnnouncements:output_type -> joseph.announcements.v1.ListPublicAnnouncementsResponse
+	5,  // 16: joseph.announcements.v1.AnnouncementService.GetPublicAnnouncement:output_type -> joseph.announcements.v1.GetPublicAnnouncementResponse
+	7,  // 17: joseph.announcements.v1.AnnouncementService.ListAnnouncements:output_type -> joseph.announcements.v1.ListAnnouncementsResponse
+	9,  // 18: joseph.announcements.v1.AnnouncementService.GetAnnouncement:output_type -> joseph.announcements.v1.GetAnnouncementResponse
+	11, // 19: joseph.announcements.v1.AnnouncementService.ListFeaturedAnnouncements:output_type -> joseph.announcements.v1.ListFeaturedAnnouncementsResponse
+	15, // [15:20] is the sub-list for method output_type
+	10, // [10:15] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_joseph_announcements_v1_announcements_proto_init() }
@@ -615,13 +884,14 @@ func file_joseph_announcements_v1_announcements_proto_init() {
 	if File_joseph_announcements_v1_announcements_proto != nil {
 		return
 	}
+	file_joseph_announcements_v1_announcements_proto_msgTypes[1].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_announcements_v1_announcements_proto_rawDesc), len(file_joseph_announcements_v1_announcements_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

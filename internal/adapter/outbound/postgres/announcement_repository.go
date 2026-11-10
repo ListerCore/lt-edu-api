@@ -30,7 +30,8 @@ func (r *AnnouncementRepository) InstitutionBySlug(ctx context.Context, slug str
 }
 
 const announcementColumns = `a.id, a.institution_id, i.slug, a.slug, a.kind, a.audience, a.title, a.body, a.is_public, a.pinned,
-	coalesce(u.full_name, ''), a.published_at`
+	coalesce(a.author_id::text, ''), coalesce(u.full_name, ''), a.published_at, a.updated_at, a.featured_from, a.featured_until,
+	coalesce(a.cta_label, ''), coalesce(a.cta_url, '')`
 
 const announcementFrom = ` FROM comms.announcements a
 	JOIN iam.institutions i ON i.id = a.institution_id
@@ -39,7 +40,8 @@ const announcementFrom = ` FROM comms.announcements a
 func scanAnnouncement(row pgx.Row) (domain.Announcement, error) {
 	var a domain.Announcement
 	err := row.Scan(&a.ID, &a.InstitutionID, &a.InstitutionSlug, &a.Slug, &a.Kind, &a.Audience, &a.Title, &a.Body,
-		&a.IsPublic, &a.Pinned, &a.AuthorName, &a.PublishedAt)
+		&a.IsPublic, &a.Pinned, &a.AuthorID, &a.AuthorName, &a.PublishedAt, &a.UpdatedAt, &a.FeaturedFrom, &a.FeaturedUntil,
+		&a.CTALabel, &a.CTAURL)
 	return a, err
 }
 
@@ -57,6 +59,22 @@ func (r *AnnouncementRepository) List(ctx context.Context, f domain.Announcement
 	if err != nil {
 		return nil, err
 	}
+	return r.collect(ctx, rows)
+}
+
+func (r *AnnouncementRepository) Featured(ctx context.Context, institutionID string) ([]domain.Announcement, error) {
+	rows, err := r.c.pool.Query(ctx, `SELECT `+announcementColumns+announcementFrom+`
+		WHERE a.institution_id = $1 AND a.is_public AND a.featured_from <= now() AND a.featured_until > now()
+		ORDER BY a.published_at DESC, a.id DESC
+		LIMIT 20`, institutionID)
+	if err != nil {
+		return nil, err
+	}
+	return r.collect(ctx, rows)
+}
+
+// collect scans a feed and loads the attachments of every row in one query
+func (r *AnnouncementRepository) collect(ctx context.Context, rows pgx.Rows) ([]domain.Announcement, error) {
 	var out []domain.Announcement
 	index := map[string]int{}
 	for rows.Next() {
@@ -139,9 +157,11 @@ func (r *AnnouncementRepository) Create(ctx context.Context, a domain.Announceme
 		author = &authorID
 	}
 	err = tx.QueryRow(ctx, `
-		INSERT INTO comms.announcements (institution_id, slug, kind, audience, title, body, is_public, author_id)
-		VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id, published_at`,
-		a.InstitutionID, a.Slug, a.Kind, a.Audience, a.Title, a.Body, a.IsPublic, author).Scan(&a.ID, &a.PublishedAt)
+		INSERT INTO comms.announcements (institution_id, slug, kind, audience, title, body, is_public, author_id,
+			featured_from, featured_until, cta_label, cta_url)
+		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, nullif($11, ''), nullif($12, '')) RETURNING id, published_at`,
+		a.InstitutionID, a.Slug, a.Kind, a.Audience, a.Title, a.Body, a.IsPublic, author,
+		a.FeaturedFrom, a.FeaturedUntil, a.CTALabel, a.CTAURL).Scan(&a.ID, &a.PublishedAt)
 	var pgErr *pgconn.PgError
 	if errors.As(err, &pgErr) && pgErr.Code == uniqueViolation && pgErr.ConstraintName == "announcements_slug_key" {
 		return a, domain.ErrSlugTaken
@@ -162,4 +182,101 @@ func (r *AnnouncementRepository) Create(ctx context.Context, a domain.Announceme
 		return a, err
 	}
 	return r.ByID(ctx, a.ID)
+}
+
+func (r *AnnouncementRepository) Update(ctx context.Context, a domain.Announcement, keep []string, added []domain.Attachment) (domain.Announcement, []string, error) {
+	tx, err := r.c.pool.Begin(ctx)
+	if err != nil {
+		return a, nil, err
+	}
+	defer func() { _ = tx.Rollback(ctx) }()
+
+	tag, err := tx.Exec(ctx, `
+		UPDATE comms.announcements SET kind = $2, audience = $3, title = $4, body = $5, is_public = $6,
+			featured_from = $7, featured_until = $8, cta_label = nullif($9, ''), cta_url = nullif($10, '')
+		WHERE id = $1`,
+		a.ID, a.Kind, a.Audience, a.Title, a.Body, a.IsPublic, a.FeaturedFrom, a.FeaturedUntil, a.CTALabel, a.CTAURL)
+	if err != nil {
+		return a, nil, err
+	}
+	if tag.RowsAffected() == 0 {
+		return a, nil, domain.ErrNotFound
+	}
+
+	// Dropped attachments go first; their objects are removed by the caller once this commits
+	var removed []string
+	rows, err := tx.Query(ctx, `DELETE FROM comms.announcement_attachments
+		WHERE announcement_id = $1 AND NOT (id = ANY($2::uuid[])) RETURNING object_key`, a.ID, keep)
+	if err != nil {
+		return a, nil, err
+	}
+	for rows.Next() {
+		var key string
+		if err := rows.Scan(&key); err != nil {
+			rows.Close()
+			return a, nil, err
+		}
+		removed = append(removed, key)
+	}
+	rows.Close()
+	if err := rows.Err(); err != nil {
+		return a, nil, err
+	}
+
+	// Positions may collide while they are rewritten; the unique check runs at commit
+	if _, err := tx.Exec(ctx, `SET CONSTRAINTS comms.announcement_attachments_position_key DEFERRED`); err != nil {
+		return a, nil, err
+	}
+	for position, id := range keep {
+		tag, err := tx.Exec(ctx, `UPDATE comms.announcement_attachments SET position = $3 WHERE announcement_id = $1 AND id = $2`, a.ID, id, position)
+		if err != nil {
+			return a, nil, err
+		}
+		if tag.RowsAffected() == 0 {
+			return a, nil, domain.ErrNotFound
+		}
+	}
+	for _, att := range added {
+		if _, err := tx.Exec(ctx, `
+			INSERT INTO comms.announcement_attachments (announcement_id, kind, object_key, file_name, content_type, size_bytes, position)
+			VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+			a.ID, att.Kind, att.ObjectKey, att.FileName, att.ContentType, att.SizeBytes, att.Position); err != nil {
+			return a, nil, err
+		}
+	}
+	if err := tx.Commit(ctx); err != nil {
+		return a, nil, err
+	}
+	updated, err := r.ByID(ctx, a.ID)
+	return updated, removed, err
+}
+
+func (r *AnnouncementRepository) Delete(ctx context.Context, id string) ([]string, error) {
+	tx, err := r.c.pool.Begin(ctx)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = tx.Rollback(ctx) }()
+	rows, err := tx.Query(ctx, `SELECT object_key FROM comms.announcement_attachments WHERE announcement_id = $1`, id)
+	if err != nil {
+		return nil, err
+	}
+	var keys []string
+	for rows.Next() {
+		var key string
+		if err := rows.Scan(&key); err != nil {
+			rows.Close()
+			return nil, err
+		}
+		keys = append(keys, key)
+	}
+	rows.Close()
+	tag, err := tx.Exec(ctx, `DELETE FROM comms.announcements WHERE id = $1`, id)
+	if err != nil {
+		return nil, err
+	}
+	if tag.RowsAffected() == 0 {
+		return nil, domain.ErrNotFound
+	}
+	return keys, tx.Commit(ctx)
 }

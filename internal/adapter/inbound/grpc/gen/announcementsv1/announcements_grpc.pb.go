@@ -22,9 +22,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AnnouncementService_ListPublicAnnouncements_FullMethodName = "/joseph.announcements.v1.AnnouncementService/ListPublicAnnouncements"
-	AnnouncementService_GetPublicAnnouncement_FullMethodName   = "/joseph.announcements.v1.AnnouncementService/GetPublicAnnouncement"
-	AnnouncementService_ListAnnouncements_FullMethodName       = "/joseph.announcements.v1.AnnouncementService/ListAnnouncements"
+	AnnouncementService_ListPublicAnnouncements_FullMethodName   = "/joseph.announcements.v1.AnnouncementService/ListPublicAnnouncements"
+	AnnouncementService_GetPublicAnnouncement_FullMethodName     = "/joseph.announcements.v1.AnnouncementService/GetPublicAnnouncement"
+	AnnouncementService_ListAnnouncements_FullMethodName         = "/joseph.announcements.v1.AnnouncementService/ListAnnouncements"
+	AnnouncementService_GetAnnouncement_FullMethodName           = "/joseph.announcements.v1.AnnouncementService/GetAnnouncement"
+	AnnouncementService_ListFeaturedAnnouncements_FullMethodName = "/joseph.announcements.v1.AnnouncementService/ListFeaturedAnnouncements"
 )
 
 // AnnouncementServiceClient is the client API for AnnouncementService service.
@@ -44,6 +46,10 @@ type AnnouncementServiceClient interface {
 	GetPublicAnnouncement(ctx context.Context, in *GetPublicAnnouncementRequest, opts ...grpc.CallOption) (*GetPublicAnnouncementResponse, error)
 	// Panel feed: what the signed-in role may read in the institution, and whether it may publish
 	ListAnnouncements(ctx context.Context, in *ListAnnouncementsRequest, opts ...grpc.CallOption) (*ListAnnouncementsResponse, error)
+	// Panel detail and edit page: one announcement the role may read, and whether it may edit or delete it
+	GetAnnouncement(ctx context.Context, in *GetAnnouncementRequest, opts ...grpc.CallOption) (*GetAnnouncementResponse, error)
+	// Home modal: public announcements within their validity window, newest first
+	ListFeaturedAnnouncements(ctx context.Context, in *ListFeaturedAnnouncementsRequest, opts ...grpc.CallOption) (*ListFeaturedAnnouncementsResponse, error)
 }
 
 type announcementServiceClient struct {
@@ -84,6 +90,26 @@ func (c *announcementServiceClient) ListAnnouncements(ctx context.Context, in *L
 	return out, nil
 }
 
+func (c *announcementServiceClient) GetAnnouncement(ctx context.Context, in *GetAnnouncementRequest, opts ...grpc.CallOption) (*GetAnnouncementResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAnnouncementResponse)
+	err := c.cc.Invoke(ctx, AnnouncementService_GetAnnouncement_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *announcementServiceClient) ListFeaturedAnnouncements(ctx context.Context, in *ListFeaturedAnnouncementsRequest, opts ...grpc.CallOption) (*ListFeaturedAnnouncementsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListFeaturedAnnouncementsResponse)
+	err := c.cc.Invoke(ctx, AnnouncementService_ListFeaturedAnnouncements_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AnnouncementServiceServer is the server API for AnnouncementService service.
 // All implementations must embed UnimplementedAnnouncementServiceServer
 // for forward compatibility.
@@ -101,6 +127,10 @@ type AnnouncementServiceServer interface {
 	GetPublicAnnouncement(context.Context, *GetPublicAnnouncementRequest) (*GetPublicAnnouncementResponse, error)
 	// Panel feed: what the signed-in role may read in the institution, and whether it may publish
 	ListAnnouncements(context.Context, *ListAnnouncementsRequest) (*ListAnnouncementsResponse, error)
+	// Panel detail and edit page: one announcement the role may read, and whether it may edit or delete it
+	GetAnnouncement(context.Context, *GetAnnouncementRequest) (*GetAnnouncementResponse, error)
+	// Home modal: public announcements within their validity window, newest first
+	ListFeaturedAnnouncements(context.Context, *ListFeaturedAnnouncementsRequest) (*ListFeaturedAnnouncementsResponse, error)
 	mustEmbedUnimplementedAnnouncementServiceServer()
 }
 
@@ -119,6 +149,12 @@ func (UnimplementedAnnouncementServiceServer) GetPublicAnnouncement(context.Cont
 }
 func (UnimplementedAnnouncementServiceServer) ListAnnouncements(context.Context, *ListAnnouncementsRequest) (*ListAnnouncementsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListAnnouncements not implemented")
+}
+func (UnimplementedAnnouncementServiceServer) GetAnnouncement(context.Context, *GetAnnouncementRequest) (*GetAnnouncementResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetAnnouncement not implemented")
+}
+func (UnimplementedAnnouncementServiceServer) ListFeaturedAnnouncements(context.Context, *ListFeaturedAnnouncementsRequest) (*ListFeaturedAnnouncementsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListFeaturedAnnouncements not implemented")
 }
 func (UnimplementedAnnouncementServiceServer) mustEmbedUnimplementedAnnouncementServiceServer() {}
 func (UnimplementedAnnouncementServiceServer) testEmbeddedByValue()                             {}
@@ -195,6 +231,42 @@ func _AnnouncementService_ListAnnouncements_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AnnouncementService_GetAnnouncement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAnnouncementRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AnnouncementServiceServer).GetAnnouncement(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AnnouncementService_GetAnnouncement_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AnnouncementServiceServer).GetAnnouncement(ctx, req.(*GetAnnouncementRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AnnouncementService_ListFeaturedAnnouncements_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListFeaturedAnnouncementsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AnnouncementServiceServer).ListFeaturedAnnouncements(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AnnouncementService_ListFeaturedAnnouncements_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AnnouncementServiceServer).ListFeaturedAnnouncements(ctx, req.(*ListFeaturedAnnouncementsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AnnouncementService_ServiceDesc is the grpc.ServiceDesc for AnnouncementService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -213,6 +285,14 @@ var AnnouncementService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListAnnouncements",
 			Handler:    _AnnouncementService_ListAnnouncements_Handler,
+		},
+		{
+			MethodName: "GetAnnouncement",
+			Handler:    _AnnouncementService_GetAnnouncement_Handler,
+		},
+		{
+			MethodName: "ListFeaturedAnnouncements",
+			Handler:    _AnnouncementService_ListFeaturedAnnouncements_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

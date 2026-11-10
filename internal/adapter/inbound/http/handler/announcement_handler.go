@@ -34,16 +34,20 @@ func announcementJSON(a domain.Announcement) fiber.Map {
 	return fiber.Map{
 		"id": a.ID, "slug": a.Slug, "kind": a.Kind, "audience": a.Audience, "title": a.Title, "body": a.Body, "is_public": a.IsPublic,
 		"pinned": a.Pinned, "author_name": a.AuthorName, "published_at": a.PublishedAt.UTC().Format(time.RFC3339), "institution_slug": a.InstitutionSlug,
-		"attachments": attachments,
+		"updated_at": a.UpdatedAt.UTC().Format(time.RFC3339), "featured_from": isoTime(a.FeaturedFrom), "featured_until": isoTime(a.FeaturedUntil),
+		"cta_label": a.CTALabel, "cta_url": a.CTAURL, "attachments": attachments,
 	}
 }
 
-// Create: multipart/form-data with kind, audience, title, body, is_public, institution and up to 6 "files".
-// 201 {announcement}
-func (h *AnnouncementHandler) Create(c fiber.Ctx) error {
+var errInvalidBody = &domain.Error{Kind: domain.KindInvalid, Code: "invalid_body", Message: "La solicitud no es válida."}
+
+// readInput parses the multipart form shared by publishing and editing: kind, audience, title, body, is_public,
+// institution, featured_from / featured_until (RFC 3339), cta_label, cta_url, "keep" (attachment ids, editing)
+// and up to 6 "files"
+func readInput(c fiber.Ctx) (service.AnnouncementInput, error) {
 	form, err := c.MultipartForm()
 	if err != nil {
-		return fail(c, h.logger, &domain.Error{Kind: domain.KindInvalid, Code: "invalid_body", Message: "La solicitud no es válida."})
+		return service.AnnouncementInput{}, errInvalidBody
 	}
 	value := func(key string) string {
 		if v := form.Value[key]; len(v) > 0 {
@@ -51,27 +55,82 @@ func (h *AnnouncementHandler) Create(c fiber.Ctx) error {
 		}
 		return ""
 	}
-	var files []service.UploadFile
+	moment := func(key string) (*time.Time, error) {
+		raw := value(key)
+		if raw == "" {
+			return nil, nil
+		}
+		t, err := time.Parse(time.RFC3339, raw)
+		if err != nil {
+			return nil, domain.Validation(map[string]string{key: "Fecha no válida."})
+		}
+		return &t, nil
+	}
+	in := service.AnnouncementInput{
+		InstitutionSlug: value("institution"), Kind: value("kind"), Audience: value("audience"), Title: value("title"), Body: value("body"),
+		IsPublic: value("is_public") == "true", CTALabel: value("cta_label"), CTAURL: value("cta_url"), Keep: form.Value["keep"],
+	}
+	if in.FeaturedFrom, err = moment("featured_from"); err != nil {
+		return in, err
+	}
+	if in.FeaturedUntil, err = moment("featured_until"); err != nil {
+		return in, err
+	}
 	for _, header := range form.File["files"] {
 		file, err := header.Open()
 		if err != nil {
-			return fail(c, h.logger, err)
+			return in, err
 		}
 		data, err := io.ReadAll(io.LimitReader(file, 11<<20))
 		_ = file.Close()
 		if err != nil {
-			return fail(c, h.logger, err)
+			return in, err
 		}
-		files = append(files, service.UploadFile{FileName: header.Filename, Data: data})
+		in.Files = append(in.Files, service.UploadFile{FileName: header.Filename, Data: data})
 	}
-	created, err := h.announcements.Create(c.Context(), bearer(c), service.CreateAnnouncementInput{
-		InstitutionSlug: value("institution"), Kind: value("kind"), Audience: value("audience"), Title: value("title"), Body: value("body"),
-		IsPublic: value("is_public") == "true", Files: files,
-	})
+	return in, nil
+}
+
+// Create publishes (multipart, see readInput): 201 {announcement}
+func (h *AnnouncementHandler) Create(c fiber.Ctx) error {
+	in, err := readInput(c)
+	if err != nil {
+		return fail(c, h.logger, err)
+	}
+	created, err := h.announcements.Create(c.Context(), bearer(c), in)
 	if err != nil {
 		return fail(c, h.logger, err)
 	}
 	return c.Status(fiber.StatusCreated).JSON(fiber.Map{"announcement": announcementJSON(created)})
+}
+
+// Update edits (multipart, see readInput; "keep" lists the attachments that stay, in order): 200 {announcement}
+func (h *AnnouncementHandler) Update(c fiber.Ctx) error {
+	id := c.Params("id")
+	if !uuidPattern.MatchString(id) {
+		return fail(c, h.logger, domain.ErrNotFound)
+	}
+	in, err := readInput(c)
+	if err != nil {
+		return fail(c, h.logger, err)
+	}
+	updated, err := h.announcements.Update(c.Context(), bearer(c), id, in)
+	if err != nil {
+		return fail(c, h.logger, err)
+	}
+	return c.JSON(fiber.Map{"announcement": announcementJSON(updated)})
+}
+
+// Delete removes the announcement and its files: 204
+func (h *AnnouncementHandler) Delete(c fiber.Ctx) error {
+	id := c.Params("id")
+	if !uuidPattern.MatchString(id) {
+		return fail(c, h.logger, domain.ErrNotFound)
+	}
+	if err := h.announcements.Delete(c.Context(), bearer(c), c.Query("institution"), id); err != nil {
+		return fail(c, h.logger, err)
+	}
+	return c.SendStatus(fiber.StatusNoContent)
 }
 
 // Attachment streams one file. Public announcements are cacheable for anyone; internal ones need a session whose
