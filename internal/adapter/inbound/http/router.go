@@ -12,7 +12,9 @@ import (
 type Handlers struct {
 	Health *handler.HealthHandler
 	Auth   *handler.AuthHandler
-	Live   *handler.LiveHandler
+	// Announcements: publishing and files (the feeds are read over gRPC)
+	Announcements *handler.AnnouncementHandler
+	Live          *handler.LiveHandler
 	// Browser origins allowed to open the live WebSocket (joseph-app's origin, through its proxy)
 	WebSocketOrigins []string
 	// Development relaxes the per-IP brake, for testing
@@ -57,6 +59,10 @@ func RegisterRoutes(app *fiber.App, h Handlers) {
 	auth.Post("/mfa/totp/confirm", credentialLimit, h.Auth.ConfirmTOTP)
 	auth.Post("/mfa/totp/disable", credentialLimit, h.Auth.DisableTOTP)
 	auth.Post("/mfa/recovery-codes", credentialLimit, h.Auth.RegenerateRecoveryCodes)
+
+	// Announcements with images and PDFs: publishing from the panel, and the files (public ones for anyone)
+	v1.Post("/panel/announcements", credentialLimit, h.Announcements.Create)
+	v1.Get("/announcements/:id/attachments/:attachmentId", h.Announcements.Attachment)
 
 	// Live events for open pages (joseph-app relays /ws/live here); events carry ids only
 	v1.Get("/live", h.Live.Stream(h.WebSocketOrigins))
