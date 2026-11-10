@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 	"unicode/utf8"
 
 	"github.com/rs/zerolog"
@@ -23,6 +24,8 @@ import (
 
 const (
 	EventAnnouncementPublished = "announcement.published" // {id, slug, institution, public}: a new announcement
+	EventAnnouncementUpdated   = "announcement.updated"   // {id, slug, institution, public}: edited
+	EventAnnouncementDeleted   = "announcement.deleted"   // {id, slug, institution, public}: removed
 
 	maxAttachments      = 6
 	maxImageBytes       = 5 << 20
@@ -34,6 +37,8 @@ const (
 
 var (
 	slugPattern     = regexp.MustCompile(`^[a-z0-9]{18}$`)
+	ctaURLPattern   = regexp.MustCompile(`^(/([^/].*)?|https://[^\s]+)$`)
+	validCTALabels  = map[string]bool{"Ir": true, "Continuar": true}
 	validKinds      = map[string]bool{domain.KindAnnouncement: true, domain.KindNotice: true, domain.KindAlert: true}
 	validAudiences  = map[string]bool{domain.AudienceCommunity: true, domain.AudienceStudents: true, domain.AudienceGuardians: true, domain.AudienceStaff: true}
 	allowedFileType = map[string]struct{ kind, ext string }{
@@ -177,14 +182,23 @@ type UploadFile struct {
 	Data     []byte
 }
 
-type CreateAnnouncementInput struct {
+// AnnouncementInput is what the panel sends to publish or edit
+type AnnouncementInput struct {
 	InstitutionSlug string
 	Kind            string
 	Audience        string
 	Title           string
 	Body            string
 	IsPublic        bool
-	Files           []UploadFile
+	// Validity window of the home modal; both empty means not featured
+	FeaturedFrom  *time.Time
+	FeaturedUntil *time.Time
+	CTALabel      string
+	CTAURL        string
+	// New files, appended after the kept ones
+	Files []UploadFile
+	// Editing only: attachments to keep, in their new order (the rest are removed)
+	Keep []string
 }
 
 func cleanText(value string) string { return strings.TrimSpace(value) }
@@ -202,8 +216,107 @@ func cleanFileName(name string) string {
 	return name
 }
 
+// validateFields checks everything but the files and returns the cleaned announcement fields. windowChanged says
+// whether the validity window is new or edited (only then must it still be open)
+func validateFields(in AnnouncementInput, now time.Time, windowChanged bool) (domain.Announcement, map[string]string) {
+	a := domain.Announcement{Kind: in.Kind, Audience: in.Audience, Title: cleanText(in.Title), Body: cleanText(in.Body), IsPublic: in.IsPublic}
+	fields := map[string]string{}
+	if !validKinds[a.Kind] {
+		fields["kind"] = "Elige el tipo de publicación."
+	}
+	if !validAudiences[a.Audience] {
+		fields["audience"] = "Elige a quién va dirigida."
+	}
+	if n := utf8.RuneCountInString(a.Title); n < 5 || n > 160 {
+		fields["title"] = "El título debe tener entre 5 y 160 caracteres."
+	}
+	if n := utf8.RuneCountInString(a.Body); n < 10 || n > 5000 {
+		fields["body"] = "El detalle debe tener entre 10 y 5000 caracteres."
+	}
+
+	switch {
+	case in.FeaturedFrom == nil && in.FeaturedUntil == nil:
+		// Not featured: no button either
+	case in.FeaturedUntil == nil:
+		fields["featured_until"] = "Indica hasta cuándo se muestra en el inicio."
+	default:
+		from := now
+		if in.FeaturedFrom != nil {
+			from = *in.FeaturedFrom
+		}
+		until := *in.FeaturedUntil
+		switch {
+		case !a.IsPublic:
+			fields["featured_until"] = "Solo las publicaciones públicas se muestran en el inicio."
+		case !until.After(from):
+			fields["featured_until"] = "La vigencia debe terminar después de empezar."
+		case windowChanged && !until.After(now):
+			fields["featured_until"] = "La vigencia ya terminó; elige una fecha futura."
+		case until.Sub(from) > 366*24*time.Hour:
+			fields["featured_until"] = "La vigencia no puede pasar de un año."
+		}
+		a.FeaturedFrom, a.FeaturedUntil = &from, &until
+		a.CTALabel = in.CTALabel
+		if a.CTALabel == "" {
+			a.CTALabel = "Continuar"
+		}
+		if !validCTALabels[a.CTALabel] {
+			fields["cta_label"] = "El botón dice «Ir» o «Continuar»."
+		}
+		a.CTAURL = strings.TrimSpace(in.CTAURL)
+		if a.CTAURL != "" && (len(a.CTAURL) > 500 || !ctaURLPattern.MatchString(a.CTAURL)) {
+			fields["cta_url"] = "Usa una ruta del sitio (/admision) o una dirección https://."
+		}
+	}
+	return a, fields
+}
+
+func notifyData(a domain.Announcement, institutionSlug string) map[string]string {
+	public := "false"
+	if a.IsPublic {
+		public = "true"
+	}
+	return map[string]string{"id": a.ID, "slug": a.Slug, "institution": institutionSlug, "public": public}
+}
+
+// putFiles uploads new attachments; on failure it removes what it already stored
+func (s *AnnouncementService) putFiles(ctx context.Context, institutionID string, files []UploadFile, attachments []domain.Attachment) ([]domain.Attachment, error) {
+	if len(attachments) > 0 && !s.store.Ready() {
+		return nil, domain.ErrStorageUnavailable
+	}
+	var stored []string
+	for i := range attachments {
+		att := &attachments[i]
+		att.ObjectKey = fmt.Sprintf("announcements/%s/%s%s", institutionID, randomHex(16), allowedFileType[att.ContentType].ext)
+		if err := s.store.Put(ctx, att.ObjectKey, att.ContentType, bytes.NewReader(files[i].Data), att.SizeBytes); err != nil {
+			s.removeObjects(ctx, stored)
+			s.logger.Error().Err(err).Msg("attachment upload failed")
+			return nil, domain.ErrStorageUnavailable
+		}
+		stored = append(stored, att.ObjectKey)
+	}
+	return attachments, nil
+}
+
+// removeObjects deletes stored files whose rows are gone; a failure only leaves an orphan, logged
+func (s *AnnouncementService) removeObjects(ctx context.Context, keys []string) {
+	for _, key := range keys {
+		if err := s.store.Delete(context.WithoutCancel(ctx), key); err != nil {
+			s.logger.Warn().Err(err).Str("key", key).Msg("orphan attachment not removed")
+		}
+	}
+}
+
+func objectKeys(attachments []domain.Attachment) []string {
+	keys := make([]string, len(attachments))
+	for i, a := range attachments {
+		keys[i] = a.ObjectKey
+	}
+	return keys
+}
+
 // Create validates, uploads the files to storage and stores the announcement; open pages hear about it live
-func (s *AnnouncementService) Create(ctx context.Context, token string, in CreateAnnouncementInput) (domain.Announcement, error) {
+func (s *AnnouncementService) Create(ctx context.Context, token string, in AnnouncementInput) (domain.Announcement, error) {
 	sc, err := s.resolveScope(ctx, token, in.InstitutionSlug)
 	if err != nil {
 		return domain.Announcement{}, err
@@ -211,52 +324,20 @@ func (s *AnnouncementService) Create(ctx context.Context, token string, in Creat
 	if !announcementPublishers[sc.role] {
 		return domain.Announcement{}, domain.ErrForbidden
 	}
-
-	title, body := cleanText(in.Title), cleanText(in.Body)
-	fields := map[string]string{}
-	if !validKinds[in.Kind] {
-		fields["kind"] = "Elige el tipo de publicación."
-	}
-	if !validAudiences[in.Audience] {
-		fields["audience"] = "Elige a quién va dirigida."
-	}
-	if n := utf8.RuneCountInString(title); n < 5 || n > 160 {
-		fields["title"] = "El título debe tener entre 5 y 160 caracteres."
-	}
-	if n := utf8.RuneCountInString(body); n < 10 || n > 5000 {
-		fields["body"] = "El detalle debe tener entre 10 y 5000 caracteres."
-	}
-	attachments, fileProblem := classifyFiles(in.Files)
+	draft, fields := validateFields(in, time.Now(), true)
+	attachments, fileProblem := classifyFiles(in.Files, 0, 0)
 	if fileProblem != "" {
 		fields["files"] = fileProblem
 	}
 	if len(fields) > 0 {
 		return domain.Announcement{}, domain.Validation(fields)
 	}
-
-	if len(attachments) > 0 && !s.store.Ready() {
-		return domain.Announcement{}, domain.ErrStorageUnavailable
-	}
-	var stored []string
-	cleanup := func() {
-		for _, key := range stored {
-			if err := s.store.Delete(context.WithoutCancel(ctx), key); err != nil {
-				s.logger.Warn().Err(err).Str("key", key).Msg("orphan attachment not removed")
-			}
-		}
-	}
-	for i := range attachments {
-		att := &attachments[i]
-		att.ObjectKey = fmt.Sprintf("announcements/%s/%s%s", sc.institutionID, randomHex(16), allowedFileType[att.ContentType].ext)
-		if err := s.store.Put(ctx, att.ObjectKey, att.ContentType, bytes.NewReader(in.Files[i].Data), att.SizeBytes); err != nil {
-			cleanup()
-			s.logger.Error().Err(err).Msg("attachment upload failed")
-			return domain.Announcement{}, domain.ErrStorageUnavailable
-		}
-		stored = append(stored, att.ObjectKey)
+	if attachments, err = s.putFiles(ctx, sc.institutionID, in.Files, attachments); err != nil {
+		return domain.Announcement{}, err
 	}
 
-	draft := domain.Announcement{InstitutionID: sc.institutionID, Kind: in.Kind, Audience: in.Audience, Title: title, Body: body, IsPublic: in.IsPublic, Attachments: attachments}
+	draft.InstitutionID = sc.institutionID
+	draft.Attachments = attachments
 	var created domain.Announcement
 	for attempt := 0; attempt < slugAttempts; attempt++ {
 		draft.Slug = randomSlug()
@@ -266,24 +347,140 @@ func (s *AnnouncementService) Create(ctx context.Context, token string, in Creat
 		}
 	}
 	if err != nil {
-		cleanup()
+		s.removeObjects(ctx, objectKeys(attachments))
 		return domain.Announcement{}, err
 	}
-
-	public := "false"
-	if created.IsPublic {
-		public = "true"
-	}
-	s.live.Notify(ctx, EventAnnouncementPublished, map[string]string{"id": created.ID, "slug": created.Slug, "institution": sc.institutionSlug, "public": public})
+	s.live.Notify(ctx, EventAnnouncementPublished, notifyData(created, sc.institutionSlug))
 	return created, nil
 }
 
-// classifyFiles checks count, type (by content) and size; positions follow the order received
-func classifyFiles(files []UploadFile) ([]domain.Attachment, string) {
-	if len(files) > maxAttachments {
+// canEdit: those who see the whole institution edit anything; teachers and tutors only what they published
+func canEdit(sc scope, a domain.Announcement) bool {
+	return announcementManagers[sc.role] || (announcementPublishers[sc.role] && a.AuthorID != "" && a.AuthorID == sc.userID)
+}
+
+// editable loads an announcement of the person's institution that they may change
+func (s *AnnouncementService) editable(ctx context.Context, token, institutionSlug, id string) (scope, domain.Announcement, error) {
+	sc, err := s.resolveScope(ctx, token, institutionSlug)
+	if err != nil {
+		return sc, domain.Announcement{}, err
+	}
+	a, err := s.repo.ByID(ctx, id)
+	if err != nil {
+		return sc, a, err
+	}
+	if a.InstitutionID != sc.institutionID || !canRead(sc.role, a.Audience) {
+		return sc, a, domain.ErrNotFound
+	}
+	if !canEdit(sc, a) {
+		return sc, a, domain.ErrForbidden
+	}
+	return sc, a, nil
+}
+
+// Update edits the fields and the attachments (keep some, in a new order, and add new ones)
+func (s *AnnouncementService) Update(ctx context.Context, token, id string, in AnnouncementInput) (domain.Announcement, error) {
+	sc, current, err := s.editable(ctx, token, in.InstitutionSlug, id)
+	if err != nil {
+		return domain.Announcement{}, err
+	}
+	windowChanged := !sameTime(in.FeaturedFrom, current.FeaturedFrom) || !sameTime(in.FeaturedUntil, current.FeaturedUntil)
+	draft, fields := validateFields(in, time.Now(), windowChanged)
+
+	existing := map[string]domain.Attachment{}
+	for _, att := range current.Attachments {
+		existing[att.ID] = att
+	}
+	var keptBytes int64
+	seen := map[string]bool{}
+	for _, keepID := range in.Keep {
+		att, ok := existing[keepID]
+		if !ok || seen[keepID] {
+			fields["files"] = "Uno de los archivos ya no existe. Recarga la página."
+			break
+		}
+		seen[keepID] = true
+		keptBytes += att.SizeBytes
+	}
+	added, fileProblem := classifyFiles(in.Files, len(in.Keep), keptBytes)
+	if fileProblem != "" {
+		fields["files"] = fileProblem
+	}
+	if len(fields) > 0 {
+		return domain.Announcement{}, domain.Validation(fields)
+	}
+	if added, err = s.putFiles(ctx, sc.institutionID, in.Files, added); err != nil {
+		return domain.Announcement{}, err
+	}
+
+	draft.ID = current.ID
+	updated, removed, err := s.repo.Update(ctx, draft, in.Keep, added)
+	if err != nil {
+		s.removeObjects(ctx, objectKeys(added))
+		return domain.Announcement{}, err
+	}
+	s.removeObjects(ctx, removed)
+	s.live.Notify(ctx, EventAnnouncementUpdated, notifyData(updated, sc.institutionSlug))
+	return updated, nil
+}
+
+func sameTime(a, b *time.Time) bool {
+	if a == nil || b == nil {
+		return a == nil && b == nil
+	}
+	return a.Equal(*b)
+}
+
+// Delete removes the announcement and its files
+func (s *AnnouncementService) Delete(ctx context.Context, token, institutionSlug, id string) error {
+	sc, current, err := s.editable(ctx, token, institutionSlug, id)
+	if err != nil {
+		return err
+	}
+	keys, err := s.repo.Delete(ctx, current.ID)
+	if err != nil {
+		return err
+	}
+	s.removeObjects(ctx, keys)
+	s.live.Notify(ctx, EventAnnouncementDeleted, notifyData(current, sc.institutionSlug))
+	return nil
+}
+
+// PanelGet is one announcement for the panel (detail and edit page), and whether the person may change it
+func (s *AnnouncementService) PanelGet(ctx context.Context, token, institutionSlug, slug string) (domain.Announcement, bool, error) {
+	if !slugPattern.MatchString(slug) {
+		return domain.Announcement{}, false, domain.ErrNotFound
+	}
+	sc, err := s.resolveScope(ctx, token, institutionSlug)
+	if err != nil {
+		return domain.Announcement{}, false, err
+	}
+	a, err := s.repo.BySlug(ctx, slug)
+	if err != nil {
+		return a, false, err
+	}
+	if a.InstitutionID != sc.institutionID || !canRead(sc.role, a.Audience) {
+		return domain.Announcement{}, false, domain.ErrNotFound
+	}
+	return a, canEdit(sc, a), nil
+}
+
+// PublicFeatured is what the home modal shows: public announcements within their validity window, newest first
+func (s *AnnouncementService) PublicFeatured(ctx context.Context, institutionSlug string) ([]domain.Announcement, error) {
+	inst, err := s.repo.InstitutionBySlug(ctx, institutionSlug)
+	if err != nil {
+		return nil, err
+	}
+	return s.repo.Featured(ctx, inst.ID)
+}
+
+// classifyFiles checks count, type (by content) and size of new files; positions continue after the kept ones,
+// and the limits count what is kept too
+func classifyFiles(files []UploadFile, keptCount int, keptBytes int64) ([]domain.Attachment, string) {
+	if keptCount+len(files) > maxAttachments {
 		return nil, fmt.Sprintf("Adjunta como máximo %d archivos.", maxAttachments)
 	}
-	var total int64
+	total := keptBytes
 	out := make([]domain.Attachment, 0, len(files))
 	for i, f := range files {
 		size := int64(len(f.Data))
@@ -306,7 +503,7 @@ func classifyFiles(files []UploadFile) ([]domain.Attachment, string) {
 			return nil, fmt.Sprintf("%s supera los %d MB.", cleanFileName(f.FileName), limit>>20)
 		}
 		total += size
-		out = append(out, domain.Attachment{Kind: meta.kind, FileName: cleanFileName(f.FileName), ContentType: contentType, SizeBytes: size, Position: i})
+		out = append(out, domain.Attachment{Kind: meta.kind, FileName: cleanFileName(f.FileName), ContentType: contentType, SizeBytes: size, Position: keptCount + i})
 	}
 	if total > maxAttachmentsBytes {
 		return nil, fmt.Sprintf("Los archivos suman más de %d MB.", maxAttachmentsBytes>>20)

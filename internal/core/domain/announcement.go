@@ -44,9 +44,22 @@ type Announcement struct {
 	Body            string
 	IsPublic        bool
 	Pinned          bool
+	AuthorID        string
 	AuthorName      string
 	PublishedAt     time.Time
-	Attachments     []Attachment
+	UpdatedAt       time.Time
+	// Validity window: featured in the home modal while now is within it (public announcements only)
+	FeaturedFrom  *time.Time
+	FeaturedUntil *time.Time
+	// Button of the modal: "Ir" or "Continuar", leading to CTAURL (its own page when empty)
+	CTALabel    string
+	CTAURL      string
+	Attachments []Attachment
+}
+
+// FeaturedAt reports whether the announcement is in the home modal at t
+func (a Announcement) FeaturedAt(t time.Time) bool {
+	return a.IsPublic && a.FeaturedFrom != nil && a.FeaturedUntil != nil && !t.Before(*a.FeaturedFrom) && t.Before(*a.FeaturedUntil)
 }
 
 // AnnouncementFilter scopes a feed: one institution, and for most roles only some audiences
