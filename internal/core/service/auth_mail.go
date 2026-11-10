@@ -26,18 +26,26 @@ func mailLayout(title, body string) string {
 		`</td></tr></table></td></tr></table></body></html>`
 }
 
-func signInCodeMail(u domain.User, code string) port.Mail {
+// What each mailed code confirms, in the subject and the body
+var mfaActions = map[string]string{
+	domain.PurposeMFAEnable:   "activar la verificación en dos pasos",
+	domain.PurposeMFADisable:  "desactivar la verificación en dos pasos",
+	domain.PurposeMFARecovery: "generar nuevos códigos de respaldo",
+}
+
+func mfaCodeMail(u domain.User, code, purpose string) port.Mail {
+	action := mfaActions[purpose]
 	minutes := int(signInChallengeTTL.Minutes())
 	return port.Mail{
 		To:      u.Email,
-		Subject: fmt.Sprintf("%s es tu código de Joseph", code),
-		Text: fmt.Sprintf("Hola %s,\n\nTu código para ingresar a Joseph es: %s\n\nVence en %d minutos. No lo compartas con nadie.\n",
-			firstName(u), code, minutes),
-		HTML: mailLayout("Tu código de verificación",
-			fmt.Sprintf(`<p style="margin:0 0 16px">Hola %s, usa este código para ingresar a Joseph:</p>`+
+		Subject: fmt.Sprintf("%s es tu código para %s", code, action),
+		Text: fmt.Sprintf("Hola %s,\n\nTu código para %s en Joseph es: %s\n\nVence en %d minutos. Si no fuiste tú, cambia tu contraseña.\n",
+			firstName(u), action, code, minutes),
+		HTML: mailLayout("Confirma el cambio en tu cuenta",
+			fmt.Sprintf(`<p style="margin:0 0 16px">Hola %s, usa este código para %s:</p>`+
 				`<p style="margin:0 0 16px;font-size:32px;font-weight:bold;letter-spacing:8px">%s</p>`+
-				`<p style="margin:0;color:#52525b">Vence en %d minutos. No lo compartas con nadie.</p>`,
-				html.EscapeString(firstName(u)), code, minutes)),
+				`<p style="margin:0;color:#52525b">Vence en %d minutos. Si no fuiste tú, cambia tu contraseña.</p>`,
+				html.EscapeString(firstName(u)), html.EscapeString(action), code, minutes)),
 	}
 }
 

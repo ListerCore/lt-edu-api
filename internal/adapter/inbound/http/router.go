@@ -41,7 +41,6 @@ func RegisterRoutes(app *fiber.App, h Handlers) {
 	auth := v1.Group("/auth")
 	auth.Post("/sign-in", credentialLimit, h.Auth.SignIn)
 	auth.Post("/sign-in/verify", credentialLimit, h.Auth.VerifySignIn)
-	auth.Post("/sign-in/resend", credentialLimit, h.Auth.ResendCode)
 	auth.Post("/sign-up", credentialLimit, h.Auth.SignUp)
 	auth.Post("/google/authorize", credentialLimit, h.Auth.GoogleAuthorize)
 	auth.Post("/google/callback", credentialLimit, h.Auth.GoogleCallback)
@@ -51,9 +50,13 @@ func RegisterRoutes(app *fiber.App, h Handlers) {
 	auth.Get("/me", h.Auth.Me)
 	auth.Put("/me/active-role", h.Auth.SetActiveRole)
 	auth.Post("/sign-out", h.Auth.SignOut)
-	auth.Post("/mfa/totp", h.Auth.BeginTOTP)
+	// Two-step verification (Mi cuenta): every change is confirmed with a code mailed to the account
+	auth.Get("/mfa", h.Auth.MFAStatus)
+	auth.Post("/mfa/email-code", credentialLimit, h.Auth.SendMFACode)
+	auth.Post("/mfa/totp", credentialLimit, h.Auth.BeginTOTP)
 	auth.Post("/mfa/totp/confirm", credentialLimit, h.Auth.ConfirmTOTP)
 	auth.Post("/mfa/totp/disable", credentialLimit, h.Auth.DisableTOTP)
+	auth.Post("/mfa/recovery-codes", credentialLimit, h.Auth.RegenerateRecoveryCodes)
 
 	// Live events for open pages (joseph-app relays /ws/live here); events carry ids only
 	v1.Get("/live", h.Live.Stream(h.WebSocketOrigins))

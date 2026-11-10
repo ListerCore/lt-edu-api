@@ -1,12 +1,14 @@
 package handler
 
 import (
+	"encoding/base64"
 	"errors"
 	"strings"
 	"time"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/rs/zerolog"
+	qrcode "github.com/skip2/go-qrcode"
 
 	"api/internal/core/domain"
 	"api/internal/core/service"
@@ -76,17 +78,25 @@ type signInBody struct {
 	Password string `json:"password"`
 }
 
-// SignIn checks the password and starts the second step: 200 {challenge_token, method, email, expires_at}
+// signInJSON: {session: {token, expires_at}}, or the authenticator-app step {challenge_token, method, email, expires_at}
+func signInJSON(c fiber.Ctx, result service.SignInResult) error {
+	if result.Step != nil {
+		return c.JSON(fiber.Map{"challenge_token": result.Step.ChallengeToken, "method": result.Step.Method, "email": result.Step.Email, "expires_at": result.Step.ExpiresAt.UTC().Format(time.RFC3339)})
+	}
+	return c.JSON(fiber.Map{"session": fiber.Map{"token": result.Session.Token, "expires_at": result.Session.ExpiresAt.UTC().Format(time.RFC3339)}})
+}
+
+// SignIn checks the password: a session, or the authenticator-app step when the account has it on
 func (h *AuthHandler) SignIn(c fiber.Ctx) error {
 	body, err := bind[signInBody](c)
 	if err != nil {
 		return fail(c, h.logger, err)
 	}
-	step, err := h.auth.SignIn(c.Context(), service.SignInInput{Email: body.Email, Password: body.Password, CaptchaToken: captchaToken(c)}, meta(c))
+	result, err := h.auth.SignIn(c.Context(), service.SignInInput{Email: body.Email, Password: body.Password, CaptchaToken: captchaToken(c)}, meta(c))
 	if err != nil {
 		return fail(c, h.logger, err)
 	}
-	return c.JSON(fiber.Map{"challenge_token": step.ChallengeToken, "method": step.Method, "email": step.Email, "expires_at": step.ExpiresAt.UTC().Format(time.RFC3339)})
+	return signInJSON(c, result)
 }
 
 type verifyBody struct {
@@ -105,17 +115,6 @@ func (h *AuthHandler) VerifySignIn(c fiber.Ctx) error {
 		return fail(c, h.logger, err)
 	}
 	return c.JSON(fiber.Map{"session": fiber.Map{"token": session.Token, "expires_at": session.ExpiresAt.UTC().Format(time.RFC3339)}})
-}
-
-func (h *AuthHandler) ResendCode(c fiber.Ctx) error {
-	body, err := bind[verifyBody](c)
-	if err != nil {
-		return fail(c, h.logger, err)
-	}
-	if err := h.auth.ResendSignInCode(c.Context(), body.ChallengeToken); err != nil {
-		return fail(c, h.logger, err)
-	}
-	return c.SendStatus(fiber.StatusNoContent)
 }
 
 type signUpBody struct {
@@ -190,7 +189,15 @@ func roleJSON(r domain.RoleAssignment) fiber.Map {
 	return out
 }
 
-// Me: 200 {user, roles, active_role_id, totp_enabled, session_expires_at}
+func isoTime(t *time.Time) *string {
+	if t == nil {
+		return nil
+	}
+	v := t.UTC().Format(time.RFC3339)
+	return &v
+}
+
+// Me: 200 {user, roles, active_role_id, totp_enabled, google_linked, password_changed_at, last_sign_in_at, ...}
 func (h *AuthHandler) Me(c fiber.Ctx) error {
 	me, err := h.auth.Me(c.Context(), bearer(c))
 	if err != nil {
@@ -208,11 +215,16 @@ func (h *AuthHandler) Me(c fiber.Ctx) error {
 		"user": fiber.Map{
 			"id": me.User.ID, "email": me.User.Email, "full_name": me.User.FullName, "avatar_url": me.User.AvatarURL,
 			"email_verified": me.User.EmailVerifiedAt != nil,
+			"has_password":   me.User.PasswordHash != "",
+			"created_at":     me.User.CreatedAt.UTC().Format(time.RFC3339),
 		},
-		"roles":              roles,
-		"active_role_id":     activeRoleID,
-		"totp_enabled":       me.TOTPEnabled,
-		"session_expires_at": me.Session.ExpiresAt.UTC().Format(time.RFC3339),
+		"password_changed_at": isoTime(me.User.PasswordChangedAt),
+		"last_sign_in_at":     isoTime(me.User.LastSignInAt),
+		"google_linked":       me.GoogleLinked,
+		"roles":               roles,
+		"active_role_id":      activeRoleID,
+		"totp_enabled":        me.TOTPEnabled,
+		"session_expires_at":  me.Session.ExpiresAt.UTC().Format(time.RFC3339),
 	})
 }
 
@@ -238,13 +250,62 @@ func (h *AuthHandler) SignOut(c fiber.Ctx) error {
 	return c.SendStatus(fiber.StatusNoContent)
 }
 
-// BeginTOTP: 200 {secret, otpauth_uri}
-func (h *AuthHandler) BeginTOTP(c fiber.Ctx) error {
-	setup, err := h.auth.BeginTOTP(c.Context(), bearer(c))
+// MFAStatus: 200 {totp_enabled, enabled_at, recovery_codes: {total, remaining, used: [{code, used_at}]}}
+func (h *AuthHandler) MFAStatus(c fiber.Ctx) error {
+	status, err := h.auth.MFAStatus(c.Context(), bearer(c))
 	if err != nil {
 		return fail(c, h.logger, err)
 	}
-	return c.JSON(fiber.Map{"secret": setup.Secret, "otpauth_uri": setup.URI})
+	used := make([]fiber.Map, 0, len(status.RecoveryUsed))
+	for _, code := range status.RecoveryUsed {
+		used = append(used, fiber.Map{"code": code.UsedCode, "used_at": isoTime(code.UsedAt)})
+	}
+	return c.JSON(fiber.Map{
+		"totp_enabled":   status.TOTPEnabled,
+		"enabled_at":     isoTime(status.EnabledAt),
+		"recovery_codes": fiber.Map{"total": status.RecoveryTotal, "remaining": status.RecoveryRemaining, "used": used},
+	})
+}
+
+type mfaCodeRequestBody struct {
+	// mfa_enable | mfa_disable | mfa_recovery_codes
+	Purpose string `json:"purpose"`
+}
+
+// SendMFACode mails the code that confirms a change: 200 {challenge_token, email, expires_at}
+func (h *AuthHandler) SendMFACode(c fiber.Ctx) error {
+	body, err := bind[mfaCodeRequestBody](c)
+	if err != nil {
+		return fail(c, h.logger, err)
+	}
+	sent, err := h.auth.SendMFACode(c.Context(), bearer(c), body.Purpose)
+	if err != nil {
+		return fail(c, h.logger, err)
+	}
+	return c.JSON(fiber.Map{"challenge_token": sent.ChallengeToken, "email": sent.Email, "expires_at": sent.ExpiresAt.UTC().Format(time.RFC3339)})
+}
+
+// mailedCodeBody carries the mailed code and the challenge it belongs to
+type mailedCodeBody struct {
+	ChallengeToken string `json:"challenge_token"`
+	Code           string `json:"code"`
+}
+
+// BeginTOTP: 200 {secret, otpauth_uri, qr_png} once the mailed code is confirmed; qr_png is a data: URL
+func (h *AuthHandler) BeginTOTP(c fiber.Ctx) error {
+	body, err := bind[mailedCodeBody](c)
+	if err != nil {
+		return fail(c, h.logger, err)
+	}
+	setup, err := h.auth.BeginTOTP(c.Context(), bearer(c), body.ChallengeToken, body.Code)
+	if err != nil {
+		return fail(c, h.logger, err)
+	}
+	png, err := qrcode.Encode(setup.URI, qrcode.Medium, 256)
+	if err != nil {
+		return fail(c, h.logger, err)
+	}
+	return c.JSON(fiber.Map{"secret": setup.Secret, "otpauth_uri": setup.URI, "qr_png": "data:image/png;base64," + base64.StdEncoding.EncodeToString(png)})
 }
 
 type codeBody struct {
@@ -264,15 +325,29 @@ func (h *AuthHandler) ConfirmTOTP(c fiber.Ctx) error {
 	return c.JSON(fiber.Map{"recovery_codes": codes})
 }
 
+// DisableTOTP with the mailed code: 204
 func (h *AuthHandler) DisableTOTP(c fiber.Ctx) error {
-	body, err := bind[codeBody](c)
+	body, err := bind[mailedCodeBody](c)
 	if err != nil {
 		return fail(c, h.logger, err)
 	}
-	if err := h.auth.DisableTOTP(c.Context(), bearer(c), body.Code); err != nil {
+	if err := h.auth.DisableTOTP(c.Context(), bearer(c), body.ChallengeToken, body.Code); err != nil {
 		return fail(c, h.logger, err)
 	}
 	return c.SendStatus(fiber.StatusNoContent)
+}
+
+// RegenerateRecoveryCodes with the mailed code: 200 {recovery_codes}, shown once
+func (h *AuthHandler) RegenerateRecoveryCodes(c fiber.Ctx) error {
+	body, err := bind[mailedCodeBody](c)
+	if err != nil {
+		return fail(c, h.logger, err)
+	}
+	codes, err := h.auth.RegenerateRecoveryCodes(c.Context(), bearer(c), body.ChallengeToken, body.Code)
+	if err != nil {
+		return fail(c, h.logger, err)
+	}
+	return c.JSON(fiber.Map{"recovery_codes": codes})
 }
 
 type googleAuthorizeBody struct {
@@ -308,8 +383,5 @@ func (h *AuthHandler) GoogleCallback(c fiber.Ctx) error {
 	if err != nil {
 		return fail(c, h.logger, err)
 	}
-	if result.Step != nil {
-		return c.JSON(fiber.Map{"challenge_token": result.Step.ChallengeToken, "method": result.Step.Method, "email": result.Step.Email, "expires_at": result.Step.ExpiresAt.UTC().Format(time.RFC3339)})
-	}
-	return c.JSON(fiber.Map{"session": fiber.Map{"token": result.Session.Token, "expires_at": result.Session.ExpiresAt.UTC().Format(time.RFC3339)}})
+	return signInJSON(c, result)
 }

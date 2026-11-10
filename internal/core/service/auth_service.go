@@ -42,7 +42,7 @@ type AuthConfig struct {
 	Production bool
 }
 
-// AuthService runs every account flow: sign-in with a second step (email code or TOTP), sign-up from the
+// AuthService runs every account flow: sign-in (with the authenticator app when it is on), sign-up from the
 // institution's roster, password reset and change, sessions and roles
 type AuthService struct {
 	repo    port.AuthRepository
@@ -78,84 +78,13 @@ type SignInInput struct {
 	CaptchaToken string
 }
 
-// SignInStep is the second step the browser must complete with ChallengeToken
+// SignInStep is the authenticator-app step the browser must complete with ChallengeToken
 type SignInStep struct {
 	ChallengeToken string
-	// email | totp
+	// totp
 	Method    string
 	Email     string
 	ExpiresAt time.Time
-}
-
-func (s *AuthService) SignIn(ctx context.Context, in SignInInput, meta domain.RequestMeta) (SignInStep, error) {
-	email := normalizeEmail(in.Email)
-	if err := s.captcha.Verify(ctx, in.CaptchaToken, meta.IP); err != nil {
-		return SignInStep{}, domain.ErrCaptchaFailed
-	}
-	if fields := requireFields(map[string]string{"email": email, "password": in.Password}); fields != nil {
-		return SignInStep{}, fields
-	}
-
-	user, err := s.repo.UserByEmail(ctx, email)
-	if errors.Is(err, domain.ErrNotFound) {
-		_, _ = s.hasher.Verify(in.Password, s.dummyHash)
-		return SignInStep{}, domain.ErrInvalidCredentials
-	}
-	if err != nil {
-		return SignInStep{}, err
-	}
-	if user.LockedUntil != nil && user.LockedUntil.After(s.now()) {
-		return SignInStep{}, domain.ErrAccountLocked
-	}
-	if user.PasswordHash == "" {
-		_, _ = s.hasher.Verify(in.Password, s.dummyHash)
-		return SignInStep{}, domain.ErrInvalidCredentials
-	}
-	ok, err := s.hasher.Verify(in.Password, user.PasswordHash)
-	if err != nil {
-		return SignInStep{}, err
-	}
-	if !ok {
-		if err := s.repo.RecordFailedSignIn(ctx, user.ID, maxFailedSignIns, lockoutDuration); err != nil {
-			return SignInStep{}, err
-		}
-		return SignInStep{}, domain.ErrInvalidCredentials
-	}
-	// Only after the right password, so a suspended account is not revealed to someone guessing
-	if user.Status != domain.UserActive {
-		return SignInStep{}, domain.ErrInvalidCredentials
-	}
-
-	method := domain.MFAEmail
-	if factor, err := s.repo.TOTP(ctx, user.ID); err == nil && factor.ConfirmedAt != nil {
-		method = domain.MFATOTP
-	} else if err != nil && !errors.Is(err, domain.ErrNotFound) {
-		return SignInStep{}, err
-	}
-
-	// One open sign-in per account: a new one replaces any earlier challenge
-	if err := s.repo.CloseChallenges(ctx, user.ID, domain.PurposeSignIn); err != nil {
-		return SignInStep{}, err
-	}
-	token := randomToken()
-	now := s.now()
-	challenge := domain.Challenge{UserID: user.ID, Purpose: domain.PurposeSignIn, TokenHash: hashToken(token), Method: method, IP: meta.IP, ExpiresAt: now.Add(signInChallengeTTL)}
-	var code string
-	if method == domain.MFAEmail {
-		code = randomDigits(6)
-		challenge.CodeHash = hashCode(token, code)
-		challenge.CodeSentAt = &now
-	}
-	if _, err := s.repo.CreateChallenge(ctx, challenge); err != nil {
-		return SignInStep{}, err
-	}
-	if method == domain.MFAEmail {
-		if err := s.mailer.Send(ctx, signInCodeMail(user, code)); err != nil {
-			s.logger.Error().Err(err).Str("user_id", user.ID).Msg("sign-in code mail failed")
-			return SignInStep{}, domain.ErrMailUnavailable
-		}
-	}
-	return SignInStep{ChallengeToken: token, Method: method, Email: user.Email, ExpiresAt: challenge.ExpiresAt}, nil
 }
 
 // NewSessionResult carries the session token the app keeps in its httpOnly cookie
@@ -164,10 +93,94 @@ type NewSessionResult struct {
 	ExpiresAt time.Time
 }
 
-// VerifySignIn completes the second step. Code is the 6 digits (email or app) or a recovery code
+// SignInResult is a session when the account has no authenticator app, or the TOTP step when it has one
+type SignInResult struct {
+	Session *NewSessionResult
+	Step    *SignInStep
+}
+
+func (s *AuthService) SignIn(ctx context.Context, in SignInInput, meta domain.RequestMeta) (SignInResult, error) {
+	email := normalizeEmail(in.Email)
+	if err := s.captcha.Verify(ctx, in.CaptchaToken, meta.IP); err != nil {
+		return SignInResult{}, domain.ErrCaptchaFailed
+	}
+	if fields := requireFields(map[string]string{"email": email, "password": in.Password}); fields != nil {
+		return SignInResult{}, fields
+	}
+
+	user, err := s.repo.UserByEmail(ctx, email)
+	if errors.Is(err, domain.ErrNotFound) {
+		_, _ = s.hasher.Verify(in.Password, s.dummyHash)
+		return SignInResult{}, domain.ErrInvalidCredentials
+	}
+	if err != nil {
+		return SignInResult{}, err
+	}
+	if user.LockedUntil != nil && user.LockedUntil.After(s.now()) {
+		return SignInResult{}, domain.ErrAccountLocked
+	}
+	if user.PasswordHash == "" {
+		_, _ = s.hasher.Verify(in.Password, s.dummyHash)
+		return SignInResult{}, domain.ErrInvalidCredentials
+	}
+	ok, err := s.hasher.Verify(in.Password, user.PasswordHash)
+	if err != nil {
+		return SignInResult{}, err
+	}
+	if !ok {
+		if err := s.repo.RecordFailedSignIn(ctx, user.ID, maxFailedSignIns, lockoutDuration); err != nil {
+			return SignInResult{}, err
+		}
+		return SignInResult{}, domain.ErrInvalidCredentials
+	}
+	// Only after the right password, so a suspended account is not revealed to someone guessing
+	if user.Status != domain.UserActive {
+		return SignInResult{}, domain.ErrInvalidCredentials
+	}
+	return s.afterFirstFactor(ctx, user, domain.MFAPassword, meta)
+}
+
+// afterFirstFactor asks for the authenticator app when the person turned it on; otherwise the first factor
+// (password or Google) is enough and the session starts
+func (s *AuthService) afterFirstFactor(ctx context.Context, user domain.User, method string, meta domain.RequestMeta) (SignInResult, error) {
+	enabled, err := s.totpEnabled(ctx, user.ID)
+	if err != nil {
+		return SignInResult{}, err
+	}
+	if !enabled {
+		session, err := s.startSession(ctx, user.ID, method, meta)
+		if err != nil {
+			return SignInResult{}, err
+		}
+		return SignInResult{Session: &session}, nil
+	}
+	// One open sign-in per account: a new one replaces any earlier challenge
+	if err := s.repo.CloseChallenges(ctx, user.ID, domain.PurposeSignIn); err != nil {
+		return SignInResult{}, err
+	}
+	token := randomToken()
+	expires := s.now().Add(signInChallengeTTL)
+	if _, err := s.repo.CreateChallenge(ctx, domain.Challenge{UserID: user.ID, Purpose: domain.PurposeSignIn, TokenHash: hashToken(token), Method: domain.MFATOTP, IP: meta.IP, ExpiresAt: expires}); err != nil {
+		return SignInResult{}, err
+	}
+	return SignInResult{Step: &SignInStep{ChallengeToken: token, Method: domain.MFATOTP, Email: user.Email, ExpiresAt: expires}}, nil
+}
+
+func (s *AuthService) totpEnabled(ctx context.Context, userID string) (bool, error) {
+	factor, err := s.repo.TOTP(ctx, userID)
+	if errors.Is(err, domain.ErrNotFound) {
+		return false, nil
+	}
+	if err != nil {
+		return false, err
+	}
+	return factor.ConfirmedAt != nil, nil
+}
+
+// VerifySignIn completes the authenticator-app step. Code is the app's 6 digits or a recovery code
 func (s *AuthService) VerifySignIn(ctx context.Context, challengeToken, code string, meta domain.RequestMeta) (NewSessionResult, error) {
 	challenge, err := s.repo.OpenChallenge(ctx, hashToken(challengeToken), domain.PurposeSignIn)
-	if errors.Is(err, domain.ErrNotFound) {
+	if errors.Is(err, domain.ErrNotFound) || (err == nil && challenge.Method != domain.MFATOTP) {
 		return NewSessionResult{}, domain.ErrChallengeExpired
 	}
 	if err != nil {
@@ -181,34 +194,14 @@ func (s *AuthService) VerifySignIn(ctx context.Context, challengeToken, code str
 		_, _ = s.repo.ConsumeChallenge(ctx, challenge.ID)
 		return NewSessionResult{}, domain.ErrChallengeExpired
 	}
-
-	code = strings.TrimSpace(code)
-	var method string
-	switch challenge.Method {
-	case domain.MFAEmail:
-		if subtle.ConstantTimeCompare(hashCode(challengeToken, code), challenge.CodeHash) != 1 {
-			return NewSessionResult{}, domain.ErrInvalidCode
-		}
-		method = domain.MFAEmail
-	case domain.MFATOTP:
-		method, err = s.checkSecondFactor(ctx, challenge.UserID, code)
-		if err != nil {
-			return NewSessionResult{}, err
-		}
-	default:
-		return NewSessionResult{}, domain.ErrChallengeExpired
+	method, err := s.checkSecondFactor(ctx, challenge.UserID, strings.TrimSpace(code))
+	if err != nil {
+		return NewSessionResult{}, err
 	}
-
 	if consumed, err := s.repo.ConsumeChallenge(ctx, challenge.ID); err != nil {
 		return NewSessionResult{}, err
 	} else if !consumed {
 		return NewSessionResult{}, domain.ErrChallengeExpired
-	}
-	if method == domain.MFAEmail {
-		// Receiving the code proves the mailbox belongs to the person
-		if err := s.repo.MarkEmailVerified(ctx, challenge.UserID); err != nil {
-			return NewSessionResult{}, err
-		}
 	}
 	return s.startSession(ctx, challenge.UserID, method, meta)
 }
@@ -240,7 +233,11 @@ func (s *AuthService) checkSecondFactor(ctx context.Context, userID, code string
 		}
 		return domain.MFATOTP, nil
 	}
-	used, err := s.repo.UseRecoveryCode(ctx, userID, hashRecoveryCode(code))
+	display, ok := formatRecoveryCode(code)
+	if !ok {
+		return "", domain.ErrInvalidCode
+	}
+	used, err := s.repo.UseRecoveryCode(ctx, userID, hashRecoveryCode(display), display)
 	if err != nil {
 		return "", err
 	}
@@ -248,36 +245,6 @@ func (s *AuthService) checkSecondFactor(ctx context.Context, userID, code string
 		return "", domain.ErrInvalidCode
 	}
 	return domain.MFARecoveryCode, nil
-}
-
-// ResendSignInCode mails a new code for an email challenge, at most once per cooldown
-func (s *AuthService) ResendSignInCode(ctx context.Context, challengeToken string) error {
-	challenge, err := s.repo.OpenChallenge(ctx, hashToken(challengeToken), domain.PurposeSignIn)
-	if errors.Is(err, domain.ErrNotFound) {
-		return domain.ErrChallengeExpired
-	}
-	if err != nil {
-		return err
-	}
-	if challenge.Method != domain.MFAEmail {
-		return domain.ErrInvalidCode
-	}
-	if challenge.CodeSentAt != nil && s.now().Sub(*challenge.CodeSentAt) < resendCooldown {
-		return domain.ErrResendTooSoon
-	}
-	user, err := s.repo.UserByID(ctx, challenge.UserID)
-	if err != nil {
-		return err
-	}
-	code := randomDigits(6)
-	if err := s.repo.ReplaceCode(ctx, challenge.ID, hashCode(challengeToken, code)); err != nil {
-		return err
-	}
-	if err := s.mailer.Send(ctx, signInCodeMail(user, code)); err != nil {
-		s.logger.Error().Err(err).Str("user_id", user.ID).Msg("sign-in code resend failed")
-		return domain.ErrMailUnavailable
-	}
-	return nil
 }
 
 func (s *AuthService) startSession(ctx context.Context, userID, method string, meta domain.RequestMeta) (NewSessionResult, error) {
@@ -314,11 +281,8 @@ func (s *AuthService) GoogleAuthorize(state, codeChallenge string) (string, erro
 	return s.google.AuthorizationURL(state, codeChallenge), nil
 }
 
-// GoogleResult is either a session, or the TOTP step when the account has an authenticator app
-type GoogleResult struct {
-	Session *NewSessionResult
-	Step    *SignInStep
-}
+// GoogleResult is a session, or the TOTP step when the account has an authenticator app
+type GoogleResult = SignInResult
 
 // GoogleCallback trades the code for the Google account and signs in the matching Joseph account: the one already
 // linked, else the one with that verified email (linked now), else a new one from the institution's roster
@@ -366,26 +330,8 @@ func (s *AuthService) GoogleCallback(ctx context.Context, code, codeVerifier str
 		return GoogleResult{}, domain.ErrGoogleFailed
 	}
 
-	// An authenticator app is still asked for: Google proves the mailbox, not the second factor the person chose
-	if factor, err := s.repo.TOTP(ctx, user.ID); err == nil && factor.ConfirmedAt != nil {
-		if err := s.repo.CloseChallenges(ctx, user.ID, domain.PurposeSignIn); err != nil {
-			return GoogleResult{}, err
-		}
-		token := randomToken()
-		expires := s.now().Add(signInChallengeTTL)
-		if _, err := s.repo.CreateChallenge(ctx, domain.Challenge{UserID: user.ID, Purpose: domain.PurposeSignIn, TokenHash: hashToken(token), Method: domain.MFATOTP, IP: meta.IP, ExpiresAt: expires}); err != nil {
-			return GoogleResult{}, err
-		}
-		return GoogleResult{Step: &SignInStep{ChallengeToken: token, Method: domain.MFATOTP, Email: user.Email, ExpiresAt: expires}}, nil
-	} else if err != nil && !errors.Is(err, domain.ErrNotFound) {
-		return GoogleResult{}, err
-	}
-
-	session, err := s.startSession(ctx, user.ID, domain.MFAGoogle, meta)
-	if err != nil {
-		return GoogleResult{}, err
-	}
-	return GoogleResult{Session: &session}, nil
+	// The authenticator app is still asked for: Google proves the mailbox, not the second factor the person chose
+	return s.afterFirstFactor(ctx, user, domain.MFAGoogle, meta)
 }
 
 // --- Sign-up ---------------------------------------------------------------------------------------------------
@@ -574,9 +520,10 @@ func (s *AuthService) Me(ctx context.Context, token string) (domain.Me, error) {
 			me.ActiveRole = &roles[i]
 		}
 	}
-	if factor, err := s.repo.TOTP(ctx, user.ID); err == nil {
-		me.TOTPEnabled = factor.ConfirmedAt != nil
-	} else if !errors.Is(err, domain.ErrNotFound) {
+	if me.TOTPEnabled, err = s.totpEnabled(ctx, user.ID); err != nil {
+		return domain.Me{}, err
+	}
+	if me.GoogleLinked, err = s.repo.HasIdentity(ctx, user.ID, domain.ProviderGoogle); err != nil {
 		return domain.Me{}, err
 	}
 	return me, nil
@@ -602,7 +549,95 @@ func (s *AuthService) SignOut(ctx context.Context, token string) error {
 	return s.repo.RevokeSession(ctx, session.ID)
 }
 
-// --- Authenticator app (TOTP) ----------------------------------------------------------------------------------
+// --- Two-step verification (authenticator app) ---------------------------------------------------------------
+
+// MFAEmailCode is the mailed code that confirms turning the app on or off, or renewing the recovery codes
+type MFAEmailCode struct {
+	ChallengeToken string
+	Email          string
+	ExpiresAt      time.Time
+}
+
+var mfaPurposes = map[string]bool{domain.PurposeMFAEnable: true, domain.PurposeMFADisable: true, domain.PurposeMFARecovery: true}
+
+// SendMFACode mails a 6-digit code for purpose (mfa_enable, mfa_disable, mfa_recovery_codes), at most once per
+// cooldown; a new code replaces the previous one
+func (s *AuthService) SendMFACode(ctx context.Context, token, purpose string) (MFAEmailCode, error) {
+	session, err := s.authenticate(ctx, token)
+	if err != nil {
+		return MFAEmailCode{}, err
+	}
+	if !mfaPurposes[purpose] {
+		return MFAEmailCode{}, domain.Validation(map[string]string{"purpose": "Acción no válida."})
+	}
+	enabled, err := s.totpEnabled(ctx, session.UserID)
+	if err != nil {
+		return MFAEmailCode{}, err
+	}
+	if purpose == domain.PurposeMFAEnable && enabled {
+		return MFAEmailCode{}, domain.ErrTOTPAlreadyEnabled
+	}
+	if purpose != domain.PurposeMFAEnable && !enabled {
+		return MFAEmailCode{}, domain.ErrTOTPNotEnrolled
+	}
+	if last, err := s.repo.LatestOpenChallenge(ctx, session.UserID, purpose); err == nil {
+		if last.CodeSentAt != nil && s.now().Sub(*last.CodeSentAt) < resendCooldown {
+			return MFAEmailCode{}, domain.ErrResendTooSoon
+		}
+	} else if !errors.Is(err, domain.ErrNotFound) {
+		return MFAEmailCode{}, err
+	}
+	user, err := s.repo.UserByID(ctx, session.UserID)
+	if err != nil {
+		return MFAEmailCode{}, err
+	}
+	if err := s.repo.CloseChallenges(ctx, user.ID, purpose); err != nil {
+		return MFAEmailCode{}, err
+	}
+	challengeToken := randomToken()
+	code := randomDigits(6)
+	now := s.now()
+	expires := now.Add(signInChallengeTTL)
+	if _, err := s.repo.CreateChallenge(ctx, domain.Challenge{UserID: user.ID, Purpose: purpose, TokenHash: hashToken(challengeToken), Method: domain.MFAEmail, CodeHash: hashCode(challengeToken, code), CodeSentAt: &now, ExpiresAt: expires}); err != nil {
+		return MFAEmailCode{}, err
+	}
+	if err := s.mailer.Send(ctx, mfaCodeMail(user, code, purpose)); err != nil {
+		s.logger.Error().Err(err).Str("user_id", user.ID).Str("purpose", purpose).Msg("mfa code mail failed")
+		return MFAEmailCode{}, domain.ErrMailUnavailable
+	}
+	return MFAEmailCode{ChallengeToken: challengeToken, Email: user.Email, ExpiresAt: expires}, nil
+}
+
+// confirmEmailCode checks and spends a mailed code of purpose that belongs to userID
+func (s *AuthService) confirmEmailCode(ctx context.Context, userID, challengeToken, code, purpose string) error {
+	challenge, err := s.repo.OpenChallenge(ctx, hashToken(challengeToken), purpose)
+	if errors.Is(err, domain.ErrNotFound) || (err == nil && challenge.UserID != userID) {
+		return domain.ErrChallengeExpired
+	}
+	if err != nil {
+		return err
+	}
+	attempts, err := s.repo.CountAttempt(ctx, challenge.ID)
+	if err != nil {
+		return err
+	}
+	if attempts > maxCodeAttempts {
+		_, _ = s.repo.ConsumeChallenge(ctx, challenge.ID)
+		return domain.ErrChallengeExpired
+	}
+	if subtle.ConstantTimeCompare(hashCode(challengeToken, strings.TrimSpace(code)), challenge.CodeHash) != 1 {
+		return domain.ErrInvalidCode
+	}
+	consumed, err := s.repo.ConsumeChallenge(ctx, challenge.ID)
+	if err != nil {
+		return err
+	}
+	if !consumed {
+		return domain.ErrChallengeExpired
+	}
+	// The code reached the mailbox, so the email is verified too
+	return s.repo.MarkEmailVerified(ctx, userID)
+}
 
 type TOTPSetup struct {
 	// Base32, for typing it by hand
@@ -611,13 +646,22 @@ type TOTPSetup struct {
 	URI string
 }
 
-// BeginTOTP issues a new secret; it is only asked for at sign-in once ConfirmTOTP accepts a code from it
-func (s *AuthService) BeginTOTP(ctx context.Context, token string) (TOTPSetup, error) {
+// BeginTOTP issues a new secret once the mailed code is confirmed; the app is only asked for at sign-in after
+// ConfirmTOTP accepts a code from it
+func (s *AuthService) BeginTOTP(ctx context.Context, token, challengeToken, emailCode string) (TOTPSetup, error) {
 	if !s.secrets.Ready() {
 		return TOTPSetup{}, domain.ErrSecretsNotConfigured
 	}
 	session, err := s.authenticate(ctx, token)
 	if err != nil {
+		return TOTPSetup{}, err
+	}
+	if enabled, err := s.totpEnabled(ctx, session.UserID); err != nil {
+		return TOTPSetup{}, err
+	} else if enabled {
+		return TOTPSetup{}, domain.ErrTOTPAlreadyEnabled
+	}
+	if err := s.confirmEmailCode(ctx, session.UserID, challengeToken, emailCode, domain.PurposeMFAEnable); err != nil {
 		return TOTPSetup{}, err
 	}
 	user, err := s.repo.UserByID(ctx, session.UserID)
@@ -662,28 +706,83 @@ func (s *AuthService) ConfirmTOTP(ctx context.Context, token, code string) ([]st
 	if !ok {
 		return nil, domain.ErrInvalidCode
 	}
-	codes := make([]string, recoveryCodeCount)
-	hashes := make([][]byte, recoveryCodeCount)
-	for i := range codes {
-		codes[i] = randomRecoveryCode()
-		hashes[i] = hashRecoveryCode(codes[i])
-	}
+	codes, hashes := newRecoveryCodes()
 	if err := s.repo.ConfirmTOTP(ctx, factor.ID, step, hashes); err != nil {
 		return nil, err
 	}
 	return codes, nil
 }
 
-// DisableTOTP turns the app off after proving it once more (app code or recovery code); email codes take over
-func (s *AuthService) DisableTOTP(ctx context.Context, token, code string) error {
+// DisableTOTP turns the app off once the mailed code is confirmed; the password alone signs in again
+func (s *AuthService) DisableTOTP(ctx context.Context, token, challengeToken, emailCode string) error {
 	session, err := s.authenticate(ctx, token)
 	if err != nil {
 		return err
 	}
-	if _, err := s.checkSecondFactor(ctx, session.UserID, strings.TrimSpace(code)); err != nil {
+	if enabled, err := s.totpEnabled(ctx, session.UserID); err != nil {
+		return err
+	} else if !enabled {
+		return domain.ErrTOTPNotEnrolled
+	}
+	if err := s.confirmEmailCode(ctx, session.UserID, challengeToken, emailCode, domain.PurposeMFADisable); err != nil {
 		return err
 	}
 	return s.repo.DeleteTOTP(ctx, session.UserID)
+}
+
+// RegenerateRecoveryCodes replaces every recovery code (used or not) once the mailed code is confirmed
+func (s *AuthService) RegenerateRecoveryCodes(ctx context.Context, token, challengeToken, emailCode string) ([]string, error) {
+	session, err := s.authenticate(ctx, token)
+	if err != nil {
+		return nil, err
+	}
+	if enabled, err := s.totpEnabled(ctx, session.UserID); err != nil {
+		return nil, err
+	} else if !enabled {
+		return nil, domain.ErrTOTPNotEnrolled
+	}
+	if err := s.confirmEmailCode(ctx, session.UserID, challengeToken, emailCode, domain.PurposeMFARecovery); err != nil {
+		return nil, err
+	}
+	codes, hashes := newRecoveryCodes()
+	if err := s.repo.ReplaceRecoveryCodes(ctx, session.UserID, hashes); err != nil {
+		return nil, err
+	}
+	return codes, nil
+}
+
+// MFAStatus is what the two-step section of Mi cuenta shows: whether the app is on, and the recovery codes
+// (how many are left, and the ones already spent)
+func (s *AuthService) MFAStatus(ctx context.Context, token string) (domain.MFAStatus, error) {
+	session, err := s.authenticate(ctx, token)
+	if err != nil {
+		return domain.MFAStatus{}, err
+	}
+	var status domain.MFAStatus
+	factor, err := s.repo.TOTP(ctx, session.UserID)
+	if err != nil && !errors.Is(err, domain.ErrNotFound) {
+		return domain.MFAStatus{}, err
+	}
+	if err == nil && factor.ConfirmedAt != nil {
+		status.TOTPEnabled = true
+		status.EnabledAt = factor.ConfirmedAt
+	}
+	if !status.TOTPEnabled {
+		return status, nil
+	}
+	codes, err := s.repo.RecoveryCodes(ctx, session.UserID)
+	if err != nil {
+		return domain.MFAStatus{}, err
+	}
+	status.RecoveryTotal = len(codes)
+	for _, c := range codes {
+		if c.UsedAt == nil {
+			status.RecoveryRemaining++
+			continue
+		}
+		status.RecoveryUsed = append(status.RecoveryUsed, c)
+	}
+	return status, nil
 }
 
 func (s *AuthService) totpSecret(factor domain.TOTPFactor) ([]byte, error) {
@@ -691,6 +790,16 @@ func (s *AuthService) totpSecret(factor domain.TOTPFactor) ([]byte, error) {
 		return nil, domain.ErrSecretsNotConfigured
 	}
 	return s.secrets.Decrypt(factor.SecretCiphertext, []byte(factor.UserID))
+}
+
+func newRecoveryCodes() ([]string, [][]byte) {
+	codes := make([]string, recoveryCodeCount)
+	hashes := make([][]byte, recoveryCodeCount)
+	for i := range codes {
+		codes[i] = randomRecoveryCode()
+		hashes[i] = hashRecoveryCode(codes[i])
+	}
+	return codes, hashes
 }
 
 // --- Seed ------------------------------------------------------------------------------------------------------
@@ -816,6 +925,15 @@ func randomRecoveryCode() string {
 		b.WriteByte(recoveryAlphabet[n.Int64()])
 	}
 	return b.String()
+}
+
+// formatRecoveryCode reads a code typed loosely (any case, spaces, with or without the dash) as ABCDE-23456
+func formatRecoveryCode(code string) (string, bool) {
+	raw := recoveryFormat.ReplaceAllString(strings.ToUpper(code), "")
+	if len(raw) != 10 {
+		return "", false
+	}
+	return raw[:5] + "-" + raw[5:], true
 }
 
 // hashRecoveryCode ignores case, spaces and dashes so the code can be typed loosely

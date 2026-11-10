@@ -67,8 +67,14 @@ type AuthRepository interface {
 	// UseTOTPStep records step only if it is newer than the last one used; false means a replay
 	UseTOTPStep(ctx context.Context, factorID string, step int64) (bool, error)
 	DeleteTOTP(ctx context.Context, userID string) error
-	// UseRecoveryCode spends a matching unused code; false when none matches
-	UseRecoveryCode(ctx context.Context, userID string, codeHash []byte) (bool, error)
+	// UseRecoveryCode spends a matching unused code and keeps it (display) to show it back; false when none matches
+	UseRecoveryCode(ctx context.Context, userID string, codeHash []byte, display string) (bool, error)
+	ReplaceRecoveryCodes(ctx context.Context, userID string, hashes [][]byte) error
+	// RecoveryCodes lists the current codes, unused first
+	RecoveryCodes(ctx context.Context, userID string) ([]domain.RecoveryCode, error)
+	// LatestOpenChallenge is the newest open challenge of the user for purpose
+	LatestOpenChallenge(ctx context.Context, userID, purpose string) (domain.Challenge, error)
+	HasIdentity(ctx context.Context, userID, provider string) (bool, error)
 }
 
 // ExternalIdentity is an account at a sign-in provider whose email the provider verified

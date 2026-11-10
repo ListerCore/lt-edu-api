@@ -41,22 +41,22 @@ func inet(ip string) *string {
 	return &ip
 }
 
-const userColumns = `id, email, full_name, avatar_url, status, email_verified_at, coalesce(password_hash, ''),
-	failed_sign_in_attempts, locked_until`
+const userColumns = `u.id, u.email, u.full_name, u.avatar_url, u.status, u.email_verified_at, coalesce(u.password_hash, ''),
+	u.failed_sign_in_attempts, u.locked_until, u.password_changed_at, u.last_sign_in_at, u.created_at`
 
 func scanUser(row pgx.Row) (domain.User, error) {
 	var u domain.User
 	err := row.Scan(&u.ID, &u.Email, &u.FullName, &u.AvatarURL, &u.Status, &u.EmailVerifiedAt, &u.PasswordHash,
-		&u.FailedAttempts, &u.LockedUntil)
+		&u.FailedAttempts, &u.LockedUntil, &u.PasswordChangedAt, &u.LastSignInAt, &u.CreatedAt)
 	return u, notFound(err)
 }
 
 func (r *AuthRepository) UserByEmail(ctx context.Context, email string) (domain.User, error) {
-	return scanUser(r.c.pool.QueryRow(ctx, `SELECT `+userColumns+` FROM iam.users WHERE email = $1`, email))
+	return scanUser(r.c.pool.QueryRow(ctx, `SELECT `+userColumns+` FROM iam.users u WHERE u.email = $1`, email))
 }
 
 func (r *AuthRepository) UserByID(ctx context.Context, id string) (domain.User, error) {
-	return scanUser(r.c.pool.QueryRow(ctx, `SELECT `+userColumns+` FROM iam.users WHERE id = $1`, id))
+	return scanUser(r.c.pool.QueryRow(ctx, `SELECT `+userColumns+` FROM iam.users u WHERE u.id = $1`, id))
 }
 
 func (r *AuthRepository) RecordFailedSignIn(ctx context.Context, userID string, max int, lockFor time.Duration) error {
@@ -155,8 +155,7 @@ func (r *AuthRepository) CreateUserFromInvitations(ctx context.Context, email, f
 }
 
 func (r *AuthRepository) UserByIdentity(ctx context.Context, provider, subject string) (domain.User, error) {
-	return scanUser(r.c.pool.QueryRow(ctx, `SELECT u.id, u.email, u.full_name, u.avatar_url, u.status, u.email_verified_at,
-		coalesce(u.password_hash, ''), u.failed_sign_in_attempts, u.locked_until FROM iam.users u
+	return scanUser(r.c.pool.QueryRow(ctx, `SELECT `+userColumns+` FROM iam.users u
 		JOIN iam.user_identities i ON i.user_id = u.id WHERE i.provider = $1 AND i.subject = $2`, provider, subject))
 }
 
@@ -443,8 +442,59 @@ func (r *AuthRepository) DeleteTOTP(ctx context.Context, userID string) error {
 	return tx.Commit(ctx)
 }
 
-func (r *AuthRepository) UseRecoveryCode(ctx context.Context, userID string, codeHash []byte) (bool, error) {
-	tag, err := r.c.pool.Exec(ctx, `UPDATE iam.mfa_recovery_codes SET used_at = now()
-		WHERE user_id = $1 AND code_hash = $2 AND used_at IS NULL`, userID, codeHash)
+func (r *AuthRepository) UseRecoveryCode(ctx context.Context, userID string, codeHash []byte, display string) (bool, error) {
+	tag, err := r.c.pool.Exec(ctx, `UPDATE iam.mfa_recovery_codes SET used_at = now(), used_code = $3
+		WHERE user_id = $1 AND code_hash = $2 AND used_at IS NULL`, userID, codeHash, display)
 	return tag.RowsAffected() == 1, err
+}
+
+func (r *AuthRepository) ReplaceRecoveryCodes(ctx context.Context, userID string, hashes [][]byte) error {
+	tx, err := r.c.pool.Begin(ctx)
+	if err != nil {
+		return err
+	}
+	defer func() { _ = tx.Rollback(ctx) }()
+	if _, err := tx.Exec(ctx, `DELETE FROM iam.mfa_recovery_codes WHERE user_id = $1`, userID); err != nil {
+		return err
+	}
+	for _, hash := range hashes {
+		if _, err := tx.Exec(ctx, `INSERT INTO iam.mfa_recovery_codes (user_id, code_hash) VALUES ($1, $2)`, userID, hash); err != nil {
+			return err
+		}
+	}
+	return tx.Commit(ctx)
+}
+
+func (r *AuthRepository) RecoveryCodes(ctx context.Context, userID string) ([]domain.RecoveryCode, error) {
+	rows, err := r.c.pool.Query(ctx, `SELECT used_code, used_at FROM iam.mfa_recovery_codes
+		WHERE user_id = $1 ORDER BY used_at NULLS FIRST, id`, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var out []domain.RecoveryCode
+	for rows.Next() {
+		var c domain.RecoveryCode
+		if err := rows.Scan(&c.UsedCode, &c.UsedAt); err != nil {
+			return nil, err
+		}
+		out = append(out, c)
+	}
+	return out, rows.Err()
+}
+
+func (r *AuthRepository) LatestOpenChallenge(ctx context.Context, userID, purpose string) (domain.Challenge, error) {
+	var c domain.Challenge
+	err := r.c.pool.QueryRow(ctx, `SELECT `+challengeColumns+` FROM iam.verification_challenges
+		WHERE user_id = $1 AND purpose = $2 AND consumed_at IS NULL AND expires_at > now()
+		ORDER BY created_at DESC LIMIT 1`, userID, purpose).
+		Scan(&c.ID, &c.UserID, &c.Purpose, &c.TokenHash, &c.Method, &c.CodeHash, &c.CodeSentAt, &c.Attempts, &c.IP,
+			&c.CreatedAt, &c.ExpiresAt, &c.ConsumedAt)
+	return c, notFound(err)
+}
+
+func (r *AuthRepository) HasIdentity(ctx context.Context, userID, provider string) (bool, error) {
+	var exists bool
+	err := r.c.pool.QueryRow(ctx, `SELECT EXISTS (SELECT 1 FROM iam.user_identities WHERE user_id = $1 AND provider = $2)`, userID, provider).Scan(&exists)
+	return exists, err
 }
