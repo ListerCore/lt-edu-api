@@ -18,6 +18,15 @@ type Config struct {
 	RedisPassword string
 	RedisDB       int
 	PingTimeout   time.Duration
+
+	TurnstileSecretKey string
+
+	StorageEndpoint  string
+	StorageAccessKey string
+	StorageSecretKey string
+	StorageUseSSL    bool
+	StorageRegion    string
+	StorageBucket    string
 }
 
 func Load() Config {
@@ -46,6 +55,15 @@ func Load() Config {
 
 	v.SetDefault("APP__HEALTH__PING_TIMEOUT", "2s")
 
+	v.SetDefault("APP__TURNSTILE__SECRET_KEY", "")
+
+	v.SetDefault("APP__STORAGE__ENDPOINT", "localhost:9000")
+	v.SetDefault("APP__STORAGE__ACCESS_KEY", "")
+	v.SetDefault("APP__STORAGE__SECRET_KEY", "")
+	v.SetDefault("APP__STORAGE__USE_SSL", false)
+	v.SetDefault("APP__STORAGE__REGION", "us-east-1")
+	v.SetDefault("APP__STORAGE__BUCKET", "joseph")
+
 	_ = v.ReadInConfig()
 
 	databaseURL := fmt.Sprintf(
@@ -70,5 +88,14 @@ func Load() Config {
 		RedisPassword: v.GetString("APP__REDIS__PASSWORD"),
 		RedisDB:       v.GetInt("APP__REDIS__DB"),
 		PingTimeout:   v.GetDuration("APP__HEALTH__PING_TIMEOUT"),
+
+		TurnstileSecretKey: v.GetString("APP__TURNSTILE__SECRET_KEY"),
+
+		StorageEndpoint:  v.GetString("APP__STORAGE__ENDPOINT"),
+		StorageAccessKey: v.GetString("APP__STORAGE__ACCESS_KEY"),
+		StorageSecretKey: v.GetString("APP__STORAGE__SECRET_KEY"),
+		StorageUseSSL:    v.GetBool("APP__STORAGE__USE_SSL"),
+		StorageRegion:    v.GetString("APP__STORAGE__REGION"),
+		StorageBucket:    v.GetString("APP__STORAGE__BUCKET"),
 	}
 }

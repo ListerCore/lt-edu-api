@@ -3,7 +3,7 @@ APP__DB__PASSWORD := joseph_dev
 APP__DB__NAME := joseph_db
 APP__DB__CONTAINER := joseph-db
 APP__REDIS__CONTAINER := joseph-redis
-APP__HOST__PORT := 8080
+APP__HOST__PORT := 5050
 APP__NETWORK__NAME := joseph-net
 
 ifeq ($(OS),Windows_NT)
