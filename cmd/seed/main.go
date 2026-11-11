@@ -117,6 +117,22 @@ func main() {
 	if ran {
 		logger.Info().Str("step", "go:0009_demo_assessment").Msg("seeded")
 	}
+	// The last grade of primaria and secundaria with the running term complete, to preview the year closing, once
+	ran, err = seeder.RunOnce(ctx, "go:0010_demo_closing", func(ctx context.Context) error {
+		academic := service.NewAcademicService(postgres.NewAcademicRepository(db), nil, service.NewLiveService(nil, logger), logger)
+		staffRepo, teachingRepo := postgres.NewStaffRepository(db), postgres.NewTeachingRepository(db)
+		attendance := service.NewAttendanceService(postgres.NewAttendanceRepository(db), teachingRepo, staffRepo, academic)
+		assessmentRepo := postgres.NewAssessmentRepository(db)
+		n, err := service.SeedDemoClosing(ctx, service.NewAssessmentService(assessmentRepo, teachingRepo, attendance, academic), assessmentRepo, "demo-ebr")
+		logger.Info().Int("marks", n).Msg("demo closing levels seeded")
+		return err
+	})
+	if err != nil {
+		logger.Fatal().Err(err).Msg("demo closing seed failed")
+	}
+	if ran {
+		logger.Info().Str("step", "go:0010_demo_closing").Msg("seeded")
+	}
 
 	auth, err := service.NewAuthService(postgres.NewAuthRepository(db), password.NewArgon2id(), nil, nil, nil, nil, service.AuthConfig{}, logger)
 	if err != nil {
