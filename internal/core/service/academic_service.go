@@ -959,7 +959,15 @@ func codeFrom(code, name string) string {
 			dash = true
 		}
 	}
-	return strings.TrimRight(b.String(), "-")
+	out := b.String()
+	// Codes are at most 40 characters: cut at the last whole word that fits
+	if len(out) > 40 {
+		out = out[:40]
+		if i := strings.LastIndexByte(out, '-'); i > 20 {
+			out = out[:i]
+		}
+	}
+	return strings.TrimRight(out, "-")
 }
 
 func unique(values []string) []string {

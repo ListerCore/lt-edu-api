@@ -94,6 +94,7 @@ func main() {
 	announcementService := service.NewAnnouncementService(postgres.NewAnnouncementRepository(dbClient), authService, store, liveService, logger)
 	announcementHandler := handler.NewAnnouncementHandler(announcementService, logger)
 	academicService := service.NewAcademicService(postgres.NewAcademicRepository(dbClient), authService, liveService, logger)
+	curriculumService := service.NewCurriculumService(postgres.NewCurriculumRepository(dbClient), academicService)
 
 	app := fiber.New(fiber.Config{
 		AppName: cfg.AppName,
@@ -124,7 +125,7 @@ func main() {
 	if err != nil {
 		logger.Fatal().Err(err).Str("port", cfg.GRPCPort).Msg("failed to open grpc port")
 	}
-	grpcServer := inboundgrpc.New(inboundgrpc.Services{Health: healthService, Announcements: announcementService, Academic: academicService}, inboundgrpc.Config{TrustedProxies: cfg.TrustedProxies, Development: !production}, logger)
+	grpcServer := inboundgrpc.New(inboundgrpc.Services{Health: healthService, Announcements: announcementService, Academic: academicService, Curricula: curriculumService}, inboundgrpc.Config{TrustedProxies: cfg.TrustedProxies, Development: !production}, logger)
 	defer grpcServer.GracefulStop()
 	go func() {
 		logger.Info().Str("port", cfg.GRPCPort).Msg("starting grpc server")

@@ -45,6 +45,19 @@ func main() {
 		logger.Fatal().Err(err).Msg("failed to initialize database pool")
 	}
 	defer db.Close()
+	// Demo study plans come from the templates in Go (the same ones the panel offers), once
+	ran, err := seeder.RunOnce(ctx, "go:0005_demo_curricula", func(ctx context.Context) error {
+		n, err := service.SeedDemo(ctx, postgres.NewAcademicRepository(db), postgres.NewCurriculumRepository(db), []string{"demo-ebr", "demo-eba", "demo-ebe", "demo-cepre", "demo-institute"})
+		logger.Info().Int("plans", n).Msg("demo study plans seeded")
+		return err
+	})
+	if err != nil {
+		logger.Fatal().Err(err).Msg("demo study plans seed failed")
+	}
+	if ran {
+		logger.Info().Str("step", "go:0005_demo_curricula").Msg("seeded")
+	}
+
 	auth, err := service.NewAuthService(postgres.NewAuthRepository(db), password.NewArgon2id(), nil, nil, nil, nil, service.AuthConfig{}, logger)
 	if err != nil {
 		logger.Fatal().Err(err).Msg("failed to initialize auth service")
