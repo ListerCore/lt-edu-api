@@ -61,9 +61,13 @@ func (r *AcademicRepository) InstitutionBySlug(ctx context.Context, slug string)
 func (r *AcademicRepository) Settings(ctx context.Context, institutionID string) (domain.AcademicSettings, error) {
 	var s domain.AcademicSettings
 	var passing *int16
-	err := r.c.pool.QueryRow(ctx, `SELECT term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts, updated_at
+	var days []int16
+	err := r.c.pool.QueryRow(ctx, `SELECT term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts, week_days, updated_at
 		FROM academic.settings WHERE institution_id = $1`, institutionID).
-		Scan(&s.TermScheme, &s.GradingScale, &passing, &s.ConductGrade, &s.AttentionModes, &s.Shifts, &s.UpdatedAt)
+		Scan(&s.TermScheme, &s.GradingScale, &passing, &s.ConductGrade, &s.AttentionModes, &s.Shifts, &days, &s.UpdatedAt)
+	for _, d := range days {
+		s.WeekDays = append(s.WeekDays, int(d))
+	}
 	if passing != nil {
 		v := int(*passing)
 		s.PassingGrade = &v
@@ -75,12 +79,15 @@ func (r *AcademicRepository) SaveSettings(ctx context.Context, institutionID str
 	if s.AttentionModes == nil {
 		s.AttentionModes = []string{}
 	}
-	_, err := r.c.pool.Exec(ctx, `INSERT INTO academic.settings (institution_id, term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts)
-		VALUES ($1, $2, $3, $4, $5, $6, $7)
+	if len(s.WeekDays) == 0 {
+		s.WeekDays = []int{1, 2, 3, 4, 5}
+	}
+	_, err := r.c.pool.Exec(ctx, `INSERT INTO academic.settings (institution_id, term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts, week_days)
+		VALUES ($1, $2, $3, $4, $5, $6, $7, $8::smallint[])
 		ON CONFLICT (institution_id) DO UPDATE SET term_scheme = EXCLUDED.term_scheme, grading_scale = EXCLUDED.grading_scale,
 			passing_grade = EXCLUDED.passing_grade, conduct_grade = EXCLUDED.conduct_grade, attention_modes = EXCLUDED.attention_modes,
-			shifts = EXCLUDED.shifts`,
-		institutionID, s.TermScheme, s.GradingScale, s.PassingGrade, s.ConductGrade, s.AttentionModes, s.Shifts)
+			shifts = EXCLUDED.shifts, week_days = EXCLUDED.week_days`,
+		institutionID, s.TermScheme, s.GradingScale, s.PassingGrade, s.ConductGrade, s.AttentionModes, s.Shifts, s.WeekDays)
 	if err != nil {
 		return domain.AcademicSettings{}, academicErr(err)
 	}
@@ -461,7 +468,8 @@ func (r *AcademicRepository) UpdateTerm(ctx context.Context, institutionID, term
 // ---------- sections ----------
 
 const sectionColumns = `s.id, s.period_id, s.level_id, l.name, coalesce(s.grade_id::text, ''), coalesce(g.name, ''), coalesce(g.short_name, ''),
-	s.name, s.shift, coalesce(s.attention_mode, ''), s.capacity, s.room, l.position, coalesce(g.position, 0)`
+	s.name, s.shift, coalesce(s.attention_mode, ''), s.capacity, s.room, l.position, coalesce(g.position, 0),
+	coalesce(s.tutor_id::text, ''), coalesce((SELECT st.given_names || ' ' || st.surnames FROM people.staff st WHERE st.id = s.tutor_id), '')`
 
 const sectionFrom = ` FROM academic.sections s
 	JOIN academic.periods p ON p.id = s.period_id
@@ -471,7 +479,7 @@ const sectionFrom = ` FROM academic.sections s
 func scanSection(row pgx.Row) (domain.Section, error) {
 	var s domain.Section
 	var capacity, levelPos, gradePos int16
-	err := row.Scan(&s.ID, &s.PeriodID, &s.LevelID, &s.LevelName, &s.GradeID, &s.GradeName, &s.GradeShort, &s.Name, &s.Shift, &s.AttentionMode, &capacity, &s.Room, &levelPos, &gradePos)
+	err := row.Scan(&s.ID, &s.PeriodID, &s.LevelID, &s.LevelName, &s.GradeID, &s.GradeName, &s.GradeShort, &s.Name, &s.Shift, &s.AttentionMode, &capacity, &s.Room, &levelPos, &gradePos, &s.TutorID, &s.TutorName)
 	s.Capacity, s.LevelPosition, s.GradePosition = int(capacity), int(levelPos), int(gradePos)
 	return s, err
 }

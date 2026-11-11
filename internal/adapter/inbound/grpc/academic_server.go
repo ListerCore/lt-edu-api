@@ -84,7 +84,7 @@ func toContext(c service.AcademicContext) *academicv1.AcademicContext {
 		Vocabulary: &academicv1.Vocabulary{Level: v.Level, Levels: v.Levels, Grade: v.Grade, Grades: v.Grades, Section: v.Section, Sections: v.Sections, Period: v.Period, Periods: v.Periods},
 		PeriodKind: c.PeriodKind, TermSchemes: c.TermSchemes, HasGrades: c.HasGrades, UsesAttentionModes: c.UsesAttentionModes,
 		UsesSeasons: c.UsesSeasons, UsesFormativeLevels: c.UsesFormativeLevels, SingleActivePeriod: c.SingleActivePeriod, CanManage: c.CanManage,
-		Settings: &academicv1.Settings{TermScheme: st.TermScheme, GradingScale: st.GradingScale, PassingGrade: int32Ptr(st.PassingGrade), ConductGrade: st.ConductGrade, AttentionModes: st.AttentionModes, Shifts: st.Shifts},
+		Settings: &academicv1.Settings{TermScheme: st.TermScheme, GradingScale: st.GradingScale, PassingGrade: int32Ptr(st.PassingGrade), ConductGrade: st.ConductGrade, AttentionModes: st.AttentionModes, Shifts: st.Shifts, WeekDays: toInt32s(st.WeekDays)},
 	}
 }
 
@@ -138,6 +138,7 @@ func toSection(s domain.Section) *academicv1.Section {
 	return &academicv1.Section{
 		Id: s.ID, PeriodId: s.PeriodID, LevelId: s.LevelID, LevelName: s.LevelName, GradeId: s.GradeID, GradeName: s.GradeName,
 		GradeShort: s.GradeShort, Name: s.Name, Shift: s.Shift, AttentionMode: s.AttentionMode, Capacity: int32(s.Capacity), Room: s.Room,
+		TutorId: s.TutorID, TutorName: s.TutorName,
 	}
 }
 
@@ -185,7 +186,7 @@ func (s *academicServer) GetContext(ctx context.Context, req *academicv1.GetCont
 func (s *academicServer) UpdateSettings(ctx context.Context, req *academicv1.UpdateSettingsRequest) (*academicv1.UpdateSettingsResponse, error) {
 	in := req.GetSettings()
 	c, err := s.academic.UpdateSettings(ctx, bearer(ctx), req.GetInstitutionSlug(), domain.AcademicSettings{
-		TermScheme: in.GetTermScheme(), PassingGrade: intPtr(in.PassingGrade), ConductGrade: in.GetConductGrade(), AttentionModes: in.GetAttentionModes(), Shifts: in.GetShifts(),
+		TermScheme: in.GetTermScheme(), PassingGrade: intPtr(in.PassingGrade), ConductGrade: in.GetConductGrade(), AttentionModes: in.GetAttentionModes(), Shifts: in.GetShifts(), WeekDays: toInts(in.GetWeekDays()),
 	})
 	if err != nil {
 		return nil, s.fail("UpdateSettings", err)
@@ -386,4 +387,20 @@ func (s *academicServer) CopySections(ctx context.Context, req *academicv1.CopyS
 		return nil, s.fail("CopySections", err)
 	}
 	return &academicv1.CopySectionsResponse{Added: int32(added)}, nil
+}
+
+func toInt32s(values []int) []int32 {
+	out := make([]int32, len(values))
+	for i, v := range values {
+		out[i] = int32(v)
+	}
+	return out
+}
+
+func toInts(values []int32) []int {
+	out := make([]int, len(values))
+	for i, v := range values {
+		out[i] = int(v)
+	}
+	return out
 }

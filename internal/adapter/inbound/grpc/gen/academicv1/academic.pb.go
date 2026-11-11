@@ -137,7 +137,9 @@ type Settings struct {
 	// in_person | blended | distance (EBA)
 	AttentionModes []string `protobuf:"bytes,5,rep,name=attention_modes,json=attentionModes,proto3" json:"attention_modes,omitempty"`
 	// morning | afternoon | evening
-	Shifts        []string `protobuf:"bytes,6,rep,name=shifts,proto3" json:"shifts,omitempty"`
+	Shifts []string `protobuf:"bytes,6,rep,name=shifts,proto3" json:"shifts,omitempty"`
+	// Teaching days, 1 = Monday … 7 = Sunday
+	WeekDays      []int32 `protobuf:"varint,7,rep,packed,name=week_days,json=weekDays,proto3" json:"week_days,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -210,6 +212,13 @@ func (x *Settings) GetAttentionModes() []string {
 func (x *Settings) GetShifts() []string {
 	if x != nil {
 		return x.Shifts
+	}
+	return nil
+}
+
+func (x *Settings) GetWeekDays() []int32 {
+	if x != nil {
+		return x.WeekDays
 	}
 	return nil
 }
@@ -798,6 +807,9 @@ type Section struct {
 	AttentionMode string                 `protobuf:"bytes,10,opt,name=attention_mode,json=attentionMode,proto3" json:"attention_mode,omitempty"`
 	Capacity      int32                  `protobuf:"varint,11,opt,name=capacity,proto3" json:"capacity,omitempty"`
 	Room          string                 `protobuf:"bytes,12,opt,name=room,proto3" json:"room,omitempty"`
+	// Tutor of the section (staff), empty when none
+	TutorId       string `protobuf:"bytes,13,opt,name=tutor_id,json=tutorId,proto3" json:"tutor_id,omitempty"`
+	TutorName     string `protobuf:"bytes,14,opt,name=tutor_name,json=tutorName,proto3" json:"tutor_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -912,6 +924,20 @@ func (x *Section) GetCapacity() int32 {
 func (x *Section) GetRoom() string {
 	if x != nil {
 		return x.Room
+	}
+	return ""
+}
+
+func (x *Section) GetTutorId() string {
+	if x != nil {
+		return x.TutorId
+	}
+	return ""
+}
+
+func (x *Section) GetTutorName() string {
+	if x != nil {
+		return x.TutorName
 	}
 	return ""
 }
@@ -3574,7 +3600,7 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\asection\x18\x05 \x01(\tR\asection\x12\x1a\n" +
 	"\bsections\x18\x06 \x01(\tR\bsections\x12\x16\n" +
 	"\x06period\x18\a \x01(\tR\x06period\x12\x18\n" +
-	"\aperiods\x18\b \x01(\tR\aperiods\"\xf2\x01\n" +
+	"\aperiods\x18\b \x01(\tR\aperiods\"\x8f\x02\n" +
 	"\bSettings\x12\x1f\n" +
 	"\vterm_scheme\x18\x01 \x01(\tR\n" +
 	"termScheme\x12#\n" +
@@ -3582,7 +3608,8 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\rpassing_grade\x18\x03 \x01(\x05H\x00R\fpassingGrade\x88\x01\x01\x12#\n" +
 	"\rconduct_grade\x18\x04 \x01(\bR\fconductGrade\x12'\n" +
 	"\x0fattention_modes\x18\x05 \x03(\tR\x0eattentionModes\x12\x16\n" +
-	"\x06shifts\x18\x06 \x03(\tR\x06shiftsB\x10\n" +
+	"\x06shifts\x18\x06 \x03(\tR\x06shifts\x12\x1b\n" +
+	"\tweek_days\x18\a \x03(\x05R\bweekDaysB\x10\n" +
 	"\x0e_passing_grade\"\xc9\x04\n" +
 	"\x0fAcademicContext\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12)\n" +
@@ -3648,7 +3675,7 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\x05terms\x18\t \x03(\v2\x18.joseph.academic.v1.TermR\x05terms\x12#\n" +
 	"\rsection_count\x18\n" +
 	" \x01(\x05R\fsectionCount\x12%\n" +
-	"\x0ecapacity_total\x18\v \x01(\x05R\rcapacityTotal\"\xcc\x02\n" +
+	"\x0ecapacity_total\x18\v \x01(\x05R\rcapacityTotal\"\x86\x03\n" +
 	"\aSection\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12\x19\n" +
@@ -3665,7 +3692,10 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\x0eattention_mode\x18\n" +
 	" \x01(\tR\rattentionMode\x12\x1a\n" +
 	"\bcapacity\x18\v \x01(\x05R\bcapacity\x12\x12\n" +
-	"\x04room\x18\f \x01(\tR\x04room\"\xf0\x01\n" +
+	"\x04room\x18\f \x01(\tR\x04room\x12\x19\n" +
+	"\btutor_id\x18\r \x01(\tR\atutorId\x12\x1d\n" +
+	"\n" +
+	"tutor_name\x18\x0e \x01(\tR\ttutorName\"\xf0\x01\n" +
 	"\n" +
 	"LevelInput\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\tR\x04code\x12\x12\n" +
