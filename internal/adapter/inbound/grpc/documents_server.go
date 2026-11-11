@@ -198,7 +198,7 @@ func (s *documentsServer) TrackDocument(ctx context.Context, req *documentsv1.Tr
 		}
 	}
 	for i := range t.Events {
-		if t.Events[i].Action == "generated" || t.Events[i].Action == "cancelled" {
+		if t.Events[i].Action == "generated" || t.Events[i].Action == "cancelled" || t.Events[i].Action == "signers" {
 			t.Events[i].Actor = ""
 		}
 	}

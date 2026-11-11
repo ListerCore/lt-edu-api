@@ -14,16 +14,18 @@ const fullW = pageW - 2*margin
 // Schedules draws one A4 landscape sheet per page of the document
 func (r *Renderer) Schedules(doc port.ScheduleDoc) ([]byte, error) {
 	pdf := newDoc(true, "Horarios")
-	for _, pg := range doc.Pages {
+	logo := image(pdf, logoName(doc.Logo), doc.Logo)
+	for i, pg := range doc.Pages {
 		pdf.AddPage()
+		at := sheetAt{logo: logo, number: i + 1, total: len(doc.Pages)}
 		// The largest size where the page fits: grids, legends and the seal shrink together
 		size := 10.0
 		for ; size > 5.5; size -= 0.25 {
-			if schedulePage(&pen{pdf: pdf, size: size, dry: true}, doc, pg) <= pageH-margin {
+			if schedulePage(&pen{pdf: pdf, size: size, dry: true}, doc, pg, at) <= pageH-margin {
 				break
 			}
 		}
-		schedulePage(&pen{pdf: pdf, size: size}, doc, pg)
+		schedulePage(&pen{pdf: pdf, size: size}, doc, pg, at)
 		if doc.Seal != nil {
 			watermark(pdf, doc.Seal.Mark, pageW, pageH)
 		}
@@ -34,14 +36,37 @@ func (r *Renderer) Schedules(doc port.ScheduleDoc) ([]byte, error) {
 	return output(pdf)
 }
 
-// schedulePage draws (or measures) a sheet and returns where it ends: header, the grids side by side (as narrow as
-// their columns allow, centred), the legends below them, and the verification block at the foot
-func schedulePage(p *pen, doc port.ScheduleDoc, pg port.SchedulePage) float64 {
+// sheetAt is where a sheet sits in the document: the institution's logo (registered name, "" for none) and its
+// page number out of the total
+type sheetAt struct {
+	logo          string
+	number, total int
+}
+
+// Size of the logo box in the header, in millimetres
+const headerLogo = 14.0
+
+// schedulePage draws (or measures) a sheet and returns where it ends: header (logo, institution, title), the grids
+// side by side (as narrow as their columns allow, centred), the legends below them, the verification block and the
+// page number at the foot
+func schedulePage(p *pen, doc port.ScheduleDoc, pg port.SchedulePage, at sheetAt) float64 {
 	x, y := margin, margin
-	y += p.text(x, y, fullW, strings.ToUpper(doc.Institution), false, 0.9, "L")
-	th := p.text(x, y, fullW*0.7, pg.Title, true, 2, "L")
-	p.text(x+fullW*0.4, y+th-lineH(p.size*1.15), fullW*0.6, pg.Subtitle, true, 1.15, "R")
-	y += th + 0.5
+	tx := x
+	if at.logo != "" {
+		if !p.dry {
+			fit(p.pdf, at.logo, x, y, headerLogo, headerLogo)
+		}
+		tx = x + headerLogo + 3
+	}
+	tw := fullW - (tx - x)
+	ih := p.text(tx, y, tw, strings.ToUpper(doc.Institution), false, 0.9, "L")
+	th := p.text(tx, y+ih, tw*0.65, pg.Title, true, 2, "L")
+	p.text(x+fullW*0.4, y+ih+th-lineH(p.size*1.15), fullW*0.6, pg.Subtitle, true, 1.15, "R")
+	y += ih + th
+	if at.logo != "" {
+		y = max(y, margin+headerLogo)
+	}
+	y += 0.5
 	if !p.dry {
 		p.pdf.SetLineWidth(0.6)
 		p.pdf.Line(x, y, x+fullW, y)
@@ -94,6 +119,9 @@ func schedulePage(p *pen, doc port.ScheduleDoc, pg port.SchedulePage) float64 {
 		issued = "Versión " + strconv.Itoa(doc.Seal.Version) + " · " + issued
 	}
 	p.text(x, pageH-margin-footer+1.5, fullW, issued+" · joseph", false, 0.8, "R")
+	if at.total > 0 {
+		p.text(x, pageH-margin-footer+1.5, fullW, "Página "+strconv.Itoa(at.number)+" de "+strconv.Itoa(at.total), true, 0.8, "L")
+	}
 	return y + sealH + footer
 }
 

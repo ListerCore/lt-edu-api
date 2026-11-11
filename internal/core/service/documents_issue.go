@@ -94,6 +94,9 @@ func (s *DocumentService) actorName(ctx context.Context, token string) string {
 
 // ---------- signers ----------
 
+// maxSigners caps the signatures a document asks for
+const maxSigners = 10
+
 // SignerSetup is who signs a kind of document and who could
 type SignerSetup struct {
 	Signers    []domain.DocumentSigner
@@ -123,8 +126,11 @@ func (s *DocumentService) SetSigners(ctx context.Context, token, slug string, si
 	if err != nil {
 		return nil, err
 	}
-	if len(signers) > 6 {
-		return nil, domain.Validation(map[string]string{"signers": "Hasta seis firmantes."})
+	switch {
+	case len(signers) == 0:
+		return nil, domain.Validation(map[string]string{"signers": "Deja al menos un firmante."})
+	case len(signers) > maxSigners:
+		return nil, domain.Validation(map[string]string{"signers": fmt.Sprintf("Hasta %d firmantes.", maxSigners)})
 	}
 	seen := map[string]bool{}
 	for i := range signers {
@@ -139,9 +145,10 @@ func (s *DocumentService) SetSigners(ctx context.Context, token, slug string, si
 		}
 		seen[signers[i].StaffID] = true
 	}
-	if err := s.docs.SetSigners(ctx, sc.institution.ID, domain.DocumentSchedules, signers); err != nil {
+	if _, err := s.docs.SetSigners(ctx, sc.institution.ID, domain.DocumentSchedules, signers, s.actorName(ctx, token), s.now()); err != nil {
 		return nil, err
 	}
+	s.teaching.changed(ctx, sc, "documents")
 	return s.docs.Signers(ctx, sc.institution.ID, domain.DocumentSchedules)
 }
 

@@ -33,27 +33,74 @@ func (r *DocumentRepository) Signers(ctx context.Context, institutionID, kind st
 	})
 }
 
-// SetSigners rewrites the list of a kind; staff of another institution are refused by the join
-func (r *DocumentRepository) SetSigners(ctx context.Context, institutionID, kind string, signers []domain.DocumentSigner) error {
+// SetSigners rewrites the list of a kind (staff of another institution are refused by the join) and brings the
+// pending versions in line: signatures already made stay, the unsigned ones of people no longer listed go, and the
+// people added are asked for theirs. A pending version left with every signature made is published
+func (r *DocumentRepository) SetSigners(ctx context.Context, institutionID, kind string, signers []domain.DocumentSigner, actor string, at time.Time) ([]int, error) {
 	tx, err := r.c.pool.Begin(ctx)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	defer func() { _ = tx.Rollback(ctx) }()
 	if _, err := tx.Exec(ctx, `DELETE FROM documents.signers WHERE institution_id = $1 AND kind = $2`, institutionID, kind); err != nil {
-		return academicErr(err)
+		return nil, academicErr(err)
 	}
 	for i, s := range signers {
 		tag, err := tx.Exec(ctx, `INSERT INTO documents.signers (institution_id, kind, staff_id, position, sort)
 			SELECT $1, $2, id, $4, $5 FROM people.staff WHERE institution_id = $1 AND id = $3`, institutionID, kind, s.StaffID, s.Position, i+1)
 		if err != nil {
-			return academicErr(err)
+			return nil, academicErr(err)
 		}
 		if tag.RowsAffected() == 0 {
-			return domain.ErrNotFound
+			return nil, domain.ErrNotFound
 		}
 	}
-	return tx.Commit(ctx)
+	type pending struct {
+		id, documentID string
+		number         int
+	}
+	rows, err := tx.Query(ctx, `SELECT v.id, v.document_id, v.number FROM documents.versions v JOIN documents.issued d ON d.id = v.document_id
+		WHERE d.institution_id = $1 AND d.kind = $2 AND v.status = 'pending' FOR UPDATE OF v`, institutionID, kind)
+	if err != nil {
+		return nil, err
+	}
+	versions, err := pgx.CollectRows(rows, func(row pgx.CollectableRow) (pending, error) {
+		var p pending
+		return p, row.Scan(&p.id, &p.documentID, &p.number)
+	})
+	if err != nil {
+		return nil, err
+	}
+	var published []int
+	for _, v := range versions {
+		if _, err := tx.Exec(ctx, `DELETE FROM documents.signatures WHERE version_id = $1 AND signed_at IS NULL`, v.id); err != nil {
+			return nil, err
+		}
+		// The newcomers, in the list's order, after the signatures already made
+		if _, err := tx.Exec(ctx, `INSERT INTO documents.signatures (version_id, sort, staff_id, name, position)
+			SELECT $1, (SELECT coalesce(max(sort), 0) FROM documents.signatures WHERE version_id = $1) + row_number() OVER (ORDER BY s.sort),
+				s.staff_id, st.given_names || ' ' || st.surnames, s.position
+			FROM documents.signers s JOIN people.staff st ON st.id = s.staff_id
+			WHERE s.institution_id = $2 AND s.kind = $3
+				AND NOT EXISTS (SELECT 1 FROM documents.signatures x WHERE x.version_id = $1 AND x.staff_id = s.staff_id)`, v.id, institutionID, kind); err != nil {
+			return nil, academicErr(err)
+		}
+		if _, err := tx.Exec(ctx, `INSERT INTO documents.events (document_id, version_number, action, actor_name, note, at) VALUES ($1, $2, 'signers', $3, 'Firmantes actualizados', $4)`,
+			v.documentID, v.number, actor, at); err != nil {
+			return nil, err
+		}
+		var total, missing int
+		if err := tx.QueryRow(ctx, `SELECT count(*), count(*) FILTER (WHERE signed_at IS NULL) FROM documents.signatures WHERE version_id = $1`, v.id).Scan(&total, &missing); err != nil {
+			return nil, err
+		}
+		if total > 0 && missing == 0 {
+			if err := publish(ctx, tx, v.documentID, v.id, v.number, at); err != nil {
+				return nil, err
+			}
+			published = append(published, v.number)
+		}
+	}
+	return published, tx.Commit(ctx)
 }
 
 // Candidates are the active staff, by surname
@@ -292,25 +339,32 @@ func (r *DocumentRepository) Sign(ctx context.Context, versionID string, sort in
 	if missing > 0 {
 		return false, tx.Commit(ctx)
 	}
+	if err := publish(ctx, tx, documentID, versionID, number, at); err != nil {
+		return false, err
+	}
+	return true, tx.Commit(ctx)
+}
+
+// publish makes a fully signed version the current one: the published version before it is superseded, and both
+// steps go to the history
+func publish(ctx context.Context, tx pgx.Tx, documentID, versionID string, number int, at time.Time) error {
 	rows, err := tx.Query(ctx, `UPDATE documents.versions SET status = 'superseded' WHERE document_id = $1 AND status = 'published' RETURNING number`, documentID)
 	if err != nil {
-		return false, err
+		return err
 	}
 	old, err := pgx.CollectRows(rows, pgx.RowTo[int])
 	if err != nil {
-		return false, err
+		return err
 	}
 	if _, err := tx.Exec(ctx, `UPDATE documents.versions SET status = 'published', published_at = $2 WHERE id = $1`, versionID, at); err != nil {
-		return false, err
+		return err
 	}
 	for _, n := range old {
 		if _, err := tx.Exec(ctx, `INSERT INTO documents.events (document_id, version_number, action, note, at) VALUES ($1, $2, 'superseded', $3, $4)`,
 			documentID, n, "Reemplazada por la versión "+strconv.Itoa(number), at); err != nil {
-			return false, err
+			return err
 		}
 	}
-	if _, err := tx.Exec(ctx, `INSERT INTO documents.events (document_id, version_number, action, at) VALUES ($1, $2, 'published', $3)`, documentID, number, at); err != nil {
-		return false, err
-	}
-	return true, tx.Commit(ctx)
+	_, err = tx.Exec(ctx, `INSERT INTO documents.events (document_id, version_number, action, at) VALUES ($1, $2, 'published', $3)`, documentID, number, at)
+	return err
 }

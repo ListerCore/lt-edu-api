@@ -153,8 +153,10 @@ type SchedulePage struct {
 // travels as JSON
 type ScheduleDoc struct {
 	Institution string
-	Pages       []SchedulePage
-	IssuedOn    time.Time
+	// The institution's logo at the top left of every sheet (empty: none)
+	Logo     Image
+	Pages    []SchedulePage
+	IssuedOn time.Time
 	// The verification block printed at the foot of every sheet; nil prints none
 	Seal *DocumentSeal `json:"-"`
 }
@@ -262,8 +264,9 @@ type SignerCandidate struct {
 // DocumentRepository stores the issued documents, their versions, signatures and history (documents schema)
 type DocumentRepository interface {
 	Signers(ctx context.Context, institutionID, kind string) ([]domain.DocumentSigner, error)
-	// SetSigners replaces the signers of a kind, in the order given
-	SetSigners(ctx context.Context, institutionID, kind string, signers []domain.DocumentSigner) error
+	// SetSigners replaces the signers of a kind, in the order given, and updates the signatures the pending versions
+	// still wait for; it returns the numbers of the versions that got published by it
+	SetSigners(ctx context.Context, institutionID, kind string, signers []domain.DocumentSigner, actor string, at time.Time) ([]int, error)
 	Candidates(ctx context.Context, institutionID string) ([]SignerCandidate, error)
 
 	// Documents of a kind whose scope starts with prefix (a period's timetables)

@@ -1073,7 +1073,7 @@ func (x *DocumentVersion) GetContentHash() string {
 type DocumentEvent struct {
 	state   protoimpl.MessageState `protogen:"open.v1"`
 	Version int32                  `protobuf:"varint,1,opt,name=version,proto3" json:"version,omitempty"`
-	// generated | signed | published | superseded | cancelled
+	// generated | signed | published | superseded | cancelled | signers (the signers of a pending version changed)
 	Action        string `protobuf:"bytes,2,opt,name=action,proto3" json:"action,omitempty"`
 	Actor         string `protobuf:"bytes,3,opt,name=actor,proto3" json:"actor,omitempty"`
 	Note          string `protobuf:"bytes,4,opt,name=note,proto3" json:"note,omitempty"`

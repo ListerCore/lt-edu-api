@@ -292,7 +292,7 @@ func (s *DocumentService) buildSchedules(ctx context.Context, token, slug, perio
 		return out
 	}
 	shortOf := func(e domain.ScheduleEntry) string { return l.teachers[e.StaffID].short }
-	b := scheduleBuild{doc: port.ScheduleDoc{Institution: pl.Context.Institution.Name, IssuedOn: s.assessment.attendance.today()}, period: pl.Period}
+	b := scheduleBuild{doc: port.ScheduleDoc{Institution: pl.Context.Institution.Name, Logo: imageOf(pl.Context.Settings.Logo), IssuedOn: s.assessment.attendance.today()}, period: pl.Period}
 	name, what := "horarios", ""
 	switch mode {
 	case ScheduleBySection:
@@ -526,12 +526,14 @@ func generalPages(pl Planner, sections []domain.Section, days []int, title strin
 				names[n-1] += " · " + lv
 				continue
 			}
-			for i := 0; i < len(list); i += perSheet {
-				part := list[i:min(i+perSheet, len(list))]
-				groups = append(groups, part)
+			// A big level splits in even sheets (12 sections: 6 and 6, not 8 and 4)
+			sheets := (len(list) + perSheet - 1) / perSheet
+			size := (len(list) + sheets - 1) / sheets
+			for i := 0; i < len(list); i += size {
+				groups = append(groups, list[i:min(i+size, len(list))])
 				label := lv
-				if len(list) > perSheet {
-					label = fmt.Sprintf("%s (%d/%d)", lv, i/perSheet+1, (len(list)+perSheet-1)/perSheet)
+				if sheets > 1 {
+					label = fmt.Sprintf("%s (%d/%d)", lv, i/size+1, sheets)
 				}
 				names = append(names, label)
 			}

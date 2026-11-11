@@ -58,7 +58,7 @@ func TestReportCards(t *testing.T) {
 func TestSchedulesRecordReceipt(t *testing.T) {
 	fill := &port.Colour{R: 214, G: 230, B: 251}
 	rows := []port.GridRow{{Head: "07:45\n08:30", Cells: []port.GridCell{{Code: "MAT", Detail: "M. Pari", Fill: fill}, {}, {Code: "COM", Detail: "M. Pari", Fill: fill}, {}, {}}}, {Head: "10:00", Break: true}}
-	doc := port.ScheduleDoc{Institution: "Joseph Colegio", IssuedOn: time.Now(), Pages: []port.SchedulePage{{Title: "HORARIO DE CLASES 2026", Subtitle: "2.° grado «A» · Primaria", Info: "Turno mañana",
+	doc := port.ScheduleDoc{Institution: "Joseph Colegio", Logo: port.Image{Data: escudo, Type: "png"}, IssuedOn: time.Now(), Pages: []port.SchedulePage{{Title: "HORARIO DE CLASES 2026", Subtitle: "2.° grado «A» · Primaria", Info: "Turno mañana",
 		Grids:   []port.ScheduleGrid{{Corner: "Hora", Columns: []string{"LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES"}, Rows: rows}},
 		Legends: []port.LegendTable{{Title: "LEYENDA", Columns: []string{"Sigla", "Curso", "Docente", "Horas"}, Widths: []float64{12, 38, 38, 12}, Rows: []port.LegendRow{{Fills: []*port.Colour{fill}, Cells: []string{"MAT", "Matemática", "Manuel Pari Medina", "5"}}}}}}}}
 	out, err := NewRenderer().Schedules(doc)
