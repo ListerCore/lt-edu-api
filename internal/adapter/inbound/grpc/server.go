@@ -19,6 +19,7 @@ import (
 	"api/internal/adapter/inbound/grpc/gen/announcementsv1"
 	"api/internal/adapter/inbound/grpc/gen/assessmentv1"
 	"api/internal/adapter/inbound/grpc/gen/attendancev1"
+	"api/internal/adapter/inbound/grpc/gen/documentsv1"
 	"api/internal/adapter/inbound/grpc/gen/examsv1"
 	"api/internal/adapter/inbound/grpc/gen/financev1"
 	"api/internal/adapter/inbound/grpc/gen/peoplev1"
@@ -53,12 +54,17 @@ type Services struct {
 	Programs      *service.ProgramsService
 	Wellbeing     *service.WellbeingService
 	Reports       *service.ReportsService
+	Documents     *service.DocumentService
 	Finance       *service.FinanceService
 }
 
 // limits brakes methods per client IP. Register a method here when it takes a password or costs a lot, e.g.
 // foov1.FooService_Login_FullMethodName: newRateLimiter(10, time.Minute)
-var limits = map[string]*rateLimiter{}
+var limits = map[string]*rateLimiter{
+	// Public tracking of documents (the QR): anyone can call it, so it is braked per IP
+	documentsv1.DocumentsService_TrackDocument_FullMethodName: newRateLimiter(60, time.Minute),
+	documentsv1.DocumentsService_TrackPdf_FullMethodName:      newRateLimiter(20, time.Minute),
+}
 
 // New builds the server with every service registered; the caller owns Serve and GracefulStop
 func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
@@ -106,6 +112,8 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	healthServer.SetServingStatus(wellbeingv1.WellbeingService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	reportsv1.RegisterReportsServiceServer(server, &reportsServer{reports: services.Reports, logger: logger})
 	healthServer.SetServingStatus(reportsv1.ReportsService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	documentsv1.RegisterDocumentsServiceServer(server, &documentsServer{documents: services.Documents, logger: logger})
+	healthServer.SetServingStatus(documentsv1.DocumentsService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	financev1.RegisterFinanceServiceServer(server, &financeServer{finance: services.Finance, logger: logger})
 	healthServer.SetServingStatus(financev1.FinanceService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	healthpb.RegisterHealthServer(server, healthServer)
