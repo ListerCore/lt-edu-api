@@ -50,8 +50,11 @@ type AcademicSettings struct {
 	AttentionModes []string
 	Shifts         []string
 	// Teaching days, 1 = Monday … 7 = Sunday
-	WeekDays  []int
-	UpdatedAt time.Time
+	WeekDays []int
+	// Minutes after the first class that still count as on time, and the absence share that raises an alert
+	LateAfterMinutes    int
+	AbsenceLimitPercent int
+	UpdatedAt           time.Time
 }
 
 // Grade is a grade, age or plan semester inside a level

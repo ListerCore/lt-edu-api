@@ -115,7 +115,8 @@ func (s *AcademicService) settings(ctx context.Context, sc academicScope) (domai
 		return domain.AcademicSettings{}, err
 	}
 	p := sc.profile
-	defaults := domain.AcademicSettings{TermScheme: p.termSchemes[0], GradingScale: p.scale, PassingGrade: p.passing, ConductGrade: p.conduct, AttentionModes: []string{}, Shifts: p.defaultShifts, WeekDays: p.weekDays}
+	defaults := domain.AcademicSettings{TermScheme: p.termSchemes[0], GradingScale: p.scale, PassingGrade: p.passing, ConductGrade: p.conduct, AttentionModes: []string{}, Shifts: p.defaultShifts, WeekDays: p.weekDays,
+		LateAfterMinutes: 10, AbsenceLimitPercent: 30}
 	if p.usesAttentionModes {
 		defaults.AttentionModes = allModes
 	}
@@ -177,6 +178,16 @@ func (s *AcademicService) UpdateSettings(ctx context.Context, token, slug string
 		}
 		slices.Sort(days)
 		next.WeekDays = days
+	}
+	// Zero means "keep" (older clients do not send them)
+	if in.LateAfterMinutes != 0 || in.AbsenceLimitPercent != 0 {
+		if in.LateAfterMinutes < 0 || in.LateAfterMinutes > 120 {
+			fields["lateAfterMinutes"] = "La tolerancia va de 0 a 120 minutos."
+		}
+		if in.AbsenceLimitPercent < 1 || in.AbsenceLimitPercent > 100 {
+			fields["absenceLimitPercent"] = "El límite de inasistencias va de 1 a 100 %."
+		}
+		next.LateAfterMinutes, next.AbsenceLimitPercent = in.LateAfterMinutes, in.AbsenceLimitPercent
 	}
 	if p.usesAttentionModes {
 		next.AttentionModes = unique(in.AttentionModes)
