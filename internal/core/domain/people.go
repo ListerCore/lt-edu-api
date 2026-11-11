@@ -66,10 +66,10 @@ type Student struct {
 	Access          string
 	CreatedAt       time.Time
 	// Lists: the enrollment in the period asked for (or the latest), the main guardian and how many are linked
-	Enrollment     *EnrollmentSummary
-	PrimaryName    string
-	PrimaryPhone   string
-	GuardianCount  int
+	Enrollment    *EnrollmentSummary
+	PrimaryName   string
+	PrimaryPhone  string
+	GuardianCount int
 }
 
 // FullName reads "Paterno Materno, Nombres"

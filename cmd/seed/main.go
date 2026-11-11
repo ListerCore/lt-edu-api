@@ -18,7 +18,7 @@ func main() {
 	cfg := config.Load()
 	logger := logging.New(cfg)
 
-	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 	defer cancel()
 
 	seeder, err := postgres.NewSeeder(cfg.DatabaseURL)
@@ -56,6 +56,18 @@ func main() {
 	}
 	if ran {
 		logger.Info().Str("step", "go:0005_demo_curricula").Msg("seeded")
+	}
+	// Demo students, guardians and enrollments, once (after the plans: institute enrollments take their units)
+	ran, err = seeder.RunOnce(ctx, "go:0006_demo_people", func(ctx context.Context) error {
+		n, err := service.SeedDemoPeople(ctx, postgres.NewAcademicRepository(db), postgres.NewCurriculumRepository(db), postgres.NewPeopleRepository(db), []string{"demo-ebr", "demo-eba", "demo-ebe", "demo-cepre", "demo-institute"})
+		logger.Info().Int("students", n).Msg("demo students seeded")
+		return err
+	})
+	if err != nil {
+		logger.Fatal().Err(err).Msg("demo students seed failed")
+	}
+	if ran {
+		logger.Info().Str("step", "go:0006_demo_people").Msg("seeded")
 	}
 
 	auth, err := service.NewAuthService(postgres.NewAuthRepository(db), password.NewArgon2id(), nil, nil, nil, nil, service.AuthConfig{}, logger)
