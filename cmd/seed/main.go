@@ -200,6 +200,18 @@ func main() {
 	if ran {
 		logger.Info().Str("step", "go:0014_demo_wellbeing").Msg("seeded")
 	}
+	// The whole running periods' attendance, and marks and paid fees for the closed years, for the reports board
+	ran, err = seeder.RunOnce(ctx, "go:0015_demo_reports", func(ctx context.Context) error {
+		n, err := service.SeedDemoReports(ctx, postgres.NewReportsRepository(db), postgres.NewAcademicRepository(db).InstitutionBySlug, []string{"demo-ebr", "demo-eba", "demo-ebe", "demo-cepre", "demo-institute"})
+		logger.Info().Int("records", n).Msg("demo reports history seeded")
+		return err
+	})
+	if err != nil {
+		logger.Fatal().Err(err).Msg("demo reports seed failed")
+	}
+	if ran {
+		logger.Info().Str("step", "go:0015_demo_reports").Msg("seeded")
+	}
 
 	auth, err := service.NewAuthService(postgres.NewAuthRepository(db), password.NewArgon2id(), nil, nil, nil, nil, service.AuthConfig{}, logger)
 	if err != nil {
