@@ -29,7 +29,7 @@ const (
 var (
 	// Roles that change the structure; the rest of the staff only reads it
 	academicManagers = map[string]bool{domain.RoleSuperadmin: true, "director": true, "academic_coordinator": true}
-	academicViewers  = map[string]bool{"secretary": true, "teacher": true, "tutor": true, "assistant": true, "psychologist": true, "treasurer": true}
+	academicViewers  = map[string]bool{"program_coordinator": true, "secretary": true, "teacher": true, "tutor": true, "assistant": true, "psychologist": true, "treasurer": true}
 
 	validShifts          = map[string]bool{"morning": true, "afternoon": true, "evening": true}
 	validModes           = map[string]bool{"in_person": true, "blended": true, "distance": true}

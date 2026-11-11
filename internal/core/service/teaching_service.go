@@ -17,7 +17,7 @@ import (
 var (
 	// Coordinación builds the load and the timetable; the rest of the staff reads it
 	teachingManagers = map[string]bool{domain.RoleSuperadmin: true, "director": true, "academic_coordinator": true}
-	teachingViewers  = map[string]bool{"secretary": true, "teacher": true, "tutor": true, "assistant": true, "psychologist": true, "treasurer": true}
+	teachingViewers  = map[string]bool{"program_coordinator": true, "secretary": true, "teacher": true, "tutor": true, "assistant": true, "psychologist": true, "treasurer": true}
 	clockPattern     = regexp.MustCompile(`^([01][0-9]|2[0-3]):[0-5][0-9]$`)
 )
 

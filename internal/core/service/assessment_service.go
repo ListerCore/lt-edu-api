@@ -18,7 +18,7 @@ const EventAssessmentChanged = "assessment.changed"
 var (
 	gradeManagers = map[string]bool{domain.RoleSuperadmin: true, "director": true, "academic_coordinator": true}
 	// Read the progress and every report card, without grading
-	gradeReaders = map[string]bool{"secretary": true, "psychologist": true}
+	gradeReaders = map[string]bool{"secretary": true, "psychologist": true, "program_coordinator": true}
 	gradeStaff   = map[string]bool{"teacher": true, "tutor": true}
 )
 
