@@ -17,7 +17,7 @@ import (
 var (
 	// Secretaría runs enrollment; dirección and coordinación too
 	peopleManagers = map[string]bool{domain.RoleSuperadmin: true, "director": true, "academic_coordinator": true, "secretary": true}
-	peopleViewers  = map[string]bool{"program_coordinator": true, "teacher": true, "tutor": true, "assistant": true, "psychologist": true, "treasurer": true}
+	peopleViewers  = map[string]bool{"program_coordinator": true, "special_ed_specialist": true, "teacher": true, "tutor": true, "assistant": true, "psychologist": true, "treasurer": true}
 
 	validDocTypes      = map[string]bool{"dni": true, "ce": true, "passport": true, "other": true}
 	validRelationships = map[string]bool{"mother": true, "father": true, "legal_guardian": true, "grandparent": true, "sibling": true, "other": true}

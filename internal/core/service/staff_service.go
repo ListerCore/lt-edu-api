@@ -12,9 +12,9 @@ import (
 
 var (
 	staffManagers = map[string]bool{domain.RoleSuperadmin: true, "director": true, "academic_coordinator": true}
-	staffViewers  = map[string]bool{"program_coordinator": true, "secretary": true, "teacher": true, "tutor": true, "assistant": true, "psychologist": true, "treasurer": true}
+	staffViewers  = map[string]bool{"program_coordinator": true, "special_ed_specialist": true, "secretary": true, "teacher": true, "tutor": true, "assistant": true, "psychologist": true, "treasurer": true}
 	// Roles the panel can give to staff (never superadmin, student or guardian)
-	staffRoles = map[string]bool{"program_coordinator": true, "director": true, "academic_coordinator": true, "secretary": true, "teacher": true, "tutor": true, "assistant": true, "psychologist": true, "treasurer": true}
+	staffRoles = map[string]bool{"program_coordinator": true, "special_ed_specialist": true, "director": true, "academic_coordinator": true, "secretary": true, "teacher": true, "tutor": true, "assistant": true, "psychologist": true, "treasurer": true}
 )
 
 // StaffService runs the staff of each institution: their record, whether they teach and their panel roles
