@@ -788,10 +788,11 @@ func (s *AssessmentService) Submit(ctx context.Context, token, slug, sectionID, 
 // ---------- report cards ----------
 
 type CardCompetency struct {
-	ID         string
-	Name       string
-	Levels     map[string]string // term id → level
-	Conclusion string            // of the selected term
+	ID          string
+	Name        string
+	Levels      map[string]string // term id → level
+	Conclusion  string            // of the selected term
+	Conclusions map[string]string // term id → conclusion, for the terms shown
 }
 
 type CardSubject struct {
@@ -817,6 +818,8 @@ type CardTerm struct {
 	Status     string
 	Attendance domain.Tally
 	Conduct    *int
+	// The tutor's descriptive conclusion of the term
+	Comment string
 }
 
 type ReportCard struct {
@@ -837,6 +840,16 @@ type ReportCard struct {
 	Provisional bool
 	// Other periods of the student, newest first (id → name)
 	Periods []domain.Period
+	// Official header: regional office, UGEL, modular code and logo (image data URL)
+	Dre         string
+	Ugel        string
+	ModularCode string
+	Logo        string
+	// The selected term is the period's last one: annual levels and final conclusions apply
+	Final    bool
+	IssuedOn time.Time
+	// Terms of the whole period
+	TermCount int
 }
 
 func (s *AssessmentService) ReportCard(ctx context.Context, token, slug, studentID, periodID, termID string) (ReportCard, error) {
@@ -907,7 +920,10 @@ func (s *AssessmentService) reportCard(ctx context.Context, sc gradeScope, stude
 		return ReportCard{}, domain.ErrCardNotReady
 	}
 	card := ReportCard{Institution: sc.institution.Name, Kind: sc.institution.Kind, Section: meta, PeriodID: p.ID, PeriodName: p.Name, Scale: sc.settings.GradingScale,
-		Passing: sc.settings.PassingGrade, TermID: termID, Provisional: !locked}
+		Passing: sc.settings.PassingGrade, TermID: termID, Provisional: !locked,
+		Dre: sc.settings.Dre, Ugel: sc.settings.Ugel, ModularCode: sc.settings.ModularCode, Logo: sc.settings.Logo, IssuedOn: s.attendance.today()}
+	card.Final = len(p.Terms) == 0 || p.Terms[len(p.Terms)-1].ID == termID
+	card.TermCount = len(p.Terms)
 	for _, id := range periodIDs {
 		if x, err := s.academic.repo.Period(ctx, sc.institution.ID, id); err == nil {
 			card.Periods = append(card.Periods, x)
@@ -1037,10 +1053,13 @@ func (s *AssessmentService) reportCard(ctx context.Context, sc gradeScope, stude
 		shown[t.ID] = true
 	}
 	toCard := func(c domain.CompetencyRef) CardCompetency {
-		cc := CardCompetency{ID: c.ID, Name: c.Name, Levels: map[string]string{}}
+		cc := CardCompetency{ID: c.ID, Name: c.Name, Levels: map[string]string{}, Conclusions: map[string]string{}}
 		for tid, m := range byComp[c.ID] {
 			if shown[tid] {
 				cc.Levels[tid] = m.Level
+				if m.Conclusion != "" {
+					cc.Conclusions[tid] = m.Conclusion
+				}
 			}
 		}
 		cc.Conclusion = byComp[c.ID][termID].Conclusion
@@ -1067,13 +1086,19 @@ func (s *AssessmentService) reportCard(ctx context.Context, sc gradeScope, stude
 	for _, c := range trans {
 		card.Transversal = append(card.Transversal, toCard(c))
 	}
-	comments, err := s.repo.Comments(ctx, sectionID, termID)
-	if err != nil {
-		return card, err
-	}
-	for _, c := range comments {
-		if c.StudentID == studentID {
-			card.TutorComment = c.Comment
+	// The tutor's conclusion of every term shown; the selected one is also the card's comment
+	for i, t := range card.Terms {
+		comments, err := s.repo.Comments(ctx, sectionID, t.ID)
+		if err != nil {
+			return card, err
+		}
+		for _, c := range comments {
+			if c.StudentID == studentID {
+				card.Terms[i].Comment = c.Comment
+				if t.ID == termID {
+					card.TutorComment = c.Comment
+				}
+			}
 		}
 	}
 	return card, nil

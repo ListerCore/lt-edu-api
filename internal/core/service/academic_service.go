@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"errors"
+	"regexp"
 	"slices"
 	"strconv"
 	"strings"
@@ -137,8 +138,61 @@ func (s *AcademicService) Context(ctx context.Context, token, slug string) (Acad
 	return s.contextFor(ctx, sc)
 }
 
+// ProfileInput is the official data of the report card; a nil field keeps what is stored
+type ProfileInput struct {
+	Dre         *string
+	Ugel        *string
+	ModularCode *string
+	Logo        *string
+}
+
+// Largest logo data URL accepted (about 100 KB of image)
+const maxLogoLength = 140000
+
+var (
+	modularCodePattern = regexp.MustCompile(`^([0-9]{7})?$`)
+	logoPattern        = regexp.MustCompile(`^data:image/(png|jpeg|webp|svg\+xml);base64,[A-Za-z0-9+/=]+$`)
+)
+
+// applyProfile validates the official data and copies what was sent onto next
+func applyProfile(in ProfileInput, next *domain.AcademicSettings, fields map[string]string) {
+	text := func(v *string, field, label string, dst *string) {
+		if v == nil {
+			return
+		}
+		t := strings.TrimSpace(*v)
+		if utf8.RuneCountInString(t) > 120 {
+			fields[field] = label + " admite hasta 120 caracteres."
+			return
+		}
+		*dst = t
+	}
+	text(in.Dre, "dre", "La DRE o GRE", &next.Dre)
+	text(in.Ugel, "ugel", "La UGEL", &next.Ugel)
+	if in.ModularCode != nil {
+		code := strings.TrimSpace(*in.ModularCode)
+		if !modularCodePattern.MatchString(code) {
+			fields["modularCode"] = "El código modular tiene 7 dígitos."
+		} else {
+			next.ModularCode = code
+		}
+	}
+	if in.Logo != nil {
+		switch {
+		case *in.Logo == "":
+			next.Logo = ""
+		case len(*in.Logo) > maxLogoLength:
+			fields["logo"] = "El logo debe pesar menos de 100 KB."
+		case !logoPattern.MatchString(*in.Logo):
+			fields["logo"] = "Sube el logo en PNG, JPG, WebP o SVG."
+		default:
+			next.Logo = *in.Logo
+		}
+	}
+}
+
 // UpdateSettings changes the profile; the grading scale is fixed by the kind except the passing mark and conduct
-func (s *AcademicService) UpdateSettings(ctx context.Context, token, slug string, in domain.AcademicSettings) (AcademicContext, error) {
+func (s *AcademicService) UpdateSettings(ctx context.Context, token, slug string, in domain.AcademicSettings, profile ProfileInput) (AcademicContext, error) {
 	sc, err := s.scope(ctx, token, slug, true)
 	if err != nil {
 		return AcademicContext{}, err
@@ -195,6 +249,7 @@ func (s *AcademicService) UpdateSettings(ctx context.Context, token, slug string
 			fields["attentionModes"] = "Elige al menos una forma de atención."
 		}
 	}
+	applyProfile(profile, &next, fields)
 	if len(fields) > 0 {
 		return AcademicContext{}, domain.Validation(fields)
 	}

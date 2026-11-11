@@ -1,6 +1,7 @@
 package service
 
 import (
+	"strings"
 	"testing"
 	"time"
 
@@ -79,5 +80,26 @@ func TestProfilesFollowTheInstitutionKind(t *testing.T) {
 				t.Fatalf("%s/%s: template code is not normalized", kind, l.Code)
 			}
 		}
+	}
+}
+
+// TestApplyProfile: the official data of the report card is trimmed and checked; nil keeps, "" clears the logo
+func TestApplyProfile(t *testing.T) {
+	str := func(s string) *string { return &s }
+	next := domain.AcademicSettings{Dre: "DRE Lima", Logo: "data:image/png;base64,AAAA"}
+	fields := map[string]string{}
+	applyProfile(ProfileInput{Ugel: str("  UGEL Huamanga "), ModularCode: str("0999101"), Logo: str("")}, &next, fields)
+	if len(fields) != 0 || next.Dre != "DRE Lima" || next.Ugel != "UGEL Huamanga" || next.ModularCode != "0999101" || next.Logo != "" {
+		t.Fatalf("unexpected %+v %v", next, fields)
+	}
+	fields = map[string]string{}
+	applyProfile(ProfileInput{ModularCode: str("12345"), Logo: str("data:text/html;base64,PHNjcmlwdD4=")}, &next, fields)
+	if fields["modularCode"] == "" || fields["logo"] == "" {
+		t.Fatalf("expected errors, got %v", fields)
+	}
+	fields = map[string]string{}
+	applyProfile(ProfileInput{Logo: str("data:image/svg+xml;base64," + strings.Repeat("A", maxLogoLength))}, &next, fields)
+	if fields["logo"] == "" {
+		t.Fatal("a logo over 100 KB is refused")
 	}
 }

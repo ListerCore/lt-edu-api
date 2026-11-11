@@ -15,12 +15,15 @@ const (
 
 // SectionMeta is a section as the grade sheets show it
 type SectionMeta struct {
-	ID        string
-	Label     string
-	LevelName string
-	PeriodID  string
-	TutorID   string
-	TutorName string
+	ID    string
+	Label string
+	// The grade ("3.° grado") and the section's own name ("A"), for official documents
+	GradeName   string
+	SectionName string
+	LevelName   string
+	PeriodID    string
+	TutorID     string
+	TutorName   string
 }
 
 // StudentRef is a student of a sheet, ordered by surnames like the official register

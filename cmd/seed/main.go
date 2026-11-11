@@ -212,6 +212,18 @@ func main() {
 	if ran {
 		logger.Info().Str("step", "go:0015_demo_reports").Msg("seeded")
 	}
+	// Official header of the report cards: DRE, UGEL, modular code and logo
+	ran, err = seeder.RunOnce(ctx, "go:0016_demo_profiles", func(ctx context.Context) error {
+		n, err := service.SeedDemoProfiles(ctx, postgres.NewAcademicRepository(db))
+		logger.Info().Int("institutions", n).Msg("demo profiles seeded")
+		return err
+	})
+	if err != nil {
+		logger.Fatal().Err(err).Msg("demo profiles seed failed")
+	}
+	if ran {
+		logger.Info().Str("step", "go:0016_demo_profiles").Msg("seeded")
+	}
 
 	auth, err := service.NewAuthService(postgres.NewAuthRepository(db), password.NewArgon2id(), nil, nil, nil, nil, service.AuthConfig{}, logger)
 	if err != nil {

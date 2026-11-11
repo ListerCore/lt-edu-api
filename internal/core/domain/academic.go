@@ -54,7 +54,12 @@ type AcademicSettings struct {
 	// Minutes after the first class that still count as on time, and the absence share that raises an alert
 	LateAfterMinutes    int
 	AbsenceLimitPercent int
-	UpdatedAt           time.Time
+	// Official data for the report card: regional office (DRE/GRE), UGEL, modular code and the logo (image data URL)
+	Dre         string
+	Ugel        string
+	ModularCode string
+	Logo        string
+	UpdatedAt   time.Time
 }
 
 // Grade is a grade, age or plan semester inside a level
