@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"math/rand/v2"
+	"strings"
 	"time"
 
 	"api/internal/core/domain"
@@ -298,6 +299,100 @@ func seedScores(ctx context.Context, svc *AssessmentService, seeder port.Assessm
 			}
 		}
 		total += len(scores)
+	}
+	return total, nil
+}
+
+// SeedDemoClosing completes the running term of the last grade of primaria and secundaria in the EBR demo, so the
+// year closing has whole sections to preview (the term stays open: closing it is part of the demo)
+func SeedDemoClosing(ctx context.Context, svc *AssessmentService, seeder port.AssessmentSeeder, slug string) (int, error) {
+	inst, err := svc.academic.repo.InstitutionBySlug(ctx, slug)
+	if errors.Is(err, domain.ErrNotFound) {
+		return 0, nil
+	}
+	if err != nil {
+		return 0, err
+	}
+	periods, err := svc.academic.repo.Periods(ctx, inst.ID)
+	if err != nil {
+		return 0, err
+	}
+	rnd := rand.New(rand.NewPCG(77, 7))
+	total := 0
+	for _, pr := range periods {
+		if pr.Status != domain.PeriodActive {
+			continue
+		}
+		p, err := svc.academic.repo.Period(ctx, inst.ID, pr.ID)
+		if err != nil || len(p.Terms) == 0 {
+			return total, err
+		}
+		last := p.Terms[len(p.Terms)-1]
+		sections, err := svc.academic.repo.Sections(ctx, inst.ID, p.ID)
+		if err != nil {
+			return total, err
+		}
+		for _, sec := range sections {
+			meta, err := svc.repo.Section(ctx, inst.ID, sec.ID)
+			if err != nil {
+				return total, err
+			}
+			if !(meta.LevelName == "Primaria" && strings.HasPrefix(meta.Label, "6.°") || meta.LevelName == "Secundaria" && strings.HasPrefix(meta.Label, "5.°")) {
+				continue
+			}
+			students, err := svc.repo.Students(ctx, inst.ID, sec.ID, "")
+			if err != nil {
+				return total, err
+			}
+			subjects, err := svc.repo.SubjectsOfSection(ctx, inst.ID, sec.ID)
+			if err != nil {
+				return total, err
+			}
+			trans, err := svc.repo.Transversal(ctx, inst.ID, sec.ID)
+			if err != nil {
+				return total, err
+			}
+			comps := trans
+			for _, a := range subjects {
+				c, err := svc.repo.Competencies(ctx, inst.ID, a.SubjectID)
+				if err != nil {
+					return total, err
+				}
+				comps = append(comps, c...)
+			}
+			existing, err := svc.repo.CompetencyMarks(ctx, inst.ID, sec.ID, last.ID, false)
+			if err != nil {
+				return total, err
+			}
+			have := map[string]bool{}
+			for _, m := range existing {
+				have[m.StudentID+":"+m.CompetencyID] = true
+			}
+			var marks []port.SeedMark
+			for _, st := range students {
+				// A few students struggle at the end of the year, so the closing shows recovery and repeat cases
+				a := ability(st.ID)
+				if hashOf("closing:"+st.ID)%9 == 0 {
+					a *= 0.3
+				}
+				for _, c := range comps {
+					if have[st.ID+":"+c.ID] {
+						continue
+					}
+					lvl := levelFor(a, rnd, 3)
+					m := port.SeedMark{SectionID: sec.ID, TermID: last.ID, CompetencyMark: domain.CompetencyMark{StudentID: st.ID, CompetencyID: c.ID, Level: lvl}}
+					if lvl == "C" {
+						m.Conclusion = fmt.Sprintf(conclusionsC[rnd.IntN(len(conclusionsC))], c.Name)
+					}
+					marks = append(marks, m)
+				}
+			}
+			n, err := seeder.BulkCompetencyMarks(ctx, inst.ID, marks)
+			total += n
+			if err != nil {
+				return total, err
+			}
+		}
 	}
 	return total, nil
 }
