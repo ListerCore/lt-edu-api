@@ -84,8 +84,17 @@ func toContext(c service.AcademicContext) *academicv1.AcademicContext {
 		Vocabulary: &academicv1.Vocabulary{Level: v.Level, Levels: v.Levels, Grade: v.Grade, Grades: v.Grades, Section: v.Section, Sections: v.Sections, Period: v.Period, Periods: v.Periods},
 		PeriodKind: c.PeriodKind, TermSchemes: c.TermSchemes, HasGrades: c.HasGrades, UsesAttentionModes: c.UsesAttentionModes,
 		UsesSeasons: c.UsesSeasons, UsesFormativeLevels: c.UsesFormativeLevels, SingleActivePeriod: c.SingleActivePeriod, CanManage: c.CanManage,
-		Settings: &academicv1.Settings{TermScheme: st.TermScheme, GradingScale: st.GradingScale, PassingGrade: int32Ptr(st.PassingGrade), ConductGrade: st.ConductGrade, AttentionModes: st.AttentionModes, Shifts: st.Shifts, WeekDays: toInt32s(st.WeekDays), LateAfterMinutes: int32(st.LateAfterMinutes), AbsenceLimitPercent: int32(st.AbsenceLimitPercent)},
+		Settings: &academicv1.Settings{TermScheme: st.TermScheme, GradingScale: st.GradingScale, PassingGrade: int32Ptr(st.PassingGrade), ConductGrade: st.ConductGrade, AttentionModes: st.AttentionModes, Shifts: st.Shifts, WeekDays: toInt32s(st.WeekDays), LateAfterMinutes: int32(st.LateAfterMinutes), AbsenceLimitPercent: int32(st.AbsenceLimitPercent),
+			Dre: &st.Dre, Ugel: &st.Ugel, ModularCode: &st.ModularCode},
 	}
+}
+
+// withLogo adds the institution's logo to a context; only the structure screens (where it is edited) carry it,
+// so every other page does not download the image
+func withLogo(ctx *academicv1.AcademicContext, c service.AcademicContext) *academicv1.AcademicContext {
+	logo := c.Settings.Logo
+	ctx.Settings.Logo = &logo
+	return ctx
 }
 
 func toGrade(g domain.Grade) *academicv1.Grade {
@@ -187,11 +196,11 @@ func (s *academicServer) UpdateSettings(ctx context.Context, req *academicv1.Upd
 	in := req.GetSettings()
 	c, err := s.academic.UpdateSettings(ctx, bearer(ctx), req.GetInstitutionSlug(), domain.AcademicSettings{
 		TermScheme: in.GetTermScheme(), PassingGrade: intPtr(in.PassingGrade), ConductGrade: in.GetConductGrade(), AttentionModes: in.GetAttentionModes(), Shifts: in.GetShifts(), WeekDays: toInts(in.GetWeekDays()), LateAfterMinutes: int(in.GetLateAfterMinutes()), AbsenceLimitPercent: int(in.GetAbsenceLimitPercent()),
-	})
+	}, service.ProfileInput{Dre: in.Dre, Ugel: in.Ugel, ModularCode: in.ModularCode, Logo: in.Logo})
 	if err != nil {
 		return nil, s.fail("UpdateSettings", err)
 	}
-	return &academicv1.UpdateSettingsResponse{Context: toContext(c)}, nil
+	return &academicv1.UpdateSettingsResponse{Context: withLogo(toContext(c), c)}, nil
 }
 
 // ---------- structure ----------
@@ -201,7 +210,7 @@ func (s *academicServer) GetStructure(ctx context.Context, req *academicv1.GetSt
 	if err != nil {
 		return nil, s.fail("GetStructure", err)
 	}
-	return &academicv1.GetStructureResponse{Context: toContext(c), Levels: toLevels(levels)}, nil
+	return &academicv1.GetStructureResponse{Context: withLogo(toContext(c), c), Levels: toLevels(levels)}, nil
 }
 
 func (s *academicServer) CreateLevel(ctx context.Context, req *academicv1.CreateLevelRequest) (*academicv1.CreateLevelResponse, error) {

@@ -32,10 +32,10 @@ func unitFilter(param string) string {
 func (r *AssessmentRepository) Section(ctx context.Context, institutionID, sectionID string) (domain.SectionMeta, error) {
 	var s domain.SectionMeta
 	err := r.c.pool.QueryRow(ctx, `SELECT sec.id, coalesce(g.short_name || ' ', '') || sec.name, l.name, sec.period_id, coalesce(sec.tutor_id::text, ''),
-			coalesce(t.given_names || ' ' || t.surnames, '')
+			coalesce(t.given_names || ' ' || t.surnames, ''), coalesce(g.name, ''), sec.name
 		FROM academic.sections sec JOIN academic.periods p ON p.id = sec.period_id JOIN academic.levels l ON l.id = sec.level_id
 		LEFT JOIN academic.grades g ON g.id = sec.grade_id LEFT JOIN people.staff t ON t.id = sec.tutor_id
-		WHERE p.institution_id = $1 AND sec.id = $2`, institutionID, sectionID).Scan(&s.ID, &s.Label, &s.LevelName, &s.PeriodID, &s.TutorID, &s.TutorName)
+		WHERE p.institution_id = $1 AND sec.id = $2`, institutionID, sectionID).Scan(&s.ID, &s.Label, &s.LevelName, &s.PeriodID, &s.TutorID, &s.TutorName, &s.GradeName, &s.SectionName)
 	return s, academicErr(err)
 }
 

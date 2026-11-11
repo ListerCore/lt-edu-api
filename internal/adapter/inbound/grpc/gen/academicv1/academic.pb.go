@@ -143,8 +143,14 @@ type Settings struct {
 	// Attendance: minutes of tolerance after the first class, and the absence share (%) that raises an alert
 	LateAfterMinutes    int32 `protobuf:"varint,8,opt,name=late_after_minutes,json=lateAfterMinutes,proto3" json:"late_after_minutes,omitempty"`
 	AbsenceLimitPercent int32 `protobuf:"varint,9,opt,name=absence_limit_percent,json=absenceLimitPercent,proto3" json:"absence_limit_percent,omitempty"`
-	unknownFields       protoimpl.UnknownFields
-	sizeCache           protoimpl.SizeCache
+	// Official data for the report card; unset on an update keeps what is stored. Logo: image data URL (PNG, JPG,
+	// WebP or SVG, under 100 KB), "" removes it
+	Dre           *string `protobuf:"bytes,10,opt,name=dre,proto3,oneof" json:"dre,omitempty"`
+	Ugel          *string `protobuf:"bytes,11,opt,name=ugel,proto3,oneof" json:"ugel,omitempty"`
+	ModularCode   *string `protobuf:"bytes,12,opt,name=modular_code,json=modularCode,proto3,oneof" json:"modular_code,omitempty"`
+	Logo          *string `protobuf:"bytes,13,opt,name=logo,proto3,oneof" json:"logo,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Settings) Reset() {
@@ -238,6 +244,34 @@ func (x *Settings) GetAbsenceLimitPercent() int32 {
 		return x.AbsenceLimitPercent
 	}
 	return 0
+}
+
+func (x *Settings) GetDre() string {
+	if x != nil && x.Dre != nil {
+		return *x.Dre
+	}
+	return ""
+}
+
+func (x *Settings) GetUgel() string {
+	if x != nil && x.Ugel != nil {
+		return *x.Ugel
+	}
+	return ""
+}
+
+func (x *Settings) GetModularCode() string {
+	if x != nil && x.ModularCode != nil {
+		return *x.ModularCode
+	}
+	return ""
+}
+
+func (x *Settings) GetLogo() string {
+	if x != nil && x.Logo != nil {
+		return *x.Logo
+	}
+	return ""
 }
 
 type AcademicContext struct {
@@ -3617,7 +3651,7 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\asection\x18\x05 \x01(\tR\asection\x12\x1a\n" +
 	"\bsections\x18\x06 \x01(\tR\bsections\x12\x16\n" +
 	"\x06period\x18\a \x01(\tR\x06period\x12\x18\n" +
-	"\aperiods\x18\b \x01(\tR\aperiods\"\xf1\x02\n" +
+	"\aperiods\x18\b \x01(\tR\aperiods\"\x8d\x04\n" +
 	"\bSettings\x12\x1f\n" +
 	"\vterm_scheme\x18\x01 \x01(\tR\n" +
 	"termScheme\x12#\n" +
@@ -3628,8 +3662,17 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\x06shifts\x18\x06 \x03(\tR\x06shifts\x12\x1b\n" +
 	"\tweek_days\x18\a \x03(\x05R\bweekDays\x12,\n" +
 	"\x12late_after_minutes\x18\b \x01(\x05R\x10lateAfterMinutes\x122\n" +
-	"\x15absence_limit_percent\x18\t \x01(\x05R\x13absenceLimitPercentB\x10\n" +
-	"\x0e_passing_grade\"\xc9\x04\n" +
+	"\x15absence_limit_percent\x18\t \x01(\x05R\x13absenceLimitPercent\x12\x15\n" +
+	"\x03dre\x18\n" +
+	" \x01(\tH\x01R\x03dre\x88\x01\x01\x12\x17\n" +
+	"\x04ugel\x18\v \x01(\tH\x02R\x04ugel\x88\x01\x01\x12&\n" +
+	"\fmodular_code\x18\f \x01(\tH\x03R\vmodularCode\x88\x01\x01\x12\x17\n" +
+	"\x04logo\x18\r \x01(\tH\x04R\x04logo\x88\x01\x01B\x10\n" +
+	"\x0e_passing_gradeB\x06\n" +
+	"\x04_dreB\a\n" +
+	"\x05_ugelB\x0f\n" +
+	"\r_modular_codeB\a\n" +
+	"\x05_logo\"\xc9\x04\n" +
 	"\x0fAcademicContext\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12)\n" +
 	"\x10institution_name\x18\x02 \x01(\tR\x0finstitutionName\x12)\n" +

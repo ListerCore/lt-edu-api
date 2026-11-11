@@ -2192,8 +2192,10 @@ type CardCompetency struct {
 	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name  string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// term id → level
-	Levels        map[string]string `protobuf:"bytes,3,rep,name=levels,proto3" json:"levels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Conclusion    string            `protobuf:"bytes,4,opt,name=conclusion,proto3" json:"conclusion,omitempty"`
+	Levels     map[string]string `protobuf:"bytes,3,rep,name=levels,proto3" json:"levels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Conclusion string            `protobuf:"bytes,4,opt,name=conclusion,proto3" json:"conclusion,omitempty"`
+	// term id → conclusion, for every term shown
+	Conclusions   map[string]string `protobuf:"bytes,5,rep,name=conclusions,proto3" json:"conclusions,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2254,6 +2256,13 @@ func (x *CardCompetency) GetConclusion() string {
 		return x.Conclusion
 	}
 	return ""
+}
+
+func (x *CardCompetency) GetConclusions() map[string]string {
+	if x != nil {
+		return x.Conclusions
+	}
+	return nil
 }
 
 type CardEvaluation struct {
@@ -2478,12 +2487,14 @@ func (x *AttendanceTally) GetJustified() int32 {
 }
 
 type CardTerm struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
-	Attendance    *AttendanceTally       `protobuf:"bytes,4,opt,name=attendance,proto3" json:"attendance,omitempty"`
-	Conduct       *int32                 `protobuf:"varint,5,opt,name=conduct,proto3,oneof" json:"conduct,omitempty"`
+	state      protoimpl.MessageState `protogen:"open.v1"`
+	Id         string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name       string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Status     string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	Attendance *AttendanceTally       `protobuf:"bytes,4,opt,name=attendance,proto3" json:"attendance,omitempty"`
+	Conduct    *int32                 `protobuf:"varint,5,opt,name=conduct,proto3,oneof" json:"conduct,omitempty"`
+	// The tutor's descriptive conclusion of the term
+	Comment       string `protobuf:"bytes,6,opt,name=comment,proto3" json:"comment,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2553,6 +2564,13 @@ func (x *CardTerm) GetConduct() int32 {
 	return 0
 }
 
+func (x *CardTerm) GetComment() string {
+	if x != nil {
+		return x.Comment
+	}
+	return ""
+}
+
 type PeriodRef struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -2606,24 +2624,36 @@ func (x *PeriodRef) GetName() string {
 }
 
 type ReportCard struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Institution   string                 `protobuf:"bytes,1,opt,name=institution,proto3" json:"institution,omitempty"`
-	Kind          string                 `protobuf:"bytes,2,opt,name=kind,proto3" json:"kind,omitempty"`
-	Student       *StudentRef            `protobuf:"bytes,3,opt,name=student,proto3" json:"student,omitempty"`
-	SectionLabel  string                 `protobuf:"bytes,4,opt,name=section_label,json=sectionLabel,proto3" json:"section_label,omitempty"`
-	LevelName     string                 `protobuf:"bytes,5,opt,name=level_name,json=levelName,proto3" json:"level_name,omitempty"`
-	TutorName     string                 `protobuf:"bytes,6,opt,name=tutor_name,json=tutorName,proto3" json:"tutor_name,omitempty"`
-	PeriodId      string                 `protobuf:"bytes,7,opt,name=period_id,json=periodId,proto3" json:"period_id,omitempty"`
-	PeriodName    string                 `protobuf:"bytes,8,opt,name=period_name,json=periodName,proto3" json:"period_name,omitempty"`
-	Scale         string                 `protobuf:"bytes,9,opt,name=scale,proto3" json:"scale,omitempty"`
-	PassingGrade  *int32                 `protobuf:"varint,10,opt,name=passing_grade,json=passingGrade,proto3,oneof" json:"passing_grade,omitempty"`
-	Terms         []*CardTerm            `protobuf:"bytes,11,rep,name=terms,proto3" json:"terms,omitempty"`
-	TermId        string                 `protobuf:"bytes,12,opt,name=term_id,json=termId,proto3" json:"term_id,omitempty"`
-	Subjects      []*CardSubject         `protobuf:"bytes,13,rep,name=subjects,proto3" json:"subjects,omitempty"`
-	Transversal   []*CardCompetency      `protobuf:"bytes,14,rep,name=transversal,proto3" json:"transversal,omitempty"`
-	TutorComment  string                 `protobuf:"bytes,15,opt,name=tutor_comment,json=tutorComment,proto3" json:"tutor_comment,omitempty"`
-	Provisional   bool                   `protobuf:"varint,16,opt,name=provisional,proto3" json:"provisional,omitempty"`
-	Periods       []*PeriodRef           `protobuf:"bytes,17,rep,name=periods,proto3" json:"periods,omitempty"`
+	state        protoimpl.MessageState `protogen:"open.v1"`
+	Institution  string                 `protobuf:"bytes,1,opt,name=institution,proto3" json:"institution,omitempty"`
+	Kind         string                 `protobuf:"bytes,2,opt,name=kind,proto3" json:"kind,omitempty"`
+	Student      *StudentRef            `protobuf:"bytes,3,opt,name=student,proto3" json:"student,omitempty"`
+	SectionLabel string                 `protobuf:"bytes,4,opt,name=section_label,json=sectionLabel,proto3" json:"section_label,omitempty"`
+	LevelName    string                 `protobuf:"bytes,5,opt,name=level_name,json=levelName,proto3" json:"level_name,omitempty"`
+	TutorName    string                 `protobuf:"bytes,6,opt,name=tutor_name,json=tutorName,proto3" json:"tutor_name,omitempty"`
+	PeriodId     string                 `protobuf:"bytes,7,opt,name=period_id,json=periodId,proto3" json:"period_id,omitempty"`
+	PeriodName   string                 `protobuf:"bytes,8,opt,name=period_name,json=periodName,proto3" json:"period_name,omitempty"`
+	Scale        string                 `protobuf:"bytes,9,opt,name=scale,proto3" json:"scale,omitempty"`
+	PassingGrade *int32                 `protobuf:"varint,10,opt,name=passing_grade,json=passingGrade,proto3,oneof" json:"passing_grade,omitempty"`
+	Terms        []*CardTerm            `protobuf:"bytes,11,rep,name=terms,proto3" json:"terms,omitempty"`
+	TermId       string                 `protobuf:"bytes,12,opt,name=term_id,json=termId,proto3" json:"term_id,omitempty"`
+	Subjects     []*CardSubject         `protobuf:"bytes,13,rep,name=subjects,proto3" json:"subjects,omitempty"`
+	Transversal  []*CardCompetency      `protobuf:"bytes,14,rep,name=transversal,proto3" json:"transversal,omitempty"`
+	TutorComment string                 `protobuf:"bytes,15,opt,name=tutor_comment,json=tutorComment,proto3" json:"tutor_comment,omitempty"`
+	Provisional  bool                   `protobuf:"varint,16,opt,name=provisional,proto3" json:"provisional,omitempty"`
+	Periods      []*PeriodRef           `protobuf:"bytes,17,rep,name=periods,proto3" json:"periods,omitempty"`
+	// Official header (SIAGIE format): regional office, UGEL, modular code and the institution's logo (data URL)
+	Dre         string `protobuf:"bytes,18,opt,name=dre,proto3" json:"dre,omitempty"`
+	Ugel        string `protobuf:"bytes,19,opt,name=ugel,proto3" json:"ugel,omitempty"`
+	ModularCode string `protobuf:"bytes,20,opt,name=modular_code,json=modularCode,proto3" json:"modular_code,omitempty"`
+	Logo        string `protobuf:"bytes,21,opt,name=logo,proto3" json:"logo,omitempty"`
+	GradeName   string `protobuf:"bytes,22,opt,name=grade_name,json=gradeName,proto3" json:"grade_name,omitempty"`
+	SectionName string `protobuf:"bytes,23,opt,name=section_name,json=sectionName,proto3" json:"section_name,omitempty"`
+	// The selected term is the last of the period: the annual levels and the final conclusions apply
+	Final    bool   `protobuf:"varint,24,opt,name=final,proto3" json:"final,omitempty"`
+	IssuedOn string `protobuf:"bytes,25,opt,name=issued_on,json=issuedOn,proto3" json:"issued_on,omitempty"`
+	// Terms of the whole period (the card shows a column for each, filled up to the selected one)
+	TermCount     int32 `protobuf:"varint,26,opt,name=term_count,json=termCount,proto3" json:"term_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2775,6 +2805,69 @@ func (x *ReportCard) GetPeriods() []*PeriodRef {
 		return x.Periods
 	}
 	return nil
+}
+
+func (x *ReportCard) GetDre() string {
+	if x != nil {
+		return x.Dre
+	}
+	return ""
+}
+
+func (x *ReportCard) GetUgel() string {
+	if x != nil {
+		return x.Ugel
+	}
+	return ""
+}
+
+func (x *ReportCard) GetModularCode() string {
+	if x != nil {
+		return x.ModularCode
+	}
+	return ""
+}
+
+func (x *ReportCard) GetLogo() string {
+	if x != nil {
+		return x.Logo
+	}
+	return ""
+}
+
+func (x *ReportCard) GetGradeName() string {
+	if x != nil {
+		return x.GradeName
+	}
+	return ""
+}
+
+func (x *ReportCard) GetSectionName() string {
+	if x != nil {
+		return x.SectionName
+	}
+	return ""
+}
+
+func (x *ReportCard) GetFinal() bool {
+	if x != nil {
+		return x.Final
+	}
+	return false
+}
+
+func (x *ReportCard) GetIssuedOn() string {
+	if x != nil {
+		return x.IssuedOn
+	}
+	return ""
+}
+
+func (x *ReportCard) GetTermCount() int32 {
+	if x != nil {
+		return x.TermCount
+	}
+	return 0
 }
 
 type GetReportCardRequest struct {
@@ -3347,15 +3440,19 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"\rassignment_id\x18\x03 \x01(\tR\fassignmentId\x12\x17\n" +
 	"\aterm_id\x18\x04 \x01(\tR\x06termId\x12\x12\n" +
 	"\x04sent\x18\x05 \x01(\bR\x04sent\"\x10\n" +
-	"\x0eSubmitResponse\"\xd9\x01\n" +
+	"\x0eSubmitResponse\"\xf2\x02\n" +
 	"\x0eCardCompetency\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12H\n" +
 	"\x06levels\x18\x03 \x03(\v20.joseph.assessment.v1.CardCompetency.LevelsEntryR\x06levels\x12\x1e\n" +
 	"\n" +
 	"conclusion\x18\x04 \x01(\tR\n" +
-	"conclusion\x1a9\n" +
+	"conclusion\x12W\n" +
+	"\vconclusions\x18\x05 \x03(\v25.joseph.assessment.v1.CardCompetency.ConclusionsEntryR\vconclusions\x1a9\n" +
 	"\vLevelsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a>\n" +
+	"\x10ConclusionsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"a\n" +
 	"\x0eCardEvaluation\x12\x12\n" +
@@ -3378,7 +3475,7 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"\apresent\x18\x01 \x01(\x05R\apresent\x12\x12\n" +
 	"\x04late\x18\x02 \x01(\x05R\x04late\x12\x16\n" +
 	"\x06absent\x18\x03 \x01(\x05R\x06absent\x12\x1c\n" +
-	"\tjustified\x18\x04 \x01(\x05R\tjustified\"\xb8\x01\n" +
+	"\tjustified\x18\x04 \x01(\x05R\tjustified\"\xd2\x01\n" +
 	"\bCardTerm\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
@@ -3386,12 +3483,13 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"\n" +
 	"attendance\x18\x04 \x01(\v2%.joseph.assessment.v1.AttendanceTallyR\n" +
 	"attendance\x12\x1d\n" +
-	"\aconduct\x18\x05 \x01(\x05H\x00R\aconduct\x88\x01\x01B\n" +
+	"\aconduct\x18\x05 \x01(\x05H\x00R\aconduct\x88\x01\x01\x12\x18\n" +
+	"\acomment\x18\x06 \x01(\tR\acommentB\n" +
 	"\n" +
 	"\b_conduct\"/\n" +
 	"\tPeriodRef\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"\xc9\x05\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"\xba\a\n" +
 	"\n" +
 	"ReportCard\x12 \n" +
 	"\vinstitution\x18\x01 \x01(\tR\vinstitution\x12\x12\n" +
@@ -3414,7 +3512,18 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"\vtransversal\x18\x0e \x03(\v2$.joseph.assessment.v1.CardCompetencyR\vtransversal\x12#\n" +
 	"\rtutor_comment\x18\x0f \x01(\tR\ftutorComment\x12 \n" +
 	"\vprovisional\x18\x10 \x01(\bR\vprovisional\x129\n" +
-	"\aperiods\x18\x11 \x03(\v2\x1f.joseph.assessment.v1.PeriodRefR\aperiodsB\x10\n" +
+	"\aperiods\x18\x11 \x03(\v2\x1f.joseph.assessment.v1.PeriodRefR\aperiods\x12\x10\n" +
+	"\x03dre\x18\x12 \x01(\tR\x03dre\x12\x12\n" +
+	"\x04ugel\x18\x13 \x01(\tR\x04ugel\x12!\n" +
+	"\fmodular_code\x18\x14 \x01(\tR\vmodularCode\x12\x12\n" +
+	"\x04logo\x18\x15 \x01(\tR\x04logo\x12\x1d\n" +
+	"\n" +
+	"grade_name\x18\x16 \x01(\tR\tgradeName\x12!\n" +
+	"\fsection_name\x18\x17 \x01(\tR\vsectionName\x12\x14\n" +
+	"\x05final\x18\x18 \x01(\bR\x05final\x12\x1b\n" +
+	"\tissued_on\x18\x19 \x01(\tR\bissuedOn\x12\x1d\n" +
+	"\n" +
+	"term_count\x18\x1a \x01(\x05R\ttermCountB\x10\n" +
 	"\x0e_passing_grade\"\x96\x01\n" +
 	"\x14GetReportCardRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
@@ -3470,7 +3579,7 @@ func file_joseph_assessment_v1_assessment_proto_rawDescGZIP() []byte {
 	return file_joseph_assessment_v1_assessment_proto_rawDescData
 }
 
-var file_joseph_assessment_v1_assessment_proto_msgTypes = make([]protoimpl.MessageInfo, 47)
+var file_joseph_assessment_v1_assessment_proto_msgTypes = make([]protoimpl.MessageInfo, 48)
 var file_joseph_assessment_v1_assessment_proto_goTypes = []any{
 	(*Submission)(nil),               // 0: joseph.assessment.v1.Submission
 	(*SheetProgress)(nil),            // 1: joseph.assessment.v1.SheetProgress
@@ -3518,14 +3627,15 @@ var file_joseph_assessment_v1_assessment_proto_goTypes = []any{
 	(*FamilyCard)(nil),               // 43: joseph.assessment.v1.FamilyCard
 	(*MyReportCardsResponse)(nil),    // 44: joseph.assessment.v1.MyReportCardsResponse
 	nil,                              // 45: joseph.assessment.v1.CardCompetency.LevelsEntry
-	nil,                              // 46: joseph.assessment.v1.CardSubject.AveragesEntry
-	(*academicv1.Period)(nil),        // 47: joseph.academic.v1.Period
+	nil,                              // 46: joseph.assessment.v1.CardCompetency.ConclusionsEntry
+	nil,                              // 47: joseph.assessment.v1.CardSubject.AveragesEntry
+	(*academicv1.Period)(nil),        // 48: joseph.academic.v1.Period
 }
 var file_joseph_assessment_v1_assessment_proto_depIdxs = []int32{
 	0,  // 0: joseph.assessment.v1.SheetProgress.submitted:type_name -> joseph.assessment.v1.Submission
 	0,  // 1: joseph.assessment.v1.TutorProgress.submitted:type_name -> joseph.assessment.v1.Submission
-	47, // 2: joseph.assessment.v1.GetGradebookResponse.periods:type_name -> joseph.academic.v1.Period
-	47, // 3: joseph.assessment.v1.GetGradebookResponse.period:type_name -> joseph.academic.v1.Period
+	48, // 2: joseph.assessment.v1.GetGradebookResponse.periods:type_name -> joseph.academic.v1.Period
+	48, // 3: joseph.assessment.v1.GetGradebookResponse.period:type_name -> joseph.academic.v1.Period
 	1,  // 4: joseph.assessment.v1.GetGradebookResponse.sheets:type_name -> joseph.assessment.v1.SheetProgress
 	2,  // 5: joseph.assessment.v1.GetGradebookResponse.tutor:type_name -> joseph.assessment.v1.TutorProgress
 	5,  // 6: joseph.assessment.v1.Sheet.students:type_name -> joseph.assessment.v1.StudentRef
@@ -3549,48 +3659,49 @@ var file_joseph_assessment_v1_assessment_proto_depIdxs = []int32{
 	11, // 24: joseph.assessment.v1.SaveTutorSheetRequest.comments:type_name -> joseph.assessment.v1.TutorComment
 	12, // 25: joseph.assessment.v1.SaveTutorSheetResponse.sheet:type_name -> joseph.assessment.v1.Sheet
 	45, // 26: joseph.assessment.v1.CardCompetency.levels:type_name -> joseph.assessment.v1.CardCompetency.LevelsEntry
-	31, // 27: joseph.assessment.v1.CardSubject.competencies:type_name -> joseph.assessment.v1.CardCompetency
-	46, // 28: joseph.assessment.v1.CardSubject.averages:type_name -> joseph.assessment.v1.CardSubject.AveragesEntry
-	32, // 29: joseph.assessment.v1.CardSubject.evaluations:type_name -> joseph.assessment.v1.CardEvaluation
-	34, // 30: joseph.assessment.v1.CardTerm.attendance:type_name -> joseph.assessment.v1.AttendanceTally
-	5,  // 31: joseph.assessment.v1.ReportCard.student:type_name -> joseph.assessment.v1.StudentRef
-	35, // 32: joseph.assessment.v1.ReportCard.terms:type_name -> joseph.assessment.v1.CardTerm
-	33, // 33: joseph.assessment.v1.ReportCard.subjects:type_name -> joseph.assessment.v1.CardSubject
-	31, // 34: joseph.assessment.v1.ReportCard.transversal:type_name -> joseph.assessment.v1.CardCompetency
-	36, // 35: joseph.assessment.v1.ReportCard.periods:type_name -> joseph.assessment.v1.PeriodRef
-	37, // 36: joseph.assessment.v1.GetReportCardResponse.card:type_name -> joseph.assessment.v1.ReportCard
-	37, // 37: joseph.assessment.v1.GetSectionCardsResponse.cards:type_name -> joseph.assessment.v1.ReportCard
-	37, // 38: joseph.assessment.v1.FamilyCard.card:type_name -> joseph.assessment.v1.ReportCard
-	43, // 39: joseph.assessment.v1.MyReportCardsResponse.cards:type_name -> joseph.assessment.v1.FamilyCard
-	3,  // 40: joseph.assessment.v1.AssessmentService.GetGradebook:input_type -> joseph.assessment.v1.GetGradebookRequest
-	13, // 41: joseph.assessment.v1.AssessmentService.GetSheet:input_type -> joseph.assessment.v1.GetSheetRequest
-	15, // 42: joseph.assessment.v1.AssessmentService.SaveLevels:input_type -> joseph.assessment.v1.SaveLevelsRequest
-	17, // 43: joseph.assessment.v1.AssessmentService.SaveEvaluation:input_type -> joseph.assessment.v1.SaveEvaluationRequest
-	19, // 44: joseph.assessment.v1.AssessmentService.DeleteEvaluation:input_type -> joseph.assessment.v1.DeleteEvaluationRequest
-	22, // 45: joseph.assessment.v1.AssessmentService.SaveScores:input_type -> joseph.assessment.v1.SaveScoresRequest
-	24, // 46: joseph.assessment.v1.AssessmentService.GetTutorSheet:input_type -> joseph.assessment.v1.GetTutorSheetRequest
-	27, // 47: joseph.assessment.v1.AssessmentService.SaveTutorSheet:input_type -> joseph.assessment.v1.SaveTutorSheetRequest
-	29, // 48: joseph.assessment.v1.AssessmentService.Submit:input_type -> joseph.assessment.v1.SubmitRequest
-	38, // 49: joseph.assessment.v1.AssessmentService.GetReportCard:input_type -> joseph.assessment.v1.GetReportCardRequest
-	40, // 50: joseph.assessment.v1.AssessmentService.GetSectionCards:input_type -> joseph.assessment.v1.GetSectionCardsRequest
-	42, // 51: joseph.assessment.v1.AssessmentService.MyReportCards:input_type -> joseph.assessment.v1.MyReportCardsRequest
-	4,  // 52: joseph.assessment.v1.AssessmentService.GetGradebook:output_type -> joseph.assessment.v1.GetGradebookResponse
-	14, // 53: joseph.assessment.v1.AssessmentService.GetSheet:output_type -> joseph.assessment.v1.GetSheetResponse
-	16, // 54: joseph.assessment.v1.AssessmentService.SaveLevels:output_type -> joseph.assessment.v1.SaveLevelsResponse
-	18, // 55: joseph.assessment.v1.AssessmentService.SaveEvaluation:output_type -> joseph.assessment.v1.SaveEvaluationResponse
-	20, // 56: joseph.assessment.v1.AssessmentService.DeleteEvaluation:output_type -> joseph.assessment.v1.DeleteEvaluationResponse
-	23, // 57: joseph.assessment.v1.AssessmentService.SaveScores:output_type -> joseph.assessment.v1.SaveScoresResponse
-	25, // 58: joseph.assessment.v1.AssessmentService.GetTutorSheet:output_type -> joseph.assessment.v1.GetTutorSheetResponse
-	28, // 59: joseph.assessment.v1.AssessmentService.SaveTutorSheet:output_type -> joseph.assessment.v1.SaveTutorSheetResponse
-	30, // 60: joseph.assessment.v1.AssessmentService.Submit:output_type -> joseph.assessment.v1.SubmitResponse
-	39, // 61: joseph.assessment.v1.AssessmentService.GetReportCard:output_type -> joseph.assessment.v1.GetReportCardResponse
-	41, // 62: joseph.assessment.v1.AssessmentService.GetSectionCards:output_type -> joseph.assessment.v1.GetSectionCardsResponse
-	44, // 63: joseph.assessment.v1.AssessmentService.MyReportCards:output_type -> joseph.assessment.v1.MyReportCardsResponse
-	52, // [52:64] is the sub-list for method output_type
-	40, // [40:52] is the sub-list for method input_type
-	40, // [40:40] is the sub-list for extension type_name
-	40, // [40:40] is the sub-list for extension extendee
-	0,  // [0:40] is the sub-list for field type_name
+	46, // 27: joseph.assessment.v1.CardCompetency.conclusions:type_name -> joseph.assessment.v1.CardCompetency.ConclusionsEntry
+	31, // 28: joseph.assessment.v1.CardSubject.competencies:type_name -> joseph.assessment.v1.CardCompetency
+	47, // 29: joseph.assessment.v1.CardSubject.averages:type_name -> joseph.assessment.v1.CardSubject.AveragesEntry
+	32, // 30: joseph.assessment.v1.CardSubject.evaluations:type_name -> joseph.assessment.v1.CardEvaluation
+	34, // 31: joseph.assessment.v1.CardTerm.attendance:type_name -> joseph.assessment.v1.AttendanceTally
+	5,  // 32: joseph.assessment.v1.ReportCard.student:type_name -> joseph.assessment.v1.StudentRef
+	35, // 33: joseph.assessment.v1.ReportCard.terms:type_name -> joseph.assessment.v1.CardTerm
+	33, // 34: joseph.assessment.v1.ReportCard.subjects:type_name -> joseph.assessment.v1.CardSubject
+	31, // 35: joseph.assessment.v1.ReportCard.transversal:type_name -> joseph.assessment.v1.CardCompetency
+	36, // 36: joseph.assessment.v1.ReportCard.periods:type_name -> joseph.assessment.v1.PeriodRef
+	37, // 37: joseph.assessment.v1.GetReportCardResponse.card:type_name -> joseph.assessment.v1.ReportCard
+	37, // 38: joseph.assessment.v1.GetSectionCardsResponse.cards:type_name -> joseph.assessment.v1.ReportCard
+	37, // 39: joseph.assessment.v1.FamilyCard.card:type_name -> joseph.assessment.v1.ReportCard
+	43, // 40: joseph.assessment.v1.MyReportCardsResponse.cards:type_name -> joseph.assessment.v1.FamilyCard
+	3,  // 41: joseph.assessment.v1.AssessmentService.GetGradebook:input_type -> joseph.assessment.v1.GetGradebookRequest
+	13, // 42: joseph.assessment.v1.AssessmentService.GetSheet:input_type -> joseph.assessment.v1.GetSheetRequest
+	15, // 43: joseph.assessment.v1.AssessmentService.SaveLevels:input_type -> joseph.assessment.v1.SaveLevelsRequest
+	17, // 44: joseph.assessment.v1.AssessmentService.SaveEvaluation:input_type -> joseph.assessment.v1.SaveEvaluationRequest
+	19, // 45: joseph.assessment.v1.AssessmentService.DeleteEvaluation:input_type -> joseph.assessment.v1.DeleteEvaluationRequest
+	22, // 46: joseph.assessment.v1.AssessmentService.SaveScores:input_type -> joseph.assessment.v1.SaveScoresRequest
+	24, // 47: joseph.assessment.v1.AssessmentService.GetTutorSheet:input_type -> joseph.assessment.v1.GetTutorSheetRequest
+	27, // 48: joseph.assessment.v1.AssessmentService.SaveTutorSheet:input_type -> joseph.assessment.v1.SaveTutorSheetRequest
+	29, // 49: joseph.assessment.v1.AssessmentService.Submit:input_type -> joseph.assessment.v1.SubmitRequest
+	38, // 50: joseph.assessment.v1.AssessmentService.GetReportCard:input_type -> joseph.assessment.v1.GetReportCardRequest
+	40, // 51: joseph.assessment.v1.AssessmentService.GetSectionCards:input_type -> joseph.assessment.v1.GetSectionCardsRequest
+	42, // 52: joseph.assessment.v1.AssessmentService.MyReportCards:input_type -> joseph.assessment.v1.MyReportCardsRequest
+	4,  // 53: joseph.assessment.v1.AssessmentService.GetGradebook:output_type -> joseph.assessment.v1.GetGradebookResponse
+	14, // 54: joseph.assessment.v1.AssessmentService.GetSheet:output_type -> joseph.assessment.v1.GetSheetResponse
+	16, // 55: joseph.assessment.v1.AssessmentService.SaveLevels:output_type -> joseph.assessment.v1.SaveLevelsResponse
+	18, // 56: joseph.assessment.v1.AssessmentService.SaveEvaluation:output_type -> joseph.assessment.v1.SaveEvaluationResponse
+	20, // 57: joseph.assessment.v1.AssessmentService.DeleteEvaluation:output_type -> joseph.assessment.v1.DeleteEvaluationResponse
+	23, // 58: joseph.assessment.v1.AssessmentService.SaveScores:output_type -> joseph.assessment.v1.SaveScoresResponse
+	25, // 59: joseph.assessment.v1.AssessmentService.GetTutorSheet:output_type -> joseph.assessment.v1.GetTutorSheetResponse
+	28, // 60: joseph.assessment.v1.AssessmentService.SaveTutorSheet:output_type -> joseph.assessment.v1.SaveTutorSheetResponse
+	30, // 61: joseph.assessment.v1.AssessmentService.Submit:output_type -> joseph.assessment.v1.SubmitResponse
+	39, // 62: joseph.assessment.v1.AssessmentService.GetReportCard:output_type -> joseph.assessment.v1.GetReportCardResponse
+	41, // 63: joseph.assessment.v1.AssessmentService.GetSectionCards:output_type -> joseph.assessment.v1.GetSectionCardsResponse
+	44, // 64: joseph.assessment.v1.AssessmentService.MyReportCards:output_type -> joseph.assessment.v1.MyReportCardsResponse
+	53, // [53:65] is the sub-list for method output_type
+	41, // [41:53] is the sub-list for method input_type
+	41, // [41:41] is the sub-list for extension type_name
+	41, // [41:41] is the sub-list for extension extendee
+	0,  // [0:41] is the sub-list for field type_name
 }
 
 func init() { file_joseph_assessment_v1_assessment_proto_init() }
@@ -3611,7 +3722,7 @@ func file_joseph_assessment_v1_assessment_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_assessment_v1_assessment_proto_rawDesc), len(file_joseph_assessment_v1_assessment_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   47,
+			NumMessages:   48,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

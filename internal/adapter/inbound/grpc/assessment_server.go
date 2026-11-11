@@ -83,7 +83,7 @@ func toGradeSheet(sh service.Sheet) *assessmentv1.Sheet {
 func toCardCompetencies(items []service.CardCompetency) []*assessmentv1.CardCompetency {
 	out := make([]*assessmentv1.CardCompetency, len(items))
 	for i, c := range items {
-		out[i] = &assessmentv1.CardCompetency{Id: c.ID, Name: c.Name, Levels: c.Levels, Conclusion: c.Conclusion}
+		out[i] = &assessmentv1.CardCompetency{Id: c.ID, Name: c.Name, Levels: c.Levels, Conclusion: c.Conclusion, Conclusions: c.Conclusions}
 	}
 	return out
 }
@@ -91,9 +91,10 @@ func toCardCompetencies(items []service.CardCompetency) []*assessmentv1.CardComp
 func toReportCard(c service.ReportCard) *assessmentv1.ReportCard {
 	out := &assessmentv1.ReportCard{Institution: c.Institution, Kind: c.Kind, Student: &assessmentv1.StudentRef{Id: c.Student.ID, Code: c.Student.Code, Name: c.Student.Name, Document: c.Student.Document},
 		SectionLabel: c.Section.Label, LevelName: c.Section.LevelName, TutorName: c.Section.TutorName, PeriodId: c.PeriodID, PeriodName: c.PeriodName, Scale: c.Scale,
-		PassingGrade: int32Ptr(c.Passing), TermId: c.TermID, Transversal: toCardCompetencies(c.Transversal), TutorComment: c.TutorComment, Provisional: c.Provisional}
+		PassingGrade: int32Ptr(c.Passing), TermId: c.TermID, Transversal: toCardCompetencies(c.Transversal), TutorComment: c.TutorComment, Provisional: c.Provisional,
+		Dre: c.Dre, Ugel: c.Ugel, ModularCode: c.ModularCode, Logo: c.Logo, GradeName: c.Section.GradeName, SectionName: c.Section.SectionName, Final: c.Final, IssuedOn: formatDate(c.IssuedOn), TermCount: int32(c.TermCount)}
 	for _, t := range c.Terms {
-		out.Terms = append(out.Terms, &assessmentv1.CardTerm{Id: t.ID, Name: t.Name, Status: t.Status, Conduct: int32Ptr(t.Conduct),
+		out.Terms = append(out.Terms, &assessmentv1.CardTerm{Id: t.ID, Name: t.Name, Status: t.Status, Conduct: int32Ptr(t.Conduct), Comment: t.Comment,
 			Attendance: &assessmentv1.AttendanceTally{Present: int32(t.Attendance.Present), Late: int32(t.Attendance.Late), Absent: int32(t.Attendance.Absent), Justified: int32(t.Attendance.Justified)}})
 	}
 	for _, sub := range c.Subjects {
@@ -230,7 +231,11 @@ func (s *assessmentServer) GetSectionCards(ctx context.Context, req *assessmentv
 		return nil, s.fail("GetSectionCards", err)
 	}
 	out := &assessmentv1.GetSectionCardsResponse{}
-	for _, c := range cards {
+	for i, c := range cards {
+		// The logo is the same for the whole section: only the first card carries it
+		if i > 0 {
+			c.Logo = ""
+		}
 		out.Cards = append(out.Cards, toReportCard(c))
 	}
 	return out, nil
