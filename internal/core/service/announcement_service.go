@@ -105,33 +105,11 @@ type scope struct {
 // resolveScope picks the institution: the one of the active role, or institutionSlug when the person holds a role
 // there; the platform superadmin can open any institution by slug
 func (s *AnnouncementService) resolveScope(ctx context.Context, token, institutionSlug string) (scope, error) {
-	me, err := s.auth.Me(ctx, token)
+	sc, err := resolveInstitution(ctx, s.auth, s.repo.InstitutionBySlug, token, institutionSlug)
 	if err != nil {
 		return scope{}, err
 	}
-	if me.ActiveRole != nil && me.ActiveRole.Institution != nil && (institutionSlug == "" || institutionSlug == me.ActiveRole.Institution.Slug) {
-		return scope{institutionID: me.ActiveRole.Institution.ID, institutionSlug: me.ActiveRole.Institution.Slug, role: me.ActiveRole.RoleCode, userID: me.User.ID}, nil
-	}
-	superadmin := false
-	for _, r := range me.Roles {
-		if r.RoleCode == domain.RoleSuperadmin {
-			superadmin = true
-		}
-		if r.Institution != nil && r.Institution.Slug == institutionSlug {
-			return scope{institutionID: r.Institution.ID, institutionSlug: r.Institution.Slug, role: r.RoleCode, userID: me.User.ID}, nil
-		}
-	}
-	if !superadmin {
-		return scope{}, domain.ErrForbidden
-	}
-	if institutionSlug == "" {
-		return scope{}, domain.ErrInstitutionRequired
-	}
-	inst, err := s.repo.InstitutionBySlug(ctx, institutionSlug)
-	if err != nil {
-		return scope{}, err
-	}
-	return scope{institutionID: inst.ID, institutionSlug: inst.Slug, role: domain.RoleSuperadmin, userID: me.User.ID}, nil
+	return scope{institutionID: sc.institution.ID, institutionSlug: sc.institution.Slug, role: sc.role, userID: sc.userID}, nil
 }
 
 // PanelFeed is the panel list: what the person's role may read in the institution, and whether they may publish
