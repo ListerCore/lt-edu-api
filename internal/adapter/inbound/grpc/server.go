@@ -21,6 +21,7 @@ import (
 	"api/internal/adapter/inbound/grpc/gen/attendancev1"
 	"api/internal/adapter/inbound/grpc/gen/examsv1"
 	"api/internal/adapter/inbound/grpc/gen/peoplev1"
+	"api/internal/adapter/inbound/grpc/gen/programsv1"
 	"api/internal/adapter/inbound/grpc/gen/systemv1"
 	"api/internal/adapter/inbound/grpc/gen/teachingv1"
 	"api/internal/core/service"
@@ -46,6 +47,7 @@ type Services struct {
 	Assessment    *service.AssessmentService
 	Closing       *service.ClosingService
 	Exams         *service.ExamsService
+	Programs      *service.ProgramsService
 }
 
 // limits brakes methods per client IP. Register a method here when it takes a password or costs a lot, e.g.
@@ -92,6 +94,8 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	healthServer.SetServingStatus(assessmentv1.ClosingService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	examsv1.RegisterExamsServiceServer(server, &examsServer{exams: services.Exams, logger: logger})
 	healthServer.SetServingStatus(examsv1.ExamsService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	programsv1.RegisterProgramsServiceServer(server, &programsServer{programs: services.Programs, logger: logger})
+	healthServer.SetServingStatus(programsv1.ProgramsService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	healthpb.RegisterHealthServer(server, healthServer)
 
 	if cfg.Development {
