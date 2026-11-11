@@ -33,6 +33,7 @@ type Services struct {
 	Health        *service.HealthService
 	Announcements *service.AnnouncementService
 	Academic      *service.AcademicService
+	Curricula     *service.CurriculumService
 }
 
 // limits brakes methods per client IP. Register a method here when it takes a password or costs a lot, e.g.
@@ -63,6 +64,8 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	healthServer.SetServingStatus(announcementsv1.AnnouncementService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	academicv1.RegisterAcademicServiceServer(server, &academicServer{academic: services.Academic, logger: logger})
 	healthServer.SetServingStatus(academicv1.AcademicService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	academicv1.RegisterCurriculumServiceServer(server, &curriculumServer{curricula: services.Curricula, logger: logger})
+	healthServer.SetServingStatus(academicv1.CurriculumService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	healthpb.RegisterHealthServer(server, healthServer)
 
 	if cfg.Development {

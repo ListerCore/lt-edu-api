@@ -81,3 +81,26 @@ func (s *Seeder) Run(ctx context.Context) ([]string, error) {
 	}
 	return applied, nil
 }
+
+// RunOnce applies a seed step written in Go (one that needs the services, like the demo study plans) the first time
+// it is seen, and records it in seed_run under name like the SQL files. Returns whether it ran
+func (s *Seeder) RunOnce(ctx context.Context, name string, step func(context.Context) error) (bool, error) {
+	conn, err := s.pool.Acquire(ctx)
+	if err != nil {
+		return false, err
+	}
+	defer conn.Release()
+	if _, err := conn.Exec(ctx, `SELECT pg_advisory_lock($1)`, seedLockKey); err != nil {
+		return false, err
+	}
+	defer func() { _, _ = conn.Exec(context.Background(), `SELECT pg_advisory_unlock($1)`, seedLockKey) }()
+	var done bool
+	if err := conn.QueryRow(ctx, `SELECT EXISTS (SELECT 1 FROM seed_run WHERE name = $1)`, name).Scan(&done); err != nil || done {
+		return false, err
+	}
+	if err := step(ctx); err != nil {
+		return false, fmt.Errorf("seed %s: %w", name, err)
+	}
+	_, err = conn.Exec(ctx, `INSERT INTO seed_run (name) VALUES ($1)`, name)
+	return err == nil, err
+}
