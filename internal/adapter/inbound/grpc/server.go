@@ -15,6 +15,7 @@ import (
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/grpc/status"
 
+	"api/internal/adapter/inbound/grpc/gen/academicv1"
 	"api/internal/adapter/inbound/grpc/gen/announcementsv1"
 	"api/internal/adapter/inbound/grpc/gen/systemv1"
 	"api/internal/core/service"
@@ -31,6 +32,7 @@ type Config struct {
 type Services struct {
 	Health        *service.HealthService
 	Announcements *service.AnnouncementService
+	Academic      *service.AcademicService
 }
 
 // limits brakes methods per client IP. Register a method here when it takes a password or costs a lot, e.g.
@@ -59,6 +61,8 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	healthServer.SetServingStatus(systemv1.SystemService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	announcementsv1.RegisterAnnouncementServiceServer(server, &announcementServer{announcements: services.Announcements, logger: logger})
 	healthServer.SetServingStatus(announcementsv1.AnnouncementService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	academicv1.RegisterAcademicServiceServer(server, &academicServer{academic: services.Academic, logger: logger})
+	healthServer.SetServingStatus(academicv1.AcademicService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	healthpb.RegisterHealthServer(server, healthServer)
 
 	if cfg.Development {
