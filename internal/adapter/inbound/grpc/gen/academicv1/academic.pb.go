@@ -139,9 +139,12 @@ type Settings struct {
 	// morning | afternoon | evening
 	Shifts []string `protobuf:"bytes,6,rep,name=shifts,proto3" json:"shifts,omitempty"`
 	// Teaching days, 1 = Monday … 7 = Sunday
-	WeekDays      []int32 `protobuf:"varint,7,rep,packed,name=week_days,json=weekDays,proto3" json:"week_days,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	WeekDays []int32 `protobuf:"varint,7,rep,packed,name=week_days,json=weekDays,proto3" json:"week_days,omitempty"`
+	// Attendance: minutes of tolerance after the first class, and the absence share (%) that raises an alert
+	LateAfterMinutes    int32 `protobuf:"varint,8,opt,name=late_after_minutes,json=lateAfterMinutes,proto3" json:"late_after_minutes,omitempty"`
+	AbsenceLimitPercent int32 `protobuf:"varint,9,opt,name=absence_limit_percent,json=absenceLimitPercent,proto3" json:"absence_limit_percent,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
 }
 
 func (x *Settings) Reset() {
@@ -221,6 +224,20 @@ func (x *Settings) GetWeekDays() []int32 {
 		return x.WeekDays
 	}
 	return nil
+}
+
+func (x *Settings) GetLateAfterMinutes() int32 {
+	if x != nil {
+		return x.LateAfterMinutes
+	}
+	return 0
+}
+
+func (x *Settings) GetAbsenceLimitPercent() int32 {
+	if x != nil {
+		return x.AbsenceLimitPercent
+	}
+	return 0
 }
 
 type AcademicContext struct {
@@ -3600,7 +3617,7 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\asection\x18\x05 \x01(\tR\asection\x12\x1a\n" +
 	"\bsections\x18\x06 \x01(\tR\bsections\x12\x16\n" +
 	"\x06period\x18\a \x01(\tR\x06period\x12\x18\n" +
-	"\aperiods\x18\b \x01(\tR\aperiods\"\x8f\x02\n" +
+	"\aperiods\x18\b \x01(\tR\aperiods\"\xf1\x02\n" +
 	"\bSettings\x12\x1f\n" +
 	"\vterm_scheme\x18\x01 \x01(\tR\n" +
 	"termScheme\x12#\n" +
@@ -3609,7 +3626,9 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\rconduct_grade\x18\x04 \x01(\bR\fconductGrade\x12'\n" +
 	"\x0fattention_modes\x18\x05 \x03(\tR\x0eattentionModes\x12\x16\n" +
 	"\x06shifts\x18\x06 \x03(\tR\x06shifts\x12\x1b\n" +
-	"\tweek_days\x18\a \x03(\x05R\bweekDaysB\x10\n" +
+	"\tweek_days\x18\a \x03(\x05R\bweekDays\x12,\n" +
+	"\x12late_after_minutes\x18\b \x01(\x05R\x10lateAfterMinutes\x122\n" +
+	"\x15absence_limit_percent\x18\t \x01(\x05R\x13absenceLimitPercentB\x10\n" +
 	"\x0e_passing_grade\"\xc9\x04\n" +
 	"\x0fAcademicContext\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12)\n" +

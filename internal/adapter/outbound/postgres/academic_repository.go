@@ -62,9 +62,9 @@ func (r *AcademicRepository) Settings(ctx context.Context, institutionID string)
 	var s domain.AcademicSettings
 	var passing *int16
 	var days []int16
-	err := r.c.pool.QueryRow(ctx, `SELECT term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts, week_days, updated_at
+	err := r.c.pool.QueryRow(ctx, `SELECT term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts, week_days, late_after_minutes, absence_limit_percent, updated_at
 		FROM academic.settings WHERE institution_id = $1`, institutionID).
-		Scan(&s.TermScheme, &s.GradingScale, &passing, &s.ConductGrade, &s.AttentionModes, &s.Shifts, &days, &s.UpdatedAt)
+		Scan(&s.TermScheme, &s.GradingScale, &passing, &s.ConductGrade, &s.AttentionModes, &s.Shifts, &days, &s.LateAfterMinutes, &s.AbsenceLimitPercent, &s.UpdatedAt)
 	for _, d := range days {
 		s.WeekDays = append(s.WeekDays, int(d))
 	}
@@ -82,12 +82,16 @@ func (r *AcademicRepository) SaveSettings(ctx context.Context, institutionID str
 	if len(s.WeekDays) == 0 {
 		s.WeekDays = []int{1, 2, 3, 4, 5}
 	}
-	_, err := r.c.pool.Exec(ctx, `INSERT INTO academic.settings (institution_id, term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts, week_days)
-		VALUES ($1, $2, $3, $4, $5, $6, $7, $8::smallint[])
+	if s.AbsenceLimitPercent == 0 {
+		s.LateAfterMinutes, s.AbsenceLimitPercent = 10, 30
+	}
+	_, err := r.c.pool.Exec(ctx, `INSERT INTO academic.settings (institution_id, term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts, week_days, late_after_minutes, absence_limit_percent)
+		VALUES ($1, $2, $3, $4, $5, $6, $7, $8::smallint[], $9, $10)
 		ON CONFLICT (institution_id) DO UPDATE SET term_scheme = EXCLUDED.term_scheme, grading_scale = EXCLUDED.grading_scale,
 			passing_grade = EXCLUDED.passing_grade, conduct_grade = EXCLUDED.conduct_grade, attention_modes = EXCLUDED.attention_modes,
-			shifts = EXCLUDED.shifts, week_days = EXCLUDED.week_days`,
-		institutionID, s.TermScheme, s.GradingScale, s.PassingGrade, s.ConductGrade, s.AttentionModes, s.Shifts, s.WeekDays)
+			shifts = EXCLUDED.shifts, week_days = EXCLUDED.week_days, late_after_minutes = EXCLUDED.late_after_minutes,
+			absence_limit_percent = EXCLUDED.absence_limit_percent`,
+		institutionID, s.TermScheme, s.GradingScale, s.PassingGrade, s.ConductGrade, s.AttentionModes, s.Shifts, s.WeekDays, s.LateAfterMinutes, s.AbsenceLimitPercent)
 	if err != nil {
 		return domain.AcademicSettings{}, academicErr(err)
 	}

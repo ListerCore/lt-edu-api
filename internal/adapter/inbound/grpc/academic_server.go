@@ -84,7 +84,7 @@ func toContext(c service.AcademicContext) *academicv1.AcademicContext {
 		Vocabulary: &academicv1.Vocabulary{Level: v.Level, Levels: v.Levels, Grade: v.Grade, Grades: v.Grades, Section: v.Section, Sections: v.Sections, Period: v.Period, Periods: v.Periods},
 		PeriodKind: c.PeriodKind, TermSchemes: c.TermSchemes, HasGrades: c.HasGrades, UsesAttentionModes: c.UsesAttentionModes,
 		UsesSeasons: c.UsesSeasons, UsesFormativeLevels: c.UsesFormativeLevels, SingleActivePeriod: c.SingleActivePeriod, CanManage: c.CanManage,
-		Settings: &academicv1.Settings{TermScheme: st.TermScheme, GradingScale: st.GradingScale, PassingGrade: int32Ptr(st.PassingGrade), ConductGrade: st.ConductGrade, AttentionModes: st.AttentionModes, Shifts: st.Shifts, WeekDays: toInt32s(st.WeekDays)},
+		Settings: &academicv1.Settings{TermScheme: st.TermScheme, GradingScale: st.GradingScale, PassingGrade: int32Ptr(st.PassingGrade), ConductGrade: st.ConductGrade, AttentionModes: st.AttentionModes, Shifts: st.Shifts, WeekDays: toInt32s(st.WeekDays), LateAfterMinutes: int32(st.LateAfterMinutes), AbsenceLimitPercent: int32(st.AbsenceLimitPercent)},
 	}
 }
 
@@ -186,7 +186,7 @@ func (s *academicServer) GetContext(ctx context.Context, req *academicv1.GetCont
 func (s *academicServer) UpdateSettings(ctx context.Context, req *academicv1.UpdateSettingsRequest) (*academicv1.UpdateSettingsResponse, error) {
 	in := req.GetSettings()
 	c, err := s.academic.UpdateSettings(ctx, bearer(ctx), req.GetInstitutionSlug(), domain.AcademicSettings{
-		TermScheme: in.GetTermScheme(), PassingGrade: intPtr(in.PassingGrade), ConductGrade: in.GetConductGrade(), AttentionModes: in.GetAttentionModes(), Shifts: in.GetShifts(), WeekDays: toInts(in.GetWeekDays()),
+		TermScheme: in.GetTermScheme(), PassingGrade: intPtr(in.PassingGrade), ConductGrade: in.GetConductGrade(), AttentionModes: in.GetAttentionModes(), Shifts: in.GetShifts(), WeekDays: toInts(in.GetWeekDays()), LateAfterMinutes: int(in.GetLateAfterMinutes()), AbsenceLimitPercent: int(in.GetAbsenceLimitPercent()),
 	})
 	if err != nil {
 		return nil, s.fail("UpdateSettings", err)
