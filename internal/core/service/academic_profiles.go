@@ -32,7 +32,9 @@ type academicProfile struct {
 	// Only one period may be running at a time (school year, institute semester); EBA and CEPRE overlap them
 	singleActivePeriod bool
 	defaultShifts      []string
-	template           []domain.Level
+	// Teaching days by default (academies and institutes also teach on Saturday)
+	weekDays []int
+	template []domain.Level
 }
 
 var (
@@ -80,7 +82,7 @@ var (
 			vocabulary:  AcademicVocabulary{"Área", "Áreas", "", "", "Aula", "Aulas", "Ciclo", "Ciclos"},
 			periodKind:  domain.PeriodCycle,
 			termSchemes: []string{domain.TermSchemeNone}, scale: domain.ScaleScore, usesSeasons: true,
-			defaultShifts: []string{"morning", "afternoon", "evening"},
+			defaultShifts: []string{"morning", "afternoon", "evening"}, weekDays: []int{1, 2, 3, 4, 5, 6},
 			template: []domain.Level{
 				level("uni", "UNI · Ingenierías", "Universidad Nacional de Ingeniería: matemática y física con mayor peso.", nil),
 				level("unmsm-a", "San Marcos · Área A", "Ciencias de la Salud.", nil),
@@ -94,7 +96,7 @@ var (
 			vocabulary:  AcademicVocabulary{"Programa de estudios", "Programas de estudios", "Semestre", "Semestres", "Sección", "Secciones", "Semestre académico", "Semestres académicos"},
 			periodKind:  domain.PeriodSemester,
 			termSchemes: []string{domain.TermSchemeNone}, scale: domain.ScaleVigesimal, passing: &thirteen, hasGrades: true, usesFormativeLevels: true, singleActivePeriod: true,
-			defaultShifts: []string{"morning", "evening"},
+			defaultShifts: []string{"morning", "evening"}, weekDays: []int{1, 2, 3, 4, 5, 6},
 			template: []domain.Level{
 				program("enfermeria-tecnica", "Enfermería Técnica", "Cuidado del paciente en hospitales y centros de salud."),
 				program("desarrollo-sistemas", "Desarrollo de Sistemas de Información", "Programación, bases de datos y soporte de aplicaciones."),

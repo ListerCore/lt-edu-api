@@ -49,7 +49,9 @@ type AcademicSettings struct {
 	ConductGrade   bool
 	AttentionModes []string
 	Shifts         []string
-	UpdatedAt      time.Time
+	// Teaching days, 1 = Monday … 7 = Sunday
+	WeekDays  []int
+	UpdatedAt time.Time
 }
 
 // Grade is a grade, age or plan semester inside a level
@@ -124,6 +126,8 @@ type Section struct {
 	// Position of its level and grade, for ordering
 	LevelPosition int
 	GradePosition int
+	TutorID       string
+	TutorName     string
 }
 
 // SectionBatch creates one section per grade × name (CEPRE: per name, no grade)

@@ -115,7 +115,7 @@ func (s *AcademicService) settings(ctx context.Context, sc academicScope) (domai
 		return domain.AcademicSettings{}, err
 	}
 	p := sc.profile
-	defaults := domain.AcademicSettings{TermScheme: p.termSchemes[0], GradingScale: p.scale, PassingGrade: p.passing, ConductGrade: p.conduct, AttentionModes: []string{}, Shifts: p.defaultShifts}
+	defaults := domain.AcademicSettings{TermScheme: p.termSchemes[0], GradingScale: p.scale, PassingGrade: p.passing, ConductGrade: p.conduct, AttentionModes: []string{}, Shifts: p.defaultShifts, WeekDays: p.weekDays}
 	if p.usesAttentionModes {
 		defaults.AttentionModes = allModes
 	}
@@ -165,6 +165,18 @@ func (s *AcademicService) UpdateSettings(ctx context.Context, token, slug string
 	next.Shifts = unique(in.Shifts)
 	if len(next.Shifts) == 0 || !allIn(next.Shifts, validShifts) {
 		fields["shifts"] = "Elige al menos un turno."
+	}
+	if len(in.WeekDays) > 0 {
+		days := []int{}
+		for _, d := range in.WeekDays {
+			if d < 1 || d > 7 {
+				fields["weekDays"] = "Elige días de la semana válidos."
+			} else if !slices.Contains(days, d) {
+				days = append(days, d)
+			}
+		}
+		slices.Sort(days)
+		next.WeekDays = days
 	}
 	if p.usesAttentionModes {
 		next.AttentionModes = unique(in.AttentionModes)
