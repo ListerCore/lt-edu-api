@@ -79,13 +79,14 @@ func intPtr(v *int32) *int {
 func toContext(c service.AcademicContext) *academicv1.AcademicContext {
 	v := c.Vocabulary
 	st := c.Settings
+	management := service.ManagementOf(st)
 	return &academicv1.AcademicContext{
 		InstitutionSlug: c.Institution.Slug, InstitutionName: c.Institution.Name, InstitutionKind: c.Institution.Kind,
 		Vocabulary: &academicv1.Vocabulary{Level: v.Level, Levels: v.Levels, Grade: v.Grade, Grades: v.Grades, Section: v.Section, Sections: v.Sections, Period: v.Period, Periods: v.Periods},
 		PeriodKind: c.PeriodKind, TermSchemes: c.TermSchemes, HasGrades: c.HasGrades, UsesAttentionModes: c.UsesAttentionModes,
 		UsesSeasons: c.UsesSeasons, UsesFormativeLevels: c.UsesFormativeLevels, SingleActivePeriod: c.SingleActivePeriod, CanManage: c.CanManage,
 		Settings: &academicv1.Settings{TermScheme: st.TermScheme, GradingScale: st.GradingScale, PassingGrade: int32Ptr(st.PassingGrade), ConductGrade: st.ConductGrade, AttentionModes: st.AttentionModes, Shifts: st.Shifts, WeekDays: toInt32s(st.WeekDays), LateAfterMinutes: int32(st.LateAfterMinutes), AbsenceLimitPercent: int32(st.AbsenceLimitPercent),
-			Dre: &st.Dre, Ugel: &st.Ugel, ModularCode: &st.ModularCode},
+			Dre: &st.Dre, Ugel: &st.Ugel, ModularCode: &st.ModularCode, Management: &management},
 	}
 }
 
@@ -196,11 +197,19 @@ func (s *academicServer) UpdateSettings(ctx context.Context, req *academicv1.Upd
 	in := req.GetSettings()
 	c, err := s.academic.UpdateSettings(ctx, bearer(ctx), req.GetInstitutionSlug(), domain.AcademicSettings{
 		TermScheme: in.GetTermScheme(), PassingGrade: intPtr(in.PassingGrade), ConductGrade: in.GetConductGrade(), AttentionModes: in.GetAttentionModes(), Shifts: in.GetShifts(), WeekDays: toInts(in.GetWeekDays()), LateAfterMinutes: int(in.GetLateAfterMinutes()), AbsenceLimitPercent: int(in.GetAbsenceLimitPercent()),
-	}, service.ProfileInput{Dre: in.Dre, Ugel: in.Ugel, ModularCode: in.ModularCode, Logo: in.Logo})
+	}, service.ProfileInput{Dre: in.Dre, Ugel: in.Ugel, ModularCode: in.ModularCode, Logo: in.Logo, Management: in.Management})
 	if err != nil {
 		return nil, s.fail("UpdateSettings", err)
 	}
 	return &academicv1.UpdateSettingsResponse{Context: withLogo(toContext(c), c)}, nil
+}
+
+func (s *academicServer) GetManagement(ctx context.Context, req *academicv1.GetManagementRequest) (*academicv1.GetManagementResponse, error) {
+	inst, management, err := s.academic.Management(ctx, bearer(ctx), req.GetInstitutionSlug())
+	if err != nil {
+		return nil, s.fail("GetManagement", err)
+	}
+	return &academicv1.GetManagementResponse{InstitutionSlug: inst.Slug, Management: management}, nil
 }
 
 // ---------- structure ----------

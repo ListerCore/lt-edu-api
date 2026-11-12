@@ -25,6 +25,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	AcademicService_GetContext_FullMethodName      = "/joseph.academic.v1.AcademicService/GetContext"
 	AcademicService_UpdateSettings_FullMethodName  = "/joseph.academic.v1.AcademicService/UpdateSettings"
+	AcademicService_GetManagement_FullMethodName   = "/joseph.academic.v1.AcademicService/GetManagement"
 	AcademicService_GetStructure_FullMethodName    = "/joseph.academic.v1.AcademicService/GetStructure"
 	AcademicService_CreateLevel_FullMethodName     = "/joseph.academic.v1.AcademicService/CreateLevel"
 	AcademicService_UpdateLevel_FullMethodName     = "/joseph.academic.v1.AcademicService/UpdateLevel"
@@ -64,6 +65,8 @@ type AcademicServiceClient interface {
 	// Institution profile: names, rules of its kind and settings
 	GetContext(ctx context.Context, in *GetContextRequest, opts ...grpc.CallOption) (*GetContextResponse, error)
 	UpdateSettings(ctx context.Context, in *UpdateSettingsRequest, opts ...grpc.CallOption) (*UpdateSettingsResponse, error)
+	// Management type (public | private), readable by every role of the institution, families included
+	GetManagement(ctx context.Context, in *GetManagementRequest, opts ...grpc.CallOption) (*GetManagementResponse, error)
 	// Levels (cycles, areas, programs) with their grades
 	GetStructure(ctx context.Context, in *GetStructureRequest, opts ...grpc.CallOption) (*GetStructureResponse, error)
 	CreateLevel(ctx context.Context, in *CreateLevelRequest, opts ...grpc.CallOption) (*CreateLevelResponse, error)
@@ -113,6 +116,16 @@ func (c *academicServiceClient) UpdateSettings(ctx context.Context, in *UpdateSe
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpdateSettingsResponse)
 	err := c.cc.Invoke(ctx, AcademicService_UpdateSettings_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *academicServiceClient) GetManagement(ctx context.Context, in *GetManagementRequest, opts ...grpc.CallOption) (*GetManagementResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetManagementResponse)
+	err := c.cc.Invoke(ctx, AcademicService_GetManagement_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -345,6 +358,8 @@ type AcademicServiceServer interface {
 	// Institution profile: names, rules of its kind and settings
 	GetContext(context.Context, *GetContextRequest) (*GetContextResponse, error)
 	UpdateSettings(context.Context, *UpdateSettingsRequest) (*UpdateSettingsResponse, error)
+	// Management type (public | private), readable by every role of the institution, families included
+	GetManagement(context.Context, *GetManagementRequest) (*GetManagementResponse, error)
 	// Levels (cycles, areas, programs) with their grades
 	GetStructure(context.Context, *GetStructureRequest) (*GetStructureResponse, error)
 	CreateLevel(context.Context, *CreateLevelRequest) (*CreateLevelResponse, error)
@@ -385,6 +400,9 @@ func (UnimplementedAcademicServiceServer) GetContext(context.Context, *GetContex
 }
 func (UnimplementedAcademicServiceServer) UpdateSettings(context.Context, *UpdateSettingsRequest) (*UpdateSettingsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateSettings not implemented")
+}
+func (UnimplementedAcademicServiceServer) GetManagement(context.Context, *GetManagementRequest) (*GetManagementResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetManagement not implemented")
 }
 func (UnimplementedAcademicServiceServer) GetStructure(context.Context, *GetStructureRequest) (*GetStructureResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetStructure not implemented")
@@ -502,6 +520,24 @@ func _AcademicService_UpdateSettings_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AcademicServiceServer).UpdateSettings(ctx, req.(*UpdateSettingsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AcademicService_GetManagement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetManagementRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AcademicServiceServer).GetManagement(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AcademicService_GetManagement_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AcademicServiceServer).GetManagement(ctx, req.(*GetManagementRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -898,6 +934,10 @@ var AcademicService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateSettings",
 			Handler:    _AcademicService_UpdateSettings_Handler,
+		},
+		{
+			MethodName: "GetManagement",
+			Handler:    _AcademicService_GetManagement_Handler,
 		},
 		{
 			MethodName: "GetStructure",

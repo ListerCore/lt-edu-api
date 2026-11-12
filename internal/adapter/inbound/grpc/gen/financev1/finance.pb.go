@@ -28,7 +28,7 @@ const (
 type FeeItem struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// enrollment | tuition | other
+	// enrollment | tuition | apafa | other. Public institutions take no tuition (apafa: cuota APAFA)
 	Concept       string `protobuf:"bytes,2,opt,name=concept,proto3" json:"concept,omitempty"`
 	Name          string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Amount        int64  `protobuf:"varint,4,opt,name=amount,proto3" json:"amount,omitempty"`
@@ -976,13 +976,14 @@ type Charge struct {
 	Id         string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	PeriodId   string                 `protobuf:"bytes,2,opt,name=period_id,json=periodId,proto3" json:"period_id,omitempty"`
 	PeriodName string                 `protobuf:"bytes,3,opt,name=period_name,json=periodName,proto3" json:"period_name,omitempty"`
-	Concept    string                 `protobuf:"bytes,4,opt,name=concept,proto3" json:"concept,omitempty"`
-	Name       string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
-	Amount     int64                  `protobuf:"varint,6,opt,name=amount,proto3" json:"amount,omitempty"`
-	Discount   int64                  `protobuf:"varint,7,opt,name=discount,proto3" json:"discount,omitempty"`
-	Paid       int64                  `protobuf:"varint,8,opt,name=paid,proto3" json:"paid,omitempty"`
-	Balance    int64                  `protobuf:"varint,9,opt,name=balance,proto3" json:"balance,omitempty"`
-	DueOn      string                 `protobuf:"bytes,10,opt,name=due_on,json=dueOn,proto3" json:"due_on,omitempty"`
+	// enrollment | tuition | apafa | other
+	Concept  string `protobuf:"bytes,4,opt,name=concept,proto3" json:"concept,omitempty"`
+	Name     string `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
+	Amount   int64  `protobuf:"varint,6,opt,name=amount,proto3" json:"amount,omitempty"`
+	Discount int64  `protobuf:"varint,7,opt,name=discount,proto3" json:"discount,omitempty"`
+	Paid     int64  `protobuf:"varint,8,opt,name=paid,proto3" json:"paid,omitempty"`
+	Balance  int64  `protobuf:"varint,9,opt,name=balance,proto3" json:"balance,omitempty"`
+	DueOn    string `protobuf:"bytes,10,opt,name=due_on,json=dueOn,proto3" json:"due_on,omitempty"`
 	// pending | void
 	Status        string `protobuf:"bytes,11,opt,name=status,proto3" json:"status,omitempty"`
 	VoidReason    string `protobuf:"bytes,12,opt,name=void_reason,json=voidReason,proto3" json:"void_reason,omitempty"`

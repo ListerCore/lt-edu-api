@@ -145,10 +145,13 @@ type Settings struct {
 	AbsenceLimitPercent int32 `protobuf:"varint,9,opt,name=absence_limit_percent,json=absenceLimitPercent,proto3" json:"absence_limit_percent,omitempty"`
 	// Official data for the report card; unset on an update keeps what is stored. Logo: image data URL (PNG, JPG,
 	// WebP or SVG, under 100 KB), "" removes it
-	Dre           *string `protobuf:"bytes,10,opt,name=dre,proto3,oneof" json:"dre,omitempty"`
-	Ugel          *string `protobuf:"bytes,11,opt,name=ugel,proto3,oneof" json:"ugel,omitempty"`
-	ModularCode   *string `protobuf:"bytes,12,opt,name=modular_code,json=modularCode,proto3,oneof" json:"modular_code,omitempty"`
-	Logo          *string `protobuf:"bytes,13,opt,name=logo,proto3,oneof" json:"logo,omitempty"`
+	Dre         *string `protobuf:"bytes,10,opt,name=dre,proto3,oneof" json:"dre,omitempty"`
+	Ugel        *string `protobuf:"bytes,11,opt,name=ugel,proto3,oneof" json:"ugel,omitempty"`
+	ModularCode *string `protobuf:"bytes,12,opt,name=modular_code,json=modularCode,proto3,oneof" json:"modular_code,omitempty"`
+	Logo        *string `protobuf:"bytes,13,opt,name=logo,proto3,oneof" json:"logo,omitempty"`
+	// Tipo de gestión: public (no tuition; families pay the enrollment and the APAFA fee) | private. Unset on an
+	// update keeps what is stored; turning public fails while open periods still have tuition in plans or owed
+	Management    *string `protobuf:"bytes,14,opt,name=management,proto3,oneof" json:"management,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -270,6 +273,13 @@ func (x *Settings) GetModularCode() string {
 func (x *Settings) GetLogo() string {
 	if x != nil && x.Logo != nil {
 		return *x.Logo
+	}
+	return ""
+}
+
+func (x *Settings) GetManagement() string {
+	if x != nil && x.Management != nil {
+		return *x.Management
 	}
 	return ""
 }
@@ -1482,6 +1492,104 @@ func (x *UpdateSettingsResponse) GetContext() *AcademicContext {
 	return nil
 }
 
+type GetManagementRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *GetManagementRequest) Reset() {
+	*x = GetManagementRequest{}
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetManagementRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetManagementRequest) ProtoMessage() {}
+
+func (x *GetManagementRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetManagementRequest.ProtoReflect.Descriptor instead.
+func (*GetManagementRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetManagementRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+type GetManagementResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The institution the session works on (an institution role always gets its own)
+	InstitutionSlug string `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	// public | private
+	Management    string `protobuf:"bytes,2,opt,name=management,proto3" json:"management,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetManagementResponse) Reset() {
+	*x = GetManagementResponse{}
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetManagementResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetManagementResponse) ProtoMessage() {}
+
+func (x *GetManagementResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetManagementResponse.ProtoReflect.Descriptor instead.
+func (*GetManagementResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GetManagementResponse) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *GetManagementResponse) GetManagement() string {
+	if x != nil {
+		return x.Management
+	}
+	return ""
+}
+
 type GetStructureRequest struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
@@ -1491,7 +1599,7 @@ type GetStructureRequest struct {
 
 func (x *GetStructureRequest) Reset() {
 	*x = GetStructureRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[16]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1503,7 +1611,7 @@ func (x *GetStructureRequest) String() string {
 func (*GetStructureRequest) ProtoMessage() {}
 
 func (x *GetStructureRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[16]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1516,7 +1624,7 @@ func (x *GetStructureRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStructureRequest.ProtoReflect.Descriptor instead.
 func (*GetStructureRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{16}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetStructureRequest) GetInstitutionSlug() string {
@@ -1536,7 +1644,7 @@ type GetStructureResponse struct {
 
 func (x *GetStructureResponse) Reset() {
 	*x = GetStructureResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[17]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1548,7 +1656,7 @@ func (x *GetStructureResponse) String() string {
 func (*GetStructureResponse) ProtoMessage() {}
 
 func (x *GetStructureResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[17]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1561,7 +1669,7 @@ func (x *GetStructureResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStructureResponse.ProtoReflect.Descriptor instead.
 func (*GetStructureResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{17}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetStructureResponse) GetContext() *AcademicContext {
@@ -1588,7 +1696,7 @@ type CreateLevelRequest struct {
 
 func (x *CreateLevelRequest) Reset() {
 	*x = CreateLevelRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[18]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1600,7 +1708,7 @@ func (x *CreateLevelRequest) String() string {
 func (*CreateLevelRequest) ProtoMessage() {}
 
 func (x *CreateLevelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[18]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1613,7 +1721,7 @@ func (x *CreateLevelRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateLevelRequest.ProtoReflect.Descriptor instead.
 func (*CreateLevelRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{18}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *CreateLevelRequest) GetInstitutionSlug() string {
@@ -1639,7 +1747,7 @@ type CreateLevelResponse struct {
 
 func (x *CreateLevelResponse) Reset() {
 	*x = CreateLevelResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[19]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1651,7 +1759,7 @@ func (x *CreateLevelResponse) String() string {
 func (*CreateLevelResponse) ProtoMessage() {}
 
 func (x *CreateLevelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[19]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1664,7 +1772,7 @@ func (x *CreateLevelResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateLevelResponse.ProtoReflect.Descriptor instead.
 func (*CreateLevelResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{19}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *CreateLevelResponse) GetLevel() *Level {
@@ -1685,7 +1793,7 @@ type UpdateLevelRequest struct {
 
 func (x *UpdateLevelRequest) Reset() {
 	*x = UpdateLevelRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[20]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1697,7 +1805,7 @@ func (x *UpdateLevelRequest) String() string {
 func (*UpdateLevelRequest) ProtoMessage() {}
 
 func (x *UpdateLevelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[20]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1710,7 +1818,7 @@ func (x *UpdateLevelRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLevelRequest.ProtoReflect.Descriptor instead.
 func (*UpdateLevelRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{20}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *UpdateLevelRequest) GetInstitutionSlug() string {
@@ -1743,7 +1851,7 @@ type UpdateLevelResponse struct {
 
 func (x *UpdateLevelResponse) Reset() {
 	*x = UpdateLevelResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[21]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1755,7 +1863,7 @@ func (x *UpdateLevelResponse) String() string {
 func (*UpdateLevelResponse) ProtoMessage() {}
 
 func (x *UpdateLevelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[21]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1768,7 +1876,7 @@ func (x *UpdateLevelResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateLevelResponse.ProtoReflect.Descriptor instead.
 func (*UpdateLevelResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{21}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *UpdateLevelResponse) GetLevel() *Level {
@@ -1788,7 +1896,7 @@ type DeleteLevelRequest struct {
 
 func (x *DeleteLevelRequest) Reset() {
 	*x = DeleteLevelRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[22]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1800,7 +1908,7 @@ func (x *DeleteLevelRequest) String() string {
 func (*DeleteLevelRequest) ProtoMessage() {}
 
 func (x *DeleteLevelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[22]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1813,7 +1921,7 @@ func (x *DeleteLevelRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteLevelRequest.ProtoReflect.Descriptor instead.
 func (*DeleteLevelRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{22}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *DeleteLevelRequest) GetInstitutionSlug() string {
@@ -1838,7 +1946,7 @@ type DeleteLevelResponse struct {
 
 func (x *DeleteLevelResponse) Reset() {
 	*x = DeleteLevelResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[23]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1850,7 +1958,7 @@ func (x *DeleteLevelResponse) String() string {
 func (*DeleteLevelResponse) ProtoMessage() {}
 
 func (x *DeleteLevelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[23]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1863,7 +1971,7 @@ func (x *DeleteLevelResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteLevelResponse.ProtoReflect.Descriptor instead.
 func (*DeleteLevelResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{23}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{25}
 }
 
 type ReorderLevelsRequest struct {
@@ -1876,7 +1984,7 @@ type ReorderLevelsRequest struct {
 
 func (x *ReorderLevelsRequest) Reset() {
 	*x = ReorderLevelsRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[24]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1888,7 +1996,7 @@ func (x *ReorderLevelsRequest) String() string {
 func (*ReorderLevelsRequest) ProtoMessage() {}
 
 func (x *ReorderLevelsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[24]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1901,7 +2009,7 @@ func (x *ReorderLevelsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReorderLevelsRequest.ProtoReflect.Descriptor instead.
 func (*ReorderLevelsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{24}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ReorderLevelsRequest) GetInstitutionSlug() string {
@@ -1926,7 +2034,7 @@ type ReorderLevelsResponse struct {
 
 func (x *ReorderLevelsResponse) Reset() {
 	*x = ReorderLevelsResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[25]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1938,7 +2046,7 @@ func (x *ReorderLevelsResponse) String() string {
 func (*ReorderLevelsResponse) ProtoMessage() {}
 
 func (x *ReorderLevelsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[25]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1951,7 +2059,7 @@ func (x *ReorderLevelsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReorderLevelsResponse.ProtoReflect.Descriptor instead.
 func (*ReorderLevelsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{25}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{27}
 }
 
 type CreateGradeRequest struct {
@@ -1965,7 +2073,7 @@ type CreateGradeRequest struct {
 
 func (x *CreateGradeRequest) Reset() {
 	*x = CreateGradeRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[26]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1977,7 +2085,7 @@ func (x *CreateGradeRequest) String() string {
 func (*CreateGradeRequest) ProtoMessage() {}
 
 func (x *CreateGradeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[26]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1990,7 +2098,7 @@ func (x *CreateGradeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateGradeRequest.ProtoReflect.Descriptor instead.
 func (*CreateGradeRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{26}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *CreateGradeRequest) GetInstitutionSlug() string {
@@ -2023,7 +2131,7 @@ type CreateGradeResponse struct {
 
 func (x *CreateGradeResponse) Reset() {
 	*x = CreateGradeResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[27]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2035,7 +2143,7 @@ func (x *CreateGradeResponse) String() string {
 func (*CreateGradeResponse) ProtoMessage() {}
 
 func (x *CreateGradeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[27]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2048,7 +2156,7 @@ func (x *CreateGradeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateGradeResponse.ProtoReflect.Descriptor instead.
 func (*CreateGradeResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{27}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *CreateGradeResponse) GetGrade() *Grade {
@@ -2069,7 +2177,7 @@ type UpdateGradeRequest struct {
 
 func (x *UpdateGradeRequest) Reset() {
 	*x = UpdateGradeRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[28]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2081,7 +2189,7 @@ func (x *UpdateGradeRequest) String() string {
 func (*UpdateGradeRequest) ProtoMessage() {}
 
 func (x *UpdateGradeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[28]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2094,7 +2202,7 @@ func (x *UpdateGradeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateGradeRequest.ProtoReflect.Descriptor instead.
 func (*UpdateGradeRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{28}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *UpdateGradeRequest) GetInstitutionSlug() string {
@@ -2127,7 +2235,7 @@ type UpdateGradeResponse struct {
 
 func (x *UpdateGradeResponse) Reset() {
 	*x = UpdateGradeResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[29]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2139,7 +2247,7 @@ func (x *UpdateGradeResponse) String() string {
 func (*UpdateGradeResponse) ProtoMessage() {}
 
 func (x *UpdateGradeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[29]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2152,7 +2260,7 @@ func (x *UpdateGradeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateGradeResponse.ProtoReflect.Descriptor instead.
 func (*UpdateGradeResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{29}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *UpdateGradeResponse) GetGrade() *Grade {
@@ -2172,7 +2280,7 @@ type DeleteGradeRequest struct {
 
 func (x *DeleteGradeRequest) Reset() {
 	*x = DeleteGradeRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[30]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2184,7 +2292,7 @@ func (x *DeleteGradeRequest) String() string {
 func (*DeleteGradeRequest) ProtoMessage() {}
 
 func (x *DeleteGradeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[30]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2197,7 +2305,7 @@ func (x *DeleteGradeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteGradeRequest.ProtoReflect.Descriptor instead.
 func (*DeleteGradeRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{30}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *DeleteGradeRequest) GetInstitutionSlug() string {
@@ -2222,7 +2330,7 @@ type DeleteGradeResponse struct {
 
 func (x *DeleteGradeResponse) Reset() {
 	*x = DeleteGradeResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[31]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2234,7 +2342,7 @@ func (x *DeleteGradeResponse) String() string {
 func (*DeleteGradeResponse) ProtoMessage() {}
 
 func (x *DeleteGradeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[31]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2247,7 +2355,7 @@ func (x *DeleteGradeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteGradeResponse.ProtoReflect.Descriptor instead.
 func (*DeleteGradeResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{31}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{33}
 }
 
 type ReorderGradesRequest struct {
@@ -2261,7 +2369,7 @@ type ReorderGradesRequest struct {
 
 func (x *ReorderGradesRequest) Reset() {
 	*x = ReorderGradesRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[32]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2273,7 +2381,7 @@ func (x *ReorderGradesRequest) String() string {
 func (*ReorderGradesRequest) ProtoMessage() {}
 
 func (x *ReorderGradesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[32]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2286,7 +2394,7 @@ func (x *ReorderGradesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReorderGradesRequest.ProtoReflect.Descriptor instead.
 func (*ReorderGradesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{32}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *ReorderGradesRequest) GetInstitutionSlug() string {
@@ -2318,7 +2426,7 @@ type ReorderGradesResponse struct {
 
 func (x *ReorderGradesResponse) Reset() {
 	*x = ReorderGradesResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[33]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2330,7 +2438,7 @@ func (x *ReorderGradesResponse) String() string {
 func (*ReorderGradesResponse) ProtoMessage() {}
 
 func (x *ReorderGradesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[33]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2343,7 +2451,7 @@ func (x *ReorderGradesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReorderGradesResponse.ProtoReflect.Descriptor instead.
 func (*ReorderGradesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{33}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{35}
 }
 
 type ApplyTemplateRequest struct {
@@ -2355,7 +2463,7 @@ type ApplyTemplateRequest struct {
 
 func (x *ApplyTemplateRequest) Reset() {
 	*x = ApplyTemplateRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[34]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2367,7 +2475,7 @@ func (x *ApplyTemplateRequest) String() string {
 func (*ApplyTemplateRequest) ProtoMessage() {}
 
 func (x *ApplyTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[34]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2380,7 +2488,7 @@ func (x *ApplyTemplateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplyTemplateRequest.ProtoReflect.Descriptor instead.
 func (*ApplyTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{34}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ApplyTemplateRequest) GetInstitutionSlug() string {
@@ -2399,7 +2507,7 @@ type ApplyTemplateResponse struct {
 
 func (x *ApplyTemplateResponse) Reset() {
 	*x = ApplyTemplateResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[35]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2411,7 +2519,7 @@ func (x *ApplyTemplateResponse) String() string {
 func (*ApplyTemplateResponse) ProtoMessage() {}
 
 func (x *ApplyTemplateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[35]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2424,7 +2532,7 @@ func (x *ApplyTemplateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplyTemplateResponse.ProtoReflect.Descriptor instead.
 func (*ApplyTemplateResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{35}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *ApplyTemplateResponse) GetLevels() []*Level {
@@ -2443,7 +2551,7 @@ type ListPeriodsRequest struct {
 
 func (x *ListPeriodsRequest) Reset() {
 	*x = ListPeriodsRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[36]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2455,7 +2563,7 @@ func (x *ListPeriodsRequest) String() string {
 func (*ListPeriodsRequest) ProtoMessage() {}
 
 func (x *ListPeriodsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[36]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2468,7 +2576,7 @@ func (x *ListPeriodsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPeriodsRequest.ProtoReflect.Descriptor instead.
 func (*ListPeriodsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{36}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *ListPeriodsRequest) GetInstitutionSlug() string {
@@ -2488,7 +2596,7 @@ type ListPeriodsResponse struct {
 
 func (x *ListPeriodsResponse) Reset() {
 	*x = ListPeriodsResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[37]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2500,7 +2608,7 @@ func (x *ListPeriodsResponse) String() string {
 func (*ListPeriodsResponse) ProtoMessage() {}
 
 func (x *ListPeriodsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[37]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2513,7 +2621,7 @@ func (x *ListPeriodsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPeriodsResponse.ProtoReflect.Descriptor instead.
 func (*ListPeriodsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{37}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *ListPeriodsResponse) GetContext() *AcademicContext {
@@ -2540,7 +2648,7 @@ type GetPeriodRequest struct {
 
 func (x *GetPeriodRequest) Reset() {
 	*x = GetPeriodRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[38]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2552,7 +2660,7 @@ func (x *GetPeriodRequest) String() string {
 func (*GetPeriodRequest) ProtoMessage() {}
 
 func (x *GetPeriodRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[38]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2565,7 +2673,7 @@ func (x *GetPeriodRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPeriodRequest.ProtoReflect.Descriptor instead.
 func (*GetPeriodRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{38}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *GetPeriodRequest) GetInstitutionSlug() string {
@@ -2596,7 +2704,7 @@ type GetPeriodResponse struct {
 
 func (x *GetPeriodResponse) Reset() {
 	*x = GetPeriodResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[39]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2608,7 +2716,7 @@ func (x *GetPeriodResponse) String() string {
 func (*GetPeriodResponse) ProtoMessage() {}
 
 func (x *GetPeriodResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[39]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2621,7 +2729,7 @@ func (x *GetPeriodResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPeriodResponse.ProtoReflect.Descriptor instead.
 func (*GetPeriodResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{39}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *GetPeriodResponse) GetContext() *AcademicContext {
@@ -2669,7 +2777,7 @@ type CreatePeriodRequest struct {
 
 func (x *CreatePeriodRequest) Reset() {
 	*x = CreatePeriodRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[40]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2681,7 +2789,7 @@ func (x *CreatePeriodRequest) String() string {
 func (*CreatePeriodRequest) ProtoMessage() {}
 
 func (x *CreatePeriodRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[40]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2694,7 +2802,7 @@ func (x *CreatePeriodRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePeriodRequest.ProtoReflect.Descriptor instead.
 func (*CreatePeriodRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{40}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *CreatePeriodRequest) GetInstitutionSlug() string {
@@ -2720,7 +2828,7 @@ type CreatePeriodResponse struct {
 
 func (x *CreatePeriodResponse) Reset() {
 	*x = CreatePeriodResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[41]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2732,7 +2840,7 @@ func (x *CreatePeriodResponse) String() string {
 func (*CreatePeriodResponse) ProtoMessage() {}
 
 func (x *CreatePeriodResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[41]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2745,7 +2853,7 @@ func (x *CreatePeriodResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePeriodResponse.ProtoReflect.Descriptor instead.
 func (*CreatePeriodResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{41}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *CreatePeriodResponse) GetPeriod() *Period {
@@ -2766,7 +2874,7 @@ type UpdatePeriodRequest struct {
 
 func (x *UpdatePeriodRequest) Reset() {
 	*x = UpdatePeriodRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[42]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2778,7 +2886,7 @@ func (x *UpdatePeriodRequest) String() string {
 func (*UpdatePeriodRequest) ProtoMessage() {}
 
 func (x *UpdatePeriodRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[42]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2791,7 +2899,7 @@ func (x *UpdatePeriodRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePeriodRequest.ProtoReflect.Descriptor instead.
 func (*UpdatePeriodRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{42}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *UpdatePeriodRequest) GetInstitutionSlug() string {
@@ -2824,7 +2932,7 @@ type UpdatePeriodResponse struct {
 
 func (x *UpdatePeriodResponse) Reset() {
 	*x = UpdatePeriodResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[43]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2836,7 +2944,7 @@ func (x *UpdatePeriodResponse) String() string {
 func (*UpdatePeriodResponse) ProtoMessage() {}
 
 func (x *UpdatePeriodResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[43]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2849,7 +2957,7 @@ func (x *UpdatePeriodResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePeriodResponse.ProtoReflect.Descriptor instead.
 func (*UpdatePeriodResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{43}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *UpdatePeriodResponse) GetPeriod() *Period {
@@ -2871,7 +2979,7 @@ type SetPeriodStatusRequest struct {
 
 func (x *SetPeriodStatusRequest) Reset() {
 	*x = SetPeriodStatusRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[44]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2883,7 +2991,7 @@ func (x *SetPeriodStatusRequest) String() string {
 func (*SetPeriodStatusRequest) ProtoMessage() {}
 
 func (x *SetPeriodStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[44]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2896,7 +3004,7 @@ func (x *SetPeriodStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetPeriodStatusRequest.ProtoReflect.Descriptor instead.
 func (*SetPeriodStatusRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{44}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *SetPeriodStatusRequest) GetInstitutionSlug() string {
@@ -2929,7 +3037,7 @@ type SetPeriodStatusResponse struct {
 
 func (x *SetPeriodStatusResponse) Reset() {
 	*x = SetPeriodStatusResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[45]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2941,7 +3049,7 @@ func (x *SetPeriodStatusResponse) String() string {
 func (*SetPeriodStatusResponse) ProtoMessage() {}
 
 func (x *SetPeriodStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[45]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2954,7 +3062,7 @@ func (x *SetPeriodStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetPeriodStatusResponse.ProtoReflect.Descriptor instead.
 func (*SetPeriodStatusResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{45}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *SetPeriodStatusResponse) GetPeriod() *Period {
@@ -2974,7 +3082,7 @@ type DeletePeriodRequest struct {
 
 func (x *DeletePeriodRequest) Reset() {
 	*x = DeletePeriodRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[46]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2986,7 +3094,7 @@ func (x *DeletePeriodRequest) String() string {
 func (*DeletePeriodRequest) ProtoMessage() {}
 
 func (x *DeletePeriodRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[46]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2999,7 +3107,7 @@ func (x *DeletePeriodRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePeriodRequest.ProtoReflect.Descriptor instead.
 func (*DeletePeriodRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{46}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *DeletePeriodRequest) GetInstitutionSlug() string {
@@ -3024,7 +3132,7 @@ type DeletePeriodResponse struct {
 
 func (x *DeletePeriodResponse) Reset() {
 	*x = DeletePeriodResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[47]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3036,7 +3144,7 @@ func (x *DeletePeriodResponse) String() string {
 func (*DeletePeriodResponse) ProtoMessage() {}
 
 func (x *DeletePeriodResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[47]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3049,7 +3157,7 @@ func (x *DeletePeriodResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePeriodResponse.ProtoReflect.Descriptor instead.
 func (*DeletePeriodResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{47}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{49}
 }
 
 type UpdateTermRequest struct {
@@ -3067,7 +3175,7 @@ type UpdateTermRequest struct {
 
 func (x *UpdateTermRequest) Reset() {
 	*x = UpdateTermRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[48]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3079,7 +3187,7 @@ func (x *UpdateTermRequest) String() string {
 func (*UpdateTermRequest) ProtoMessage() {}
 
 func (x *UpdateTermRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[48]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3092,7 +3200,7 @@ func (x *UpdateTermRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTermRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTermRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{48}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *UpdateTermRequest) GetInstitutionSlug() string {
@@ -3153,7 +3261,7 @@ type UpdateTermResponse struct {
 
 func (x *UpdateTermResponse) Reset() {
 	*x = UpdateTermResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[49]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3165,7 +3273,7 @@ func (x *UpdateTermResponse) String() string {
 func (*UpdateTermResponse) ProtoMessage() {}
 
 func (x *UpdateTermResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[49]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3178,7 +3286,7 @@ func (x *UpdateTermResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTermResponse.ProtoReflect.Descriptor instead.
 func (*UpdateTermResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{49}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *UpdateTermResponse) GetTerm() *Term {
@@ -3206,7 +3314,7 @@ type CreateSectionsRequest struct {
 
 func (x *CreateSectionsRequest) Reset() {
 	*x = CreateSectionsRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[50]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3218,7 +3326,7 @@ func (x *CreateSectionsRequest) String() string {
 func (*CreateSectionsRequest) ProtoMessage() {}
 
 func (x *CreateSectionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[50]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3231,7 +3339,7 @@ func (x *CreateSectionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSectionsRequest.ProtoReflect.Descriptor instead.
 func (*CreateSectionsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{50}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *CreateSectionsRequest) GetInstitutionSlug() string {
@@ -3306,7 +3414,7 @@ type CreateSectionsResponse struct {
 
 func (x *CreateSectionsResponse) Reset() {
 	*x = CreateSectionsResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[51]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3318,7 +3426,7 @@ func (x *CreateSectionsResponse) String() string {
 func (*CreateSectionsResponse) ProtoMessage() {}
 
 func (x *CreateSectionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[51]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3331,7 +3439,7 @@ func (x *CreateSectionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSectionsResponse.ProtoReflect.Descriptor instead.
 func (*CreateSectionsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{51}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *CreateSectionsResponse) GetSections() []*Section {
@@ -3352,7 +3460,7 @@ type UpdateSectionRequest struct {
 
 func (x *UpdateSectionRequest) Reset() {
 	*x = UpdateSectionRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[52]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3364,7 +3472,7 @@ func (x *UpdateSectionRequest) String() string {
 func (*UpdateSectionRequest) ProtoMessage() {}
 
 func (x *UpdateSectionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[52]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3377,7 +3485,7 @@ func (x *UpdateSectionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateSectionRequest.ProtoReflect.Descriptor instead.
 func (*UpdateSectionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{52}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *UpdateSectionRequest) GetInstitutionSlug() string {
@@ -3410,7 +3518,7 @@ type UpdateSectionResponse struct {
 
 func (x *UpdateSectionResponse) Reset() {
 	*x = UpdateSectionResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[53]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3422,7 +3530,7 @@ func (x *UpdateSectionResponse) String() string {
 func (*UpdateSectionResponse) ProtoMessage() {}
 
 func (x *UpdateSectionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[53]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3435,7 +3543,7 @@ func (x *UpdateSectionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateSectionResponse.ProtoReflect.Descriptor instead.
 func (*UpdateSectionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{53}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *UpdateSectionResponse) GetSection() *Section {
@@ -3455,7 +3563,7 @@ type DeleteSectionRequest struct {
 
 func (x *DeleteSectionRequest) Reset() {
 	*x = DeleteSectionRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[54]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3467,7 +3575,7 @@ func (x *DeleteSectionRequest) String() string {
 func (*DeleteSectionRequest) ProtoMessage() {}
 
 func (x *DeleteSectionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[54]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3480,7 +3588,7 @@ func (x *DeleteSectionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSectionRequest.ProtoReflect.Descriptor instead.
 func (*DeleteSectionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{54}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *DeleteSectionRequest) GetInstitutionSlug() string {
@@ -3505,7 +3613,7 @@ type DeleteSectionResponse struct {
 
 func (x *DeleteSectionResponse) Reset() {
 	*x = DeleteSectionResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[55]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3517,7 +3625,7 @@ func (x *DeleteSectionResponse) String() string {
 func (*DeleteSectionResponse) ProtoMessage() {}
 
 func (x *DeleteSectionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[55]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3530,7 +3638,7 @@ func (x *DeleteSectionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSectionResponse.ProtoReflect.Descriptor instead.
 func (*DeleteSectionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{55}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{57}
 }
 
 type CopySectionsRequest struct {
@@ -3544,7 +3652,7 @@ type CopySectionsRequest struct {
 
 func (x *CopySectionsRequest) Reset() {
 	*x = CopySectionsRequest{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[56]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3556,7 +3664,7 @@ func (x *CopySectionsRequest) String() string {
 func (*CopySectionsRequest) ProtoMessage() {}
 
 func (x *CopySectionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[56]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3569,7 +3677,7 @@ func (x *CopySectionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CopySectionsRequest.ProtoReflect.Descriptor instead.
 func (*CopySectionsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{56}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *CopySectionsRequest) GetInstitutionSlug() string {
@@ -3602,7 +3710,7 @@ type CopySectionsResponse struct {
 
 func (x *CopySectionsResponse) Reset() {
 	*x = CopySectionsResponse{}
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[57]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3614,7 +3722,7 @@ func (x *CopySectionsResponse) String() string {
 func (*CopySectionsResponse) ProtoMessage() {}
 
 func (x *CopySectionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_academic_proto_msgTypes[57]
+	mi := &file_joseph_academic_v1_academic_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3627,7 +3735,7 @@ func (x *CopySectionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CopySectionsResponse.ProtoReflect.Descriptor instead.
 func (*CopySectionsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{57}
+	return file_joseph_academic_v1_academic_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *CopySectionsResponse) GetAdded() int32 {
@@ -3651,7 +3759,7 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\asection\x18\x05 \x01(\tR\asection\x12\x1a\n" +
 	"\bsections\x18\x06 \x01(\tR\bsections\x12\x16\n" +
 	"\x06period\x18\a \x01(\tR\x06period\x12\x18\n" +
-	"\aperiods\x18\b \x01(\tR\aperiods\"\x8d\x04\n" +
+	"\aperiods\x18\b \x01(\tR\aperiods\"\xc1\x04\n" +
 	"\bSettings\x12\x1f\n" +
 	"\vterm_scheme\x18\x01 \x01(\tR\n" +
 	"termScheme\x12#\n" +
@@ -3667,12 +3775,16 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	" \x01(\tH\x01R\x03dre\x88\x01\x01\x12\x17\n" +
 	"\x04ugel\x18\v \x01(\tH\x02R\x04ugel\x88\x01\x01\x12&\n" +
 	"\fmodular_code\x18\f \x01(\tH\x03R\vmodularCode\x88\x01\x01\x12\x17\n" +
-	"\x04logo\x18\r \x01(\tH\x04R\x04logo\x88\x01\x01B\x10\n" +
+	"\x04logo\x18\r \x01(\tH\x04R\x04logo\x88\x01\x01\x12#\n" +
+	"\n" +
+	"management\x18\x0e \x01(\tH\x05R\n" +
+	"management\x88\x01\x01B\x10\n" +
 	"\x0e_passing_gradeB\x06\n" +
 	"\x04_dreB\a\n" +
 	"\x05_ugelB\x0f\n" +
 	"\r_modular_codeB\a\n" +
-	"\x05_logo\"\xc9\x04\n" +
+	"\x05_logoB\r\n" +
+	"\v_management\"\xc9\x04\n" +
 	"\x0fAcademicContext\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12)\n" +
 	"\x10institution_name\x18\x02 \x01(\tR\x0finstitutionName\x12)\n" +
@@ -3796,7 +3908,14 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x128\n" +
 	"\bsettings\x18\x02 \x01(\v2\x1c.joseph.academic.v1.SettingsR\bsettings\"W\n" +
 	"\x16UpdateSettingsResponse\x12=\n" +
-	"\acontext\x18\x01 \x01(\v2#.joseph.academic.v1.AcademicContextR\acontext\"@\n" +
+	"\acontext\x18\x01 \x01(\v2#.joseph.academic.v1.AcademicContextR\acontext\"A\n" +
+	"\x14GetManagementRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"b\n" +
+	"\x15GetManagementResponse\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1e\n" +
+	"\n" +
+	"management\x18\x02 \x01(\tR\n" +
+	"management\"@\n" +
 	"\x13GetStructureRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x88\x01\n" +
 	"\x14GetStructureResponse\x12=\n" +
@@ -3918,11 +4037,12 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12$\n" +
 	"\x0efrom_period_id\x18\x03 \x01(\tR\ffromPeriodId\",\n" +
 	"\x14CopySectionsResponse\x12\x14\n" +
-	"\x05added\x18\x01 \x01(\x05R\x05added2\xf0\x11\n" +
+	"\x05added\x18\x01 \x01(\x05R\x05added2\xd6\x12\n" +
 	"\x0fAcademicService\x12[\n" +
 	"\n" +
 	"GetContext\x12%.joseph.academic.v1.GetContextRequest\x1a&.joseph.academic.v1.GetContextResponse\x12g\n" +
-	"\x0eUpdateSettings\x12).joseph.academic.v1.UpdateSettingsRequest\x1a*.joseph.academic.v1.UpdateSettingsResponse\x12a\n" +
+	"\x0eUpdateSettings\x12).joseph.academic.v1.UpdateSettingsRequest\x1a*.joseph.academic.v1.UpdateSettingsResponse\x12d\n" +
+	"\rGetManagement\x12(.joseph.academic.v1.GetManagementRequest\x1a).joseph.academic.v1.GetManagementResponse\x12a\n" +
 	"\fGetStructure\x12'.joseph.academic.v1.GetStructureRequest\x1a(.joseph.academic.v1.GetStructureResponse\x12^\n" +
 	"\vCreateLevel\x12&.joseph.academic.v1.CreateLevelRequest\x1a'.joseph.academic.v1.CreateLevelResponse\x12^\n" +
 	"\vUpdateLevel\x12&.joseph.academic.v1.UpdateLevelRequest\x1a'.joseph.academic.v1.UpdateLevelResponse\x12^\n" +
@@ -3958,7 +4078,7 @@ func file_joseph_academic_v1_academic_proto_rawDescGZIP() []byte {
 	return file_joseph_academic_v1_academic_proto_rawDescData
 }
 
-var file_joseph_academic_v1_academic_proto_msgTypes = make([]protoimpl.MessageInfo, 58)
+var file_joseph_academic_v1_academic_proto_msgTypes = make([]protoimpl.MessageInfo, 60)
 var file_joseph_academic_v1_academic_proto_goTypes = []any{
 	(*Vocabulary)(nil),              // 0: joseph.academic.v1.Vocabulary
 	(*Settings)(nil),                // 1: joseph.academic.v1.Settings
@@ -3976,48 +4096,50 @@ var file_joseph_academic_v1_academic_proto_goTypes = []any{
 	(*GetContextResponse)(nil),      // 13: joseph.academic.v1.GetContextResponse
 	(*UpdateSettingsRequest)(nil),   // 14: joseph.academic.v1.UpdateSettingsRequest
 	(*UpdateSettingsResponse)(nil),  // 15: joseph.academic.v1.UpdateSettingsResponse
-	(*GetStructureRequest)(nil),     // 16: joseph.academic.v1.GetStructureRequest
-	(*GetStructureResponse)(nil),    // 17: joseph.academic.v1.GetStructureResponse
-	(*CreateLevelRequest)(nil),      // 18: joseph.academic.v1.CreateLevelRequest
-	(*CreateLevelResponse)(nil),     // 19: joseph.academic.v1.CreateLevelResponse
-	(*UpdateLevelRequest)(nil),      // 20: joseph.academic.v1.UpdateLevelRequest
-	(*UpdateLevelResponse)(nil),     // 21: joseph.academic.v1.UpdateLevelResponse
-	(*DeleteLevelRequest)(nil),      // 22: joseph.academic.v1.DeleteLevelRequest
-	(*DeleteLevelResponse)(nil),     // 23: joseph.academic.v1.DeleteLevelResponse
-	(*ReorderLevelsRequest)(nil),    // 24: joseph.academic.v1.ReorderLevelsRequest
-	(*ReorderLevelsResponse)(nil),   // 25: joseph.academic.v1.ReorderLevelsResponse
-	(*CreateGradeRequest)(nil),      // 26: joseph.academic.v1.CreateGradeRequest
-	(*CreateGradeResponse)(nil),     // 27: joseph.academic.v1.CreateGradeResponse
-	(*UpdateGradeRequest)(nil),      // 28: joseph.academic.v1.UpdateGradeRequest
-	(*UpdateGradeResponse)(nil),     // 29: joseph.academic.v1.UpdateGradeResponse
-	(*DeleteGradeRequest)(nil),      // 30: joseph.academic.v1.DeleteGradeRequest
-	(*DeleteGradeResponse)(nil),     // 31: joseph.academic.v1.DeleteGradeResponse
-	(*ReorderGradesRequest)(nil),    // 32: joseph.academic.v1.ReorderGradesRequest
-	(*ReorderGradesResponse)(nil),   // 33: joseph.academic.v1.ReorderGradesResponse
-	(*ApplyTemplateRequest)(nil),    // 34: joseph.academic.v1.ApplyTemplateRequest
-	(*ApplyTemplateResponse)(nil),   // 35: joseph.academic.v1.ApplyTemplateResponse
-	(*ListPeriodsRequest)(nil),      // 36: joseph.academic.v1.ListPeriodsRequest
-	(*ListPeriodsResponse)(nil),     // 37: joseph.academic.v1.ListPeriodsResponse
-	(*GetPeriodRequest)(nil),        // 38: joseph.academic.v1.GetPeriodRequest
-	(*GetPeriodResponse)(nil),       // 39: joseph.academic.v1.GetPeriodResponse
-	(*CreatePeriodRequest)(nil),     // 40: joseph.academic.v1.CreatePeriodRequest
-	(*CreatePeriodResponse)(nil),    // 41: joseph.academic.v1.CreatePeriodResponse
-	(*UpdatePeriodRequest)(nil),     // 42: joseph.academic.v1.UpdatePeriodRequest
-	(*UpdatePeriodResponse)(nil),    // 43: joseph.academic.v1.UpdatePeriodResponse
-	(*SetPeriodStatusRequest)(nil),  // 44: joseph.academic.v1.SetPeriodStatusRequest
-	(*SetPeriodStatusResponse)(nil), // 45: joseph.academic.v1.SetPeriodStatusResponse
-	(*DeletePeriodRequest)(nil),     // 46: joseph.academic.v1.DeletePeriodRequest
-	(*DeletePeriodResponse)(nil),    // 47: joseph.academic.v1.DeletePeriodResponse
-	(*UpdateTermRequest)(nil),       // 48: joseph.academic.v1.UpdateTermRequest
-	(*UpdateTermResponse)(nil),      // 49: joseph.academic.v1.UpdateTermResponse
-	(*CreateSectionsRequest)(nil),   // 50: joseph.academic.v1.CreateSectionsRequest
-	(*CreateSectionsResponse)(nil),  // 51: joseph.academic.v1.CreateSectionsResponse
-	(*UpdateSectionRequest)(nil),    // 52: joseph.academic.v1.UpdateSectionRequest
-	(*UpdateSectionResponse)(nil),   // 53: joseph.academic.v1.UpdateSectionResponse
-	(*DeleteSectionRequest)(nil),    // 54: joseph.academic.v1.DeleteSectionRequest
-	(*DeleteSectionResponse)(nil),   // 55: joseph.academic.v1.DeleteSectionResponse
-	(*CopySectionsRequest)(nil),     // 56: joseph.academic.v1.CopySectionsRequest
-	(*CopySectionsResponse)(nil),    // 57: joseph.academic.v1.CopySectionsResponse
+	(*GetManagementRequest)(nil),    // 16: joseph.academic.v1.GetManagementRequest
+	(*GetManagementResponse)(nil),   // 17: joseph.academic.v1.GetManagementResponse
+	(*GetStructureRequest)(nil),     // 18: joseph.academic.v1.GetStructureRequest
+	(*GetStructureResponse)(nil),    // 19: joseph.academic.v1.GetStructureResponse
+	(*CreateLevelRequest)(nil),      // 20: joseph.academic.v1.CreateLevelRequest
+	(*CreateLevelResponse)(nil),     // 21: joseph.academic.v1.CreateLevelResponse
+	(*UpdateLevelRequest)(nil),      // 22: joseph.academic.v1.UpdateLevelRequest
+	(*UpdateLevelResponse)(nil),     // 23: joseph.academic.v1.UpdateLevelResponse
+	(*DeleteLevelRequest)(nil),      // 24: joseph.academic.v1.DeleteLevelRequest
+	(*DeleteLevelResponse)(nil),     // 25: joseph.academic.v1.DeleteLevelResponse
+	(*ReorderLevelsRequest)(nil),    // 26: joseph.academic.v1.ReorderLevelsRequest
+	(*ReorderLevelsResponse)(nil),   // 27: joseph.academic.v1.ReorderLevelsResponse
+	(*CreateGradeRequest)(nil),      // 28: joseph.academic.v1.CreateGradeRequest
+	(*CreateGradeResponse)(nil),     // 29: joseph.academic.v1.CreateGradeResponse
+	(*UpdateGradeRequest)(nil),      // 30: joseph.academic.v1.UpdateGradeRequest
+	(*UpdateGradeResponse)(nil),     // 31: joseph.academic.v1.UpdateGradeResponse
+	(*DeleteGradeRequest)(nil),      // 32: joseph.academic.v1.DeleteGradeRequest
+	(*DeleteGradeResponse)(nil),     // 33: joseph.academic.v1.DeleteGradeResponse
+	(*ReorderGradesRequest)(nil),    // 34: joseph.academic.v1.ReorderGradesRequest
+	(*ReorderGradesResponse)(nil),   // 35: joseph.academic.v1.ReorderGradesResponse
+	(*ApplyTemplateRequest)(nil),    // 36: joseph.academic.v1.ApplyTemplateRequest
+	(*ApplyTemplateResponse)(nil),   // 37: joseph.academic.v1.ApplyTemplateResponse
+	(*ListPeriodsRequest)(nil),      // 38: joseph.academic.v1.ListPeriodsRequest
+	(*ListPeriodsResponse)(nil),     // 39: joseph.academic.v1.ListPeriodsResponse
+	(*GetPeriodRequest)(nil),        // 40: joseph.academic.v1.GetPeriodRequest
+	(*GetPeriodResponse)(nil),       // 41: joseph.academic.v1.GetPeriodResponse
+	(*CreatePeriodRequest)(nil),     // 42: joseph.academic.v1.CreatePeriodRequest
+	(*CreatePeriodResponse)(nil),    // 43: joseph.academic.v1.CreatePeriodResponse
+	(*UpdatePeriodRequest)(nil),     // 44: joseph.academic.v1.UpdatePeriodRequest
+	(*UpdatePeriodResponse)(nil),    // 45: joseph.academic.v1.UpdatePeriodResponse
+	(*SetPeriodStatusRequest)(nil),  // 46: joseph.academic.v1.SetPeriodStatusRequest
+	(*SetPeriodStatusResponse)(nil), // 47: joseph.academic.v1.SetPeriodStatusResponse
+	(*DeletePeriodRequest)(nil),     // 48: joseph.academic.v1.DeletePeriodRequest
+	(*DeletePeriodResponse)(nil),    // 49: joseph.academic.v1.DeletePeriodResponse
+	(*UpdateTermRequest)(nil),       // 50: joseph.academic.v1.UpdateTermRequest
+	(*UpdateTermResponse)(nil),      // 51: joseph.academic.v1.UpdateTermResponse
+	(*CreateSectionsRequest)(nil),   // 52: joseph.academic.v1.CreateSectionsRequest
+	(*CreateSectionsResponse)(nil),  // 53: joseph.academic.v1.CreateSectionsResponse
+	(*UpdateSectionRequest)(nil),    // 54: joseph.academic.v1.UpdateSectionRequest
+	(*UpdateSectionResponse)(nil),   // 55: joseph.academic.v1.UpdateSectionResponse
+	(*DeleteSectionRequest)(nil),    // 56: joseph.academic.v1.DeleteSectionRequest
+	(*DeleteSectionResponse)(nil),   // 57: joseph.academic.v1.DeleteSectionResponse
+	(*CopySectionsRequest)(nil),     // 58: joseph.academic.v1.CopySectionsRequest
+	(*CopySectionsResponse)(nil),    // 59: joseph.academic.v1.CopySectionsResponse
 }
 var file_joseph_academic_v1_academic_proto_depIdxs = []int32{
 	0,  // 0: joseph.academic.v1.AcademicContext.vocabulary:type_name -> joseph.academic.v1.Vocabulary
@@ -4056,52 +4178,54 @@ var file_joseph_academic_v1_academic_proto_depIdxs = []int32{
 	7,  // 33: joseph.academic.v1.UpdateSectionResponse.section:type_name -> joseph.academic.v1.Section
 	12, // 34: joseph.academic.v1.AcademicService.GetContext:input_type -> joseph.academic.v1.GetContextRequest
 	14, // 35: joseph.academic.v1.AcademicService.UpdateSettings:input_type -> joseph.academic.v1.UpdateSettingsRequest
-	16, // 36: joseph.academic.v1.AcademicService.GetStructure:input_type -> joseph.academic.v1.GetStructureRequest
-	18, // 37: joseph.academic.v1.AcademicService.CreateLevel:input_type -> joseph.academic.v1.CreateLevelRequest
-	20, // 38: joseph.academic.v1.AcademicService.UpdateLevel:input_type -> joseph.academic.v1.UpdateLevelRequest
-	22, // 39: joseph.academic.v1.AcademicService.DeleteLevel:input_type -> joseph.academic.v1.DeleteLevelRequest
-	24, // 40: joseph.academic.v1.AcademicService.ReorderLevels:input_type -> joseph.academic.v1.ReorderLevelsRequest
-	26, // 41: joseph.academic.v1.AcademicService.CreateGrade:input_type -> joseph.academic.v1.CreateGradeRequest
-	28, // 42: joseph.academic.v1.AcademicService.UpdateGrade:input_type -> joseph.academic.v1.UpdateGradeRequest
-	30, // 43: joseph.academic.v1.AcademicService.DeleteGrade:input_type -> joseph.academic.v1.DeleteGradeRequest
-	32, // 44: joseph.academic.v1.AcademicService.ReorderGrades:input_type -> joseph.academic.v1.ReorderGradesRequest
-	34, // 45: joseph.academic.v1.AcademicService.ApplyTemplate:input_type -> joseph.academic.v1.ApplyTemplateRequest
-	36, // 46: joseph.academic.v1.AcademicService.ListPeriods:input_type -> joseph.academic.v1.ListPeriodsRequest
-	38, // 47: joseph.academic.v1.AcademicService.GetPeriod:input_type -> joseph.academic.v1.GetPeriodRequest
-	40, // 48: joseph.academic.v1.AcademicService.CreatePeriod:input_type -> joseph.academic.v1.CreatePeriodRequest
-	42, // 49: joseph.academic.v1.AcademicService.UpdatePeriod:input_type -> joseph.academic.v1.UpdatePeriodRequest
-	44, // 50: joseph.academic.v1.AcademicService.SetPeriodStatus:input_type -> joseph.academic.v1.SetPeriodStatusRequest
-	46, // 51: joseph.academic.v1.AcademicService.DeletePeriod:input_type -> joseph.academic.v1.DeletePeriodRequest
-	48, // 52: joseph.academic.v1.AcademicService.UpdateTerm:input_type -> joseph.academic.v1.UpdateTermRequest
-	50, // 53: joseph.academic.v1.AcademicService.CreateSections:input_type -> joseph.academic.v1.CreateSectionsRequest
-	52, // 54: joseph.academic.v1.AcademicService.UpdateSection:input_type -> joseph.academic.v1.UpdateSectionRequest
-	54, // 55: joseph.academic.v1.AcademicService.DeleteSection:input_type -> joseph.academic.v1.DeleteSectionRequest
-	56, // 56: joseph.academic.v1.AcademicService.CopySections:input_type -> joseph.academic.v1.CopySectionsRequest
-	13, // 57: joseph.academic.v1.AcademicService.GetContext:output_type -> joseph.academic.v1.GetContextResponse
-	15, // 58: joseph.academic.v1.AcademicService.UpdateSettings:output_type -> joseph.academic.v1.UpdateSettingsResponse
-	17, // 59: joseph.academic.v1.AcademicService.GetStructure:output_type -> joseph.academic.v1.GetStructureResponse
-	19, // 60: joseph.academic.v1.AcademicService.CreateLevel:output_type -> joseph.academic.v1.CreateLevelResponse
-	21, // 61: joseph.academic.v1.AcademicService.UpdateLevel:output_type -> joseph.academic.v1.UpdateLevelResponse
-	23, // 62: joseph.academic.v1.AcademicService.DeleteLevel:output_type -> joseph.academic.v1.DeleteLevelResponse
-	25, // 63: joseph.academic.v1.AcademicService.ReorderLevels:output_type -> joseph.academic.v1.ReorderLevelsResponse
-	27, // 64: joseph.academic.v1.AcademicService.CreateGrade:output_type -> joseph.academic.v1.CreateGradeResponse
-	29, // 65: joseph.academic.v1.AcademicService.UpdateGrade:output_type -> joseph.academic.v1.UpdateGradeResponse
-	31, // 66: joseph.academic.v1.AcademicService.DeleteGrade:output_type -> joseph.academic.v1.DeleteGradeResponse
-	33, // 67: joseph.academic.v1.AcademicService.ReorderGrades:output_type -> joseph.academic.v1.ReorderGradesResponse
-	35, // 68: joseph.academic.v1.AcademicService.ApplyTemplate:output_type -> joseph.academic.v1.ApplyTemplateResponse
-	37, // 69: joseph.academic.v1.AcademicService.ListPeriods:output_type -> joseph.academic.v1.ListPeriodsResponse
-	39, // 70: joseph.academic.v1.AcademicService.GetPeriod:output_type -> joseph.academic.v1.GetPeriodResponse
-	41, // 71: joseph.academic.v1.AcademicService.CreatePeriod:output_type -> joseph.academic.v1.CreatePeriodResponse
-	43, // 72: joseph.academic.v1.AcademicService.UpdatePeriod:output_type -> joseph.academic.v1.UpdatePeriodResponse
-	45, // 73: joseph.academic.v1.AcademicService.SetPeriodStatus:output_type -> joseph.academic.v1.SetPeriodStatusResponse
-	47, // 74: joseph.academic.v1.AcademicService.DeletePeriod:output_type -> joseph.academic.v1.DeletePeriodResponse
-	49, // 75: joseph.academic.v1.AcademicService.UpdateTerm:output_type -> joseph.academic.v1.UpdateTermResponse
-	51, // 76: joseph.academic.v1.AcademicService.CreateSections:output_type -> joseph.academic.v1.CreateSectionsResponse
-	53, // 77: joseph.academic.v1.AcademicService.UpdateSection:output_type -> joseph.academic.v1.UpdateSectionResponse
-	55, // 78: joseph.academic.v1.AcademicService.DeleteSection:output_type -> joseph.academic.v1.DeleteSectionResponse
-	57, // 79: joseph.academic.v1.AcademicService.CopySections:output_type -> joseph.academic.v1.CopySectionsResponse
-	57, // [57:80] is the sub-list for method output_type
-	34, // [34:57] is the sub-list for method input_type
+	16, // 36: joseph.academic.v1.AcademicService.GetManagement:input_type -> joseph.academic.v1.GetManagementRequest
+	18, // 37: joseph.academic.v1.AcademicService.GetStructure:input_type -> joseph.academic.v1.GetStructureRequest
+	20, // 38: joseph.academic.v1.AcademicService.CreateLevel:input_type -> joseph.academic.v1.CreateLevelRequest
+	22, // 39: joseph.academic.v1.AcademicService.UpdateLevel:input_type -> joseph.academic.v1.UpdateLevelRequest
+	24, // 40: joseph.academic.v1.AcademicService.DeleteLevel:input_type -> joseph.academic.v1.DeleteLevelRequest
+	26, // 41: joseph.academic.v1.AcademicService.ReorderLevels:input_type -> joseph.academic.v1.ReorderLevelsRequest
+	28, // 42: joseph.academic.v1.AcademicService.CreateGrade:input_type -> joseph.academic.v1.CreateGradeRequest
+	30, // 43: joseph.academic.v1.AcademicService.UpdateGrade:input_type -> joseph.academic.v1.UpdateGradeRequest
+	32, // 44: joseph.academic.v1.AcademicService.DeleteGrade:input_type -> joseph.academic.v1.DeleteGradeRequest
+	34, // 45: joseph.academic.v1.AcademicService.ReorderGrades:input_type -> joseph.academic.v1.ReorderGradesRequest
+	36, // 46: joseph.academic.v1.AcademicService.ApplyTemplate:input_type -> joseph.academic.v1.ApplyTemplateRequest
+	38, // 47: joseph.academic.v1.AcademicService.ListPeriods:input_type -> joseph.academic.v1.ListPeriodsRequest
+	40, // 48: joseph.academic.v1.AcademicService.GetPeriod:input_type -> joseph.academic.v1.GetPeriodRequest
+	42, // 49: joseph.academic.v1.AcademicService.CreatePeriod:input_type -> joseph.academic.v1.CreatePeriodRequest
+	44, // 50: joseph.academic.v1.AcademicService.UpdatePeriod:input_type -> joseph.academic.v1.UpdatePeriodRequest
+	46, // 51: joseph.academic.v1.AcademicService.SetPeriodStatus:input_type -> joseph.academic.v1.SetPeriodStatusRequest
+	48, // 52: joseph.academic.v1.AcademicService.DeletePeriod:input_type -> joseph.academic.v1.DeletePeriodRequest
+	50, // 53: joseph.academic.v1.AcademicService.UpdateTerm:input_type -> joseph.academic.v1.UpdateTermRequest
+	52, // 54: joseph.academic.v1.AcademicService.CreateSections:input_type -> joseph.academic.v1.CreateSectionsRequest
+	54, // 55: joseph.academic.v1.AcademicService.UpdateSection:input_type -> joseph.academic.v1.UpdateSectionRequest
+	56, // 56: joseph.academic.v1.AcademicService.DeleteSection:input_type -> joseph.academic.v1.DeleteSectionRequest
+	58, // 57: joseph.academic.v1.AcademicService.CopySections:input_type -> joseph.academic.v1.CopySectionsRequest
+	13, // 58: joseph.academic.v1.AcademicService.GetContext:output_type -> joseph.academic.v1.GetContextResponse
+	15, // 59: joseph.academic.v1.AcademicService.UpdateSettings:output_type -> joseph.academic.v1.UpdateSettingsResponse
+	17, // 60: joseph.academic.v1.AcademicService.GetManagement:output_type -> joseph.academic.v1.GetManagementResponse
+	19, // 61: joseph.academic.v1.AcademicService.GetStructure:output_type -> joseph.academic.v1.GetStructureResponse
+	21, // 62: joseph.academic.v1.AcademicService.CreateLevel:output_type -> joseph.academic.v1.CreateLevelResponse
+	23, // 63: joseph.academic.v1.AcademicService.UpdateLevel:output_type -> joseph.academic.v1.UpdateLevelResponse
+	25, // 64: joseph.academic.v1.AcademicService.DeleteLevel:output_type -> joseph.academic.v1.DeleteLevelResponse
+	27, // 65: joseph.academic.v1.AcademicService.ReorderLevels:output_type -> joseph.academic.v1.ReorderLevelsResponse
+	29, // 66: joseph.academic.v1.AcademicService.CreateGrade:output_type -> joseph.academic.v1.CreateGradeResponse
+	31, // 67: joseph.academic.v1.AcademicService.UpdateGrade:output_type -> joseph.academic.v1.UpdateGradeResponse
+	33, // 68: joseph.academic.v1.AcademicService.DeleteGrade:output_type -> joseph.academic.v1.DeleteGradeResponse
+	35, // 69: joseph.academic.v1.AcademicService.ReorderGrades:output_type -> joseph.academic.v1.ReorderGradesResponse
+	37, // 70: joseph.academic.v1.AcademicService.ApplyTemplate:output_type -> joseph.academic.v1.ApplyTemplateResponse
+	39, // 71: joseph.academic.v1.AcademicService.ListPeriods:output_type -> joseph.academic.v1.ListPeriodsResponse
+	41, // 72: joseph.academic.v1.AcademicService.GetPeriod:output_type -> joseph.academic.v1.GetPeriodResponse
+	43, // 73: joseph.academic.v1.AcademicService.CreatePeriod:output_type -> joseph.academic.v1.CreatePeriodResponse
+	45, // 74: joseph.academic.v1.AcademicService.UpdatePeriod:output_type -> joseph.academic.v1.UpdatePeriodResponse
+	47, // 75: joseph.academic.v1.AcademicService.SetPeriodStatus:output_type -> joseph.academic.v1.SetPeriodStatusResponse
+	49, // 76: joseph.academic.v1.AcademicService.DeletePeriod:output_type -> joseph.academic.v1.DeletePeriodResponse
+	51, // 77: joseph.academic.v1.AcademicService.UpdateTerm:output_type -> joseph.academic.v1.UpdateTermResponse
+	53, // 78: joseph.academic.v1.AcademicService.CreateSections:output_type -> joseph.academic.v1.CreateSectionsResponse
+	55, // 79: joseph.academic.v1.AcademicService.UpdateSection:output_type -> joseph.academic.v1.UpdateSectionResponse
+	57, // 80: joseph.academic.v1.AcademicService.DeleteSection:output_type -> joseph.academic.v1.DeleteSectionResponse
+	59, // 81: joseph.academic.v1.AcademicService.CopySections:output_type -> joseph.academic.v1.CopySectionsResponse
+	58, // [58:82] is the sub-list for method output_type
+	34, // [34:58] is the sub-list for method input_type
 	34, // [34:34] is the sub-list for extension type_name
 	34, // [34:34] is the sub-list for extension extendee
 	0,  // [0:34] is the sub-list for field type_name
@@ -4121,7 +4245,7 @@ func file_joseph_academic_v1_academic_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_academic_v1_academic_proto_rawDesc), len(file_joseph_academic_v1_academic_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   58,
+			NumMessages:   60,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
