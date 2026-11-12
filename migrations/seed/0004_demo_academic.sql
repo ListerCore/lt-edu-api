@@ -2,17 +2,17 @@
 -- the sections of each period, as a real institution of each kind would have them on 10 November 2026.
 -- ON CONFLICT keeps it safe on a database that already has part of it
 
--- Profiles
-INSERT INTO academic.settings (institution_id, term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts)
-SELECT i.id, v.term_scheme, v.grading_scale, v.passing_grade, v.conduct_grade, v.attention_modes, v.shifts
+-- Profiles. The CEBA and the CEBE are public (no tuition: enrollment and the APAFA fee), the rest private
+INSERT INTO academic.settings (institution_id, term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts, management)
+SELECT i.id, v.term_scheme, v.grading_scale, v.passing_grade, v.conduct_grade, v.attention_modes, v.shifts, v.management
 FROM iam.institutions i
 JOIN (VALUES
-    ('demo-ebr',       'bimester',  'literal',   NULL::smallint, true,  '{}'::text[],                          '{morning,afternoon}'::text[]),
-    ('demo-eba',       'bimester',  'literal',   NULL,           false, '{in_person,blended,distance}'::text[], '{afternoon,evening}'::text[]),
-    ('demo-ebe',       'trimester', 'literal',   NULL,           false, '{}'::text[],                          '{morning}'::text[]),
-    ('demo-cepre',     'none',      'score',     NULL,           false, '{}'::text[],                          '{morning,afternoon,evening}'::text[]),
-    ('demo-institute', 'none',      'vigesimal', 13,             false, '{}'::text[],                          '{morning,evening}'::text[])
-) AS v (slug, term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts) ON v.slug = i.slug
+    ('demo-ebr',       'bimester',  'literal',   NULL::smallint, true,  '{}'::text[],                          '{morning,afternoon}'::text[],         'private'),
+    ('demo-eba',       'bimester',  'literal',   NULL,           false, '{in_person,blended,distance}'::text[], '{afternoon,evening}'::text[],         'public'),
+    ('demo-ebe',       'trimester', 'literal',   NULL,           false, '{}'::text[],                          '{morning}'::text[],                   'public'),
+    ('demo-cepre',     'none',      'score',     NULL,           false, '{}'::text[],                          '{morning,afternoon,evening}'::text[], 'private'),
+    ('demo-institute', 'none',      'vigesimal', 13,             false, '{}'::text[],                          '{morning,evening}'::text[],           'private')
+) AS v (slug, term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts, management) ON v.slug = i.slug
 ON CONFLICT (institution_id) DO NOTHING;
 
 -- Levels, EBA cycles, CEPRE areas and IEST study programs
