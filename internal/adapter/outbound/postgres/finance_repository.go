@@ -401,3 +401,19 @@ func (r *FinanceRepository) SeedPayment(ctx context.Context, institutionID strin
 	_, err := r.CreatePayment(ctx, institutionID, p, "")
 	return err
 }
+
+// ResetFinance deletes every plan, charge, discount, payment and reminder of an institution (cmd/seed only: a demo
+// that changes its management type gets its fees seeded again). Allocations and plan items go with their parents
+func (r *FinanceRepository) ResetFinance(ctx context.Context, institutionID string) error {
+	tx, err := r.c.pool.Begin(ctx)
+	if err != nil {
+		return err
+	}
+	defer func() { _ = tx.Rollback(ctx) }()
+	for _, table := range []string{"finance.reminders", "finance.payments", "finance.charges", "finance.discounts", "finance.fee_plans"} {
+		if _, err := tx.Exec(ctx, `DELETE FROM `+table+` WHERE institution_id = $1`, institutionID); err != nil {
+			return financeErr(err)
+		}
+	}
+	return tx.Commit(ctx)
+}

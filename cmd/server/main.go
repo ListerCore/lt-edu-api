@@ -95,6 +95,8 @@ func main() {
 	}
 	announcementService := service.NewAnnouncementService(postgres.NewAnnouncementRepository(dbClient), authService, store, liveService, logger)
 	announcementHandler := handler.NewAnnouncementHandler(announcementService, logger)
+	attachmentService := service.NewAttachmentService(postgres.NewAttachmentRepository(dbClient), authService, store, logger)
+	attachmentHandler := handler.NewAttachmentHandler(attachmentService, logger)
 	academicService := service.NewAcademicService(postgres.NewAcademicRepository(dbClient), authService, liveService, logger)
 	curriculumRepo := postgres.NewCurriculumRepository(dbClient)
 	curriculumService := service.NewCurriculumService(curriculumRepo, academicService)
@@ -111,6 +113,7 @@ func main() {
 	wellbeingService := service.NewWellbeingService(postgres.NewWellbeingRepository(dbClient), attendanceService)
 	reportsService := service.NewReportsService(postgres.NewReportsRepository(dbClient), assessmentService)
 	financeService := service.NewFinanceService(postgres.NewFinanceRepository(dbClient), assessmentService)
+	apafaService := service.NewApafaService(postgres.NewApafaRepository(dbClient), authService, announcementService, liveService)
 	documentService := service.NewDocumentService(service.DocumentDeps{Render: pdf.NewRenderer(), Sheets: xlsx.NewRenderer(), Docs: postgres.NewDocumentRepository(dbClient),
 		Staff: staffRepo, SiteURL: cfg.SiteURL}, assessmentService, closingService, teachingService, financeService)
 
@@ -133,6 +136,7 @@ func main() {
 		Health:           healthHandler,
 		Auth:             authHandler,
 		Announcements:    announcementHandler,
+		Attachments:      attachmentHandler,
 		Live:             liveHandler,
 		WebSocketOrigins: cfg.WSOrigins,
 		Development:      !production,
@@ -143,7 +147,7 @@ func main() {
 	if err != nil {
 		logger.Fatal().Err(err).Str("port", cfg.GRPCPort).Msg("failed to open grpc port")
 	}
-	grpcServer := inboundgrpc.New(inboundgrpc.Services{Health: healthService, Announcements: announcementService, Academic: academicService, Curricula: curriculumService, People: peopleService, Staff: staffService, Teaching: teachingService, Attendance: attendanceService, Assessment: assessmentService, Closing: closingService, Exams: examsService, Programs: programsService, Finance: financeService, Wellbeing: wellbeingService, Reports: reportsService, Documents: documentService}, inboundgrpc.Config{TrustedProxies: cfg.TrustedProxies, Development: !production}, logger)
+	grpcServer := inboundgrpc.New(inboundgrpc.Services{Health: healthService, Announcements: announcementService, Academic: academicService, Curricula: curriculumService, People: peopleService, Staff: staffService, Teaching: teachingService, Attendance: attendanceService, Assessment: assessmentService, Closing: closingService, Exams: examsService, Programs: programsService, Finance: financeService, Wellbeing: wellbeingService, Reports: reportsService, Documents: documentService, Apafa: apafaService}, inboundgrpc.Config{TrustedProxies: cfg.TrustedProxies, Development: !production}, logger)
 	defer grpcServer.GracefulStop()
 	go func() {
 		logger.Info().Str("port", cfg.GRPCPort).Msg("starting grpc server")

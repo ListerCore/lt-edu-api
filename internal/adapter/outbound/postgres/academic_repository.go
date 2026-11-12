@@ -39,6 +39,11 @@ func academicErr(err error) error {
 			return domain.ErrDuplicateName
 		case "22P02": // malformed uuid: an id that cannot exist
 			return domain.ErrNotFound
+		case "23514":
+			// Tuition in a public institution (triggers of migration 0022)
+			if pg.ConstraintName == "public_no_tuition" {
+				return domain.ErrPublicNoTuition
+			}
 		}
 	}
 	return err
@@ -63,10 +68,10 @@ func (r *AcademicRepository) Settings(ctx context.Context, institutionID string)
 	var passing *int16
 	var days []int16
 	err := r.c.pool.QueryRow(ctx, `SELECT term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts, week_days, late_after_minutes, absence_limit_percent,
-			dre, ugel, modular_code, logo, updated_at
+			dre, ugel, modular_code, logo, management, updated_at
 		FROM academic.settings WHERE institution_id = $1`, institutionID).
 		Scan(&s.TermScheme, &s.GradingScale, &passing, &s.ConductGrade, &s.AttentionModes, &s.Shifts, &days, &s.LateAfterMinutes, &s.AbsenceLimitPercent,
-			&s.Dre, &s.Ugel, &s.ModularCode, &s.Logo, &s.UpdatedAt)
+			&s.Dre, &s.Ugel, &s.ModularCode, &s.Logo, &s.Management, &s.UpdatedAt)
 	for _, d := range days {
 		s.WeekDays = append(s.WeekDays, int(d))
 	}
@@ -87,20 +92,47 @@ func (r *AcademicRepository) SaveSettings(ctx context.Context, institutionID str
 	if s.AbsenceLimitPercent == 0 {
 		s.LateAfterMinutes, s.AbsenceLimitPercent = 10, 30
 	}
+	// A profile built from scratch (first read, older callers) is private, as the column default
+	if s.Management == "" {
+		s.Management = domain.ManagementPrivate
+	}
 	_, err := r.c.pool.Exec(ctx, `INSERT INTO academic.settings (institution_id, term_scheme, grading_scale, passing_grade, conduct_grade, attention_modes, shifts, week_days, late_after_minutes, absence_limit_percent,
-			dre, ugel, modular_code, logo)
-		VALUES ($1, $2, $3, $4, $5, $6, $7, $8::smallint[], $9, $10, $11, $12, $13, $14)
+			dre, ugel, modular_code, logo, management)
+		VALUES ($1, $2, $3, $4, $5, $6, $7, $8::smallint[], $9, $10, $11, $12, $13, $14, $15)
 		ON CONFLICT (institution_id) DO UPDATE SET term_scheme = EXCLUDED.term_scheme, grading_scale = EXCLUDED.grading_scale,
 			passing_grade = EXCLUDED.passing_grade, conduct_grade = EXCLUDED.conduct_grade, attention_modes = EXCLUDED.attention_modes,
 			shifts = EXCLUDED.shifts, week_days = EXCLUDED.week_days, late_after_minutes = EXCLUDED.late_after_minutes,
 			absence_limit_percent = EXCLUDED.absence_limit_percent, dre = EXCLUDED.dre, ugel = EXCLUDED.ugel,
-			modular_code = EXCLUDED.modular_code, logo = EXCLUDED.logo`,
+			modular_code = EXCLUDED.modular_code, logo = EXCLUDED.logo, management = EXCLUDED.management`,
 		institutionID, s.TermScheme, s.GradingScale, s.PassingGrade, s.ConductGrade, s.AttentionModes, s.Shifts, s.WeekDays, s.LateAfterMinutes, s.AbsenceLimitPercent,
-		s.Dre, s.Ugel, s.ModularCode, s.Logo)
+		s.Dre, s.Ugel, s.ModularCode, s.Logo, s.Management)
 	if err != nil {
 		return domain.AcademicSettings{}, academicErr(err)
 	}
 	return r.Settings(ctx, institutionID)
+}
+
+// TuitionInUse is what stops an institution from turning public: the fee plans of periods not closed yet that
+// still have tuition items, and how many tuition charges of those periods are still owed (paid ones are history)
+func (r *AcademicRepository) TuitionInUse(ctx context.Context, institutionID string) ([]string, int, error) {
+	rows, err := r.c.pool.Query(ctx, `SELECT DISTINCT p.name FROM finance.fee_plans p
+		JOIN finance.fee_items i ON i.plan_id = p.id AND i.concept = 'tuition'
+		JOIN academic.periods pe ON pe.id = p.period_id AND pe.status <> 'closed'
+		WHERE p.institution_id = $1 ORDER BY p.name`, institutionID)
+	if err != nil {
+		return nil, 0, academicErr(err)
+	}
+	plans, err := pgx.CollectRows(rows, pgx.RowTo[string])
+	if err != nil {
+		return nil, 0, academicErr(err)
+	}
+	var pending int
+	err = r.c.pool.QueryRow(ctx, `SELECT count(*) FROM finance.charges ch
+		JOIN academic.periods pe ON pe.id = ch.period_id AND pe.status <> 'closed'
+		WHERE ch.institution_id = $1 AND ch.concept = 'tuition' AND ch.status = 'pending'
+			AND ch.amount - ch.discount > coalesce((SELECT sum(a.amount) FROM finance.allocations a
+				JOIN finance.payments pa ON pa.id = a.payment_id AND pa.status = 'valid' WHERE a.charge_id = ch.id), 0)`, institutionID).Scan(&pending)
+	return plans, pending, academicErr(err)
 }
 
 // ---------- levels and grades ----------
