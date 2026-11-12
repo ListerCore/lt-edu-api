@@ -119,10 +119,12 @@ type Account struct {
 }
 
 var (
-	ErrFinanceForbidden = newError(KindForbidden, "finance_forbidden", "Tu rol no puede ver las pensiones.")
+	ErrFinanceForbidden = newError(KindForbidden, "finance_forbidden", "Tu rol no puede ver los pagos.")
 	ErrFinanceReadOnly  = newError(KindForbidden, "finance_read_only", "Solo tesorería y dirección registran pagos y cronogramas.")
 	ErrOverpayment      = newError(KindInvalid, "overpayment", "El pago es mayor que la deuda pendiente.")
 	ErrNothingOwed      = newError(KindConflict, "nothing_owed", "No tiene cuotas pendientes.")
 	ErrPaymentAnnulled  = newError(KindConflict, "payment_annulled", "El pago ya fue anulado.")
 	ErrChargePaid       = newError(KindConflict, "charge_paid", "La cuota ya tiene pagos: anula primero los pagos.")
+	// The database guard of migration 0022 (the services check first, with a more specific message)
+	ErrPublicNoTuition = newError(KindInvalid, "public_no_tuition", "Una institución pública no cobra pensiones.")
 )

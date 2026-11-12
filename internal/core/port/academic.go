@@ -15,6 +15,9 @@ type AcademicRepository interface {
 	// Settings returns the profile, or domain.ErrNotFound when the institution has none yet
 	Settings(ctx context.Context, institutionID string) (domain.AcademicSettings, error)
 	SaveSettings(ctx context.Context, institutionID string, s domain.AcademicSettings) (domain.AcademicSettings, error)
+	// TuitionInUse lists the fee plans of periods not closed that still have tuition items and counts the tuition
+	// charges of those periods still owed: what must be cleared before the institution turns public
+	TuitionInUse(ctx context.Context, institutionID string) (plans []string, pendingCharges int, err error)
 
 	// Levels returns every level with its grades and section counts, in position order
 	Levels(ctx context.Context, institutionID string) ([]domain.Level, error)

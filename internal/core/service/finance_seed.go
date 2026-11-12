@@ -15,6 +15,58 @@ import (
 // FinanceSeeder is what the demo needs besides the repository (cmd/seed only)
 type FinanceSeeder interface {
 	HasFinance(ctx context.Context, institutionID string) (bool, error)
+	// ResetFinance deletes every fee, charge, discount, payment and reminder of the institution
+	ResetFinance(ctx context.Context, institutionID string) error
+}
+
+// publicDemos are the demo institutions of public management (the CEBA and the CEBE): no tuition, only the
+// enrollment and the APAFA fee. The other demos stay private
+var publicDemos = []string{"demo-eba", "demo-ebe"}
+
+// publicFees is the plan of a public institution: enrollment when the period starts and the APAFA fee a month later
+func publicFees(enrollment domain.Money, enrollOn time.Time, apafa domain.Money) []domain.FeeItem {
+	return []domain.FeeItem{
+		{Concept: "enrollment", Name: "Matrícula", Amount: enrollment, DueOn: enrollOn},
+		{Concept: "apafa", Name: ConceptLabel("apafa") + " " + enrollOn.Format("2006"), Amount: apafa, DueOn: enrollOn.AddDate(0, 1, 0)},
+	}
+}
+
+// SeedDemoPublicManagement turns the public demos (CEBA and CEBE) public: their tuition plans, schedules and
+// payments are replaced by the public ones (enrollment + APAFA fee). Demos already public are left alone, so a
+// database seeded after this change (0004 already makes them public) does nothing here. cmd/seed runs it once
+func SeedDemoPublicManagement(ctx context.Context, svc *FinanceService, seeder FinanceSeeder) (int, error) {
+	academic := svc.assessment.academic.repo
+	total := 0
+	for n, slug := range publicDemos {
+		inst, err := academic.InstitutionBySlug(ctx, slug)
+		if errors.Is(err, domain.ErrNotFound) {
+			continue
+		}
+		if err != nil {
+			return total, err
+		}
+		st, err := academic.Settings(ctx, inst.ID)
+		if err != nil {
+			return total, err
+		}
+		if ManagementOf(st) == domain.ManagementPublic {
+			continue
+		}
+		// The switch guard (migration 0022) needs the tuition plans gone first
+		if err := seeder.ResetFinance(ctx, inst.ID); err != nil {
+			return total, fmt.Errorf("%s: %w", slug, err)
+		}
+		st.Management = domain.ManagementPublic
+		if _, err := academic.SaveSettings(ctx, inst.ID, st); err != nil {
+			return total, fmt.Errorf("%s: %w", slug, err)
+		}
+		count, err := seedFinance(ctx, svc, inst, rand.New(rand.NewPCG(uint64(n+60), 10)))
+		total += count
+		if err != nil {
+			return total, fmt.Errorf("%s: %w", slug, err)
+		}
+	}
+	return total, nil
 }
 
 func lastDay(year int, month time.Month) time.Time {
@@ -81,12 +133,25 @@ func seedFinance(ctx context.Context, svc *FinanceService, inst domain.Instituti
 		return ""
 	}
 	today := svc.today()
+	public, err := svc.public(ctx, inst.ID)
+	if err != nil {
+		return 0, err
+	}
 	var plans []domain.FeePlan
 	for _, p := range periods {
 		if p.Status != domain.PeriodActive {
 			continue
 		}
 		y := p.StartsOn.Year()
+		switch {
+		// Public CEBA and CEBE: no tuition, a small enrollment and the APAFA fee
+		case public && inst.Kind == domain.KindEBA:
+			plans = append(plans, domain.FeePlan{PeriodID: p.ID, Name: "Pagos " + p.Name, Items: publicFees(2000, p.StartsOn, 3000)})
+			continue
+		case public:
+			plans = append(plans, domain.FeePlan{PeriodID: p.ID, Name: "Pagos " + p.Name, Items: publicFees(2500, p.StartsOn.AddDate(0, 0, -7), 4000)})
+			continue
+		}
 		switch inst.Kind {
 		case domain.KindEBR:
 			for _, x := range []struct {
@@ -123,6 +188,15 @@ func seedFinance(ctx context.Context, svc *FinanceService, inst domain.Instituti
 			return created, err
 		}
 		for _, id := range enrolled {
+			// Public institutions have no scholarships on tuition: a few families are exonerated of half the fees
+			if public {
+				if hashOf("discount:"+id)%100 < 4 {
+					if err := repo.SaveDiscount(ctx, inst.ID, domain.Discount{StudentID: id, PeriodID: pl.PeriodID, Percent: 50, TuitionOnly: false, Reason: "Exoneración parcial por situación económica (acuerdo de la APAFA)"}); err != nil {
+						return created, err
+					}
+				}
+				continue
+			}
 			switch h := hashOf("discount:"+id) % 100; {
 			case h < 3:
 				if err := repo.SaveDiscount(ctx, inst.ID, domain.Discount{StudentID: id, PeriodID: pl.PeriodID, Percent: 50, TuitionOnly: true, Reason: "Beca por rendimiento académico"}); err != nil {

@@ -332,6 +332,42 @@ func (s *AnnouncementService) Create(ctx context.Context, token string, in Annou
 	return created, nil
 }
 
+// NoticeInput is an internal announcement another module publishes for the person acting there (an APAFA
+// convocatoria, its change or its acta). The calling service has already checked the person's role
+type NoticeInput struct {
+	InstitutionID   string
+	InstitutionSlug string
+	AuthorID        string
+	Kind            string
+	Audience        string
+	Title           string
+	Body            string
+}
+
+// PublishNotice stores an internal announcement (no files, not featured) with the same field rules as the panel
+// form, so it lands in Comunicados, the header ticker and every open page live
+func (s *AnnouncementService) PublishNotice(ctx context.Context, in NoticeInput) (domain.Announcement, error) {
+	draft, fields := validateFields(AnnouncementInput{Kind: in.Kind, Audience: in.Audience, Title: in.Title, Body: in.Body}, time.Now(), false)
+	if len(fields) > 0 {
+		return domain.Announcement{}, domain.Validation(fields)
+	}
+	draft.InstitutionID = in.InstitutionID
+	var created domain.Announcement
+	var err error
+	for attempt := 0; attempt < slugAttempts; attempt++ {
+		draft.Slug = randomSlug()
+		created, err = s.repo.Create(ctx, draft, in.AuthorID)
+		if !errors.Is(err, domain.ErrSlugTaken) {
+			break
+		}
+	}
+	if err != nil {
+		return domain.Announcement{}, err
+	}
+	s.live.Notify(ctx, EventAnnouncementPublished, notifyData(created, in.InstitutionSlug))
+	return created, nil
+}
+
 // canEdit: those who see the whole institution edit anything; teachers and tutors only what they published
 func canEdit(sc scope, a domain.Announcement) bool {
 	return announcementManagers[sc.role] || (announcementPublishers[sc.role] && a.AuthorID != "" && a.AuthorID == sc.userID)

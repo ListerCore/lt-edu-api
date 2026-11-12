@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"slices"
 	"sort"
@@ -20,8 +21,18 @@ var (
 	financeManagers = map[string]bool{domain.RoleSuperadmin: true, "director": true, "treasurer": true}
 	financeReaders  = map[string]bool{"secretary": true, "academic_coordinator": true}
 	paymentMethods  = []string{"cash", "transfer", "yape", "plin", "card", "deposit"}
-	feeConcepts     = []string{"enrollment", "tuition", "other"}
+	// apafa: the parents' association fee (cuota APAFA) of public institutions
+	feeConcepts = []string{"enrollment", "tuition", "apafa", "other"}
 )
+
+// conceptLabels are the Spanish names of the fee concepts, for messages and documents
+var conceptLabels = map[string]string{"enrollment": "Matrícula", "tuition": "Pensión", "apafa": "Cuota APAFA", "other": "Otro concepto"}
+
+// ConceptLabel names a fee concept in Spanish ("" for an unknown one)
+func ConceptLabel(concept string) string { return conceptLabels[concept] }
+
+// noTuitionMessage is what a public institution is told when it tries to charge tuition
+const noTuitionMessage = "En una institución pública no se cobran pensiones: usa matrícula, cuota APAFA u otro concepto."
 
 // FinanceService runs fees and payments (phase 10 of docs/plan-academico.md): the fee plan of each period and level,
 // each student's schedule with their discount, payments with an internal receipt, the accounts and the overdue
@@ -78,6 +89,15 @@ func (s *FinanceService) name(sc financeScope) string {
 }
 
 func (s *FinanceService) today() time.Time { return s.assessment.attendance.today() }
+
+// public reports whether the institution is of public management (no tuition: enrollment and the APAFA fee only)
+func (s *FinanceService) public(ctx context.Context, institutionID string) (bool, error) {
+	st, err := s.assessment.academic.repo.Settings(ctx, institutionID)
+	if errors.Is(err, domain.ErrNotFound) {
+		return false, nil
+	}
+	return err == nil && ManagementOf(st) == domain.ManagementPublic, err
+}
 
 // FormatSoles writes S/ 1 234,50
 func FormatSoles(m domain.Money) string {
@@ -217,12 +237,18 @@ func (s *FinanceService) SavePlan(ctx context.Context, token, slug string, p dom
 			return domain.FeePlan{}, err
 		}
 	}
+	public, err := s.public(ctx, sc.institution.ID)
+	if err != nil {
+		return domain.FeePlan{}, err
+	}
 	for i := range p.Items {
 		it := &p.Items[i]
 		it.Name = strings.TrimSpace(it.Name)
 		switch {
 		case !slices.Contains(feeConcepts, it.Concept):
-			fields["items"] = "Cada cuota es matrícula, pensión u otro concepto."
+			fields["items"] = "Cada cuota es matrícula, pensión, cuota APAFA u otro concepto."
+		case public && it.Concept == "tuition":
+			fields["items"] = noTuitionMessage
 		case it.Name == "" || len([]rune(it.Name)) > 120:
 			fields["items"] = "Cada cuota necesita un nombre."
 		case it.Amount <= 0 || it.Amount > 10_000_000:
@@ -265,6 +291,20 @@ func (s *FinanceService) Generate(ctx context.Context, token, slug, id string) (
 	sc, err := s.manage(ctx, token, slug)
 	if err != nil {
 		return 0, err
+	}
+	// A plan from before the institution turned public may still list tuition: it does not generate it
+	public, err := s.public(ctx, sc.institution.ID)
+	if err != nil {
+		return 0, err
+	}
+	if public {
+		p, err := s.repo.Plan(ctx, sc.institution.ID, id)
+		if err != nil {
+			return 0, err
+		}
+		if slices.ContainsFunc(p.Items, func(it domain.FeeItem) bool { return it.Concept == "tuition" }) {
+			return 0, domain.Validation(map[string]string{"plan": noTuitionMessage})
+		}
 	}
 	n, err := s.repo.GenerateCharges(ctx, sc.institution.ID, id)
 	if err == nil && n > 0 {
@@ -543,6 +583,15 @@ func (s *FinanceService) SaveDiscount(ctx context.Context, token, slug string, d
 	}
 	if _, err := s.assessment.academic.repo.Period(ctx, sc.institution.ID, d.PeriodID); err != nil {
 		return Statement{}, err
+	}
+	// Without tuition a "tuition only" discount would apply to nothing: in a public institution it covers every
+	// charge (an exoneration of the enrollment and the APAFA fee)
+	public, err := s.public(ctx, sc.institution.ID)
+	if err != nil {
+		return Statement{}, err
+	}
+	if public {
+		d.TuitionOnly = false
 	}
 	if err := s.repo.SaveDiscount(ctx, sc.institution.ID, d); err != nil {
 		return Statement{}, err

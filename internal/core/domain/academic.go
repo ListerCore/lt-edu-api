@@ -59,8 +59,16 @@ type AcademicSettings struct {
 	Ugel        string
 	ModularCode string
 	Logo        string
-	UpdatedAt   time.Time
+	// Tipo de gestión: public (no tuition, only enrollment and the APAFA fee) | private
+	Management string
+	UpdatedAt  time.Time
 }
+
+// Management types of an institution (academic.settings.management)
+const (
+	ManagementPublic  = "public"
+	ManagementPrivate = "private"
+)
 
 // Grade is a grade, age or plan semester inside a level
 type Grade struct {

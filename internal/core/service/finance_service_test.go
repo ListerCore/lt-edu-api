@@ -1,11 +1,14 @@
 package service
 
 import (
+	"context"
 	"errors"
+	"strings"
 	"testing"
 	"time"
 
 	"api/internal/core/domain"
+	"api/internal/core/port"
 )
 
 func TestAllocate(t *testing.T) {
@@ -36,5 +39,38 @@ func TestFormatSoles(t *testing.T) {
 		if got := FormatSoles(m); got != want {
 			t.Errorf("%d: got %q want %q", m, got, want)
 		}
+	}
+}
+
+// tuitionRepo answers only TuitionInUse (the rest of the interface is never called)
+type tuitionRepo struct {
+	port.AcademicRepository
+	plans   []string
+	pending int
+}
+
+func (r tuitionRepo) TuitionInUse(context.Context, string) ([]string, int, error) {
+	return r.plans, r.pending, nil
+}
+
+func TestPublicSwitchBlocker(t *testing.T) {
+	ctx := context.Background()
+	free := &AcademicService{repo: tuitionRepo{}}
+	if msg, err := free.publicSwitchBlocker(ctx, "i"); err != nil || msg != "" {
+		t.Fatalf("nothing pending blocked: %q %v", msg, err)
+	}
+	busy := &AcademicService{repo: tuitionRepo{plans: []string{"Pensiones 2026"}, pending: 3}}
+	msg, err := busy.publicSwitchBlocker(ctx, "i")
+	if err != nil || !strings.Contains(msg, "del plan Pensiones 2026") || !strings.Contains(msg, "3 pensiones pendientes") {
+		t.Fatalf("message = %q %v", msg, err)
+	}
+}
+
+func TestManagementOf(t *testing.T) {
+	if ManagementOf(domain.AcademicSettings{}) != domain.ManagementPrivate || ManagementOf(domain.AcademicSettings{Management: "public"}) != domain.ManagementPublic {
+		t.Fatal("management fallback")
+	}
+	if ConceptLabel("apafa") != "Cuota APAFA" {
+		t.Fatal("apafa label")
 	}
 }

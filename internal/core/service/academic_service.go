@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"errors"
+	"fmt"
 	"regexp"
 	"slices"
 	"strconv"
@@ -138,12 +139,14 @@ func (s *AcademicService) Context(ctx context.Context, token, slug string) (Acad
 	return s.contextFor(ctx, sc)
 }
 
-// ProfileInput is the official data of the report card; a nil field keeps what is stored
+// ProfileInput is the official data of the report card and the management type; a nil field keeps what is stored
 type ProfileInput struct {
 	Dre         *string
 	Ugel        *string
 	ModularCode *string
 	Logo        *string
+	// public | private
+	Management *string
 }
 
 // Largest logo data URL accepted (about 100 KB of image)
@@ -250,6 +253,21 @@ func (s *AcademicService) UpdateSettings(ctx context.Context, token, slug string
 		}
 	}
 	applyProfile(profile, &next, fields)
+	if profile.Management != nil {
+		switch m := strings.TrimSpace(*profile.Management); m {
+		case domain.ManagementPublic, domain.ManagementPrivate:
+			next.Management = m
+		default:
+			fields["management"] = "Elige si la institución es pública o privada."
+		}
+	}
+	if len(fields) == 0 && next.Management == domain.ManagementPublic && current.Management != domain.ManagementPublic {
+		if msg, err := s.publicSwitchBlocker(ctx, sc.institution.ID); err != nil {
+			return AcademicContext{}, err
+		} else if msg != "" {
+			fields["management"] = msg
+		}
+	}
 	if len(fields) > 0 {
 		return AcademicContext{}, domain.Validation(fields)
 	}
@@ -258,6 +276,49 @@ func (s *AcademicService) UpdateSettings(ctx context.Context, token, slug string
 	}
 	s.changed(ctx, sc, "settings")
 	return s.contextFor(ctx, sc)
+}
+
+// publicSwitchBlocker explains what stops the institution from turning public (empty when nothing does): public
+// institutions charge no tuition, so the plans of the periods still running must not have any and the tuition
+// still owed there must be collected or voided first. Paid tuition and closed periods stay as history
+func (s *AcademicService) publicSwitchBlocker(ctx context.Context, institutionID string) (string, error) {
+	plans, pending, err := s.repo.TuitionInUse(ctx, institutionID)
+	if err != nil || (len(plans) == 0 && pending == 0) {
+		return "", err
+	}
+	var steps []string
+	if len(plans) > 0 {
+		steps = append(steps, fmt.Sprintf("quita las pensiones %s %s", plural(len(plans), "del plan", "de los planes"), strings.Join(plans, ", ")))
+	}
+	if pending > 0 {
+		steps = append(steps, fmt.Sprintf("cobra o anula %d %s", pending, plural(pending, "pensión pendiente", "pensiones pendientes")))
+	}
+	return "Una institución pública no cobra pensiones. Antes de cambiar, " + strings.Join(steps, " y ") + " del periodo en curso.", nil
+}
+
+// Management is the institution's management type, readable by every role of it (families too): the panel uses
+// it to adapt payments and the modules only public institutions have. Without a profile yet it is private
+func (s *AcademicService) Management(ctx context.Context, token, slug string) (domain.Institution, string, error) {
+	sc, err := resolveInstitution(ctx, s.auth, s.repo.InstitutionBySlug, token, slug)
+	if err != nil {
+		return domain.Institution{}, "", err
+	}
+	st, err := s.repo.Settings(ctx, sc.institution.ID)
+	if errors.Is(err, domain.ErrNotFound) {
+		return sc.institution, domain.ManagementPrivate, nil
+	}
+	if err != nil {
+		return domain.Institution{}, "", err
+	}
+	return sc.institution, ManagementOf(st), nil
+}
+
+// ManagementOf reads the management type of a profile; an empty one (never saved) is private
+func ManagementOf(st domain.AcademicSettings) string {
+	if st.Management == domain.ManagementPublic {
+		return domain.ManagementPublic
+	}
+	return domain.ManagementPrivate
 }
 
 // ---------- Levels and grades ----------
