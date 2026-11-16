@@ -148,7 +148,7 @@ func toSection(s domain.Section) *academicv1.Section {
 	return &academicv1.Section{
 		Id: s.ID, PeriodId: s.PeriodID, LevelId: s.LevelID, LevelName: s.LevelName, GradeId: s.GradeID, GradeName: s.GradeName,
 		GradeShort: s.GradeShort, Name: s.Name, Shift: s.Shift, AttentionMode: s.AttentionMode, Capacity: int32(s.Capacity), Room: s.Room,
-		TutorId: s.TutorID, TutorName: s.TutorName,
+		TutorId: s.TutorID, TutorName: s.TutorName, Program: s.Program, DistanceVariant: s.DistanceVariant,
 	}
 }
 
@@ -180,7 +180,8 @@ func periodInput(in *academicv1.PeriodInput) (domain.PeriodInput, error) {
 }
 
 func sectionInput(in *academicv1.SectionInput) domain.SectionInput {
-	return domain.SectionInput{Name: in.GetName(), Shift: in.GetShift(), AttentionMode: in.GetAttentionMode(), Capacity: int(in.GetCapacity()), Room: in.GetRoom()}
+	return domain.SectionInput{Name: in.GetName(), Shift: in.GetShift(), AttentionMode: in.GetAttentionMode(), Capacity: int(in.GetCapacity()), Room: in.GetRoom(),
+		Program: in.GetProgram(), DistanceVariant: in.GetDistanceVariant()}
 }
 
 // ---------- profile ----------
@@ -377,6 +378,7 @@ func (s *academicServer) CreateSections(ctx context.Context, req *academicv1.Cre
 	created, err := s.academic.CreateSections(ctx, bearer(ctx), req.GetInstitutionSlug(), req.GetPeriodId(), domain.SectionBatch{
 		LevelID: req.GetLevelId(), GradeIDs: req.GetGradeIds(), Names: req.GetNames(), Shift: req.GetShift(),
 		AttentionMode: req.GetAttentionMode(), Capacity: int(req.GetCapacity()), Room: req.GetRoom(),
+		Program: req.GetProgram(), DistanceVariant: req.GetDistanceVariant(),
 	})
 	if err != nil {
 		return nil, s.fail("CreateSections", err)

@@ -103,3 +103,40 @@ func TestApplyProfile(t *testing.T) {
 		t.Fatal("a logo over 100 KB is refused")
 	}
 }
+
+func TestValidateEBASectionProgramsAndDistanceVariants(t *testing.T) {
+	advanced := domain.Level{AttentionModes: []string{"in_person", "blended", "distance"}}
+	intermediate := domain.Level{AttentionModes: []string{"in_person", "blended"}}
+	cases := []struct {
+		name        string
+		lvl         domain.Level
+		in          domain.SectionInput
+		wantField   string
+		wantProgram string
+		wantVariant string
+	}{
+		{"empty program is PEBAJA", advanced, domain.SectionInput{AttentionMode: "in_person"}, "", domain.EBAProgramPEBAJA, ""},
+		{"distance defaults to virtual", advanced, domain.SectionInput{AttentionMode: "distance"}, "", domain.EBAProgramPEBAJA, domain.DistanceVirtual},
+		{"itinerant distance", advanced, domain.SectionInput{AttentionMode: "distance", DistanceVariant: "itinerant"}, "", domain.EBAProgramPEBAJA, domain.DistanceItinerant},
+		{"variant dropped off distance", advanced, domain.SectionInput{AttentionMode: "blended", DistanceVariant: "itinerant"}, "", domain.EBAProgramPEBAJA, ""},
+		{"unknown variant", advanced, domain.SectionInput{AttentionMode: "distance", DistanceVariant: "radio"}, "distanceVariant", domain.EBAProgramPEBAJA, "radio"},
+		{"literacy circle in person", intermediate, domain.SectionInput{AttentionMode: "in_person", Program: "literacy"}, "", domain.EBAProgramLiteracy, ""},
+		{"literacy must be in person", intermediate, domain.SectionInput{AttentionMode: "blended", Program: "literacy"}, "attentionMode", domain.EBAProgramLiteracy, ""},
+		{"no literacy in the advanced cycle", advanced, domain.SectionInput{AttentionMode: "in_person", Program: "literacy"}, "program", domain.EBAProgramLiteracy, ""},
+		{"unknown program", advanced, domain.SectionInput{AttentionMode: "in_person", Program: "night"}, "program", "night", ""},
+	}
+	for _, c := range cases {
+		fields := map[string]string{}
+		in := c.in
+		validateEBASection(c.lvl, &in, fields)
+		if c.wantField == "" && len(fields) > 0 {
+			t.Errorf("%s: unexpected errors %v", c.name, fields)
+		}
+		if c.wantField != "" && fields[c.wantField] == "" {
+			t.Errorf("%s: want error on %s, got %v", c.name, c.wantField, fields)
+		}
+		if in.Program != c.wantProgram || in.DistanceVariant != c.wantVariant {
+			t.Errorf("%s: program %q variant %q, want %q %q", c.name, in.Program, in.DistanceVariant, c.wantProgram, c.wantVariant)
+		}
+	}
+}

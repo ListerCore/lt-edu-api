@@ -35,6 +35,8 @@ var (
 
 	validShifts          = map[string]bool{"morning": true, "afternoon": true, "evening": true}
 	validModes           = map[string]bool{"in_person": true, "blended": true, "distance": true}
+	validEBAPrograms     = map[string]bool{domain.EBAProgramPEBAJA: true, domain.EBAProgramLiteracy: true}
+	validDistanceVariant = map[string]bool{domain.DistanceVirtual: true, domain.DistanceItinerant: true}
 	validSeasons         = map[string]bool{"summer": true, "annual": true, "semester": true, "intensive": true, "review": true, "school": true, "other": true}
 	validFormativeLevels = map[string]bool{"technical": true, "professional_technical": true, "professional": true}
 	termsPerScheme       = map[string]int{domain.TermSchemeBimester: 4, domain.TermSchemeTrimester: 3, domain.TermSchemeSemester: 2, domain.TermSchemeNone: 0}
@@ -905,10 +907,39 @@ func (s *AcademicService) validateSection(sc academicScope, settings domain.Acad
 		if !slices.Contains(lvl.AttentionModes, in.AttentionMode) {
 			fields["attentionMode"] = "Ese " + strings.ToLower(sc.profile.vocabulary.Level) + " no se ofrece en esa forma de atención."
 		}
+		validateEBASection(lvl, in, fields)
 	} else {
-		in.AttentionMode = ""
+		in.AttentionMode, in.Program, in.DistanceVariant = "", "", ""
 	}
 	return fields
+}
+
+// validateEBASection checks the EBA program and distance variant of a section. PEBAJA is the default; Alfabetización
+// runs as in-person learning circles of the cycles that never go remote (inicial, intermedio), so a cycle that offers
+// the distance form (avanzado) cannot host it. A distance section is online unless it says itinerant
+func validateEBASection(lvl domain.Level, in *domain.SectionInput, fields map[string]string) {
+	if in.Program == "" {
+		in.Program = domain.EBAProgramPEBAJA
+	}
+	if !validEBAPrograms[in.Program] {
+		fields["program"] = "Elige PEBAJA o Alfabetización."
+	} else if in.Program == domain.EBAProgramLiteracy {
+		if slices.Contains(lvl.AttentionModes, "distance") {
+			fields["program"] = "Alfabetización solo se brinda en los ciclos inicial e intermedio."
+		} else if in.AttentionMode != "in_person" {
+			fields["attentionMode"] = "Los círculos de alfabetización son presenciales."
+		}
+	}
+	if in.AttentionMode != "distance" {
+		in.DistanceVariant = ""
+		return
+	}
+	if in.DistanceVariant == "" {
+		in.DistanceVariant = domain.DistanceVirtual
+	}
+	if !validDistanceVariant[in.DistanceVariant] {
+		fields["distanceVariant"] = "Elige virtual o itinerante."
+	}
 }
 
 // CreateSections creates one section per grade and name in one go ("A, B y C para 1.° a 5.°")
@@ -931,7 +962,7 @@ func (s *AcademicService) CreateSections(ctx context.Context, token, slug, perio
 		}
 		return nil, err
 	}
-	in := domain.SectionInput{Shift: batch.Shift, AttentionMode: batch.AttentionMode, Capacity: batch.Capacity, Room: batch.Room, Name: "x"}
+	in := domain.SectionInput{Shift: batch.Shift, AttentionMode: batch.AttentionMode, Program: batch.Program, DistanceVariant: batch.DistanceVariant, Capacity: batch.Capacity, Room: batch.Room, Name: "x"}
 	fields := s.validateSection(sc, settings, lvl, &in)
 	delete(fields, "name")
 	var names []string
@@ -969,7 +1000,8 @@ func (s *AcademicService) CreateSections(ctx context.Context, token, slug, perio
 	var sections []domain.Section
 	for _, g := range grades {
 		for _, n := range names {
-			sections = append(sections, domain.Section{LevelID: lvl.ID, GradeID: g, Name: n, Shift: in.Shift, AttentionMode: in.AttentionMode, Capacity: in.Capacity, Room: in.Room})
+			sections = append(sections, domain.Section{LevelID: lvl.ID, GradeID: g, Name: n, Shift: in.Shift, AttentionMode: in.AttentionMode,
+				Program: in.Program, DistanceVariant: in.DistanceVariant, Capacity: in.Capacity, Room: in.Room})
 		}
 	}
 	created, err := s.repo.CreateSections(ctx, sc.institution.ID, periodID, sections)
