@@ -167,7 +167,9 @@ func (s *WellbeingService) TutorBoard(ctx context.Context, token, slug, staffID 
 	for _, c := range due {
 		if r, ok := rows[c.StudentID]; ok && c.DueOn.Before(today) {
 			on := c.DueOn
-			r.Alerts = append(r.Alerts, "commitment")
+			if !slices.Contains(r.Alerts, "commitment") {
+				r.Alerts = append(r.Alerts, "commitment")
+			}
 			b.Alerts = append(b.Alerts, domain.WellAlert{Kind: "commitment", Level: "medium", StudentID: c.StudentID, StudentName: r.Name, Placement: r.Placement,
 				Title: "Compromiso vencido sin revisar", Detail: c.Description, Since: &on, Code: "commitment"})
 		}
