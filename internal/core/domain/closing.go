@@ -51,6 +51,10 @@ type Record struct {
 	Content      []byte
 	IssuedName   string
 	IssuedAt     time.Time
+	// Phase E7: the signed version of the acta (documents), empty until generated
+	DocumentID   string
+	ActVersionID string
+	ActStatus    string
 }
 
 // SectionLevel is where a section sits, to pick its promotion rule

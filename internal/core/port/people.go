@@ -58,6 +58,14 @@ type PeopleRepository interface {
 	// LinkAct points the placement at the issued document of its acta
 	LinkAct(ctx context.Context, placementID, documentID string) error
 
+	// StudyRecords are the student's enrollments, oldest first, with the final situation in force (phase E7)
+	StudyRecords(ctx context.Context, institutionID, studentID string) ([]domain.StudyRecord, error)
+	// CreateCertificate numbers a new constancia in its year
+	CreateCertificate(ctx context.Context, institutionID string, in domain.StudentCertificateInput, year int, by string) (domain.StudentCertificate, error)
+	LinkCertificate(ctx context.Context, id, documentID string) error
+	Certificate(ctx context.Context, institutionID, id string) (domain.StudentCertificate, error)
+	Certificates(ctx context.Context, institutionID, studentID string) ([]domain.StudentCertificate, error)
+
 	// ---------- EBA enrollment (phase E1) ----------
 
 	// EnrollmentFile is the student's ficha; with defaults when none was saved (ErrNotFound for an unknown student)
