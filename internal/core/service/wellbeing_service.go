@@ -35,6 +35,8 @@ type WellbeingService struct {
 	attendance *AttendanceService
 	// Dropout alerts of the distance form (phase E5); set by the server
 	participation *ParticipationService
+	// Virtual tutoring (phase E6); set by the server
+	tutoring port.TutoringRepository
 }
 
 // SetParticipation adds the dropout alerts of the distance students to the inbox
@@ -52,6 +54,8 @@ type wellScope struct {
 	children []string
 	// Specialists: students whose POI they lead or whose therapies they log
 	assigned []string
+	// Students assigned one by one to this tutor (virtual tutoring, phase E6)
+	tutees []string
 	// The name on the staff record (therapy sessions are signed with it)
 	staffName string
 }
@@ -106,6 +110,11 @@ func (s *WellbeingService) scope(ctx context.Context, token, slug string) (wellS
 	}
 	if sc.teaching, err = s.repo.TeacherSections(ctx, isc.institution.ID, st.ID); err != nil {
 		return sc, err
+	}
+	if s.tutoring != nil {
+		if sc.tutees, err = s.tutoring.IndividualTutees(ctx, isc.institution.ID, st.ID); err != nil {
+			return sc, err
+		}
 	}
 	if sc.specialist() {
 		plans, err := s.repo.Plans(ctx, isc.institution.ID, "", st.ID, nil)
@@ -170,6 +179,10 @@ func (s *WellbeingService) student(ctx context.Context, sc wellScope, studentID 
 	if sc.specialist() && !slices.Contains(sc.assigned, studentID) {
 		return domain.WellStudent{}, domain.ErrNotYourPlan
 	}
+	if slices.Contains(sc.tutees, studentID) {
+		// A student of their own, maybe from a section they do not tutor
+		f.SectionIDs = nil
+	}
 	list, err := s.repo.Students(ctx, f)
 	if err != nil {
 		return domain.WellStudent{}, err
@@ -185,7 +198,7 @@ func (s *WellbeingService) student(ctx context.Context, sc wellScope, studentID 
 
 // tutors reports whether the person runs the tutoring of the student (office or the tutor of their section)
 func (sc wellScope) tutors(st domain.WellStudent) bool {
-	return sc.office() || slices.Contains(sc.tutoring, st.SectionID)
+	return sc.office() || slices.Contains(sc.tutoring, st.SectionID) || slices.Contains(sc.tutees, st.ID)
 }
 
 // readsTutoring: the office, psychology and the tutor of the section read interviews and commitments
@@ -238,6 +251,9 @@ type StudentFile struct {
 	Cases     []domain.PsychCase
 	Plans     []domain.IndividualPlan
 	Therapies []domain.TherapySession
+	// Virtual tutoring (phase E6): the sessions the student was called to and the SAANEE referrals
+	Sessions []domain.TutoringSession
+	Saanee   []domain.SaaneeReferral
 	// What the person may do here
 	CanTutor  bool
 	CanRefer  bool
@@ -276,6 +292,16 @@ func (s *WellbeingService) File(ctx context.Context, token, slug, studentID stri
 			for i := range file.Interviews {
 				file.Interviews[i].Notes = ""
 			}
+		}
+	}
+
+	// Virtual tutoring: the sessions and the SAANEE referrals, for whoever reads the tutoring
+	if s.tutoring != nil && sc.readsTutoring(st) {
+		if file.Sessions, err = s.tutoring.Sessions(ctx, domain.SessionFilter{InstitutionID: inst, StudentID: st.ID}); err != nil {
+			return file, err
+		}
+		if file.Saanee, err = s.tutoring.SaaneeReferrals(ctx, inst, ids); err != nil {
+			return file, err
 		}
 	}
 

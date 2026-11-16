@@ -1460,13 +1460,15 @@ type WellAlert struct {
 	// attendance | conduct | discipline | reconsideration | commitment | psychology | plan
 	Kind string `protobuf:"bytes,1,opt,name=kind,proto3" json:"kind,omitempty"`
 	// high | medium
-	Level         string `protobuf:"bytes,2,opt,name=level,proto3" json:"level,omitempty"`
-	StudentId     string `protobuf:"bytes,3,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
-	StudentName   string `protobuf:"bytes,4,opt,name=student_name,json=studentName,proto3" json:"student_name,omitempty"`
-	Placement     string `protobuf:"bytes,5,opt,name=placement,proto3" json:"placement,omitempty"`
-	Title         string `protobuf:"bytes,6,opt,name=title,proto3" json:"title,omitempty"`
-	Detail        string `protobuf:"bytes,7,opt,name=detail,proto3" json:"detail,omitempty"`
-	Since         string `protobuf:"bytes,8,opt,name=since,proto3" json:"since,omitempty"`
+	Level       string `protobuf:"bytes,2,opt,name=level,proto3" json:"level,omitempty"`
+	StudentId   string `protobuf:"bytes,3,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
+	StudentName string `protobuf:"bytes,4,opt,name=student_name,json=studentName,proto3" json:"student_name,omitempty"`
+	Placement   string `protobuf:"bytes,5,opt,name=placement,proto3" json:"placement,omitempty"`
+	Title       string `protobuf:"bytes,6,opt,name=title,proto3" json:"title,omitempty"`
+	Detail      string `protobuf:"bytes,7,opt,name=detail,proto3" json:"detail,omitempty"`
+	Since       string `protobuf:"bytes,8,opt,name=since,proto3" json:"since,omitempty"`
+	// The precise signal: dropout inactive | overdue | low_permanence; commitment
+	Code          string `protobuf:"bytes,9,opt,name=code,proto3" json:"code,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1553,6 +1555,13 @@ func (x *WellAlert) GetDetail() string {
 func (x *WellAlert) GetSince() string {
 	if x != nil {
 		return x.Since
+	}
+	return ""
+}
+
+func (x *WellAlert) GetCode() string {
+	if x != nil {
+		return x.Code
 	}
 	return ""
 }
@@ -1828,19 +1837,22 @@ type GetStudentFileResponse struct {
 	Commitments []*Commitment          `protobuf:"bytes,3,rep,name=commitments,proto3" json:"commitments,omitempty"`
 	Incidents   []*Incident            `protobuf:"bytes,4,rep,name=incidents,proto3" json:"incidents,omitempty"`
 	// Every measure of the school year (conditional enrollment and expulsion may have no incident)
-	Measures      []*Measure          `protobuf:"bytes,5,rep,name=measures,proto3" json:"measures,omitempty"`
-	Conduct       []*TermConduct      `protobuf:"bytes,6,rep,name=conduct,proto3" json:"conduct,omitempty"`
-	Cases         []*PsychCase        `protobuf:"bytes,7,rep,name=cases,proto3" json:"cases,omitempty"`
-	Plans         []*IndividualPlan   `protobuf:"bytes,8,rep,name=plans,proto3" json:"plans,omitempty"`
-	Therapies     []*TherapySession   `protobuf:"bytes,9,rep,name=therapies,proto3" json:"therapies,omitempty"`
-	CanTutor      bool                `protobuf:"varint,10,opt,name=can_tutor,json=canTutor,proto3" json:"can_tutor,omitempty"`
-	CanRefer      bool                `protobuf:"varint,11,opt,name=can_refer,json=canRefer,proto3" json:"can_refer,omitempty"`
-	CanReport     bool                `protobuf:"varint,12,opt,name=can_report,json=canReport,proto3" json:"can_report,omitempty"`
-	CanDecide     bool                `protobuf:"varint,13,opt,name=can_decide,json=canDecide,proto3" json:"can_decide,omitempty"`
-	CanPlan       bool                `protobuf:"varint,14,opt,name=can_plan,json=canPlan,proto3" json:"can_plan,omitempty"`
-	Family        bool                `protobuf:"varint,15,opt,name=family,proto3" json:"family,omitempty"`
-	Today         string              `protobuf:"bytes,16,opt,name=today,proto3" json:"today,omitempty"`
-	Catalog       []*IncidentCategory `protobuf:"bytes,17,rep,name=catalog,proto3" json:"catalog,omitempty"`
+	Measures  []*Measure          `protobuf:"bytes,5,rep,name=measures,proto3" json:"measures,omitempty"`
+	Conduct   []*TermConduct      `protobuf:"bytes,6,rep,name=conduct,proto3" json:"conduct,omitempty"`
+	Cases     []*PsychCase        `protobuf:"bytes,7,rep,name=cases,proto3" json:"cases,omitempty"`
+	Plans     []*IndividualPlan   `protobuf:"bytes,8,rep,name=plans,proto3" json:"plans,omitempty"`
+	Therapies []*TherapySession   `protobuf:"bytes,9,rep,name=therapies,proto3" json:"therapies,omitempty"`
+	CanTutor  bool                `protobuf:"varint,10,opt,name=can_tutor,json=canTutor,proto3" json:"can_tutor,omitempty"`
+	CanRefer  bool                `protobuf:"varint,11,opt,name=can_refer,json=canRefer,proto3" json:"can_refer,omitempty"`
+	CanReport bool                `protobuf:"varint,12,opt,name=can_report,json=canReport,proto3" json:"can_report,omitempty"`
+	CanDecide bool                `protobuf:"varint,13,opt,name=can_decide,json=canDecide,proto3" json:"can_decide,omitempty"`
+	CanPlan   bool                `protobuf:"varint,14,opt,name=can_plan,json=canPlan,proto3" json:"can_plan,omitempty"`
+	Family    bool                `protobuf:"varint,15,opt,name=family,proto3" json:"family,omitempty"`
+	Today     string              `protobuf:"bytes,16,opt,name=today,proto3" json:"today,omitempty"`
+	Catalog   []*IncidentCategory `protobuf:"bytes,17,rep,name=catalog,proto3" json:"catalog,omitempty"`
+	// Virtual tutoring (phase E6): sessions the student was called to and the SAANEE referrals
+	Sessions      []*TutoringSession `protobuf:"bytes,18,rep,name=sessions,proto3" json:"sessions,omitempty"`
+	Saanee        []*SaaneeReferral  `protobuf:"bytes,19,rep,name=saanee,proto3" json:"saanee,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1990,6 +2002,20 @@ func (x *GetStudentFileResponse) GetToday() string {
 func (x *GetStudentFileResponse) GetCatalog() []*IncidentCategory {
 	if x != nil {
 		return x.Catalog
+	}
+	return nil
+}
+
+func (x *GetStudentFileResponse) GetSessions() []*TutoringSession {
+	if x != nil {
+		return x.Sessions
+	}
+	return nil
+}
+
+func (x *GetStudentFileResponse) GetSaanee() []*SaaneeReferral {
+	if x != nil {
+		return x.Saanee
 	}
 	return nil
 }
@@ -5310,7 +5336,7 @@ var File_joseph_wellbeing_v1_wellbeing_proto protoreflect.FileDescriptor
 
 const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\n" +
-	"#joseph/wellbeing/v1/wellbeing.proto\x12\x13joseph.wellbeing.v1\"\xe2\x02\n" +
+	"#joseph/wellbeing/v1/wellbeing.proto\x12\x13joseph.wellbeing.v1\x1a\"joseph/wellbeing/v1/tutoring.proto\"\xe2\x02\n" +
 	"\vWellStudent\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
@@ -5483,7 +5509,7 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	" \x01(\tR\x05notes\x12\x1d\n" +
 	"\n" +
 	"home_tasks\x18\v \x01(\tR\thomeTasks\x12\x12\n" +
-	"\x04mine\x18\f \x01(\bR\x04mine\"\xd9\x01\n" +
+	"\x04mine\x18\f \x01(\bR\x04mine\"\xed\x01\n" +
 	"\tWellAlert\x12\x12\n" +
 	"\x04kind\x18\x01 \x01(\tR\x04kind\x12\x14\n" +
 	"\x05level\x18\x02 \x01(\tR\x05level\x12\x1d\n" +
@@ -5493,7 +5519,8 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\tplacement\x18\x05 \x01(\tR\tplacement\x12\x14\n" +
 	"\x05title\x18\x06 \x01(\tR\x05title\x12\x16\n" +
 	"\x06detail\x18\a \x01(\tR\x06detail\x12\x14\n" +
-	"\x05since\x18\b \x01(\tR\x05since\"J\n" +
+	"\x05since\x18\b \x01(\tR\x05since\x12\x12\n" +
+	"\x04code\x18\t \x01(\tR\x04code\"J\n" +
 	"\bStaffRef\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
@@ -5515,7 +5542,7 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\x15GetStudentFileRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x02 \x01(\tR\tstudentId\"\xc0\x06\n" +
+	"student_id\x18\x02 \x01(\tR\tstudentId\"\xbf\a\n" +
 	"\x16GetStudentFileResponse\x12:\n" +
 	"\astudent\x18\x01 \x01(\v2 .joseph.wellbeing.v1.WellStudentR\astudent\x12>\n" +
 	"\n" +
@@ -5538,7 +5565,9 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\bcan_plan\x18\x0e \x01(\bR\acanPlan\x12\x16\n" +
 	"\x06family\x18\x0f \x01(\bR\x06family\x12\x14\n" +
 	"\x05today\x18\x10 \x01(\tR\x05today\x12?\n" +
-	"\acatalog\x18\x11 \x03(\v2%.joseph.wellbeing.v1.IncidentCategoryR\acatalog\"=\n" +
+	"\acatalog\x18\x11 \x03(\v2%.joseph.wellbeing.v1.IncidentCategoryR\acatalog\x12@\n" +
+	"\bsessions\x18\x12 \x03(\v2$.joseph.wellbeing.v1.TutoringSessionR\bsessions\x12;\n" +
+	"\x06saanee\x18\x13 \x03(\v2#.joseph.wellbeing.v1.SaaneeReferralR\x06saanee\"=\n" +
 	"\x10GetAlertsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xe8\x01\n" +
 	"\x11GetAlertsResponse\x126\n" +
@@ -5894,6 +5923,8 @@ var file_joseph_wellbeing_v1_wellbeing_proto_goTypes = []any{
 	(*DeleteTherapyResponse)(nil),          // 78: joseph.wellbeing.v1.DeleteTherapyResponse
 	nil,                                    // 79: joseph.wellbeing.v1.GetAlertsResponse.CountsEntry
 	nil,                                    // 80: joseph.wellbeing.v1.GetPsychologyResponse.ByStatusEntry
+	(*TutoringSession)(nil),                // 81: joseph.wellbeing.v1.TutoringSession
+	(*SaaneeReferral)(nil),                 // 82: joseph.wellbeing.v1.SaaneeReferral
 }
 var file_joseph_wellbeing_v1_wellbeing_proto_depIdxs = []int32{
 	5,  // 0: joseph.wellbeing.v1.Incident.measures:type_name -> joseph.wellbeing.v1.Measure
@@ -5908,112 +5939,114 @@ var file_joseph_wellbeing_v1_wellbeing_proto_depIdxs = []int32{
 	9,  // 9: joseph.wellbeing.v1.GetStudentFileResponse.plans:type_name -> joseph.wellbeing.v1.IndividualPlan
 	10, // 10: joseph.wellbeing.v1.GetStudentFileResponse.therapies:type_name -> joseph.wellbeing.v1.TherapySession
 	7,  // 11: joseph.wellbeing.v1.GetStudentFileResponse.catalog:type_name -> joseph.wellbeing.v1.IncidentCategory
-	11, // 12: joseph.wellbeing.v1.GetAlertsResponse.alerts:type_name -> joseph.wellbeing.v1.WellAlert
-	79, // 13: joseph.wellbeing.v1.GetAlertsResponse.counts:type_name -> joseph.wellbeing.v1.GetAlertsResponse.CountsEntry
-	0,  // 14: joseph.wellbeing.v1.GetTutoringResponse.students:type_name -> joseph.wellbeing.v1.WellStudent
-	2,  // 15: joseph.wellbeing.v1.GetTutoringResponse.due:type_name -> joseph.wellbeing.v1.Commitment
-	1,  // 16: joseph.wellbeing.v1.GetTutoringResponse.interviews:type_name -> joseph.wellbeing.v1.Interview
-	1,  // 17: joseph.wellbeing.v1.SaveInterviewRequest.interview:type_name -> joseph.wellbeing.v1.Interview
-	1,  // 18: joseph.wellbeing.v1.SaveInterviewResponse.interview:type_name -> joseph.wellbeing.v1.Interview
-	2,  // 19: joseph.wellbeing.v1.SaveCommitmentRequest.commitment:type_name -> joseph.wellbeing.v1.Commitment
-	2,  // 20: joseph.wellbeing.v1.SaveCommitmentResponse.commitment:type_name -> joseph.wellbeing.v1.Commitment
-	3,  // 21: joseph.wellbeing.v1.ReferResponse.case:type_name -> joseph.wellbeing.v1.PsychCase
-	3,  // 22: joseph.wellbeing.v1.GetPsychologyResponse.cases:type_name -> joseph.wellbeing.v1.PsychCase
-	80, // 23: joseph.wellbeing.v1.GetPsychologyResponse.by_status:type_name -> joseph.wellbeing.v1.GetPsychologyResponse.ByStatusEntry
-	3,  // 24: joseph.wellbeing.v1.GetCaseResponse.case:type_name -> joseph.wellbeing.v1.PsychCase
-	4,  // 25: joseph.wellbeing.v1.GetCaseResponse.sessions:type_name -> joseph.wellbeing.v1.PsychSession
-	3,  // 26: joseph.wellbeing.v1.UpdateCaseResponse.case:type_name -> joseph.wellbeing.v1.PsychCase
-	4,  // 27: joseph.wellbeing.v1.AddSessionRequest.session:type_name -> joseph.wellbeing.v1.PsychSession
-	4,  // 28: joseph.wellbeing.v1.AddSessionResponse.session:type_name -> joseph.wellbeing.v1.PsychSession
-	6,  // 29: joseph.wellbeing.v1.GetDisciplineResponse.incidents:type_name -> joseph.wellbeing.v1.Incident
-	7,  // 30: joseph.wellbeing.v1.GetDisciplineResponse.catalog:type_name -> joseph.wellbeing.v1.IncidentCategory
-	5,  // 31: joseph.wellbeing.v1.GetDisciplineResponse.measures:type_name -> joseph.wellbeing.v1.Measure
-	6,  // 32: joseph.wellbeing.v1.SaveIncidentRequest.incident:type_name -> joseph.wellbeing.v1.Incident
-	6,  // 33: joseph.wellbeing.v1.SaveIncidentResponse.incident:type_name -> joseph.wellbeing.v1.Incident
-	5,  // 34: joseph.wellbeing.v1.AddMeasureRequest.measure:type_name -> joseph.wellbeing.v1.Measure
-	5,  // 35: joseph.wellbeing.v1.AddMeasureResponse.measure:type_name -> joseph.wellbeing.v1.Measure
-	9,  // 36: joseph.wellbeing.v1.ListPlansResponse.plans:type_name -> joseph.wellbeing.v1.IndividualPlan
-	0,  // 37: joseph.wellbeing.v1.ListPlansResponse.students:type_name -> joseph.wellbeing.v1.WellStudent
-	12, // 38: joseph.wellbeing.v1.ListPlansResponse.specialists:type_name -> joseph.wellbeing.v1.StaffRef
-	9,  // 39: joseph.wellbeing.v1.GetPlanResponse.plan:type_name -> joseph.wellbeing.v1.IndividualPlan
-	9,  // 40: joseph.wellbeing.v1.SavePlanRequest.plan:type_name -> joseph.wellbeing.v1.IndividualPlan
-	9,  // 41: joseph.wellbeing.v1.SavePlanResponse.plan:type_name -> joseph.wellbeing.v1.IndividualPlan
-	9,  // 42: joseph.wellbeing.v1.SetPlanStatusResponse.plan:type_name -> joseph.wellbeing.v1.IndividualPlan
-	10, // 43: joseph.wellbeing.v1.ListTherapiesResponse.sessions:type_name -> joseph.wellbeing.v1.TherapySession
-	0,  // 44: joseph.wellbeing.v1.ListTherapiesResponse.students:type_name -> joseph.wellbeing.v1.WellStudent
-	10, // 45: joseph.wellbeing.v1.SaveTherapyRequest.session:type_name -> joseph.wellbeing.v1.TherapySession
-	10, // 46: joseph.wellbeing.v1.SaveTherapyResponse.session:type_name -> joseph.wellbeing.v1.TherapySession
-	13, // 47: joseph.wellbeing.v1.WellbeingService.ListStudents:input_type -> joseph.wellbeing.v1.ListStudentsRequest
-	15, // 48: joseph.wellbeing.v1.WellbeingService.GetStudentFile:input_type -> joseph.wellbeing.v1.GetStudentFileRequest
-	17, // 49: joseph.wellbeing.v1.WellbeingService.GetAlerts:input_type -> joseph.wellbeing.v1.GetAlertsRequest
-	19, // 50: joseph.wellbeing.v1.WellbeingService.GetTutoring:input_type -> joseph.wellbeing.v1.GetTutoringRequest
-	21, // 51: joseph.wellbeing.v1.WellbeingService.SaveInterview:input_type -> joseph.wellbeing.v1.SaveInterviewRequest
-	23, // 52: joseph.wellbeing.v1.WellbeingService.DeleteInterview:input_type -> joseph.wellbeing.v1.DeleteInterviewRequest
-	25, // 53: joseph.wellbeing.v1.WellbeingService.SaveCommitment:input_type -> joseph.wellbeing.v1.SaveCommitmentRequest
-	27, // 54: joseph.wellbeing.v1.WellbeingService.CheckCommitment:input_type -> joseph.wellbeing.v1.CheckCommitmentRequest
-	29, // 55: joseph.wellbeing.v1.WellbeingService.DeleteCommitment:input_type -> joseph.wellbeing.v1.DeleteCommitmentRequest
-	31, // 56: joseph.wellbeing.v1.WellbeingService.Refer:input_type -> joseph.wellbeing.v1.ReferRequest
-	33, // 57: joseph.wellbeing.v1.WellbeingService.GetPsychology:input_type -> joseph.wellbeing.v1.GetPsychologyRequest
-	35, // 58: joseph.wellbeing.v1.WellbeingService.GetCase:input_type -> joseph.wellbeing.v1.GetCaseRequest
-	37, // 59: joseph.wellbeing.v1.WellbeingService.UpdateCase:input_type -> joseph.wellbeing.v1.UpdateCaseRequest
-	39, // 60: joseph.wellbeing.v1.WellbeingService.AddSession:input_type -> joseph.wellbeing.v1.AddSessionRequest
-	41, // 61: joseph.wellbeing.v1.WellbeingService.DeleteSession:input_type -> joseph.wellbeing.v1.DeleteSessionRequest
-	43, // 62: joseph.wellbeing.v1.WellbeingService.GetDiscipline:input_type -> joseph.wellbeing.v1.GetDisciplineRequest
-	45, // 63: joseph.wellbeing.v1.WellbeingService.SaveIncident:input_type -> joseph.wellbeing.v1.SaveIncidentRequest
-	47, // 64: joseph.wellbeing.v1.WellbeingService.DeleteIncident:input_type -> joseph.wellbeing.v1.DeleteIncidentRequest
-	49, // 65: joseph.wellbeing.v1.WellbeingService.SetIncidentStatus:input_type -> joseph.wellbeing.v1.SetIncidentStatusRequest
-	51, // 66: joseph.wellbeing.v1.WellbeingService.GetMeasureContext:input_type -> joseph.wellbeing.v1.GetMeasureContextRequest
-	53, // 67: joseph.wellbeing.v1.WellbeingService.AddMeasure:input_type -> joseph.wellbeing.v1.AddMeasureRequest
-	55, // 68: joseph.wellbeing.v1.WellbeingService.NotifyMeasure:input_type -> joseph.wellbeing.v1.NotifyMeasureRequest
-	57, // 69: joseph.wellbeing.v1.WellbeingService.RequestReconsideration:input_type -> joseph.wellbeing.v1.RequestReconsiderationRequest
-	59, // 70: joseph.wellbeing.v1.WellbeingService.ResolveReconsideration:input_type -> joseph.wellbeing.v1.ResolveReconsiderationRequest
-	61, // 71: joseph.wellbeing.v1.WellbeingService.DeleteMeasure:input_type -> joseph.wellbeing.v1.DeleteMeasureRequest
-	63, // 72: joseph.wellbeing.v1.WellbeingService.ListPlans:input_type -> joseph.wellbeing.v1.ListPlansRequest
-	65, // 73: joseph.wellbeing.v1.WellbeingService.GetPlan:input_type -> joseph.wellbeing.v1.GetPlanRequest
-	67, // 74: joseph.wellbeing.v1.WellbeingService.SavePlan:input_type -> joseph.wellbeing.v1.SavePlanRequest
-	69, // 75: joseph.wellbeing.v1.WellbeingService.SetPlanStatus:input_type -> joseph.wellbeing.v1.SetPlanStatusRequest
-	71, // 76: joseph.wellbeing.v1.WellbeingService.DeletePlan:input_type -> joseph.wellbeing.v1.DeletePlanRequest
-	73, // 77: joseph.wellbeing.v1.WellbeingService.ListTherapies:input_type -> joseph.wellbeing.v1.ListTherapiesRequest
-	75, // 78: joseph.wellbeing.v1.WellbeingService.SaveTherapy:input_type -> joseph.wellbeing.v1.SaveTherapyRequest
-	77, // 79: joseph.wellbeing.v1.WellbeingService.DeleteTherapy:input_type -> joseph.wellbeing.v1.DeleteTherapyRequest
-	14, // 80: joseph.wellbeing.v1.WellbeingService.ListStudents:output_type -> joseph.wellbeing.v1.ListStudentsResponse
-	16, // 81: joseph.wellbeing.v1.WellbeingService.GetStudentFile:output_type -> joseph.wellbeing.v1.GetStudentFileResponse
-	18, // 82: joseph.wellbeing.v1.WellbeingService.GetAlerts:output_type -> joseph.wellbeing.v1.GetAlertsResponse
-	20, // 83: joseph.wellbeing.v1.WellbeingService.GetTutoring:output_type -> joseph.wellbeing.v1.GetTutoringResponse
-	22, // 84: joseph.wellbeing.v1.WellbeingService.SaveInterview:output_type -> joseph.wellbeing.v1.SaveInterviewResponse
-	24, // 85: joseph.wellbeing.v1.WellbeingService.DeleteInterview:output_type -> joseph.wellbeing.v1.DeleteInterviewResponse
-	26, // 86: joseph.wellbeing.v1.WellbeingService.SaveCommitment:output_type -> joseph.wellbeing.v1.SaveCommitmentResponse
-	28, // 87: joseph.wellbeing.v1.WellbeingService.CheckCommitment:output_type -> joseph.wellbeing.v1.CheckCommitmentResponse
-	30, // 88: joseph.wellbeing.v1.WellbeingService.DeleteCommitment:output_type -> joseph.wellbeing.v1.DeleteCommitmentResponse
-	32, // 89: joseph.wellbeing.v1.WellbeingService.Refer:output_type -> joseph.wellbeing.v1.ReferResponse
-	34, // 90: joseph.wellbeing.v1.WellbeingService.GetPsychology:output_type -> joseph.wellbeing.v1.GetPsychologyResponse
-	36, // 91: joseph.wellbeing.v1.WellbeingService.GetCase:output_type -> joseph.wellbeing.v1.GetCaseResponse
-	38, // 92: joseph.wellbeing.v1.WellbeingService.UpdateCase:output_type -> joseph.wellbeing.v1.UpdateCaseResponse
-	40, // 93: joseph.wellbeing.v1.WellbeingService.AddSession:output_type -> joseph.wellbeing.v1.AddSessionResponse
-	42, // 94: joseph.wellbeing.v1.WellbeingService.DeleteSession:output_type -> joseph.wellbeing.v1.DeleteSessionResponse
-	44, // 95: joseph.wellbeing.v1.WellbeingService.GetDiscipline:output_type -> joseph.wellbeing.v1.GetDisciplineResponse
-	46, // 96: joseph.wellbeing.v1.WellbeingService.SaveIncident:output_type -> joseph.wellbeing.v1.SaveIncidentResponse
-	48, // 97: joseph.wellbeing.v1.WellbeingService.DeleteIncident:output_type -> joseph.wellbeing.v1.DeleteIncidentResponse
-	50, // 98: joseph.wellbeing.v1.WellbeingService.SetIncidentStatus:output_type -> joseph.wellbeing.v1.SetIncidentStatusResponse
-	52, // 99: joseph.wellbeing.v1.WellbeingService.GetMeasureContext:output_type -> joseph.wellbeing.v1.GetMeasureContextResponse
-	54, // 100: joseph.wellbeing.v1.WellbeingService.AddMeasure:output_type -> joseph.wellbeing.v1.AddMeasureResponse
-	56, // 101: joseph.wellbeing.v1.WellbeingService.NotifyMeasure:output_type -> joseph.wellbeing.v1.NotifyMeasureResponse
-	58, // 102: joseph.wellbeing.v1.WellbeingService.RequestReconsideration:output_type -> joseph.wellbeing.v1.RequestReconsiderationResponse
-	60, // 103: joseph.wellbeing.v1.WellbeingService.ResolveReconsideration:output_type -> joseph.wellbeing.v1.ResolveReconsiderationResponse
-	62, // 104: joseph.wellbeing.v1.WellbeingService.DeleteMeasure:output_type -> joseph.wellbeing.v1.DeleteMeasureResponse
-	64, // 105: joseph.wellbeing.v1.WellbeingService.ListPlans:output_type -> joseph.wellbeing.v1.ListPlansResponse
-	66, // 106: joseph.wellbeing.v1.WellbeingService.GetPlan:output_type -> joseph.wellbeing.v1.GetPlanResponse
-	68, // 107: joseph.wellbeing.v1.WellbeingService.SavePlan:output_type -> joseph.wellbeing.v1.SavePlanResponse
-	70, // 108: joseph.wellbeing.v1.WellbeingService.SetPlanStatus:output_type -> joseph.wellbeing.v1.SetPlanStatusResponse
-	72, // 109: joseph.wellbeing.v1.WellbeingService.DeletePlan:output_type -> joseph.wellbeing.v1.DeletePlanResponse
-	74, // 110: joseph.wellbeing.v1.WellbeingService.ListTherapies:output_type -> joseph.wellbeing.v1.ListTherapiesResponse
-	76, // 111: joseph.wellbeing.v1.WellbeingService.SaveTherapy:output_type -> joseph.wellbeing.v1.SaveTherapyResponse
-	78, // 112: joseph.wellbeing.v1.WellbeingService.DeleteTherapy:output_type -> joseph.wellbeing.v1.DeleteTherapyResponse
-	80, // [80:113] is the sub-list for method output_type
-	47, // [47:80] is the sub-list for method input_type
-	47, // [47:47] is the sub-list for extension type_name
-	47, // [47:47] is the sub-list for extension extendee
-	0,  // [0:47] is the sub-list for field type_name
+	81, // 12: joseph.wellbeing.v1.GetStudentFileResponse.sessions:type_name -> joseph.wellbeing.v1.TutoringSession
+	82, // 13: joseph.wellbeing.v1.GetStudentFileResponse.saanee:type_name -> joseph.wellbeing.v1.SaaneeReferral
+	11, // 14: joseph.wellbeing.v1.GetAlertsResponse.alerts:type_name -> joseph.wellbeing.v1.WellAlert
+	79, // 15: joseph.wellbeing.v1.GetAlertsResponse.counts:type_name -> joseph.wellbeing.v1.GetAlertsResponse.CountsEntry
+	0,  // 16: joseph.wellbeing.v1.GetTutoringResponse.students:type_name -> joseph.wellbeing.v1.WellStudent
+	2,  // 17: joseph.wellbeing.v1.GetTutoringResponse.due:type_name -> joseph.wellbeing.v1.Commitment
+	1,  // 18: joseph.wellbeing.v1.GetTutoringResponse.interviews:type_name -> joseph.wellbeing.v1.Interview
+	1,  // 19: joseph.wellbeing.v1.SaveInterviewRequest.interview:type_name -> joseph.wellbeing.v1.Interview
+	1,  // 20: joseph.wellbeing.v1.SaveInterviewResponse.interview:type_name -> joseph.wellbeing.v1.Interview
+	2,  // 21: joseph.wellbeing.v1.SaveCommitmentRequest.commitment:type_name -> joseph.wellbeing.v1.Commitment
+	2,  // 22: joseph.wellbeing.v1.SaveCommitmentResponse.commitment:type_name -> joseph.wellbeing.v1.Commitment
+	3,  // 23: joseph.wellbeing.v1.ReferResponse.case:type_name -> joseph.wellbeing.v1.PsychCase
+	3,  // 24: joseph.wellbeing.v1.GetPsychologyResponse.cases:type_name -> joseph.wellbeing.v1.PsychCase
+	80, // 25: joseph.wellbeing.v1.GetPsychologyResponse.by_status:type_name -> joseph.wellbeing.v1.GetPsychologyResponse.ByStatusEntry
+	3,  // 26: joseph.wellbeing.v1.GetCaseResponse.case:type_name -> joseph.wellbeing.v1.PsychCase
+	4,  // 27: joseph.wellbeing.v1.GetCaseResponse.sessions:type_name -> joseph.wellbeing.v1.PsychSession
+	3,  // 28: joseph.wellbeing.v1.UpdateCaseResponse.case:type_name -> joseph.wellbeing.v1.PsychCase
+	4,  // 29: joseph.wellbeing.v1.AddSessionRequest.session:type_name -> joseph.wellbeing.v1.PsychSession
+	4,  // 30: joseph.wellbeing.v1.AddSessionResponse.session:type_name -> joseph.wellbeing.v1.PsychSession
+	6,  // 31: joseph.wellbeing.v1.GetDisciplineResponse.incidents:type_name -> joseph.wellbeing.v1.Incident
+	7,  // 32: joseph.wellbeing.v1.GetDisciplineResponse.catalog:type_name -> joseph.wellbeing.v1.IncidentCategory
+	5,  // 33: joseph.wellbeing.v1.GetDisciplineResponse.measures:type_name -> joseph.wellbeing.v1.Measure
+	6,  // 34: joseph.wellbeing.v1.SaveIncidentRequest.incident:type_name -> joseph.wellbeing.v1.Incident
+	6,  // 35: joseph.wellbeing.v1.SaveIncidentResponse.incident:type_name -> joseph.wellbeing.v1.Incident
+	5,  // 36: joseph.wellbeing.v1.AddMeasureRequest.measure:type_name -> joseph.wellbeing.v1.Measure
+	5,  // 37: joseph.wellbeing.v1.AddMeasureResponse.measure:type_name -> joseph.wellbeing.v1.Measure
+	9,  // 38: joseph.wellbeing.v1.ListPlansResponse.plans:type_name -> joseph.wellbeing.v1.IndividualPlan
+	0,  // 39: joseph.wellbeing.v1.ListPlansResponse.students:type_name -> joseph.wellbeing.v1.WellStudent
+	12, // 40: joseph.wellbeing.v1.ListPlansResponse.specialists:type_name -> joseph.wellbeing.v1.StaffRef
+	9,  // 41: joseph.wellbeing.v1.GetPlanResponse.plan:type_name -> joseph.wellbeing.v1.IndividualPlan
+	9,  // 42: joseph.wellbeing.v1.SavePlanRequest.plan:type_name -> joseph.wellbeing.v1.IndividualPlan
+	9,  // 43: joseph.wellbeing.v1.SavePlanResponse.plan:type_name -> joseph.wellbeing.v1.IndividualPlan
+	9,  // 44: joseph.wellbeing.v1.SetPlanStatusResponse.plan:type_name -> joseph.wellbeing.v1.IndividualPlan
+	10, // 45: joseph.wellbeing.v1.ListTherapiesResponse.sessions:type_name -> joseph.wellbeing.v1.TherapySession
+	0,  // 46: joseph.wellbeing.v1.ListTherapiesResponse.students:type_name -> joseph.wellbeing.v1.WellStudent
+	10, // 47: joseph.wellbeing.v1.SaveTherapyRequest.session:type_name -> joseph.wellbeing.v1.TherapySession
+	10, // 48: joseph.wellbeing.v1.SaveTherapyResponse.session:type_name -> joseph.wellbeing.v1.TherapySession
+	13, // 49: joseph.wellbeing.v1.WellbeingService.ListStudents:input_type -> joseph.wellbeing.v1.ListStudentsRequest
+	15, // 50: joseph.wellbeing.v1.WellbeingService.GetStudentFile:input_type -> joseph.wellbeing.v1.GetStudentFileRequest
+	17, // 51: joseph.wellbeing.v1.WellbeingService.GetAlerts:input_type -> joseph.wellbeing.v1.GetAlertsRequest
+	19, // 52: joseph.wellbeing.v1.WellbeingService.GetTutoring:input_type -> joseph.wellbeing.v1.GetTutoringRequest
+	21, // 53: joseph.wellbeing.v1.WellbeingService.SaveInterview:input_type -> joseph.wellbeing.v1.SaveInterviewRequest
+	23, // 54: joseph.wellbeing.v1.WellbeingService.DeleteInterview:input_type -> joseph.wellbeing.v1.DeleteInterviewRequest
+	25, // 55: joseph.wellbeing.v1.WellbeingService.SaveCommitment:input_type -> joseph.wellbeing.v1.SaveCommitmentRequest
+	27, // 56: joseph.wellbeing.v1.WellbeingService.CheckCommitment:input_type -> joseph.wellbeing.v1.CheckCommitmentRequest
+	29, // 57: joseph.wellbeing.v1.WellbeingService.DeleteCommitment:input_type -> joseph.wellbeing.v1.DeleteCommitmentRequest
+	31, // 58: joseph.wellbeing.v1.WellbeingService.Refer:input_type -> joseph.wellbeing.v1.ReferRequest
+	33, // 59: joseph.wellbeing.v1.WellbeingService.GetPsychology:input_type -> joseph.wellbeing.v1.GetPsychologyRequest
+	35, // 60: joseph.wellbeing.v1.WellbeingService.GetCase:input_type -> joseph.wellbeing.v1.GetCaseRequest
+	37, // 61: joseph.wellbeing.v1.WellbeingService.UpdateCase:input_type -> joseph.wellbeing.v1.UpdateCaseRequest
+	39, // 62: joseph.wellbeing.v1.WellbeingService.AddSession:input_type -> joseph.wellbeing.v1.AddSessionRequest
+	41, // 63: joseph.wellbeing.v1.WellbeingService.DeleteSession:input_type -> joseph.wellbeing.v1.DeleteSessionRequest
+	43, // 64: joseph.wellbeing.v1.WellbeingService.GetDiscipline:input_type -> joseph.wellbeing.v1.GetDisciplineRequest
+	45, // 65: joseph.wellbeing.v1.WellbeingService.SaveIncident:input_type -> joseph.wellbeing.v1.SaveIncidentRequest
+	47, // 66: joseph.wellbeing.v1.WellbeingService.DeleteIncident:input_type -> joseph.wellbeing.v1.DeleteIncidentRequest
+	49, // 67: joseph.wellbeing.v1.WellbeingService.SetIncidentStatus:input_type -> joseph.wellbeing.v1.SetIncidentStatusRequest
+	51, // 68: joseph.wellbeing.v1.WellbeingService.GetMeasureContext:input_type -> joseph.wellbeing.v1.GetMeasureContextRequest
+	53, // 69: joseph.wellbeing.v1.WellbeingService.AddMeasure:input_type -> joseph.wellbeing.v1.AddMeasureRequest
+	55, // 70: joseph.wellbeing.v1.WellbeingService.NotifyMeasure:input_type -> joseph.wellbeing.v1.NotifyMeasureRequest
+	57, // 71: joseph.wellbeing.v1.WellbeingService.RequestReconsideration:input_type -> joseph.wellbeing.v1.RequestReconsiderationRequest
+	59, // 72: joseph.wellbeing.v1.WellbeingService.ResolveReconsideration:input_type -> joseph.wellbeing.v1.ResolveReconsiderationRequest
+	61, // 73: joseph.wellbeing.v1.WellbeingService.DeleteMeasure:input_type -> joseph.wellbeing.v1.DeleteMeasureRequest
+	63, // 74: joseph.wellbeing.v1.WellbeingService.ListPlans:input_type -> joseph.wellbeing.v1.ListPlansRequest
+	65, // 75: joseph.wellbeing.v1.WellbeingService.GetPlan:input_type -> joseph.wellbeing.v1.GetPlanRequest
+	67, // 76: joseph.wellbeing.v1.WellbeingService.SavePlan:input_type -> joseph.wellbeing.v1.SavePlanRequest
+	69, // 77: joseph.wellbeing.v1.WellbeingService.SetPlanStatus:input_type -> joseph.wellbeing.v1.SetPlanStatusRequest
+	71, // 78: joseph.wellbeing.v1.WellbeingService.DeletePlan:input_type -> joseph.wellbeing.v1.DeletePlanRequest
+	73, // 79: joseph.wellbeing.v1.WellbeingService.ListTherapies:input_type -> joseph.wellbeing.v1.ListTherapiesRequest
+	75, // 80: joseph.wellbeing.v1.WellbeingService.SaveTherapy:input_type -> joseph.wellbeing.v1.SaveTherapyRequest
+	77, // 81: joseph.wellbeing.v1.WellbeingService.DeleteTherapy:input_type -> joseph.wellbeing.v1.DeleteTherapyRequest
+	14, // 82: joseph.wellbeing.v1.WellbeingService.ListStudents:output_type -> joseph.wellbeing.v1.ListStudentsResponse
+	16, // 83: joseph.wellbeing.v1.WellbeingService.GetStudentFile:output_type -> joseph.wellbeing.v1.GetStudentFileResponse
+	18, // 84: joseph.wellbeing.v1.WellbeingService.GetAlerts:output_type -> joseph.wellbeing.v1.GetAlertsResponse
+	20, // 85: joseph.wellbeing.v1.WellbeingService.GetTutoring:output_type -> joseph.wellbeing.v1.GetTutoringResponse
+	22, // 86: joseph.wellbeing.v1.WellbeingService.SaveInterview:output_type -> joseph.wellbeing.v1.SaveInterviewResponse
+	24, // 87: joseph.wellbeing.v1.WellbeingService.DeleteInterview:output_type -> joseph.wellbeing.v1.DeleteInterviewResponse
+	26, // 88: joseph.wellbeing.v1.WellbeingService.SaveCommitment:output_type -> joseph.wellbeing.v1.SaveCommitmentResponse
+	28, // 89: joseph.wellbeing.v1.WellbeingService.CheckCommitment:output_type -> joseph.wellbeing.v1.CheckCommitmentResponse
+	30, // 90: joseph.wellbeing.v1.WellbeingService.DeleteCommitment:output_type -> joseph.wellbeing.v1.DeleteCommitmentResponse
+	32, // 91: joseph.wellbeing.v1.WellbeingService.Refer:output_type -> joseph.wellbeing.v1.ReferResponse
+	34, // 92: joseph.wellbeing.v1.WellbeingService.GetPsychology:output_type -> joseph.wellbeing.v1.GetPsychologyResponse
+	36, // 93: joseph.wellbeing.v1.WellbeingService.GetCase:output_type -> joseph.wellbeing.v1.GetCaseResponse
+	38, // 94: joseph.wellbeing.v1.WellbeingService.UpdateCase:output_type -> joseph.wellbeing.v1.UpdateCaseResponse
+	40, // 95: joseph.wellbeing.v1.WellbeingService.AddSession:output_type -> joseph.wellbeing.v1.AddSessionResponse
+	42, // 96: joseph.wellbeing.v1.WellbeingService.DeleteSession:output_type -> joseph.wellbeing.v1.DeleteSessionResponse
+	44, // 97: joseph.wellbeing.v1.WellbeingService.GetDiscipline:output_type -> joseph.wellbeing.v1.GetDisciplineResponse
+	46, // 98: joseph.wellbeing.v1.WellbeingService.SaveIncident:output_type -> joseph.wellbeing.v1.SaveIncidentResponse
+	48, // 99: joseph.wellbeing.v1.WellbeingService.DeleteIncident:output_type -> joseph.wellbeing.v1.DeleteIncidentResponse
+	50, // 100: joseph.wellbeing.v1.WellbeingService.SetIncidentStatus:output_type -> joseph.wellbeing.v1.SetIncidentStatusResponse
+	52, // 101: joseph.wellbeing.v1.WellbeingService.GetMeasureContext:output_type -> joseph.wellbeing.v1.GetMeasureContextResponse
+	54, // 102: joseph.wellbeing.v1.WellbeingService.AddMeasure:output_type -> joseph.wellbeing.v1.AddMeasureResponse
+	56, // 103: joseph.wellbeing.v1.WellbeingService.NotifyMeasure:output_type -> joseph.wellbeing.v1.NotifyMeasureResponse
+	58, // 104: joseph.wellbeing.v1.WellbeingService.RequestReconsideration:output_type -> joseph.wellbeing.v1.RequestReconsiderationResponse
+	60, // 105: joseph.wellbeing.v1.WellbeingService.ResolveReconsideration:output_type -> joseph.wellbeing.v1.ResolveReconsiderationResponse
+	62, // 106: joseph.wellbeing.v1.WellbeingService.DeleteMeasure:output_type -> joseph.wellbeing.v1.DeleteMeasureResponse
+	64, // 107: joseph.wellbeing.v1.WellbeingService.ListPlans:output_type -> joseph.wellbeing.v1.ListPlansResponse
+	66, // 108: joseph.wellbeing.v1.WellbeingService.GetPlan:output_type -> joseph.wellbeing.v1.GetPlanResponse
+	68, // 109: joseph.wellbeing.v1.WellbeingService.SavePlan:output_type -> joseph.wellbeing.v1.SavePlanResponse
+	70, // 110: joseph.wellbeing.v1.WellbeingService.SetPlanStatus:output_type -> joseph.wellbeing.v1.SetPlanStatusResponse
+	72, // 111: joseph.wellbeing.v1.WellbeingService.DeletePlan:output_type -> joseph.wellbeing.v1.DeletePlanResponse
+	74, // 112: joseph.wellbeing.v1.WellbeingService.ListTherapies:output_type -> joseph.wellbeing.v1.ListTherapiesResponse
+	76, // 113: joseph.wellbeing.v1.WellbeingService.SaveTherapy:output_type -> joseph.wellbeing.v1.SaveTherapyResponse
+	78, // 114: joseph.wellbeing.v1.WellbeingService.DeleteTherapy:output_type -> joseph.wellbeing.v1.DeleteTherapyResponse
+	82, // [82:115] is the sub-list for method output_type
+	49, // [49:82] is the sub-list for method input_type
+	49, // [49:49] is the sub-list for extension type_name
+	49, // [49:49] is the sub-list for extension extendee
+	0,  // [0:49] is the sub-list for field type_name
 }
 
 func init() { file_joseph_wellbeing_v1_wellbeing_proto_init() }
@@ -6021,6 +6054,7 @@ func file_joseph_wellbeing_v1_wellbeing_proto_init() {
 	if File_joseph_wellbeing_v1_wellbeing_proto != nil {
 		return
 	}
+	file_joseph_wellbeing_v1_tutoring_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

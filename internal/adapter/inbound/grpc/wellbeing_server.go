@@ -139,6 +139,12 @@ func (s *wellbeingServer) GetStudentFile(ctx context.Context, req *wellbeingv1.G
 	for _, x := range f.Interviews {
 		out.Interviews = append(out.Interviews, toInterview(x))
 	}
+	for _, x := range f.Sessions {
+		out.Sessions = append(out.Sessions, toTutoringSession(x))
+	}
+	for _, x := range f.Saanee {
+		out.Saanee = append(out.Saanee, toSaanee(x))
+	}
 	for _, c := range f.Commitments {
 		out.Commitments = append(out.Commitments, toCommitment(c))
 	}
@@ -174,7 +180,7 @@ func (s *wellbeingServer) GetAlerts(ctx context.Context, req *wellbeingv1.GetAle
 	}
 	for _, x := range a.Alerts {
 		out.Alerts = append(out.Alerts, &wellbeingv1.WellAlert{Kind: x.Kind, Level: x.Level, StudentId: x.StudentID, StudentName: x.StudentName, Placement: x.Placement,
-			Title: x.Title, Detail: x.Detail, Since: datePtr(x.Since)})
+			Title: x.Title, Detail: x.Detail, Since: datePtr(x.Since), Code: x.Code})
 	}
 	return out, nil
 }

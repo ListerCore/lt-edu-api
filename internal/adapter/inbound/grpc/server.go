@@ -119,6 +119,8 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	healthServer.SetServingStatus(programsv1.ProgramsService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	wellbeingv1.RegisterWellbeingServiceServer(server, &wellbeingServer{wellbeing: services.Wellbeing, logger: logger})
 	healthServer.SetServingStatus(wellbeingv1.WellbeingService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	wellbeingv1.RegisterTutoringServiceServer(server, &tutoringServer{wellbeing: services.Wellbeing, logger: logger})
+	healthServer.SetServingStatus(wellbeingv1.TutoringService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	reportsv1.RegisterReportsServiceServer(server, &reportsServer{reports: services.Reports, logger: logger})
 	healthServer.SetServingStatus(reportsv1.ReportsService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	documentsv1.RegisterDocumentsServiceServer(server, &documentsServer{documents: services.Documents, logger: logger})

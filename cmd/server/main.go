@@ -121,6 +121,8 @@ func main() {
 	// Participation and permanence of the distance form (phase E5); its dropout alerts join the wellbeing inbox
 	participationService := service.NewParticipationService(postgres.NewParticipationRepository(dbClient), authService, liveService, auditService)
 	wellbeingService.SetParticipation(participationService)
+	// Virtual tutoring (phase E6): tutors in force, sessions, messages and SAANEE referrals
+	wellbeingService.SetTutoring(postgres.NewTutoringRepository(dbClient))
 	classroomService.SetGrades(assessmentService)
 	documentService := service.NewDocumentService(service.DocumentDeps{Render: pdf.NewRenderer(), Sheets: xlsx.NewRenderer(), Docs: postgres.NewDocumentRepository(dbClient),
 		Staff: staffRepo, SiteURL: cfg.SiteURL}, assessmentService, closingService, teachingService, financeService)
