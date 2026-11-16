@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+// Institution file (Configuración › Institución): the resolutions that authorize the institution (creation, each
+// form of attention per cycle in a CEBA, expansions) and the technical sheet of its e-learning platform, which a
+// CEBA presents to the DRE (RSG N.° 613-2014-MINEDU, numeral 6.2.1). Same metadata and institution scoping as
+// joseph.academic.v1
+package joseph.institution.v1;
+
+option go_package = "api/internal/adapter/inbound/grpc/gen/institutionv1;institutionv1";
+
+// Dirección, coordinación, secretaría and the Responsable técnico read. Dirección records the authorizations;
+// dirección and the Responsable técnico edit the platform sheet. PDFs and evidence go through the attachments API
+// (owner_kind authorization / platform_sheet)
+service InstitutionService {
+  rpc GetInstitutionFile(GetInstitutionFileRequest) returns (GetInstitutionFileResponse);
+  rpc SaveAuthorization(SaveAuthorizationRequest) returns (SaveAuthorizationResponse);
+  rpc DeleteAuthorization(DeleteAuthorizationRequest) returns (DeleteAuthorizationResponse);
+  rpc SavePlatformSheet(SavePlatformSheetRequest) returns (SavePlatformSheetResponse);
+}
+
+message Authorization {
+  string id = 1;
+  // creation | attention_mode | expansion | other
+  string kind = 2;
+  // attention_mode only: the cycle (empty = every cycle) and the form it authorizes
+  string level_id = 3;
+  string level_name = 4;
+  string attention_mode = 5;
+  string resolution = 6;
+  string issued_by = 7;
+  // YYYY-MM-DD; expires_on empty when it has no term
+  string issued_on = 8;
+  string expires_on = 9;
+  string file_number = 10;
+  string notes = 11;
+  // In force today
+  bool in_force = 12;
+  int32 files = 13;
+}
+
+message PlatformSheet {
+  string platform_name = 1;
+  string url = 2;
+  string technology = 3;
+  string administrator = 4;
+  string access_profiles = 5;
+  // hosting | own_server | other
+  string hosting_kind = 6;
+  string hosting_other = 7;
+  string provider = 8;
+  string instance = 9;
+  string contract_reference = 10;
+  string service_status = 11;
+  // YYYY-MM-DD or empty
+  string valid_until = 12;
+  string technical_lead = 13;
+  string technical_lead_specialty = 14;
+  string technical_lead_cip = 15;
+  // Read-only
+  string updated_by_name = 16;
+  string updated_at = 17;
+  int32 files = 18;
+}
+
+message GetInstitutionFileRequest {
+  string institution_slug = 1;
+}
+
+message GetInstitutionFileResponse {
+  string institution_id = 1;
+  string institution_name = 2;
+  // ebr | eba | ebe | cepre | institute
+  string institution_kind = 3;
+  repeated Authorization authorizations = 4;
+  PlatformSheet platform = 5;
+  bool can_manage_authorizations = 6;
+  bool can_edit_platform = 7;
+}
+
+message SaveAuthorizationRequest {
+  string institution_slug = 1;
+  // Empty id creates
+  Authorization authorization = 2;
+}
+
+message SaveAuthorizationResponse {
+  Authorization authorization = 1;
+}
+
+message DeleteAuthorizationRequest {
+  string institution_slug = 1;
+  string id = 2;
+}
+
+message DeleteAuthorizationResponse {}
+
+message SavePlatformSheetRequest {
+  string institution_slug = 1;
+  PlatformSheet platform = 2;
+}
+
+message SavePlatformSheetResponse {
+  PlatformSheet platform = 1;
+}

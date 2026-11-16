@@ -914,6 +914,23 @@ func (s *AcademicService) validateSection(sc academicScope, settings domain.Acad
 	return fields
 }
 
+// checkAuthorizedMode keeps sections inside what the institution is authorized to offer: once it records any
+// attention_mode authorization (Configuración › Institución), a section may only run in a form authorized for its
+// cycle, or for every cycle, on the current day. Institutions that record none are not checked
+func (s *AcademicService) checkAuthorizedMode(ctx context.Context, sc academicScope, levelID, mode string, fields map[string]string) error {
+	if !sc.profile.usesAttentionModes || mode == "" || fields["attentionMode"] != "" {
+		return nil
+	}
+	modes, recorded, err := s.repo.AuthorizedModes(ctx, sc.institution.ID, s.now())
+	if err != nil || !recorded {
+		return err
+	}
+	if !slices.Contains(modes[""], mode) && !slices.Contains(modes[levelID], mode) {
+		fields["attentionMode"] = domain.ErrModeNotAuthorized.Message
+	}
+	return nil
+}
+
 // validateEBASection checks the EBA program and distance variant of a section. PEBAJA is the default; Alfabetización
 // runs as in-person learning circles of the cycles that never go remote (inicial, intermedio), so a cycle that offers
 // the distance form (avanzado) cannot host it. A distance section is online unless it says itinerant
@@ -964,6 +981,9 @@ func (s *AcademicService) CreateSections(ctx context.Context, token, slug, perio
 	}
 	in := domain.SectionInput{Shift: batch.Shift, AttentionMode: batch.AttentionMode, Program: batch.Program, DistanceVariant: batch.DistanceVariant, Capacity: batch.Capacity, Room: batch.Room, Name: "x"}
 	fields := s.validateSection(sc, settings, lvl, &in)
+	if err := s.checkAuthorizedMode(ctx, sc, lvl.ID, in.AttentionMode, fields); err != nil {
+		return nil, err
+	}
 	delete(fields, "name")
 	var names []string
 	for _, n := range batch.Names {
@@ -1032,7 +1052,13 @@ func (s *AcademicService) UpdateSection(ctx context.Context, token, slug, sectio
 	if err != nil {
 		return domain.Section{}, err
 	}
-	if fields := s.validateSection(sc, settings, lvl, &in); len(fields) > 0 {
+	fields := s.validateSection(sc, settings, lvl, &in)
+	if in.AttentionMode != current.AttentionMode {
+		if err := s.checkAuthorizedMode(ctx, sc, lvl.ID, in.AttentionMode, fields); err != nil {
+			return domain.Section{}, err
+		}
+	}
+	if len(fields) > 0 {
 		return domain.Section{}, domain.Validation(fields)
 	}
 	out, err := s.repo.UpdateSection(ctx, sc.institution.ID, sectionID, in)

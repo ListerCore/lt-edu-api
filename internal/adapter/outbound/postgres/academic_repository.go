@@ -596,6 +596,10 @@ func (r *AcademicRepository) UpdateSection(ctx context.Context, institutionID, s
 	return r.Section(ctx, institutionID, sectionID)
 }
 
+func (r *AcademicRepository) AuthorizedModes(ctx context.Context, institutionID string, day time.Time) (map[string][]string, bool, error) {
+	return authorizedModes(ctx, r.c, institutionID, day)
+}
+
 func (r *AcademicRepository) DeleteSection(ctx context.Context, institutionID, sectionID string) error {
 	tag, err := r.c.pool.Exec(ctx, `DELETE FROM academic.sections s USING academic.periods p
 		WHERE p.id = s.period_id AND p.institution_id = $1 AND s.id = $2`, institutionID, sectionID)
