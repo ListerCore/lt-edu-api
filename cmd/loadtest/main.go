@@ -161,7 +161,9 @@ func main() {
 			}
 		}
 		slices.Sort(took)
-		q := func(p float64) time.Duration { return took[min(len(took)-1, int(p*float64(len(took))))].Round(time.Millisecond) }
+		q := func(p float64) time.Duration {
+			return took[min(len(took)-1, int(p*float64(len(took))))].Round(time.Millisecond)
+		}
 		fmt.Printf("%-14s %8d %7d %8s %8s %8s %8s\n", c, len(list), errs, q(0.5), q(0.9), q(0.99), took[len(took)-1].Round(time.Millisecond))
 	}
 }
