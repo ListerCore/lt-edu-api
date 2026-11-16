@@ -271,6 +271,19 @@ func main() {
 		logger.Info().Str("step", "go:0019_demo_classroom").Msg("seeded")
 	}
 
+	// Online assessments of the CEBA demo: a quiz and a task in the first unit of Matemática and Comunicación, once
+	ran, err = seeder.RunOnce(ctx, "go:0020_demo_classroom_assessments", func(ctx context.Context) error {
+		n, err := service.SeedDemoClassroomAssessments(ctx, postgres.NewClassroomRepository(db), "demo-eba", time.Now())
+		logger.Info().Int("assessments", n).Msg("demo classroom assessments seeded")
+		return err
+	})
+	if err != nil {
+		logger.Fatal().Err(err).Msg("demo classroom assessments seed failed")
+	}
+	if ran {
+		logger.Info().Str("step", "go:0020_demo_classroom_assessments").Msg("seeded")
+	}
+
 	auth, err := service.NewAuthService(postgres.NewAuthRepository(db), password.NewArgon2id(), nil, nil, nil, nil, service.AuthConfig{}, logger)
 	if err != nil {
 		logger.Fatal().Err(err).Msg("failed to initialize auth service")
