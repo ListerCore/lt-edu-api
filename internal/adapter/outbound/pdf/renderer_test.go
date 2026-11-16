@@ -29,7 +29,7 @@ func sampleCard() port.ReportCardDoc {
 	}
 	conduct := 17
 	return port.ReportCardDoc{
-		Literal: true, Institution: "Joseph Colegio", Dre: "DRE Ayacucho", Ugel: "UGEL Huamanga", ModularCode: "9999101", Year: "2026",
+		Literal: true, Institution: "ListerCore Colegio", Dre: "DRE Ayacucho", Ugel: "UGEL Huamanga", ModularCode: "9999101", Year: "2026",
 		Level: "Primaria", Grade: "4.° grado", Section: "A", Student: "Ayala Tito, Valentina Isabella", Code: "2026-0205", Document: "70000770",
 		Tutor: "Óscar Rojas Cárdenas", Provisional: true, TermNumber: 3, IssuedOn: time.Date(2026, 11, 11, 0, 0, 0, 0, time.UTC),
 		Terms: []port.CardTermDoc{{Name: "I", Comment: "Muestra interés y buena disposición en clase.", Justified: 2, Absent: 1, Late: 4, Conduct: &conduct}, {Name: "II", Comment: "Participa con entusiasmo."}, {Name: "III"}, {Name: "IV", Empty: true}},
@@ -58,7 +58,7 @@ func TestReportCards(t *testing.T) {
 func TestSchedulesRecordReceipt(t *testing.T) {
 	fill := &port.Colour{R: 214, G: 230, B: 251}
 	rows := []port.GridRow{{Head: "07:45\n08:30", Cells: []port.GridCell{{Code: "MAT", Detail: "M. Pari", Fill: fill}, {}, {Code: "COM", Detail: "M. Pari", Fill: fill}, {}, {}}}, {Head: "10:00", Break: true}}
-	doc := port.ScheduleDoc{Institution: "Joseph Colegio", Logo: port.Image{Data: escudo, Type: "png"}, IssuedOn: time.Now(), Pages: []port.SchedulePage{{Title: "HORARIO DE CLASES 2026", Subtitle: "2.° grado «A» · Primaria", Info: "Turno mañana",
+	doc := port.ScheduleDoc{Institution: "ListerCore Colegio", Logo: port.Image{Data: escudo, Type: "png"}, IssuedOn: time.Now(), Pages: []port.SchedulePage{{Title: "HORARIO DE CLASES 2026", Subtitle: "2.° grado «A» · Primaria", Info: "Turno mañana",
 		Grids:   []port.ScheduleGrid{{Corner: "Hora", Columns: []string{"LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES"}, Rows: rows}},
 		Legends: []port.LegendTable{{Title: "LEYENDA", Columns: []string{"Sigla", "Curso", "Docente", "Horas"}, Widths: []float64{12, 38, 38, 12}, Rows: []port.LegendRow{{Fills: []*port.Colour{fill}, Cells: []string{"MAT", "Matemática", "Manuel Pari Medina", "5"}}}}}}}}
 	out, err := NewRenderer().Schedules(doc)
@@ -78,13 +78,13 @@ func TestSchedulesRecordReceipt(t *testing.T) {
 		t.Fatal(err)
 	}
 	save(t, "schedule-signed.pdf", out)
-	out, err = NewRenderer().Record(port.RecordDoc{Institution: "Joseph Colegio", Title: "Acta consolidada de evaluación", Subtitle: "Año lectivo 2026 · 4.° A · Primaria", Code: "ACT-2026-0001", Issued: "11/11/2026",
+	out, err = NewRenderer().Record(port.RecordDoc{Institution: "ListerCore Colegio", Title: "Acta consolidada de evaluación", Subtitle: "Año lectivo 2026 · 4.° A · Primaria", Code: "ACT-2026-0001", Issued: "11/11/2026",
 		Groups: []port.RecordGroupDoc{{Name: "Matemática", Codes: []string{"C1", "C2"}}}, Rows: []port.RecordRowDoc{{N: 1, Code: "2026-0001", Name: "Apaza, Ana", Cells: []string{"A", "B"}, Situation: "PRO"}}, Signatures: []string{"Tutor(a)", "Dirección"}})
 	if err != nil {
 		t.Fatal(err)
 	}
 	save(t, "record.pdf", out)
-	out, err = NewRenderer().Receipt(port.ReceiptDoc{Institution: "Joseph Colegio", Number: "R001-000123", PaidOn: "11/11/2026", Student: "Ana Apaza (2026-0001)", Method: "Yape", Lines: []port.ReceiptLineDoc{{Concept: "Pensión de noviembre", Amount: "S/ 380.00"}}, Total: "S/ 380.00", ReceivedBy: "Tesorería", Annulled: true, AnnulReason: "Error"})
+	out, err = NewRenderer().Receipt(port.ReceiptDoc{Institution: "ListerCore Colegio", Number: "R001-000123", PaidOn: "11/11/2026", Student: "Ana Apaza (2026-0001)", Method: "Yape", Lines: []port.ReceiptLineDoc{{Concept: "Pensión de noviembre", Amount: "S/ 380.00"}}, Total: "S/ 380.00", ReceivedBy: "Tesorería", Annulled: true, AnnulReason: "Error"})
 	if err != nil {
 		t.Fatal(err)
 	}

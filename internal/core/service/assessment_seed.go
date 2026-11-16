@@ -48,7 +48,7 @@ var (
 	}
 )
 
-// SeedDemoAssessment grades the Joseph demo institutions: every closed term complete (levels, conclusions, conduct,
+// SeedDemoAssessment grades the ListerCore Edu demo institutions: every closed term complete (levels, conclusions, conduct,
 // tutor comments and the teachers' "sent"), part of the running term, and evaluations 0–20 in IEST and CEPRE.
 // cmd/seed runs it once
 func SeedDemoAssessment(ctx context.Context, svc *AssessmentService, seeder port.AssessmentSeeder, slugs []string) (int, error) {

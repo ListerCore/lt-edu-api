@@ -45,7 +45,7 @@ func localAt(day time.Time, clock string, plus int) time.Time {
 	return time.Date(day.Year(), day.Month(), day.Day(), hh, mm, 0, 0, lima()).Add(time.Duration(plus) * time.Minute)
 }
 
-// SeedDemoAttendance fills the Joseph demo institutions with the attendance of the last weeks: gate arrivals, a few
+// SeedDemoAttendance fills the ListerCore Edu demo institutions with the attendance of the last weeks: gate arrivals, a few
 // absences (some justified, some waiting for review), the staff days and the classes of the last days. cmd/seed
 // runs it once
 func SeedDemoAttendance(ctx context.Context, svc *AttendanceService, seeder port.AttendanceSeeder, slugs []string) (int, error) {

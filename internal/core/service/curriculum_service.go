@@ -680,7 +680,7 @@ func (s *CurriculumService) ReorderCompetencies(ctx context.Context, token, slug
 
 // ---------- demo data ----------
 
-// SeedDemo gives every level of the Joseph demo institutions its suggested plan, in force, when the level has no
+// SeedDemo gives every level of the ListerCore Edu demo institutions its suggested plan, in force, when the level has no
 // plan yet. cmd/seed runs it once
 func SeedDemo(ctx context.Context, academic port.AcademicRepository, curricula port.CurriculumRepository, slugs []string) (int, error) {
 	created := 0

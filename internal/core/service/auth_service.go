@@ -32,7 +32,7 @@ const (
 	// last_seen_at is written at most this often per session
 	sessionTouchEvery = 5 * time.Minute
 	recoveryCodeCount = 10
-	totpIssuer        = "Joseph"
+	totpIssuer        = "ListerCore Edu"
 )
 
 type AuthConfig struct {
@@ -284,7 +284,7 @@ func (s *AuthService) GoogleAuthorize(state, codeChallenge string) (string, erro
 // GoogleResult is a session, or the TOTP step when the account has an authenticator app
 type GoogleResult = SignInResult
 
-// GoogleCallback trades the code for the Google account and signs in the matching Joseph account: the one already
+// GoogleCallback trades the code for the Google account and signs in the matching ListerCore Edu account: the one already
 // linked, else the one with that verified email (linked now), else a new one from the institution's roster
 func (s *AuthService) GoogleCallback(ctx context.Context, code, codeVerifier string, meta domain.RequestMeta) (GoogleResult, error) {
 	if !s.google.Configured() {

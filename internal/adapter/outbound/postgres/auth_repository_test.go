@@ -69,7 +69,7 @@ func TestGoogleIdentitySQL(t *testing.T) {
 	if err := repo.LinkIdentity(ctx, beto.ID, identity); !errors.Is(err, domain.ErrGoogleFailed) {
 		t.Fatalf("stolen subject: err = %v", err)
 	}
-	// One Google account per Joseph account
+	// One Google account per ListerCore Edu account
 	other := port.ExternalIdentity{Provider: domain.ProviderGoogle, Subject: "repo-test-sub-other", Email: "x@gmail.com"}
 	if err := repo.LinkIdentity(ctx, id, other); !errors.Is(err, domain.ErrGoogleFailed) {
 		t.Fatalf("second google for one account: err = %v", err)

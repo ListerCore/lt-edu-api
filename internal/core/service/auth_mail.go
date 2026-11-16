@@ -39,7 +39,7 @@ func mfaCodeMail(u domain.User, code, purpose string) port.Mail {
 	return port.Mail{
 		To:      u.Email,
 		Subject: fmt.Sprintf("%s es tu código para %s", code, action),
-		Text: fmt.Sprintf("Hola %s,\n\nTu código para %s en Joseph es: %s\n\nVence en %d minutos. Si no fuiste tú, cambia tu contraseña.\n",
+		Text: fmt.Sprintf("Hola %s,\n\nTu código para %s en ListerCore Edu es: %s\n\nVence en %d minutos. Si no fuiste tú, cambia tu contraseña.\n",
 			firstName(u), action, code, minutes),
 		HTML: mailLayout("Confirma el cambio en tu cuenta",
 			fmt.Sprintf(`<p style="margin:0 0 16px">Hola %s, usa este código para %s:</p>`+
@@ -52,7 +52,7 @@ func mfaCodeMail(u domain.User, code, purpose string) port.Mail {
 func resetLinkMail(u domain.User, link string) port.Mail {
 	return port.Mail{
 		To:      u.Email,
-		Subject: "Restablece tu contraseña de Joseph",
+		Subject: "Restablece tu contraseña de ListerCore Edu",
 		Text: fmt.Sprintf("Hola %s,\n\nPara crear una nueva contraseña abre este enlace (vence en 1 hora):\n%s\n",
 			firstName(u), link),
 		HTML: mailLayout("Restablece tu contraseña",

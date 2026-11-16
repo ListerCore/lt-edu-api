@@ -58,7 +58,7 @@ func ageFor(kind, levelCode string, gradePos int, rnd *rand.Rand) int {
 	}
 }
 
-// SeedDemoPeople fills the sections of the running periods of the Joseph demo institutions with students, their
+// SeedDemoPeople fills the sections of the running periods of the ListerCore Edu demo institutions with students, their
 // guardians and their enrollments (and the 2025 history of the school). cmd/seed runs it once
 func SeedDemoPeople(ctx context.Context, academic port.AcademicRepository, curricula port.CurriculumRepository, people port.PeopleRepository, slugs []string) (int, error) {
 	total := 0

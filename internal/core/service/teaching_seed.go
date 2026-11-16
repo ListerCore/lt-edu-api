@@ -69,7 +69,7 @@ var demoOffice = []struct{ position, role string }{
 	{"Psicóloga", "psychologist"}, {"Tesorero", "treasurer"}, {"Auxiliar de educación", "assistant"},
 }
 
-// SeedDemoTeaching gives the Joseph demo institutions their school day, staff, teaching load and an automatic
+// SeedDemoTeaching gives the ListerCore Edu demo institutions their school day, staff, teaching load and an automatic
 // timetable for the running periods. cmd/seed runs it once
 func SeedDemoTeaching(ctx context.Context, academic *AcademicService, teaching *TeachingService, staff port.StaffRepository, slugs []string) (int, error) {
 	total := 0
