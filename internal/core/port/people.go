@@ -14,6 +14,8 @@ type PeopleRepository interface {
 	// Students returns one page and the total; each row carries its enrollment in filter.PeriodID (or its latest)
 	Students(ctx context.Context, f domain.StudentFilter) ([]domain.Student, int, error)
 	Student(ctx context.Context, institutionID, id string) (domain.Student, error)
+	// StudentByDocument finds a student by document type and number (domain.ErrNotFound when none)
+	StudentByDocument(ctx context.Context, institutionID, documentType, documentNumber string) (domain.Student, error)
 	// CreateStudent fills an empty code with the next "<year>-NNNN" of the institution
 	CreateStudent(ctx context.Context, institutionID string, in domain.StudentInput) (domain.Student, error)
 	UpdateStudent(ctx context.Context, institutionID, id string, in domain.StudentInput) (domain.Student, error)

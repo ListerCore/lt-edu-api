@@ -49,6 +49,7 @@ const (
 	PeopleService_SetReligionExemption_FullMethodName = "/joseph.people.v1.PeopleService/SetReligionExemption"
 	PeopleService_ListRoll_FullMethodName             = "/joseph.people.v1.PeopleService/ListRoll"
 	PeopleService_SetSiagieStatus_FullMethodName      = "/joseph.people.v1.PeopleService/SetSiagieStatus"
+	PeopleService_ImportRoll_FullMethodName           = "/joseph.people.v1.PeopleService/ImportRoll"
 )
 
 // PeopleServiceClient is the client API for PeopleService service.
@@ -91,6 +92,9 @@ type PeopleServiceClient interface {
 	SetReligionExemption(ctx context.Context, in *SetReligionExemptionRequest, opts ...grpc.CallOption) (*SetReligionExemptionResponse, error)
 	ListRoll(ctx context.Context, in *ListRollRequest, opts ...grpc.CallOption) (*ListRollResponse, error)
 	SetSiagieStatus(ctx context.Context, in *SetSiagieStatusRequest, opts ...grpc.CallOption) (*SetSiagieStatusResponse, error)
+	// Loads the real roll from a spreadsheet (phase E9): commit=false checks every row and reconciles the totals per
+	// section; commit=true imports, and only when the check has no errors
+	ImportRoll(ctx context.Context, in *ImportRollRequest, opts ...grpc.CallOption) (*ImportRollResponse, error)
 }
 
 type peopleServiceClient struct {
@@ -361,6 +365,16 @@ func (c *peopleServiceClient) SetSiagieStatus(ctx context.Context, in *SetSiagie
 	return out, nil
 }
 
+func (c *peopleServiceClient) ImportRoll(ctx context.Context, in *ImportRollRequest, opts ...grpc.CallOption) (*ImportRollResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ImportRollResponse)
+	err := c.cc.Invoke(ctx, PeopleService_ImportRoll_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PeopleServiceServer is the server API for PeopleService service.
 // All implementations must embed UnimplementedPeopleServiceServer
 // for forward compatibility.
@@ -401,6 +415,9 @@ type PeopleServiceServer interface {
 	SetReligionExemption(context.Context, *SetReligionExemptionRequest) (*SetReligionExemptionResponse, error)
 	ListRoll(context.Context, *ListRollRequest) (*ListRollResponse, error)
 	SetSiagieStatus(context.Context, *SetSiagieStatusRequest) (*SetSiagieStatusResponse, error)
+	// Loads the real roll from a spreadsheet (phase E9): commit=false checks every row and reconciles the totals per
+	// section; commit=true imports, and only when the check has no errors
+	ImportRoll(context.Context, *ImportRollRequest) (*ImportRollResponse, error)
 	mustEmbedUnimplementedPeopleServiceServer()
 }
 
@@ -488,6 +505,9 @@ func (UnimplementedPeopleServiceServer) ListRoll(context.Context, *ListRollReque
 }
 func (UnimplementedPeopleServiceServer) SetSiagieStatus(context.Context, *SetSiagieStatusRequest) (*SetSiagieStatusResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SetSiagieStatus not implemented")
+}
+func (UnimplementedPeopleServiceServer) ImportRoll(context.Context, *ImportRollRequest) (*ImportRollResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ImportRoll not implemented")
 }
 func (UnimplementedPeopleServiceServer) mustEmbedUnimplementedPeopleServiceServer() {}
 func (UnimplementedPeopleServiceServer) testEmbeddedByValue()                       {}
@@ -978,6 +998,24 @@ func _PeopleService_SetSiagieStatus_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PeopleService_ImportRoll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ImportRollRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PeopleServiceServer).ImportRoll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PeopleService_ImportRoll_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PeopleServiceServer).ImportRoll(ctx, req.(*ImportRollRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PeopleService_ServiceDesc is the grpc.ServiceDesc for PeopleService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1088,6 +1126,10 @@ var PeopleService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetSiagieStatus",
 			Handler:    _PeopleService_SetSiagieStatus_Handler,
+		},
+		{
+			MethodName: "ImportRoll",
+			Handler:    _PeopleService_ImportRoll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
