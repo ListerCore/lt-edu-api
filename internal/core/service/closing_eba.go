@@ -120,7 +120,7 @@ func (s *ClosingService) SavePromotionRule(ctx context.Context, token, slug stri
 	}
 	r.LevelName = rules[i].LevelName
 	s.audit(ctx, sc, AuditEntry{Action: domain.AuditUpdate, Entity: "promotion_rule", EntityID: r.LevelID,
-		Summary: "Fijó la regla de promoción del " + rules[i].LevelName + ": " + strings.TrimSuffix(customRule(r).Name, " (regla del CEBA)")})
+		Summary: "Fijó la regla de promoción: " + strings.TrimSuffix(customRule(r).Name, " (regla del CEBA)")})
 	s.changed(ctx, sc, "")
 	return s.PromotionRules(ctx, token, slug)
 }

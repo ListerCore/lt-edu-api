@@ -115,15 +115,17 @@ func (s *DocumentService) GenerateRecordAct(ctx context.Context, token, slug, re
 	v := domain.DocumentVersion{VerificationCode: verificationCode(), Content: body, ContentHash: hash, Note: note, CreatedName: s.assessment.userName(sc), Signatures: newSignatures(signers)}
 	issued := domain.IssuedDocument{InstitutionID: sc.institution.ID, Kind: domain.DocumentEvaluationRecord, ScopeKey: rec.SectionID + ":" + rec.Kind,
 		Title: doc.Title + " · " + rec.SectionLabel + " · " + strings.SplitN(doc.Subtitle, " · ", 2)[0], TrackingCode: randomCode(trackingAlphabet, 12)}
-	d, created, _, err := s.docs.CreateVersion(ctx, issued, v, sc.userID)
+	d, created, fresh, err := s.docs.CreateVersion(ctx, issued, v, sc.userID)
 	if err != nil {
 		return rec, domain.DocumentVersion{}, err
 	}
 	if err := s.closing.repo.LinkRecord(ctx, rec.ID, d.ID); err != nil {
 		return rec, created, err
 	}
-	s.closing.audit(ctx, sc, AuditEntry{Action: domain.AuditCreate, Entity: "evaluation_record", EntityID: rec.ID,
-		Summary: "Generó para firma el acta " + rec.Code + " de " + rec.SectionLabel})
+	if fresh {
+		s.closing.audit(ctx, sc, AuditEntry{Action: domain.AuditCreate, Entity: "evaluation_record", EntityID: rec.ID,
+			Summary: "Generó para firma el acta " + rec.Code + " de " + rec.SectionLabel})
+	}
 	s.closing.changed(ctx, sc, rec.SectionID)
 	rec, err = s.closing.repo.Record(ctx, sc.institution.ID, rec.ID)
 	return rec, created, err
