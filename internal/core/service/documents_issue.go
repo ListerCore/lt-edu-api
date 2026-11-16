@@ -413,6 +413,17 @@ func (s *DocumentService) Track(ctx context.Context, tracking, code string) (Tra
 			out.Matched = v.Number
 		}
 	}
+	// The page is public: the codes are what proves a sheet (who holds it already has them) and the notes are
+	// internal, so neither goes out
+	for i := range out.Versions {
+		out.Versions[i].VerificationCode, out.Versions[i].Note = "", ""
+		for j := range out.Versions[i].Signatures {
+			out.Versions[i].Signatures[j].Code = ""
+		}
+	}
+	for i := range out.Events {
+		out.Events[i].Note = ""
+	}
 	return out, nil
 }
 

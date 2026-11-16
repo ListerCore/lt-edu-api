@@ -116,7 +116,8 @@ func (s *WellbeingService) TutorBoard(ctx context.Context, token, slug, staffID 
 		return TutorBoard{}, domain.ErrNotTutor
 	}
 	today := s.today()
-	b := TutorBoard{StaffID: target, CanAssign: sc.office(), CanMessage: sc.staffID != "", Today: today}
+	// Writing is for the tutor in force: their own board
+	b := TutorBoard{StaffID: target, CanAssign: sc.office(), CanMessage: sc.staffID != "" && target == sc.staffID, Today: today}
 	if periodID == "" {
 		return b, nil
 	}
@@ -217,7 +218,11 @@ func (s *WellbeingService) TutorBoard(ctx context.Context, token, slug, staffID 
 
 	// Conversations of the viewer
 	if sc.staffID != "" {
-		if b.Threads, err = s.tutoring.Threads(ctx, inst, sc.staffID, ""); err != nil {
+		threads, err := s.tutoring.Threads(ctx, inst, sc.staffID, "")
+		if err != nil {
+			return b, err
+		}
+		if b.Threads, err = s.inForce(ctx, sc, threads); err != nil {
 			return b, err
 		}
 		for _, t := range b.Threads {
@@ -622,7 +627,8 @@ func (s *WellbeingService) OpenThread(ctx context.Context, token, slug, studentI
 		if err != nil {
 			return ThreadView{}, err
 		}
-		if !sc.tutorsStudent(t) || sc.staffID == "" {
+		// Only the tutor in force opens a conversation (dirección reads the existing ones from the board)
+		if sc.staffID == "" || t.StaffID != sc.staffID {
 			return ThreadView{}, domain.ErrMessagesForbidden
 		}
 		studentOf, staffOf = t.StudentID, sc.staffID
@@ -631,16 +637,32 @@ func (s *WellbeingService) OpenThread(ctx context.Context, token, slug, studentI
 	if err != nil {
 		return ThreadView{}, err
 	}
-	side, err := sc.threadSide(t)
+	side, err := s.currentSide(ctx, sc, periodID, t)
 	if err != nil {
 		return ThreadView{}, err
 	}
 	return s.threadView(ctx, sc, t, side)
 }
 
+// currentSide is the viewer's side in the thread, checking that its staff member is still the student's tutor in
+// force: a previous tutor no longer reads or writes it (dirección keeps reading)
+func (s *WellbeingService) currentSide(ctx context.Context, sc wellScope, periodID string, t domain.Thread) (string, error) {
+	side, err := sc.threadSide(t)
+	if err != nil || side != domain.SideStaff {
+		return side, err
+	}
+	if tutor, err := s.tutorOf(ctx, sc, periodID, t.StudentID); err == nil && tutor.StaffID == t.StaffID {
+		return side, nil
+	}
+	if sc.office() {
+		return "", nil
+	}
+	return "", domain.ErrMessagesForbidden
+}
+
 // ThreadMessages reads a conversation and marks it read for the viewer's side
 func (s *WellbeingService) ThreadMessages(ctx context.Context, token, slug, threadID string) (ThreadView, error) {
-	sc, _, err := s.tutoringScope(ctx, token, slug)
+	sc, periodID, err := s.tutoringScope(ctx, token, slug)
 	if err != nil {
 		return ThreadView{}, err
 	}
@@ -648,7 +670,7 @@ func (s *WellbeingService) ThreadMessages(ctx context.Context, token, slug, thre
 	if err != nil {
 		return ThreadView{}, err
 	}
-	side, err := sc.threadSide(t)
+	side, err := s.currentSide(ctx, sc, periodID, t)
 	if err != nil {
 		return ThreadView{}, err
 	}
@@ -657,7 +679,7 @@ func (s *WellbeingService) ThreadMessages(ctx context.Context, token, slug, thre
 
 // SendMessage writes in a conversation the viewer takes part in
 func (s *WellbeingService) SendMessage(ctx context.Context, token, slug, threadID, body string) (domain.Message, error) {
-	sc, _, err := s.tutoringScope(ctx, token, slug)
+	sc, periodID, err := s.tutoringScope(ctx, token, slug)
 	if err != nil {
 		return domain.Message{}, err
 	}
@@ -669,9 +691,15 @@ func (s *WellbeingService) SendMessage(ctx context.Context, token, slug, threadI
 	if err != nil {
 		return domain.Message{}, err
 	}
-	side, err := sc.threadSide(t)
+	side, err := s.currentSide(ctx, sc, periodID, t)
 	if err != nil {
 		return domain.Message{}, err
+	}
+	// A student writes only to their tutor in force
+	if side == domain.SideStudent {
+		if tutor, err := s.tutorOf(ctx, sc, periodID, t.StudentID); err != nil || tutor.StaffID != t.StaffID {
+			return domain.Message{}, domain.ErrMessagesForbidden
+		}
 	}
 	if side == "" {
 		return domain.Message{}, domain.ErrMessagesForbidden
@@ -690,13 +718,42 @@ func (s *WellbeingService) Threads(ctx context.Context, token, slug string) ([]d
 	if err != nil {
 		return nil, err
 	}
+	var list []domain.Thread
 	switch {
 	case sc.ownStudent() != "":
-		return s.tutoring.Threads(ctx, sc.institution.ID, "", sc.ownStudent())
+		list, err = s.tutoring.Threads(ctx, sc.institution.ID, "", sc.ownStudent())
 	case sc.staffID != "":
-		return s.tutoring.Threads(ctx, sc.institution.ID, sc.staffID, "")
+		list, err = s.tutoring.Threads(ctx, sc.institution.ID, sc.staffID, "")
+	default:
+		return []domain.Thread{}, nil
 	}
-	return []domain.Thread{}, nil
+	if err != nil {
+		return nil, err
+	}
+	return s.inForce(ctx, sc, list)
+}
+
+// inForce keeps the conversations whose staff member is still the student's tutor
+func (s *WellbeingService) inForce(ctx context.Context, sc wellScope, list []domain.Thread) ([]domain.Thread, error) {
+	periodID, err := s.tutoring.RunningPeriod(ctx, sc.institution.ID)
+	if err != nil || periodID == "" {
+		return []domain.Thread{}, err
+	}
+	all, err := s.tutoring.TutorStudents(ctx, sc.institution.ID, periodID, "")
+	if err != nil {
+		return nil, err
+	}
+	tutor := map[string]string{}
+	for _, t := range all {
+		tutor[t.StudentID] = t.StaffID
+	}
+	out := []domain.Thread{}
+	for _, t := range list {
+		if tutor[t.StudentID] == t.StaffID {
+			out = append(out, t)
+		}
+	}
+	return out, nil
 }
 
 // ---------- the student's view ----------

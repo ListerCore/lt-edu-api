@@ -26,6 +26,7 @@ import (
 	"api/internal/adapter/outbound/turnstile"
 	"api/internal/adapter/outbound/xlsx"
 	"api/internal/config"
+	"api/internal/core/domain"
 	"api/internal/core/port"
 	"api/internal/core/service"
 )
@@ -126,12 +127,15 @@ func main() {
 	wellbeingService.SetTutoring(postgres.NewTutoringRepository(dbClient))
 	// DRE compliance (phase E8): equipment, verification matrices, the two technical reports and the uptime log
 	complianceService := service.NewComplianceService(service.ComplianceDeps{Repo: postgres.NewComplianceRepository(dbClient), Institution: postgres.NewInstitutionRepository(dbClient),
-		Auth: authService, Files: postgres.NewAttachmentRepository(dbClient), Store: store, Render: pdf.NewRenderer(), Probe: httpprobe.New(10 * time.Second),
+		Auth: authService, Files: postgres.NewAttachmentRepository(dbClient), Store: store, Render: pdf.NewRenderer(), Probe: httpprobe.New(10*time.Second, !production),
 		Live: liveService, Audit: auditService, Logger: logger})
 	uptimeCtx, stopUptime := context.WithCancel(context.Background())
 	defer stopUptime()
 	go complianceService.RunUptime(uptimeCtx, cfg.UptimeInterval)
 	classroomService.SetGrades(assessmentService)
+	// Classroom files: who teaches the room, the student's grade and open unit, a hand-in still in progress
+	attachmentService.SetGuard(domain.OwnerClassroomItem, classroomService.ItemAttachmentGuard)
+	attachmentService.SetGuard(domain.OwnerSubmission, classroomService.SubmissionAttachmentGuard)
 	documentService := service.NewDocumentService(service.DocumentDeps{Render: pdf.NewRenderer(), Sheets: xlsx.NewRenderer(), Docs: postgres.NewDocumentRepository(dbClient),
 		Staff: staffRepo, SiteURL: cfg.SiteURL}, assessmentService, closingService, teachingService, financeService)
 	documentService.SetPeople(peopleService)

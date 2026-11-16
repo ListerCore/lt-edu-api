@@ -6,6 +6,7 @@ import (
 	"io"
 	"slices"
 	"strings"
+	"sync"
 	"time"
 	"unicode/utf8"
 
@@ -32,6 +33,8 @@ type ComplianceService struct {
 	audit       *AuditService
 	logger      zerolog.Logger
 	now         func() time.Time
+	mu          sync.Mutex
+	lastProbe   map[string]time.Time
 }
 
 type ComplianceDeps struct {
@@ -49,7 +52,7 @@ type ComplianceDeps struct {
 
 func NewComplianceService(d ComplianceDeps) *ComplianceService {
 	return &ComplianceService{repo: d.Repo, institution: d.Institution, auth: d.Auth, files: d.Files, store: d.Store, render: d.Render, probe: d.Probe,
-		live: d.Live, audit: d.Audit, logger: d.Logger, now: time.Now}
+		live: d.Live, audit: d.Audit, logger: d.Logger, now: time.Now, lastProbe: map[string]time.Time{}}
 }
 
 // EventComplianceChanged {institution, area: equipment | items | report | uptime}
@@ -290,13 +293,12 @@ func (s *ComplianceService) SetItemStatus(ctx context.Context, token, slug, id, 
 	if err != nil {
 		return it, err
 	}
-	if status == domain.ItemVerified {
-		if !sc.verifies() {
-			return it, domain.ErrVerifyTechLead
-		}
-		if it.Files == 0 {
-			return it, domain.ErrNoEvidence
-		}
+	// Verified and not applicable both close a row of the report: only the technical lead decides them
+	if status != domain.ItemPending && !sc.verifies() {
+		return it, domain.ErrVerifyTechLead
+	}
+	if status == domain.ItemVerified && it.Files == 0 {
+		return it, domain.ErrNoEvidence
 	}
 	if err := s.repo.SetItemStatus(ctx, sc.institution.ID, id, status, sc.userName, s.now()); err != nil {
 		return it, err
@@ -525,11 +527,7 @@ func (s *ComplianceService) probeOnce(ctx context.Context, institutionID, url st
 	c := domain.UptimeCheck{URL: url, CheckedAt: s.now()}
 	status, elapsed, err := s.probe.Probe(ctx, url)
 	if err != nil {
-		msg := err.Error()
-		if len(msg) > 300 {
-			msg = msg[:300]
-		}
-		c.Error = msg
+		c.Error = truncateRunes(err.Error(), 300)
 	} else {
 		ms := int(elapsed.Milliseconds())
 		c.StatusCode, c.ResponseMs = &status, &ms
@@ -551,6 +549,15 @@ func (s *ComplianceService) CheckNow(ctx context.Context, token, slug string) (d
 	if !strings.HasPrefix(sheet.URL, "http://") && !strings.HasPrefix(sheet.URL, "https://") {
 		return domain.UptimeCheck{}, domain.ErrNoPlatformURL
 	}
+	// One probe on demand per institution every half minute
+	s.mu.Lock()
+	last := s.lastProbe[sc.institution.ID]
+	if s.now().Sub(last) < 30*time.Second {
+		s.mu.Unlock()
+		return domain.UptimeCheck{}, &domain.Error{Kind: domain.KindConflict, Code: "probe_too_soon", Message: "Espera unos segundos antes de volver a comprobar."}
+	}
+	s.lastProbe[sc.institution.ID] = s.now()
+	s.mu.Unlock()
 	c, err := s.probeOnce(ctx, sc.institution.ID, sheet.URL)
 	if err == nil {
 		s.changed(ctx, sc, "uptime")
@@ -615,7 +622,17 @@ func (s *ComplianceService) evidence(ctx context.Context, institutionID, kind, i
 	return out, nil
 }
 
-// itemsDone reports whether every row is verified or not applicable
+// itemsDone reports whether every row is verified (with its evidence still there) or not applicable
 func itemsDone(items []domain.ComplianceItem) bool {
-	return !slices.ContainsFunc(items, func(it domain.ComplianceItem) bool { return it.Status == domain.ItemPending })
+	return !slices.ContainsFunc(items, func(it domain.ComplianceItem) bool {
+		return it.Status == domain.ItemPending || (it.Status == domain.ItemVerified && it.Files == 0)
+	})
+}
+
+// truncateRunes cuts a text at n characters without splitting one
+func truncateRunes(v string, n int) string {
+	if utf8.RuneCountInString(v) <= n {
+		return v
+	}
+	return string([]rune(v)[:n])
 }

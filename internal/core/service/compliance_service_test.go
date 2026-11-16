@@ -20,7 +20,13 @@ func TestUptimeSummary(t *testing.T) {
 }
 
 func TestItemsDone(t *testing.T) {
-	if !itemsDone([]domain.ComplianceItem{{Status: domain.ItemVerified}, {Status: domain.ItemNotApplicable}}) {
+	if itemsDone([]domain.ComplianceItem{{Status: domain.ItemVerified}}) {
+		t.Fatal("a verified row without evidence is not done")
+	}
+	if truncateRunes("ñandú", 3) != "ñan" {
+		t.Fatal("runes")
+	}
+	if !itemsDone([]domain.ComplianceItem{{Status: domain.ItemVerified, Files: 1}, {Status: domain.ItemNotApplicable}}) {
 		t.Fatal("verified and not applicable are done")
 	}
 	if itemsDone([]domain.ComplianceItem{{Status: domain.ItemVerified}, {Status: domain.ItemPending}}) {

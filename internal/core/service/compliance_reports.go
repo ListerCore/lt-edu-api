@@ -29,6 +29,14 @@ func orBlank(v string) string {
 
 var itemStatusLabels = map[string]string{domain.ItemPending: "PENDIENTE", domain.ItemVerified: "VERIFICADO", domain.ItemNotApplicable: "NO APLICA"}
 
+// statusLabel is the state a row prints: a verified row whose evidence was removed is pending again
+func statusLabel(it domain.ComplianceItem) string {
+	if it.Status == domain.ItemVerified && it.Files == 0 {
+		return itemStatusLabels[domain.ItemPending]
+	}
+	return itemStatusLabels[it.Status]
+}
+
 func evidenceRef(it domain.ComplianceItem) string {
 	switch {
 	case it.Annex != "" && it.Folio != "":
@@ -158,7 +166,7 @@ func (s *ComplianceService) PlatformReportPdf(ctx context.Context, token, slug s
 		var out [][]string
 		for _, it := range f.items {
 			if it.Section == section {
-				out = append(out, []string{it.Element, strings.Join(nonBlank(it.Module, it.Route), "\n"), evidenceRef(it), itemStatusLabels[it.Status]})
+				out = append(out, []string{it.Element, strings.Join(nonBlank(it.Module, it.Route), "\n"), evidenceRef(it), statusLabel(it)})
 			}
 		}
 		return out
@@ -390,7 +398,7 @@ func (s *ComplianceService) EquipmentReportPdf(ctx context.Context, token, slug 
 	// VII: the results matrix
 	var results [][]string
 	for _, it := range f.items {
-		results = append(results, []string{it.Element, resultNames[it.Status], evidenceRef(it)})
+		results = append(results, []string{it.Element, map[bool]string{true: resultNames[domain.ItemPending], false: resultNames[it.Status]}[it.Status == domain.ItemVerified && it.Files == 0], evidenceRef(it)})
 	}
 
 	doc.Sections = []port.ReportSection{
