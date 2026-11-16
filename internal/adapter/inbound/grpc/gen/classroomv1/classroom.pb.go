@@ -279,7 +279,7 @@ type Item struct {
 	state  protoimpl.MessageState `protogen:"open.v1"`
 	Id     string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	UnitId string                 `protobuf:"bytes,2,opt,name=unit_id,json=unitId,proto3" json:"unit_id,omitempty"`
-	// reading | file | video | link | live | activity
+	// reading | file | video | link | live | activity | quiz | task
 	Kind          string `protobuf:"bytes,3,opt,name=kind,proto3" json:"kind,omitempty"`
 	Title         string `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`
 	Body          string `protobuf:"bytes,5,opt,name=body,proto3" json:"body,omitempty"`
@@ -2472,6 +2472,1594 @@ func (*SaveDeliveryResponse) Descriptor() ([]byte, []int) {
 	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{39}
 }
 
+type Question struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// single | multiple | short | open
+	Kind    string   `protobuf:"bytes,2,opt,name=kind,proto3" json:"kind,omitempty"`
+	Prompt  string   `protobuf:"bytes,3,opt,name=prompt,proto3" json:"prompt,omitempty"`
+	Options []string `protobuf:"bytes,4,rep,name=options,proto3" json:"options,omitempty"`
+	// Staff, or a student once graded when the answers are shown: right option indexes and accepted short answers
+	Correct       []int32  `protobuf:"varint,5,rep,packed,name=correct,proto3" json:"correct,omitempty"`
+	Accepted      []string `protobuf:"bytes,6,rep,name=accepted,proto3" json:"accepted,omitempty"`
+	Points        int32    `protobuf:"varint,7,opt,name=points,proto3" json:"points,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Question) Reset() {
+	*x = Question{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Question) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Question) ProtoMessage() {}
+
+func (x *Question) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Question.ProtoReflect.Descriptor instead.
+func (*Question) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *Question) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Question) GetKind() string {
+	if x != nil {
+		return x.Kind
+	}
+	return ""
+}
+
+func (x *Question) GetPrompt() string {
+	if x != nil {
+		return x.Prompt
+	}
+	return ""
+}
+
+func (x *Question) GetOptions() []string {
+	if x != nil {
+		return x.Options
+	}
+	return nil
+}
+
+func (x *Question) GetCorrect() []int32 {
+	if x != nil {
+		return x.Correct
+	}
+	return nil
+}
+
+func (x *Question) GetAccepted() []string {
+	if x != nil {
+		return x.Accepted
+	}
+	return nil
+}
+
+func (x *Question) GetPoints() int32 {
+	if x != nil {
+		return x.Points
+	}
+	return 0
+}
+
+type Assessment struct {
+	state  protoimpl.MessageState `protogen:"open.v1"`
+	ItemId string                 `protobuf:"bytes,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	RoomId string                 `protobuf:"bytes,2,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
+	UnitId string                 `protobuf:"bytes,3,opt,name=unit_id,json=unitId,proto3" json:"unit_id,omitempty"`
+	// quiz | task
+	Kind         string `protobuf:"bytes,4,opt,name=kind,proto3" json:"kind,omitempty"`
+	Title        string `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
+	Instructions string `protobuf:"bytes,6,opt,name=instructions,proto3" json:"instructions,omitempty"`
+	Published    bool   `protobuf:"varint,7,opt,name=published,proto3" json:"published,omitempty"`
+	// RFC 3339 or empty
+	OpensAt       string      `protobuf:"bytes,8,opt,name=opens_at,json=opensAt,proto3" json:"opens_at,omitempty"`
+	ClosesAt      string      `protobuf:"bytes,9,opt,name=closes_at,json=closesAt,proto3" json:"closes_at,omitempty"`
+	MaxAttempts   int32       `protobuf:"varint,10,opt,name=max_attempts,json=maxAttempts,proto3" json:"max_attempts,omitempty"`
+	CompetencyIds []string    `protobuf:"bytes,11,rep,name=competency_ids,json=competencyIds,proto3" json:"competency_ids,omitempty"`
+	ShowAnswers   bool        `protobuf:"varint,12,opt,name=show_answers,json=showAnswers,proto3" json:"show_answers,omitempty"`
+	Questions     []*Question `protobuf:"bytes,13,rep,name=questions,proto3" json:"questions,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Assessment) Reset() {
+	*x = Assessment{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Assessment) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Assessment) ProtoMessage() {}
+
+func (x *Assessment) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Assessment.ProtoReflect.Descriptor instead.
+func (*Assessment) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *Assessment) GetItemId() string {
+	if x != nil {
+		return x.ItemId
+	}
+	return ""
+}
+
+func (x *Assessment) GetRoomId() string {
+	if x != nil {
+		return x.RoomId
+	}
+	return ""
+}
+
+func (x *Assessment) GetUnitId() string {
+	if x != nil {
+		return x.UnitId
+	}
+	return ""
+}
+
+func (x *Assessment) GetKind() string {
+	if x != nil {
+		return x.Kind
+	}
+	return ""
+}
+
+func (x *Assessment) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *Assessment) GetInstructions() string {
+	if x != nil {
+		return x.Instructions
+	}
+	return ""
+}
+
+func (x *Assessment) GetPublished() bool {
+	if x != nil {
+		return x.Published
+	}
+	return false
+}
+
+func (x *Assessment) GetOpensAt() string {
+	if x != nil {
+		return x.OpensAt
+	}
+	return ""
+}
+
+func (x *Assessment) GetClosesAt() string {
+	if x != nil {
+		return x.ClosesAt
+	}
+	return ""
+}
+
+func (x *Assessment) GetMaxAttempts() int32 {
+	if x != nil {
+		return x.MaxAttempts
+	}
+	return 0
+}
+
+func (x *Assessment) GetCompetencyIds() []string {
+	if x != nil {
+		return x.CompetencyIds
+	}
+	return nil
+}
+
+func (x *Assessment) GetShowAnswers() bool {
+	if x != nil {
+		return x.ShowAnswers
+	}
+	return false
+}
+
+func (x *Assessment) GetQuestions() []*Question {
+	if x != nil {
+		return x.Questions
+	}
+	return nil
+}
+
+type Competency struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Competency) Reset() {
+	*x = Competency{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Competency) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Competency) ProtoMessage() {}
+
+func (x *Competency) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Competency.ProtoReflect.Descriptor instead.
+func (*Competency) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *Competency) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Competency) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type Answer struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Choices       []int32                `protobuf:"varint,1,rep,packed,name=choices,proto3" json:"choices,omitempty"`
+	Text          string                 `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Answer) Reset() {
+	*x = Answer{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[43]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Answer) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Answer) ProtoMessage() {}
+
+func (x *Answer) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[43]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Answer.ProtoReflect.Descriptor instead.
+func (*Answer) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *Answer) GetChoices() []int32 {
+	if x != nil {
+		return x.Choices
+	}
+	return nil
+}
+
+func (x *Answer) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+type Submission struct {
+	state       protoimpl.MessageState `protogen:"open.v1"`
+	Id          string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ItemId      string                 `protobuf:"bytes,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	StudentId   string                 `protobuf:"bytes,3,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
+	StudentName string                 `protobuf:"bytes,4,opt,name=student_name,json=studentName,proto3" json:"student_name,omitempty"`
+	StudentCode string                 `protobuf:"bytes,5,opt,name=student_code,json=studentCode,proto3" json:"student_code,omitempty"`
+	Attempt     int32                  `protobuf:"varint,6,opt,name=attempt,proto3" json:"attempt,omitempty"`
+	// in_progress | submitted | graded
+	Status     string             `protobuf:"bytes,7,opt,name=status,proto3" json:"status,omitempty"`
+	Answers    map[string]*Answer `protobuf:"bytes,8,rep,name=answers,proto3" json:"answers,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	AutoPoints int32              `protobuf:"varint,9,opt,name=auto_points,json=autoPoints,proto3" json:"auto_points,omitempty"`
+	AutoTotal  int32              `protobuf:"varint,10,opt,name=auto_total,json=autoTotal,proto3" json:"auto_total,omitempty"`
+	OpenPoints map[string]int32   `protobuf:"bytes,11,rep,name=open_points,json=openPoints,proto3" json:"open_points,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	// competency id → AD | A | B | C
+	Levels      map[string]string `protobuf:"bytes,12,rep,name=levels,proto3" json:"levels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Feedback    string            `protobuf:"bytes,13,opt,name=feedback,proto3" json:"feedback,omitempty"`
+	StartedAt   string            `protobuf:"bytes,14,opt,name=started_at,json=startedAt,proto3" json:"started_at,omitempty"`
+	SubmittedAt string            `protobuf:"bytes,15,opt,name=submitted_at,json=submittedAt,proto3" json:"submitted_at,omitempty"`
+	Late        bool              `protobuf:"varint,16,opt,name=late,proto3" json:"late,omitempty"`
+	GradedAt    string            `protobuf:"bytes,17,opt,name=graded_at,json=gradedAt,proto3" json:"graded_at,omitempty"`
+	GradedName  string            `protobuf:"bytes,18,opt,name=graded_name,json=gradedName,proto3" json:"graded_name,omitempty"`
+	RecordedAt  string            `protobuf:"bytes,19,opt,name=recorded_at,json=recordedAt,proto3" json:"recorded_at,omitempty"`
+	Files       int32             `protobuf:"varint,20,opt,name=files,proto3" json:"files,omitempty"`
+	// Level the points suggest (AD from 90 %, A from 70 %, B from 50 %); the teacher confirms
+	SuggestedLevel string `protobuf:"bytes,21,opt,name=suggested_level,json=suggestedLevel,proto3" json:"suggested_level,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *Submission) Reset() {
+	*x = Submission{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[44]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Submission) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Submission) ProtoMessage() {}
+
+func (x *Submission) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[44]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Submission.ProtoReflect.Descriptor instead.
+func (*Submission) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{44}
+}
+
+func (x *Submission) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Submission) GetItemId() string {
+	if x != nil {
+		return x.ItemId
+	}
+	return ""
+}
+
+func (x *Submission) GetStudentId() string {
+	if x != nil {
+		return x.StudentId
+	}
+	return ""
+}
+
+func (x *Submission) GetStudentName() string {
+	if x != nil {
+		return x.StudentName
+	}
+	return ""
+}
+
+func (x *Submission) GetStudentCode() string {
+	if x != nil {
+		return x.StudentCode
+	}
+	return ""
+}
+
+func (x *Submission) GetAttempt() int32 {
+	if x != nil {
+		return x.Attempt
+	}
+	return 0
+}
+
+func (x *Submission) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *Submission) GetAnswers() map[string]*Answer {
+	if x != nil {
+		return x.Answers
+	}
+	return nil
+}
+
+func (x *Submission) GetAutoPoints() int32 {
+	if x != nil {
+		return x.AutoPoints
+	}
+	return 0
+}
+
+func (x *Submission) GetAutoTotal() int32 {
+	if x != nil {
+		return x.AutoTotal
+	}
+	return 0
+}
+
+func (x *Submission) GetOpenPoints() map[string]int32 {
+	if x != nil {
+		return x.OpenPoints
+	}
+	return nil
+}
+
+func (x *Submission) GetLevels() map[string]string {
+	if x != nil {
+		return x.Levels
+	}
+	return nil
+}
+
+func (x *Submission) GetFeedback() string {
+	if x != nil {
+		return x.Feedback
+	}
+	return ""
+}
+
+func (x *Submission) GetStartedAt() string {
+	if x != nil {
+		return x.StartedAt
+	}
+	return ""
+}
+
+func (x *Submission) GetSubmittedAt() string {
+	if x != nil {
+		return x.SubmittedAt
+	}
+	return ""
+}
+
+func (x *Submission) GetLate() bool {
+	if x != nil {
+		return x.Late
+	}
+	return false
+}
+
+func (x *Submission) GetGradedAt() string {
+	if x != nil {
+		return x.GradedAt
+	}
+	return ""
+}
+
+func (x *Submission) GetGradedName() string {
+	if x != nil {
+		return x.GradedName
+	}
+	return ""
+}
+
+func (x *Submission) GetRecordedAt() string {
+	if x != nil {
+		return x.RecordedAt
+	}
+	return ""
+}
+
+func (x *Submission) GetFiles() int32 {
+	if x != nil {
+		return x.Files
+	}
+	return 0
+}
+
+func (x *Submission) GetSuggestedLevel() string {
+	if x != nil {
+		return x.SuggestedLevel
+	}
+	return ""
+}
+
+type RosterRow struct {
+	state       protoimpl.MessageState `protogen:"open.v1"`
+	StudentId   string                 `protobuf:"bytes,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
+	StudentName string                 `protobuf:"bytes,2,opt,name=student_name,json=studentName,proto3" json:"student_name,omitempty"`
+	StudentCode string                 `protobuf:"bytes,3,opt,name=student_code,json=studentCode,proto3" json:"student_code,omitempty"`
+	Latest      *Submission            `protobuf:"bytes,4,opt,name=latest,proto3" json:"latest,omitempty"`
+	Attempts    int32                  `protobuf:"varint,5,opt,name=attempts,proto3" json:"attempts,omitempty"`
+	// RFC 3339 or empty
+	Extension     string `protobuf:"bytes,6,opt,name=extension,proto3" json:"extension,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RosterRow) Reset() {
+	*x = RosterRow{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[45]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RosterRow) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RosterRow) ProtoMessage() {}
+
+func (x *RosterRow) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[45]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RosterRow.ProtoReflect.Descriptor instead.
+func (*RosterRow) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{45}
+}
+
+func (x *RosterRow) GetStudentId() string {
+	if x != nil {
+		return x.StudentId
+	}
+	return ""
+}
+
+func (x *RosterRow) GetStudentName() string {
+	if x != nil {
+		return x.StudentName
+	}
+	return ""
+}
+
+func (x *RosterRow) GetStudentCode() string {
+	if x != nil {
+		return x.StudentCode
+	}
+	return ""
+}
+
+func (x *RosterRow) GetLatest() *Submission {
+	if x != nil {
+		return x.Latest
+	}
+	return nil
+}
+
+func (x *RosterRow) GetAttempts() int32 {
+	if x != nil {
+		return x.Attempts
+	}
+	return 0
+}
+
+func (x *RosterRow) GetExtension() string {
+	if x != nil {
+		return x.Extension
+	}
+	return ""
+}
+
+type GetAssessmentRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	ItemId          string                 `protobuf:"bytes,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *GetAssessmentRequest) Reset() {
+	*x = GetAssessmentRequest{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[46]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAssessmentRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAssessmentRequest) ProtoMessage() {}
+
+func (x *GetAssessmentRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[46]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAssessmentRequest.ProtoReflect.Descriptor instead.
+func (*GetAssessmentRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{46}
+}
+
+func (x *GetAssessmentRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *GetAssessmentRequest) GetItemId() string {
+	if x != nil {
+		return x.ItemId
+	}
+	return ""
+}
+
+type GetAssessmentResponse struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Assessment      *Assessment            `protobuf:"bytes,1,opt,name=assessment,proto3" json:"assessment,omitempty"`
+	CanEdit         bool                   `protobuf:"varint,2,opt,name=can_edit,json=canEdit,proto3" json:"can_edit,omitempty"`
+	Family          bool                   `protobuf:"varint,3,opt,name=family,proto3" json:"family,omitempty"`
+	Competencies    []*Competency          `protobuf:"bytes,4,rep,name=competencies,proto3" json:"competencies,omitempty"`
+	Roster          []*RosterRow           `protobuf:"bytes,5,rep,name=roster,proto3" json:"roster,omitempty"`
+	QuestionsLocked bool                   `protobuf:"varint,6,opt,name=questions_locked,json=questionsLocked,proto3" json:"questions_locked,omitempty"`
+	Attempts        []*Submission          `protobuf:"bytes,7,rep,name=attempts,proto3" json:"attempts,omitempty"`
+	Extension       string                 `protobuf:"bytes,8,opt,name=extension,proto3" json:"extension,omitempty"`
+	OpenNow         bool                   `protobuf:"varint,9,opt,name=open_now,json=openNow,proto3" json:"open_now,omitempty"`
+	CanStart        bool                   `protobuf:"varint,10,opt,name=can_start,json=canStart,proto3" json:"can_start,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *GetAssessmentResponse) Reset() {
+	*x = GetAssessmentResponse{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[47]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAssessmentResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAssessmentResponse) ProtoMessage() {}
+
+func (x *GetAssessmentResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[47]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAssessmentResponse.ProtoReflect.Descriptor instead.
+func (*GetAssessmentResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{47}
+}
+
+func (x *GetAssessmentResponse) GetAssessment() *Assessment {
+	if x != nil {
+		return x.Assessment
+	}
+	return nil
+}
+
+func (x *GetAssessmentResponse) GetCanEdit() bool {
+	if x != nil {
+		return x.CanEdit
+	}
+	return false
+}
+
+func (x *GetAssessmentResponse) GetFamily() bool {
+	if x != nil {
+		return x.Family
+	}
+	return false
+}
+
+func (x *GetAssessmentResponse) GetCompetencies() []*Competency {
+	if x != nil {
+		return x.Competencies
+	}
+	return nil
+}
+
+func (x *GetAssessmentResponse) GetRoster() []*RosterRow {
+	if x != nil {
+		return x.Roster
+	}
+	return nil
+}
+
+func (x *GetAssessmentResponse) GetQuestionsLocked() bool {
+	if x != nil {
+		return x.QuestionsLocked
+	}
+	return false
+}
+
+func (x *GetAssessmentResponse) GetAttempts() []*Submission {
+	if x != nil {
+		return x.Attempts
+	}
+	return nil
+}
+
+func (x *GetAssessmentResponse) GetExtension() string {
+	if x != nil {
+		return x.Extension
+	}
+	return ""
+}
+
+func (x *GetAssessmentResponse) GetOpenNow() bool {
+	if x != nil {
+		return x.OpenNow
+	}
+	return false
+}
+
+func (x *GetAssessmentResponse) GetCanStart() bool {
+	if x != nil {
+		return x.CanStart
+	}
+	return false
+}
+
+type SaveAssessmentRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	ItemId          string                 `protobuf:"bytes,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	OpensAt         string                 `protobuf:"bytes,3,opt,name=opens_at,json=opensAt,proto3" json:"opens_at,omitempty"`
+	ClosesAt        string                 `protobuf:"bytes,4,opt,name=closes_at,json=closesAt,proto3" json:"closes_at,omitempty"`
+	MaxAttempts     int32                  `protobuf:"varint,5,opt,name=max_attempts,json=maxAttempts,proto3" json:"max_attempts,omitempty"`
+	CompetencyIds   []string               `protobuf:"bytes,6,rep,name=competency_ids,json=competencyIds,proto3" json:"competency_ids,omitempty"`
+	ShowAnswers     bool                   `protobuf:"varint,7,opt,name=show_answers,json=showAnswers,proto3" json:"show_answers,omitempty"`
+	// Quizzes only: replace the questions (refused once someone handed it in)
+	ReplaceQuestions bool        `protobuf:"varint,8,opt,name=replace_questions,json=replaceQuestions,proto3" json:"replace_questions,omitempty"`
+	Questions        []*Question `protobuf:"bytes,9,rep,name=questions,proto3" json:"questions,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *SaveAssessmentRequest) Reset() {
+	*x = SaveAssessmentRequest{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[48]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SaveAssessmentRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SaveAssessmentRequest) ProtoMessage() {}
+
+func (x *SaveAssessmentRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[48]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SaveAssessmentRequest.ProtoReflect.Descriptor instead.
+func (*SaveAssessmentRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *SaveAssessmentRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *SaveAssessmentRequest) GetItemId() string {
+	if x != nil {
+		return x.ItemId
+	}
+	return ""
+}
+
+func (x *SaveAssessmentRequest) GetOpensAt() string {
+	if x != nil {
+		return x.OpensAt
+	}
+	return ""
+}
+
+func (x *SaveAssessmentRequest) GetClosesAt() string {
+	if x != nil {
+		return x.ClosesAt
+	}
+	return ""
+}
+
+func (x *SaveAssessmentRequest) GetMaxAttempts() int32 {
+	if x != nil {
+		return x.MaxAttempts
+	}
+	return 0
+}
+
+func (x *SaveAssessmentRequest) GetCompetencyIds() []string {
+	if x != nil {
+		return x.CompetencyIds
+	}
+	return nil
+}
+
+func (x *SaveAssessmentRequest) GetShowAnswers() bool {
+	if x != nil {
+		return x.ShowAnswers
+	}
+	return false
+}
+
+func (x *SaveAssessmentRequest) GetReplaceQuestions() bool {
+	if x != nil {
+		return x.ReplaceQuestions
+	}
+	return false
+}
+
+func (x *SaveAssessmentRequest) GetQuestions() []*Question {
+	if x != nil {
+		return x.Questions
+	}
+	return nil
+}
+
+type SaveAssessmentResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Assessment    *Assessment            `protobuf:"bytes,1,opt,name=assessment,proto3" json:"assessment,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SaveAssessmentResponse) Reset() {
+	*x = SaveAssessmentResponse{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[49]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SaveAssessmentResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SaveAssessmentResponse) ProtoMessage() {}
+
+func (x *SaveAssessmentResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[49]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SaveAssessmentResponse.ProtoReflect.Descriptor instead.
+func (*SaveAssessmentResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{49}
+}
+
+func (x *SaveAssessmentResponse) GetAssessment() *Assessment {
+	if x != nil {
+		return x.Assessment
+	}
+	return nil
+}
+
+type StartAttemptRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	ItemId          string                 `protobuf:"bytes,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *StartAttemptRequest) Reset() {
+	*x = StartAttemptRequest{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[50]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartAttemptRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartAttemptRequest) ProtoMessage() {}
+
+func (x *StartAttemptRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[50]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartAttemptRequest.ProtoReflect.Descriptor instead.
+func (*StartAttemptRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{50}
+}
+
+func (x *StartAttemptRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *StartAttemptRequest) GetItemId() string {
+	if x != nil {
+		return x.ItemId
+	}
+	return ""
+}
+
+type StartAttemptResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Submission    *Submission            `protobuf:"bytes,1,opt,name=submission,proto3" json:"submission,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StartAttemptResponse) Reset() {
+	*x = StartAttemptResponse{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[51]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartAttemptResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartAttemptResponse) ProtoMessage() {}
+
+func (x *StartAttemptResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[51]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartAttemptResponse.ProtoReflect.Descriptor instead.
+func (*StartAttemptResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{51}
+}
+
+func (x *StartAttemptResponse) GetSubmission() *Submission {
+	if x != nil {
+		return x.Submission
+	}
+	return nil
+}
+
+type SaveAnswersRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	SubmissionId    string                 `protobuf:"bytes,2,opt,name=submission_id,json=submissionId,proto3" json:"submission_id,omitempty"`
+	Answers         map[string]*Answer     `protobuf:"bytes,3,rep,name=answers,proto3" json:"answers,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *SaveAnswersRequest) Reset() {
+	*x = SaveAnswersRequest{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[52]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SaveAnswersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SaveAnswersRequest) ProtoMessage() {}
+
+func (x *SaveAnswersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[52]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SaveAnswersRequest.ProtoReflect.Descriptor instead.
+func (*SaveAnswersRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{52}
+}
+
+func (x *SaveAnswersRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *SaveAnswersRequest) GetSubmissionId() string {
+	if x != nil {
+		return x.SubmissionId
+	}
+	return ""
+}
+
+func (x *SaveAnswersRequest) GetAnswers() map[string]*Answer {
+	if x != nil {
+		return x.Answers
+	}
+	return nil
+}
+
+type SaveAnswersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SaveAnswersResponse) Reset() {
+	*x = SaveAnswersResponse{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[53]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SaveAnswersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SaveAnswersResponse) ProtoMessage() {}
+
+func (x *SaveAnswersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[53]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SaveAnswersResponse.ProtoReflect.Descriptor instead.
+func (*SaveAnswersResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{53}
+}
+
+type HandInRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	SubmissionId    string                 `protobuf:"bytes,2,opt,name=submission_id,json=submissionId,proto3" json:"submission_id,omitempty"`
+	// Last answers, saved before handing in (empty keeps the saved ones)
+	Answers       map[string]*Answer `protobuf:"bytes,3,rep,name=answers,proto3" json:"answers,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HandInRequest) Reset() {
+	*x = HandInRequest{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[54]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HandInRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HandInRequest) ProtoMessage() {}
+
+func (x *HandInRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[54]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HandInRequest.ProtoReflect.Descriptor instead.
+func (*HandInRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{54}
+}
+
+func (x *HandInRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *HandInRequest) GetSubmissionId() string {
+	if x != nil {
+		return x.SubmissionId
+	}
+	return ""
+}
+
+func (x *HandInRequest) GetAnswers() map[string]*Answer {
+	if x != nil {
+		return x.Answers
+	}
+	return nil
+}
+
+type HandInResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Submission    *Submission            `protobuf:"bytes,1,opt,name=submission,proto3" json:"submission,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HandInResponse) Reset() {
+	*x = HandInResponse{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[55]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HandInResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HandInResponse) ProtoMessage() {}
+
+func (x *HandInResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[55]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HandInResponse.ProtoReflect.Descriptor instead.
+func (*HandInResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{55}
+}
+
+func (x *HandInResponse) GetSubmission() *Submission {
+	if x != nil {
+		return x.Submission
+	}
+	return nil
+}
+
+type GradeSubmissionRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	SubmissionId    string                 `protobuf:"bytes,2,opt,name=submission_id,json=submissionId,proto3" json:"submission_id,omitempty"`
+	Levels          map[string]string      `protobuf:"bytes,3,rep,name=levels,proto3" json:"levels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	OpenPoints      map[string]int32       `protobuf:"bytes,4,rep,name=open_points,json=openPoints,proto3" json:"open_points,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Feedback        string                 `protobuf:"bytes,5,opt,name=feedback,proto3" json:"feedback,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *GradeSubmissionRequest) Reset() {
+	*x = GradeSubmissionRequest{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[56]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GradeSubmissionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GradeSubmissionRequest) ProtoMessage() {}
+
+func (x *GradeSubmissionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[56]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GradeSubmissionRequest.ProtoReflect.Descriptor instead.
+func (*GradeSubmissionRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{56}
+}
+
+func (x *GradeSubmissionRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *GradeSubmissionRequest) GetSubmissionId() string {
+	if x != nil {
+		return x.SubmissionId
+	}
+	return ""
+}
+
+func (x *GradeSubmissionRequest) GetLevels() map[string]string {
+	if x != nil {
+		return x.Levels
+	}
+	return nil
+}
+
+func (x *GradeSubmissionRequest) GetOpenPoints() map[string]int32 {
+	if x != nil {
+		return x.OpenPoints
+	}
+	return nil
+}
+
+func (x *GradeSubmissionRequest) GetFeedback() string {
+	if x != nil {
+		return x.Feedback
+	}
+	return ""
+}
+
+type GradeSubmissionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Submission    *Submission            `protobuf:"bytes,1,opt,name=submission,proto3" json:"submission,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GradeSubmissionResponse) Reset() {
+	*x = GradeSubmissionResponse{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[57]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GradeSubmissionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GradeSubmissionResponse) ProtoMessage() {}
+
+func (x *GradeSubmissionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[57]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GradeSubmissionResponse.ProtoReflect.Descriptor instead.
+func (*GradeSubmissionResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{57}
+}
+
+func (x *GradeSubmissionResponse) GetSubmission() *Submission {
+	if x != nil {
+		return x.Submission
+	}
+	return nil
+}
+
+type SetExtensionRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	ItemId          string                 `protobuf:"bytes,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	StudentId       string                 `protobuf:"bytes,3,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
+	// RFC 3339; empty removes the extension
+	ClosesAt      string `protobuf:"bytes,4,opt,name=closes_at,json=closesAt,proto3" json:"closes_at,omitempty"`
+	Reason        string `protobuf:"bytes,5,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetExtensionRequest) Reset() {
+	*x = SetExtensionRequest{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[58]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetExtensionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetExtensionRequest) ProtoMessage() {}
+
+func (x *SetExtensionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[58]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetExtensionRequest.ProtoReflect.Descriptor instead.
+func (*SetExtensionRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{58}
+}
+
+func (x *SetExtensionRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *SetExtensionRequest) GetItemId() string {
+	if x != nil {
+		return x.ItemId
+	}
+	return ""
+}
+
+func (x *SetExtensionRequest) GetStudentId() string {
+	if x != nil {
+		return x.StudentId
+	}
+	return ""
+}
+
+func (x *SetExtensionRequest) GetClosesAt() string {
+	if x != nil {
+		return x.ClosesAt
+	}
+	return ""
+}
+
+func (x *SetExtensionRequest) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type SetExtensionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetExtensionResponse) Reset() {
+	*x = SetExtensionResponse{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[59]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetExtensionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetExtensionResponse) ProtoMessage() {}
+
+func (x *SetExtensionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[59]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetExtensionResponse.ProtoReflect.Descriptor instead.
+func (*SetExtensionResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{59}
+}
+
+type RecordLevelsRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	ItemId          string                 `protobuf:"bytes,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *RecordLevelsRequest) Reset() {
+	*x = RecordLevelsRequest{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[60]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RecordLevelsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RecordLevelsRequest) ProtoMessage() {}
+
+func (x *RecordLevelsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[60]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RecordLevelsRequest.ProtoReflect.Descriptor instead.
+func (*RecordLevelsRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{60}
+}
+
+func (x *RecordLevelsRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *RecordLevelsRequest) GetItemId() string {
+	if x != nil {
+		return x.ItemId
+	}
+	return ""
+}
+
+type RecordLevelsResponse struct {
+	state    protoimpl.MessageState `protogen:"open.v1"`
+	Recorded int32                  `protobuf:"varint,1,opt,name=recorded,proto3" json:"recorded,omitempty"`
+	// Students left out: their section has no teacher for the area, or its sheet is closed or not yours
+	SkippedStudentIds []string `protobuf:"bytes,2,rep,name=skipped_student_ids,json=skippedStudentIds,proto3" json:"skipped_student_ids,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *RecordLevelsResponse) Reset() {
+	*x = RecordLevelsResponse{}
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[61]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RecordLevelsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RecordLevelsResponse) ProtoMessage() {}
+
+func (x *RecordLevelsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[61]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RecordLevelsResponse.ProtoReflect.Descriptor instead.
+func (*RecordLevelsResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{61}
+}
+
+func (x *RecordLevelsResponse) GetRecorded() int32 {
+	if x != nil {
+		return x.Recorded
+	}
+	return 0
+}
+
+func (x *RecordLevelsResponse) GetSkippedStudentIds() []string {
+	if x != nil {
+		return x.SkippedStudentIds
+	}
+	return nil
+}
+
 var File_joseph_classroom_v1_classroom_proto protoreflect.FileDescriptor
 
 const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
@@ -2658,7 +4246,174 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\x13SaveDeliveryRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x129\n" +
 	"\bdelivery\x18\x02 \x01(\v2\x1d.joseph.classroom.v1.DeliveryR\bdelivery\"\x16\n" +
-	"\x14SaveDeliveryResponse2\x91\r\n" +
+	"\x14SaveDeliveryResponse\"\xae\x01\n" +
+	"\bQuestion\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04kind\x18\x02 \x01(\tR\x04kind\x12\x16\n" +
+	"\x06prompt\x18\x03 \x01(\tR\x06prompt\x12\x18\n" +
+	"\aoptions\x18\x04 \x03(\tR\aoptions\x12\x18\n" +
+	"\acorrect\x18\x05 \x03(\x05R\acorrect\x12\x1a\n" +
+	"\baccepted\x18\x06 \x03(\tR\baccepted\x12\x16\n" +
+	"\x06points\x18\a \x01(\x05R\x06points\"\xa5\x03\n" +
+	"\n" +
+	"Assessment\x12\x17\n" +
+	"\aitem_id\x18\x01 \x01(\tR\x06itemId\x12\x17\n" +
+	"\aroom_id\x18\x02 \x01(\tR\x06roomId\x12\x17\n" +
+	"\aunit_id\x18\x03 \x01(\tR\x06unitId\x12\x12\n" +
+	"\x04kind\x18\x04 \x01(\tR\x04kind\x12\x14\n" +
+	"\x05title\x18\x05 \x01(\tR\x05title\x12\"\n" +
+	"\finstructions\x18\x06 \x01(\tR\finstructions\x12\x1c\n" +
+	"\tpublished\x18\a \x01(\bR\tpublished\x12\x19\n" +
+	"\bopens_at\x18\b \x01(\tR\aopensAt\x12\x1b\n" +
+	"\tcloses_at\x18\t \x01(\tR\bclosesAt\x12!\n" +
+	"\fmax_attempts\x18\n" +
+	" \x01(\x05R\vmaxAttempts\x12%\n" +
+	"\x0ecompetency_ids\x18\v \x03(\tR\rcompetencyIds\x12!\n" +
+	"\fshow_answers\x18\f \x01(\bR\vshowAnswers\x12;\n" +
+	"\tquestions\x18\r \x03(\v2\x1d.joseph.classroom.v1.QuestionR\tquestions\"0\n" +
+	"\n" +
+	"Competency\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"6\n" +
+	"\x06Answer\x12\x18\n" +
+	"\achoices\x18\x01 \x03(\x05R\achoices\x12\x12\n" +
+	"\x04text\x18\x02 \x01(\tR\x04text\"\xce\a\n" +
+	"\n" +
+	"Submission\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
+	"\aitem_id\x18\x02 \x01(\tR\x06itemId\x12\x1d\n" +
+	"\n" +
+	"student_id\x18\x03 \x01(\tR\tstudentId\x12!\n" +
+	"\fstudent_name\x18\x04 \x01(\tR\vstudentName\x12!\n" +
+	"\fstudent_code\x18\x05 \x01(\tR\vstudentCode\x12\x18\n" +
+	"\aattempt\x18\x06 \x01(\x05R\aattempt\x12\x16\n" +
+	"\x06status\x18\a \x01(\tR\x06status\x12F\n" +
+	"\aanswers\x18\b \x03(\v2,.joseph.classroom.v1.Submission.AnswersEntryR\aanswers\x12\x1f\n" +
+	"\vauto_points\x18\t \x01(\x05R\n" +
+	"autoPoints\x12\x1d\n" +
+	"\n" +
+	"auto_total\x18\n" +
+	" \x01(\x05R\tautoTotal\x12P\n" +
+	"\vopen_points\x18\v \x03(\v2/.joseph.classroom.v1.Submission.OpenPointsEntryR\n" +
+	"openPoints\x12C\n" +
+	"\x06levels\x18\f \x03(\v2+.joseph.classroom.v1.Submission.LevelsEntryR\x06levels\x12\x1a\n" +
+	"\bfeedback\x18\r \x01(\tR\bfeedback\x12\x1d\n" +
+	"\n" +
+	"started_at\x18\x0e \x01(\tR\tstartedAt\x12!\n" +
+	"\fsubmitted_at\x18\x0f \x01(\tR\vsubmittedAt\x12\x12\n" +
+	"\x04late\x18\x10 \x01(\bR\x04late\x12\x1b\n" +
+	"\tgraded_at\x18\x11 \x01(\tR\bgradedAt\x12\x1f\n" +
+	"\vgraded_name\x18\x12 \x01(\tR\n" +
+	"gradedName\x12\x1f\n" +
+	"\vrecorded_at\x18\x13 \x01(\tR\n" +
+	"recordedAt\x12\x14\n" +
+	"\x05files\x18\x14 \x01(\x05R\x05files\x12'\n" +
+	"\x0fsuggested_level\x18\x15 \x01(\tR\x0esuggestedLevel\x1aW\n" +
+	"\fAnswersEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x121\n" +
+	"\x05value\x18\x02 \x01(\v2\x1b.joseph.classroom.v1.AnswerR\x05value:\x028\x01\x1a=\n" +
+	"\x0fOpenPointsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\x1a9\n" +
+	"\vLevelsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe3\x01\n" +
+	"\tRosterRow\x12\x1d\n" +
+	"\n" +
+	"student_id\x18\x01 \x01(\tR\tstudentId\x12!\n" +
+	"\fstudent_name\x18\x02 \x01(\tR\vstudentName\x12!\n" +
+	"\fstudent_code\x18\x03 \x01(\tR\vstudentCode\x127\n" +
+	"\x06latest\x18\x04 \x01(\v2\x1f.joseph.classroom.v1.SubmissionR\x06latest\x12\x1a\n" +
+	"\battempts\x18\x05 \x01(\x05R\battempts\x12\x1c\n" +
+	"\textension\x18\x06 \x01(\tR\textension\"Z\n" +
+	"\x14GetAssessmentRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
+	"\aitem_id\x18\x02 \x01(\tR\x06itemId\"\xc6\x03\n" +
+	"\x15GetAssessmentResponse\x12?\n" +
+	"\n" +
+	"assessment\x18\x01 \x01(\v2\x1f.joseph.classroom.v1.AssessmentR\n" +
+	"assessment\x12\x19\n" +
+	"\bcan_edit\x18\x02 \x01(\bR\acanEdit\x12\x16\n" +
+	"\x06family\x18\x03 \x01(\bR\x06family\x12C\n" +
+	"\fcompetencies\x18\x04 \x03(\v2\x1f.joseph.classroom.v1.CompetencyR\fcompetencies\x126\n" +
+	"\x06roster\x18\x05 \x03(\v2\x1e.joseph.classroom.v1.RosterRowR\x06roster\x12)\n" +
+	"\x10questions_locked\x18\x06 \x01(\bR\x0fquestionsLocked\x12;\n" +
+	"\battempts\x18\a \x03(\v2\x1f.joseph.classroom.v1.SubmissionR\battempts\x12\x1c\n" +
+	"\textension\x18\b \x01(\tR\textension\x12\x19\n" +
+	"\bopen_now\x18\t \x01(\bR\aopenNow\x12\x1b\n" +
+	"\tcan_start\x18\n" +
+	" \x01(\bR\bcanStart\"\xea\x02\n" +
+	"\x15SaveAssessmentRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
+	"\aitem_id\x18\x02 \x01(\tR\x06itemId\x12\x19\n" +
+	"\bopens_at\x18\x03 \x01(\tR\aopensAt\x12\x1b\n" +
+	"\tcloses_at\x18\x04 \x01(\tR\bclosesAt\x12!\n" +
+	"\fmax_attempts\x18\x05 \x01(\x05R\vmaxAttempts\x12%\n" +
+	"\x0ecompetency_ids\x18\x06 \x03(\tR\rcompetencyIds\x12!\n" +
+	"\fshow_answers\x18\a \x01(\bR\vshowAnswers\x12+\n" +
+	"\x11replace_questions\x18\b \x01(\bR\x10replaceQuestions\x12;\n" +
+	"\tquestions\x18\t \x03(\v2\x1d.joseph.classroom.v1.QuestionR\tquestions\"Y\n" +
+	"\x16SaveAssessmentResponse\x12?\n" +
+	"\n" +
+	"assessment\x18\x01 \x01(\v2\x1f.joseph.classroom.v1.AssessmentR\n" +
+	"assessment\"Y\n" +
+	"\x13StartAttemptRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
+	"\aitem_id\x18\x02 \x01(\tR\x06itemId\"W\n" +
+	"\x14StartAttemptResponse\x12?\n" +
+	"\n" +
+	"submission\x18\x01 \x01(\v2\x1f.joseph.classroom.v1.SubmissionR\n" +
+	"submission\"\x8d\x02\n" +
+	"\x12SaveAnswersRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
+	"\rsubmission_id\x18\x02 \x01(\tR\fsubmissionId\x12N\n" +
+	"\aanswers\x18\x03 \x03(\v24.joseph.classroom.v1.SaveAnswersRequest.AnswersEntryR\aanswers\x1aW\n" +
+	"\fAnswersEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x121\n" +
+	"\x05value\x18\x02 \x01(\v2\x1b.joseph.classroom.v1.AnswerR\x05value:\x028\x01\"\x15\n" +
+	"\x13SaveAnswersResponse\"\x83\x02\n" +
+	"\rHandInRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
+	"\rsubmission_id\x18\x02 \x01(\tR\fsubmissionId\x12I\n" +
+	"\aanswers\x18\x03 \x03(\v2/.joseph.classroom.v1.HandInRequest.AnswersEntryR\aanswers\x1aW\n" +
+	"\fAnswersEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x121\n" +
+	"\x05value\x18\x02 \x01(\v2\x1b.joseph.classroom.v1.AnswerR\x05value:\x028\x01\"Q\n" +
+	"\x0eHandInResponse\x12?\n" +
+	"\n" +
+	"submission\x18\x01 \x01(\v2\x1f.joseph.classroom.v1.SubmissionR\n" +
+	"submission\"\xad\x03\n" +
+	"\x16GradeSubmissionRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
+	"\rsubmission_id\x18\x02 \x01(\tR\fsubmissionId\x12O\n" +
+	"\x06levels\x18\x03 \x03(\v27.joseph.classroom.v1.GradeSubmissionRequest.LevelsEntryR\x06levels\x12\\\n" +
+	"\vopen_points\x18\x04 \x03(\v2;.joseph.classroom.v1.GradeSubmissionRequest.OpenPointsEntryR\n" +
+	"openPoints\x12\x1a\n" +
+	"\bfeedback\x18\x05 \x01(\tR\bfeedback\x1a9\n" +
+	"\vLevelsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a=\n" +
+	"\x0fOpenPointsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"Z\n" +
+	"\x17GradeSubmissionResponse\x12?\n" +
+	"\n" +
+	"submission\x18\x01 \x01(\v2\x1f.joseph.classroom.v1.SubmissionR\n" +
+	"submission\"\xad\x01\n" +
+	"\x13SetExtensionRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
+	"\aitem_id\x18\x02 \x01(\tR\x06itemId\x12\x1d\n" +
+	"\n" +
+	"student_id\x18\x03 \x01(\tR\tstudentId\x12\x1b\n" +
+	"\tcloses_at\x18\x04 \x01(\tR\bclosesAt\x12\x16\n" +
+	"\x06reason\x18\x05 \x01(\tR\x06reason\"\x16\n" +
+	"\x14SetExtensionResponse\"Y\n" +
+	"\x13RecordLevelsRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
+	"\aitem_id\x18\x02 \x01(\tR\x06itemId\"b\n" +
+	"\x14RecordLevelsResponse\x12\x1a\n" +
+	"\brecorded\x18\x01 \x01(\x05R\brecorded\x12.\n" +
+	"\x13skipped_student_ids\x18\x02 \x03(\tR\x11skippedStudentIds2\xb6\x13\n" +
 	"\x10ClassroomService\x12Z\n" +
 	"\tListRooms\x12%.joseph.classroom.v1.ListRoomsRequest\x1a&.joseph.classroom.v1.ListRoomsResponse\x12f\n" +
 	"\rGenerateRooms\x12).joseph.classroom.v1.GenerateRoomsRequest\x1a*.joseph.classroom.v1.GenerateRoomsResponse\x12T\n" +
@@ -2680,7 +4435,15 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\x0fSaveLibraryItem\x12+.joseph.classroom.v1.SaveLibraryItemRequest\x1a,.joseph.classroom.v1.SaveLibraryItemResponse\x12r\n" +
 	"\x11DeleteLibraryItem\x12-.joseph.classroom.v1.DeleteLibraryItemRequest\x1a..joseph.classroom.v1.DeleteLibraryItemResponse\x12i\n" +
 	"\x0eListDeliveries\x12*.joseph.classroom.v1.ListDeliveriesRequest\x1a+.joseph.classroom.v1.ListDeliveriesResponse\x12c\n" +
-	"\fSaveDelivery\x12(.joseph.classroom.v1.SaveDeliveryRequest\x1a).joseph.classroom.v1.SaveDeliveryResponseB?Z=api/internal/adapter/inbound/grpc/gen/classroomv1;classroomv1b\x06proto3"
+	"\fSaveDelivery\x12(.joseph.classroom.v1.SaveDeliveryRequest\x1a).joseph.classroom.v1.SaveDeliveryResponse\x12f\n" +
+	"\rGetAssessment\x12).joseph.classroom.v1.GetAssessmentRequest\x1a*.joseph.classroom.v1.GetAssessmentResponse\x12i\n" +
+	"\x0eSaveAssessment\x12*.joseph.classroom.v1.SaveAssessmentRequest\x1a+.joseph.classroom.v1.SaveAssessmentResponse\x12c\n" +
+	"\fStartAttempt\x12(.joseph.classroom.v1.StartAttemptRequest\x1a).joseph.classroom.v1.StartAttemptResponse\x12`\n" +
+	"\vSaveAnswers\x12'.joseph.classroom.v1.SaveAnswersRequest\x1a(.joseph.classroom.v1.SaveAnswersResponse\x12Q\n" +
+	"\x06HandIn\x12\".joseph.classroom.v1.HandInRequest\x1a#.joseph.classroom.v1.HandInResponse\x12l\n" +
+	"\x0fGradeSubmission\x12+.joseph.classroom.v1.GradeSubmissionRequest\x1a,.joseph.classroom.v1.GradeSubmissionResponse\x12c\n" +
+	"\fSetExtension\x12(.joseph.classroom.v1.SetExtensionRequest\x1a).joseph.classroom.v1.SetExtensionResponse\x12c\n" +
+	"\fRecordLevels\x12(.joseph.classroom.v1.RecordLevelsRequest\x1a).joseph.classroom.v1.RecordLevelsResponseB?Z=api/internal/adapter/inbound/grpc/gen/classroomv1;classroomv1b\x06proto3"
 
 var (
 	file_joseph_classroom_v1_classroom_proto_rawDescOnce sync.Once
@@ -2694,7 +4457,7 @@ func file_joseph_classroom_v1_classroom_proto_rawDescGZIP() []byte {
 	return file_joseph_classroom_v1_classroom_proto_rawDescData
 }
 
-var file_joseph_classroom_v1_classroom_proto_msgTypes = make([]protoimpl.MessageInfo, 40)
+var file_joseph_classroom_v1_classroom_proto_msgTypes = make([]protoimpl.MessageInfo, 69)
 var file_joseph_classroom_v1_classroom_proto_goTypes = []any{
 	(*Period)(nil),                    // 0: joseph.classroom.v1.Period
 	(*Room)(nil),                      // 1: joseph.classroom.v1.Room
@@ -2736,6 +4499,35 @@ var file_joseph_classroom_v1_classroom_proto_goTypes = []any{
 	(*ListDeliveriesResponse)(nil),    // 37: joseph.classroom.v1.ListDeliveriesResponse
 	(*SaveDeliveryRequest)(nil),       // 38: joseph.classroom.v1.SaveDeliveryRequest
 	(*SaveDeliveryResponse)(nil),      // 39: joseph.classroom.v1.SaveDeliveryResponse
+	(*Question)(nil),                  // 40: joseph.classroom.v1.Question
+	(*Assessment)(nil),                // 41: joseph.classroom.v1.Assessment
+	(*Competency)(nil),                // 42: joseph.classroom.v1.Competency
+	(*Answer)(nil),                    // 43: joseph.classroom.v1.Answer
+	(*Submission)(nil),                // 44: joseph.classroom.v1.Submission
+	(*RosterRow)(nil),                 // 45: joseph.classroom.v1.RosterRow
+	(*GetAssessmentRequest)(nil),      // 46: joseph.classroom.v1.GetAssessmentRequest
+	(*GetAssessmentResponse)(nil),     // 47: joseph.classroom.v1.GetAssessmentResponse
+	(*SaveAssessmentRequest)(nil),     // 48: joseph.classroom.v1.SaveAssessmentRequest
+	(*SaveAssessmentResponse)(nil),    // 49: joseph.classroom.v1.SaveAssessmentResponse
+	(*StartAttemptRequest)(nil),       // 50: joseph.classroom.v1.StartAttemptRequest
+	(*StartAttemptResponse)(nil),      // 51: joseph.classroom.v1.StartAttemptResponse
+	(*SaveAnswersRequest)(nil),        // 52: joseph.classroom.v1.SaveAnswersRequest
+	(*SaveAnswersResponse)(nil),       // 53: joseph.classroom.v1.SaveAnswersResponse
+	(*HandInRequest)(nil),             // 54: joseph.classroom.v1.HandInRequest
+	(*HandInResponse)(nil),            // 55: joseph.classroom.v1.HandInResponse
+	(*GradeSubmissionRequest)(nil),    // 56: joseph.classroom.v1.GradeSubmissionRequest
+	(*GradeSubmissionResponse)(nil),   // 57: joseph.classroom.v1.GradeSubmissionResponse
+	(*SetExtensionRequest)(nil),       // 58: joseph.classroom.v1.SetExtensionRequest
+	(*SetExtensionResponse)(nil),      // 59: joseph.classroom.v1.SetExtensionResponse
+	(*RecordLevelsRequest)(nil),       // 60: joseph.classroom.v1.RecordLevelsRequest
+	(*RecordLevelsResponse)(nil),      // 61: joseph.classroom.v1.RecordLevelsResponse
+	nil,                               // 62: joseph.classroom.v1.Submission.AnswersEntry
+	nil,                               // 63: joseph.classroom.v1.Submission.OpenPointsEntry
+	nil,                               // 64: joseph.classroom.v1.Submission.LevelsEntry
+	nil,                               // 65: joseph.classroom.v1.SaveAnswersRequest.AnswersEntry
+	nil,                               // 66: joseph.classroom.v1.HandInRequest.AnswersEntry
+	nil,                               // 67: joseph.classroom.v1.GradeSubmissionRequest.LevelsEntry
+	nil,                               // 68: joseph.classroom.v1.GradeSubmissionRequest.OpenPointsEntry
 }
 var file_joseph_classroom_v1_classroom_proto_depIdxs = []int32{
 	2,  // 0: joseph.classroom.v1.Unit.items:type_name -> joseph.classroom.v1.Item
@@ -2752,45 +4544,82 @@ var file_joseph_classroom_v1_classroom_proto_depIdxs = []int32{
 	4,  // 11: joseph.classroom.v1.SaveLibraryItemResponse.item:type_name -> joseph.classroom.v1.LibraryItem
 	5,  // 12: joseph.classroom.v1.ListDeliveriesResponse.deliveries:type_name -> joseph.classroom.v1.Delivery
 	5,  // 13: joseph.classroom.v1.SaveDeliveryRequest.delivery:type_name -> joseph.classroom.v1.Delivery
-	6,  // 14: joseph.classroom.v1.ClassroomService.ListRooms:input_type -> joseph.classroom.v1.ListRoomsRequest
-	8,  // 15: joseph.classroom.v1.ClassroomService.GenerateRooms:input_type -> joseph.classroom.v1.GenerateRoomsRequest
-	10, // 16: joseph.classroom.v1.ClassroomService.GetRoom:input_type -> joseph.classroom.v1.GetRoomRequest
-	12, // 17: joseph.classroom.v1.ClassroomService.UpdateRoom:input_type -> joseph.classroom.v1.UpdateRoomRequest
-	14, // 18: joseph.classroom.v1.ClassroomService.CopyRoom:input_type -> joseph.classroom.v1.CopyRoomRequest
-	16, // 19: joseph.classroom.v1.ClassroomService.SaveUnit:input_type -> joseph.classroom.v1.SaveUnitRequest
-	18, // 20: joseph.classroom.v1.ClassroomService.DeleteUnit:input_type -> joseph.classroom.v1.DeleteUnitRequest
-	20, // 21: joseph.classroom.v1.ClassroomService.ReorderUnits:input_type -> joseph.classroom.v1.ReorderUnitsRequest
-	22, // 22: joseph.classroom.v1.ClassroomService.SaveItem:input_type -> joseph.classroom.v1.SaveItemRequest
-	24, // 23: joseph.classroom.v1.ClassroomService.DeleteItem:input_type -> joseph.classroom.v1.DeleteItemRequest
-	26, // 24: joseph.classroom.v1.ClassroomService.ReorderItems:input_type -> joseph.classroom.v1.ReorderItemsRequest
-	28, // 25: joseph.classroom.v1.ClassroomService.RecordView:input_type -> joseph.classroom.v1.RecordViewRequest
-	30, // 26: joseph.classroom.v1.ClassroomService.ListLibrary:input_type -> joseph.classroom.v1.ListLibraryRequest
-	32, // 27: joseph.classroom.v1.ClassroomService.SaveLibraryItem:input_type -> joseph.classroom.v1.SaveLibraryItemRequest
-	34, // 28: joseph.classroom.v1.ClassroomService.DeleteLibraryItem:input_type -> joseph.classroom.v1.DeleteLibraryItemRequest
-	36, // 29: joseph.classroom.v1.ClassroomService.ListDeliveries:input_type -> joseph.classroom.v1.ListDeliveriesRequest
-	38, // 30: joseph.classroom.v1.ClassroomService.SaveDelivery:input_type -> joseph.classroom.v1.SaveDeliveryRequest
-	7,  // 31: joseph.classroom.v1.ClassroomService.ListRooms:output_type -> joseph.classroom.v1.ListRoomsResponse
-	9,  // 32: joseph.classroom.v1.ClassroomService.GenerateRooms:output_type -> joseph.classroom.v1.GenerateRoomsResponse
-	11, // 33: joseph.classroom.v1.ClassroomService.GetRoom:output_type -> joseph.classroom.v1.GetRoomResponse
-	13, // 34: joseph.classroom.v1.ClassroomService.UpdateRoom:output_type -> joseph.classroom.v1.UpdateRoomResponse
-	15, // 35: joseph.classroom.v1.ClassroomService.CopyRoom:output_type -> joseph.classroom.v1.CopyRoomResponse
-	17, // 36: joseph.classroom.v1.ClassroomService.SaveUnit:output_type -> joseph.classroom.v1.SaveUnitResponse
-	19, // 37: joseph.classroom.v1.ClassroomService.DeleteUnit:output_type -> joseph.classroom.v1.DeleteUnitResponse
-	21, // 38: joseph.classroom.v1.ClassroomService.ReorderUnits:output_type -> joseph.classroom.v1.ReorderUnitsResponse
-	23, // 39: joseph.classroom.v1.ClassroomService.SaveItem:output_type -> joseph.classroom.v1.SaveItemResponse
-	25, // 40: joseph.classroom.v1.ClassroomService.DeleteItem:output_type -> joseph.classroom.v1.DeleteItemResponse
-	27, // 41: joseph.classroom.v1.ClassroomService.ReorderItems:output_type -> joseph.classroom.v1.ReorderItemsResponse
-	29, // 42: joseph.classroom.v1.ClassroomService.RecordView:output_type -> joseph.classroom.v1.RecordViewResponse
-	31, // 43: joseph.classroom.v1.ClassroomService.ListLibrary:output_type -> joseph.classroom.v1.ListLibraryResponse
-	33, // 44: joseph.classroom.v1.ClassroomService.SaveLibraryItem:output_type -> joseph.classroom.v1.SaveLibraryItemResponse
-	35, // 45: joseph.classroom.v1.ClassroomService.DeleteLibraryItem:output_type -> joseph.classroom.v1.DeleteLibraryItemResponse
-	37, // 46: joseph.classroom.v1.ClassroomService.ListDeliveries:output_type -> joseph.classroom.v1.ListDeliveriesResponse
-	39, // 47: joseph.classroom.v1.ClassroomService.SaveDelivery:output_type -> joseph.classroom.v1.SaveDeliveryResponse
-	31, // [31:48] is the sub-list for method output_type
-	14, // [14:31] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	40, // 14: joseph.classroom.v1.Assessment.questions:type_name -> joseph.classroom.v1.Question
+	62, // 15: joseph.classroom.v1.Submission.answers:type_name -> joseph.classroom.v1.Submission.AnswersEntry
+	63, // 16: joseph.classroom.v1.Submission.open_points:type_name -> joseph.classroom.v1.Submission.OpenPointsEntry
+	64, // 17: joseph.classroom.v1.Submission.levels:type_name -> joseph.classroom.v1.Submission.LevelsEntry
+	44, // 18: joseph.classroom.v1.RosterRow.latest:type_name -> joseph.classroom.v1.Submission
+	41, // 19: joseph.classroom.v1.GetAssessmentResponse.assessment:type_name -> joseph.classroom.v1.Assessment
+	42, // 20: joseph.classroom.v1.GetAssessmentResponse.competencies:type_name -> joseph.classroom.v1.Competency
+	45, // 21: joseph.classroom.v1.GetAssessmentResponse.roster:type_name -> joseph.classroom.v1.RosterRow
+	44, // 22: joseph.classroom.v1.GetAssessmentResponse.attempts:type_name -> joseph.classroom.v1.Submission
+	40, // 23: joseph.classroom.v1.SaveAssessmentRequest.questions:type_name -> joseph.classroom.v1.Question
+	41, // 24: joseph.classroom.v1.SaveAssessmentResponse.assessment:type_name -> joseph.classroom.v1.Assessment
+	44, // 25: joseph.classroom.v1.StartAttemptResponse.submission:type_name -> joseph.classroom.v1.Submission
+	65, // 26: joseph.classroom.v1.SaveAnswersRequest.answers:type_name -> joseph.classroom.v1.SaveAnswersRequest.AnswersEntry
+	66, // 27: joseph.classroom.v1.HandInRequest.answers:type_name -> joseph.classroom.v1.HandInRequest.AnswersEntry
+	44, // 28: joseph.classroom.v1.HandInResponse.submission:type_name -> joseph.classroom.v1.Submission
+	67, // 29: joseph.classroom.v1.GradeSubmissionRequest.levels:type_name -> joseph.classroom.v1.GradeSubmissionRequest.LevelsEntry
+	68, // 30: joseph.classroom.v1.GradeSubmissionRequest.open_points:type_name -> joseph.classroom.v1.GradeSubmissionRequest.OpenPointsEntry
+	44, // 31: joseph.classroom.v1.GradeSubmissionResponse.submission:type_name -> joseph.classroom.v1.Submission
+	43, // 32: joseph.classroom.v1.Submission.AnswersEntry.value:type_name -> joseph.classroom.v1.Answer
+	43, // 33: joseph.classroom.v1.SaveAnswersRequest.AnswersEntry.value:type_name -> joseph.classroom.v1.Answer
+	43, // 34: joseph.classroom.v1.HandInRequest.AnswersEntry.value:type_name -> joseph.classroom.v1.Answer
+	6,  // 35: joseph.classroom.v1.ClassroomService.ListRooms:input_type -> joseph.classroom.v1.ListRoomsRequest
+	8,  // 36: joseph.classroom.v1.ClassroomService.GenerateRooms:input_type -> joseph.classroom.v1.GenerateRoomsRequest
+	10, // 37: joseph.classroom.v1.ClassroomService.GetRoom:input_type -> joseph.classroom.v1.GetRoomRequest
+	12, // 38: joseph.classroom.v1.ClassroomService.UpdateRoom:input_type -> joseph.classroom.v1.UpdateRoomRequest
+	14, // 39: joseph.classroom.v1.ClassroomService.CopyRoom:input_type -> joseph.classroom.v1.CopyRoomRequest
+	16, // 40: joseph.classroom.v1.ClassroomService.SaveUnit:input_type -> joseph.classroom.v1.SaveUnitRequest
+	18, // 41: joseph.classroom.v1.ClassroomService.DeleteUnit:input_type -> joseph.classroom.v1.DeleteUnitRequest
+	20, // 42: joseph.classroom.v1.ClassroomService.ReorderUnits:input_type -> joseph.classroom.v1.ReorderUnitsRequest
+	22, // 43: joseph.classroom.v1.ClassroomService.SaveItem:input_type -> joseph.classroom.v1.SaveItemRequest
+	24, // 44: joseph.classroom.v1.ClassroomService.DeleteItem:input_type -> joseph.classroom.v1.DeleteItemRequest
+	26, // 45: joseph.classroom.v1.ClassroomService.ReorderItems:input_type -> joseph.classroom.v1.ReorderItemsRequest
+	28, // 46: joseph.classroom.v1.ClassroomService.RecordView:input_type -> joseph.classroom.v1.RecordViewRequest
+	30, // 47: joseph.classroom.v1.ClassroomService.ListLibrary:input_type -> joseph.classroom.v1.ListLibraryRequest
+	32, // 48: joseph.classroom.v1.ClassroomService.SaveLibraryItem:input_type -> joseph.classroom.v1.SaveLibraryItemRequest
+	34, // 49: joseph.classroom.v1.ClassroomService.DeleteLibraryItem:input_type -> joseph.classroom.v1.DeleteLibraryItemRequest
+	36, // 50: joseph.classroom.v1.ClassroomService.ListDeliveries:input_type -> joseph.classroom.v1.ListDeliveriesRequest
+	38, // 51: joseph.classroom.v1.ClassroomService.SaveDelivery:input_type -> joseph.classroom.v1.SaveDeliveryRequest
+	46, // 52: joseph.classroom.v1.ClassroomService.GetAssessment:input_type -> joseph.classroom.v1.GetAssessmentRequest
+	48, // 53: joseph.classroom.v1.ClassroomService.SaveAssessment:input_type -> joseph.classroom.v1.SaveAssessmentRequest
+	50, // 54: joseph.classroom.v1.ClassroomService.StartAttempt:input_type -> joseph.classroom.v1.StartAttemptRequest
+	52, // 55: joseph.classroom.v1.ClassroomService.SaveAnswers:input_type -> joseph.classroom.v1.SaveAnswersRequest
+	54, // 56: joseph.classroom.v1.ClassroomService.HandIn:input_type -> joseph.classroom.v1.HandInRequest
+	56, // 57: joseph.classroom.v1.ClassroomService.GradeSubmission:input_type -> joseph.classroom.v1.GradeSubmissionRequest
+	58, // 58: joseph.classroom.v1.ClassroomService.SetExtension:input_type -> joseph.classroom.v1.SetExtensionRequest
+	60, // 59: joseph.classroom.v1.ClassroomService.RecordLevels:input_type -> joseph.classroom.v1.RecordLevelsRequest
+	7,  // 60: joseph.classroom.v1.ClassroomService.ListRooms:output_type -> joseph.classroom.v1.ListRoomsResponse
+	9,  // 61: joseph.classroom.v1.ClassroomService.GenerateRooms:output_type -> joseph.classroom.v1.GenerateRoomsResponse
+	11, // 62: joseph.classroom.v1.ClassroomService.GetRoom:output_type -> joseph.classroom.v1.GetRoomResponse
+	13, // 63: joseph.classroom.v1.ClassroomService.UpdateRoom:output_type -> joseph.classroom.v1.UpdateRoomResponse
+	15, // 64: joseph.classroom.v1.ClassroomService.CopyRoom:output_type -> joseph.classroom.v1.CopyRoomResponse
+	17, // 65: joseph.classroom.v1.ClassroomService.SaveUnit:output_type -> joseph.classroom.v1.SaveUnitResponse
+	19, // 66: joseph.classroom.v1.ClassroomService.DeleteUnit:output_type -> joseph.classroom.v1.DeleteUnitResponse
+	21, // 67: joseph.classroom.v1.ClassroomService.ReorderUnits:output_type -> joseph.classroom.v1.ReorderUnitsResponse
+	23, // 68: joseph.classroom.v1.ClassroomService.SaveItem:output_type -> joseph.classroom.v1.SaveItemResponse
+	25, // 69: joseph.classroom.v1.ClassroomService.DeleteItem:output_type -> joseph.classroom.v1.DeleteItemResponse
+	27, // 70: joseph.classroom.v1.ClassroomService.ReorderItems:output_type -> joseph.classroom.v1.ReorderItemsResponse
+	29, // 71: joseph.classroom.v1.ClassroomService.RecordView:output_type -> joseph.classroom.v1.RecordViewResponse
+	31, // 72: joseph.classroom.v1.ClassroomService.ListLibrary:output_type -> joseph.classroom.v1.ListLibraryResponse
+	33, // 73: joseph.classroom.v1.ClassroomService.SaveLibraryItem:output_type -> joseph.classroom.v1.SaveLibraryItemResponse
+	35, // 74: joseph.classroom.v1.ClassroomService.DeleteLibraryItem:output_type -> joseph.classroom.v1.DeleteLibraryItemResponse
+	37, // 75: joseph.classroom.v1.ClassroomService.ListDeliveries:output_type -> joseph.classroom.v1.ListDeliveriesResponse
+	39, // 76: joseph.classroom.v1.ClassroomService.SaveDelivery:output_type -> joseph.classroom.v1.SaveDeliveryResponse
+	47, // 77: joseph.classroom.v1.ClassroomService.GetAssessment:output_type -> joseph.classroom.v1.GetAssessmentResponse
+	49, // 78: joseph.classroom.v1.ClassroomService.SaveAssessment:output_type -> joseph.classroom.v1.SaveAssessmentResponse
+	51, // 79: joseph.classroom.v1.ClassroomService.StartAttempt:output_type -> joseph.classroom.v1.StartAttemptResponse
+	53, // 80: joseph.classroom.v1.ClassroomService.SaveAnswers:output_type -> joseph.classroom.v1.SaveAnswersResponse
+	55, // 81: joseph.classroom.v1.ClassroomService.HandIn:output_type -> joseph.classroom.v1.HandInResponse
+	57, // 82: joseph.classroom.v1.ClassroomService.GradeSubmission:output_type -> joseph.classroom.v1.GradeSubmissionResponse
+	59, // 83: joseph.classroom.v1.ClassroomService.SetExtension:output_type -> joseph.classroom.v1.SetExtensionResponse
+	61, // 84: joseph.classroom.v1.ClassroomService.RecordLevels:output_type -> joseph.classroom.v1.RecordLevelsResponse
+	60, // [60:85] is the sub-list for method output_type
+	35, // [35:60] is the sub-list for method input_type
+	35, // [35:35] is the sub-list for extension type_name
+	35, // [35:35] is the sub-list for extension extendee
+	0,  // [0:35] is the sub-list for field type_name
 }
 
 func init() { file_joseph_classroom_v1_classroom_proto_init() }
@@ -2805,7 +4634,7 @@ func file_joseph_classroom_v1_classroom_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_classroom_v1_classroom_proto_rawDesc), len(file_joseph_classroom_v1_classroom_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   40,
+			NumMessages:   69,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

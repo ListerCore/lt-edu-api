@@ -152,6 +152,11 @@ var ownerSpecs = map[string]ownerSpec{
 	domain.OwnerClassroomItem: {module: "classroom",
 		read: roleSet(rDirector, rCoordinator, rTeacher, rTutor, rSecretary, rTechLead, rStudent, rGuardian), write: roleSet(rDirector, rCoordinator, rTeacher, rTutor),
 		categories: []string{"material", "guide", "worksheet", "presentation", "other"}},
+	// A student's hand-in of a classroom task: they and their family read it, the student uploads it, staff of the
+	// classroom read it to grade (service/classroom_assessment_service.go)
+	domain.OwnerSubmission: {module: "classroom",
+		read: roleSet(rDirector, rCoordinator, rTeacher, rTutor, rStudent, rGuardian), write: roleSet(rStudent), familyScoped: true,
+		categories: []string{"evidence", "worksheet", "material", "other"}},
 	domain.OwnerLibraryItem: {module: "classroom",
 		read: roleSet(rDirector, rCoordinator, rTeacher, rTutor, rSecretary, rTechLead, rStudent, rGuardian), write: roleSet(rDirector, rCoordinator, rTeacher, rTutor),
 		categories: []string{"material", "guide", "worksheet", "presentation", "other"}},

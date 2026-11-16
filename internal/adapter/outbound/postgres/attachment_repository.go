@@ -49,6 +49,7 @@ var ownerQueries = map[string]string{
 	// The platform sheet is one per institution, so the owner id is the institution's own
 	domain.OwnerPlatformSheet: `SELECT id, '' FROM iam.institutions WHERE id = $1`,
 	domain.OwnerLibraryItem:   `SELECT institution_id, '' FROM classroom.library_items WHERE id = $1`,
+	domain.OwnerSubmission:    `SELECT st.institution_id, st.id::text FROM classroom.submissions s JOIN people.students st ON st.id = s.student_id WHERE s.id = $1`,
 }
 
 // draftOwnerQueries read (institution, student, hidden from families) of owners that may still be drafts: an APAFA

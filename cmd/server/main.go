@@ -118,6 +118,7 @@ func main() {
 	apafaService := service.NewApafaService(postgres.NewApafaRepository(dbClient), authService, announcementService, liveService)
 	institutionService := service.NewInstitutionService(postgres.NewInstitutionRepository(dbClient), authService, liveService, auditService)
 	classroomService := service.NewClassroomService(postgres.NewClassroomRepository(dbClient), authService, liveService, auditService)
+	classroomService.SetGrades(assessmentService)
 	documentService := service.NewDocumentService(service.DocumentDeps{Render: pdf.NewRenderer(), Sheets: xlsx.NewRenderer(), Docs: postgres.NewDocumentRepository(dbClient),
 		Staff: staffRepo, SiteURL: cfg.SiteURL}, assessmentService, closingService, teachingService, financeService)
 

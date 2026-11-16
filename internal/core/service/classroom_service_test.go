@@ -28,7 +28,8 @@ func TestValidateItemByKind(t *testing.T) {
 		{"live needs a start", domain.Item{Kind: "live", Title: "Sesión", URL: "https://meet.google.com/abc", DurationMinutes: &hour}, "startsAt"},
 		{"live length", domain.Item{Kind: "live", Title: "Sesión", URL: "https://meet.google.com/abc", StartsAt: &start, DurationMinutes: &tooShort}, "durationMinutes"},
 		{"title required", domain.Item{Kind: "file", Title: " "}, "title"},
-		{"unknown kind", domain.Item{Kind: "quiz", Title: "Examen"}, "kind"},
+		{"unknown kind", domain.Item{Kind: "podcast", Title: "Audio"}, "kind"},
+		{"quiz needs only a title", domain.Item{Kind: "quiz", Title: "Cuestionario 1"}, ""},
 	}
 	for _, c := range cases {
 		in := c.in

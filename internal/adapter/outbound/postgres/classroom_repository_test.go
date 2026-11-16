@@ -193,3 +193,98 @@ func TestClassroomRoomsSQL(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+func TestClassroomAssessmentSQL(t *testing.T) {
+	f := newClassroomFixture(t)
+	ctx := context.Background()
+	r := f.repo
+	if _, err := r.EnsureRooms(ctx, f.inst, f.period); err != nil {
+		t.Fatal(err)
+	}
+	rooms, _ := r.Rooms(ctx, f.inst, domain.RoomFilter{PeriodID: f.period})
+	room := rooms[0]
+	var comp, term string
+	if err := r.c.pool.QueryRow(ctx, `INSERT INTO academic.competencies (curriculum_id, subject_id, kind, name, position)
+		SELECT curriculum_id, id, 'competency', 'Resuelve problemas de cantidad', 0 FROM academic.subjects WHERE id = $1 RETURNING id`, f.subject).Scan(&comp); err != nil {
+		t.Fatal(err)
+	}
+	if err := r.c.pool.QueryRow(ctx, `INSERT INTO academic.terms (period_id, number, name, starts_on, ends_on) VALUES ($1, 4, 'IV bimestre', '2026-10-19', '2026-12-11') RETURNING id`, f.period).Scan(&term); err != nil {
+		t.Fatal(err)
+	}
+	unit, _ := r.SaveUnit(ctx, f.inst, domain.Unit{RoomID: room.ID, Title: "Unidad 1", Published: true})
+	quiz, err := r.SaveItem(ctx, f.inst, "", domain.Item{UnitID: unit.ID, Kind: "quiz", Title: "Cuestionario", Published: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := r.EnsureAssessment(ctx, quiz.ID); err != nil {
+		t.Fatal(err)
+	}
+	if comps, _ := r.RoomCompetencies(ctx, f.inst, room.ID); len(comps) != 1 || comps[0].ID != comp {
+		t.Fatalf("competencies: %+v", comps)
+	}
+	a, err := r.SaveAssessment(ctx, f.inst, domain.Assessment{ItemID: quiz.ID, MaxAttempts: 2, CompetencyIDs: []string{comp}, ShowAnswers: true},
+		[]domain.QuizQuestion{{Kind: "single", Prompt: "¿1/2 de 10?", Options: []string{"5", "2"}, Correct: []int{0}, Points: 2}, {Kind: "open", Prompt: "Explica", Points: 3}})
+	if err != nil || len(a.Questions) != 2 || a.Questions[0].Correct[0] != 0 || a.MaxAttempts != 2 {
+		t.Fatalf("assessment: %+v %v", a, err)
+	}
+	// A competency of another area is refused
+	if _, err := r.SaveAssessment(ctx, f.inst, domain.Assessment{ItemID: quiz.ID, MaxAttempts: 1, CompetencyIDs: []string{f.subject}}, nil); !errors.Is(err, domain.ErrNotFound) {
+		t.Fatalf("foreign competency: %v", err)
+	}
+
+	sub, err := r.CreateAttempt(ctx, quiz.ID, f.virtualStudent, 1)
+	if err != nil || sub.Status != "in_progress" || sub.StudentName == "" {
+		t.Fatalf("attempt: %+v %v", sub, err)
+	}
+	answers := map[string]domain.QuizAnswer{a.Questions[0].ID: {Choices: []int{0}}, a.Questions[1].ID: {Text: "La mitad"}}
+	if err := r.SaveAnswers(ctx, sub.ID, answers); err != nil {
+		t.Fatal(err)
+	}
+	if err := r.HandIn(ctx, sub.ID, 2, 2, false, time.Now()); err != nil {
+		t.Fatal(err)
+	}
+	if err := r.SaveAnswers(ctx, sub.ID, answers); !errors.Is(err, domain.ErrAttemptFinished) {
+		t.Fatalf("answers after hand-in: %v", err)
+	}
+	if n, _ := r.HandedIn(ctx, quiz.ID); n != 1 {
+		t.Fatalf("handed in: %d", n)
+	}
+	sub.Levels, sub.OpenPoints, sub.Feedback = map[string]string{comp: "A"}, map[string]int{a.Questions[1].ID: 2}, "Bien resuelto"
+	graded, err := r.Grade(ctx, f.inst, sub, "", "Docente")
+	if err != nil || graded.Status != "graded" || graded.Levels[comp] != "A" || graded.OpenPoints[a.Questions[1].ID] != 2 || graded.Answers[a.Questions[0].ID].Choices[0] != 0 {
+		t.Fatalf("graded: %+v %v", graded, err)
+	}
+
+	roster, err := r.Roster(ctx, f.inst, quiz.ID)
+	if err != nil || len(roster) != 2 {
+		t.Fatalf("roster: %+v %v", roster, err)
+	}
+	for _, row := range roster {
+		if row.StudentID == f.virtualStudent && (row.Latest == nil || row.Attempts != 1) {
+			t.Fatalf("roster row: %+v", row)
+		}
+	}
+	until := time.Now().Add(72 * time.Hour)
+	if err := r.SetExtension(ctx, quiz.ID, f.itinerantStudent, &until, "Trabaja de noche", "Docente"); err != nil {
+		t.Fatal(err)
+	}
+	if ext, _ := r.Extension(ctx, quiz.ID, f.itinerantStudent); ext == nil {
+		t.Fatal("extension not saved")
+	}
+
+	// The virtual student's section has no teaching assignment yet: the target says so
+	targets, err := r.RecordTargets(ctx, f.inst, quiz.ID)
+	if err != nil || len(targets) != 1 || targets[0].Levels[comp] != "A" || targets[0].SectionID == "" {
+		t.Fatalf("targets: %+v %v", targets, err)
+	}
+	day := time.Date(2026, 11, 16, 12, 0, 0, 0, time.UTC)
+	if id, _ := r.OpenTerm(ctx, f.period, day); id != term {
+		t.Fatalf("open term: %q", id)
+	}
+	if id, _ := r.OpenTerm(ctx, f.period, time.Date(2026, 3, 1, 0, 0, 0, 0, time.UTC)); id != "" {
+		t.Fatalf("before any term: %q", id)
+	}
+	if err := r.MarkRecorded(ctx, []string{sub.ID}, time.Now()); err != nil {
+		t.Fatal(err)
+	}
+}

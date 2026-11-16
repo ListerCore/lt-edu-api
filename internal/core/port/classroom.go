@@ -55,4 +55,38 @@ type ClassroomRepository interface {
 	// that unit, if any
 	Deliveries(ctx context.Context, institutionID, unitID string) ([]domain.Delivery, error)
 	SaveDelivery(ctx context.Context, institutionID string, d domain.Delivery) error
+
+	// ---------- online assessments (phase E3) ----------
+
+	// EnsureAssessment creates the default settings of a new quiz or task item (one attempt, no window)
+	EnsureAssessment(ctx context.Context, itemID string) error
+	// Assessment reads the settings, the item and the questions (with the right answers)
+	Assessment(ctx context.Context, institutionID, itemID string) (domain.Assessment, error)
+	// SaveAssessment writes the settings; questions, when non-nil, replace the current ones
+	SaveAssessment(ctx context.Context, institutionID string, a domain.Assessment, questions []domain.QuizQuestion) (domain.Assessment, error)
+	// HandedIn counts the attempts already handed in (submitted or graded)
+	HandedIn(ctx context.Context, itemID string) (int, error)
+	// RoomCompetencies are the competencies of the room's area
+	RoomCompetencies(ctx context.Context, institutionID, roomID string) ([]domain.CompetencyOption, error)
+
+	// Roster lists the students of the room's grade with their latest attempt, attempt count and extension
+	Roster(ctx context.Context, institutionID, itemID string) ([]domain.QuizRosterRow, error)
+	// Attempts are a student's attempts at the item, newest first
+	Attempts(ctx context.Context, itemID, studentID string) ([]domain.QuizSubmission, error)
+	QuizSubmission(ctx context.Context, institutionID, id string) (domain.QuizSubmission, error)
+	CreateAttempt(ctx context.Context, itemID, studentID string, attempt int) (domain.QuizSubmission, error)
+	// SaveAnswers only touches an attempt still in progress
+	SaveAnswers(ctx context.Context, id string, answers map[string]domain.QuizAnswer) error
+	HandIn(ctx context.Context, id string, autoPoints, autoTotal int, late bool, at time.Time) error
+	Grade(ctx context.Context, institutionID string, s domain.QuizSubmission, userID, userName string) (domain.QuizSubmission, error)
+	Extension(ctx context.Context, itemID, studentID string) (*time.Time, error)
+	// SetExtension saves (or, with nil, removes) one student's deadline
+	SetExtension(ctx context.Context, itemID, studentID string, closesAt *time.Time, reason, grantedName string) error
+
+	// RecordTargets are the latest graded attempts with levels, each with the student's section and the teaching
+	// assignment of the room's area there (assignment "" when the area is not assigned in that section)
+	RecordTargets(ctx context.Context, institutionID, itemID string) ([]domain.RecordTarget, error)
+	// OpenTerm is the term of the period that contains day and is still open ("" when none)
+	OpenTerm(ctx context.Context, periodID string, day time.Time) (string, error)
+	MarkRecorded(ctx context.Context, ids []string, at time.Time) error
 }

@@ -29,7 +29,7 @@ var (
 	classroomReaders  = map[string]bool{"secretary": true, domain.RoleTechnicalLead: true, "psychologist": true}
 	classroomFamilies = map[string]bool{"student": true, "guardian": true}
 
-	itemKinds    = map[string]bool{domain.ItemReading: true, domain.ItemFile: true, domain.ItemVideo: true, domain.ItemLink: true, domain.ItemLive: true, domain.ItemActivity: true}
+	itemKinds    = map[string]bool{domain.ItemReading: true, domain.ItemFile: true, domain.ItemVideo: true, domain.ItemLink: true, domain.ItemLive: true, domain.ItemActivity: true, domain.ItemQuiz: true, domain.ItemTask: true}
 	libraryKinds = map[string]bool{domain.ItemReading: true, domain.ItemFile: true, domain.ItemVideo: true, domain.ItemLink: true}
 	httpsPattern = regexp.MustCompile(`^https://[^\s<>"]+$`)
 )
@@ -38,11 +38,12 @@ var (
 // of each period, its units and material, the library and the itinerant deliveries. Students and their families
 // only reach published rooms of the student's grade, open units and published material
 type ClassroomService struct {
-	repo  port.ClassroomRepository
-	auth  *AuthService
-	live  *LiveService
-	audit *AuditService
-	now   func() time.Time
+	repo   port.ClassroomRepository
+	auth   *AuthService
+	live   *LiveService
+	audit  *AuditService
+	grades *AssessmentService
+	now    func() time.Time
 }
 
 func NewClassroomService(repo port.ClassroomRepository, auth *AuthService, live *LiveService, audit *AuditService) *ClassroomService {
@@ -515,6 +516,10 @@ func (s *ClassroomService) SaveItem(ctx context.Context, token, slug string, in 
 			return domain.Item{}, err
 		}
 		in.UnitID, in.LibraryItemID = current.UnitID, current.LibraryItemID
+		// An assessment stays an assessment (its questions and attempts hang on it), and nothing becomes one
+		if (current.Kind == domain.ItemQuiz || current.Kind == domain.ItemTask || in.Kind == domain.ItemQuiz || in.Kind == domain.ItemTask) && in.Kind != current.Kind {
+			return domain.Item{}, domain.Validation(map[string]string{"kind": "Un cuestionario o una tarea no cambia de tipo."})
+		}
 	}
 	sc, _, err = s.unitRoom(ctx, token, slug, in.UnitID)
 	if err != nil {
@@ -540,6 +545,12 @@ func (s *ClassroomService) SaveItem(ctx context.Context, token, slug string, in 
 	out, err := s.repo.SaveItem(ctx, sc.institution.ID, sc.userID, in)
 	if err != nil {
 		return domain.Item{}, err
+	}
+	// A new quiz or task starts with its default settings (one attempt, always open)
+	if in.ID == "" && (out.Kind == domain.ItemQuiz || out.Kind == domain.ItemTask) {
+		if err := s.repo.EnsureAssessment(ctx, out.ID); err != nil {
+			return domain.Item{}, err
+		}
 	}
 	s.changed(ctx, sc, "room", out.RoomID)
 	return out, nil

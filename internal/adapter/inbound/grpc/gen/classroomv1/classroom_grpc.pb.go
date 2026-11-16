@@ -41,6 +41,14 @@ const (
 	ClassroomService_DeleteLibraryItem_FullMethodName = "/joseph.classroom.v1.ClassroomService/DeleteLibraryItem"
 	ClassroomService_ListDeliveries_FullMethodName    = "/joseph.classroom.v1.ClassroomService/ListDeliveries"
 	ClassroomService_SaveDelivery_FullMethodName      = "/joseph.classroom.v1.ClassroomService/SaveDelivery"
+	ClassroomService_GetAssessment_FullMethodName     = "/joseph.classroom.v1.ClassroomService/GetAssessment"
+	ClassroomService_SaveAssessment_FullMethodName    = "/joseph.classroom.v1.ClassroomService/SaveAssessment"
+	ClassroomService_StartAttempt_FullMethodName      = "/joseph.classroom.v1.ClassroomService/StartAttempt"
+	ClassroomService_SaveAnswers_FullMethodName       = "/joseph.classroom.v1.ClassroomService/SaveAnswers"
+	ClassroomService_HandIn_FullMethodName            = "/joseph.classroom.v1.ClassroomService/HandIn"
+	ClassroomService_GradeSubmission_FullMethodName   = "/joseph.classroom.v1.ClassroomService/GradeSubmission"
+	ClassroomService_SetExtension_FullMethodName      = "/joseph.classroom.v1.ClassroomService/SetExtension"
+	ClassroomService_RecordLevels_FullMethodName      = "/joseph.classroom.v1.ClassroomService/RecordLevels"
 )
 
 // ClassroomServiceClient is the client API for ClassroomService service.
@@ -69,6 +77,16 @@ type ClassroomServiceClient interface {
 	DeleteLibraryItem(ctx context.Context, in *DeleteLibraryItemRequest, opts ...grpc.CallOption) (*DeleteLibraryItemResponse, error)
 	ListDeliveries(ctx context.Context, in *ListDeliveriesRequest, opts ...grpc.CallOption) (*ListDeliveriesResponse, error)
 	SaveDelivery(ctx context.Context, in *SaveDeliveryRequest, opts ...grpc.CallOption) (*SaveDeliveryResponse, error)
+	// Online assessments (quiz and task items). Staff read the right answers and the roster; students their attempts
+	GetAssessment(ctx context.Context, in *GetAssessmentRequest, opts ...grpc.CallOption) (*GetAssessmentResponse, error)
+	SaveAssessment(ctx context.Context, in *SaveAssessmentRequest, opts ...grpc.CallOption) (*SaveAssessmentResponse, error)
+	StartAttempt(ctx context.Context, in *StartAttemptRequest, opts ...grpc.CallOption) (*StartAttemptResponse, error)
+	SaveAnswers(ctx context.Context, in *SaveAnswersRequest, opts ...grpc.CallOption) (*SaveAnswersResponse, error)
+	HandIn(ctx context.Context, in *HandInRequest, opts ...grpc.CallOption) (*HandInResponse, error)
+	GradeSubmission(ctx context.Context, in *GradeSubmissionRequest, opts ...grpc.CallOption) (*GradeSubmissionResponse, error)
+	SetExtension(ctx context.Context, in *SetExtensionRequest, opts ...grpc.CallOption) (*SetExtensionResponse, error)
+	// Takes the levels of the latest graded attempts to the official record of the open term
+	RecordLevels(ctx context.Context, in *RecordLevelsRequest, opts ...grpc.CallOption) (*RecordLevelsResponse, error)
 }
 
 type classroomServiceClient struct {
@@ -249,6 +267,86 @@ func (c *classroomServiceClient) SaveDelivery(ctx context.Context, in *SaveDeliv
 	return out, nil
 }
 
+func (c *classroomServiceClient) GetAssessment(ctx context.Context, in *GetAssessmentRequest, opts ...grpc.CallOption) (*GetAssessmentResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAssessmentResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_GetAssessment_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *classroomServiceClient) SaveAssessment(ctx context.Context, in *SaveAssessmentRequest, opts ...grpc.CallOption) (*SaveAssessmentResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SaveAssessmentResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_SaveAssessment_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *classroomServiceClient) StartAttempt(ctx context.Context, in *StartAttemptRequest, opts ...grpc.CallOption) (*StartAttemptResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StartAttemptResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_StartAttempt_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *classroomServiceClient) SaveAnswers(ctx context.Context, in *SaveAnswersRequest, opts ...grpc.CallOption) (*SaveAnswersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SaveAnswersResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_SaveAnswers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *classroomServiceClient) HandIn(ctx context.Context, in *HandInRequest, opts ...grpc.CallOption) (*HandInResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(HandInResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_HandIn_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *classroomServiceClient) GradeSubmission(ctx context.Context, in *GradeSubmissionRequest, opts ...grpc.CallOption) (*GradeSubmissionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GradeSubmissionResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_GradeSubmission_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *classroomServiceClient) SetExtension(ctx context.Context, in *SetExtensionRequest, opts ...grpc.CallOption) (*SetExtensionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetExtensionResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_SetExtension_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *classroomServiceClient) RecordLevels(ctx context.Context, in *RecordLevelsRequest, opts ...grpc.CallOption) (*RecordLevelsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RecordLevelsResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_RecordLevels_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ClassroomServiceServer is the server API for ClassroomService service.
 // All implementations must embed UnimplementedClassroomServiceServer
 // for forward compatibility.
@@ -275,6 +373,16 @@ type ClassroomServiceServer interface {
 	DeleteLibraryItem(context.Context, *DeleteLibraryItemRequest) (*DeleteLibraryItemResponse, error)
 	ListDeliveries(context.Context, *ListDeliveriesRequest) (*ListDeliveriesResponse, error)
 	SaveDelivery(context.Context, *SaveDeliveryRequest) (*SaveDeliveryResponse, error)
+	// Online assessments (quiz and task items). Staff read the right answers and the roster; students their attempts
+	GetAssessment(context.Context, *GetAssessmentRequest) (*GetAssessmentResponse, error)
+	SaveAssessment(context.Context, *SaveAssessmentRequest) (*SaveAssessmentResponse, error)
+	StartAttempt(context.Context, *StartAttemptRequest) (*StartAttemptResponse, error)
+	SaveAnswers(context.Context, *SaveAnswersRequest) (*SaveAnswersResponse, error)
+	HandIn(context.Context, *HandInRequest) (*HandInResponse, error)
+	GradeSubmission(context.Context, *GradeSubmissionRequest) (*GradeSubmissionResponse, error)
+	SetExtension(context.Context, *SetExtensionRequest) (*SetExtensionResponse, error)
+	// Takes the levels of the latest graded attempts to the official record of the open term
+	RecordLevels(context.Context, *RecordLevelsRequest) (*RecordLevelsResponse, error)
 	mustEmbedUnimplementedClassroomServiceServer()
 }
 
@@ -335,6 +443,30 @@ func (UnimplementedClassroomServiceServer) ListDeliveries(context.Context, *List
 }
 func (UnimplementedClassroomServiceServer) SaveDelivery(context.Context, *SaveDeliveryRequest) (*SaveDeliveryResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SaveDelivery not implemented")
+}
+func (UnimplementedClassroomServiceServer) GetAssessment(context.Context, *GetAssessmentRequest) (*GetAssessmentResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetAssessment not implemented")
+}
+func (UnimplementedClassroomServiceServer) SaveAssessment(context.Context, *SaveAssessmentRequest) (*SaveAssessmentResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SaveAssessment not implemented")
+}
+func (UnimplementedClassroomServiceServer) StartAttempt(context.Context, *StartAttemptRequest) (*StartAttemptResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method StartAttempt not implemented")
+}
+func (UnimplementedClassroomServiceServer) SaveAnswers(context.Context, *SaveAnswersRequest) (*SaveAnswersResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SaveAnswers not implemented")
+}
+func (UnimplementedClassroomServiceServer) HandIn(context.Context, *HandInRequest) (*HandInResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method HandIn not implemented")
+}
+func (UnimplementedClassroomServiceServer) GradeSubmission(context.Context, *GradeSubmissionRequest) (*GradeSubmissionResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GradeSubmission not implemented")
+}
+func (UnimplementedClassroomServiceServer) SetExtension(context.Context, *SetExtensionRequest) (*SetExtensionResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetExtension not implemented")
+}
+func (UnimplementedClassroomServiceServer) RecordLevels(context.Context, *RecordLevelsRequest) (*RecordLevelsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RecordLevels not implemented")
 }
 func (UnimplementedClassroomServiceServer) mustEmbedUnimplementedClassroomServiceServer() {}
 func (UnimplementedClassroomServiceServer) testEmbeddedByValue()                          {}
@@ -663,6 +795,150 @@ func _ClassroomService_SaveDelivery_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ClassroomService_GetAssessment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAssessmentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).GetAssessment(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_GetAssessment_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).GetAssessment(ctx, req.(*GetAssessmentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClassroomService_SaveAssessment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SaveAssessmentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).SaveAssessment(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_SaveAssessment_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).SaveAssessment(ctx, req.(*SaveAssessmentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClassroomService_StartAttempt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartAttemptRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).StartAttempt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_StartAttempt_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).StartAttempt(ctx, req.(*StartAttemptRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClassroomService_SaveAnswers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SaveAnswersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).SaveAnswers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_SaveAnswers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).SaveAnswers(ctx, req.(*SaveAnswersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClassroomService_HandIn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HandInRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).HandIn(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_HandIn_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).HandIn(ctx, req.(*HandInRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClassroomService_GradeSubmission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GradeSubmissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).GradeSubmission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_GradeSubmission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).GradeSubmission(ctx, req.(*GradeSubmissionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClassroomService_SetExtension_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetExtensionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).SetExtension(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_SetExtension_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).SetExtension(ctx, req.(*SetExtensionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClassroomService_RecordLevels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordLevelsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).RecordLevels(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_RecordLevels_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).RecordLevels(ctx, req.(*RecordLevelsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ClassroomService_ServiceDesc is the grpc.ServiceDesc for ClassroomService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -737,6 +1013,38 @@ var ClassroomService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SaveDelivery",
 			Handler:    _ClassroomService_SaveDelivery_Handler,
+		},
+		{
+			MethodName: "GetAssessment",
+			Handler:    _ClassroomService_GetAssessment_Handler,
+		},
+		{
+			MethodName: "SaveAssessment",
+			Handler:    _ClassroomService_SaveAssessment_Handler,
+		},
+		{
+			MethodName: "StartAttempt",
+			Handler:    _ClassroomService_StartAttempt_Handler,
+		},
+		{
+			MethodName: "SaveAnswers",
+			Handler:    _ClassroomService_SaveAnswers_Handler,
+		},
+		{
+			MethodName: "HandIn",
+			Handler:    _ClassroomService_HandIn_Handler,
+		},
+		{
+			MethodName: "GradeSubmission",
+			Handler:    _ClassroomService_GradeSubmission_Handler,
+		},
+		{
+			MethodName: "SetExtension",
+			Handler:    _ClassroomService_SetExtension_Handler,
+		},
+		{
+			MethodName: "RecordLevels",
+			Handler:    _ClassroomService_RecordLevels_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
