@@ -125,7 +125,7 @@ func (s *documentsServer) SchedulesXlsx(ctx context.Context, req *documentsv1.Sc
 }
 
 func (s *documentsServer) GetScheduleSigners(ctx context.Context, req *documentsv1.GetScheduleSignersRequest) (*documentsv1.GetScheduleSignersResponse, error) {
-	setup, err := s.documents.Signers(ctx, bearer(ctx), req.GetInstitutionSlug())
+	setup, err := s.documents.Signers(ctx, bearer(ctx), req.GetInstitutionSlug(), req.GetKind())
 	if err != nil {
 		return nil, s.fail("GetScheduleSigners", err)
 	}
@@ -141,7 +141,7 @@ func (s *documentsServer) SetScheduleSigners(ctx context.Context, req *documents
 	for i, x := range req.GetSigners() {
 		in[i] = domain.DocumentSigner{StaffID: x.GetStaffId(), Position: x.GetPosition()}
 	}
-	list, err := s.documents.SetSigners(ctx, bearer(ctx), req.GetInstitutionSlug(), in)
+	list, err := s.documents.SetSigners(ctx, bearer(ctx), req.GetInstitutionSlug(), req.GetKind(), in)
 	if err != nil {
 		return nil, s.fail("SetScheduleSigners", err)
 	}

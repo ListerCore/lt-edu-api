@@ -84,7 +84,7 @@ func (r *PeopleRepository) Roll(ctx context.Context, institutionID string, f dom
 		coalesce(e.section_id::text, ''), coalesce(sec.name, ''), coalesce(sec.attention_mode, ''), coalesce(sec.program, ''), e.kind, e.status, e.enrolled_on, e.ended_on,
 		x.enrollment_id IS NOT NULL, coalesce(sr.status, 'pending'), coalesce(sr.note, ''), sr.exported_at, coalesce(ef.mother_tongue, ''),
 		coalesce((SELECT CASE pl.kind WHEN 'placement_test' THEN 'Prueba de ubicación' WHEN 'validation' THEN 'Convalidación' WHEN 'revalidation' THEN 'Revalidación' ELSE 'Equivalencia' END
-			|| CASE WHEN pl.act_number IS NOT NULL THEN ', acta N.° ' || pl.act_number || '-' || pl.act_year ELSE '' END
+			|| CASE WHEN pl.act_number IS NOT NULL THEN ', acta N.° ' || lpad(pl.act_number::text, 3, '0') || '-' || pl.act_year ELSE '' END
 			FROM enrollment.placements pl WHERE pl.student_id = s.id AND pl.level_id = e.level_id AND pl.grade_id = e.grade_id ORDER BY pl.decided_on DESC LIMIT 1), '')
 		FROM enrollment.enrollments e
 		JOIN people.students s ON s.id = e.student_id

@@ -21,7 +21,9 @@ func TestEBAEnrollmentSQL(t *testing.T) {
 	}
 	t.Cleanup(c.Close)
 	ctx := context.Background()
-	cleanup := func() { _, _ = c.pool.Exec(ctx, `DELETE FROM iam.institutions WHERE slug = 'repo-test-eba-enrollment'`) }
+	cleanup := func() {
+		_, _ = c.pool.Exec(ctx, `DELETE FROM iam.institutions WHERE slug = 'repo-test-eba-enrollment'`)
+	}
 	cleanup()
 	t.Cleanup(cleanup)
 	q := func(dest *string, sql string, args ...any) {
@@ -120,7 +122,7 @@ func TestEBAEnrollmentSQL(t *testing.T) {
 	if _, n3, _ := r.AssignAct(ctx, inst, other.ID, 2026); n3 != 2 {
 		t.Fatalf("second act of the year: %d", n3)
 	}
-	if roll, _ = r.Roll(ctx, inst, domain.RollFilter{PeriodID: period}); roll[1].Placement != "Convalidación, acta N.° 1-2026" {
+	if roll, _ = r.Roll(ctx, inst, domain.RollFilter{PeriodID: period}); roll[1].Placement != "Convalidación, acta N.° 001-2026" {
 		t.Fatalf("placement in the roll: %q", roll[1].Placement)
 	}
 }

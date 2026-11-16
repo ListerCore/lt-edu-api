@@ -669,8 +669,10 @@ func (x *Signer) GetPosition() string {
 type GetScheduleSignersRequest struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	// schedules (default) | placement
+	Kind          string `protobuf:"bytes,2,opt,name=kind,proto3" json:"kind,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetScheduleSignersRequest) Reset() {
@@ -706,6 +708,13 @@ func (*GetScheduleSignersRequest) Descriptor() ([]byte, []int) {
 func (x *GetScheduleSignersRequest) GetInstitutionSlug() string {
 	if x != nil {
 		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *GetScheduleSignersRequest) GetKind() string {
+	if x != nil {
+		return x.Kind
 	}
 	return ""
 }
@@ -775,7 +784,9 @@ type SetScheduleSignersRequest struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
 	// In signing order; name is ignored
-	Signers       []*Signer `protobuf:"bytes,2,rep,name=signers,proto3" json:"signers,omitempty"`
+	Signers []*Signer `protobuf:"bytes,2,rep,name=signers,proto3" json:"signers,omitempty"`
+	// schedules (default) | placement
+	Kind          string `protobuf:"bytes,3,opt,name=kind,proto3" json:"kind,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -822,6 +833,13 @@ func (x *SetScheduleSignersRequest) GetSigners() []*Signer {
 		return x.Signers
 	}
 	return nil
+}
+
+func (x *SetScheduleSignersRequest) GetKind() string {
+	if x != nil {
+		return x.Kind
+	}
+	return ""
 }
 
 type SetScheduleSignersResponse struct {
@@ -1915,6 +1933,710 @@ func (x *TrackPdfResponse) GetFile() *PdfFile {
 	return nil
 }
 
+type EnrollmentFormPdfRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	StudentId       string                 `protobuf:"bytes,2,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
+	// Enrollment of this period (empty: the latest)
+	PeriodId      string `protobuf:"bytes,3,opt,name=period_id,json=periodId,proto3" json:"period_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnrollmentFormPdfRequest) Reset() {
+	*x = EnrollmentFormPdfRequest{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnrollmentFormPdfRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnrollmentFormPdfRequest) ProtoMessage() {}
+
+func (x *EnrollmentFormPdfRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnrollmentFormPdfRequest.ProtoReflect.Descriptor instead.
+func (*EnrollmentFormPdfRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *EnrollmentFormPdfRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *EnrollmentFormPdfRequest) GetStudentId() string {
+	if x != nil {
+		return x.StudentId
+	}
+	return ""
+}
+
+func (x *EnrollmentFormPdfRequest) GetPeriodId() string {
+	if x != nil {
+		return x.PeriodId
+	}
+	return ""
+}
+
+type EnrollmentFormPdfResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	File          *PdfFile               `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnrollmentFormPdfResponse) Reset() {
+	*x = EnrollmentFormPdfResponse{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnrollmentFormPdfResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnrollmentFormPdfResponse) ProtoMessage() {}
+
+func (x *EnrollmentFormPdfResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnrollmentFormPdfResponse.ProtoReflect.Descriptor instead.
+func (*EnrollmentFormPdfResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *EnrollmentFormPdfResponse) GetFile() *PdfFile {
+	if x != nil {
+		return x.File
+	}
+	return nil
+}
+
+// Same as joseph.people.v1.RollFilter
+type RollQuery struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PeriodId      string                 `protobuf:"bytes,1,opt,name=period_id,json=periodId,proto3" json:"period_id,omitempty"`
+	LevelId       string                 `protobuf:"bytes,2,opt,name=level_id,json=levelId,proto3" json:"level_id,omitempty"`
+	GradeId       string                 `protobuf:"bytes,3,opt,name=grade_id,json=gradeId,proto3" json:"grade_id,omitempty"`
+	SectionId     string                 `protobuf:"bytes,4,opt,name=section_id,json=sectionId,proto3" json:"section_id,omitempty"`
+	SiagieStatus  string                 `protobuf:"bytes,5,opt,name=siagie_status,json=siagieStatus,proto3" json:"siagie_status,omitempty"`
+	All           bool                   `protobuf:"varint,6,opt,name=all,proto3" json:"all,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RollQuery) Reset() {
+	*x = RollQuery{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RollQuery) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RollQuery) ProtoMessage() {}
+
+func (x *RollQuery) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RollQuery.ProtoReflect.Descriptor instead.
+func (*RollQuery) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *RollQuery) GetPeriodId() string {
+	if x != nil {
+		return x.PeriodId
+	}
+	return ""
+}
+
+func (x *RollQuery) GetLevelId() string {
+	if x != nil {
+		return x.LevelId
+	}
+	return ""
+}
+
+func (x *RollQuery) GetGradeId() string {
+	if x != nil {
+		return x.GradeId
+	}
+	return ""
+}
+
+func (x *RollQuery) GetSectionId() string {
+	if x != nil {
+		return x.SectionId
+	}
+	return ""
+}
+
+func (x *RollQuery) GetSiagieStatus() string {
+	if x != nil {
+		return x.SiagieStatus
+	}
+	return ""
+}
+
+func (x *RollQuery) GetAll() bool {
+	if x != nil {
+		return x.All
+	}
+	return false
+}
+
+type RollPdfRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	Filter          *RollQuery             `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *RollPdfRequest) Reset() {
+	*x = RollPdfRequest{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RollPdfRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RollPdfRequest) ProtoMessage() {}
+
+func (x *RollPdfRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RollPdfRequest.ProtoReflect.Descriptor instead.
+func (*RollPdfRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *RollPdfRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *RollPdfRequest) GetFilter() *RollQuery {
+	if x != nil {
+		return x.Filter
+	}
+	return nil
+}
+
+type RollPdfResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	File          *PdfFile               `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RollPdfResponse) Reset() {
+	*x = RollPdfResponse{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RollPdfResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RollPdfResponse) ProtoMessage() {}
+
+func (x *RollPdfResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RollPdfResponse.ProtoReflect.Descriptor instead.
+func (*RollPdfResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *RollPdfResponse) GetFile() *PdfFile {
+	if x != nil {
+		return x.File
+	}
+	return nil
+}
+
+type RollXlsxRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	Filter          *RollQuery             `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *RollXlsxRequest) Reset() {
+	*x = RollXlsxRequest{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RollXlsxRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RollXlsxRequest) ProtoMessage() {}
+
+func (x *RollXlsxRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RollXlsxRequest.ProtoReflect.Descriptor instead.
+func (*RollXlsxRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *RollXlsxRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *RollXlsxRequest) GetFilter() *RollQuery {
+	if x != nil {
+		return x.Filter
+	}
+	return nil
+}
+
+type RollXlsxResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	File          *PdfFile               `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RollXlsxResponse) Reset() {
+	*x = RollXlsxResponse{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RollXlsxResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RollXlsxResponse) ProtoMessage() {}
+
+func (x *RollXlsxResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RollXlsxResponse.ProtoReflect.Descriptor instead.
+func (*RollXlsxResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *RollXlsxResponse) GetFile() *PdfFile {
+	if x != nil {
+		return x.File
+	}
+	return nil
+}
+
+type SiagieXlsxRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	Filter          *RollQuery             `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
+	// Mark the enrollments of the file as exported
+	MarkExported  bool `protobuf:"varint,3,opt,name=mark_exported,json=markExported,proto3" json:"mark_exported,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SiagieXlsxRequest) Reset() {
+	*x = SiagieXlsxRequest{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SiagieXlsxRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SiagieXlsxRequest) ProtoMessage() {}
+
+func (x *SiagieXlsxRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SiagieXlsxRequest.ProtoReflect.Descriptor instead.
+func (*SiagieXlsxRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *SiagieXlsxRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *SiagieXlsxRequest) GetFilter() *RollQuery {
+	if x != nil {
+		return x.Filter
+	}
+	return nil
+}
+
+func (x *SiagieXlsxRequest) GetMarkExported() bool {
+	if x != nil {
+		return x.MarkExported
+	}
+	return false
+}
+
+type SiagieXlsxResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	File          *PdfFile               `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
+	Marked        int32                  `protobuf:"varint,2,opt,name=marked,proto3" json:"marked,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SiagieXlsxResponse) Reset() {
+	*x = SiagieXlsxResponse{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SiagieXlsxResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SiagieXlsxResponse) ProtoMessage() {}
+
+func (x *SiagieXlsxResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SiagieXlsxResponse.ProtoReflect.Descriptor instead.
+func (*SiagieXlsxResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *SiagieXlsxResponse) GetFile() *PdfFile {
+	if x != nil {
+		return x.File
+	}
+	return nil
+}
+
+func (x *SiagieXlsxResponse) GetMarked() int32 {
+	if x != nil {
+		return x.Marked
+	}
+	return 0
+}
+
+type GeneratePlacementActRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	PlacementId     string                 `protobuf:"bytes,2,opt,name=placement_id,json=placementId,proto3" json:"placement_id,omitempty"`
+	Note            string                 `protobuf:"bytes,3,opt,name=note,proto3" json:"note,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *GeneratePlacementActRequest) Reset() {
+	*x = GeneratePlacementActRequest{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GeneratePlacementActRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GeneratePlacementActRequest) ProtoMessage() {}
+
+func (x *GeneratePlacementActRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GeneratePlacementActRequest.ProtoReflect.Descriptor instead.
+func (*GeneratePlacementActRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *GeneratePlacementActRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *GeneratePlacementActRequest) GetPlacementId() string {
+	if x != nil {
+		return x.PlacementId
+	}
+	return ""
+}
+
+func (x *GeneratePlacementActRequest) GetNote() string {
+	if x != nil {
+		return x.Note
+	}
+	return ""
+}
+
+type GeneratePlacementActResponse struct {
+	state   protoimpl.MessageState `protogen:"open.v1"`
+	Version *DocumentVersion       `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
+	// "N.° 003-2026"
+	ActCode       string `protobuf:"bytes,2,opt,name=act_code,json=actCode,proto3" json:"act_code,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GeneratePlacementActResponse) Reset() {
+	*x = GeneratePlacementActResponse{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GeneratePlacementActResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GeneratePlacementActResponse) ProtoMessage() {}
+
+func (x *GeneratePlacementActResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GeneratePlacementActResponse.ProtoReflect.Descriptor instead.
+func (*GeneratePlacementActResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *GeneratePlacementActResponse) GetVersion() *DocumentVersion {
+	if x != nil {
+		return x.Version
+	}
+	return nil
+}
+
+func (x *GeneratePlacementActResponse) GetActCode() string {
+	if x != nil {
+		return x.ActCode
+	}
+	return ""
+}
+
+type PlacementActPdfRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	PlacementId     string                 `protobuf:"bytes,2,opt,name=placement_id,json=placementId,proto3" json:"placement_id,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *PlacementActPdfRequest) Reset() {
+	*x = PlacementActPdfRequest{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[43]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PlacementActPdfRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlacementActPdfRequest) ProtoMessage() {}
+
+func (x *PlacementActPdfRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[43]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlacementActPdfRequest.ProtoReflect.Descriptor instead.
+func (*PlacementActPdfRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *PlacementActPdfRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *PlacementActPdfRequest) GetPlacementId() string {
+	if x != nil {
+		return x.PlacementId
+	}
+	return ""
+}
+
+type PlacementActPdfResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	File          *PdfFile               `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PlacementActPdfResponse) Reset() {
+	*x = PlacementActPdfResponse{}
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[44]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PlacementActPdfResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlacementActPdfResponse) ProtoMessage() {}
+
+func (x *PlacementActPdfResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_documents_v1_documents_proto_msgTypes[44]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlacementActPdfResponse.ProtoReflect.Descriptor instead.
+func (*PlacementActPdfResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{44}
+}
+
+func (x *PlacementActPdfResponse) GetFile() *PdfFile {
+	if x != nil {
+		return x.File
+	}
+	return nil
+}
+
 var File_joseph_documents_v1_documents_proto protoreflect.FileDescriptor
 
 const file_joseph_documents_v1_documents_proto_rawDesc = "" +
@@ -1958,19 +2680,21 @@ const file_joseph_documents_v1_documents_proto_rawDesc = "" +
 	"\x06Signer\x12\x19\n" +
 	"\bstaff_id\x18\x01 \x01(\tR\astaffId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
-	"\bposition\x18\x03 \x01(\tR\bposition\"F\n" +
+	"\bposition\x18\x03 \x01(\tR\bposition\"Z\n" +
 	"\x19GetScheduleSignersRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xaf\x01\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x12\n" +
+	"\x04kind\x18\x02 \x01(\tR\x04kind\"\xaf\x01\n" +
 	"\x1aGetScheduleSignersResponse\x125\n" +
 	"\asigners\x18\x01 \x03(\v2\x1b.joseph.documents.v1.SignerR\asigners\x12;\n" +
 	"\n" +
 	"candidates\x18\x02 \x03(\v2\x1b.joseph.documents.v1.SignerR\n" +
 	"candidates\x12\x1d\n" +
 	"\n" +
-	"can_manage\x18\x03 \x01(\bR\tcanManage\"}\n" +
+	"can_manage\x18\x03 \x01(\bR\tcanManage\"\x91\x01\n" +
 	"\x19SetScheduleSignersRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x125\n" +
-	"\asigners\x18\x02 \x03(\v2\x1b.joseph.documents.v1.SignerR\asigners\"S\n" +
+	"\asigners\x18\x02 \x03(\v2\x1b.joseph.documents.v1.SignerR\asigners\x12\x12\n" +
+	"\x04kind\x18\x03 \x01(\tR\x04kind\"S\n" +
 	"\x1aSetScheduleSignersResponse\x125\n" +
 	"\asigners\x18\x01 \x03(\v2\x1b.joseph.documents.v1.SignerR\asigners\"\x9b\x01\n" +
 	"\tSignature\x12\x12\n" +
@@ -2053,14 +2777,64 @@ const file_joseph_documents_v1_documents_proto_rawDesc = "" +
 	"\rtracking_code\x18\x01 \x01(\tR\ftrackingCode\x12\x16\n" +
 	"\x06number\x18\x02 \x01(\x05R\x06number\"D\n" +
 	"\x10TrackPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file2\xe0\n" +
+	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"\x81\x01\n" +
+	"\x18EnrollmentFormPdfRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
+	"student_id\x18\x02 \x01(\tR\tstudentId\x12\x1b\n" +
+	"\tperiod_id\x18\x03 \x01(\tR\bperiodId\"M\n" +
+	"\x19EnrollmentFormPdfResponse\x120\n" +
+	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"\xb4\x01\n" +
+	"\tRollQuery\x12\x1b\n" +
+	"\tperiod_id\x18\x01 \x01(\tR\bperiodId\x12\x19\n" +
+	"\blevel_id\x18\x02 \x01(\tR\alevelId\x12\x19\n" +
+	"\bgrade_id\x18\x03 \x01(\tR\agradeId\x12\x1d\n" +
+	"\n" +
+	"section_id\x18\x04 \x01(\tR\tsectionId\x12#\n" +
+	"\rsiagie_status\x18\x05 \x01(\tR\fsiagieStatus\x12\x10\n" +
+	"\x03all\x18\x06 \x01(\bR\x03all\"s\n" +
+	"\x0eRollPdfRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x126\n" +
+	"\x06filter\x18\x02 \x01(\v2\x1e.joseph.documents.v1.RollQueryR\x06filter\"C\n" +
+	"\x0fRollPdfResponse\x120\n" +
+	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"t\n" +
+	"\x0fRollXlsxRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x126\n" +
+	"\x06filter\x18\x02 \x01(\v2\x1e.joseph.documents.v1.RollQueryR\x06filter\"D\n" +
+	"\x10RollXlsxResponse\x120\n" +
+	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"\x9b\x01\n" +
+	"\x11SiagieXlsxRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x126\n" +
+	"\x06filter\x18\x02 \x01(\v2\x1e.joseph.documents.v1.RollQueryR\x06filter\x12#\n" +
+	"\rmark_exported\x18\x03 \x01(\bR\fmarkExported\"^\n" +
+	"\x12SiagieXlsxResponse\x120\n" +
+	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\x12\x16\n" +
+	"\x06marked\x18\x02 \x01(\x05R\x06marked\"\x7f\n" +
+	"\x1bGeneratePlacementActRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12!\n" +
+	"\fplacement_id\x18\x02 \x01(\tR\vplacementId\x12\x12\n" +
+	"\x04note\x18\x03 \x01(\tR\x04note\"y\n" +
+	"\x1cGeneratePlacementActResponse\x12>\n" +
+	"\aversion\x18\x01 \x01(\v2$.joseph.documents.v1.DocumentVersionR\aversion\x12\x19\n" +
+	"\bact_code\x18\x02 \x01(\tR\aactCode\"f\n" +
+	"\x16PlacementActPdfRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12!\n" +
+	"\fplacement_id\x18\x02 \x01(\tR\vplacementId\"K\n" +
+	"\x17PlacementActPdfResponse\x120\n" +
+	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file2\xcd\x0f\n" +
 	"\x10DocumentsService\x12i\n" +
 	"\x0eReportCardsPdf\x12*.joseph.documents.v1.ReportCardsPdfRequest\x1a+.joseph.documents.v1.ReportCardsPdfResponse\x12c\n" +
 	"\fSchedulesPdf\x12(.joseph.documents.v1.SchedulesPdfRequest\x1a).joseph.documents.v1.SchedulesPdfResponse\x12Z\n" +
 	"\tRecordPdf\x12%.joseph.documents.v1.RecordPdfRequest\x1a&.joseph.documents.v1.RecordPdfResponse\x12]\n" +
 	"\n" +
-	"ReceiptPdf\x12&.joseph.documents.v1.ReceiptPdfRequest\x1a'.joseph.documents.v1.ReceiptPdfResponse\x12f\n" +
+	"ReceiptPdf\x12&.joseph.documents.v1.ReceiptPdfRequest\x1a'.joseph.documents.v1.ReceiptPdfResponse\x12r\n" +
+	"\x11EnrollmentFormPdf\x12-.joseph.documents.v1.EnrollmentFormPdfRequest\x1a..joseph.documents.v1.EnrollmentFormPdfResponse\x12T\n" +
+	"\aRollPdf\x12#.joseph.documents.v1.RollPdfRequest\x1a$.joseph.documents.v1.RollPdfResponse\x12W\n" +
+	"\bRollXlsx\x12$.joseph.documents.v1.RollXlsxRequest\x1a%.joseph.documents.v1.RollXlsxResponse\x12]\n" +
+	"\n" +
+	"SiagieXlsx\x12&.joseph.documents.v1.SiagieXlsxRequest\x1a'.joseph.documents.v1.SiagieXlsxResponse\x12{\n" +
+	"\x14GeneratePlacementAct\x120.joseph.documents.v1.GeneratePlacementActRequest\x1a1.joseph.documents.v1.GeneratePlacementActResponse\x12l\n" +
+	"\x0fPlacementActPdf\x12+.joseph.documents.v1.PlacementActPdfRequest\x1a,.joseph.documents.v1.PlacementActPdfResponse\x12f\n" +
 	"\rSchedulesXlsx\x12).joseph.documents.v1.SchedulesXlsxRequest\x1a*.joseph.documents.v1.SchedulesXlsxResponse\x12u\n" +
 	"\x12GetScheduleSigners\x12..joseph.documents.v1.GetScheduleSignersRequest\x1a/.joseph.documents.v1.GetScheduleSignersResponse\x12u\n" +
 	"\x12SetScheduleSigners\x12..joseph.documents.v1.SetScheduleSignersRequest\x1a/.joseph.documents.v1.SetScheduleSignersResponse\x12u\n" +
@@ -2084,40 +2858,53 @@ func file_joseph_documents_v1_documents_proto_rawDescGZIP() []byte {
 	return file_joseph_documents_v1_documents_proto_rawDescData
 }
 
-var file_joseph_documents_v1_documents_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
+var file_joseph_documents_v1_documents_proto_msgTypes = make([]protoimpl.MessageInfo, 45)
 var file_joseph_documents_v1_documents_proto_goTypes = []any{
-	(*PdfFile)(nil),                    // 0: joseph.documents.v1.PdfFile
-	(*ReportCardsPdfRequest)(nil),      // 1: joseph.documents.v1.ReportCardsPdfRequest
-	(*SchedulesPdfRequest)(nil),        // 2: joseph.documents.v1.SchedulesPdfRequest
-	(*RecordPdfRequest)(nil),           // 3: joseph.documents.v1.RecordPdfRequest
-	(*ReceiptPdfRequest)(nil),          // 4: joseph.documents.v1.ReceiptPdfRequest
-	(*ReportCardsPdfResponse)(nil),     // 5: joseph.documents.v1.ReportCardsPdfResponse
-	(*SchedulesPdfResponse)(nil),       // 6: joseph.documents.v1.SchedulesPdfResponse
-	(*RecordPdfResponse)(nil),          // 7: joseph.documents.v1.RecordPdfResponse
-	(*ReceiptPdfResponse)(nil),         // 8: joseph.documents.v1.ReceiptPdfResponse
-	(*SchedulesXlsxRequest)(nil),       // 9: joseph.documents.v1.SchedulesXlsxRequest
-	(*SchedulesXlsxResponse)(nil),      // 10: joseph.documents.v1.SchedulesXlsxResponse
-	(*Signer)(nil),                     // 11: joseph.documents.v1.Signer
-	(*GetScheduleSignersRequest)(nil),  // 12: joseph.documents.v1.GetScheduleSignersRequest
-	(*GetScheduleSignersResponse)(nil), // 13: joseph.documents.v1.GetScheduleSignersResponse
-	(*SetScheduleSignersRequest)(nil),  // 14: joseph.documents.v1.SetScheduleSignersRequest
-	(*SetScheduleSignersResponse)(nil), // 15: joseph.documents.v1.SetScheduleSignersResponse
-	(*Signature)(nil),                  // 16: joseph.documents.v1.Signature
-	(*DocumentVersion)(nil),            // 17: joseph.documents.v1.DocumentVersion
-	(*DocumentEvent)(nil),              // 18: joseph.documents.v1.DocumentEvent
-	(*IssuedDocument)(nil),             // 19: joseph.documents.v1.IssuedDocument
-	(*ListScheduleIssuesRequest)(nil),  // 20: joseph.documents.v1.ListScheduleIssuesRequest
-	(*ListScheduleIssuesResponse)(nil), // 21: joseph.documents.v1.ListScheduleIssuesResponse
-	(*GenerateSchedulesRequest)(nil),   // 22: joseph.documents.v1.GenerateSchedulesRequest
-	(*GenerateSchedulesResponse)(nil),  // 23: joseph.documents.v1.GenerateSchedulesResponse
-	(*SignVersionRequest)(nil),         // 24: joseph.documents.v1.SignVersionRequest
-	(*SignVersionResponse)(nil),        // 25: joseph.documents.v1.SignVersionResponse
-	(*VersionPdfRequest)(nil),          // 26: joseph.documents.v1.VersionPdfRequest
-	(*VersionPdfResponse)(nil),         // 27: joseph.documents.v1.VersionPdfResponse
-	(*TrackDocumentRequest)(nil),       // 28: joseph.documents.v1.TrackDocumentRequest
-	(*TrackDocumentResponse)(nil),      // 29: joseph.documents.v1.TrackDocumentResponse
-	(*TrackPdfRequest)(nil),            // 30: joseph.documents.v1.TrackPdfRequest
-	(*TrackPdfResponse)(nil),           // 31: joseph.documents.v1.TrackPdfResponse
+	(*PdfFile)(nil),                      // 0: joseph.documents.v1.PdfFile
+	(*ReportCardsPdfRequest)(nil),        // 1: joseph.documents.v1.ReportCardsPdfRequest
+	(*SchedulesPdfRequest)(nil),          // 2: joseph.documents.v1.SchedulesPdfRequest
+	(*RecordPdfRequest)(nil),             // 3: joseph.documents.v1.RecordPdfRequest
+	(*ReceiptPdfRequest)(nil),            // 4: joseph.documents.v1.ReceiptPdfRequest
+	(*ReportCardsPdfResponse)(nil),       // 5: joseph.documents.v1.ReportCardsPdfResponse
+	(*SchedulesPdfResponse)(nil),         // 6: joseph.documents.v1.SchedulesPdfResponse
+	(*RecordPdfResponse)(nil),            // 7: joseph.documents.v1.RecordPdfResponse
+	(*ReceiptPdfResponse)(nil),           // 8: joseph.documents.v1.ReceiptPdfResponse
+	(*SchedulesXlsxRequest)(nil),         // 9: joseph.documents.v1.SchedulesXlsxRequest
+	(*SchedulesXlsxResponse)(nil),        // 10: joseph.documents.v1.SchedulesXlsxResponse
+	(*Signer)(nil),                       // 11: joseph.documents.v1.Signer
+	(*GetScheduleSignersRequest)(nil),    // 12: joseph.documents.v1.GetScheduleSignersRequest
+	(*GetScheduleSignersResponse)(nil),   // 13: joseph.documents.v1.GetScheduleSignersResponse
+	(*SetScheduleSignersRequest)(nil),    // 14: joseph.documents.v1.SetScheduleSignersRequest
+	(*SetScheduleSignersResponse)(nil),   // 15: joseph.documents.v1.SetScheduleSignersResponse
+	(*Signature)(nil),                    // 16: joseph.documents.v1.Signature
+	(*DocumentVersion)(nil),              // 17: joseph.documents.v1.DocumentVersion
+	(*DocumentEvent)(nil),                // 18: joseph.documents.v1.DocumentEvent
+	(*IssuedDocument)(nil),               // 19: joseph.documents.v1.IssuedDocument
+	(*ListScheduleIssuesRequest)(nil),    // 20: joseph.documents.v1.ListScheduleIssuesRequest
+	(*ListScheduleIssuesResponse)(nil),   // 21: joseph.documents.v1.ListScheduleIssuesResponse
+	(*GenerateSchedulesRequest)(nil),     // 22: joseph.documents.v1.GenerateSchedulesRequest
+	(*GenerateSchedulesResponse)(nil),    // 23: joseph.documents.v1.GenerateSchedulesResponse
+	(*SignVersionRequest)(nil),           // 24: joseph.documents.v1.SignVersionRequest
+	(*SignVersionResponse)(nil),          // 25: joseph.documents.v1.SignVersionResponse
+	(*VersionPdfRequest)(nil),            // 26: joseph.documents.v1.VersionPdfRequest
+	(*VersionPdfResponse)(nil),           // 27: joseph.documents.v1.VersionPdfResponse
+	(*TrackDocumentRequest)(nil),         // 28: joseph.documents.v1.TrackDocumentRequest
+	(*TrackDocumentResponse)(nil),        // 29: joseph.documents.v1.TrackDocumentResponse
+	(*TrackPdfRequest)(nil),              // 30: joseph.documents.v1.TrackPdfRequest
+	(*TrackPdfResponse)(nil),             // 31: joseph.documents.v1.TrackPdfResponse
+	(*EnrollmentFormPdfRequest)(nil),     // 32: joseph.documents.v1.EnrollmentFormPdfRequest
+	(*EnrollmentFormPdfResponse)(nil),    // 33: joseph.documents.v1.EnrollmentFormPdfResponse
+	(*RollQuery)(nil),                    // 34: joseph.documents.v1.RollQuery
+	(*RollPdfRequest)(nil),               // 35: joseph.documents.v1.RollPdfRequest
+	(*RollPdfResponse)(nil),              // 36: joseph.documents.v1.RollPdfResponse
+	(*RollXlsxRequest)(nil),              // 37: joseph.documents.v1.RollXlsxRequest
+	(*RollXlsxResponse)(nil),             // 38: joseph.documents.v1.RollXlsxResponse
+	(*SiagieXlsxRequest)(nil),            // 39: joseph.documents.v1.SiagieXlsxRequest
+	(*SiagieXlsxResponse)(nil),           // 40: joseph.documents.v1.SiagieXlsxResponse
+	(*GeneratePlacementActRequest)(nil),  // 41: joseph.documents.v1.GeneratePlacementActRequest
+	(*GeneratePlacementActResponse)(nil), // 42: joseph.documents.v1.GeneratePlacementActResponse
+	(*PlacementActPdfRequest)(nil),       // 43: joseph.documents.v1.PlacementActPdfRequest
+	(*PlacementActPdfResponse)(nil),      // 44: joseph.documents.v1.PlacementActPdfResponse
 }
 var file_joseph_documents_v1_documents_proto_depIdxs = []int32{
 	0,  // 0: joseph.documents.v1.ReportCardsPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
@@ -2140,37 +2927,58 @@ var file_joseph_documents_v1_documents_proto_depIdxs = []int32{
 	0,  // 17: joseph.documents.v1.VersionPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
 	19, // 18: joseph.documents.v1.TrackDocumentResponse.document:type_name -> joseph.documents.v1.IssuedDocument
 	0,  // 19: joseph.documents.v1.TrackPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	1,  // 20: joseph.documents.v1.DocumentsService.ReportCardsPdf:input_type -> joseph.documents.v1.ReportCardsPdfRequest
-	2,  // 21: joseph.documents.v1.DocumentsService.SchedulesPdf:input_type -> joseph.documents.v1.SchedulesPdfRequest
-	3,  // 22: joseph.documents.v1.DocumentsService.RecordPdf:input_type -> joseph.documents.v1.RecordPdfRequest
-	4,  // 23: joseph.documents.v1.DocumentsService.ReceiptPdf:input_type -> joseph.documents.v1.ReceiptPdfRequest
-	9,  // 24: joseph.documents.v1.DocumentsService.SchedulesXlsx:input_type -> joseph.documents.v1.SchedulesXlsxRequest
-	12, // 25: joseph.documents.v1.DocumentsService.GetScheduleSigners:input_type -> joseph.documents.v1.GetScheduleSignersRequest
-	14, // 26: joseph.documents.v1.DocumentsService.SetScheduleSigners:input_type -> joseph.documents.v1.SetScheduleSignersRequest
-	20, // 27: joseph.documents.v1.DocumentsService.ListScheduleIssues:input_type -> joseph.documents.v1.ListScheduleIssuesRequest
-	22, // 28: joseph.documents.v1.DocumentsService.GenerateSchedules:input_type -> joseph.documents.v1.GenerateSchedulesRequest
-	24, // 29: joseph.documents.v1.DocumentsService.SignVersion:input_type -> joseph.documents.v1.SignVersionRequest
-	26, // 30: joseph.documents.v1.DocumentsService.VersionPdf:input_type -> joseph.documents.v1.VersionPdfRequest
-	28, // 31: joseph.documents.v1.DocumentsService.TrackDocument:input_type -> joseph.documents.v1.TrackDocumentRequest
-	30, // 32: joseph.documents.v1.DocumentsService.TrackPdf:input_type -> joseph.documents.v1.TrackPdfRequest
-	5,  // 33: joseph.documents.v1.DocumentsService.ReportCardsPdf:output_type -> joseph.documents.v1.ReportCardsPdfResponse
-	6,  // 34: joseph.documents.v1.DocumentsService.SchedulesPdf:output_type -> joseph.documents.v1.SchedulesPdfResponse
-	7,  // 35: joseph.documents.v1.DocumentsService.RecordPdf:output_type -> joseph.documents.v1.RecordPdfResponse
-	8,  // 36: joseph.documents.v1.DocumentsService.ReceiptPdf:output_type -> joseph.documents.v1.ReceiptPdfResponse
-	10, // 37: joseph.documents.v1.DocumentsService.SchedulesXlsx:output_type -> joseph.documents.v1.SchedulesXlsxResponse
-	13, // 38: joseph.documents.v1.DocumentsService.GetScheduleSigners:output_type -> joseph.documents.v1.GetScheduleSignersResponse
-	15, // 39: joseph.documents.v1.DocumentsService.SetScheduleSigners:output_type -> joseph.documents.v1.SetScheduleSignersResponse
-	21, // 40: joseph.documents.v1.DocumentsService.ListScheduleIssues:output_type -> joseph.documents.v1.ListScheduleIssuesResponse
-	23, // 41: joseph.documents.v1.DocumentsService.GenerateSchedules:output_type -> joseph.documents.v1.GenerateSchedulesResponse
-	25, // 42: joseph.documents.v1.DocumentsService.SignVersion:output_type -> joseph.documents.v1.SignVersionResponse
-	27, // 43: joseph.documents.v1.DocumentsService.VersionPdf:output_type -> joseph.documents.v1.VersionPdfResponse
-	29, // 44: joseph.documents.v1.DocumentsService.TrackDocument:output_type -> joseph.documents.v1.TrackDocumentResponse
-	31, // 45: joseph.documents.v1.DocumentsService.TrackPdf:output_type -> joseph.documents.v1.TrackPdfResponse
-	33, // [33:46] is the sub-list for method output_type
-	20, // [20:33] is the sub-list for method input_type
-	20, // [20:20] is the sub-list for extension type_name
-	20, // [20:20] is the sub-list for extension extendee
-	0,  // [0:20] is the sub-list for field type_name
+	0,  // 20: joseph.documents.v1.EnrollmentFormPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
+	34, // 21: joseph.documents.v1.RollPdfRequest.filter:type_name -> joseph.documents.v1.RollQuery
+	0,  // 22: joseph.documents.v1.RollPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
+	34, // 23: joseph.documents.v1.RollXlsxRequest.filter:type_name -> joseph.documents.v1.RollQuery
+	0,  // 24: joseph.documents.v1.RollXlsxResponse.file:type_name -> joseph.documents.v1.PdfFile
+	34, // 25: joseph.documents.v1.SiagieXlsxRequest.filter:type_name -> joseph.documents.v1.RollQuery
+	0,  // 26: joseph.documents.v1.SiagieXlsxResponse.file:type_name -> joseph.documents.v1.PdfFile
+	17, // 27: joseph.documents.v1.GeneratePlacementActResponse.version:type_name -> joseph.documents.v1.DocumentVersion
+	0,  // 28: joseph.documents.v1.PlacementActPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
+	1,  // 29: joseph.documents.v1.DocumentsService.ReportCardsPdf:input_type -> joseph.documents.v1.ReportCardsPdfRequest
+	2,  // 30: joseph.documents.v1.DocumentsService.SchedulesPdf:input_type -> joseph.documents.v1.SchedulesPdfRequest
+	3,  // 31: joseph.documents.v1.DocumentsService.RecordPdf:input_type -> joseph.documents.v1.RecordPdfRequest
+	4,  // 32: joseph.documents.v1.DocumentsService.ReceiptPdf:input_type -> joseph.documents.v1.ReceiptPdfRequest
+	32, // 33: joseph.documents.v1.DocumentsService.EnrollmentFormPdf:input_type -> joseph.documents.v1.EnrollmentFormPdfRequest
+	35, // 34: joseph.documents.v1.DocumentsService.RollPdf:input_type -> joseph.documents.v1.RollPdfRequest
+	37, // 35: joseph.documents.v1.DocumentsService.RollXlsx:input_type -> joseph.documents.v1.RollXlsxRequest
+	39, // 36: joseph.documents.v1.DocumentsService.SiagieXlsx:input_type -> joseph.documents.v1.SiagieXlsxRequest
+	41, // 37: joseph.documents.v1.DocumentsService.GeneratePlacementAct:input_type -> joseph.documents.v1.GeneratePlacementActRequest
+	43, // 38: joseph.documents.v1.DocumentsService.PlacementActPdf:input_type -> joseph.documents.v1.PlacementActPdfRequest
+	9,  // 39: joseph.documents.v1.DocumentsService.SchedulesXlsx:input_type -> joseph.documents.v1.SchedulesXlsxRequest
+	12, // 40: joseph.documents.v1.DocumentsService.GetScheduleSigners:input_type -> joseph.documents.v1.GetScheduleSignersRequest
+	14, // 41: joseph.documents.v1.DocumentsService.SetScheduleSigners:input_type -> joseph.documents.v1.SetScheduleSignersRequest
+	20, // 42: joseph.documents.v1.DocumentsService.ListScheduleIssues:input_type -> joseph.documents.v1.ListScheduleIssuesRequest
+	22, // 43: joseph.documents.v1.DocumentsService.GenerateSchedules:input_type -> joseph.documents.v1.GenerateSchedulesRequest
+	24, // 44: joseph.documents.v1.DocumentsService.SignVersion:input_type -> joseph.documents.v1.SignVersionRequest
+	26, // 45: joseph.documents.v1.DocumentsService.VersionPdf:input_type -> joseph.documents.v1.VersionPdfRequest
+	28, // 46: joseph.documents.v1.DocumentsService.TrackDocument:input_type -> joseph.documents.v1.TrackDocumentRequest
+	30, // 47: joseph.documents.v1.DocumentsService.TrackPdf:input_type -> joseph.documents.v1.TrackPdfRequest
+	5,  // 48: joseph.documents.v1.DocumentsService.ReportCardsPdf:output_type -> joseph.documents.v1.ReportCardsPdfResponse
+	6,  // 49: joseph.documents.v1.DocumentsService.SchedulesPdf:output_type -> joseph.documents.v1.SchedulesPdfResponse
+	7,  // 50: joseph.documents.v1.DocumentsService.RecordPdf:output_type -> joseph.documents.v1.RecordPdfResponse
+	8,  // 51: joseph.documents.v1.DocumentsService.ReceiptPdf:output_type -> joseph.documents.v1.ReceiptPdfResponse
+	33, // 52: joseph.documents.v1.DocumentsService.EnrollmentFormPdf:output_type -> joseph.documents.v1.EnrollmentFormPdfResponse
+	36, // 53: joseph.documents.v1.DocumentsService.RollPdf:output_type -> joseph.documents.v1.RollPdfResponse
+	38, // 54: joseph.documents.v1.DocumentsService.RollXlsx:output_type -> joseph.documents.v1.RollXlsxResponse
+	40, // 55: joseph.documents.v1.DocumentsService.SiagieXlsx:output_type -> joseph.documents.v1.SiagieXlsxResponse
+	42, // 56: joseph.documents.v1.DocumentsService.GeneratePlacementAct:output_type -> joseph.documents.v1.GeneratePlacementActResponse
+	44, // 57: joseph.documents.v1.DocumentsService.PlacementActPdf:output_type -> joseph.documents.v1.PlacementActPdfResponse
+	10, // 58: joseph.documents.v1.DocumentsService.SchedulesXlsx:output_type -> joseph.documents.v1.SchedulesXlsxResponse
+	13, // 59: joseph.documents.v1.DocumentsService.GetScheduleSigners:output_type -> joseph.documents.v1.GetScheduleSignersResponse
+	15, // 60: joseph.documents.v1.DocumentsService.SetScheduleSigners:output_type -> joseph.documents.v1.SetScheduleSignersResponse
+	21, // 61: joseph.documents.v1.DocumentsService.ListScheduleIssues:output_type -> joseph.documents.v1.ListScheduleIssuesResponse
+	23, // 62: joseph.documents.v1.DocumentsService.GenerateSchedules:output_type -> joseph.documents.v1.GenerateSchedulesResponse
+	25, // 63: joseph.documents.v1.DocumentsService.SignVersion:output_type -> joseph.documents.v1.SignVersionResponse
+	27, // 64: joseph.documents.v1.DocumentsService.VersionPdf:output_type -> joseph.documents.v1.VersionPdfResponse
+	29, // 65: joseph.documents.v1.DocumentsService.TrackDocument:output_type -> joseph.documents.v1.TrackDocumentResponse
+	31, // 66: joseph.documents.v1.DocumentsService.TrackPdf:output_type -> joseph.documents.v1.TrackPdfResponse
+	48, // [48:67] is the sub-list for method output_type
+	29, // [29:48] is the sub-list for method input_type
+	29, // [29:29] is the sub-list for extension type_name
+	29, // [29:29] is the sub-list for extension extendee
+	0,  // [0:29] is the sub-list for field type_name
 }
 
 func init() { file_joseph_documents_v1_documents_proto_init() }
@@ -2184,7 +2992,7 @@ func file_joseph_documents_v1_documents_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_documents_v1_documents_proto_rawDesc), len(file_joseph_documents_v1_documents_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   32,
+			NumMessages:   45,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -104,14 +104,38 @@ type SignerSetup struct {
 	CanManage  bool
 }
 
-// Signers of the timetables; the staff list comes along for the managers to pick from
-func (s *DocumentService) Signers(ctx context.Context, token, slug string) (SignerSetup, error) {
-	sc, err := s.teaching.scope(ctx, token, slug, false)
+// signerScope is who reads and who manages the signers of a kind: the timetables go with teaching, the actas de
+// ubicación with the secretariat (EBA only)
+func (s *DocumentService) signerScope(ctx context.Context, token, slug, kind string, write bool) (academicScope, bool, error) {
+	switch kind {
+	case "", domain.DocumentSchedules:
+		sc, err := s.teaching.scope(ctx, token, slug, write)
+		return sc, teachingManagers[sc.role], err
+	case domain.DocumentPlacement:
+		if s.people == nil {
+			return academicScope{}, false, domain.ErrNotFound
+		}
+		sc, err := s.people.ebaScope(ctx, token, slug, write)
+		return sc, peopleManagers[sc.role], err
+	}
+	return academicScope{}, false, domain.Validation(map[string]string{"kind": "Tipo de documento desconocido."})
+}
+
+func signerKind(kind string) string {
+	if kind == "" {
+		return domain.DocumentSchedules
+	}
+	return kind
+}
+
+// Signers of a kind of document (the timetables when empty); the staff list comes along for the managers to pick from
+func (s *DocumentService) Signers(ctx context.Context, token, slug, kind string) (SignerSetup, error) {
+	sc, canManage, err := s.signerScope(ctx, token, slug, kind, false)
 	if err != nil {
 		return SignerSetup{}, err
 	}
-	out := SignerSetup{CanManage: teachingManagers[sc.role]}
-	if out.Signers, err = s.docs.Signers(ctx, sc.institution.ID, domain.DocumentSchedules); err != nil {
+	out := SignerSetup{CanManage: canManage}
+	if out.Signers, err = s.docs.Signers(ctx, sc.institution.ID, signerKind(kind)); err != nil {
 		return out, err
 	}
 	if out.CanManage {
@@ -120,9 +144,9 @@ func (s *DocumentService) Signers(ctx context.Context, token, slug string) (Sign
 	return out, err
 }
 
-// SetSigners replaces who signs the timetables, in order; only dirección and coordinación
-func (s *DocumentService) SetSigners(ctx context.Context, token, slug string, signers []domain.DocumentSigner) ([]domain.DocumentSigner, error) {
-	sc, err := s.teaching.scope(ctx, token, slug, true)
+// SetSigners replaces who signs a kind of document, in order; only the roles that manage it
+func (s *DocumentService) SetSigners(ctx context.Context, token, slug, kind string, signers []domain.DocumentSigner) ([]domain.DocumentSigner, error) {
+	sc, _, err := s.signerScope(ctx, token, slug, kind, true)
 	if err != nil {
 		return nil, err
 	}
@@ -145,11 +169,11 @@ func (s *DocumentService) SetSigners(ctx context.Context, token, slug string, si
 		}
 		seen[signers[i].StaffID] = true
 	}
-	if _, err := s.docs.SetSigners(ctx, sc.institution.ID, domain.DocumentSchedules, signers, s.actorName(ctx, token), s.now()); err != nil {
+	if _, err := s.docs.SetSigners(ctx, sc.institution.ID, signerKind(kind), signers, s.actorName(ctx, token), s.now()); err != nil {
 		return nil, err
 	}
 	s.teaching.changed(ctx, sc, "documents")
-	return s.docs.Signers(ctx, sc.institution.ID, domain.DocumentSchedules)
+	return s.docs.Signers(ctx, sc.institution.ID, signerKind(kind))
 }
 
 // ---------- previews ----------
@@ -314,6 +338,9 @@ func (s *DocumentService) SignVersion(ctx context.Context, token, slug, versionI
 
 // renderVersion prints a frozen version with its seal as it stands now
 func (s *DocumentService) renderVersion(d domain.IssuedDocument, v domain.DocumentVersion) (PdfFile, error) {
+	if d.Kind == domain.DocumentPlacement {
+		return s.renderForm(d, v)
+	}
 	var doc port.ScheduleDoc
 	if err := json.Unmarshal(v.Content, &doc); err != nil {
 		return PdfFile{}, fmt.Errorf("version %s: %w", v.ID, err)

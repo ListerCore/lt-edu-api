@@ -252,6 +252,65 @@ type DocumentRenderer interface {
 	Schedules(doc ScheduleDoc) ([]byte, error)
 	Record(doc RecordDoc) ([]byte, error)
 	Receipt(doc ReceiptDoc) ([]byte, error)
+	// Form is a portrait document of labelled fields in blocks (ficha única, acta de ubicación)
+	Form(doc FormDoc) ([]byte, error)
+	// Table is a list in landscape, one block per group with its header repeated (nómina de matrícula)
+	Table(doc TableDoc) ([]byte, error)
+}
+
+// DocHeader is the heading of the official documents: the regional office, the UGEL, the institution and its codes
+type DocHeader struct {
+	Dre         string
+	Ugel        string
+	Institution string
+	ModularCode string
+	Logo        Image
+	Title       string
+	Subtitle    string
+	// Top right: a number or code ("Acta N.° 3-2026")
+	Code string
+}
+
+// FormDoc is a portrait form: blocks of label and value, free paragraphs, then signatures or the seal of an issued
+// version
+type FormDoc struct {
+	Header     DocHeader
+	Blocks     []FormBlock
+	Paragraphs []string
+	// Signature lines, when the document is not an issued version
+	Signatures []string
+	Seal       *DocumentSeal
+	IssuedOn   time.Time
+}
+
+// FormBlock is a titled group of fields, printed in Columns columns (1 or 2)
+type FormBlock struct {
+	Title   string
+	Columns int
+	Fields  []FormField
+}
+
+type FormField struct {
+	Label string
+	Value string
+}
+
+// TableDoc is a landscape list: columns (with relative widths), groups of rows each starting a page, totals
+type TableDoc struct {
+	Header     DocHeader
+	Columns    []string
+	Widths     []float64
+	Groups     []TableGroup
+	Legend     string
+	IssuedOn   time.Time
+	Signatures []string
+}
+
+type TableGroup struct {
+	Title string
+	Info  []string
+	Rows  [][]string
+	Total string
 }
 
 // SignerCandidate is a staff member who can be named signer

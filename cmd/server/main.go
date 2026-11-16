@@ -121,6 +121,7 @@ func main() {
 	classroomService.SetGrades(assessmentService)
 	documentService := service.NewDocumentService(service.DocumentDeps{Render: pdf.NewRenderer(), Sheets: xlsx.NewRenderer(), Docs: postgres.NewDocumentRepository(dbClient),
 		Staff: staffRepo, SiteURL: cfg.SiteURL}, assessmentService, closingService, teachingService, financeService)
+	documentService.SetPeople(peopleService)
 
 	app := fiber.New(fiber.Config{
 		AppName: cfg.AppName,

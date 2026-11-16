@@ -23,26 +23,32 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	PeopleService_GetPeopleContext_FullMethodName   = "/joseph.people.v1.PeopleService/GetPeopleContext"
-	PeopleService_ListStudents_FullMethodName       = "/joseph.people.v1.PeopleService/ListStudents"
-	PeopleService_GetStudent_FullMethodName         = "/joseph.people.v1.PeopleService/GetStudent"
-	PeopleService_CreateStudent_FullMethodName      = "/joseph.people.v1.PeopleService/CreateStudent"
-	PeopleService_UpdateStudent_FullMethodName      = "/joseph.people.v1.PeopleService/UpdateStudent"
-	PeopleService_DeleteStudent_FullMethodName      = "/joseph.people.v1.PeopleService/DeleteStudent"
-	PeopleService_FindGuardian_FullMethodName       = "/joseph.people.v1.PeopleService/FindGuardian"
-	PeopleService_AddGuardian_FullMethodName        = "/joseph.people.v1.PeopleService/AddGuardian"
-	PeopleService_UpdateGuardian_FullMethodName     = "/joseph.people.v1.PeopleService/UpdateGuardian"
-	PeopleService_RemoveGuardian_FullMethodName     = "/joseph.people.v1.PeopleService/RemoveGuardian"
-	PeopleService_GrantAccess_FullMethodName        = "/joseph.people.v1.PeopleService/GrantAccess"
-	PeopleService_GetEnrollmentBoard_FullMethodName = "/joseph.people.v1.PeopleService/GetEnrollmentBoard"
-	PeopleService_Enroll_FullMethodName             = "/joseph.people.v1.PeopleService/Enroll"
-	PeopleService_UpdateEnrollment_FullMethodName   = "/joseph.people.v1.PeopleService/UpdateEnrollment"
-	PeopleService_EndEnrollment_FullMethodName      = "/joseph.people.v1.PeopleService/EndEnrollment"
-	PeopleService_DeleteEnrollment_FullMethodName   = "/joseph.people.v1.PeopleService/DeleteEnrollment"
-	PeopleService_RatifyEnrollments_FullMethodName  = "/joseph.people.v1.PeopleService/RatifyEnrollments"
-	PeopleService_ListPlacements_FullMethodName     = "/joseph.people.v1.PeopleService/ListPlacements"
-	PeopleService_CreatePlacement_FullMethodName    = "/joseph.people.v1.PeopleService/CreatePlacement"
-	PeopleService_DeletePlacement_FullMethodName    = "/joseph.people.v1.PeopleService/DeletePlacement"
+	PeopleService_GetPeopleContext_FullMethodName     = "/joseph.people.v1.PeopleService/GetPeopleContext"
+	PeopleService_ListStudents_FullMethodName         = "/joseph.people.v1.PeopleService/ListStudents"
+	PeopleService_GetStudent_FullMethodName           = "/joseph.people.v1.PeopleService/GetStudent"
+	PeopleService_CreateStudent_FullMethodName        = "/joseph.people.v1.PeopleService/CreateStudent"
+	PeopleService_UpdateStudent_FullMethodName        = "/joseph.people.v1.PeopleService/UpdateStudent"
+	PeopleService_DeleteStudent_FullMethodName        = "/joseph.people.v1.PeopleService/DeleteStudent"
+	PeopleService_FindGuardian_FullMethodName         = "/joseph.people.v1.PeopleService/FindGuardian"
+	PeopleService_AddGuardian_FullMethodName          = "/joseph.people.v1.PeopleService/AddGuardian"
+	PeopleService_UpdateGuardian_FullMethodName       = "/joseph.people.v1.PeopleService/UpdateGuardian"
+	PeopleService_RemoveGuardian_FullMethodName       = "/joseph.people.v1.PeopleService/RemoveGuardian"
+	PeopleService_GrantAccess_FullMethodName          = "/joseph.people.v1.PeopleService/GrantAccess"
+	PeopleService_GetEnrollmentBoard_FullMethodName   = "/joseph.people.v1.PeopleService/GetEnrollmentBoard"
+	PeopleService_Enroll_FullMethodName               = "/joseph.people.v1.PeopleService/Enroll"
+	PeopleService_UpdateEnrollment_FullMethodName     = "/joseph.people.v1.PeopleService/UpdateEnrollment"
+	PeopleService_EndEnrollment_FullMethodName        = "/joseph.people.v1.PeopleService/EndEnrollment"
+	PeopleService_DeleteEnrollment_FullMethodName     = "/joseph.people.v1.PeopleService/DeleteEnrollment"
+	PeopleService_RatifyEnrollments_FullMethodName    = "/joseph.people.v1.PeopleService/RatifyEnrollments"
+	PeopleService_ListPlacements_FullMethodName       = "/joseph.people.v1.PeopleService/ListPlacements"
+	PeopleService_CreatePlacement_FullMethodName      = "/joseph.people.v1.PeopleService/CreatePlacement"
+	PeopleService_DeletePlacement_FullMethodName      = "/joseph.people.v1.PeopleService/DeletePlacement"
+	PeopleService_ProposePlacement_FullMethodName     = "/joseph.people.v1.PeopleService/ProposePlacement"
+	PeopleService_GetEnrollmentFile_FullMethodName    = "/joseph.people.v1.PeopleService/GetEnrollmentFile"
+	PeopleService_SaveEnrollmentFile_FullMethodName   = "/joseph.people.v1.PeopleService/SaveEnrollmentFile"
+	PeopleService_SetReligionExemption_FullMethodName = "/joseph.people.v1.PeopleService/SetReligionExemption"
+	PeopleService_ListRoll_FullMethodName             = "/joseph.people.v1.PeopleService/ListRoll"
+	PeopleService_SetSiagieStatus_FullMethodName      = "/joseph.people.v1.PeopleService/SetSiagieStatus"
 )
 
 // PeopleServiceClient is the client API for PeopleService service.
@@ -77,6 +83,14 @@ type PeopleServiceClient interface {
 	ListPlacements(ctx context.Context, in *ListPlacementsRequest, opts ...grpc.CallOption) (*ListPlacementsResponse, error)
 	CreatePlacement(ctx context.Context, in *CreatePlacementRequest, opts ...grpc.CallOption) (*CreatePlacementResponse, error)
 	DeletePlacement(ctx context.Context, in *DeletePlacementRequest, opts ...grpc.CallOption) (*DeletePlacementResponse, error)
+	// Cycle and grade the cuadro de equivalencias (RVM 0018-2007-ED) proposes for EBR studies
+	ProposePlacement(ctx context.Context, in *ProposePlacementRequest, opts ...grpc.CallOption) (*ProposePlacementResponse, error)
+	// EBA enrollment (phase E1): ficha única, exemption from Educación Religiosa, nómina and SIAGIE upload state
+	GetEnrollmentFile(ctx context.Context, in *GetEnrollmentFileRequest, opts ...grpc.CallOption) (*GetEnrollmentFileResponse, error)
+	SaveEnrollmentFile(ctx context.Context, in *SaveEnrollmentFileRequest, opts ...grpc.CallOption) (*SaveEnrollmentFileResponse, error)
+	SetReligionExemption(ctx context.Context, in *SetReligionExemptionRequest, opts ...grpc.CallOption) (*SetReligionExemptionResponse, error)
+	ListRoll(ctx context.Context, in *ListRollRequest, opts ...grpc.CallOption) (*ListRollResponse, error)
+	SetSiagieStatus(ctx context.Context, in *SetSiagieStatusRequest, opts ...grpc.CallOption) (*SetSiagieStatusResponse, error)
 }
 
 type peopleServiceClient struct {
@@ -287,6 +301,66 @@ func (c *peopleServiceClient) DeletePlacement(ctx context.Context, in *DeletePla
 	return out, nil
 }
 
+func (c *peopleServiceClient) ProposePlacement(ctx context.Context, in *ProposePlacementRequest, opts ...grpc.CallOption) (*ProposePlacementResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ProposePlacementResponse)
+	err := c.cc.Invoke(ctx, PeopleService_ProposePlacement_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *peopleServiceClient) GetEnrollmentFile(ctx context.Context, in *GetEnrollmentFileRequest, opts ...grpc.CallOption) (*GetEnrollmentFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetEnrollmentFileResponse)
+	err := c.cc.Invoke(ctx, PeopleService_GetEnrollmentFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *peopleServiceClient) SaveEnrollmentFile(ctx context.Context, in *SaveEnrollmentFileRequest, opts ...grpc.CallOption) (*SaveEnrollmentFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SaveEnrollmentFileResponse)
+	err := c.cc.Invoke(ctx, PeopleService_SaveEnrollmentFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *peopleServiceClient) SetReligionExemption(ctx context.Context, in *SetReligionExemptionRequest, opts ...grpc.CallOption) (*SetReligionExemptionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetReligionExemptionResponse)
+	err := c.cc.Invoke(ctx, PeopleService_SetReligionExemption_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *peopleServiceClient) ListRoll(ctx context.Context, in *ListRollRequest, opts ...grpc.CallOption) (*ListRollResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListRollResponse)
+	err := c.cc.Invoke(ctx, PeopleService_ListRoll_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *peopleServiceClient) SetSiagieStatus(ctx context.Context, in *SetSiagieStatusRequest, opts ...grpc.CallOption) (*SetSiagieStatusResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetSiagieStatusResponse)
+	err := c.cc.Invoke(ctx, PeopleService_SetSiagieStatus_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PeopleServiceServer is the server API for PeopleService service.
 // All implementations must embed UnimplementedPeopleServiceServer
 // for forward compatibility.
@@ -319,6 +393,14 @@ type PeopleServiceServer interface {
 	ListPlacements(context.Context, *ListPlacementsRequest) (*ListPlacementsResponse, error)
 	CreatePlacement(context.Context, *CreatePlacementRequest) (*CreatePlacementResponse, error)
 	DeletePlacement(context.Context, *DeletePlacementRequest) (*DeletePlacementResponse, error)
+	// Cycle and grade the cuadro de equivalencias (RVM 0018-2007-ED) proposes for EBR studies
+	ProposePlacement(context.Context, *ProposePlacementRequest) (*ProposePlacementResponse, error)
+	// EBA enrollment (phase E1): ficha única, exemption from Educación Religiosa, nómina and SIAGIE upload state
+	GetEnrollmentFile(context.Context, *GetEnrollmentFileRequest) (*GetEnrollmentFileResponse, error)
+	SaveEnrollmentFile(context.Context, *SaveEnrollmentFileRequest) (*SaveEnrollmentFileResponse, error)
+	SetReligionExemption(context.Context, *SetReligionExemptionRequest) (*SetReligionExemptionResponse, error)
+	ListRoll(context.Context, *ListRollRequest) (*ListRollResponse, error)
+	SetSiagieStatus(context.Context, *SetSiagieStatusRequest) (*SetSiagieStatusResponse, error)
 	mustEmbedUnimplementedPeopleServiceServer()
 }
 
@@ -388,6 +470,24 @@ func (UnimplementedPeopleServiceServer) CreatePlacement(context.Context, *Create
 }
 func (UnimplementedPeopleServiceServer) DeletePlacement(context.Context, *DeletePlacementRequest) (*DeletePlacementResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeletePlacement not implemented")
+}
+func (UnimplementedPeopleServiceServer) ProposePlacement(context.Context, *ProposePlacementRequest) (*ProposePlacementResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ProposePlacement not implemented")
+}
+func (UnimplementedPeopleServiceServer) GetEnrollmentFile(context.Context, *GetEnrollmentFileRequest) (*GetEnrollmentFileResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetEnrollmentFile not implemented")
+}
+func (UnimplementedPeopleServiceServer) SaveEnrollmentFile(context.Context, *SaveEnrollmentFileRequest) (*SaveEnrollmentFileResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SaveEnrollmentFile not implemented")
+}
+func (UnimplementedPeopleServiceServer) SetReligionExemption(context.Context, *SetReligionExemptionRequest) (*SetReligionExemptionResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetReligionExemption not implemented")
+}
+func (UnimplementedPeopleServiceServer) ListRoll(context.Context, *ListRollRequest) (*ListRollResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListRoll not implemented")
+}
+func (UnimplementedPeopleServiceServer) SetSiagieStatus(context.Context, *SetSiagieStatusRequest) (*SetSiagieStatusResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetSiagieStatus not implemented")
 }
 func (UnimplementedPeopleServiceServer) mustEmbedUnimplementedPeopleServiceServer() {}
 func (UnimplementedPeopleServiceServer) testEmbeddedByValue()                       {}
@@ -770,6 +870,114 @@ func _PeopleService_DeletePlacement_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PeopleService_ProposePlacement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ProposePlacementRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PeopleServiceServer).ProposePlacement(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PeopleService_ProposePlacement_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PeopleServiceServer).ProposePlacement(ctx, req.(*ProposePlacementRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PeopleService_GetEnrollmentFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetEnrollmentFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PeopleServiceServer).GetEnrollmentFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PeopleService_GetEnrollmentFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PeopleServiceServer).GetEnrollmentFile(ctx, req.(*GetEnrollmentFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PeopleService_SaveEnrollmentFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SaveEnrollmentFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PeopleServiceServer).SaveEnrollmentFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PeopleService_SaveEnrollmentFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PeopleServiceServer).SaveEnrollmentFile(ctx, req.(*SaveEnrollmentFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PeopleService_SetReligionExemption_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetReligionExemptionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PeopleServiceServer).SetReligionExemption(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PeopleService_SetReligionExemption_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PeopleServiceServer).SetReligionExemption(ctx, req.(*SetReligionExemptionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PeopleService_ListRoll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRollRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PeopleServiceServer).ListRoll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PeopleService_ListRoll_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PeopleServiceServer).ListRoll(ctx, req.(*ListRollRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PeopleService_SetSiagieStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetSiagieStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PeopleServiceServer).SetSiagieStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PeopleService_SetSiagieStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PeopleServiceServer).SetSiagieStatus(ctx, req.(*SetSiagieStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PeopleService_ServiceDesc is the grpc.ServiceDesc for PeopleService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -856,6 +1064,30 @@ var PeopleService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeletePlacement",
 			Handler:    _PeopleService_DeletePlacement_Handler,
+		},
+		{
+			MethodName: "ProposePlacement",
+			Handler:    _PeopleService_ProposePlacement_Handler,
+		},
+		{
+			MethodName: "GetEnrollmentFile",
+			Handler:    _PeopleService_GetEnrollmentFile_Handler,
+		},
+		{
+			MethodName: "SaveEnrollmentFile",
+			Handler:    _PeopleService_SaveEnrollmentFile_Handler,
+		},
+		{
+			MethodName: "SetReligionExemption",
+			Handler:    _PeopleService_SetReligionExemption_Handler,
+		},
+		{
+			MethodName: "ListRoll",
+			Handler:    _PeopleService_ListRoll_Handler,
+		},
+		{
+			MethodName: "SetSiagieStatus",
+			Handler:    _PeopleService_SetSiagieStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
