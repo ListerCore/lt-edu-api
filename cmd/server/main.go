@@ -15,6 +15,7 @@ import (
 	"api/internal/adapter/inbound/http/handler"
 	"api/internal/adapter/logging"
 	"api/internal/adapter/outbound/google"
+	"api/internal/adapter/outbound/httpprobe"
 	"api/internal/adapter/outbound/mailer"
 	"api/internal/adapter/outbound/objectstore"
 	"api/internal/adapter/outbound/password"
@@ -123,6 +124,13 @@ func main() {
 	wellbeingService.SetParticipation(participationService)
 	// Virtual tutoring (phase E6): tutors in force, sessions, messages and SAANEE referrals
 	wellbeingService.SetTutoring(postgres.NewTutoringRepository(dbClient))
+	// DRE compliance (phase E8): equipment, verification matrices, the two technical reports and the uptime log
+	complianceService := service.NewComplianceService(service.ComplianceDeps{Repo: postgres.NewComplianceRepository(dbClient), Institution: postgres.NewInstitutionRepository(dbClient),
+		Auth: authService, Files: postgres.NewAttachmentRepository(dbClient), Store: store, Render: pdf.NewRenderer(), Probe: httpprobe.New(10 * time.Second),
+		Live: liveService, Audit: auditService, Logger: logger})
+	uptimeCtx, stopUptime := context.WithCancel(context.Background())
+	defer stopUptime()
+	go complianceService.RunUptime(uptimeCtx, cfg.UptimeInterval)
 	classroomService.SetGrades(assessmentService)
 	documentService := service.NewDocumentService(service.DocumentDeps{Render: pdf.NewRenderer(), Sheets: xlsx.NewRenderer(), Docs: postgres.NewDocumentRepository(dbClient),
 		Staff: staffRepo, SiteURL: cfg.SiteURL}, assessmentService, closingService, teachingService, financeService)
@@ -159,7 +167,7 @@ func main() {
 	if err != nil {
 		logger.Fatal().Err(err).Str("port", cfg.GRPCPort).Msg("failed to open grpc port")
 	}
-	grpcServer := inboundgrpc.New(inboundgrpc.Services{Health: healthService, Announcements: announcementService, Academic: academicService, Curricula: curriculumService, People: peopleService, Staff: staffService, Teaching: teachingService, Attendance: attendanceService, Assessment: assessmentService, Closing: closingService, Exams: examsService, Programs: programsService, Finance: financeService, Wellbeing: wellbeingService, Reports: reportsService, Documents: documentService, Apafa: apafaService, Institution: institutionService, Audit: auditService, Classroom: classroomService, Participation: participationService}, inboundgrpc.Config{TrustedProxies: cfg.TrustedProxies, Development: !production}, logger)
+	grpcServer := inboundgrpc.New(inboundgrpc.Services{Health: healthService, Announcements: announcementService, Academic: academicService, Curricula: curriculumService, People: peopleService, Staff: staffService, Teaching: teachingService, Attendance: attendanceService, Assessment: assessmentService, Closing: closingService, Exams: examsService, Programs: programsService, Finance: financeService, Wellbeing: wellbeingService, Reports: reportsService, Documents: documentService, Apafa: apafaService, Institution: institutionService, Audit: auditService, Classroom: classroomService, Participation: participationService, Compliance: complianceService}, inboundgrpc.Config{TrustedProxies: cfg.TrustedProxies, Development: !production}, logger)
 	defer grpcServer.GracefulStop()
 	go func() {
 		logger.Info().Str("port", cfg.GRPCPort).Msg("starting grpc server")

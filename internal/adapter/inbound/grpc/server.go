@@ -21,6 +21,7 @@ import (
 	"api/internal/adapter/inbound/grpc/gen/assessmentv1"
 	"api/internal/adapter/inbound/grpc/gen/attendancev1"
 	"api/internal/adapter/inbound/grpc/gen/classroomv1"
+	"api/internal/adapter/inbound/grpc/gen/compliancev1"
 	"api/internal/adapter/inbound/grpc/gen/documentsv1"
 	"api/internal/adapter/inbound/grpc/gen/examsv1"
 	"api/internal/adapter/inbound/grpc/gen/financev1"
@@ -57,6 +58,7 @@ type Services struct {
 	Exams         *service.ExamsService
 	Programs      *service.ProgramsService
 	Wellbeing     *service.WellbeingService
+	Compliance    *service.ComplianceService
 	Reports       *service.ReportsService
 	Documents     *service.DocumentService
 	Finance       *service.FinanceService
@@ -120,6 +122,8 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	wellbeingv1.RegisterWellbeingServiceServer(server, &wellbeingServer{wellbeing: services.Wellbeing, logger: logger})
 	healthServer.SetServingStatus(wellbeingv1.WellbeingService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	wellbeingv1.RegisterTutoringServiceServer(server, &tutoringServer{wellbeing: services.Wellbeing, logger: logger})
+	compliancev1.RegisterComplianceServiceServer(server, &complianceServer{compliance: services.Compliance, logger: logger})
+	healthServer.SetServingStatus(compliancev1.ComplianceService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	healthServer.SetServingStatus(wellbeingv1.TutoringService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	reportsv1.RegisterReportsServiceServer(server, &reportsServer{reports: services.Reports, logger: logger})
 	healthServer.SetServingStatus(reportsv1.ReportsService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)

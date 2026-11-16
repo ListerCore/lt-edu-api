@@ -261,6 +261,51 @@ type DocumentRenderer interface {
 	Form(doc FormDoc) ([]byte, error)
 	// Table is a list in landscape, one block per group with its header repeated (nómina de matrícula)
 	Table(doc TableDoc) ([]byte, error)
+	// TechReport is a technical report for the DRE: running header, numbered sections with paragraphs and
+	// matrices, the signature block and the evidence as numbered annex pages (phase E8)
+	TechReport(doc TechReportDoc) ([]byte, error)
+}
+
+// TechReportDoc is a technical report (RSG 613-2014-MINEDU, 6.2.1 and 6.3.2 c)
+type TechReportDoc struct {
+	// Top of every page: "CEBA … | DOCUMENTACIÓN TÉCNICA" and "Expediente N.° … • Ayacucho"
+	RunningHeader string
+	RunningSub    string
+	Number        string
+	Title         string
+	Subtitle      string
+	Sections      []ReportSection
+	// "Ayacucho, 16 de noviembre de 2026."
+	Place string
+	// Lines under the signature line
+	Signer []string
+	// A draft prints a watermark: a row is not verified yet
+	Draft    bool
+	Annexes  []ReportAnnex
+	IssuedOn time.Time
+}
+
+// ReportSection is a heading with paragraphs, an optional matrix and paragraphs after it
+type ReportSection struct {
+	Heading    string
+	Paragraphs []string
+	Table      *ReportTable
+	After      []string
+}
+
+// ReportTable is a matrix; Widths are relative; StatusColumn (>= 0) prints its cells in bold
+type ReportTable struct {
+	Columns      []string
+	Widths       []float64
+	Rows         [][]string
+	StatusColumn int
+}
+
+// ReportAnnex is one page of evidence: the annex title, what it shows and the image
+type ReportAnnex struct {
+	Title   string
+	Caption string
+	Image   Image
 }
 
 // DocHeader is the heading of the official documents: the regional office, the UGEL, the institution and its codes

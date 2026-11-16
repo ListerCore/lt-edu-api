@@ -146,6 +146,16 @@ var ownerSpecs = map[string]ownerSpec{
 	domain.OwnerPlatformSheet: {module: "institution",
 		read: roleSet(rDirector, rCoordinator, rSecretary, rTechLead), write: roleSet(rDirector, rTechLead),
 		categories: []string{"contract", "screenshot", "certificate", "report", "other"}},
+	// DRE compliance (phase E8): photos and plans of the environment, photos of the devices, captures of the tests
+	// and the evidence of each row of the technical reports
+	domain.OwnerEquipmentRoom: {module: "compliance", read: roleSet(rDirector, rCoordinator, rTechLead), write: roleSet(rDirector, rTechLead),
+		categories: []string{"photo", "plan", "other"}},
+	domain.OwnerEquipmentDevice: {module: "compliance", read: roleSet(rDirector, rCoordinator, rTechLead), write: roleSet(rDirector, rTechLead),
+		categories: []string{"photo", "certificate", "report", "other"}},
+	domain.OwnerEquipmentCheck: {module: "compliance", read: roleSet(rDirector, rCoordinator, rTechLead), write: roleSet(rDirector, rTechLead),
+		categories: []string{"screenshot", "report", "other"}},
+	domain.OwnerComplianceItem: {module: "compliance", read: roleSet(rDirector, rCoordinator, rTechLead), write: roleSet(rDirector, rTechLead),
+		categories: []string{"screenshot", "report", "other"}},
 	// Virtual classroom: files of a piece of material and of the library. Students read them once the item, its
 	// unit and its room are published (draft owners are FamilyHidden); teachers and coordinación upload them
 	// (service/classroom_service.go checks who edits which room)

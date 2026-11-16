@@ -64,3 +64,26 @@ func TestSignedRecord(t *testing.T) {
 		t.Fatalf("60 rows should take three or four pages")
 	}
 }
+
+// A technical report: running header, matrices across pages, signature and annex pages (a broken image does not fail)
+func TestTechReport(t *testing.T) {
+	doc := port.TechReportDoc{RunningHeader: "CEBA DEMO | DOCUMENTACIÓN TÉCNICA", RunningSub: "Expediente N.° 2026-0013636 • Ayacucho", Number: "INFORME TÉCNICO N.° 001-2026",
+		Title: "INFORME TÉCNICO DE IMPLEMENTACIÓN DE LA PLATAFORMA", Place: "Ayacucho, 16 de noviembre de 2026.", Signer: []string{"Firma del responsable técnico", "Nombres y apellidos: Ana Rojas"},
+		Draft: true, IssuedOn: time.Now()}
+	rows := [][]string{}
+	for i := 0; i < 40; i++ {
+		rows = append(rows, []string{"Elemento con un nombre largo que ocupa dos líneas", "Módulo › Submódulo\n/dashboard/ruta", "Anexo N.° 03 – Folio 12", "VERIFICADO"})
+	}
+	doc.Sections = []port.ReportSection{
+		{Heading: "I. OBJETO", Paragraphs: []string{strings.Repeat("Texto del objeto del informe. ", 40)}},
+		{Heading: "V. SECCIONES", Table: &port.ReportTable{Columns: []string{"ELEMENTO", "MÓDULO / RUTA", "EVIDENCIA", "ESTADO"}, Widths: []float64{30, 34, 20, 16}, Rows: rows, StatusColumn: 3}},
+	}
+	doc.Annexes = []port.ReportAnnex{{Title: "Anexo 03 · Folio 12 · Ficha", Caption: "Matrícula", Image: port.Image{Data: []byte("not an image"), Type: "png"}}}
+	out, err := NewRenderer().TechReport(doc)
+	if err != nil || !bytes.HasPrefix(out, []byte("%PDF")) {
+		t.Fatalf("tech report: %v", err)
+	}
+	if bytes.Contains(out, []byte("/Count 1\n")) || bytes.Contains(out, []byte("/Count 1 ")) {
+		t.Fatal("40 rows and an annex need several pages")
+	}
+}
