@@ -47,9 +47,13 @@ var ownerQueries = map[string]string{
 	domain.OwnerAttendanceJustification: `SELECT institution_id, student_id::text FROM attendance.justifications WHERE id = $1`,
 	domain.OwnerAuthorization:           `SELECT institution_id, '' FROM academic.authorizations WHERE id = $1`,
 	// The platform sheet is one per institution, so the owner id is the institution's own
-	domain.OwnerPlatformSheet: `SELECT id, '' FROM iam.institutions WHERE id = $1`,
-	domain.OwnerLibraryItem:   `SELECT institution_id, '' FROM classroom.library_items WHERE id = $1`,
-	domain.OwnerSubmission:    `SELECT st.institution_id, st.id::text FROM classroom.submissions s JOIN people.students st ON st.id = s.student_id WHERE s.id = $1`,
+	domain.OwnerPlatformSheet:   `SELECT id, '' FROM iam.institutions WHERE id = $1`,
+	domain.OwnerLibraryItem:     `SELECT institution_id, '' FROM classroom.library_items WHERE id = $1`,
+	domain.OwnerEquipmentRoom:   `SELECT institution_id, '' FROM equipment.rooms WHERE id = $1`,
+	domain.OwnerEquipmentDevice: `SELECT institution_id, '' FROM equipment.devices WHERE id = $1`,
+	domain.OwnerEquipmentCheck:  `SELECT institution_id, '' FROM equipment.checks WHERE id = $1`,
+	domain.OwnerComplianceItem:  `SELECT institution_id, '' FROM compliance.items WHERE id = $1`,
+	domain.OwnerSubmission:      `SELECT st.institution_id, st.id::text FROM classroom.submissions s JOIN people.students st ON st.id = s.student_id WHERE s.id = $1`,
 }
 
 // draftOwnerQueries read (institution, student, hidden from families) of owners that may still be drafts: an APAFA
