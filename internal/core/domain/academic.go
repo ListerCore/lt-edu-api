@@ -125,6 +125,19 @@ type Period struct {
 	CapacityTotal int
 }
 
+// EBA programs and the variants of its distance form (academic.sections.program / distance_variant)
+const (
+	EBAProgramPEBAJA   = "pebaja"
+	EBAProgramLiteracy = "literacy"
+
+	DistanceVirtual   = "virtual"
+	DistanceItinerant = "itinerant"
+)
+
+// EBAProgramMinAge is the youngest a student may enroll at in each EBA program: PEBAJA from 14, Alfabetización
+// from 15 (Programa Curricular EBA, §1.3)
+var EBAProgramMinAge = map[string]int{EBAProgramPEBAJA: 14, EBAProgramLiteracy: 15}
+
 // Section is a group of students of one grade (or CEPRE area) in a period
 type Section struct {
 	ID            string
@@ -137,8 +150,11 @@ type Section struct {
 	Name          string
 	Shift         string
 	AttentionMode string
-	Capacity      int
-	Room          string
+	// EBA only: pebaja | literacy, and virtual | itinerant when the form is distance
+	Program         string
+	DistanceVariant string
+	Capacity        int
+	Room            string
 	// Position of its level and grade, for ordering
 	LevelPosition int
 	GradePosition int
@@ -148,13 +164,15 @@ type Section struct {
 
 // SectionBatch creates one section per grade × name (CEPRE: per name, no grade)
 type SectionBatch struct {
-	LevelID       string
-	GradeIDs      []string
-	Names         []string
-	Shift         string
-	AttentionMode string
-	Capacity      int
-	Room          string
+	LevelID         string
+	GradeIDs        []string
+	Names           []string
+	Shift           string
+	AttentionMode   string
+	Program         string
+	DistanceVariant string
+	Capacity        int
+	Room            string
 }
 
 // LevelInput and GradeInput are what the panel sends to create or edit
@@ -190,11 +208,13 @@ type TermInput struct {
 }
 
 type SectionInput struct {
-	Name          string
-	Shift         string
-	AttentionMode string
-	Capacity      int
-	Room          string
+	Name            string
+	Shift           string
+	AttentionMode   string
+	Program         string
+	DistanceVariant string
+	Capacity        int
+	Room            string
 }
 
 var (

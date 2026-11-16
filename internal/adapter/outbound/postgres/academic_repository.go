@@ -509,7 +509,7 @@ func (r *AcademicRepository) UpdateTerm(ctx context.Context, institutionID, term
 // ---------- sections ----------
 
 const sectionColumns = `s.id, s.period_id, s.level_id, l.name, coalesce(s.grade_id::text, ''), coalesce(g.name, ''), coalesce(g.short_name, ''),
-	s.name, s.shift, coalesce(s.attention_mode, ''), s.capacity, s.room, l.position, coalesce(g.position, 0),
+	s.name, s.shift, coalesce(s.attention_mode, ''), coalesce(s.program, ''), coalesce(s.distance_variant, ''), s.capacity, s.room, l.position, coalesce(g.position, 0),
 	coalesce(s.tutor_id::text, ''), coalesce((SELECT st.given_names || ' ' || st.surnames FROM people.staff st WHERE st.id = s.tutor_id), '')`
 
 const sectionFrom = ` FROM academic.sections s
@@ -520,7 +520,7 @@ const sectionFrom = ` FROM academic.sections s
 func scanSection(row pgx.Row) (domain.Section, error) {
 	var s domain.Section
 	var capacity, levelPos, gradePos int16
-	err := row.Scan(&s.ID, &s.PeriodID, &s.LevelID, &s.LevelName, &s.GradeID, &s.GradeName, &s.GradeShort, &s.Name, &s.Shift, &s.AttentionMode, &capacity, &s.Room, &levelPos, &gradePos, &s.TutorID, &s.TutorName)
+	err := row.Scan(&s.ID, &s.PeriodID, &s.LevelID, &s.LevelName, &s.GradeID, &s.GradeName, &s.GradeShort, &s.Name, &s.Shift, &s.AttentionMode, &s.Program, &s.DistanceVariant, &capacity, &s.Room, &levelPos, &gradePos, &s.TutorID, &s.TutorName)
 	s.Capacity, s.LevelPosition, s.GradePosition = int(capacity), int(levelPos), int(gradePos)
 	return s, err
 }
@@ -554,12 +554,13 @@ func (r *AcademicRepository) CreateSections(ctx context.Context, institutionID, 
 		for _, s := range sections {
 			var id string
 			// The level (and grade) must belong to the same institution
-			err := tx.QueryRow(ctx, `INSERT INTO academic.sections (period_id, level_id, grade_id, name, shift, attention_mode, capacity, room)
-				SELECT $1, l.id, $3::uuid, $4, $5, $6, $7, $8 FROM academic.levels l
+			err := tx.QueryRow(ctx, `INSERT INTO academic.sections (period_id, level_id, grade_id, name, shift, attention_mode, capacity, room, program, distance_variant)
+				SELECT $1, l.id, $3::uuid, $4, $5, $6, $7, $8, $10, $11 FROM academic.levels l
 				WHERE l.id = $2 AND l.institution_id = $9
 				  AND ($3::uuid IS NULL OR EXISTS (SELECT 1 FROM academic.grades g WHERE g.id = $3::uuid AND g.level_id = l.id))
 				RETURNING id`,
-				periodID, s.LevelID, nilIfEmpty(s.GradeID), s.Name, s.Shift, nilIfEmpty(s.AttentionMode), s.Capacity, s.Room, institutionID).Scan(&id)
+				periodID, s.LevelID, nilIfEmpty(s.GradeID), s.Name, s.Shift, nilIfEmpty(s.AttentionMode), s.Capacity, s.Room, institutionID,
+				nilIfEmpty(s.Program), nilIfEmpty(s.DistanceVariant)).Scan(&id)
 			if err != nil {
 				return err
 			}
@@ -582,9 +583,10 @@ func (r *AcademicRepository) CreateSections(ctx context.Context, institutionID, 
 }
 
 func (r *AcademicRepository) UpdateSection(ctx context.Context, institutionID, sectionID string, in domain.SectionInput) (domain.Section, error) {
-	tag, err := r.c.pool.Exec(ctx, `UPDATE academic.sections s SET name = $3, shift = $4, attention_mode = $5, capacity = $6, room = $7
+	tag, err := r.c.pool.Exec(ctx, `UPDATE academic.sections s SET name = $3, shift = $4, attention_mode = $5, capacity = $6, room = $7,
+		program = $8, distance_variant = $9
 		FROM academic.periods p WHERE p.id = s.period_id AND p.institution_id = $1 AND s.id = $2`,
-		institutionID, sectionID, in.Name, in.Shift, nilIfEmpty(in.AttentionMode), in.Capacity, in.Room)
+		institutionID, sectionID, in.Name, in.Shift, nilIfEmpty(in.AttentionMode), in.Capacity, in.Room, nilIfEmpty(in.Program), nilIfEmpty(in.DistanceVariant))
 	if err != nil {
 		return domain.Section{}, academicErr(err)
 	}
@@ -592,6 +594,10 @@ func (r *AcademicRepository) UpdateSection(ctx context.Context, institutionID, s
 		return domain.Section{}, domain.ErrNotFound
 	}
 	return r.Section(ctx, institutionID, sectionID)
+}
+
+func (r *AcademicRepository) AuthorizedModes(ctx context.Context, institutionID string, day time.Time) (map[string][]string, bool, error) {
+	return authorizedModes(ctx, r.c, institutionID, day)
 }
 
 func (r *AcademicRepository) DeleteSection(ctx context.Context, institutionID, sectionID string) error {

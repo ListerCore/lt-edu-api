@@ -2,6 +2,7 @@ package port
 
 import (
 	"context"
+	"time"
 
 	"api/internal/core/domain"
 )
@@ -55,4 +56,7 @@ type AcademicRepository interface {
 	CreateSections(ctx context.Context, institutionID, periodID string, sections []domain.Section) ([]domain.Section, error)
 	UpdateSection(ctx context.Context, institutionID, sectionID string, in domain.SectionInput) (domain.Section, error)
 	DeleteSection(ctx context.Context, institutionID, sectionID string) error
+
+	// AuthorizedModes is InstitutionRepository.AuthorizedModes: the forms of attention authorized per level on day
+	AuthorizedModes(ctx context.Context, institutionID string, day time.Time) (map[string][]string, bool, error)
 }

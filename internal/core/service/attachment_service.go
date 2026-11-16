@@ -81,6 +81,7 @@ const (
 	rTreasurer    = "treasurer"
 	rStudent      = "student"
 	rGuardian     = "guardian"
+	rTechLead     = domain.RoleTechnicalLead
 )
 
 var ownerSpecs = map[string]ownerSpec{
@@ -136,6 +137,15 @@ var ownerSpecs = map[string]ownerSpec{
 	domain.OwnerApafaMeeting: {module: "apafa",
 		read: roleSet(rDirector, rCoordinator, rSecretary, rGuardian), write: roleSet(rDirector, rSecretary),
 		categories: []string{"minutes", "agenda", "report", "financial_statement", "attendance_list", "other"}},
+	// Institution file (Configuración › Institución): the PDF of each authorizing resolution, kept by dirección,
+	// and the hosting evidence of the platform sheet (contract, panel, availability checks), kept with the
+	// Responsable técnico (service/institution_service.go)
+	domain.OwnerAuthorization: {module: "institution",
+		read: roleSet(rDirector, rCoordinator, rSecretary, rTechLead), write: roleSet(rDirector),
+		categories: []string{"resolution", "annex", "other"}},
+	domain.OwnerPlatformSheet: {module: "institution",
+		read: roleSet(rDirector, rCoordinator, rSecretary, rTechLead), write: roleSet(rDirector, rTechLead),
+		categories: []string{"contract", "screenshot", "certificate", "report", "other"}},
 }
 
 func isFamily(role string) bool { return role == rStudent || role == rGuardian }

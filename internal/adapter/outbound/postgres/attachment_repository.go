@@ -45,6 +45,9 @@ var ownerQueries = map[string]string{
 	// requirements are verified, before the degree certificate exists, so it hangs on the student
 	domain.OwnerDegree:                  `SELECT institution_id, id::text FROM people.students WHERE id = $1`,
 	domain.OwnerAttendanceJustification: `SELECT institution_id, student_id::text FROM attendance.justifications WHERE id = $1`,
+	domain.OwnerAuthorization:           `SELECT institution_id, '' FROM academic.authorizations WHERE id = $1`,
+	// The platform sheet is one per institution, so the owner id is the institution's own
+	domain.OwnerPlatformSheet: `SELECT id, '' FROM iam.institutions WHERE id = $1`,
 }
 
 // draftOwnerQueries read (institution, student, hidden from families) of owners that may still be drafts: an APAFA

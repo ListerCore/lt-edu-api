@@ -31,10 +31,12 @@ const (
 var (
 	// Roles that change the structure; the rest of the staff only reads it
 	academicManagers = map[string]bool{domain.RoleSuperadmin: true, "director": true, "academic_coordinator": true}
-	academicViewers  = map[string]bool{"program_coordinator": true, "special_ed_specialist": true, "secretary": true, "teacher": true, "tutor": true, "assistant": true, "psychologist": true, "treasurer": true}
+	academicViewers  = map[string]bool{"program_coordinator": true, "special_ed_specialist": true, "secretary": true, "teacher": true, "tutor": true, "assistant": true, "psychologist": true, "treasurer": true, domain.RoleTechnicalLead: true}
 
 	validShifts          = map[string]bool{"morning": true, "afternoon": true, "evening": true}
 	validModes           = map[string]bool{"in_person": true, "blended": true, "distance": true}
+	validEBAPrograms     = map[string]bool{domain.EBAProgramPEBAJA: true, domain.EBAProgramLiteracy: true}
+	validDistanceVariant = map[string]bool{domain.DistanceVirtual: true, domain.DistanceItinerant: true}
 	validSeasons         = map[string]bool{"summer": true, "annual": true, "semester": true, "intensive": true, "review": true, "school": true, "other": true}
 	validFormativeLevels = map[string]bool{"technical": true, "professional_technical": true, "professional": true}
 	termsPerScheme       = map[string]int{domain.TermSchemeBimester: 4, domain.TermSchemeTrimester: 3, domain.TermSchemeSemester: 2, domain.TermSchemeNone: 0}
@@ -47,9 +49,16 @@ type AcademicService struct {
 	repo   port.AcademicRepository
 	auth   *AuthService
 	live   *LiveService
+	audit  *AuditService
 	logger zerolog.Logger
 	now    func() time.Time
 }
+
+// SetAudit makes the service record its changes in the audit log (the server sets it; seeds leave it nil)
+func (s *AcademicService) SetAudit(a *AuditService) { s.audit = a }
+
+// periodStatusLabels name the period states in the audit log
+var periodStatusLabels = map[string]string{domain.PeriodPlanning: "en planificación", domain.PeriodActive: "en curso", domain.PeriodClosed: "cerrado"}
 
 func NewAcademicService(repo port.AcademicRepository, auth *AuthService, live *LiveService, logger zerolog.Logger) *AcademicService {
 	return &AcademicService{repo: repo, auth: auth, live: live, logger: logger, now: time.Now}
@@ -274,6 +283,8 @@ func (s *AcademicService) UpdateSettings(ctx context.Context, token, slug string
 	if _, err := s.repo.SaveSettings(ctx, sc.institution.ID, next); err != nil {
 		return AcademicContext{}, err
 	}
+	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "institution", Action: domain.AuditUpdate, Entity: "settings", EntityID: sc.institution.ID,
+		Summary: "Actualizó el perfil de la institución"})
 	s.changed(ctx, sc, "settings")
 	return s.contextFor(ctx, sc)
 }
@@ -801,6 +812,8 @@ func (s *AcademicService) SetPeriodStatus(ctx context.Context, token, slug, peri
 	if err := s.repo.SetPeriodStatus(ctx, sc.institution.ID, periodID, status); err != nil {
 		return domain.Period{}, err
 	}
+	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "periods", Action: domain.AuditStatus, Entity: "period", EntityID: periodID,
+		Summary: "Cambió " + current.Name + " a " + periodStatusLabels[status], Changes: map[string]any{"status": []string{current.Status, status}}})
 	s.changed(ctx, sc, "periods")
 	return s.repo.Period(ctx, sc.institution.ID, periodID)
 }
@@ -820,6 +833,8 @@ func (s *AcademicService) DeletePeriod(ctx context.Context, token, slug, periodI
 	if err := s.repo.DeletePeriod(ctx, sc.institution.ID, periodID); err != nil {
 		return err
 	}
+	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "periods", Action: domain.AuditDelete, Entity: "period", EntityID: periodID,
+		Summary: "Eliminó el periodo " + current.Name})
 	s.changed(ctx, sc, "periods")
 	return nil
 }
@@ -905,10 +920,56 @@ func (s *AcademicService) validateSection(sc academicScope, settings domain.Acad
 		if !slices.Contains(lvl.AttentionModes, in.AttentionMode) {
 			fields["attentionMode"] = "Ese " + strings.ToLower(sc.profile.vocabulary.Level) + " no se ofrece en esa forma de atención."
 		}
+		validateEBASection(lvl, in, fields)
 	} else {
-		in.AttentionMode = ""
+		in.AttentionMode, in.Program, in.DistanceVariant = "", "", ""
 	}
 	return fields
+}
+
+// checkAuthorizedMode keeps sections inside what the institution is authorized to offer: once it records any
+// attention_mode authorization (Configuración › Institución), a section may only run in a form authorized for its
+// cycle, or for every cycle, on the current day. Institutions that record none are not checked
+func (s *AcademicService) checkAuthorizedMode(ctx context.Context, sc academicScope, levelID, mode string, fields map[string]string) error {
+	if !sc.profile.usesAttentionModes || mode == "" || fields["attentionMode"] != "" {
+		return nil
+	}
+	modes, recorded, err := s.repo.AuthorizedModes(ctx, sc.institution.ID, s.now())
+	if err != nil || !recorded {
+		return err
+	}
+	if !slices.Contains(modes[""], mode) && !slices.Contains(modes[levelID], mode) {
+		fields["attentionMode"] = domain.ErrModeNotAuthorized.Message
+	}
+	return nil
+}
+
+// validateEBASection checks the EBA program and distance variant of a section. PEBAJA is the default; Alfabetización
+// runs as in-person learning circles of the cycles that never go remote (inicial, intermedio), so a cycle that offers
+// the distance form (avanzado) cannot host it. A distance section is online unless it says itinerant
+func validateEBASection(lvl domain.Level, in *domain.SectionInput, fields map[string]string) {
+	if in.Program == "" {
+		in.Program = domain.EBAProgramPEBAJA
+	}
+	if !validEBAPrograms[in.Program] {
+		fields["program"] = "Elige PEBAJA o Alfabetización."
+	} else if in.Program == domain.EBAProgramLiteracy {
+		if slices.Contains(lvl.AttentionModes, "distance") {
+			fields["program"] = "Alfabetización solo se brinda en los ciclos inicial e intermedio."
+		} else if in.AttentionMode != "in_person" {
+			fields["attentionMode"] = "Los círculos de alfabetización son presenciales."
+		}
+	}
+	if in.AttentionMode != "distance" {
+		in.DistanceVariant = ""
+		return
+	}
+	if in.DistanceVariant == "" {
+		in.DistanceVariant = domain.DistanceVirtual
+	}
+	if !validDistanceVariant[in.DistanceVariant] {
+		fields["distanceVariant"] = "Elige virtual o itinerante."
+	}
 }
 
 // CreateSections creates one section per grade and name in one go ("A, B y C para 1.° a 5.°")
@@ -931,8 +992,11 @@ func (s *AcademicService) CreateSections(ctx context.Context, token, slug, perio
 		}
 		return nil, err
 	}
-	in := domain.SectionInput{Shift: batch.Shift, AttentionMode: batch.AttentionMode, Capacity: batch.Capacity, Room: batch.Room, Name: "x"}
+	in := domain.SectionInput{Shift: batch.Shift, AttentionMode: batch.AttentionMode, Program: batch.Program, DistanceVariant: batch.DistanceVariant, Capacity: batch.Capacity, Room: batch.Room, Name: "x"}
 	fields := s.validateSection(sc, settings, lvl, &in)
+	if err := s.checkAuthorizedMode(ctx, sc, lvl.ID, in.AttentionMode, fields); err != nil {
+		return nil, err
+	}
 	delete(fields, "name")
 	var names []string
 	for _, n := range batch.Names {
@@ -969,13 +1033,16 @@ func (s *AcademicService) CreateSections(ctx context.Context, token, slug, perio
 	var sections []domain.Section
 	for _, g := range grades {
 		for _, n := range names {
-			sections = append(sections, domain.Section{LevelID: lvl.ID, GradeID: g, Name: n, Shift: in.Shift, AttentionMode: in.AttentionMode, Capacity: in.Capacity, Room: in.Room})
+			sections = append(sections, domain.Section{LevelID: lvl.ID, GradeID: g, Name: n, Shift: in.Shift, AttentionMode: in.AttentionMode,
+				Program: in.Program, DistanceVariant: in.DistanceVariant, Capacity: in.Capacity, Room: in.Room})
 		}
 	}
 	created, err := s.repo.CreateSections(ctx, sc.institution.ID, periodID, sections)
 	if err != nil {
 		return nil, err
 	}
+	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "structure", Action: domain.AuditCreate, Entity: "section", EntityID: periodID,
+		Summary: "Creó " + strconv.Itoa(len(created)) + " secciones en " + lvl.Name})
 	s.changed(ctx, sc, "sections")
 	return created, nil
 }
@@ -1000,13 +1067,21 @@ func (s *AcademicService) UpdateSection(ctx context.Context, token, slug, sectio
 	if err != nil {
 		return domain.Section{}, err
 	}
-	if fields := s.validateSection(sc, settings, lvl, &in); len(fields) > 0 {
+	fields := s.validateSection(sc, settings, lvl, &in)
+	if in.AttentionMode != current.AttentionMode {
+		if err := s.checkAuthorizedMode(ctx, sc, lvl.ID, in.AttentionMode, fields); err != nil {
+			return domain.Section{}, err
+		}
+	}
+	if len(fields) > 0 {
 		return domain.Section{}, domain.Validation(fields)
 	}
 	out, err := s.repo.UpdateSection(ctx, sc.institution.ID, sectionID, in)
 	if err != nil {
 		return domain.Section{}, err
 	}
+	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "structure", Action: domain.AuditUpdate, Entity: "section", EntityID: sectionID,
+		Summary: "Editó la sección " + sectionLabel(out), Changes: sectionChanges(current, out)})
 	s.changed(ctx, sc, "sections")
 	return out, nil
 }
@@ -1026,6 +1101,8 @@ func (s *AcademicService) DeleteSection(ctx context.Context, token, slug, sectio
 	if err := s.repo.DeleteSection(ctx, sc.institution.ID, sectionID); err != nil {
 		return err
 	}
+	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "structure", Action: domain.AuditDelete, Entity: "section", EntityID: sectionID,
+		Summary: "Eliminó la sección " + sectionLabel(current)})
 	s.changed(ctx, sc, "sections")
 	return nil
 }
@@ -1076,6 +1153,31 @@ func (s *AcademicService) CopySections(ctx context.Context, token, slug, periodI
 }
 
 // ---------- helpers ----------
+
+// sectionLabel names a section for the audit log: "3.° A · Ciclo Avanzado"
+func sectionLabel(x domain.Section) string {
+	name := x.Name
+	if x.GradeShort != "" {
+		name = x.GradeShort + " " + name
+	}
+	return name + " · " + x.LevelName
+}
+
+// sectionChanges lists the fields of a section that changed, as [before, after]
+func sectionChanges(before, after domain.Section) map[string]any {
+	out := map[string]any{}
+	pairs := map[string][2]string{
+		"name": {before.Name, after.Name}, "shift": {before.Shift, after.Shift}, "attentionMode": {before.AttentionMode, after.AttentionMode},
+		"program": {before.Program, after.Program}, "distanceVariant": {before.DistanceVariant, after.DistanceVariant}, "room": {before.Room, after.Room},
+		"capacity": {strconv.Itoa(before.Capacity), strconv.Itoa(after.Capacity)},
+	}
+	for k, v := range pairs {
+		if v[0] != v[1] {
+			out[k] = []string{v[0], v[1]}
+		}
+	}
+	return out
+}
 
 // codeFrom keeps a given code or derives one from the name: "Ciclo Avanzado" → "ciclo-avanzado"
 func codeFrom(code, name string) string {
