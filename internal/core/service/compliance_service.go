@@ -349,7 +349,7 @@ func (s *ComplianceService) SaveReport(ctx context.Context, token, slug string, 
 // ---------- equipment ----------
 
 var (
-	equipmentKinds    = map[string]bool{"desktop": true, "laptop": true, "tablet": true, "network": true, "printer": true, "other": true}
+	equipmentKinds = map[string]bool{"desktop": true, "laptop": true, "tablet": true, "network": true, "printer": true, "other": true}
 	devicePurposes = map[string]bool{"virtual_tutoring": true, "student_support": true, "administration": true, "shared": true}
 	deviceStatuses = map[string]bool{"operational": true, "pending": true}
 	linkKinds      = map[string]bool{"": true, "fiber": true, "adsl": true, "wireless": true, "mobile": true, "other": true}
