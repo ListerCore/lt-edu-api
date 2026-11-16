@@ -17,6 +17,18 @@ cd joseph-app && node scripts/walkthrough.mjs --sessions /tmp/sessions.json --ty
 cd joseph-api && go run ./cmd/demosessions -cleanup                              # borra las sesiones
 ```
 
+Resultado en `demo-eba`: los 9 roles, en escritorio y en celular, con tema claro y oscuro, recorren su menú
+completo (de 8 a 36 páginas) sin errores. Antes de llegar a eso, el recorrido encontró cuatro problemas, ya
+corregidos:
+
+- a los estudiantes se les ofrecían Cursos y Notas, que la API les niega;
+- Certificados aparecía en EBR y EBA, aunque es la página de los institutos;
+- el tablero de tutoría repetía una etiqueta de alerta;
+- la ficha de bienestar se caía si la API era anterior a la app.
+
+Chrome en modo headless se traba después de cientos de navegaciones, así que el script abre un navegador nuevo por
+rol.
+
 `demosessions` no corre en producción ni fuera de las instituciones `demo-…`. Cada rol entra como una persona real
 del demo, para que vea datos reales: dirección, coordinación, secretaría, psicología, tesorería, tutor, docente,
 responsable técnico y estudiante.
