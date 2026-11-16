@@ -107,9 +107,10 @@ func (s *ClassroomService) Assessment(ctx context.Context, token, slug, itemID s
 		inProgress := len(attempts) > 0 && attempts[0].Status == domain.SubmissionInProgress
 		view.CanStart = view.OpenNow && !inProgress && len(attempts) < a.MaxAttempts
 	}
-	// Answers stay hidden until the student's latest attempt is graded and the teacher shows them
+	// Answers stay hidden until the student's latest attempt is graded, the teacher shows them and no attempt is
+	// left to take (otherwise the next attempt would be answered with them)
 	graded := len(view.Attempts) > 0 && view.Attempts[0].Status == domain.SubmissionGraded
-	if !(a.ShowAnswers && graded) {
+	if !(a.ShowAnswers && graded && !view.CanStart) {
 		hideAnswers(&a)
 	}
 	view.Assessment = a

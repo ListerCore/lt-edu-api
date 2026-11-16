@@ -146,6 +146,16 @@ var ownerSpecs = map[string]ownerSpec{
 	domain.OwnerPlatformSheet: {module: "institution",
 		read: roleSet(rDirector, rCoordinator, rSecretary, rTechLead), write: roleSet(rDirector, rTechLead),
 		categories: []string{"contract", "screenshot", "certificate", "report", "other"}},
+	// DRE compliance (phase E8): photos and plans of the environment, photos of the devices, captures of the tests
+	// and the evidence of each row of the technical reports
+	domain.OwnerEquipmentRoom: {module: "compliance", read: roleSet(rDirector, rCoordinator, rTechLead), write: roleSet(rDirector, rTechLead),
+		categories: []string{"photo", "plan", "other"}},
+	domain.OwnerEquipmentDevice: {module: "compliance", read: roleSet(rDirector, rCoordinator, rTechLead), write: roleSet(rDirector, rTechLead),
+		categories: []string{"photo", "certificate", "report", "other"}},
+	domain.OwnerEquipmentCheck: {module: "compliance", read: roleSet(rDirector, rCoordinator, rTechLead), write: roleSet(rDirector, rTechLead),
+		categories: []string{"screenshot", "report", "other"}},
+	domain.OwnerComplianceItem: {module: "compliance", read: roleSet(rDirector, rCoordinator, rTechLead), write: roleSet(rDirector, rTechLead),
+		categories: []string{"screenshot", "report", "other"}},
 	// Virtual classroom: files of a piece of material and of the library. Students read them once the item, its
 	// unit and its room are published (draft owners are FamilyHidden); teachers and coordinación upload them
 	// (service/classroom_service.go checks who edits which room)
@@ -206,6 +216,8 @@ type AttachmentService struct {
 	auth   *AuthService
 	store  port.ObjectStore
 	logger zerolog.Logger
+	// Per-owner checks beyond the role (classroom material and hand-ins)
+	guards map[string]AttachmentGuard
 }
 
 func NewAttachmentService(repo port.AttachmentRepository, auth *AuthService, store port.ObjectStore, logger zerolog.Logger) *AttachmentService {
@@ -218,7 +230,38 @@ type attachmentScope struct {
 	role          string
 	userID        string
 	userName      string
+	email         string
 	children      []string
+}
+
+// AttachmentAccess is what a guard is asked: who (role, account email) wants to read or write the files of one owner
+type AttachmentAccess struct {
+	InstitutionID string
+	Role          string
+	Email         string
+	OwnerID       string
+	Write         bool
+}
+
+// AttachmentGuard checks one owner beyond the role: the classroom knows who teaches a room, which grade a student
+// is in and whether a hand-in is still open. nil means allowed; any error refuses
+type AttachmentGuard func(ctx context.Context, a AttachmentAccess) error
+
+// SetGuard adds the check of an owner kind (set by the server)
+func (s *AttachmentService) SetGuard(kind string, g AttachmentGuard) {
+	if s.guards == nil {
+		s.guards = map[string]AttachmentGuard{}
+	}
+	s.guards[kind] = g
+}
+
+// guarded runs the guard of the kind, if any; the platform superadmin always passes
+func (s *AttachmentService) guarded(ctx context.Context, institutionID, role, email, kind, ownerID string, write bool) bool {
+	g := s.guards[kind]
+	if g == nil || role == domain.RoleSuperadmin {
+		return true
+	}
+	return g(ctx, AttachmentAccess{InstitutionID: institutionID, Role: role, Email: email, OwnerID: ownerID, Write: write}) == nil
 }
 
 func (s *AttachmentService) scope(ctx context.Context, token, institutionSlug string) (attachmentScope, error) {
@@ -230,7 +273,7 @@ func (s *AttachmentService) scope(ctx context.Context, token, institutionSlug st
 	if err != nil {
 		return attachmentScope{}, err
 	}
-	sc := attachmentScope{institutionID: isc.institution.ID, role: isc.role, userID: isc.userID, userName: uploaderName(me.User)}
+	sc := attachmentScope{institutionID: isc.institution.ID, role: isc.role, userID: isc.userID, userName: uploaderName(me.User), email: me.User.Email}
 	if isFamily(sc.role) {
 		if sc.children, err = s.familyStudents(ctx, sc.institutionID, me.User.Email); err != nil {
 			return sc, err
@@ -300,16 +343,17 @@ func (s *AttachmentService) List(ctx context.Context, token, institutionSlug, ow
 	if err != nil {
 		return AttachmentList{}, err
 	}
-	if !canReadOwner(sc.role, spec, owner, sc.children) {
+	if !canReadOwner(sc.role, spec, owner, sc.children) || !s.guarded(ctx, sc.institutionID, sc.role, sc.email, ownerKind, ownerID, false) {
 		return AttachmentList{}, domain.ErrAttachmentForbidden
 	}
 	files, err := s.repo.List(ctx, sc.institutionID, ownerKind, ownerID)
 	if err != nil {
 		return AttachmentList{}, err
 	}
-	out := AttachmentList{Files: make([]AttachmentEntry, len(files)), CanEdit: canWriteOwner(sc.role, spec, owner, sc.children), Categories: spec.categories, MaxFiles: maxFilesPerOwner}
+	writes := canWriteOwner(sc.role, spec, owner, sc.children) && s.guarded(ctx, sc.institutionID, sc.role, sc.email, ownerKind, ownerID, true)
+	out := AttachmentList{Files: make([]AttachmentEntry, len(files)), CanEdit: writes, Categories: spec.categories, MaxFiles: maxFilesPerOwner}
 	for i, f := range files {
-		out.Files[i] = AttachmentEntry{FileAttachment: f, CanDelete: canDeleteFile(sc.role, sc.userID, spec, owner, sc.children, f)}
+		out.Files[i] = AttachmentEntry{FileAttachment: f, CanDelete: writes && canDeleteFile(sc.role, sc.userID, spec, owner, sc.children, f)}
 	}
 	return out, nil
 }
@@ -429,10 +473,10 @@ func (s *AttachmentService) Upload(ctx context.Context, token string, in Attachm
 	if err != nil {
 		return nil, err
 	}
-	if !canReadOwner(sc.role, spec, owner, sc.children) {
+	if !canReadOwner(sc.role, spec, owner, sc.children) || !s.guarded(ctx, sc.institutionID, sc.role, sc.email, in.OwnerKind, in.OwnerID, false) {
 		return nil, domain.ErrAttachmentForbidden
 	}
-	if !canWriteOwner(sc.role, spec, owner, sc.children) {
+	if !canWriteOwner(sc.role, spec, owner, sc.children) || !s.guarded(ctx, sc.institutionID, sc.role, sc.email, in.OwnerKind, in.OwnerID, true) {
 		return nil, domain.ErrAttachmentReadOnly
 	}
 	rows, fields := validateUpload(in, spec)
@@ -499,7 +543,7 @@ func (s *AttachmentService) Delete(ctx context.Context, token, institutionSlug, 
 	if !canReadOwner(sc.role, spec, owner, sc.children) {
 		return domain.ErrNotFound
 	}
-	if !canDeleteFile(sc.role, sc.userID, spec, owner, sc.children, f) {
+	if !canDeleteFile(sc.role, sc.userID, spec, owner, sc.children, f) || !s.guarded(ctx, sc.institutionID, sc.role, sc.email, f.OwnerKind, f.OwnerID, true) {
 		return domain.ErrAttachmentReadOnly
 	}
 	if err := s.repo.Delete(ctx, f.ID); err != nil {
@@ -553,7 +597,7 @@ func (s *AttachmentService) Open(ctx context.Context, token, id string) (StoredF
 				return StoredFile{}, err
 			}
 		}
-		if canReadOwner(r.RoleCode, spec, owner, children) {
+		if canReadOwner(r.RoleCode, spec, owner, children) && s.guarded(ctx, f.InstitutionID, r.RoleCode, me.User.Email, f.OwnerKind, f.OwnerID, false) {
 			permitted = true
 			break
 		}

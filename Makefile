@@ -99,6 +99,20 @@ db/stop:
 db/psql:
 	docker exec -it $(APP__DB__CONTAINER) psql -U $(APP__DB__USER) -d $(APP__DB__NAME)
 
+# Respaldo de la base (scripts/backup.sh) y prueba de que se restaura (scripts/restore-check.sh <archivo>)
+db/backup:
+	DB_CONTAINER=$(APP__DB__CONTAINER) APP__DB__USER=$(APP__DB__USER) APP__DB__NAME=$(APP__DB__NAME) ./scripts/backup.sh
+
+db/restore-check:
+	DB_CONTAINER=$(APP__DB__CONTAINER) APP__DB__USER=$(APP__DB__USER) APP__DB__NAME=$(APP__DB__NAME) ./scripts/restore-check.sh $(DUMP)
+
+# Sesiones de prueba por rol de una institución demo (recorrido y prueba de carga); demo/sessions-cleanup las borra
+demo/sessions:
+	go run ./cmd/demosessions -slug $(or $(SLUG),demo-eba)
+
+demo/sessions-cleanup:
+	go run ./cmd/demosessions -cleanup
+
 redis/start: network/create
 	docker compose up -d --wait redis
 

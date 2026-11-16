@@ -53,6 +53,9 @@ type Config struct {
 	StorageUseSSL    bool
 	StorageRegion    string
 	StorageBucket    string
+
+	// How often the platform URL of each institution is probed for the availability log (0 turns it off)
+	UptimeInterval time.Duration
 }
 
 func Load() Config {
@@ -69,6 +72,7 @@ func Load() Config {
 	v.SetDefault("APP__GRPC__PORT", "9090")
 	v.SetDefault("APP__HTTP__TRUSTED_PROXIES", "")
 	v.SetDefault("APP__WS__ORIGINS", "")
+	v.SetDefault("APP__UPTIME__INTERVAL", "0")
 
 	v.SetDefault("APP__DB__HOST", "localhost")
 	v.SetDefault("APP__DB__PORT", "5432")
@@ -136,11 +140,12 @@ func Load() Config {
 		TrustedProxies: splitList(v.GetString("APP__HTTP__TRUSTED_PROXIES")),
 		WSOrigins:      splitList(v.GetString("APP__WS__ORIGINS")),
 
-		SiteURL:       v.GetString("APP__SITE__URL"),
-		SessionTTL:    v.GetDuration("APP__SESSION__TTL"),
-		SecretsKey:    v.GetString("APP__SECRETS__KEY"),
-		AdminEmail:    v.GetString("APP__ADMIN__EMAIL"),
-		AdminPassword: v.GetString("APP__ADMIN__PASSWORD"),
+		SiteURL:        v.GetString("APP__SITE__URL"),
+		SessionTTL:     v.GetDuration("APP__SESSION__TTL"),
+		UptimeInterval: v.GetDuration("APP__UPTIME__INTERVAL"),
+		SecretsKey:     v.GetString("APP__SECRETS__KEY"),
+		AdminEmail:     v.GetString("APP__ADMIN__EMAIL"),
+		AdminPassword:  v.GetString("APP__ADMIN__PASSWORD"),
 
 		GoogleClientID:     v.GetString("APP__GOOGLE__OAUTH__CLIENT_ID"),
 		GoogleClientSecret: v.GetString("APP__GOOGLE__OAUTH__CLIENT_SECRET"),

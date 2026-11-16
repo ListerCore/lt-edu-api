@@ -185,14 +185,15 @@ func (r *ClosingRepository) IssueRecord(ctx context.Context, institutionID strin
 }
 
 const recordColumns = `r.id, r.period_id, r.section_id, coalesce(g.short_name || ' ', '') || sec.name || ' · ' || l.name, coalesce(r.assignment_id::text, ''),
-	r.kind, r.number, r.code, r.status, r.issued_name, r.issued_at`
+	r.kind, r.number, r.code, r.status, r.issued_name, r.issued_at, coalesce(r.document_id::text, ''), coalesce(v.id::text, ''), coalesce(v.status, '')`
 
 const recordFrom = ` FROM assessment.records r JOIN academic.sections sec ON sec.id = r.section_id JOIN academic.levels l ON l.id = sec.level_id
-	LEFT JOIN academic.grades g ON g.id = sec.grade_id`
+	LEFT JOIN academic.grades g ON g.id = sec.grade_id
+	LEFT JOIN LATERAL (SELECT v.id, v.status FROM documents.versions v WHERE v.document_id = r.document_id ORDER BY v.number DESC LIMIT 1) v ON true`
 
 func scanRecord(row pgx.Row, withContent bool) (domain.Record, error) {
 	var x domain.Record
-	dest := []any{&x.ID, &x.PeriodID, &x.SectionID, &x.SectionLabel, &x.AssignmentID, &x.Kind, &x.Number, &x.Code, &x.Status, &x.IssuedName, &x.IssuedAt}
+	dest := []any{&x.ID, &x.PeriodID, &x.SectionID, &x.SectionLabel, &x.AssignmentID, &x.Kind, &x.Number, &x.Code, &x.Status, &x.IssuedName, &x.IssuedAt, &x.DocumentID, &x.ActVersionID, &x.ActStatus}
 	if withContent {
 		dest = append(dest, &x.Content)
 	}

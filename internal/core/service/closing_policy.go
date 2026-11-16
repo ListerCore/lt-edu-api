@@ -34,6 +34,10 @@ func ruleFor(kind, levelCode, gradeCode string) PromotionRule {
 		return PromotionRule{Automatic: true, Name: "Promoción automática en Educación Inicial"}
 	case level == "primaria" && gradeCode == "1" && kind == domain.KindEBR:
 		return PromotionRule{Automatic: true, Name: "Promoción automática en 1.° de primaria"}
+	case kind == domain.KindEBA && level == "avanzado":
+		return PromotionRule{Areas: 3, Name: "Ciclo avanzado: tres áreas"}
+	case kind == domain.KindEBA:
+		return PromotionRule{Areas: 4, Name: "Ciclos inicial e intermedio: cuatro áreas"}
 	case level == "secundaria", level == "avanzado":
 		return PromotionRule{Areas: 3, Referential: kind == domain.KindEBE, Name: "Secundaria: tres áreas"}
 	default:

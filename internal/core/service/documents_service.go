@@ -3,7 +3,6 @@ package service
 import (
 	"context"
 	"encoding/base64"
-	"encoding/json"
 	"fmt"
 	"regexp"
 	"strconv"
@@ -28,6 +27,8 @@ type DocumentService struct {
 	finance    *FinanceService
 	// EBA enrollment documents (phase E1); set by the server
 	people *PeopleService
+	// Permanence reports (phase E5); set by the server
+	participation *ParticipationService
 	// Public URL of joseph-app, where the QR of a document leads
 	siteURL string
 	now     func() time.Time
@@ -237,34 +238,9 @@ func (s *DocumentService) Record(ctx context.Context, token, slug, id string) (P
 	if err != nil {
 		return PdfFile{}, err
 	}
-	var c RecordContent
-	if err := json.Unmarshal(rec.Content, &c); err != nil {
-		return PdfFile{}, fmt.Errorf("acta %s: %w", rec.Code, err)
-	}
-	issued := c.IssuedOn
-	if t, err := time.Parse(time.DateOnly, c.IssuedOn); err == nil {
-		issued = shortDate(t)
-	}
-	doc := port.RecordDoc{Institution: c.Institution, Title: c.Title, Code: rec.Code, Issued: issued, Replaced: rec.Status == "replaced",
-		Subtitle: strings.Join(nonBlank(c.Period, c.Section, c.Level, c.Subject), " · "), Legend: strings.Join(c.Legend, " · "), Signatures: c.Signatures}
-	for _, kv := range [][2]string{{"Tutor(a)", c.Tutor}, {"Docente", c.Teacher}, {"Regla aplicada", c.Rule}} {
-		if kv[1] != "" {
-			doc.Info = append(doc.Info, kv[0]+": "+kv[1])
-		}
-	}
-	for _, g := range c.Groups {
-		group := port.RecordGroupDoc{Name: g.Name}
-		for _, col := range g.Columns {
-			group.Codes = append(group.Codes, col.Code)
-			doc.Columns = append(doc.Columns, col.Code+" "+col.Name)
-		}
-		doc.Groups = append(doc.Groups, group)
-	}
-	for _, r := range c.Rows {
-		doc.Rows = append(doc.Rows, port.RecordRowDoc{N: r.N, Code: r.Code, Name: r.Name, Note: r.Note, Cells: r.Cells, Situation: r.Situation})
-	}
-	for _, sm := range c.Summary {
-		doc.Summary = append(doc.Summary, fmt.Sprintf("%s: %d", sm.Label, sm.Count))
+	doc, err := recordDoc(rec)
+	if err != nil {
+		return PdfFile{}, err
 	}
 	content, err := s.render.Record(doc)
 	if err != nil {

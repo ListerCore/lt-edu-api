@@ -28,24 +28,45 @@ func (r *Renderer) Record(doc port.RecordDoc) ([]byte, error) {
 	}
 	p := &pen{pdf: pdf, size: size}
 	x := margin
-	fit(pdf, "escudo", x, margin, 14, 16)
-	y := margin + p.text(x+17, margin, fullW-80, doc.Institution, true, 1, "L")
-	y += p.text(x+17, y, fullW-80, doc.Title, true, 1.5, "L")
-	y += p.text(x+17, y, fullW-80, doc.Subtitle, false, 1, "L")
-	ry := margin + p.text(x+fullW-80, margin, 80, doc.Code, true, 1.2, "R")
-	ry += p.text(x+fullW-80, ry, 80, "Emitida el "+doc.Issued, false, 0.95, "R")
-	if doc.Replaced {
-		p.text(x+fullW-80, ry, 80, "Reemplazada por una emisión posterior", true, 0.95, "R")
+	var y float64
+	if doc.Header != nil {
+		// Issued version: the official heading, the version and page in the footer
+		issued := "Emitida el " + doc.Issued
+		if doc.Seal != nil && doc.Seal.Version > 0 {
+			issued = "Versión " + strconv.Itoa(doc.Seal.Version) + " · " + issued
+		}
+		footer(pdf, p, fullW, pageH, issued)
+		y = docHeader(pdf, p, *doc.Header, fullW) - 2
+	} else {
+		fit(pdf, "escudo", x, margin, 14, 16)
+		y = margin + p.text(x+17, margin, fullW-80, doc.Institution, true, 1, "L")
+		y += p.text(x+17, y, fullW-80, doc.Title, true, 1.5, "L")
+		y += p.text(x+17, y, fullW-80, doc.Subtitle, false, 1, "L")
+		ry := margin + p.text(x+fullW-80, margin, 80, doc.Code, true, 1.2, "R")
+		ry += p.text(x+fullW-80, ry, 80, "Emitida el "+doc.Issued, false, 0.95, "R")
+		if doc.Replaced {
+			p.text(x+fullW-80, ry, 80, "Reemplazada por una emisión posterior", true, 0.95, "R")
+		}
+		y = max(y, margin+17) + 1
 	}
-	y = max(y, margin+17) + 1
 	if len(doc.Info) > 0 {
 		y += p.text(x, y, fullW, strings.Join(doc.Info, " · "), false, 0.95, "L") + 1.5
 	}
-	// Columns: N.°, code, name, the groups' columns, situation
+	// Columns: N.°, code, the grade (multigrade sections), name, the groups' columns, situation
+	gradeW := 0.0
+	for _, r := range doc.Rows {
+		if r.Grade != "" {
+			gradeW = 10
+		}
+	}
 	nameW := 52.0
-	fixed := 8 + 18 + nameW + 26
+	fixed := 8 + 18 + gradeW + nameW + 26
 	cw := (fullW - fixed) / float64(max(columns, 1))
-	widths := []float64{8, 18, nameW}
+	widths := []float64{8, 18}
+	if gradeW > 0 {
+		widths = append(widths, gradeW)
+	}
+	widths = append(widths, nameW)
 	for range columns {
 		widths = append(widths, cw)
 	}
@@ -60,8 +81,11 @@ func (r *Renderer) Record(doc port.RecordDoc) ([]byte, error) {
 		total := gh + h
 		p.draw(box{text: "N.°", bold: true, align: "C", border: true, fill: grey}, x, y, 8, total)
 		p.draw(box{text: "Código", bold: true, align: "C", border: true, fill: grey}, x+8, y, 18, total)
-		p.draw(box{text: "Apellidos y nombres", bold: true, align: "C", border: true, fill: grey}, x+26, y, nameW, total)
-		cx := x + 26 + nameW
+		if gradeW > 0 {
+			p.draw(box{text: "Grado", bold: true, scale: 0.85, align: "C", border: true, fill: grey}, x+26, y, gradeW, total)
+		}
+		p.draw(box{text: "Apellidos y nombres", bold: true, align: "C", border: true, fill: grey}, x+26+gradeW, y, nameW, total)
+		cx := x + 26 + gradeW + nameW
 		for _, g := range doc.Groups {
 			w := cw * float64(len(g.Codes))
 			p.draw(box{text: g.Name, bold: true, scale: 0.85, align: "C", border: true, fill: grey}, cx, y, w, gh)
@@ -80,12 +104,21 @@ func (r *Renderer) Record(doc port.RecordDoc) ([]byte, error) {
 		if r.Note != "" {
 			name += "\n" + r.Note
 		}
-		cells := []box{{text: strconv.Itoa(r.N), align: "C", border: true}, {text: r.Code, scale: 0.9, border: true}, {text: name, border: true}}
+		cells := []box{{text: strconv.Itoa(r.N), align: "C", border: true}, {text: r.Code, scale: 0.9, border: true}}
+		if gradeW > 0 {
+			cells = append(cells, box{text: r.Grade, scale: 0.9, align: "C", border: true})
+		}
+		nameBox := box{text: name, border: true}
+		cells = append(cells, nameBox)
 		for _, c := range r.Cells {
-			cells = append(cells, box{text: c, bold: c == "C" || c == "AD", align: "C", border: true})
+			scale := 1.0
+			if c == "EXO" {
+				scale = 0.75
+			}
+			cells = append(cells, box{text: c, bold: c == "C" || c == "AD", scale: scale, align: "C", border: true})
 		}
 		cells = append(cells, box{text: r.Situation, bold: true, scale: 0.9, align: "C", border: true})
-		h := p.height(cells[2], nameW)
+		h := p.height(nameBox, nameW)
 		if y+h > bottom {
 			pdf.AddPage()
 			y = margin + header(margin)
@@ -109,7 +142,17 @@ func (r *Renderer) Record(doc port.RecordDoc) ([]byte, error) {
 	if len(doc.Summary) > 0 {
 		y += p.text(x, y, fullW, "Resumen: "+strings.Join(doc.Summary, " · "), true, 0.95, "L")
 	}
-	signatures(pdf, p, doc.Signatures, &y)
+	if doc.Seal != nil {
+		y += 3
+		sealH := seal(&pen{pdf: pdf, size: size, dry: true}, x, 0, fullW, *doc.Seal)
+		tail(sealH + 2)
+		seal(p, x, y, fullW, *doc.Seal)
+		if doc.Seal.Mark != "" {
+			watermark(pdf, doc.Seal.Mark, pageW, pageH)
+		}
+	} else {
+		signatures(pdf, p, doc.Signatures, &y)
+	}
 	return output(pdf)
 }
 

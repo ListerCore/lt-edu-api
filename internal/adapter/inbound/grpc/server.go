@@ -21,10 +21,12 @@ import (
 	"api/internal/adapter/inbound/grpc/gen/assessmentv1"
 	"api/internal/adapter/inbound/grpc/gen/attendancev1"
 	"api/internal/adapter/inbound/grpc/gen/classroomv1"
+	"api/internal/adapter/inbound/grpc/gen/compliancev1"
 	"api/internal/adapter/inbound/grpc/gen/documentsv1"
 	"api/internal/adapter/inbound/grpc/gen/examsv1"
 	"api/internal/adapter/inbound/grpc/gen/financev1"
 	"api/internal/adapter/inbound/grpc/gen/institutionv1"
+	"api/internal/adapter/inbound/grpc/gen/participationv1"
 	"api/internal/adapter/inbound/grpc/gen/peoplev1"
 	"api/internal/adapter/inbound/grpc/gen/programsv1"
 	"api/internal/adapter/inbound/grpc/gen/reportsv1"
@@ -56,11 +58,13 @@ type Services struct {
 	Exams         *service.ExamsService
 	Programs      *service.ProgramsService
 	Wellbeing     *service.WellbeingService
+	Compliance    *service.ComplianceService
 	Reports       *service.ReportsService
 	Documents     *service.DocumentService
 	Finance       *service.FinanceService
 	Apafa         *service.ApafaService
 	Institution   *service.InstitutionService
+	Participation *service.ParticipationService
 	Audit         *service.AuditService
 	Classroom     *service.ClassroomService
 }
@@ -117,6 +121,10 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	healthServer.SetServingStatus(programsv1.ProgramsService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	wellbeingv1.RegisterWellbeingServiceServer(server, &wellbeingServer{wellbeing: services.Wellbeing, logger: logger})
 	healthServer.SetServingStatus(wellbeingv1.WellbeingService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	wellbeingv1.RegisterTutoringServiceServer(server, &tutoringServer{wellbeing: services.Wellbeing, logger: logger})
+	compliancev1.RegisterComplianceServiceServer(server, &complianceServer{compliance: services.Compliance, logger: logger})
+	healthServer.SetServingStatus(compliancev1.ComplianceService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	healthServer.SetServingStatus(wellbeingv1.TutoringService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	reportsv1.RegisterReportsServiceServer(server, &reportsServer{reports: services.Reports, logger: logger})
 	healthServer.SetServingStatus(reportsv1.ReportsService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	documentsv1.RegisterDocumentsServiceServer(server, &documentsServer{documents: services.Documents, logger: logger})
@@ -127,6 +135,8 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	healthServer.SetServingStatus(apafav1.ApafaService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	institutionv1.RegisterInstitutionServiceServer(server, &institutionServer{institution: services.Institution, audit: services.Audit, logger: logger})
 	healthServer.SetServingStatus(institutionv1.InstitutionService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	participationv1.RegisterParticipationServiceServer(server, &participationServer{participation: services.Participation, logger: logger})
+	healthServer.SetServingStatus(participationv1.ParticipationService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	classroomv1.RegisterClassroomServiceServer(server, &classroomServer{classroom: services.Classroom, logger: logger})
 	healthServer.SetServingStatus(classroomv1.ClassroomService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	healthpb.RegisterHealthServer(server, healthServer)

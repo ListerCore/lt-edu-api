@@ -185,6 +185,8 @@ type WellAlert struct {
 	Title       string
 	Detail      string
 	Since       *time.Time
+	// The precise signal (dropout: inactive | overdue | low_permanence; commitment), to act on it
+	Code string
 }
 
 var (

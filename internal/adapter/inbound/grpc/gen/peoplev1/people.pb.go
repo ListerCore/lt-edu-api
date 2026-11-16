@@ -4944,6 +4944,526 @@ func (x *SetSiagieStatusResponse) GetUpdated() int32 {
 	return 0
 }
 
+type ImportRow struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Line            int32                  `protobuf:"varint,1,opt,name=line,proto3" json:"line,omitempty"`
+	DocumentType    string                 `protobuf:"bytes,2,opt,name=document_type,json=documentType,proto3" json:"document_type,omitempty"`
+	DocumentNumber  string                 `protobuf:"bytes,3,opt,name=document_number,json=documentNumber,proto3" json:"document_number,omitempty"`
+	PaternalSurname string                 `protobuf:"bytes,4,opt,name=paternal_surname,json=paternalSurname,proto3" json:"paternal_surname,omitempty"`
+	MaternalSurname string                 `protobuf:"bytes,5,opt,name=maternal_surname,json=maternalSurname,proto3" json:"maternal_surname,omitempty"`
+	GivenNames      string                 `protobuf:"bytes,6,opt,name=given_names,json=givenNames,proto3" json:"given_names,omitempty"`
+	// dd/mm/aaaa
+	BirthDate string `protobuf:"bytes,7,opt,name=birth_date,json=birthDate,proto3" json:"birth_date,omitempty"`
+	// M (mujer) | H (hombre)
+	Sex     string `protobuf:"bytes,8,opt,name=sex,proto3" json:"sex,omitempty"`
+	Email   string `protobuf:"bytes,9,opt,name=email,proto3" json:"email,omitempty"`
+	Phone   string `protobuf:"bytes,10,opt,name=phone,proto3" json:"phone,omitempty"`
+	Cycle   string `protobuf:"bytes,11,opt,name=cycle,proto3" json:"cycle,omitempty"`
+	Grade   string `protobuf:"bytes,12,opt,name=grade,proto3" json:"grade,omitempty"`
+	Section string `protobuf:"bytes,13,opt,name=section,proto3" json:"section,omitempty"`
+	// nuevo | promovido | trasladado | reentrante
+	Kind          string `protobuf:"bytes,14,opt,name=kind,proto3" json:"kind,omitempty"`
+	Origin        string `protobuf:"bytes,15,opt,name=origin,proto3" json:"origin,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImportRow) Reset() {
+	*x = ImportRow{}
+	mi := &file_joseph_people_v1_people_proto_msgTypes[65]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportRow) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportRow) ProtoMessage() {}
+
+func (x *ImportRow) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_people_v1_people_proto_msgTypes[65]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportRow.ProtoReflect.Descriptor instead.
+func (*ImportRow) Descriptor() ([]byte, []int) {
+	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{65}
+}
+
+func (x *ImportRow) GetLine() int32 {
+	if x != nil {
+		return x.Line
+	}
+	return 0
+}
+
+func (x *ImportRow) GetDocumentType() string {
+	if x != nil {
+		return x.DocumentType
+	}
+	return ""
+}
+
+func (x *ImportRow) GetDocumentNumber() string {
+	if x != nil {
+		return x.DocumentNumber
+	}
+	return ""
+}
+
+func (x *ImportRow) GetPaternalSurname() string {
+	if x != nil {
+		return x.PaternalSurname
+	}
+	return ""
+}
+
+func (x *ImportRow) GetMaternalSurname() string {
+	if x != nil {
+		return x.MaternalSurname
+	}
+	return ""
+}
+
+func (x *ImportRow) GetGivenNames() string {
+	if x != nil {
+		return x.GivenNames
+	}
+	return ""
+}
+
+func (x *ImportRow) GetBirthDate() string {
+	if x != nil {
+		return x.BirthDate
+	}
+	return ""
+}
+
+func (x *ImportRow) GetSex() string {
+	if x != nil {
+		return x.Sex
+	}
+	return ""
+}
+
+func (x *ImportRow) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *ImportRow) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *ImportRow) GetCycle() string {
+	if x != nil {
+		return x.Cycle
+	}
+	return ""
+}
+
+func (x *ImportRow) GetGrade() string {
+	if x != nil {
+		return x.Grade
+	}
+	return ""
+}
+
+func (x *ImportRow) GetSection() string {
+	if x != nil {
+		return x.Section
+	}
+	return ""
+}
+
+func (x *ImportRow) GetKind() string {
+	if x != nil {
+		return x.Kind
+	}
+	return ""
+}
+
+func (x *ImportRow) GetOrigin() string {
+	if x != nil {
+		return x.Origin
+	}
+	return ""
+}
+
+// status: ready | existing (the student is already in the institution) | skipped (already enrolled) | enrolled | error
+type ImportResult struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Line          int32                  `protobuf:"varint,1,opt,name=line,proto3" json:"line,omitempty"`
+	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	StudentName   string                 `protobuf:"bytes,3,opt,name=student_name,json=studentName,proto3" json:"student_name,omitempty"`
+	Placement     string                 `protobuf:"bytes,4,opt,name=placement,proto3" json:"placement,omitempty"`
+	Known         bool                   `protobuf:"varint,5,opt,name=known,proto3" json:"known,omitempty"`
+	Message       string                 `protobuf:"bytes,6,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImportResult) Reset() {
+	*x = ImportResult{}
+	mi := &file_joseph_people_v1_people_proto_msgTypes[66]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportResult) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportResult) ProtoMessage() {}
+
+func (x *ImportResult) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_people_v1_people_proto_msgTypes[66]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportResult.ProtoReflect.Descriptor instead.
+func (*ImportResult) Descriptor() ([]byte, []int) {
+	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{66}
+}
+
+func (x *ImportResult) GetLine() int32 {
+	if x != nil {
+		return x.Line
+	}
+	return 0
+}
+
+func (x *ImportResult) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *ImportResult) GetStudentName() string {
+	if x != nil {
+		return x.StudentName
+	}
+	return ""
+}
+
+func (x *ImportResult) GetPlacement() string {
+	if x != nil {
+		return x.Placement
+	}
+	return ""
+}
+
+func (x *ImportResult) GetKnown() bool {
+	if x != nil {
+		return x.Known
+	}
+	return false
+}
+
+func (x *ImportResult) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+type ImportSection struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SectionId     string                 `protobuf:"bytes,1,opt,name=section_id,json=sectionId,proto3" json:"section_id,omitempty"`
+	Label         string                 `protobuf:"bytes,2,opt,name=label,proto3" json:"label,omitempty"`
+	Capacity      int32                  `protobuf:"varint,3,opt,name=capacity,proto3" json:"capacity,omitempty"`
+	Before        int32                  `protobuf:"varint,4,opt,name=before,proto3" json:"before,omitempty"`
+	Incoming      int32                  `protobuf:"varint,5,opt,name=incoming,proto3" json:"incoming,omitempty"`
+	After         int32                  `protobuf:"varint,6,opt,name=after,proto3" json:"after,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImportSection) Reset() {
+	*x = ImportSection{}
+	mi := &file_joseph_people_v1_people_proto_msgTypes[67]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportSection) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportSection) ProtoMessage() {}
+
+func (x *ImportSection) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_people_v1_people_proto_msgTypes[67]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportSection.ProtoReflect.Descriptor instead.
+func (*ImportSection) Descriptor() ([]byte, []int) {
+	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{67}
+}
+
+func (x *ImportSection) GetSectionId() string {
+	if x != nil {
+		return x.SectionId
+	}
+	return ""
+}
+
+func (x *ImportSection) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
+func (x *ImportSection) GetCapacity() int32 {
+	if x != nil {
+		return x.Capacity
+	}
+	return 0
+}
+
+func (x *ImportSection) GetBefore() int32 {
+	if x != nil {
+		return x.Before
+	}
+	return 0
+}
+
+func (x *ImportSection) GetIncoming() int32 {
+	if x != nil {
+		return x.Incoming
+	}
+	return 0
+}
+
+func (x *ImportSection) GetAfter() int32 {
+	if x != nil {
+		return x.After
+	}
+	return 0
+}
+
+type ImportRollRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	PeriodId        string                 `protobuf:"bytes,2,opt,name=period_id,json=periodId,proto3" json:"period_id,omitempty"`
+	Rows            []*ImportRow           `protobuf:"bytes,3,rep,name=rows,proto3" json:"rows,omitempty"`
+	Commit          bool                   `protobuf:"varint,4,opt,name=commit,proto3" json:"commit,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *ImportRollRequest) Reset() {
+	*x = ImportRollRequest{}
+	mi := &file_joseph_people_v1_people_proto_msgTypes[68]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportRollRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportRollRequest) ProtoMessage() {}
+
+func (x *ImportRollRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_people_v1_people_proto_msgTypes[68]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportRollRequest.ProtoReflect.Descriptor instead.
+func (*ImportRollRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{68}
+}
+
+func (x *ImportRollRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *ImportRollRequest) GetPeriodId() string {
+	if x != nil {
+		return x.PeriodId
+	}
+	return ""
+}
+
+func (x *ImportRollRequest) GetRows() []*ImportRow {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+func (x *ImportRollRequest) GetCommit() bool {
+	if x != nil {
+		return x.Commit
+	}
+	return false
+}
+
+type ImportRollResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rows          []*ImportResult        `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
+	Sections      []*ImportSection       `protobuf:"bytes,2,rep,name=sections,proto3" json:"sections,omitempty"`
+	Total         int32                  `protobuf:"varint,3,opt,name=total,proto3" json:"total,omitempty"`
+	Ready         int32                  `protobuf:"varint,4,opt,name=ready,proto3" json:"ready,omitempty"`
+	Skipped       int32                  `protobuf:"varint,5,opt,name=skipped,proto3" json:"skipped,omitempty"`
+	Errors        int32                  `protobuf:"varint,6,opt,name=errors,proto3" json:"errors,omitempty"`
+	Created       int32                  `protobuf:"varint,7,opt,name=created,proto3" json:"created,omitempty"`
+	Enrolled      int32                  `protobuf:"varint,8,opt,name=enrolled,proto3" json:"enrolled,omitempty"`
+	Committed     bool                   `protobuf:"varint,9,opt,name=committed,proto3" json:"committed,omitempty"`
+	PeriodBefore  int32                  `protobuf:"varint,10,opt,name=period_before,json=periodBefore,proto3" json:"period_before,omitempty"`
+	PeriodAfter   int32                  `protobuf:"varint,11,opt,name=period_after,json=periodAfter,proto3" json:"period_after,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImportRollResponse) Reset() {
+	*x = ImportRollResponse{}
+	mi := &file_joseph_people_v1_people_proto_msgTypes[69]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportRollResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportRollResponse) ProtoMessage() {}
+
+func (x *ImportRollResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_people_v1_people_proto_msgTypes[69]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportRollResponse.ProtoReflect.Descriptor instead.
+func (*ImportRollResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{69}
+}
+
+func (x *ImportRollResponse) GetRows() []*ImportResult {
+	if x != nil {
+		return x.Rows
+	}
+	return nil
+}
+
+func (x *ImportRollResponse) GetSections() []*ImportSection {
+	if x != nil {
+		return x.Sections
+	}
+	return nil
+}
+
+func (x *ImportRollResponse) GetTotal() int32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *ImportRollResponse) GetReady() int32 {
+	if x != nil {
+		return x.Ready
+	}
+	return 0
+}
+
+func (x *ImportRollResponse) GetSkipped() int32 {
+	if x != nil {
+		return x.Skipped
+	}
+	return 0
+}
+
+func (x *ImportRollResponse) GetErrors() int32 {
+	if x != nil {
+		return x.Errors
+	}
+	return 0
+}
+
+func (x *ImportRollResponse) GetCreated() int32 {
+	if x != nil {
+		return x.Created
+	}
+	return 0
+}
+
+func (x *ImportRollResponse) GetEnrolled() int32 {
+	if x != nil {
+		return x.Enrolled
+	}
+	return 0
+}
+
+func (x *ImportRollResponse) GetCommitted() bool {
+	if x != nil {
+		return x.Committed
+	}
+	return false
+}
+
+func (x *ImportRollResponse) GetPeriodBefore() int32 {
+	if x != nil {
+		return x.PeriodBefore
+	}
+	return 0
+}
+
+func (x *ImportRollResponse) GetPeriodAfter() int32 {
+	if x != nil {
+		return x.PeriodAfter
+	}
+	return 0
+}
+
 var File_joseph_people_v1_people_proto protoreflect.FileDescriptor
 
 const file_joseph_people_v1_people_proto_rawDesc = "" +
@@ -5428,7 +5948,59 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\x06status\x18\x03 \x01(\tR\x06status\x12\x12\n" +
 	"\x04note\x18\x04 \x01(\tR\x04note\"3\n" +
 	"\x17SetSiagieStatusResponse\x12\x18\n" +
-	"\aupdated\x18\x01 \x01(\x05R\aupdated2\xce\x14\n" +
+	"\aupdated\x18\x01 \x01(\x05R\aupdated\"\xb3\x03\n" +
+	"\tImportRow\x12\x12\n" +
+	"\x04line\x18\x01 \x01(\x05R\x04line\x12#\n" +
+	"\rdocument_type\x18\x02 \x01(\tR\fdocumentType\x12'\n" +
+	"\x0fdocument_number\x18\x03 \x01(\tR\x0edocumentNumber\x12)\n" +
+	"\x10paternal_surname\x18\x04 \x01(\tR\x0fpaternalSurname\x12)\n" +
+	"\x10maternal_surname\x18\x05 \x01(\tR\x0fmaternalSurname\x12\x1f\n" +
+	"\vgiven_names\x18\x06 \x01(\tR\n" +
+	"givenNames\x12\x1d\n" +
+	"\n" +
+	"birth_date\x18\a \x01(\tR\tbirthDate\x12\x10\n" +
+	"\x03sex\x18\b \x01(\tR\x03sex\x12\x14\n" +
+	"\x05email\x18\t \x01(\tR\x05email\x12\x14\n" +
+	"\x05phone\x18\n" +
+	" \x01(\tR\x05phone\x12\x14\n" +
+	"\x05cycle\x18\v \x01(\tR\x05cycle\x12\x14\n" +
+	"\x05grade\x18\f \x01(\tR\x05grade\x12\x18\n" +
+	"\asection\x18\r \x01(\tR\asection\x12\x12\n" +
+	"\x04kind\x18\x0e \x01(\tR\x04kind\x12\x16\n" +
+	"\x06origin\x18\x0f \x01(\tR\x06origin\"\xab\x01\n" +
+	"\fImportResult\x12\x12\n" +
+	"\x04line\x18\x01 \x01(\x05R\x04line\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\tR\x06status\x12!\n" +
+	"\fstudent_name\x18\x03 \x01(\tR\vstudentName\x12\x1c\n" +
+	"\tplacement\x18\x04 \x01(\tR\tplacement\x12\x14\n" +
+	"\x05known\x18\x05 \x01(\bR\x05known\x12\x18\n" +
+	"\amessage\x18\x06 \x01(\tR\amessage\"\xaa\x01\n" +
+	"\rImportSection\x12\x1d\n" +
+	"\n" +
+	"section_id\x18\x01 \x01(\tR\tsectionId\x12\x14\n" +
+	"\x05label\x18\x02 \x01(\tR\x05label\x12\x1a\n" +
+	"\bcapacity\x18\x03 \x01(\x05R\bcapacity\x12\x16\n" +
+	"\x06before\x18\x04 \x01(\x05R\x06before\x12\x1a\n" +
+	"\bincoming\x18\x05 \x01(\x05R\bincoming\x12\x14\n" +
+	"\x05after\x18\x06 \x01(\x05R\x05after\"\xa4\x01\n" +
+	"\x11ImportRollRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
+	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12/\n" +
+	"\x04rows\x18\x03 \x03(\v2\x1b.joseph.people.v1.ImportRowR\x04rows\x12\x16\n" +
+	"\x06commit\x18\x04 \x01(\bR\x06commit\"\xff\x02\n" +
+	"\x12ImportRollResponse\x122\n" +
+	"\x04rows\x18\x01 \x03(\v2\x1e.joseph.people.v1.ImportResultR\x04rows\x12;\n" +
+	"\bsections\x18\x02 \x03(\v2\x1f.joseph.people.v1.ImportSectionR\bsections\x12\x14\n" +
+	"\x05total\x18\x03 \x01(\x05R\x05total\x12\x14\n" +
+	"\x05ready\x18\x04 \x01(\x05R\x05ready\x12\x18\n" +
+	"\askipped\x18\x05 \x01(\x05R\askipped\x12\x16\n" +
+	"\x06errors\x18\x06 \x01(\x05R\x06errors\x12\x18\n" +
+	"\acreated\x18\a \x01(\x05R\acreated\x12\x1a\n" +
+	"\benrolled\x18\b \x01(\x05R\benrolled\x12\x1c\n" +
+	"\tcommitted\x18\t \x01(\bR\tcommitted\x12#\n" +
+	"\rperiod_before\x18\n" +
+	" \x01(\x05R\fperiodBefore\x12!\n" +
+	"\fperiod_after\x18\v \x01(\x05R\vperiodAfter2\xa7\x15\n" +
 	"\rPeopleService\x12i\n" +
 	"\x10GetPeopleContext\x12).joseph.people.v1.GetPeopleContextRequest\x1a*.joseph.people.v1.GetPeopleContextResponse\x12]\n" +
 	"\fListStudents\x12%.joseph.people.v1.ListStudentsRequest\x1a&.joseph.people.v1.ListStudentsResponse\x12W\n" +
@@ -5456,7 +6028,9 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\x12SaveEnrollmentFile\x12+.joseph.people.v1.SaveEnrollmentFileRequest\x1a,.joseph.people.v1.SaveEnrollmentFileResponse\x12u\n" +
 	"\x14SetReligionExemption\x12-.joseph.people.v1.SetReligionExemptionRequest\x1a..joseph.people.v1.SetReligionExemptionResponse\x12Q\n" +
 	"\bListRoll\x12!.joseph.people.v1.ListRollRequest\x1a\".joseph.people.v1.ListRollResponse\x12f\n" +
-	"\x0fSetSiagieStatus\x12(.joseph.people.v1.SetSiagieStatusRequest\x1a).joseph.people.v1.SetSiagieStatusResponseB9Z7api/internal/adapter/inbound/grpc/gen/peoplev1;peoplev1b\x06proto3"
+	"\x0fSetSiagieStatus\x12(.joseph.people.v1.SetSiagieStatusRequest\x1a).joseph.people.v1.SetSiagieStatusResponse\x12W\n" +
+	"\n" +
+	"ImportRoll\x12#.joseph.people.v1.ImportRollRequest\x1a$.joseph.people.v1.ImportRollResponseB9Z7api/internal/adapter/inbound/grpc/gen/peoplev1;peoplev1b\x06proto3"
 
 var (
 	file_joseph_people_v1_people_proto_rawDescOnce sync.Once
@@ -5470,7 +6044,7 @@ func file_joseph_people_v1_people_proto_rawDescGZIP() []byte {
 	return file_joseph_people_v1_people_proto_rawDescData
 }
 
-var file_joseph_people_v1_people_proto_msgTypes = make([]protoimpl.MessageInfo, 65)
+var file_joseph_people_v1_people_proto_msgTypes = make([]protoimpl.MessageInfo, 70)
 var file_joseph_people_v1_people_proto_goTypes = []any{
 	(*EnrollmentSummary)(nil),            // 0: joseph.people.v1.EnrollmentSummary
 	(*Student)(nil),                      // 1: joseph.people.v1.Student
@@ -5537,11 +6111,16 @@ var file_joseph_people_v1_people_proto_goTypes = []any{
 	(*ListRollResponse)(nil),             // 62: joseph.people.v1.ListRollResponse
 	(*SetSiagieStatusRequest)(nil),       // 63: joseph.people.v1.SetSiagieStatusRequest
 	(*SetSiagieStatusResponse)(nil),      // 64: joseph.people.v1.SetSiagieStatusResponse
-	(*academicv1.AcademicContext)(nil),   // 65: joseph.academic.v1.AcademicContext
-	(*academicv1.Level)(nil),             // 66: joseph.academic.v1.Level
-	(*academicv1.Period)(nil),            // 67: joseph.academic.v1.Period
-	(*academicv1.Section)(nil),           // 68: joseph.academic.v1.Section
-	(*academicv1.Subject)(nil),           // 69: joseph.academic.v1.Subject
+	(*ImportRow)(nil),                    // 65: joseph.people.v1.ImportRow
+	(*ImportResult)(nil),                 // 66: joseph.people.v1.ImportResult
+	(*ImportSection)(nil),                // 67: joseph.people.v1.ImportSection
+	(*ImportRollRequest)(nil),            // 68: joseph.people.v1.ImportRollRequest
+	(*ImportRollResponse)(nil),           // 69: joseph.people.v1.ImportRollResponse
+	(*academicv1.AcademicContext)(nil),   // 70: joseph.academic.v1.AcademicContext
+	(*academicv1.Level)(nil),             // 71: joseph.academic.v1.Level
+	(*academicv1.Period)(nil),            // 72: joseph.academic.v1.Period
+	(*academicv1.Section)(nil),           // 73: joseph.academic.v1.Section
+	(*academicv1.Subject)(nil),           // 74: joseph.academic.v1.Subject
 }
 var file_joseph_people_v1_people_proto_depIdxs = []int32{
 	0,  // 0: joseph.people.v1.Student.enrollment:type_name -> joseph.people.v1.EnrollmentSummary
@@ -5549,9 +6128,9 @@ var file_joseph_people_v1_people_proto_depIdxs = []int32{
 	2,  // 2: joseph.people.v1.StudentDetail.guardians:type_name -> joseph.people.v1.Guardian
 	3,  // 3: joseph.people.v1.StudentDetail.enrollments:type_name -> joseph.people.v1.Enrollment
 	4,  // 4: joseph.people.v1.StudentDetail.placements:type_name -> joseph.people.v1.Placement
-	65, // 5: joseph.people.v1.GetPeopleContextResponse.context:type_name -> joseph.academic.v1.AcademicContext
-	66, // 6: joseph.people.v1.GetPeopleContextResponse.levels:type_name -> joseph.academic.v1.Level
-	67, // 7: joseph.people.v1.GetPeopleContextResponse.periods:type_name -> joseph.academic.v1.Period
+	70, // 5: joseph.people.v1.GetPeopleContextResponse.context:type_name -> joseph.academic.v1.AcademicContext
+	71, // 6: joseph.people.v1.GetPeopleContextResponse.levels:type_name -> joseph.academic.v1.Level
+	72, // 7: joseph.people.v1.GetPeopleContextResponse.periods:type_name -> joseph.academic.v1.Period
 	1,  // 8: joseph.people.v1.ListStudentsResponse.students:type_name -> joseph.people.v1.Student
 	9,  // 9: joseph.people.v1.GetStudentResponse.detail:type_name -> joseph.people.v1.StudentDetail
 	6,  // 10: joseph.people.v1.CreateStudentRequest.student:type_name -> joseph.people.v1.StudentInput
@@ -5567,11 +6146,11 @@ var file_joseph_people_v1_people_proto_depIdxs = []int32{
 	9,  // 20: joseph.people.v1.UpdateGuardianResponse.detail:type_name -> joseph.people.v1.StudentDetail
 	9,  // 21: joseph.people.v1.RemoveGuardianResponse.detail:type_name -> joseph.people.v1.StudentDetail
 	9,  // 22: joseph.people.v1.GrantAccessResponse.detail:type_name -> joseph.people.v1.StudentDetail
-	67, // 23: joseph.people.v1.GetEnrollmentBoardResponse.period:type_name -> joseph.academic.v1.Period
-	68, // 24: joseph.people.v1.GetEnrollmentBoardResponse.sections:type_name -> joseph.academic.v1.Section
+	72, // 23: joseph.people.v1.GetEnrollmentBoardResponse.period:type_name -> joseph.academic.v1.Period
+	73, // 24: joseph.people.v1.GetEnrollmentBoardResponse.sections:type_name -> joseph.academic.v1.Section
 	5,  // 25: joseph.people.v1.GetEnrollmentBoardResponse.occupancy:type_name -> joseph.people.v1.SectionOccupancy
 	3,  // 26: joseph.people.v1.GetEnrollmentBoardResponse.enrollments:type_name -> joseph.people.v1.Enrollment
-	69, // 27: joseph.people.v1.GetEnrollmentBoardResponse.units:type_name -> joseph.academic.v1.Subject
+	74, // 27: joseph.people.v1.GetEnrollmentBoardResponse.units:type_name -> joseph.academic.v1.Subject
 	3,  // 28: joseph.people.v1.EnrollResponse.enrollment:type_name -> joseph.people.v1.Enrollment
 	3,  // 29: joseph.people.v1.UpdateEnrollmentResponse.enrollment:type_name -> joseph.people.v1.Enrollment
 	3,  // 30: joseph.people.v1.EndEnrollmentResponse.enrollment:type_name -> joseph.people.v1.Enrollment
@@ -5582,63 +6161,68 @@ var file_joseph_people_v1_people_proto_depIdxs = []int32{
 	52, // 35: joseph.people.v1.SaveEnrollmentFileResponse.file:type_name -> joseph.people.v1.EnrollmentFile
 	60, // 36: joseph.people.v1.ListRollRequest.filter:type_name -> joseph.people.v1.RollFilter
 	59, // 37: joseph.people.v1.ListRollResponse.rows:type_name -> joseph.people.v1.RollRow
-	10, // 38: joseph.people.v1.PeopleService.GetPeopleContext:input_type -> joseph.people.v1.GetPeopleContextRequest
-	12, // 39: joseph.people.v1.PeopleService.ListStudents:input_type -> joseph.people.v1.ListStudentsRequest
-	14, // 40: joseph.people.v1.PeopleService.GetStudent:input_type -> joseph.people.v1.GetStudentRequest
-	16, // 41: joseph.people.v1.PeopleService.CreateStudent:input_type -> joseph.people.v1.CreateStudentRequest
-	18, // 42: joseph.people.v1.PeopleService.UpdateStudent:input_type -> joseph.people.v1.UpdateStudentRequest
-	20, // 43: joseph.people.v1.PeopleService.DeleteStudent:input_type -> joseph.people.v1.DeleteStudentRequest
-	22, // 44: joseph.people.v1.PeopleService.FindGuardian:input_type -> joseph.people.v1.FindGuardianRequest
-	24, // 45: joseph.people.v1.PeopleService.AddGuardian:input_type -> joseph.people.v1.AddGuardianRequest
-	26, // 46: joseph.people.v1.PeopleService.UpdateGuardian:input_type -> joseph.people.v1.UpdateGuardianRequest
-	28, // 47: joseph.people.v1.PeopleService.RemoveGuardian:input_type -> joseph.people.v1.RemoveGuardianRequest
-	30, // 48: joseph.people.v1.PeopleService.GrantAccess:input_type -> joseph.people.v1.GrantAccessRequest
-	32, // 49: joseph.people.v1.PeopleService.GetEnrollmentBoard:input_type -> joseph.people.v1.GetEnrollmentBoardRequest
-	34, // 50: joseph.people.v1.PeopleService.Enroll:input_type -> joseph.people.v1.EnrollRequest
-	36, // 51: joseph.people.v1.PeopleService.UpdateEnrollment:input_type -> joseph.people.v1.UpdateEnrollmentRequest
-	38, // 52: joseph.people.v1.PeopleService.EndEnrollment:input_type -> joseph.people.v1.EndEnrollmentRequest
-	40, // 53: joseph.people.v1.PeopleService.DeleteEnrollment:input_type -> joseph.people.v1.DeleteEnrollmentRequest
-	42, // 54: joseph.people.v1.PeopleService.RatifyEnrollments:input_type -> joseph.people.v1.RatifyEnrollmentsRequest
-	44, // 55: joseph.people.v1.PeopleService.ListPlacements:input_type -> joseph.people.v1.ListPlacementsRequest
-	46, // 56: joseph.people.v1.PeopleService.CreatePlacement:input_type -> joseph.people.v1.CreatePlacementRequest
-	48, // 57: joseph.people.v1.PeopleService.DeletePlacement:input_type -> joseph.people.v1.DeletePlacementRequest
-	50, // 58: joseph.people.v1.PeopleService.ProposePlacement:input_type -> joseph.people.v1.ProposePlacementRequest
-	53, // 59: joseph.people.v1.PeopleService.GetEnrollmentFile:input_type -> joseph.people.v1.GetEnrollmentFileRequest
-	55, // 60: joseph.people.v1.PeopleService.SaveEnrollmentFile:input_type -> joseph.people.v1.SaveEnrollmentFileRequest
-	57, // 61: joseph.people.v1.PeopleService.SetReligionExemption:input_type -> joseph.people.v1.SetReligionExemptionRequest
-	61, // 62: joseph.people.v1.PeopleService.ListRoll:input_type -> joseph.people.v1.ListRollRequest
-	63, // 63: joseph.people.v1.PeopleService.SetSiagieStatus:input_type -> joseph.people.v1.SetSiagieStatusRequest
-	11, // 64: joseph.people.v1.PeopleService.GetPeopleContext:output_type -> joseph.people.v1.GetPeopleContextResponse
-	13, // 65: joseph.people.v1.PeopleService.ListStudents:output_type -> joseph.people.v1.ListStudentsResponse
-	15, // 66: joseph.people.v1.PeopleService.GetStudent:output_type -> joseph.people.v1.GetStudentResponse
-	17, // 67: joseph.people.v1.PeopleService.CreateStudent:output_type -> joseph.people.v1.CreateStudentResponse
-	19, // 68: joseph.people.v1.PeopleService.UpdateStudent:output_type -> joseph.people.v1.UpdateStudentResponse
-	21, // 69: joseph.people.v1.PeopleService.DeleteStudent:output_type -> joseph.people.v1.DeleteStudentResponse
-	23, // 70: joseph.people.v1.PeopleService.FindGuardian:output_type -> joseph.people.v1.FindGuardianResponse
-	25, // 71: joseph.people.v1.PeopleService.AddGuardian:output_type -> joseph.people.v1.AddGuardianResponse
-	27, // 72: joseph.people.v1.PeopleService.UpdateGuardian:output_type -> joseph.people.v1.UpdateGuardianResponse
-	29, // 73: joseph.people.v1.PeopleService.RemoveGuardian:output_type -> joseph.people.v1.RemoveGuardianResponse
-	31, // 74: joseph.people.v1.PeopleService.GrantAccess:output_type -> joseph.people.v1.GrantAccessResponse
-	33, // 75: joseph.people.v1.PeopleService.GetEnrollmentBoard:output_type -> joseph.people.v1.GetEnrollmentBoardResponse
-	35, // 76: joseph.people.v1.PeopleService.Enroll:output_type -> joseph.people.v1.EnrollResponse
-	37, // 77: joseph.people.v1.PeopleService.UpdateEnrollment:output_type -> joseph.people.v1.UpdateEnrollmentResponse
-	39, // 78: joseph.people.v1.PeopleService.EndEnrollment:output_type -> joseph.people.v1.EndEnrollmentResponse
-	41, // 79: joseph.people.v1.PeopleService.DeleteEnrollment:output_type -> joseph.people.v1.DeleteEnrollmentResponse
-	43, // 80: joseph.people.v1.PeopleService.RatifyEnrollments:output_type -> joseph.people.v1.RatifyEnrollmentsResponse
-	45, // 81: joseph.people.v1.PeopleService.ListPlacements:output_type -> joseph.people.v1.ListPlacementsResponse
-	47, // 82: joseph.people.v1.PeopleService.CreatePlacement:output_type -> joseph.people.v1.CreatePlacementResponse
-	49, // 83: joseph.people.v1.PeopleService.DeletePlacement:output_type -> joseph.people.v1.DeletePlacementResponse
-	51, // 84: joseph.people.v1.PeopleService.ProposePlacement:output_type -> joseph.people.v1.ProposePlacementResponse
-	54, // 85: joseph.people.v1.PeopleService.GetEnrollmentFile:output_type -> joseph.people.v1.GetEnrollmentFileResponse
-	56, // 86: joseph.people.v1.PeopleService.SaveEnrollmentFile:output_type -> joseph.people.v1.SaveEnrollmentFileResponse
-	58, // 87: joseph.people.v1.PeopleService.SetReligionExemption:output_type -> joseph.people.v1.SetReligionExemptionResponse
-	62, // 88: joseph.people.v1.PeopleService.ListRoll:output_type -> joseph.people.v1.ListRollResponse
-	64, // 89: joseph.people.v1.PeopleService.SetSiagieStatus:output_type -> joseph.people.v1.SetSiagieStatusResponse
-	64, // [64:90] is the sub-list for method output_type
-	38, // [38:64] is the sub-list for method input_type
-	38, // [38:38] is the sub-list for extension type_name
-	38, // [38:38] is the sub-list for extension extendee
-	0,  // [0:38] is the sub-list for field type_name
+	65, // 38: joseph.people.v1.ImportRollRequest.rows:type_name -> joseph.people.v1.ImportRow
+	66, // 39: joseph.people.v1.ImportRollResponse.rows:type_name -> joseph.people.v1.ImportResult
+	67, // 40: joseph.people.v1.ImportRollResponse.sections:type_name -> joseph.people.v1.ImportSection
+	10, // 41: joseph.people.v1.PeopleService.GetPeopleContext:input_type -> joseph.people.v1.GetPeopleContextRequest
+	12, // 42: joseph.people.v1.PeopleService.ListStudents:input_type -> joseph.people.v1.ListStudentsRequest
+	14, // 43: joseph.people.v1.PeopleService.GetStudent:input_type -> joseph.people.v1.GetStudentRequest
+	16, // 44: joseph.people.v1.PeopleService.CreateStudent:input_type -> joseph.people.v1.CreateStudentRequest
+	18, // 45: joseph.people.v1.PeopleService.UpdateStudent:input_type -> joseph.people.v1.UpdateStudentRequest
+	20, // 46: joseph.people.v1.PeopleService.DeleteStudent:input_type -> joseph.people.v1.DeleteStudentRequest
+	22, // 47: joseph.people.v1.PeopleService.FindGuardian:input_type -> joseph.people.v1.FindGuardianRequest
+	24, // 48: joseph.people.v1.PeopleService.AddGuardian:input_type -> joseph.people.v1.AddGuardianRequest
+	26, // 49: joseph.people.v1.PeopleService.UpdateGuardian:input_type -> joseph.people.v1.UpdateGuardianRequest
+	28, // 50: joseph.people.v1.PeopleService.RemoveGuardian:input_type -> joseph.people.v1.RemoveGuardianRequest
+	30, // 51: joseph.people.v1.PeopleService.GrantAccess:input_type -> joseph.people.v1.GrantAccessRequest
+	32, // 52: joseph.people.v1.PeopleService.GetEnrollmentBoard:input_type -> joseph.people.v1.GetEnrollmentBoardRequest
+	34, // 53: joseph.people.v1.PeopleService.Enroll:input_type -> joseph.people.v1.EnrollRequest
+	36, // 54: joseph.people.v1.PeopleService.UpdateEnrollment:input_type -> joseph.people.v1.UpdateEnrollmentRequest
+	38, // 55: joseph.people.v1.PeopleService.EndEnrollment:input_type -> joseph.people.v1.EndEnrollmentRequest
+	40, // 56: joseph.people.v1.PeopleService.DeleteEnrollment:input_type -> joseph.people.v1.DeleteEnrollmentRequest
+	42, // 57: joseph.people.v1.PeopleService.RatifyEnrollments:input_type -> joseph.people.v1.RatifyEnrollmentsRequest
+	44, // 58: joseph.people.v1.PeopleService.ListPlacements:input_type -> joseph.people.v1.ListPlacementsRequest
+	46, // 59: joseph.people.v1.PeopleService.CreatePlacement:input_type -> joseph.people.v1.CreatePlacementRequest
+	48, // 60: joseph.people.v1.PeopleService.DeletePlacement:input_type -> joseph.people.v1.DeletePlacementRequest
+	50, // 61: joseph.people.v1.PeopleService.ProposePlacement:input_type -> joseph.people.v1.ProposePlacementRequest
+	53, // 62: joseph.people.v1.PeopleService.GetEnrollmentFile:input_type -> joseph.people.v1.GetEnrollmentFileRequest
+	55, // 63: joseph.people.v1.PeopleService.SaveEnrollmentFile:input_type -> joseph.people.v1.SaveEnrollmentFileRequest
+	57, // 64: joseph.people.v1.PeopleService.SetReligionExemption:input_type -> joseph.people.v1.SetReligionExemptionRequest
+	61, // 65: joseph.people.v1.PeopleService.ListRoll:input_type -> joseph.people.v1.ListRollRequest
+	63, // 66: joseph.people.v1.PeopleService.SetSiagieStatus:input_type -> joseph.people.v1.SetSiagieStatusRequest
+	68, // 67: joseph.people.v1.PeopleService.ImportRoll:input_type -> joseph.people.v1.ImportRollRequest
+	11, // 68: joseph.people.v1.PeopleService.GetPeopleContext:output_type -> joseph.people.v1.GetPeopleContextResponse
+	13, // 69: joseph.people.v1.PeopleService.ListStudents:output_type -> joseph.people.v1.ListStudentsResponse
+	15, // 70: joseph.people.v1.PeopleService.GetStudent:output_type -> joseph.people.v1.GetStudentResponse
+	17, // 71: joseph.people.v1.PeopleService.CreateStudent:output_type -> joseph.people.v1.CreateStudentResponse
+	19, // 72: joseph.people.v1.PeopleService.UpdateStudent:output_type -> joseph.people.v1.UpdateStudentResponse
+	21, // 73: joseph.people.v1.PeopleService.DeleteStudent:output_type -> joseph.people.v1.DeleteStudentResponse
+	23, // 74: joseph.people.v1.PeopleService.FindGuardian:output_type -> joseph.people.v1.FindGuardianResponse
+	25, // 75: joseph.people.v1.PeopleService.AddGuardian:output_type -> joseph.people.v1.AddGuardianResponse
+	27, // 76: joseph.people.v1.PeopleService.UpdateGuardian:output_type -> joseph.people.v1.UpdateGuardianResponse
+	29, // 77: joseph.people.v1.PeopleService.RemoveGuardian:output_type -> joseph.people.v1.RemoveGuardianResponse
+	31, // 78: joseph.people.v1.PeopleService.GrantAccess:output_type -> joseph.people.v1.GrantAccessResponse
+	33, // 79: joseph.people.v1.PeopleService.GetEnrollmentBoard:output_type -> joseph.people.v1.GetEnrollmentBoardResponse
+	35, // 80: joseph.people.v1.PeopleService.Enroll:output_type -> joseph.people.v1.EnrollResponse
+	37, // 81: joseph.people.v1.PeopleService.UpdateEnrollment:output_type -> joseph.people.v1.UpdateEnrollmentResponse
+	39, // 82: joseph.people.v1.PeopleService.EndEnrollment:output_type -> joseph.people.v1.EndEnrollmentResponse
+	41, // 83: joseph.people.v1.PeopleService.DeleteEnrollment:output_type -> joseph.people.v1.DeleteEnrollmentResponse
+	43, // 84: joseph.people.v1.PeopleService.RatifyEnrollments:output_type -> joseph.people.v1.RatifyEnrollmentsResponse
+	45, // 85: joseph.people.v1.PeopleService.ListPlacements:output_type -> joseph.people.v1.ListPlacementsResponse
+	47, // 86: joseph.people.v1.PeopleService.CreatePlacement:output_type -> joseph.people.v1.CreatePlacementResponse
+	49, // 87: joseph.people.v1.PeopleService.DeletePlacement:output_type -> joseph.people.v1.DeletePlacementResponse
+	51, // 88: joseph.people.v1.PeopleService.ProposePlacement:output_type -> joseph.people.v1.ProposePlacementResponse
+	54, // 89: joseph.people.v1.PeopleService.GetEnrollmentFile:output_type -> joseph.people.v1.GetEnrollmentFileResponse
+	56, // 90: joseph.people.v1.PeopleService.SaveEnrollmentFile:output_type -> joseph.people.v1.SaveEnrollmentFileResponse
+	58, // 91: joseph.people.v1.PeopleService.SetReligionExemption:output_type -> joseph.people.v1.SetReligionExemptionResponse
+	62, // 92: joseph.people.v1.PeopleService.ListRoll:output_type -> joseph.people.v1.ListRollResponse
+	64, // 93: joseph.people.v1.PeopleService.SetSiagieStatus:output_type -> joseph.people.v1.SetSiagieStatusResponse
+	69, // 94: joseph.people.v1.PeopleService.ImportRoll:output_type -> joseph.people.v1.ImportRollResponse
+	68, // [68:95] is the sub-list for method output_type
+	41, // [41:68] is the sub-list for method input_type
+	41, // [41:41] is the sub-list for extension type_name
+	41, // [41:41] is the sub-list for extension extendee
+	0,  // [0:41] is the sub-list for field type_name
 }
 
 func init() { file_joseph_people_v1_people_proto_init() }
@@ -5652,7 +6236,7 @@ func file_joseph_people_v1_people_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_people_v1_people_proto_rawDesc), len(file_joseph_people_v1_people_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   65,
+			NumMessages:   70,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

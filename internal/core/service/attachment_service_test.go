@@ -105,7 +105,8 @@ func TestValidateUpload(t *testing.T) {
 func TestEveryOwnerKindHasSpec(t *testing.T) {
 	kinds := []string{domain.OwnerEnrollment, domain.OwnerStudent, domain.OwnerStaff, domain.OwnerTutoring, domain.OwnerDiscipline, domain.OwnerPsychology,
 		domain.OwnerIndividualPlan, domain.OwnerTherapy, domain.OwnerProgressReport, domain.OwnerInclusionSupport, domain.OwnerPeriod, domain.OwnerClosing,
-		domain.OwnerInternship, domain.OwnerDegree, domain.OwnerAttendanceJustification, domain.OwnerApafaMeeting, domain.OwnerAuthorization, domain.OwnerPlatformSheet, domain.OwnerClassroomItem, domain.OwnerLibraryItem, domain.OwnerSubmission}
+		domain.OwnerInternship, domain.OwnerDegree, domain.OwnerAttendanceJustification, domain.OwnerApafaMeeting, domain.OwnerAuthorization, domain.OwnerPlatformSheet, domain.OwnerClassroomItem, domain.OwnerLibraryItem, domain.OwnerSubmission,
+		domain.OwnerEquipmentRoom, domain.OwnerEquipmentDevice, domain.OwnerEquipmentCheck, domain.OwnerComplianceItem}
 	if len(ownerSpecs) != len(kinds) {
 		t.Fatalf("%d specs for %d kinds", len(ownerSpecs), len(kinds))
 	}

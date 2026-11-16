@@ -117,6 +117,15 @@ func (s *DocumentService) signerScope(ctx context.Context, token, slug, kind str
 		}
 		sc, err := s.people.ebaScope(ctx, token, slug, write)
 		return sc, peopleManagers[sc.role], err
+	case domain.DocumentCertificate:
+		if s.people == nil {
+			return academicScope{}, false, domain.ErrNotFound
+		}
+		sc, err := s.people.ebaScope(ctx, token, slug, write)
+		return sc, peopleManagers[sc.role], err
+	case domain.DocumentEvaluationRecord:
+		sc, err := s.closing.ebaScope(ctx, token, slug, write)
+		return sc.academicScope, sc.manager(), err
 	}
 	return academicScope{}, false, domain.Validation(map[string]string{"kind": "Tipo de documento desconocido."})
 }
@@ -338,8 +347,11 @@ func (s *DocumentService) SignVersion(ctx context.Context, token, slug, versionI
 
 // renderVersion prints a frozen version with its seal as it stands now
 func (s *DocumentService) renderVersion(d domain.IssuedDocument, v domain.DocumentVersion) (PdfFile, error) {
-	if d.Kind == domain.DocumentPlacement {
+	switch d.Kind {
+	case domain.DocumentPlacement, domain.DocumentCertificate:
 		return s.renderForm(d, v)
+	case domain.DocumentEvaluationRecord:
+		return s.renderRecord(d, v)
 	}
 	var doc port.ScheduleDoc
 	if err := json.Unmarshal(v.Content, &doc); err != nil {
@@ -400,6 +412,17 @@ func (s *DocumentService) Track(ctx context.Context, tracking, code string) (Tra
 		if code != "" && (v.VerificationCode == code || slices.ContainsFunc(v.Signatures, func(sg domain.DocumentSignature) bool { return sg.Code == code })) {
 			out.Matched = v.Number
 		}
+	}
+	// The page is public: the codes are what proves a sheet (who holds it already has them) and the notes are
+	// internal, so neither goes out
+	for i := range out.Versions {
+		out.Versions[i].VerificationCode, out.Versions[i].Note = "", ""
+		for j := range out.Versions[i].Signatures {
+			out.Versions[i].Signatures[j].Code = ""
+		}
+	}
+	for i := range out.Events {
+		out.Events[i].Note = ""
 	}
 	return out, nil
 }

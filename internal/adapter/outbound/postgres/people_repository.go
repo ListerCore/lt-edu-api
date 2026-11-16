@@ -154,6 +154,17 @@ func (r *PeopleRepository) Student(ctx context.Context, institutionID, id string
 	return s, academicErr(err)
 }
 
+// StudentByDocument finds a student of the institution by document (domain.ErrNotFound when none)
+func (r *PeopleRepository) StudentByDocument(ctx context.Context, institutionID, documentType, documentNumber string) (domain.Student, error) {
+	var id string
+	err := r.c.pool.QueryRow(ctx, `SELECT id::text FROM people.students WHERE institution_id = $1 AND document_type = $2 AND document_number = $3`,
+		institutionID, documentType, documentNumber).Scan(&id)
+	if err != nil {
+		return domain.Student{}, academicErr(err)
+	}
+	return r.Student(ctx, institutionID, id)
+}
+
 // peopleErr maps the unique violations of people to clear messages
 func peopleErr(err error) error {
 	var pg *pgconn.PgError

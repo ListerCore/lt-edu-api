@@ -191,6 +191,7 @@ func (s *ClosingService) Overview(ctx context.Context, token, slug, periodID str
 
 type ClosingArea struct {
 	SubjectID    string
+	SubjectCode  string
 	Name         string
 	Competencies []domain.CompetencyRef
 }
@@ -211,6 +212,14 @@ type ClosingRow struct {
 	Targets       []string
 	Recovery      map[string]string
 	AfterRecovery string
+	// Phase E7: the enrollment, the student's own grade (multigrade sections), the Religion exemption and the SIAGIE
+	// state of the grades
+	EnrollmentID   string
+	GradeShort     string
+	ReligionExempt bool
+	SiagieStatus   string
+	SiagieNote     string
+	SiagieAt       *time.Time
 }
 
 type SectionResult struct {
@@ -268,7 +277,11 @@ func (s *ClosingService) section(ctx context.Context, sc gradeScope, p domain.Pe
 		return SectionResult{}, err
 	}
 	termID, closed := lastTerm(p)
-	res := SectionResult{Section: meta, Level: level, Rule: ruleFor(sc.institution.Kind, level.LevelCode, level.GradeCode), Period: p, LastTermClosed: closed, CanManage: sc.manager()}
+	rule, err := s.rule(ctx, sc, level)
+	if err != nil {
+		return SectionResult{}, err
+	}
+	res := SectionResult{Section: meta, Level: level, Rule: rule, Period: p, LastTermClosed: closed, CanManage: sc.manager()}
 	subjects, err := s.assessment.repo.SubjectsOfSection(ctx, inst, sectionID)
 	if err != nil {
 		return res, err
@@ -279,7 +292,7 @@ func (s *ClosingService) section(ctx context.Context, sc gradeScope, p domain.Pe
 			return res, err
 		}
 		if len(comps) > 0 {
-			res.Areas = append(res.Areas, ClosingArea{SubjectID: a.SubjectID, Name: a.SubjectName, Competencies: comps})
+			res.Areas = append(res.Areas, ClosingArea{SubjectID: a.SubjectID, SubjectCode: a.SubjectCode, Name: a.SubjectName, Competencies: comps})
 		}
 	}
 	students, err := s.assessment.repo.Students(ctx, inst, sectionID, "")
@@ -313,15 +326,24 @@ func (s *ClosingService) section(ctx context.Context, sc gradeScope, p domain.Pe
 	if err != nil {
 		return res, err
 	}
+	info, err := s.repo.ClosingStudents(ctx, inst, sectionID)
+	if err != nil {
+		return res, err
+	}
 	for _, st := range students {
-		row := ClosingRow{Student: st, Final: final[st.ID], Recovery: recovery[st.ID]}
+		in := info[st.ID]
+		row := ClosingRow{Student: st, Final: final[st.ID], Recovery: recovery[st.ID], EnrollmentID: in.EnrollmentID, GradeShort: in.GradeShort,
+			ReligionExempt: in.ReligionExempt, SiagieStatus: in.SiagieStatus, SiagieNote: in.SiagieNote, SiagieAt: in.SiagieAt}
+		if row.SiagieStatus == "" {
+			row.SiagieStatus = domain.SiagiePending
+		}
 		if row.Final == nil {
 			row.Final = map[string]string{}
 		}
 		if row.Recovery == nil {
 			row.Recovery = map[string]string{}
 		}
-		row.Computed, row.Reason = FinalSituation(res.Rule, res.areaLevels(row.Final, nil))
+		row.Computed, row.Reason = FinalSituation(res.Rule, res.areaLevels(row.Final, nil, row.ReligionExempt))
 		f, ok := byStudent[st.ID]
 		if ok {
 			row.Decided, row.DecisionNote, row.DecidedName = f.Decided, f.DecisionNote, f.DecidedName
@@ -340,10 +362,14 @@ func (s *ClosingService) section(ctx context.Context, sc gradeScope, p domain.Pe
 	return res, nil
 }
 
-// areaLevels lists the final levels per area, with the recovery levels over them when given
-func (r SectionResult) areaLevels(final, recovery map[string]string) []AreaLevels {
+// areaLevels lists the final levels per area, with the recovery levels over them when given; a student exempted
+// from Educación Religiosa leaves that area out
+func (r SectionResult) areaLevels(final, recovery map[string]string, exempt bool) []AreaLevels {
 	out := make([]AreaLevels, 0, len(r.Areas))
 	for _, a := range r.Areas {
+		if exempt && a.SubjectCode == domain.ReligionSubjectCode {
+			continue
+		}
 		al := AreaLevels{Name: a.Name}
 		for _, c := range a.Competencies {
 			l := final[c.ID]
@@ -477,7 +503,7 @@ func (s *ClosingService) SaveRecovery(ctx context.Context, token, slug, sectionI
 		}
 	}
 	if complete {
-		after, _ = AfterRecovery(res.Rule, res.areaLevels(row.Final, merged))
+		after, _ = AfterRecovery(res.Rule, res.areaLevels(row.Final, merged, row.ReligionExempt))
 	}
 	if err := s.repo.SaveRecovery(ctx, res.Period.ID, studentID, levels, after); err != nil {
 		return res, err
@@ -711,6 +737,7 @@ type RecordColumn struct {
 
 type RecordRow struct {
 	N         int      `json:"n"`
+	Grade     string   `json:"grade,omitempty"`
 	Code      string   `json:"code"`
 	Document  string   `json:"document"`
 	Name      string   `json:"name"`
@@ -770,6 +797,16 @@ func (s *ClosingService) Issue(ctx context.Context, token, slug, sectionID, assi
 	return rec, nil
 }
 
+// mixedGrades tells a multigrade section that holds students of several grades: the acta then shows each one's
+func mixedGrades(rows []ClosingRow) bool {
+	for _, r := range rows {
+		if r.GradeShort != rows[0].GradeShort {
+			return true
+		}
+	}
+	return false
+}
+
 func basicRecord(sc gradeScope, res SectionResult, kind, today string) (RecordContent, error) {
 	c := RecordContent{Institution: sc.institution.Name, Period: res.Period.Name, Section: res.Section.Label, Level: res.Section.LevelName, Tutor: res.Section.TutorName, Rule: res.Rule.Name,
 		IssuedOn: today, Signatures: []string{"Tutor(a)", "Director(a)"},
@@ -791,9 +828,17 @@ func basicRecord(sc gradeScope, res SectionResult, kind, today string) (RecordCo
 			continue
 		}
 		row := RecordRow{Code: r.Student.Code, Document: r.Student.Document, Name: r.Student.Name}
+		if mixedGrades(res.Rows) {
+			row.Grade = r.GradeShort
+		}
 		for _, a := range res.Areas {
+			exempt := r.ReligionExempt && a.SubjectCode == domain.ReligionSubjectCode
 			for _, comp := range a.Competencies {
 				l := r.Final[comp.ID]
+				if exempt {
+					row.Cells = append(row.Cells, Exempt)
+					continue
+				}
 				if kind == "complementary" {
 					if !slices.Contains(r.Targets, comp.ID) {
 						l = ""
@@ -824,6 +869,9 @@ func basicRecord(sc gradeScope, res SectionResult, kind, today string) (RecordCo
 	}
 	if len(c.Rows) == 0 {
 		return c, domain.ErrNothingToRecord
+	}
+	if slices.ContainsFunc(res.Rows, func(r ClosingRow) bool { return r.ReligionExempt }) {
+		c.Legend = append(c.Legend, "EXO: exonerado de Educación Religiosa (Ley N.° 29635)")
 	}
 	if kind == "final" {
 		c.Title = "Acta consolidada de evaluación integral"
@@ -946,8 +994,13 @@ func (s *ClosingService) Export(ctx context.Context, token, slug, sectionID, ass
 				situation = r.AfterRecovery
 			}
 			for _, a := range res.Areas {
+				exempt := r.ReligionExempt && a.SubjectCode == domain.ReligionSubjectCode
 				for _, comp := range a.Competencies {
-					_ = w.Write([]string{fmt.Sprint(i + 1), r.Student.Code, r.Student.Document, r.Student.Name, a.Name, comp.Name, r.Final[comp.ID], r.Recovery[comp.ID], situation})
+					level := r.Final[comp.ID]
+					if exempt {
+						level = Exempt
+					}
+					_ = w.Write([]string{fmt.Sprint(i + 1), r.Student.Code, r.Student.Document, r.Student.Name, a.Name, comp.Name, level, r.Recovery[comp.ID], situation})
 				}
 			}
 		}
@@ -957,7 +1010,7 @@ func (s *ClosingService) Export(ctx context.Context, token, slug, sectionID, ass
 }
 
 func slugify(s string) string {
-	r := strings.NewReplacer("á", "a", "é", "e", "í", "i", "ó", "o", "ú", "u", "ñ", "n", "°", "", ".", "", "·", "")
+	r := strings.NewReplacer("á", "a", "é", "e", "í", "i", "ó", "o", "ú", "u", "ñ", "n", "°", "", ".", "", "·", "", ",", "")
 	s = r.Replace(strings.ToLower(s))
 	return strings.Join(strings.Fields(s), "-")
 }

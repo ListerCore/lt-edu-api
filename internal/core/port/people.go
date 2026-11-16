@@ -14,6 +14,8 @@ type PeopleRepository interface {
 	// Students returns one page and the total; each row carries its enrollment in filter.PeriodID (or its latest)
 	Students(ctx context.Context, f domain.StudentFilter) ([]domain.Student, int, error)
 	Student(ctx context.Context, institutionID, id string) (domain.Student, error)
+	// StudentByDocument finds a student by document type and number (domain.ErrNotFound when none)
+	StudentByDocument(ctx context.Context, institutionID, documentType, documentNumber string) (domain.Student, error)
 	// CreateStudent fills an empty code with the next "<year>-NNNN" of the institution
 	CreateStudent(ctx context.Context, institutionID string, in domain.StudentInput) (domain.Student, error)
 	UpdateStudent(ctx context.Context, institutionID, id string, in domain.StudentInput) (domain.Student, error)
@@ -57,6 +59,14 @@ type PeopleRepository interface {
 	AssignAct(ctx context.Context, institutionID, placementID string, year int) (int, int, error)
 	// LinkAct points the placement at the issued document of its acta
 	LinkAct(ctx context.Context, placementID, documentID string) error
+
+	// StudyRecords are the student's enrollments, oldest first, with the final situation in force (phase E7)
+	StudyRecords(ctx context.Context, institutionID, studentID string) ([]domain.StudyRecord, error)
+	// CreateCertificate numbers a new constancia in its year
+	CreateCertificate(ctx context.Context, institutionID string, in domain.StudentCertificateInput, year int, by string) (domain.StudentCertificate, error)
+	LinkCertificate(ctx context.Context, id, documentID string) error
+	Certificate(ctx context.Context, institutionID, id string) (domain.StudentCertificate, error)
+	Certificates(ctx context.Context, institutionID, studentID string) ([]domain.StudentCertificate, error)
 
 	// ---------- EBA enrollment (phase E1) ----------
 
