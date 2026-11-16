@@ -285,6 +285,18 @@ var grantableStaffRoles = map[string][]string{
 	domain.KindInstitute: {"director", "academic_coordinator", "program_coordinator", "secretary", "teacher", "tutor", "psychologist", "treasurer"},
 }
 
+// staffRoleNames name the roles in the audit log
+var staffRoleNames = map[string]string{"director": "Director(a)", "academic_coordinator": "Coordinación académica", "program_coordinator": "Coordinación de programa",
+	"secretary": "Secretaría", "teacher": "Docente", "tutor": "Tutor(a)", "assistant": "Auxiliar", "psychologist": "Psicología",
+	RoleSpecialEd: "Especialista de educación especial", "treasurer": "Tesorería", domain.RoleTechnicalLead: "Responsable técnico"}
+
+func roleName(code string) string {
+	if n, ok := staffRoleNames[code]; ok {
+		return n
+	}
+	return code
+}
+
 // grantableRoles is grantableStaffRoles of the kind (EBR's when unknown)
 func grantableRoles(kind string) []string {
 	if roles, ok := grantableStaffRoles[kind]; ok {
@@ -346,9 +358,9 @@ func (s *InstitutionService) GrantMember(ctx context.Context, token, slug, email
 	if err != nil {
 		return false, err
 	}
-	summary := "Asignó el rol " + roleCode + " a " + email
+	summary := "Asignó el rol " + roleName(roleCode) + " a " + email
 	if pending {
-		summary = "Invitó a " + email + " con el rol " + roleCode
+		summary = "Invitó a " + email + " con el rol " + roleName(roleCode)
 	}
 	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "users", Action: domain.AuditGrant, Entity: "member", EntityID: email, Summary: summary,
 		Changes: map[string]any{"role": roleCode, "pending": pending}})
@@ -389,9 +401,9 @@ func (s *InstitutionService) RevokeMember(ctx context.Context, token, slug, id s
 	if m.FullName != "" {
 		who = m.FullName + " (" + m.Email + ")"
 	}
-	summary := "Quitó el rol " + m.RoleCode + " a " + who
+	summary := "Quitó el rol " + roleName(m.RoleCode) + " a " + who
 	if m.Pending {
-		summary = "Canceló la invitación de " + m.Email + " como " + m.RoleCode
+		summary = "Canceló la invitación de " + m.Email + " como " + roleName(m.RoleCode)
 	}
 	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "users", Action: domain.AuditRevoke, Entity: "member", EntityID: id, Summary: summary,
 		Changes: map[string]any{"role": m.RoleCode, "pending": m.Pending}})
