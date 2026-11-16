@@ -533,7 +533,8 @@ func (s *PeopleService) placement(ctx context.Context, sc academicScope, periodI
 		switch {
 		case i < 0:
 			fields["sectionId"] = "Esa " + strings.ToLower(sc.profile.vocabulary.Section) + " no es de este periodo."
-		case sections[i].LevelID != levelID || sections[i].GradeID != gradeID:
+		// A multigrade section takes any grade of its cycle
+		case sections[i].LevelID != levelID || (sections[i].GradeID != gradeID && !sections[i].Multigrade):
 			fields["sectionId"] = "Esa " + strings.ToLower(sc.profile.vocabulary.Section) + " no corresponde a lo elegido."
 		default:
 			occupancy, err := s.repo.Occupancy(ctx, sc.institution.ID, periodID)

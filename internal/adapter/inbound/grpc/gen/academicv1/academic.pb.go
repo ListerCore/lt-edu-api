@@ -874,8 +874,10 @@ type Section struct {
 	// EBA only: pebaja | literacy, and virtual | itinerant when attention_mode is distance
 	Program         string `protobuf:"bytes,15,opt,name=program,proto3" json:"program,omitempty"`
 	DistanceVariant string `protobuf:"bytes,16,opt,name=distance_variant,json=distanceVariant,proto3" json:"distance_variant,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	// EBA only: gathers students of several grades of the cycle; grade_id is the lowest
+	Multigrade    bool `protobuf:"varint,17,opt,name=multigrade,proto3" json:"multigrade,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Section) Reset() {
@@ -1018,6 +1020,13 @@ func (x *Section) GetDistanceVariant() string {
 		return x.DistanceVariant
 	}
 	return ""
+}
+
+func (x *Section) GetMultigrade() bool {
+	if x != nil {
+		return x.Multigrade
+	}
+	return false
 }
 
 type LevelInput struct {
@@ -1259,6 +1268,7 @@ type SectionInput struct {
 	// EBA only; empty program means PEBAJA, empty variant of a distance section means virtual
 	Program         string `protobuf:"bytes,6,opt,name=program,proto3" json:"program,omitempty"`
 	DistanceVariant string `protobuf:"bytes,7,opt,name=distance_variant,json=distanceVariant,proto3" json:"distance_variant,omitempty"`
+	Multigrade      bool   `protobuf:"varint,8,opt,name=multigrade,proto3" json:"multigrade,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1340,6 +1350,13 @@ func (x *SectionInput) GetDistanceVariant() string {
 		return x.DistanceVariant
 	}
 	return ""
+}
+
+func (x *SectionInput) GetMultigrade() bool {
+	if x != nil {
+		return x.Multigrade
+	}
+	return false
 }
 
 type GetContextRequest struct {
@@ -3344,6 +3361,7 @@ type CreateSectionsRequest struct {
 	Room            string   `protobuf:"bytes,9,opt,name=room,proto3" json:"room,omitempty"`
 	Program         string   `protobuf:"bytes,10,opt,name=program,proto3" json:"program,omitempty"`
 	DistanceVariant string   `protobuf:"bytes,11,opt,name=distance_variant,json=distanceVariant,proto3" json:"distance_variant,omitempty"`
+	Multigrade      bool     `protobuf:"varint,12,opt,name=multigrade,proto3" json:"multigrade,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -3453,6 +3471,13 @@ func (x *CreateSectionsRequest) GetDistanceVariant() string {
 		return x.DistanceVariant
 	}
 	return ""
+}
+
+func (x *CreateSectionsRequest) GetMultigrade() bool {
+	if x != nil {
+		return x.Multigrade
+	}
+	return false
 }
 
 type CreateSectionsResponse struct {
@@ -3899,7 +3924,7 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\x05terms\x18\t \x03(\v2\x18.joseph.academic.v1.TermR\x05terms\x12#\n" +
 	"\rsection_count\x18\n" +
 	" \x01(\x05R\fsectionCount\x12%\n" +
-	"\x0ecapacity_total\x18\v \x01(\x05R\rcapacityTotal\"\xcb\x03\n" +
+	"\x0ecapacity_total\x18\v \x01(\x05R\rcapacityTotal\"\xeb\x03\n" +
 	"\aSection\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12\x19\n" +
@@ -3921,7 +3946,10 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\n" +
 	"tutor_name\x18\x0e \x01(\tR\ttutorName\x12\x18\n" +
 	"\aprogram\x18\x0f \x01(\tR\aprogram\x12)\n" +
-	"\x10distance_variant\x18\x10 \x01(\tR\x0fdistanceVariant\"\xf0\x01\n" +
+	"\x10distance_variant\x18\x10 \x01(\tR\x0fdistanceVariant\x12\x1e\n" +
+	"\n" +
+	"multigrade\x18\x11 \x01(\bR\n" +
+	"multigrade\"\xf0\x01\n" +
 	"\n" +
 	"LevelInput\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\tR\x04code\x12\x12\n" +
@@ -3945,7 +3973,7 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\tstarts_on\x18\x03 \x01(\tR\bstartsOn\x12\x17\n" +
 	"\aends_on\x18\x04 \x01(\tR\x06endsOn\x12\x1f\n" +
 	"\vterm_scheme\x18\x05 \x01(\tR\n" +
-	"termScheme\"\xd4\x01\n" +
+	"termScheme\"\xf4\x01\n" +
 	"\fSectionInput\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05shift\x18\x02 \x01(\tR\x05shift\x12%\n" +
@@ -3953,7 +3981,10 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\bcapacity\x18\x04 \x01(\x05R\bcapacity\x12\x12\n" +
 	"\x04room\x18\x05 \x01(\tR\x04room\x12\x18\n" +
 	"\aprogram\x18\x06 \x01(\tR\aprogram\x12)\n" +
-	"\x10distance_variant\x18\a \x01(\tR\x0fdistanceVariant\">\n" +
+	"\x10distance_variant\x18\a \x01(\tR\x0fdistanceVariant\x12\x1e\n" +
+	"\n" +
+	"multigrade\x18\b \x01(\bR\n" +
+	"multigrade\">\n" +
 	"\x11GetContextRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"S\n" +
 	"\x12GetContextResponse\x12=\n" +
@@ -4063,7 +4094,7 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\aends_on\x18\x06 \x01(\tR\x06endsOn\x12\x16\n" +
 	"\x06status\x18\a \x01(\tR\x06status\"B\n" +
 	"\x12UpdateTermResponse\x12,\n" +
-	"\x04term\x18\x01 \x01(\v2\x18.joseph.academic.v1.TermR\x04term\"\xdf\x02\n" +
+	"\x04term\x18\x01 \x01(\v2\x18.joseph.academic.v1.TermR\x04term\"\xff\x02\n" +
 	"\x15CreateSectionsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
 	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12\x19\n" +
@@ -4076,7 +4107,10 @@ const file_joseph_academic_v1_academic_proto_rawDesc = "" +
 	"\x04room\x18\t \x01(\tR\x04room\x12\x18\n" +
 	"\aprogram\x18\n" +
 	" \x01(\tR\aprogram\x12)\n" +
-	"\x10distance_variant\x18\v \x01(\tR\x0fdistanceVariant\"Q\n" +
+	"\x10distance_variant\x18\v \x01(\tR\x0fdistanceVariant\x12\x1e\n" +
+	"\n" +
+	"multigrade\x18\f \x01(\bR\n" +
+	"multigrade\"Q\n" +
 	"\x16CreateSectionsResponse\x127\n" +
 	"\bsections\x18\x01 \x03(\v2\x1b.joseph.academic.v1.SectionR\bsections\"\x8d\x01\n" +
 	"\x14UpdateSectionRequest\x12)\n" +

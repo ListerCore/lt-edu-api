@@ -223,16 +223,30 @@ type Placement struct {
 	DecidedOn   time.Time
 	Reference   string
 	Notes       string
+	// Phase E1: where the student comes from, what they bring, the areas validated and the acta
+	Origin        string
+	OriginStudies string
+	SubjectIDs    []string
+	SubjectNames  []string
+	ActYear       int
+	ActNumber     int
+	DocumentID    string
+	// Newest version of the acta: its id and state (pending, published…), empty when not generated
+	ActVersionID string
+	ActStatus    string
 }
 
 type PlacementInput struct {
-	StudentID string
-	Kind      string
-	LevelID   string
-	GradeID   string
-	DecidedOn time.Time
-	Reference string
-	Notes     string
+	StudentID     string
+	Kind          string
+	LevelID       string
+	GradeID       string
+	DecidedOn     time.Time
+	Reference     string
+	Notes         string
+	Origin        string
+	OriginStudies string
+	SubjectIDs    []string
 }
 
 var (

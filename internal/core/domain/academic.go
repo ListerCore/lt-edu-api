@@ -153,8 +153,10 @@ type Section struct {
 	// EBA only: pebaja | literacy, and virtual | itinerant when the form is distance
 	Program         string
 	DistanceVariant string
-	Capacity        int
-	Room            string
+	// EBA only: the section gathers students of several grades of its cycle (GradeID is the lowest)
+	Multigrade bool
+	Capacity   int
+	Room       string
 	// Position of its level and grade, for ordering
 	LevelPosition int
 	GradePosition int
@@ -171,6 +173,7 @@ type SectionBatch struct {
 	AttentionMode   string
 	Program         string
 	DistanceVariant string
+	Multigrade      bool
 	Capacity        int
 	Room            string
 }
@@ -213,6 +216,7 @@ type SectionInput struct {
 	AttentionMode   string
 	Program         string
 	DistanceVariant string
+	Multigrade      bool
 	Capacity        int
 	Room            string
 }

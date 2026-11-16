@@ -52,4 +52,23 @@ type PeopleRepository interface {
 	Placements(ctx context.Context, institutionID, studentID string) ([]domain.Placement, error)
 	CreatePlacement(ctx context.Context, institutionID string, in domain.PlacementInput) (domain.Placement, error)
 	DeletePlacement(ctx context.Context, institutionID, id string) error
+	Placement(ctx context.Context, institutionID, id string) (domain.Placement, error)
+	// AssignAct gives the placement the next acta number of the year, once; returns the year and number it keeps
+	AssignAct(ctx context.Context, institutionID, placementID string, year int) (int, int, error)
+	// LinkAct points the placement at the issued document of its acta
+	LinkAct(ctx context.Context, placementID, documentID string) error
+
+	// ---------- EBA enrollment (phase E1) ----------
+
+	// EnrollmentFile is the student's ficha; with defaults when none was saved (ErrNotFound for an unknown student)
+	EnrollmentFile(ctx context.Context, institutionID, studentID string) (domain.EnrollmentFile, error)
+	SaveEnrollmentFile(ctx context.Context, institutionID string, f domain.EnrollmentFile) error
+	SetReligionExemption(ctx context.Context, institutionID string, x domain.ReligionExemption) error
+	RemoveReligionExemption(ctx context.Context, institutionID, enrollmentID string) error
+	// HasReligion reports whether the plan in force of the enrollment's level has Educación Religiosa
+	HasReligion(ctx context.Context, institutionID, enrollmentID string) (bool, error)
+	// Roll is the nómina: the period's enrollments with student data, exemption and SIAGIE state
+	Roll(ctx context.Context, institutionID string, f domain.RollFilter) ([]domain.RollRow, error)
+	// SetSiagie sets the SIAGIE state of the enrollments; exported also stamps the export time. Returns how many
+	SetSiagie(ctx context.Context, institutionID string, enrollmentIDs []string, status, note, by string, at time.Time) (int, error)
 }

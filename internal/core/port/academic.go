@@ -55,6 +55,8 @@ type AcademicRepository interface {
 	// CreateSections stores them all or none
 	CreateSections(ctx context.Context, institutionID, periodID string, sections []domain.Section) ([]domain.Section, error)
 	UpdateSection(ctx context.Context, institutionID, sectionID string, in domain.SectionInput) (domain.Section, error)
+	// OtherGrades counts the active students of a section whose grade is not the section's (multigrade sections)
+	OtherGrades(ctx context.Context, sectionID string) (int, error)
 	DeleteSection(ctx context.Context, institutionID, sectionID string) error
 
 	// AuthorizedModes is InstitutionRepository.AuthorizedModes: the forms of attention authorized per level on day

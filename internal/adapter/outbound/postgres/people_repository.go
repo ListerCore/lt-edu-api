@@ -537,15 +537,23 @@ func (r *PeopleRepository) Occupancy(ctx context.Context, institutionID, periodI
 // ---------- placements ----------
 
 const placementSelect = `SELECT pl.id, pl.student_id, s.paternal_surname || ' ' || s.maternal_surname || ', ' || s.given_names, pl.kind, pl.level_id, l.name, pl.grade_id, g.name,
-	pl.decided_on, pl.reference, pl.notes
+	pl.decided_on, pl.reference, pl.notes, pl.origin, pl.origin_studies,
+	coalesce((SELECT array_agg(ps.subject_id::text ORDER BY sj.position) FROM enrollment.placement_subjects ps JOIN academic.subjects sj ON sj.id = ps.subject_id WHERE ps.placement_id = pl.id), '{}'),
+	coalesce((SELECT array_agg(sj.name ORDER BY sj.position) FROM enrollment.placement_subjects ps JOIN academic.subjects sj ON sj.id = ps.subject_id WHERE ps.placement_id = pl.id), '{}'),
+	coalesce(pl.act_year, 0), coalesce(pl.act_number, 0), coalesce(pl.document_id::text, ''), coalesce(v.id::text, ''), coalesce(v.status, '')
 	FROM enrollment.placements pl
 	JOIN people.students s ON s.id = pl.student_id
 	JOIN academic.levels l ON l.id = pl.level_id
-	JOIN academic.grades g ON g.id = pl.grade_id`
+	JOIN academic.grades g ON g.id = pl.grade_id
+	LEFT JOIN LATERAL (SELECT v.id, v.status FROM documents.versions v WHERE v.document_id = pl.document_id ORDER BY v.number DESC LIMIT 1) v ON true`
 
 func scanPlacement(row pgx.Row) (domain.Placement, error) {
 	var p domain.Placement
-	err := row.Scan(&p.ID, &p.StudentID, &p.StudentName, &p.Kind, &p.LevelID, &p.LevelName, &p.GradeID, &p.GradeName, &p.DecidedOn, &p.Reference, &p.Notes)
+	var year int16
+	var number int32
+	err := row.Scan(&p.ID, &p.StudentID, &p.StudentName, &p.Kind, &p.LevelID, &p.LevelName, &p.GradeID, &p.GradeName, &p.DecidedOn, &p.Reference, &p.Notes,
+		&p.Origin, &p.OriginStudies, &p.SubjectIDs, &p.SubjectNames, &year, &number, &p.DocumentID, &p.ActVersionID, &p.ActStatus)
+	p.ActYear, p.ActNumber = int(year), int(number)
 	return p, err
 }
 
@@ -558,15 +566,29 @@ func (r *PeopleRepository) Placements(ctx context.Context, institutionID, studen
 	return pgx.CollectRows(rows, func(row pgx.CollectableRow) (domain.Placement, error) { return scanPlacement(row) })
 }
 
+func (r *PeopleRepository) Placement(ctx context.Context, institutionID, id string) (domain.Placement, error) {
+	p, err := scanPlacement(r.c.pool.QueryRow(ctx, placementSelect+` WHERE pl.institution_id = $1 AND pl.id = $2`, institutionID, id))
+	return p, academicErr(err)
+}
+
 func (r *PeopleRepository) CreatePlacement(ctx context.Context, institutionID string, in domain.PlacementInput) (domain.Placement, error) {
 	var id string
-	err := r.c.pool.QueryRow(ctx, `INSERT INTO enrollment.placements (institution_id, student_id, kind, level_id, grade_id, decided_on, reference, notes)
-		SELECT $1, s.id, $3, $4, $5, $6, $7, $8 FROM people.students s WHERE s.institution_id = $1 AND s.id = $2 RETURNING id`,
-		institutionID, in.StudentID, in.Kind, in.LevelID, in.GradeID, date(in.DecidedOn), in.Reference, in.Notes).Scan(&id)
+	err := pgx.BeginFunc(ctx, r.c.pool, func(tx pgx.Tx) error {
+		if err := tx.QueryRow(ctx, `INSERT INTO enrollment.placements (institution_id, student_id, kind, level_id, grade_id, decided_on, reference, notes, origin, origin_studies)
+			SELECT $1, s.id, $3, $4, $5, $6, $7, $8, $9, $10 FROM people.students s WHERE s.institution_id = $1 AND s.id = $2 RETURNING id`,
+			institutionID, in.StudentID, in.Kind, in.LevelID, in.GradeID, date(in.DecidedOn), in.Reference, in.Notes, in.Origin, in.OriginStudies).Scan(&id); err != nil {
+			return err
+		}
+		if len(in.SubjectIDs) > 0 {
+			_, err := tx.Exec(ctx, `INSERT INTO enrollment.placement_subjects (placement_id, subject_id) SELECT $1, unnest($2::uuid[]) ON CONFLICT DO NOTHING`, id, in.SubjectIDs)
+			return err
+		}
+		return nil
+	})
 	if err != nil {
 		return domain.Placement{}, academicErr(err)
 	}
-	return scanPlacement(r.c.pool.QueryRow(ctx, placementSelect+` WHERE pl.id = $1`, id))
+	return r.Placement(ctx, institutionID, id)
 }
 
 func (r *PeopleRepository) DeletePlacement(ctx context.Context, institutionID, id string) error {

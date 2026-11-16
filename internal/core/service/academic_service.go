@@ -921,8 +921,11 @@ func (s *AcademicService) validateSection(sc academicScope, settings domain.Acad
 			fields["attentionMode"] = "Ese " + strings.ToLower(sc.profile.vocabulary.Level) + " no se ofrece en esa forma de atención."
 		}
 		validateEBASection(lvl, in, fields)
+		if in.Multigrade && len(lvl.Grades) < 2 {
+			fields["multigrade"] = "Un aula multigrado reúne varios grados: " + lvl.Name + " tiene uno solo."
+		}
 	} else {
-		in.AttentionMode, in.Program, in.DistanceVariant = "", "", ""
+		in.AttentionMode, in.Program, in.DistanceVariant, in.Multigrade = "", "", "", false
 	}
 	return fields
 }
@@ -992,7 +995,7 @@ func (s *AcademicService) CreateSections(ctx context.Context, token, slug, perio
 		}
 		return nil, err
 	}
-	in := domain.SectionInput{Shift: batch.Shift, AttentionMode: batch.AttentionMode, Program: batch.Program, DistanceVariant: batch.DistanceVariant, Capacity: batch.Capacity, Room: batch.Room, Name: "x"}
+	in := domain.SectionInput{Shift: batch.Shift, AttentionMode: batch.AttentionMode, Program: batch.Program, DistanceVariant: batch.DistanceVariant, Multigrade: batch.Multigrade, Capacity: batch.Capacity, Room: batch.Room, Name: "x"}
 	fields := s.validateSection(sc, settings, lvl, &in)
 	if err := s.checkAuthorizedMode(ctx, sc, lvl.ID, in.AttentionMode, fields); err != nil {
 		return nil, err
@@ -1034,7 +1037,7 @@ func (s *AcademicService) CreateSections(ctx context.Context, token, slug, perio
 	for _, g := range grades {
 		for _, n := range names {
 			sections = append(sections, domain.Section{LevelID: lvl.ID, GradeID: g, Name: n, Shift: in.Shift, AttentionMode: in.AttentionMode,
-				Program: in.Program, DistanceVariant: in.DistanceVariant, Capacity: in.Capacity, Room: in.Room})
+				Program: in.Program, DistanceVariant: in.DistanceVariant, Multigrade: in.Multigrade, Capacity: in.Capacity, Room: in.Room})
 		}
 	}
 	created, err := s.repo.CreateSections(ctx, sc.institution.ID, periodID, sections)
@@ -1068,6 +1071,16 @@ func (s *AcademicService) UpdateSection(ctx context.Context, token, slug, sectio
 		return domain.Section{}, err
 	}
 	fields := s.validateSection(sc, settings, lvl, &in)
+	// A multigrade section with students of other grades cannot go back to a single grade
+	if current.Multigrade && !in.Multigrade {
+		n, err := s.repo.OtherGrades(ctx, sectionID)
+		if err != nil {
+			return domain.Section{}, err
+		}
+		if n > 0 {
+			fields["multigrade"] = fmt.Sprintf("Tiene %d estudiantes de otros grados: muévelos antes de quitar el multigrado.", n)
+		}
+	}
 	if in.AttentionMode != current.AttentionMode {
 		if err := s.checkAuthorizedMode(ctx, sc, lvl.ID, in.AttentionMode, fields); err != nil {
 			return domain.Section{}, err
@@ -1168,7 +1181,7 @@ func sectionChanges(before, after domain.Section) map[string]any {
 	out := map[string]any{}
 	pairs := map[string][2]string{
 		"name": {before.Name, after.Name}, "shift": {before.Shift, after.Shift}, "attentionMode": {before.AttentionMode, after.AttentionMode},
-		"program": {before.Program, after.Program}, "distanceVariant": {before.DistanceVariant, after.DistanceVariant}, "room": {before.Room, after.Room},
+		"program": {before.Program, after.Program}, "distanceVariant": {before.DistanceVariant, after.DistanceVariant}, "multigrade": {strconv.FormatBool(before.Multigrade), strconv.FormatBool(after.Multigrade)}, "room": {before.Room, after.Room},
 		"capacity": {strconv.Itoa(before.Capacity), strconv.Itoa(after.Capacity)},
 	}
 	for k, v := range pairs {
