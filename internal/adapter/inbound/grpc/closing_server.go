@@ -28,7 +28,7 @@ func (s *closingServer) fail(method string, err error) error {
 
 func toRecordInfo(r domain.Record) *assessmentv1.RecordInfo {
 	return &assessmentv1.RecordInfo{Id: r.ID, SectionId: r.SectionID, SectionLabel: r.SectionLabel, AssignmentId: r.AssignmentID, Kind: r.Kind, Number: int32(r.Number), Code: r.Code,
-		Status: r.Status, IssuedName: r.IssuedName, IssuedAt: instant(&r.IssuedAt)}
+		Status: r.Status, IssuedName: r.IssuedName, IssuedAt: instant(&r.IssuedAt), ActVersionId: r.ActVersionID, ActStatus: r.ActStatus}
 }
 
 func toRecordInfos(items []domain.Record) []*assessmentv1.RecordInfo {
@@ -52,7 +52,7 @@ func toSectionClosing(r service.SectionResult) *assessmentv1.SectionClosing {
 		PeriodName: r.Period.Name, Rule: r.Rule.Name, Referential: r.Rule.Referential, Automatic: r.Rule.Automatic, LastTermClosed: r.LastTermClosed, CanManage: r.CanManage,
 		Records: toRecordInfos(r.Records)}
 	for _, a := range r.Areas {
-		area := &assessmentv1.ClosingArea{SubjectId: a.SubjectID, Name: a.Name}
+		area := &assessmentv1.ClosingArea{SubjectId: a.SubjectID, SubjectCode: a.SubjectCode, Name: a.Name}
 		for _, c := range a.Competencies {
 			area.Competencies = append(area.Competencies, &assessmentv1.Competency{Id: c.ID, Code: c.Code, Name: c.Name})
 		}
@@ -61,7 +61,8 @@ func toSectionClosing(r service.SectionResult) *assessmentv1.SectionClosing {
 	for _, x := range r.Rows {
 		out.Rows = append(out.Rows, &assessmentv1.ClosingRow{Student: &assessmentv1.StudentRef{Id: x.Student.ID, Code: x.Student.Code, Name: x.Student.Name, Document: x.Student.Document},
 			Final: x.Final, Computed: x.Computed, Reason: x.Reason, Decided: x.Decided, DecisionNote: x.DecisionNote, DecidedName: x.DecidedName, Situation: x.Situation,
-			Confirmed: x.Confirmed, Targets: x.Targets, Recovery: x.Recovery, AfterRecovery: x.AfterRecovery})
+			Confirmed: x.Confirmed, Targets: x.Targets, Recovery: x.Recovery, AfterRecovery: x.AfterRecovery, EnrollmentId: x.EnrollmentID, GradeShort: x.GradeShort,
+			ReligionExempt: x.ReligionExempt, SiagieStatus: x.SiagieStatus, SiagieNote: x.SiagieNote, SiagieAt: instant(x.SiagieAt)})
 	}
 	return out
 }

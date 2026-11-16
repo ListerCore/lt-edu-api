@@ -22,17 +22,21 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ClosingService_GetClosing_FullMethodName        = "/joseph.assessment.v1.ClosingService/GetClosing"
-	ClosingService_GetSectionClosing_FullMethodName = "/joseph.assessment.v1.ClosingService/GetSectionClosing"
-	ClosingService_DecideSituation_FullMethodName   = "/joseph.assessment.v1.ClosingService/DecideSituation"
-	ClosingService_ConfirmSection_FullMethodName    = "/joseph.assessment.v1.ClosingService/ConfirmSection"
-	ClosingService_SaveRecovery_FullMethodName      = "/joseph.assessment.v1.ClosingService/SaveRecovery"
-	ClosingService_GetUnitClosing_FullMethodName    = "/joseph.assessment.v1.ClosingService/GetUnitClosing"
-	ClosingService_ConfirmUnit_FullMethodName       = "/joseph.assessment.v1.ClosingService/ConfirmUnit"
-	ClosingService_SaveUnitRecovery_FullMethodName  = "/joseph.assessment.v1.ClosingService/SaveUnitRecovery"
-	ClosingService_IssueRecord_FullMethodName       = "/joseph.assessment.v1.ClosingService/IssueRecord"
-	ClosingService_GetRecord_FullMethodName         = "/joseph.assessment.v1.ClosingService/GetRecord"
-	ClosingService_ExportResults_FullMethodName     = "/joseph.assessment.v1.ClosingService/ExportResults"
+	ClosingService_GetClosing_FullMethodName         = "/joseph.assessment.v1.ClosingService/GetClosing"
+	ClosingService_GetSectionClosing_FullMethodName  = "/joseph.assessment.v1.ClosingService/GetSectionClosing"
+	ClosingService_DecideSituation_FullMethodName    = "/joseph.assessment.v1.ClosingService/DecideSituation"
+	ClosingService_ConfirmSection_FullMethodName     = "/joseph.assessment.v1.ClosingService/ConfirmSection"
+	ClosingService_SaveRecovery_FullMethodName       = "/joseph.assessment.v1.ClosingService/SaveRecovery"
+	ClosingService_GetUnitClosing_FullMethodName     = "/joseph.assessment.v1.ClosingService/GetUnitClosing"
+	ClosingService_ConfirmUnit_FullMethodName        = "/joseph.assessment.v1.ClosingService/ConfirmUnit"
+	ClosingService_SaveUnitRecovery_FullMethodName   = "/joseph.assessment.v1.ClosingService/SaveUnitRecovery"
+	ClosingService_IssueRecord_FullMethodName        = "/joseph.assessment.v1.ClosingService/IssueRecord"
+	ClosingService_GetRecord_FullMethodName          = "/joseph.assessment.v1.ClosingService/GetRecord"
+	ClosingService_ExportResults_FullMethodName      = "/joseph.assessment.v1.ClosingService/ExportResults"
+	ClosingService_GetPromotionRules_FullMethodName  = "/joseph.assessment.v1.ClosingService/GetPromotionRules"
+	ClosingService_SavePromotionRule_FullMethodName  = "/joseph.assessment.v1.ClosingService/SavePromotionRule"
+	ClosingService_ResetPromotionRule_FullMethodName = "/joseph.assessment.v1.ClosingService/ResetPromotionRule"
+	ClosingService_SetSiagieGrades_FullMethodName    = "/joseph.assessment.v1.ClosingService/SetSiagieGrades"
 )
 
 // ClosingServiceClient is the client API for ClosingService service.
@@ -55,6 +59,13 @@ type ClosingServiceClient interface {
 	GetRecord(ctx context.Context, in *GetRecordRequest, opts ...grpc.CallOption) (*GetRecordResponse, error)
 	// CSV for SIAGIE (section) or the unit's results (assignment)
 	ExportResults(ctx context.Context, in *ExportResultsRequest, opts ...grpc.CallOption) (*ExportResultsResponse, error)
+	// EBA (phase E7): the promotion rule of each cycle, set by the CEBA (decision D4), and the SIAGIE loading state
+	// of the final grades of each student
+	GetPromotionRules(ctx context.Context, in *GetPromotionRulesRequest, opts ...grpc.CallOption) (*GetPromotionRulesResponse, error)
+	SavePromotionRule(ctx context.Context, in *SavePromotionRuleRequest, opts ...grpc.CallOption) (*SavePromotionRuleResponse, error)
+	ResetPromotionRule(ctx context.Context, in *ResetPromotionRuleRequest, opts ...grpc.CallOption) (*ResetPromotionRuleResponse, error)
+	// Every student of the section when student_ids is empty; observed needs the note
+	SetSiagieGrades(ctx context.Context, in *SetSiagieGradesRequest, opts ...grpc.CallOption) (*SetSiagieGradesResponse, error)
 }
 
 type closingServiceClient struct {
@@ -175,6 +186,46 @@ func (c *closingServiceClient) ExportResults(ctx context.Context, in *ExportResu
 	return out, nil
 }
 
+func (c *closingServiceClient) GetPromotionRules(ctx context.Context, in *GetPromotionRulesRequest, opts ...grpc.CallOption) (*GetPromotionRulesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetPromotionRulesResponse)
+	err := c.cc.Invoke(ctx, ClosingService_GetPromotionRules_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *closingServiceClient) SavePromotionRule(ctx context.Context, in *SavePromotionRuleRequest, opts ...grpc.CallOption) (*SavePromotionRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SavePromotionRuleResponse)
+	err := c.cc.Invoke(ctx, ClosingService_SavePromotionRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *closingServiceClient) ResetPromotionRule(ctx context.Context, in *ResetPromotionRuleRequest, opts ...grpc.CallOption) (*ResetPromotionRuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResetPromotionRuleResponse)
+	err := c.cc.Invoke(ctx, ClosingService_ResetPromotionRule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *closingServiceClient) SetSiagieGrades(ctx context.Context, in *SetSiagieGradesRequest, opts ...grpc.CallOption) (*SetSiagieGradesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetSiagieGradesResponse)
+	err := c.cc.Invoke(ctx, ClosingService_SetSiagieGrades_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ClosingServiceServer is the server API for ClosingService service.
 // All implementations must embed UnimplementedClosingServiceServer
 // for forward compatibility.
@@ -195,6 +246,13 @@ type ClosingServiceServer interface {
 	GetRecord(context.Context, *GetRecordRequest) (*GetRecordResponse, error)
 	// CSV for SIAGIE (section) or the unit's results (assignment)
 	ExportResults(context.Context, *ExportResultsRequest) (*ExportResultsResponse, error)
+	// EBA (phase E7): the promotion rule of each cycle, set by the CEBA (decision D4), and the SIAGIE loading state
+	// of the final grades of each student
+	GetPromotionRules(context.Context, *GetPromotionRulesRequest) (*GetPromotionRulesResponse, error)
+	SavePromotionRule(context.Context, *SavePromotionRuleRequest) (*SavePromotionRuleResponse, error)
+	ResetPromotionRule(context.Context, *ResetPromotionRuleRequest) (*ResetPromotionRuleResponse, error)
+	// Every student of the section when student_ids is empty; observed needs the note
+	SetSiagieGrades(context.Context, *SetSiagieGradesRequest) (*SetSiagieGradesResponse, error)
 	mustEmbedUnimplementedClosingServiceServer()
 }
 
@@ -237,6 +295,18 @@ func (UnimplementedClosingServiceServer) GetRecord(context.Context, *GetRecordRe
 }
 func (UnimplementedClosingServiceServer) ExportResults(context.Context, *ExportResultsRequest) (*ExportResultsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ExportResults not implemented")
+}
+func (UnimplementedClosingServiceServer) GetPromotionRules(context.Context, *GetPromotionRulesRequest) (*GetPromotionRulesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetPromotionRules not implemented")
+}
+func (UnimplementedClosingServiceServer) SavePromotionRule(context.Context, *SavePromotionRuleRequest) (*SavePromotionRuleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SavePromotionRule not implemented")
+}
+func (UnimplementedClosingServiceServer) ResetPromotionRule(context.Context, *ResetPromotionRuleRequest) (*ResetPromotionRuleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ResetPromotionRule not implemented")
+}
+func (UnimplementedClosingServiceServer) SetSiagieGrades(context.Context, *SetSiagieGradesRequest) (*SetSiagieGradesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetSiagieGrades not implemented")
 }
 func (UnimplementedClosingServiceServer) mustEmbedUnimplementedClosingServiceServer() {}
 func (UnimplementedClosingServiceServer) testEmbeddedByValue()                        {}
@@ -457,6 +527,78 @@ func _ClosingService_ExportResults_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ClosingService_GetPromotionRules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPromotionRulesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClosingServiceServer).GetPromotionRules(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClosingService_GetPromotionRules_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClosingServiceServer).GetPromotionRules(ctx, req.(*GetPromotionRulesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClosingService_SavePromotionRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SavePromotionRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClosingServiceServer).SavePromotionRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClosingService_SavePromotionRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClosingServiceServer).SavePromotionRule(ctx, req.(*SavePromotionRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClosingService_ResetPromotionRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetPromotionRuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClosingServiceServer).ResetPromotionRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClosingService_ResetPromotionRule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClosingServiceServer).ResetPromotionRule(ctx, req.(*ResetPromotionRuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClosingService_SetSiagieGrades_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetSiagieGradesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClosingServiceServer).SetSiagieGrades(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClosingService_SetSiagieGrades_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClosingServiceServer).SetSiagieGrades(ctx, req.(*SetSiagieGradesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ClosingService_ServiceDesc is the grpc.ServiceDesc for ClosingService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -507,6 +649,22 @@ var ClosingService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ExportResults",
 			Handler:    _ClosingService_ExportResults_Handler,
+		},
+		{
+			MethodName: "GetPromotionRules",
+			Handler:    _ClosingService_GetPromotionRules_Handler,
+		},
+		{
+			MethodName: "SavePromotionRule",
+			Handler:    _ClosingService_SavePromotionRule_Handler,
+		},
+		{
+			MethodName: "ResetPromotionRule",
+			Handler:    _ClosingService_ResetPromotionRule_Handler,
+		},
+		{
+			MethodName: "SetSiagieGrades",
+			Handler:    _ClosingService_SetSiagieGrades_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

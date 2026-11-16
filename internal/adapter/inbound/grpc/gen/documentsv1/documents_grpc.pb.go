@@ -27,27 +27,33 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	DocumentsService_ReportCardsPdf_FullMethodName       = "/joseph.documents.v1.DocumentsService/ReportCardsPdf"
-	DocumentsService_SchedulesPdf_FullMethodName         = "/joseph.documents.v1.DocumentsService/SchedulesPdf"
-	DocumentsService_RecordPdf_FullMethodName            = "/joseph.documents.v1.DocumentsService/RecordPdf"
-	DocumentsService_ReceiptPdf_FullMethodName           = "/joseph.documents.v1.DocumentsService/ReceiptPdf"
-	DocumentsService_EnrollmentFormPdf_FullMethodName    = "/joseph.documents.v1.DocumentsService/EnrollmentFormPdf"
-	DocumentsService_RollPdf_FullMethodName              = "/joseph.documents.v1.DocumentsService/RollPdf"
-	DocumentsService_RollXlsx_FullMethodName             = "/joseph.documents.v1.DocumentsService/RollXlsx"
-	DocumentsService_SiagieXlsx_FullMethodName           = "/joseph.documents.v1.DocumentsService/SiagieXlsx"
-	DocumentsService_GeneratePlacementAct_FullMethodName = "/joseph.documents.v1.DocumentsService/GeneratePlacementAct"
-	DocumentsService_PlacementActPdf_FullMethodName      = "/joseph.documents.v1.DocumentsService/PlacementActPdf"
-	DocumentsService_PermanencePdf_FullMethodName        = "/joseph.documents.v1.DocumentsService/PermanencePdf"
-	DocumentsService_PermanenceXlsx_FullMethodName       = "/joseph.documents.v1.DocumentsService/PermanenceXlsx"
-	DocumentsService_SchedulesXlsx_FullMethodName        = "/joseph.documents.v1.DocumentsService/SchedulesXlsx"
-	DocumentsService_GetScheduleSigners_FullMethodName   = "/joseph.documents.v1.DocumentsService/GetScheduleSigners"
-	DocumentsService_SetScheduleSigners_FullMethodName   = "/joseph.documents.v1.DocumentsService/SetScheduleSigners"
-	DocumentsService_ListScheduleIssues_FullMethodName   = "/joseph.documents.v1.DocumentsService/ListScheduleIssues"
-	DocumentsService_GenerateSchedules_FullMethodName    = "/joseph.documents.v1.DocumentsService/GenerateSchedules"
-	DocumentsService_SignVersion_FullMethodName          = "/joseph.documents.v1.DocumentsService/SignVersion"
-	DocumentsService_VersionPdf_FullMethodName           = "/joseph.documents.v1.DocumentsService/VersionPdf"
-	DocumentsService_TrackDocument_FullMethodName        = "/joseph.documents.v1.DocumentsService/TrackDocument"
-	DocumentsService_TrackPdf_FullMethodName             = "/joseph.documents.v1.DocumentsService/TrackPdf"
+	DocumentsService_ReportCardsPdf_FullMethodName         = "/joseph.documents.v1.DocumentsService/ReportCardsPdf"
+	DocumentsService_SchedulesPdf_FullMethodName           = "/joseph.documents.v1.DocumentsService/SchedulesPdf"
+	DocumentsService_RecordPdf_FullMethodName              = "/joseph.documents.v1.DocumentsService/RecordPdf"
+	DocumentsService_ReceiptPdf_FullMethodName             = "/joseph.documents.v1.DocumentsService/ReceiptPdf"
+	DocumentsService_EnrollmentFormPdf_FullMethodName      = "/joseph.documents.v1.DocumentsService/EnrollmentFormPdf"
+	DocumentsService_RollPdf_FullMethodName                = "/joseph.documents.v1.DocumentsService/RollPdf"
+	DocumentsService_RollXlsx_FullMethodName               = "/joseph.documents.v1.DocumentsService/RollXlsx"
+	DocumentsService_SiagieXlsx_FullMethodName             = "/joseph.documents.v1.DocumentsService/SiagieXlsx"
+	DocumentsService_GeneratePlacementAct_FullMethodName   = "/joseph.documents.v1.DocumentsService/GeneratePlacementAct"
+	DocumentsService_PlacementActPdf_FullMethodName        = "/joseph.documents.v1.DocumentsService/PlacementActPdf"
+	DocumentsService_PermanencePdf_FullMethodName          = "/joseph.documents.v1.DocumentsService/PermanencePdf"
+	DocumentsService_PermanenceXlsx_FullMethodName         = "/joseph.documents.v1.DocumentsService/PermanenceXlsx"
+	DocumentsService_GenerateRecordAct_FullMethodName      = "/joseph.documents.v1.DocumentsService/GenerateRecordAct"
+	DocumentsService_RecordActPdf_FullMethodName           = "/joseph.documents.v1.DocumentsService/RecordActPdf"
+	DocumentsService_SiagieGradesXlsx_FullMethodName       = "/joseph.documents.v1.DocumentsService/SiagieGradesXlsx"
+	DocumentsService_GetStudentCertificates_FullMethodName = "/joseph.documents.v1.DocumentsService/GetStudentCertificates"
+	DocumentsService_GenerateCertificate_FullMethodName    = "/joseph.documents.v1.DocumentsService/GenerateCertificate"
+	DocumentsService_CertificatePdf_FullMethodName         = "/joseph.documents.v1.DocumentsService/CertificatePdf"
+	DocumentsService_SchedulesXlsx_FullMethodName          = "/joseph.documents.v1.DocumentsService/SchedulesXlsx"
+	DocumentsService_GetScheduleSigners_FullMethodName     = "/joseph.documents.v1.DocumentsService/GetScheduleSigners"
+	DocumentsService_SetScheduleSigners_FullMethodName     = "/joseph.documents.v1.DocumentsService/SetScheduleSigners"
+	DocumentsService_ListScheduleIssues_FullMethodName     = "/joseph.documents.v1.DocumentsService/ListScheduleIssues"
+	DocumentsService_GenerateSchedules_FullMethodName      = "/joseph.documents.v1.DocumentsService/GenerateSchedules"
+	DocumentsService_SignVersion_FullMethodName            = "/joseph.documents.v1.DocumentsService/SignVersion"
+	DocumentsService_VersionPdf_FullMethodName             = "/joseph.documents.v1.DocumentsService/VersionPdf"
+	DocumentsService_TrackDocument_FullMethodName          = "/joseph.documents.v1.DocumentsService/TrackDocument"
+	DocumentsService_TrackPdf_FullMethodName               = "/joseph.documents.v1.DocumentsService/TrackPdf"
 )
 
 // DocumentsServiceClient is the client API for DocumentsService service.
@@ -69,6 +75,14 @@ type DocumentsServiceClient interface {
 	// Permanence of a distance section (phase E5): summary PDF and the spreadsheet with every week
 	PermanencePdf(ctx context.Context, in *PermanencePdfRequest, opts ...grpc.CallOption) (*PermanencePdfResponse, error)
 	PermanenceXlsx(ctx context.Context, in *PermanenceXlsxRequest, opts ...grpc.CallOption) (*PermanenceXlsxResponse, error)
+	// EBA closing (phase E7): the consolidated acta as a version for its signers and its PDF, the SIAGIE spreadsheet
+	// of the final grades of a section, and the certificates of enrollment, studies and conclusion of a cycle
+	GenerateRecordAct(ctx context.Context, in *GenerateRecordActRequest, opts ...grpc.CallOption) (*GenerateRecordActResponse, error)
+	RecordActPdf(ctx context.Context, in *RecordActPdfRequest, opts ...grpc.CallOption) (*RecordActPdfResponse, error)
+	SiagieGradesXlsx(ctx context.Context, in *SiagieGradesXlsxRequest, opts ...grpc.CallOption) (*SiagieGradesXlsxResponse, error)
+	GetStudentCertificates(ctx context.Context, in *GetStudentCertificatesRequest, opts ...grpc.CallOption) (*GetStudentCertificatesResponse, error)
+	GenerateCertificate(ctx context.Context, in *GenerateCertificateRequest, opts ...grpc.CallOption) (*GenerateCertificateResponse, error)
+	CertificatePdf(ctx context.Context, in *CertificatePdfRequest, opts ...grpc.CallOption) (*CertificatePdfResponse, error)
 	// Every class of a period as an Excel workbook (list, week of each section and teacher, legend)
 	SchedulesXlsx(ctx context.Context, in *SchedulesXlsxRequest, opts ...grpc.CallOption) (*SchedulesXlsxResponse, error)
 	// Who signs the timetables; managers also get the staff to pick from
@@ -215,6 +229,66 @@ func (c *documentsServiceClient) PermanenceXlsx(ctx context.Context, in *Permane
 	return out, nil
 }
 
+func (c *documentsServiceClient) GenerateRecordAct(ctx context.Context, in *GenerateRecordActRequest, opts ...grpc.CallOption) (*GenerateRecordActResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GenerateRecordActResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_GenerateRecordAct_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *documentsServiceClient) RecordActPdf(ctx context.Context, in *RecordActPdfRequest, opts ...grpc.CallOption) (*RecordActPdfResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RecordActPdfResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_RecordActPdf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *documentsServiceClient) SiagieGradesXlsx(ctx context.Context, in *SiagieGradesXlsxRequest, opts ...grpc.CallOption) (*SiagieGradesXlsxResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SiagieGradesXlsxResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_SiagieGradesXlsx_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *documentsServiceClient) GetStudentCertificates(ctx context.Context, in *GetStudentCertificatesRequest, opts ...grpc.CallOption) (*GetStudentCertificatesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetStudentCertificatesResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_GetStudentCertificates_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *documentsServiceClient) GenerateCertificate(ctx context.Context, in *GenerateCertificateRequest, opts ...grpc.CallOption) (*GenerateCertificateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GenerateCertificateResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_GenerateCertificate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *documentsServiceClient) CertificatePdf(ctx context.Context, in *CertificatePdfRequest, opts ...grpc.CallOption) (*CertificatePdfResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CertificatePdfResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_CertificatePdf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *documentsServiceClient) SchedulesXlsx(ctx context.Context, in *SchedulesXlsxRequest, opts ...grpc.CallOption) (*SchedulesXlsxResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SchedulesXlsxResponse)
@@ -324,6 +398,14 @@ type DocumentsServiceServer interface {
 	// Permanence of a distance section (phase E5): summary PDF and the spreadsheet with every week
 	PermanencePdf(context.Context, *PermanencePdfRequest) (*PermanencePdfResponse, error)
 	PermanenceXlsx(context.Context, *PermanenceXlsxRequest) (*PermanenceXlsxResponse, error)
+	// EBA closing (phase E7): the consolidated acta as a version for its signers and its PDF, the SIAGIE spreadsheet
+	// of the final grades of a section, and the certificates of enrollment, studies and conclusion of a cycle
+	GenerateRecordAct(context.Context, *GenerateRecordActRequest) (*GenerateRecordActResponse, error)
+	RecordActPdf(context.Context, *RecordActPdfRequest) (*RecordActPdfResponse, error)
+	SiagieGradesXlsx(context.Context, *SiagieGradesXlsxRequest) (*SiagieGradesXlsxResponse, error)
+	GetStudentCertificates(context.Context, *GetStudentCertificatesRequest) (*GetStudentCertificatesResponse, error)
+	GenerateCertificate(context.Context, *GenerateCertificateRequest) (*GenerateCertificateResponse, error)
+	CertificatePdf(context.Context, *CertificatePdfRequest) (*CertificatePdfResponse, error)
 	// Every class of a period as an Excel workbook (list, week of each section and teacher, legend)
 	SchedulesXlsx(context.Context, *SchedulesXlsxRequest) (*SchedulesXlsxResponse, error)
 	// Who signs the timetables; managers also get the staff to pick from
@@ -385,6 +467,24 @@ func (UnimplementedDocumentsServiceServer) PermanencePdf(context.Context, *Perma
 }
 func (UnimplementedDocumentsServiceServer) PermanenceXlsx(context.Context, *PermanenceXlsxRequest) (*PermanenceXlsxResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method PermanenceXlsx not implemented")
+}
+func (UnimplementedDocumentsServiceServer) GenerateRecordAct(context.Context, *GenerateRecordActRequest) (*GenerateRecordActResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GenerateRecordAct not implemented")
+}
+func (UnimplementedDocumentsServiceServer) RecordActPdf(context.Context, *RecordActPdfRequest) (*RecordActPdfResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RecordActPdf not implemented")
+}
+func (UnimplementedDocumentsServiceServer) SiagieGradesXlsx(context.Context, *SiagieGradesXlsxRequest) (*SiagieGradesXlsxResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SiagieGradesXlsx not implemented")
+}
+func (UnimplementedDocumentsServiceServer) GetStudentCertificates(context.Context, *GetStudentCertificatesRequest) (*GetStudentCertificatesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetStudentCertificates not implemented")
+}
+func (UnimplementedDocumentsServiceServer) GenerateCertificate(context.Context, *GenerateCertificateRequest) (*GenerateCertificateResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GenerateCertificate not implemented")
+}
+func (UnimplementedDocumentsServiceServer) CertificatePdf(context.Context, *CertificatePdfRequest) (*CertificatePdfResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CertificatePdf not implemented")
 }
 func (UnimplementedDocumentsServiceServer) SchedulesXlsx(context.Context, *SchedulesXlsxRequest) (*SchedulesXlsxResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SchedulesXlsx not implemented")
@@ -650,6 +750,114 @@ func _DocumentsService_PermanenceXlsx_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DocumentsService_GenerateRecordAct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GenerateRecordActRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).GenerateRecordAct(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_GenerateRecordAct_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).GenerateRecordAct(ctx, req.(*GenerateRecordActRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DocumentsService_RecordActPdf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordActPdfRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).RecordActPdf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_RecordActPdf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).RecordActPdf(ctx, req.(*RecordActPdfRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DocumentsService_SiagieGradesXlsx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SiagieGradesXlsxRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).SiagieGradesXlsx(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_SiagieGradesXlsx_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).SiagieGradesXlsx(ctx, req.(*SiagieGradesXlsxRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DocumentsService_GetStudentCertificates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStudentCertificatesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).GetStudentCertificates(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_GetStudentCertificates_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).GetStudentCertificates(ctx, req.(*GetStudentCertificatesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DocumentsService_GenerateCertificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GenerateCertificateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).GenerateCertificate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_GenerateCertificate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).GenerateCertificate(ctx, req.(*GenerateCertificateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DocumentsService_CertificatePdf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CertificatePdfRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).CertificatePdf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_CertificatePdf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).CertificatePdf(ctx, req.(*CertificatePdfRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _DocumentsService_SchedulesXlsx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SchedulesXlsxRequest)
 	if err := dec(in); err != nil {
@@ -866,6 +1074,30 @@ var DocumentsService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PermanenceXlsx",
 			Handler:    _DocumentsService_PermanenceXlsx_Handler,
+		},
+		{
+			MethodName: "GenerateRecordAct",
+			Handler:    _DocumentsService_GenerateRecordAct_Handler,
+		},
+		{
+			MethodName: "RecordActPdf",
+			Handler:    _DocumentsService_RecordActPdf_Handler,
+		},
+		{
+			MethodName: "SiagieGradesXlsx",
+			Handler:    _DocumentsService_SiagieGradesXlsx_Handler,
+		},
+		{
+			MethodName: "GetStudentCertificates",
+			Handler:    _DocumentsService_GetStudentCertificates_Handler,
+		},
+		{
+			MethodName: "GenerateCertificate",
+			Handler:    _DocumentsService_GenerateCertificate_Handler,
+		},
+		{
+			MethodName: "CertificatePdf",
+			Handler:    _DocumentsService_CertificatePdf_Handler,
 		},
 		{
 			MethodName: "SchedulesXlsx",

@@ -204,6 +204,9 @@ type RecordDoc struct {
 	Summary    []string
 	Legend     string
 	Signatures []string
+	// An issued version (phase E7): the official heading and the seal in place of the signature lines
+	Header *DocHeader    `json:",omitempty"`
+	Seal   *DocumentSeal `json:",omitempty"`
 }
 
 // RecordGroupDoc is a group of columns of an acta
@@ -214,8 +217,10 @@ type RecordGroupDoc struct {
 
 // RecordRowDoc is a student's line of an acta
 type RecordRowDoc struct {
-	N         int
-	Code      string
+	N    int
+	Code string
+	// The student's own grade, in multigrade sections
+	Grade     string `json:",omitempty"`
 	Name      string
 	Note      string
 	Cells     []string

@@ -1074,8 +1074,23 @@ func (s *AssessmentService) reportCard(ctx context.Context, sc gradeScope, stude
 			continue
 		}
 		row := CardSubject{ID: a.SubjectID, Name: a.SubjectName, Kind: a.SubjectKind, TeacherName: a.StaffName}
+		exempt := false
+		// (a withdrawn student, read without code, is out of every register: not exempted)
+		if a.SubjectCode == domain.ReligionSubjectCode && card.Student.Code != "" {
+			// The register of Religion leaves out the exempted students (Ley 29635): their cells read EXO
+			if exempt, err = s.exemptFrom(ctx, sc, sectionID, a.SubjectID, studentID); err != nil {
+				return card, err
+			}
+		}
 		for _, c := range comps {
-			row.Competencies = append(row.Competencies, toCard(c))
+			cc := toCard(c)
+			if exempt {
+				cc.Conclusion, cc.Conclusions = "", map[string]string{}
+				for t := range shown {
+					cc.Levels[t] = Exempt
+				}
+			}
+			row.Competencies = append(row.Competencies, cc)
 		}
 		card.Subjects = append(card.Subjects, row)
 	}
@@ -1102,6 +1117,15 @@ func (s *AssessmentService) reportCard(ctx context.Context, sc gradeScope, stude
 		}
 	}
 	return card, nil
+}
+
+// exemptFrom tells whether the student is left out of the register of the subject (exempted from it)
+func (s *AssessmentService) exemptFrom(ctx context.Context, sc gradeScope, sectionID, subjectID, studentID string) (bool, error) {
+	students, err := s.repo.Students(ctx, sc.institution.ID, sectionID, subjectID)
+	if err != nil {
+		return false, err
+	}
+	return !slices.ContainsFunc(students, func(st domain.StudentRef) bool { return st.ID == studentID }), nil
 }
 
 // WeightedAverage is the average of the student's scores weighted by each evaluation (nil without scores). Evaluations
