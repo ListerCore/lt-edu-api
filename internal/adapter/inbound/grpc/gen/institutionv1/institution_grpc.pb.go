@@ -28,6 +28,7 @@ const (
 	InstitutionService_SaveAuthorization_FullMethodName   = "/joseph.institution.v1.InstitutionService/SaveAuthorization"
 	InstitutionService_DeleteAuthorization_FullMethodName = "/joseph.institution.v1.InstitutionService/DeleteAuthorization"
 	InstitutionService_SavePlatformSheet_FullMethodName   = "/joseph.institution.v1.InstitutionService/SavePlatformSheet"
+	InstitutionService_ListAuditEvents_FullMethodName     = "/joseph.institution.v1.InstitutionService/ListAuditEvents"
 )
 
 // InstitutionServiceClient is the client API for InstitutionService service.
@@ -42,6 +43,8 @@ type InstitutionServiceClient interface {
 	SaveAuthorization(ctx context.Context, in *SaveAuthorizationRequest, opts ...grpc.CallOption) (*SaveAuthorizationResponse, error)
 	DeleteAuthorization(ctx context.Context, in *DeleteAuthorizationRequest, opts ...grpc.CallOption) (*DeleteAuthorizationResponse, error)
 	SavePlatformSheet(ctx context.Context, in *SavePlatformSheetRequest, opts ...grpc.CallOption) (*SavePlatformSheetResponse, error)
+	// Audit log (Configuración › Auditoría), dirección only. Newest first, paged with the cursor of the last page
+	ListAuditEvents(ctx context.Context, in *ListAuditEventsRequest, opts ...grpc.CallOption) (*ListAuditEventsResponse, error)
 }
 
 type institutionServiceClient struct {
@@ -92,6 +95,16 @@ func (c *institutionServiceClient) SavePlatformSheet(ctx context.Context, in *Sa
 	return out, nil
 }
 
+func (c *institutionServiceClient) ListAuditEvents(ctx context.Context, in *ListAuditEventsRequest, opts ...grpc.CallOption) (*ListAuditEventsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListAuditEventsResponse)
+	err := c.cc.Invoke(ctx, InstitutionService_ListAuditEvents_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // InstitutionServiceServer is the server API for InstitutionService service.
 // All implementations must embed UnimplementedInstitutionServiceServer
 // for forward compatibility.
@@ -104,6 +117,8 @@ type InstitutionServiceServer interface {
 	SaveAuthorization(context.Context, *SaveAuthorizationRequest) (*SaveAuthorizationResponse, error)
 	DeleteAuthorization(context.Context, *DeleteAuthorizationRequest) (*DeleteAuthorizationResponse, error)
 	SavePlatformSheet(context.Context, *SavePlatformSheetRequest) (*SavePlatformSheetResponse, error)
+	// Audit log (Configuración › Auditoría), dirección only. Newest first, paged with the cursor of the last page
+	ListAuditEvents(context.Context, *ListAuditEventsRequest) (*ListAuditEventsResponse, error)
 	mustEmbedUnimplementedInstitutionServiceServer()
 }
 
@@ -125,6 +140,9 @@ func (UnimplementedInstitutionServiceServer) DeleteAuthorization(context.Context
 }
 func (UnimplementedInstitutionServiceServer) SavePlatformSheet(context.Context, *SavePlatformSheetRequest) (*SavePlatformSheetResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SavePlatformSheet not implemented")
+}
+func (UnimplementedInstitutionServiceServer) ListAuditEvents(context.Context, *ListAuditEventsRequest) (*ListAuditEventsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListAuditEvents not implemented")
 }
 func (UnimplementedInstitutionServiceServer) mustEmbedUnimplementedInstitutionServiceServer() {}
 func (UnimplementedInstitutionServiceServer) testEmbeddedByValue()                            {}
@@ -219,6 +237,24 @@ func _InstitutionService_SavePlatformSheet_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _InstitutionService_ListAuditEvents_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAuditEventsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InstitutionServiceServer).ListAuditEvents(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InstitutionService_ListAuditEvents_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InstitutionServiceServer).ListAuditEvents(ctx, req.(*ListAuditEventsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // InstitutionService_ServiceDesc is the grpc.ServiceDesc for InstitutionService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -241,6 +277,10 @@ var InstitutionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SavePlatformSheet",
 			Handler:    _InstitutionService_SavePlatformSheet_Handler,
+		},
+		{
+			MethodName: "ListAuditEvents",
+			Handler:    _InstitutionService_ListAuditEvents_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

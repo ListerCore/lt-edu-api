@@ -32,14 +32,34 @@ var (
 // InstitutionService keeps the institution file a CEBA presents to the DRE: the resolutions that authorize it
 // (creation, each form of attention per cycle) and the technical sheet of its e-learning platform (informe 6.2.1)
 type InstitutionService struct {
-	repo port.InstitutionRepository
-	auth *AuthService
-	live *LiveService
-	now  func() time.Time
+	repo  port.InstitutionRepository
+	auth  *AuthService
+	live  *LiveService
+	audit *AuditService
+	now   func() time.Time
 }
 
-func NewInstitutionService(repo port.InstitutionRepository, auth *AuthService, live *LiveService) *InstitutionService {
-	return &InstitutionService{repo: repo, auth: auth, live: live, now: time.Now}
+func NewInstitutionService(repo port.InstitutionRepository, auth *AuthService, live *LiveService, audit *AuditService) *InstitutionService {
+	return &InstitutionService{repo: repo, auth: auth, live: live, audit: audit, now: time.Now}
+}
+
+// Spanish names for the audit log
+var (
+	authorizationKindLabels = map[string]string{domain.AuthorizationCreation: "creación", domain.AuthorizationAttentionMode: "forma de atención",
+		domain.AuthorizationExpansion: "ampliación", domain.AuthorizationOther: "otra"}
+	attentionModeLabels = map[string]string{"in_person": "presencial", "blended": "semipresencial", "distance": "a distancia"}
+)
+
+// authorizationLabel: "RD 0123-2026 (forma de atención: a distancia)"
+func authorizationLabel(a domain.Authorization) string {
+	detail := authorizationKindLabels[a.Kind]
+	if a.Kind == domain.AuthorizationAttentionMode {
+		detail += ": " + attentionModeLabels[a.AttentionMode]
+		if a.LevelName != "" {
+			detail += ", " + a.LevelName
+		}
+	}
+	return a.Resolution + " (" + detail + ")"
 }
 
 type institutionFileScope struct {
@@ -155,6 +175,12 @@ func (s *InstitutionService) SaveAuthorization(ctx context.Context, token, slug 
 		}
 		return domain.Authorization{}, err
 	}
+	action, verb := domain.AuditUpdate, "Editó la autorización "
+	if in.ID == "" {
+		action, verb = domain.AuditCreate, "Registró la autorización "
+	}
+	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "institution", Action: action, Entity: "authorization", EntityID: out.ID,
+		Summary: verb + authorizationLabel(out)})
 	s.changed(ctx, sc, "authorizations")
 	return out, nil
 }
@@ -177,6 +203,8 @@ func (s *InstitutionService) DeleteAuthorization(ctx context.Context, token, slu
 	if err := s.repo.DeleteAuthorization(ctx, sc.institution.ID, id); err != nil {
 		return err
 	}
+	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "institution", Action: domain.AuditDelete, Entity: "authorization", EntityID: id,
+		Summary: "Eliminó la autorización " + authorizationLabel(current)})
 	s.changed(ctx, sc, "authorizations")
 	return nil
 }
@@ -235,6 +263,8 @@ func (s *InstitutionService) SavePlatformSheet(ctx context.Context, token, slug 
 	if err != nil {
 		return domain.PlatformSheet{}, err
 	}
+	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "institution", Action: domain.AuditUpdate, Entity: "platform_sheet", EntityID: sc.institution.ID,
+		Summary: "Actualizó la ficha de la plataforma"})
 	s.changed(ctx, sc, "platform")
 	return out, nil
 }

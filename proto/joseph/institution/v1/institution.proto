@@ -16,6 +16,8 @@ service InstitutionService {
   rpc SaveAuthorization(SaveAuthorizationRequest) returns (SaveAuthorizationResponse);
   rpc DeleteAuthorization(DeleteAuthorizationRequest) returns (DeleteAuthorizationResponse);
   rpc SavePlatformSheet(SavePlatformSheetRequest) returns (SavePlatformSheetResponse);
+  // Audit log (Configuración › Auditoría), dirección only. Newest first, paged with the cursor of the last page
+  rpc ListAuditEvents(ListAuditEventsRequest) returns (ListAuditEventsResponse);
 }
 
 message Authorization {
@@ -101,4 +103,42 @@ message SavePlatformSheetRequest {
 
 message SavePlatformSheetResponse {
   PlatformSheet platform = 1;
+}
+
+message AuditEvent {
+  string id = 1;
+  string user_id = 2;
+  string user_name = 3;
+  string role = 4;
+  // Panel module (institution, structure, periods, users…)
+  string module = 5;
+  // create | update | delete | status | grant | revoke | other
+  string action = 6;
+  string entity = 7;
+  string entity_id = 8;
+  string summary = 9;
+  // Detail as JSON ({"field": [before, after]}), "{}" when none
+  string changes_json = 10;
+  // RFC 3339
+  string created_at = 11;
+}
+
+message ListAuditEventsRequest {
+  string institution_slug = 1;
+  // Optional filters; from / to are YYYY-MM-DD, to included
+  string module = 2;
+  string user_id = 3;
+  string from = 4;
+  string to = 5;
+  // Cursor from the previous page (both or neither)
+  string before_at = 6;
+  string before_id = 7;
+  int32 limit = 8;
+}
+
+message ListAuditEventsResponse {
+  repeated AuditEvent events = 1;
+  bool has_more = 2;
+  string next_before_at = 3;
+  string next_before_id = 4;
 }

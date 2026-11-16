@@ -60,6 +60,7 @@ type Services struct {
 	Finance       *service.FinanceService
 	Apafa         *service.ApafaService
 	Institution   *service.InstitutionService
+	Audit         *service.AuditService
 }
 
 // limits brakes methods per client IP. Register a method here when it takes a password or costs a lot, e.g.
@@ -122,7 +123,7 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	healthServer.SetServingStatus(financev1.FinanceService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	apafav1.RegisterApafaServiceServer(server, &apafaServer{apafa: services.Apafa, logger: logger})
 	healthServer.SetServingStatus(apafav1.ApafaService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
-	institutionv1.RegisterInstitutionServiceServer(server, &institutionServer{institution: services.Institution, logger: logger})
+	institutionv1.RegisterInstitutionServiceServer(server, &institutionServer{institution: services.Institution, audit: services.Audit, logger: logger})
 	healthServer.SetServingStatus(institutionv1.InstitutionService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	healthpb.RegisterHealthServer(server, healthServer)
 

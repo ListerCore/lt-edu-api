@@ -2,6 +2,7 @@ package grpc
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"time"
 
@@ -16,6 +17,7 @@ import (
 type institutionServer struct {
 	institutionv1.UnimplementedInstitutionServiceServer
 	institution *service.InstitutionService
+	audit       *service.AuditService
 	logger      zerolog.Logger
 }
 
@@ -100,4 +102,48 @@ func (s *institutionServer) SavePlatformSheet(ctx context.Context, req *institut
 		return nil, s.fail("SavePlatformSheet", err)
 	}
 	return &institutionv1.SavePlatformSheetResponse{Platform: toPlatformSheet(p)}, nil
+}
+
+func (s *institutionServer) ListAuditEvents(ctx context.Context, req *institutionv1.ListAuditEventsRequest) (*institutionv1.ListAuditEventsResponse, error) {
+	f := domain.AuditFilter{Module: req.GetModule(), UserID: req.GetUserId(), BeforeID: req.GetBeforeId(), Limit: int(req.GetLimit())}
+	from, err := optionalDate("from", req.GetFrom())
+	if err != nil {
+		return nil, s.fail("ListAuditEvents", err)
+	}
+	to, err := optionalDate("to", req.GetTo())
+	if err != nil {
+		return nil, s.fail("ListAuditEvents", err)
+	}
+	f.From = from
+	// "to" is a whole day, included
+	if to != nil {
+		next := to.AddDate(0, 0, 1)
+		f.To = &next
+	}
+	if req.GetBeforeAt() != "" {
+		at, err := parseInstant("beforeAt", req.GetBeforeAt())
+		if err != nil || req.GetBeforeId() == "" {
+			return nil, s.fail("ListAuditEvents", domain.Validation(map[string]string{"beforeAt": "Cursor no válido."}))
+		}
+		f.BeforeAt = &at
+	}
+	page, err := s.audit.List(ctx, bearer(ctx), req.GetInstitutionSlug(), f)
+	if err != nil {
+		return nil, s.fail("ListAuditEvents", err)
+	}
+	out := &institutionv1.ListAuditEventsResponse{HasMore: page.HasMore, NextBeforeId: page.NextID}
+	if page.NextAt != nil {
+		out.NextBeforeAt = page.NextAt.UTC().Format(time.RFC3339Nano)
+	}
+	for _, e := range page.Events {
+		changes := "{}"
+		if len(e.Changes) > 0 {
+			if b, err := json.Marshal(e.Changes); err == nil {
+				changes = string(b)
+			}
+		}
+		out.Events = append(out.Events, &institutionv1.AuditEvent{Id: e.ID, UserId: e.UserID, UserName: e.UserName, Role: e.Role, Module: e.Module,
+			Action: e.Action, Entity: e.Entity, EntityId: e.EntityID, Summary: e.Summary, ChangesJson: changes, CreatedAt: e.CreatedAt.UTC().Format(time.RFC3339Nano)})
+	}
+	return out, nil
 }

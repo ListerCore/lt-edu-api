@@ -771,6 +771,304 @@ func (x *SavePlatformSheetResponse) GetPlatform() *PlatformSheet {
 	return nil
 }
 
+type AuditEvent struct {
+	state    protoimpl.MessageState `protogen:"open.v1"`
+	Id       string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId   string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserName string                 `protobuf:"bytes,3,opt,name=user_name,json=userName,proto3" json:"user_name,omitempty"`
+	Role     string                 `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`
+	// Panel module (institution, structure, periods, users…)
+	Module string `protobuf:"bytes,5,opt,name=module,proto3" json:"module,omitempty"`
+	// create | update | delete | status | grant | revoke | other
+	Action   string `protobuf:"bytes,6,opt,name=action,proto3" json:"action,omitempty"`
+	Entity   string `protobuf:"bytes,7,opt,name=entity,proto3" json:"entity,omitempty"`
+	EntityId string `protobuf:"bytes,8,opt,name=entity_id,json=entityId,proto3" json:"entity_id,omitempty"`
+	Summary  string `protobuf:"bytes,9,opt,name=summary,proto3" json:"summary,omitempty"`
+	// Detail as JSON ({"field": [before, after]}), "{}" when none
+	ChangesJson string `protobuf:"bytes,10,opt,name=changes_json,json=changesJson,proto3" json:"changes_json,omitempty"`
+	// RFC 3339
+	CreatedAt     string `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AuditEvent) Reset() {
+	*x = AuditEvent{}
+	mi := &file_joseph_institution_v1_institution_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AuditEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AuditEvent) ProtoMessage() {}
+
+func (x *AuditEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_institution_v1_institution_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AuditEvent.ProtoReflect.Descriptor instead.
+func (*AuditEvent) Descriptor() ([]byte, []int) {
+	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *AuditEvent) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *AuditEvent) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *AuditEvent) GetUserName() string {
+	if x != nil {
+		return x.UserName
+	}
+	return ""
+}
+
+func (x *AuditEvent) GetRole() string {
+	if x != nil {
+		return x.Role
+	}
+	return ""
+}
+
+func (x *AuditEvent) GetModule() string {
+	if x != nil {
+		return x.Module
+	}
+	return ""
+}
+
+func (x *AuditEvent) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+func (x *AuditEvent) GetEntity() string {
+	if x != nil {
+		return x.Entity
+	}
+	return ""
+}
+
+func (x *AuditEvent) GetEntityId() string {
+	if x != nil {
+		return x.EntityId
+	}
+	return ""
+}
+
+func (x *AuditEvent) GetSummary() string {
+	if x != nil {
+		return x.Summary
+	}
+	return ""
+}
+
+func (x *AuditEvent) GetChangesJson() string {
+	if x != nil {
+		return x.ChangesJson
+	}
+	return ""
+}
+
+func (x *AuditEvent) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+type ListAuditEventsRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	// Optional filters; from / to are YYYY-MM-DD, to included
+	Module string `protobuf:"bytes,2,opt,name=module,proto3" json:"module,omitempty"`
+	UserId string `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	From   string `protobuf:"bytes,4,opt,name=from,proto3" json:"from,omitempty"`
+	To     string `protobuf:"bytes,5,opt,name=to,proto3" json:"to,omitempty"`
+	// Cursor from the previous page (both or neither)
+	BeforeAt      string `protobuf:"bytes,6,opt,name=before_at,json=beforeAt,proto3" json:"before_at,omitempty"`
+	BeforeId      string `protobuf:"bytes,7,opt,name=before_id,json=beforeId,proto3" json:"before_id,omitempty"`
+	Limit         int32  `protobuf:"varint,8,opt,name=limit,proto3" json:"limit,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAuditEventsRequest) Reset() {
+	*x = ListAuditEventsRequest{}
+	mi := &file_joseph_institution_v1_institution_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAuditEventsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAuditEventsRequest) ProtoMessage() {}
+
+func (x *ListAuditEventsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_institution_v1_institution_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAuditEventsRequest.ProtoReflect.Descriptor instead.
+func (*ListAuditEventsRequest) Descriptor() ([]byte, []int) {
+	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ListAuditEventsRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *ListAuditEventsRequest) GetModule() string {
+	if x != nil {
+		return x.Module
+	}
+	return ""
+}
+
+func (x *ListAuditEventsRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *ListAuditEventsRequest) GetFrom() string {
+	if x != nil {
+		return x.From
+	}
+	return ""
+}
+
+func (x *ListAuditEventsRequest) GetTo() string {
+	if x != nil {
+		return x.To
+	}
+	return ""
+}
+
+func (x *ListAuditEventsRequest) GetBeforeAt() string {
+	if x != nil {
+		return x.BeforeAt
+	}
+	return ""
+}
+
+func (x *ListAuditEventsRequest) GetBeforeId() string {
+	if x != nil {
+		return x.BeforeId
+	}
+	return ""
+}
+
+func (x *ListAuditEventsRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+type ListAuditEventsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Events        []*AuditEvent          `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
+	HasMore       bool                   `protobuf:"varint,2,opt,name=has_more,json=hasMore,proto3" json:"has_more,omitempty"`
+	NextBeforeAt  string                 `protobuf:"bytes,3,opt,name=next_before_at,json=nextBeforeAt,proto3" json:"next_before_at,omitempty"`
+	NextBeforeId  string                 `protobuf:"bytes,4,opt,name=next_before_id,json=nextBeforeId,proto3" json:"next_before_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAuditEventsResponse) Reset() {
+	*x = ListAuditEventsResponse{}
+	mi := &file_joseph_institution_v1_institution_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAuditEventsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAuditEventsResponse) ProtoMessage() {}
+
+func (x *ListAuditEventsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_joseph_institution_v1_institution_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAuditEventsResponse.ProtoReflect.Descriptor instead.
+func (*ListAuditEventsResponse) Descriptor() ([]byte, []int) {
+	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ListAuditEventsResponse) GetEvents() []*AuditEvent {
+	if x != nil {
+		return x.Events
+	}
+	return nil
+}
+
+func (x *ListAuditEventsResponse) GetHasMore() bool {
+	if x != nil {
+		return x.HasMore
+	}
+	return false
+}
+
+func (x *ListAuditEventsResponse) GetNextBeforeAt() string {
+	if x != nil {
+		return x.NextBeforeAt
+	}
+	return ""
+}
+
+func (x *ListAuditEventsResponse) GetNextBeforeId() string {
+	if x != nil {
+		return x.NextBeforeId
+	}
+	return ""
+}
+
 var File_joseph_institution_v1_institution_proto protoreflect.FileDescriptor
 
 const file_joseph_institution_v1_institution_proto_rawDesc = "" +
@@ -843,12 +1141,42 @@ const file_joseph_institution_v1_institution_proto_rawDesc = "" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12@\n" +
 	"\bplatform\x18\x02 \x01(\v2$.joseph.institution.v1.PlatformSheetR\bplatform\"]\n" +
 	"\x19SavePlatformSheetResponse\x12@\n" +
-	"\bplatform\x18\x01 \x01(\v2$.joseph.institution.v1.PlatformSheetR\bplatform2\xfd\x03\n" +
+	"\bplatform\x18\x01 \x01(\v2$.joseph.institution.v1.PlatformSheetR\bplatform\"\xa7\x02\n" +
+	"\n" +
+	"AuditEvent\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1b\n" +
+	"\tuser_name\x18\x03 \x01(\tR\buserName\x12\x12\n" +
+	"\x04role\x18\x04 \x01(\tR\x04role\x12\x16\n" +
+	"\x06module\x18\x05 \x01(\tR\x06module\x12\x16\n" +
+	"\x06action\x18\x06 \x01(\tR\x06action\x12\x16\n" +
+	"\x06entity\x18\a \x01(\tR\x06entity\x12\x1b\n" +
+	"\tentity_id\x18\b \x01(\tR\bentityId\x12\x18\n" +
+	"\asummary\x18\t \x01(\tR\asummary\x12!\n" +
+	"\fchanges_json\x18\n" +
+	" \x01(\tR\vchangesJson\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\v \x01(\tR\tcreatedAt\"\xe8\x01\n" +
+	"\x16ListAuditEventsRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x16\n" +
+	"\x06module\x18\x02 \x01(\tR\x06module\x12\x17\n" +
+	"\auser_id\x18\x03 \x01(\tR\x06userId\x12\x12\n" +
+	"\x04from\x18\x04 \x01(\tR\x04from\x12\x0e\n" +
+	"\x02to\x18\x05 \x01(\tR\x02to\x12\x1b\n" +
+	"\tbefore_at\x18\x06 \x01(\tR\bbeforeAt\x12\x1b\n" +
+	"\tbefore_id\x18\a \x01(\tR\bbeforeId\x12\x14\n" +
+	"\x05limit\x18\b \x01(\x05R\x05limit\"\xbb\x01\n" +
+	"\x17ListAuditEventsResponse\x129\n" +
+	"\x06events\x18\x01 \x03(\v2!.joseph.institution.v1.AuditEventR\x06events\x12\x19\n" +
+	"\bhas_more\x18\x02 \x01(\bR\ahasMore\x12$\n" +
+	"\x0enext_before_at\x18\x03 \x01(\tR\fnextBeforeAt\x12$\n" +
+	"\x0enext_before_id\x18\x04 \x01(\tR\fnextBeforeId2\xef\x04\n" +
 	"\x12InstitutionService\x12y\n" +
 	"\x12GetInstitutionFile\x120.joseph.institution.v1.GetInstitutionFileRequest\x1a1.joseph.institution.v1.GetInstitutionFileResponse\x12v\n" +
 	"\x11SaveAuthorization\x12/.joseph.institution.v1.SaveAuthorizationRequest\x1a0.joseph.institution.v1.SaveAuthorizationResponse\x12|\n" +
 	"\x13DeleteAuthorization\x121.joseph.institution.v1.DeleteAuthorizationRequest\x1a2.joseph.institution.v1.DeleteAuthorizationResponse\x12v\n" +
-	"\x11SavePlatformSheet\x12/.joseph.institution.v1.SavePlatformSheetRequest\x1a0.joseph.institution.v1.SavePlatformSheetResponseBCZAapi/internal/adapter/inbound/grpc/gen/institutionv1;institutionv1b\x06proto3"
+	"\x11SavePlatformSheet\x12/.joseph.institution.v1.SavePlatformSheetRequest\x1a0.joseph.institution.v1.SavePlatformSheetResponse\x12p\n" +
+	"\x0fListAuditEvents\x12-.joseph.institution.v1.ListAuditEventsRequest\x1a..joseph.institution.v1.ListAuditEventsResponseBCZAapi/internal/adapter/inbound/grpc/gen/institutionv1;institutionv1b\x06proto3"
 
 var (
 	file_joseph_institution_v1_institution_proto_rawDescOnce sync.Once
@@ -862,7 +1190,7 @@ func file_joseph_institution_v1_institution_proto_rawDescGZIP() []byte {
 	return file_joseph_institution_v1_institution_proto_rawDescData
 }
 
-var file_joseph_institution_v1_institution_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_joseph_institution_v1_institution_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_joseph_institution_v1_institution_proto_goTypes = []any{
 	(*Authorization)(nil),               // 0: joseph.institution.v1.Authorization
 	(*PlatformSheet)(nil),               // 1: joseph.institution.v1.PlatformSheet
@@ -874,6 +1202,9 @@ var file_joseph_institution_v1_institution_proto_goTypes = []any{
 	(*DeleteAuthorizationResponse)(nil), // 7: joseph.institution.v1.DeleteAuthorizationResponse
 	(*SavePlatformSheetRequest)(nil),    // 8: joseph.institution.v1.SavePlatformSheetRequest
 	(*SavePlatformSheetResponse)(nil),   // 9: joseph.institution.v1.SavePlatformSheetResponse
+	(*AuditEvent)(nil),                  // 10: joseph.institution.v1.AuditEvent
+	(*ListAuditEventsRequest)(nil),      // 11: joseph.institution.v1.ListAuditEventsRequest
+	(*ListAuditEventsResponse)(nil),     // 12: joseph.institution.v1.ListAuditEventsResponse
 }
 var file_joseph_institution_v1_institution_proto_depIdxs = []int32{
 	0,  // 0: joseph.institution.v1.GetInstitutionFileResponse.authorizations:type_name -> joseph.institution.v1.Authorization
@@ -882,19 +1213,22 @@ var file_joseph_institution_v1_institution_proto_depIdxs = []int32{
 	0,  // 3: joseph.institution.v1.SaveAuthorizationResponse.authorization:type_name -> joseph.institution.v1.Authorization
 	1,  // 4: joseph.institution.v1.SavePlatformSheetRequest.platform:type_name -> joseph.institution.v1.PlatformSheet
 	1,  // 5: joseph.institution.v1.SavePlatformSheetResponse.platform:type_name -> joseph.institution.v1.PlatformSheet
-	2,  // 6: joseph.institution.v1.InstitutionService.GetInstitutionFile:input_type -> joseph.institution.v1.GetInstitutionFileRequest
-	4,  // 7: joseph.institution.v1.InstitutionService.SaveAuthorization:input_type -> joseph.institution.v1.SaveAuthorizationRequest
-	6,  // 8: joseph.institution.v1.InstitutionService.DeleteAuthorization:input_type -> joseph.institution.v1.DeleteAuthorizationRequest
-	8,  // 9: joseph.institution.v1.InstitutionService.SavePlatformSheet:input_type -> joseph.institution.v1.SavePlatformSheetRequest
-	3,  // 10: joseph.institution.v1.InstitutionService.GetInstitutionFile:output_type -> joseph.institution.v1.GetInstitutionFileResponse
-	5,  // 11: joseph.institution.v1.InstitutionService.SaveAuthorization:output_type -> joseph.institution.v1.SaveAuthorizationResponse
-	7,  // 12: joseph.institution.v1.InstitutionService.DeleteAuthorization:output_type -> joseph.institution.v1.DeleteAuthorizationResponse
-	9,  // 13: joseph.institution.v1.InstitutionService.SavePlatformSheet:output_type -> joseph.institution.v1.SavePlatformSheetResponse
-	10, // [10:14] is the sub-list for method output_type
-	6,  // [6:10] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	10, // 6: joseph.institution.v1.ListAuditEventsResponse.events:type_name -> joseph.institution.v1.AuditEvent
+	2,  // 7: joseph.institution.v1.InstitutionService.GetInstitutionFile:input_type -> joseph.institution.v1.GetInstitutionFileRequest
+	4,  // 8: joseph.institution.v1.InstitutionService.SaveAuthorization:input_type -> joseph.institution.v1.SaveAuthorizationRequest
+	6,  // 9: joseph.institution.v1.InstitutionService.DeleteAuthorization:input_type -> joseph.institution.v1.DeleteAuthorizationRequest
+	8,  // 10: joseph.institution.v1.InstitutionService.SavePlatformSheet:input_type -> joseph.institution.v1.SavePlatformSheetRequest
+	11, // 11: joseph.institution.v1.InstitutionService.ListAuditEvents:input_type -> joseph.institution.v1.ListAuditEventsRequest
+	3,  // 12: joseph.institution.v1.InstitutionService.GetInstitutionFile:output_type -> joseph.institution.v1.GetInstitutionFileResponse
+	5,  // 13: joseph.institution.v1.InstitutionService.SaveAuthorization:output_type -> joseph.institution.v1.SaveAuthorizationResponse
+	7,  // 14: joseph.institution.v1.InstitutionService.DeleteAuthorization:output_type -> joseph.institution.v1.DeleteAuthorizationResponse
+	9,  // 15: joseph.institution.v1.InstitutionService.SavePlatformSheet:output_type -> joseph.institution.v1.SavePlatformSheetResponse
+	12, // 16: joseph.institution.v1.InstitutionService.ListAuditEvents:output_type -> joseph.institution.v1.ListAuditEventsResponse
+	12, // [12:17] is the sub-list for method output_type
+	7,  // [7:12] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_joseph_institution_v1_institution_proto_init() }
@@ -908,7 +1242,7 @@ func file_joseph_institution_v1_institution_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_institution_v1_institution_proto_rawDesc), len(file_joseph_institution_v1_institution_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
