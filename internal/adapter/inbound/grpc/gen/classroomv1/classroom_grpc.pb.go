@@ -49,6 +49,12 @@ const (
 	ClassroomService_GradeSubmission_FullMethodName   = "/joseph.classroom.v1.ClassroomService/GradeSubmission"
 	ClassroomService_SetExtension_FullMethodName      = "/joseph.classroom.v1.ClassroomService/SetExtension"
 	ClassroomService_RecordLevels_FullMethodName      = "/joseph.classroom.v1.ClassroomService/RecordLevels"
+	ClassroomService_GetForum_FullMethodName          = "/joseph.classroom.v1.ClassroomService/GetForum"
+	ClassroomService_SaveForum_FullMethodName         = "/joseph.classroom.v1.ClassroomService/SaveForum"
+	ClassroomService_CreatePost_FullMethodName        = "/joseph.classroom.v1.ClassroomService/CreatePost"
+	ClassroomService_EditPost_FullMethodName          = "/joseph.classroom.v1.ClassroomService/EditPost"
+	ClassroomService_DeletePost_FullMethodName        = "/joseph.classroom.v1.ClassroomService/DeletePost"
+	ClassroomService_ModeratePost_FullMethodName      = "/joseph.classroom.v1.ClassroomService/ModeratePost"
 )
 
 // ClassroomServiceClient is the client API for ClassroomService service.
@@ -87,6 +93,13 @@ type ClassroomServiceClient interface {
 	SetExtension(ctx context.Context, in *SetExtensionRequest, opts ...grpc.CallOption) (*SetExtensionResponse, error)
 	// Takes the levels of the latest graded attempts to the official record of the open term
 	RecordLevels(ctx context.Context, in *RecordLevelsRequest, opts ...grpc.CallOption) (*RecordLevelsResponse, error)
+	// Forums (forum items). Opening a forum marks it read for the person
+	GetForum(ctx context.Context, in *GetForumRequest, opts ...grpc.CallOption) (*GetForumResponse, error)
+	SaveForum(ctx context.Context, in *SaveForumRequest, opts ...grpc.CallOption) (*SaveForumResponse, error)
+	CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*CreatePostResponse, error)
+	EditPost(ctx context.Context, in *EditPostRequest, opts ...grpc.CallOption) (*EditPostResponse, error)
+	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error)
+	ModeratePost(ctx context.Context, in *ModeratePostRequest, opts ...grpc.CallOption) (*ModeratePostResponse, error)
 }
 
 type classroomServiceClient struct {
@@ -347,6 +360,66 @@ func (c *classroomServiceClient) RecordLevels(ctx context.Context, in *RecordLev
 	return out, nil
 }
 
+func (c *classroomServiceClient) GetForum(ctx context.Context, in *GetForumRequest, opts ...grpc.CallOption) (*GetForumResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetForumResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_GetForum_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *classroomServiceClient) SaveForum(ctx context.Context, in *SaveForumRequest, opts ...grpc.CallOption) (*SaveForumResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SaveForumResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_SaveForum_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *classroomServiceClient) CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*CreatePostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreatePostResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_CreatePost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *classroomServiceClient) EditPost(ctx context.Context, in *EditPostRequest, opts ...grpc.CallOption) (*EditPostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(EditPostResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_EditPost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *classroomServiceClient) DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeletePostResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_DeletePost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *classroomServiceClient) ModeratePost(ctx context.Context, in *ModeratePostRequest, opts ...grpc.CallOption) (*ModeratePostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ModeratePostResponse)
+	err := c.cc.Invoke(ctx, ClassroomService_ModeratePost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ClassroomServiceServer is the server API for ClassroomService service.
 // All implementations must embed UnimplementedClassroomServiceServer
 // for forward compatibility.
@@ -383,6 +456,13 @@ type ClassroomServiceServer interface {
 	SetExtension(context.Context, *SetExtensionRequest) (*SetExtensionResponse, error)
 	// Takes the levels of the latest graded attempts to the official record of the open term
 	RecordLevels(context.Context, *RecordLevelsRequest) (*RecordLevelsResponse, error)
+	// Forums (forum items). Opening a forum marks it read for the person
+	GetForum(context.Context, *GetForumRequest) (*GetForumResponse, error)
+	SaveForum(context.Context, *SaveForumRequest) (*SaveForumResponse, error)
+	CreatePost(context.Context, *CreatePostRequest) (*CreatePostResponse, error)
+	EditPost(context.Context, *EditPostRequest) (*EditPostResponse, error)
+	DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error)
+	ModeratePost(context.Context, *ModeratePostRequest) (*ModeratePostResponse, error)
 	mustEmbedUnimplementedClassroomServiceServer()
 }
 
@@ -467,6 +547,24 @@ func (UnimplementedClassroomServiceServer) SetExtension(context.Context, *SetExt
 }
 func (UnimplementedClassroomServiceServer) RecordLevels(context.Context, *RecordLevelsRequest) (*RecordLevelsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method RecordLevels not implemented")
+}
+func (UnimplementedClassroomServiceServer) GetForum(context.Context, *GetForumRequest) (*GetForumResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetForum not implemented")
+}
+func (UnimplementedClassroomServiceServer) SaveForum(context.Context, *SaveForumRequest) (*SaveForumResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SaveForum not implemented")
+}
+func (UnimplementedClassroomServiceServer) CreatePost(context.Context, *CreatePostRequest) (*CreatePostResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreatePost not implemented")
+}
+func (UnimplementedClassroomServiceServer) EditPost(context.Context, *EditPostRequest) (*EditPostResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method EditPost not implemented")
+}
+func (UnimplementedClassroomServiceServer) DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeletePost not implemented")
+}
+func (UnimplementedClassroomServiceServer) ModeratePost(context.Context, *ModeratePostRequest) (*ModeratePostResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ModeratePost not implemented")
 }
 func (UnimplementedClassroomServiceServer) mustEmbedUnimplementedClassroomServiceServer() {}
 func (UnimplementedClassroomServiceServer) testEmbeddedByValue()                          {}
@@ -939,6 +1037,114 @@ func _ClassroomService_RecordLevels_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ClassroomService_GetForum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetForumRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).GetForum(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_GetForum_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).GetForum(ctx, req.(*GetForumRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClassroomService_SaveForum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SaveForumRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).SaveForum(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_SaveForum_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).SaveForum(ctx, req.(*SaveForumRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClassroomService_CreatePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).CreatePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_CreatePost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).CreatePost(ctx, req.(*CreatePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClassroomService_EditPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EditPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).EditPost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_EditPost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).EditPost(ctx, req.(*EditPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClassroomService_DeletePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeletePostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).DeletePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_DeletePost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).DeletePost(ctx, req.(*DeletePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClassroomService_ModeratePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ModeratePostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClassroomServiceServer).ModeratePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClassroomService_ModeratePost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClassroomServiceServer).ModeratePost(ctx, req.(*ModeratePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ClassroomService_ServiceDesc is the grpc.ServiceDesc for ClassroomService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1045,6 +1251,30 @@ var ClassroomService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RecordLevels",
 			Handler:    _ClassroomService_RecordLevels_Handler,
+		},
+		{
+			MethodName: "GetForum",
+			Handler:    _ClassroomService_GetForum_Handler,
+		},
+		{
+			MethodName: "SaveForum",
+			Handler:    _ClassroomService_SaveForum_Handler,
+		},
+		{
+			MethodName: "CreatePost",
+			Handler:    _ClassroomService_CreatePost_Handler,
+		},
+		{
+			MethodName: "EditPost",
+			Handler:    _ClassroomService_EditPost_Handler,
+		},
+		{
+			MethodName: "DeletePost",
+			Handler:    _ClassroomService_DeletePost_Handler,
+		},
+		{
+			MethodName: "ModeratePost",
+			Handler:    _ClassroomService_ModeratePost_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

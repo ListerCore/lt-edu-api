@@ -288,3 +288,70 @@ func TestClassroomAssessmentSQL(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+func TestClassroomForumSQL(t *testing.T) {
+	f := newClassroomFixture(t)
+	ctx := context.Background()
+	r := f.repo
+	if _, err := r.EnsureRooms(ctx, f.inst, f.period); err != nil {
+		t.Fatal(err)
+	}
+	rooms, _ := r.Rooms(ctx, f.inst, domain.RoomFilter{PeriodID: f.period})
+	unit, _ := r.SaveUnit(ctx, f.inst, domain.Unit{RoomID: rooms[0].ID, Title: "Unidad 1", Published: true})
+	item, err := r.SaveItem(ctx, f.inst, "", domain.Item{UnitID: unit.ID, Kind: "forum", Title: "¿Dónde usas fracciones?", Body: "Cuéntanos", Published: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := r.EnsureForum(ctx, item.ID); err != nil {
+		t.Fatal(err)
+	}
+	forum, err := r.Forum(ctx, f.inst, item.ID)
+	if err != nil || forum.Kind != "debate" || forum.Closed || forum.Prompt != "Cuéntanos" {
+		t.Fatalf("forum: %+v %v", forum, err)
+	}
+	thread, err := r.CreatePost(ctx, domain.ForumPost{ItemID: item.ID, AuthorStudentID: f.virtualStudent, AuthorName: "Ana", AuthorRole: "student", Body: "En el mercado"})
+	if err != nil || thread.ParentID != "" {
+		t.Fatalf("thread: %+v %v", thread, err)
+	}
+	reply, err := r.CreatePost(ctx, domain.ForumPost{ItemID: item.ID, ParentID: thread.ID, AuthorName: "Docente", AuthorRole: "teacher", Body: "¡Bien!"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := r.CreatePost(ctx, domain.ForumPost{ItemID: item.ID, ParentID: reply.ID, AuthorName: "Ana", Body: "Gracias"}); !errors.Is(err, domain.ErrReplyToReply) {
+		t.Fatalf("reply to a reply: %v", err)
+	}
+	if err := r.DeletePost(ctx, thread.ID); !errors.Is(err, domain.ErrPostHasReplies) {
+		t.Fatalf("delete with replies: %v", err)
+	}
+	thread.Pinned = true
+	if err := r.ModeratePost(ctx, thread); err != nil {
+		t.Fatal(err)
+	}
+	reply.Hidden, reply.HiddenReason, reply.HiddenByName = true, "Prueba", "Coordinación"
+	if err := r.ModeratePost(ctx, reply); err != nil {
+		t.Fatal(err)
+	}
+	if err := r.EditPost(ctx, reply.ID, "x", time.Now()); !errors.Is(err, domain.ErrPostHidden) {
+		t.Fatalf("edit hidden: %v", err)
+	}
+	posts, err := r.Posts(ctx, item.ID)
+	if err != nil || len(posts) != 2 || !posts[0].Pinned || posts[0].Replies != 1 || !posts[1].Hidden {
+		t.Fatalf("posts: %+v %v", posts, err)
+	}
+	part, err := r.ForumParticipation(ctx, f.inst, item.ID)
+	if err != nil || len(part) != 2 {
+		t.Fatalf("participation: %+v %v", part, err)
+	}
+	for _, p := range part {
+		if p.StudentID == f.virtualStudent && (p.Threads != 1 || p.LastAt == nil) {
+			t.Fatalf("student participation: %+v", p)
+		}
+	}
+	forum.Closed, forum.ClosedByName = true, "Docente"
+	if err := r.SaveForum(ctx, f.inst, forum); err != nil {
+		t.Fatal(err)
+	}
+	if fo, _ := r.Forum(ctx, f.inst, item.ID); !fo.Closed {
+		t.Fatal("forum not closed")
+	}
+}

@@ -29,7 +29,7 @@ var (
 	classroomReaders  = map[string]bool{"secretary": true, domain.RoleTechnicalLead: true, "psychologist": true}
 	classroomFamilies = map[string]bool{"student": true, "guardian": true}
 
-	itemKinds    = map[string]bool{domain.ItemReading: true, domain.ItemFile: true, domain.ItemVideo: true, domain.ItemLink: true, domain.ItemLive: true, domain.ItemActivity: true, domain.ItemQuiz: true, domain.ItemTask: true}
+	itemKinds    = map[string]bool{domain.ItemReading: true, domain.ItemFile: true, domain.ItemVideo: true, domain.ItemLink: true, domain.ItemLive: true, domain.ItemActivity: true, domain.ItemQuiz: true, domain.ItemTask: true, domain.ItemForum: true}
 	libraryKinds = map[string]bool{domain.ItemReading: true, domain.ItemFile: true, domain.ItemVideo: true, domain.ItemLink: true}
 	httpsPattern = regexp.MustCompile(`^https://[^\s<>"]+$`)
 )
@@ -517,8 +517,9 @@ func (s *ClassroomService) SaveItem(ctx context.Context, token, slug string, in 
 		}
 		in.UnitID, in.LibraryItemID = current.UnitID, current.LibraryItemID
 		// An assessment stays an assessment (its questions and attempts hang on it), and nothing becomes one
-		if (current.Kind == domain.ItemQuiz || current.Kind == domain.ItemTask || in.Kind == domain.ItemQuiz || in.Kind == domain.ItemTask) && in.Kind != current.Kind {
-			return domain.Item{}, domain.Validation(map[string]string{"kind": "Un cuestionario o una tarea no cambia de tipo."})
+		special := map[string]bool{domain.ItemQuiz: true, domain.ItemTask: true, domain.ItemForum: true}
+		if (special[current.Kind] || special[in.Kind]) && in.Kind != current.Kind {
+			return domain.Item{}, domain.Validation(map[string]string{"kind": "Un cuestionario, una tarea o un foro no cambia de tipo."})
 		}
 	}
 	sc, _, err = s.unitRoom(ctx, token, slug, in.UnitID)
@@ -549,6 +550,12 @@ func (s *ClassroomService) SaveItem(ctx context.Context, token, slug string, in 
 	// A new quiz or task starts with its default settings (one attempt, always open)
 	if in.ID == "" && (out.Kind == domain.ItemQuiz || out.Kind == domain.ItemTask) {
 		if err := s.repo.EnsureAssessment(ctx, out.ID); err != nil {
+			return domain.Item{}, err
+		}
+	}
+	// A new forum starts as an open debate
+	if in.ID == "" && out.Kind == domain.ItemForum {
+		if err := s.repo.EnsureForum(ctx, out.ID); err != nil {
 			return domain.Item{}, err
 		}
 	}

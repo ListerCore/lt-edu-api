@@ -89,4 +89,24 @@ type ClassroomRepository interface {
 	// OpenTerm is the term of the period that contains day and is still open ("" when none)
 	OpenTerm(ctx context.Context, periodID string, day time.Time) (string, error)
 	MarkRecorded(ctx context.Context, ids []string, at time.Time) error
+
+	// ---------- forums (phase E4) ----------
+
+	// EnsureForum creates the settings of a new forum item (a debate, open)
+	EnsureForum(ctx context.Context, itemID string) error
+	Forum(ctx context.Context, institutionID, itemID string) (domain.Forum, error)
+	SaveForum(ctx context.Context, institutionID string, f domain.Forum) error
+	// Posts are every post of the forum, threads and replies, oldest first
+	Posts(ctx context.Context, itemID string) ([]domain.ForumPost, error)
+	Post(ctx context.Context, institutionID, id string) (domain.ForumPost, error)
+	CreatePost(ctx context.Context, p domain.ForumPost) (domain.ForumPost, error)
+	EditPost(ctx context.Context, id, body string, at time.Time) error
+	DeletePost(ctx context.Context, id string) error
+	// ModeratePost sets pinned and hidden (with reason and who) of a post
+	ModeratePost(ctx context.Context, p domain.ForumPost) error
+	// LastRead is when the user last opened the forum (nil: never); MarkRead sets it to at
+	LastRead(ctx context.Context, itemID, userID string) (*time.Time, error)
+	MarkRead(ctx context.Context, itemID, userID string, at time.Time) error
+	// ForumParticipation counts the threads and replies of each student of the room's grade
+	ForumParticipation(ctx context.Context, institutionID, itemID string) ([]domain.ForumParticipation, error)
 }
