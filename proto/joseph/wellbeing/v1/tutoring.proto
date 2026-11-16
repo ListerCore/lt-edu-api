@@ -183,6 +183,8 @@ message GetTutorBoardResponse {
   bool can_assign = 9;
   bool can_message = 10;
   string today = 11;
+  // SAANEE referrals still open of these students
+  repeated SaaneeReferral saanee = 12;
 }
 
 message GetTutorAssignmentsRequest {

@@ -115,6 +115,9 @@ func (s *tutoringServer) GetTutorBoard(ctx context.Context, req *wellbeingv1.Get
 		out.Alerts = append(out.Alerts, &wellbeingv1.TutorBoardAlert{Kind: a.Kind, Code: a.Code, Level: a.Level, StudentId: a.StudentID, StudentName: a.StudentName,
 			Placement: a.Placement, Title: a.Title, Detail: a.Detail, Since: instant(a.Since)})
 	}
+	for _, x := range b.Saanee {
+		out.Saanee = append(out.Saanee, toSaanee(x))
+	}
 	for _, w := range b.Pending {
 		out.Pending = append(out.Pending, &wellbeingv1.PendingWork{StudentId: w.StudentID, ItemId: w.ItemID, RoomId: w.RoomID, Title: w.Title, Subject: w.Subject,
 			ClosesAt: instant(&w.ClosesAt), Overdue: w.Overdue})

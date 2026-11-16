@@ -1210,18 +1210,20 @@ func (x *GetTutorBoardRequest) GetStaffId() string {
 }
 
 type GetTutorBoardResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	StaffId       string                 `protobuf:"bytes,1,opt,name=staff_id,json=staffId,proto3" json:"staff_id,omitempty"`
-	StaffName     string                 `protobuf:"bytes,2,opt,name=staff_name,json=staffName,proto3" json:"staff_name,omitempty"`
-	Tutors        []*TutorLoad           `protobuf:"bytes,3,rep,name=tutors,proto3" json:"tutors,omitempty"`
-	Rows          []*TutorBoardRow       `protobuf:"bytes,4,rep,name=rows,proto3" json:"rows,omitempty"`
-	Alerts        []*TutorBoardAlert     `protobuf:"bytes,5,rep,name=alerts,proto3" json:"alerts,omitempty"`
-	Pending       []*PendingWork         `protobuf:"bytes,6,rep,name=pending,proto3" json:"pending,omitempty"`
-	Sessions      []*TutoringSession     `protobuf:"bytes,7,rep,name=sessions,proto3" json:"sessions,omitempty"`
-	Threads       []*Thread              `protobuf:"bytes,8,rep,name=threads,proto3" json:"threads,omitempty"`
-	CanAssign     bool                   `protobuf:"varint,9,opt,name=can_assign,json=canAssign,proto3" json:"can_assign,omitempty"`
-	CanMessage    bool                   `protobuf:"varint,10,opt,name=can_message,json=canMessage,proto3" json:"can_message,omitempty"`
-	Today         string                 `protobuf:"bytes,11,opt,name=today,proto3" json:"today,omitempty"`
+	state      protoimpl.MessageState `protogen:"open.v1"`
+	StaffId    string                 `protobuf:"bytes,1,opt,name=staff_id,json=staffId,proto3" json:"staff_id,omitempty"`
+	StaffName  string                 `protobuf:"bytes,2,opt,name=staff_name,json=staffName,proto3" json:"staff_name,omitempty"`
+	Tutors     []*TutorLoad           `protobuf:"bytes,3,rep,name=tutors,proto3" json:"tutors,omitempty"`
+	Rows       []*TutorBoardRow       `protobuf:"bytes,4,rep,name=rows,proto3" json:"rows,omitempty"`
+	Alerts     []*TutorBoardAlert     `protobuf:"bytes,5,rep,name=alerts,proto3" json:"alerts,omitempty"`
+	Pending    []*PendingWork         `protobuf:"bytes,6,rep,name=pending,proto3" json:"pending,omitempty"`
+	Sessions   []*TutoringSession     `protobuf:"bytes,7,rep,name=sessions,proto3" json:"sessions,omitempty"`
+	Threads    []*Thread              `protobuf:"bytes,8,rep,name=threads,proto3" json:"threads,omitempty"`
+	CanAssign  bool                   `protobuf:"varint,9,opt,name=can_assign,json=canAssign,proto3" json:"can_assign,omitempty"`
+	CanMessage bool                   `protobuf:"varint,10,opt,name=can_message,json=canMessage,proto3" json:"can_message,omitempty"`
+	Today      string                 `protobuf:"bytes,11,opt,name=today,proto3" json:"today,omitempty"`
+	// SAANEE referrals still open of these students
+	Saanee        []*SaaneeReferral `protobuf:"bytes,12,rep,name=saanee,proto3" json:"saanee,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1331,6 +1333,13 @@ func (x *GetTutorBoardResponse) GetToday() string {
 		return x.Today
 	}
 	return ""
+}
+
+func (x *GetTutorBoardResponse) GetSaanee() []*SaaneeReferral {
+	if x != nil {
+		return x.Saanee
+	}
+	return nil
 }
 
 type GetTutorAssignmentsRequest struct {
@@ -2999,7 +3008,7 @@ const file_joseph_wellbeing_v1_tutoring_proto_rawDesc = "" +
 	"\x05since\x18\t \x01(\tR\x05since\"\\\n" +
 	"\x14GetTutorBoardRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x19\n" +
-	"\bstaff_id\x18\x02 \x01(\tR\astaffId\"\x8a\x04\n" +
+	"\bstaff_id\x18\x02 \x01(\tR\astaffId\"\xc7\x04\n" +
 	"\x15GetTutorBoardResponse\x12\x19\n" +
 	"\bstaff_id\x18\x01 \x01(\tR\astaffId\x12\x1d\n" +
 	"\n" +
@@ -3015,7 +3024,8 @@ const file_joseph_wellbeing_v1_tutoring_proto_rawDesc = "" +
 	"\vcan_message\x18\n" +
 	" \x01(\bR\n" +
 	"canMessage\x12\x14\n" +
-	"\x05today\x18\v \x01(\tR\x05today\"G\n" +
+	"\x05today\x18\v \x01(\tR\x05today\x12;\n" +
+	"\x06saanee\x18\f \x03(\v2#.joseph.wellbeing.v1.SaaneeReferralR\x06saanee\"G\n" +
 	"\x1aGetTutorAssignmentsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xd7\x01\n" +
 	"\x1bGetTutorAssignmentsResponse\x124\n" +
@@ -3206,58 +3216,59 @@ var file_joseph_wellbeing_v1_tutoring_proto_depIdxs = []int32{
 	8,  // 5: joseph.wellbeing.v1.GetTutorBoardResponse.pending:type_name -> joseph.wellbeing.v1.PendingWork
 	4,  // 6: joseph.wellbeing.v1.GetTutorBoardResponse.sessions:type_name -> joseph.wellbeing.v1.TutoringSession
 	5,  // 7: joseph.wellbeing.v1.GetTutorBoardResponse.threads:type_name -> joseph.wellbeing.v1.Thread
-	1,  // 8: joseph.wellbeing.v1.GetTutorAssignmentsResponse.loads:type_name -> joseph.wellbeing.v1.TutorLoad
-	2,  // 9: joseph.wellbeing.v1.GetTutorAssignmentsResponse.candidates:type_name -> joseph.wellbeing.v1.TutorCandidate
-	0,  // 10: joseph.wellbeing.v1.GetTutorAssignmentsResponse.students:type_name -> joseph.wellbeing.v1.TutorStudent
-	14, // 11: joseph.wellbeing.v1.AssignTutorResponse.assignments:type_name -> joseph.wellbeing.v1.GetTutorAssignmentsResponse
-	4,  // 12: joseph.wellbeing.v1.ListTutoringSessionsResponse.sessions:type_name -> joseph.wellbeing.v1.TutoringSession
-	4,  // 13: joseph.wellbeing.v1.SaveTutoringSessionResponse.session:type_name -> joseph.wellbeing.v1.TutoringSession
-	4,  // 14: joseph.wellbeing.v1.HoldTutoringSessionResponse.session:type_name -> joseph.wellbeing.v1.TutoringSession
-	4,  // 15: joseph.wellbeing.v1.SetTutoringSessionStatusResponse.session:type_name -> joseph.wellbeing.v1.TutoringSession
-	5,  // 16: joseph.wellbeing.v1.ListThreadsResponse.threads:type_name -> joseph.wellbeing.v1.Thread
-	5,  // 17: joseph.wellbeing.v1.ThreadView.thread:type_name -> joseph.wellbeing.v1.Thread
-	6,  // 18: joseph.wellbeing.v1.ThreadView.messages:type_name -> joseph.wellbeing.v1.TutoringMessage
-	28, // 19: joseph.wellbeing.v1.OpenThreadResponse.view:type_name -> joseph.wellbeing.v1.ThreadView
-	28, // 20: joseph.wellbeing.v1.GetThreadResponse.view:type_name -> joseph.wellbeing.v1.ThreadView
-	6,  // 21: joseph.wellbeing.v1.SendMessageResponse.message:type_name -> joseph.wellbeing.v1.TutoringMessage
-	0,  // 22: joseph.wellbeing.v1.GetMyTutoringResponse.tutor:type_name -> joseph.wellbeing.v1.TutorStudent
-	4,  // 23: joseph.wellbeing.v1.GetMyTutoringResponse.sessions:type_name -> joseph.wellbeing.v1.TutoringSession
-	28, // 24: joseph.wellbeing.v1.GetMyTutoringResponse.thread:type_name -> joseph.wellbeing.v1.ThreadView
-	7,  // 25: joseph.wellbeing.v1.ReferSaaneeResponse.referral:type_name -> joseph.wellbeing.v1.SaaneeReferral
-	7,  // 26: joseph.wellbeing.v1.UpdateSaaneeResponse.referral:type_name -> joseph.wellbeing.v1.SaaneeReferral
-	11, // 27: joseph.wellbeing.v1.TutoringService.GetTutorBoard:input_type -> joseph.wellbeing.v1.GetTutorBoardRequest
-	13, // 28: joseph.wellbeing.v1.TutoringService.GetTutorAssignments:input_type -> joseph.wellbeing.v1.GetTutorAssignmentsRequest
-	15, // 29: joseph.wellbeing.v1.TutoringService.AssignTutor:input_type -> joseph.wellbeing.v1.AssignTutorRequest
-	17, // 30: joseph.wellbeing.v1.TutoringService.ListTutoringSessions:input_type -> joseph.wellbeing.v1.ListTutoringSessionsRequest
-	19, // 31: joseph.wellbeing.v1.TutoringService.SaveTutoringSession:input_type -> joseph.wellbeing.v1.SaveTutoringSessionRequest
-	21, // 32: joseph.wellbeing.v1.TutoringService.HoldTutoringSession:input_type -> joseph.wellbeing.v1.HoldTutoringSessionRequest
-	23, // 33: joseph.wellbeing.v1.TutoringService.SetTutoringSessionStatus:input_type -> joseph.wellbeing.v1.SetTutoringSessionStatusRequest
-	25, // 34: joseph.wellbeing.v1.TutoringService.ListThreads:input_type -> joseph.wellbeing.v1.ListThreadsRequest
-	27, // 35: joseph.wellbeing.v1.TutoringService.OpenThread:input_type -> joseph.wellbeing.v1.OpenThreadRequest
-	30, // 36: joseph.wellbeing.v1.TutoringService.GetThread:input_type -> joseph.wellbeing.v1.GetThreadRequest
-	32, // 37: joseph.wellbeing.v1.TutoringService.SendMessage:input_type -> joseph.wellbeing.v1.SendMessageRequest
-	34, // 38: joseph.wellbeing.v1.TutoringService.GetMyTutoring:input_type -> joseph.wellbeing.v1.GetMyTutoringRequest
-	36, // 39: joseph.wellbeing.v1.TutoringService.ReferSaanee:input_type -> joseph.wellbeing.v1.ReferSaaneeRequest
-	38, // 40: joseph.wellbeing.v1.TutoringService.UpdateSaanee:input_type -> joseph.wellbeing.v1.UpdateSaaneeRequest
-	12, // 41: joseph.wellbeing.v1.TutoringService.GetTutorBoard:output_type -> joseph.wellbeing.v1.GetTutorBoardResponse
-	14, // 42: joseph.wellbeing.v1.TutoringService.GetTutorAssignments:output_type -> joseph.wellbeing.v1.GetTutorAssignmentsResponse
-	16, // 43: joseph.wellbeing.v1.TutoringService.AssignTutor:output_type -> joseph.wellbeing.v1.AssignTutorResponse
-	18, // 44: joseph.wellbeing.v1.TutoringService.ListTutoringSessions:output_type -> joseph.wellbeing.v1.ListTutoringSessionsResponse
-	20, // 45: joseph.wellbeing.v1.TutoringService.SaveTutoringSession:output_type -> joseph.wellbeing.v1.SaveTutoringSessionResponse
-	22, // 46: joseph.wellbeing.v1.TutoringService.HoldTutoringSession:output_type -> joseph.wellbeing.v1.HoldTutoringSessionResponse
-	24, // 47: joseph.wellbeing.v1.TutoringService.SetTutoringSessionStatus:output_type -> joseph.wellbeing.v1.SetTutoringSessionStatusResponse
-	26, // 48: joseph.wellbeing.v1.TutoringService.ListThreads:output_type -> joseph.wellbeing.v1.ListThreadsResponse
-	29, // 49: joseph.wellbeing.v1.TutoringService.OpenThread:output_type -> joseph.wellbeing.v1.OpenThreadResponse
-	31, // 50: joseph.wellbeing.v1.TutoringService.GetThread:output_type -> joseph.wellbeing.v1.GetThreadResponse
-	33, // 51: joseph.wellbeing.v1.TutoringService.SendMessage:output_type -> joseph.wellbeing.v1.SendMessageResponse
-	35, // 52: joseph.wellbeing.v1.TutoringService.GetMyTutoring:output_type -> joseph.wellbeing.v1.GetMyTutoringResponse
-	37, // 53: joseph.wellbeing.v1.TutoringService.ReferSaanee:output_type -> joseph.wellbeing.v1.ReferSaaneeResponse
-	39, // 54: joseph.wellbeing.v1.TutoringService.UpdateSaanee:output_type -> joseph.wellbeing.v1.UpdateSaaneeResponse
-	41, // [41:55] is the sub-list for method output_type
-	27, // [27:41] is the sub-list for method input_type
-	27, // [27:27] is the sub-list for extension type_name
-	27, // [27:27] is the sub-list for extension extendee
-	0,  // [0:27] is the sub-list for field type_name
+	7,  // 8: joseph.wellbeing.v1.GetTutorBoardResponse.saanee:type_name -> joseph.wellbeing.v1.SaaneeReferral
+	1,  // 9: joseph.wellbeing.v1.GetTutorAssignmentsResponse.loads:type_name -> joseph.wellbeing.v1.TutorLoad
+	2,  // 10: joseph.wellbeing.v1.GetTutorAssignmentsResponse.candidates:type_name -> joseph.wellbeing.v1.TutorCandidate
+	0,  // 11: joseph.wellbeing.v1.GetTutorAssignmentsResponse.students:type_name -> joseph.wellbeing.v1.TutorStudent
+	14, // 12: joseph.wellbeing.v1.AssignTutorResponse.assignments:type_name -> joseph.wellbeing.v1.GetTutorAssignmentsResponse
+	4,  // 13: joseph.wellbeing.v1.ListTutoringSessionsResponse.sessions:type_name -> joseph.wellbeing.v1.TutoringSession
+	4,  // 14: joseph.wellbeing.v1.SaveTutoringSessionResponse.session:type_name -> joseph.wellbeing.v1.TutoringSession
+	4,  // 15: joseph.wellbeing.v1.HoldTutoringSessionResponse.session:type_name -> joseph.wellbeing.v1.TutoringSession
+	4,  // 16: joseph.wellbeing.v1.SetTutoringSessionStatusResponse.session:type_name -> joseph.wellbeing.v1.TutoringSession
+	5,  // 17: joseph.wellbeing.v1.ListThreadsResponse.threads:type_name -> joseph.wellbeing.v1.Thread
+	5,  // 18: joseph.wellbeing.v1.ThreadView.thread:type_name -> joseph.wellbeing.v1.Thread
+	6,  // 19: joseph.wellbeing.v1.ThreadView.messages:type_name -> joseph.wellbeing.v1.TutoringMessage
+	28, // 20: joseph.wellbeing.v1.OpenThreadResponse.view:type_name -> joseph.wellbeing.v1.ThreadView
+	28, // 21: joseph.wellbeing.v1.GetThreadResponse.view:type_name -> joseph.wellbeing.v1.ThreadView
+	6,  // 22: joseph.wellbeing.v1.SendMessageResponse.message:type_name -> joseph.wellbeing.v1.TutoringMessage
+	0,  // 23: joseph.wellbeing.v1.GetMyTutoringResponse.tutor:type_name -> joseph.wellbeing.v1.TutorStudent
+	4,  // 24: joseph.wellbeing.v1.GetMyTutoringResponse.sessions:type_name -> joseph.wellbeing.v1.TutoringSession
+	28, // 25: joseph.wellbeing.v1.GetMyTutoringResponse.thread:type_name -> joseph.wellbeing.v1.ThreadView
+	7,  // 26: joseph.wellbeing.v1.ReferSaaneeResponse.referral:type_name -> joseph.wellbeing.v1.SaaneeReferral
+	7,  // 27: joseph.wellbeing.v1.UpdateSaaneeResponse.referral:type_name -> joseph.wellbeing.v1.SaaneeReferral
+	11, // 28: joseph.wellbeing.v1.TutoringService.GetTutorBoard:input_type -> joseph.wellbeing.v1.GetTutorBoardRequest
+	13, // 29: joseph.wellbeing.v1.TutoringService.GetTutorAssignments:input_type -> joseph.wellbeing.v1.GetTutorAssignmentsRequest
+	15, // 30: joseph.wellbeing.v1.TutoringService.AssignTutor:input_type -> joseph.wellbeing.v1.AssignTutorRequest
+	17, // 31: joseph.wellbeing.v1.TutoringService.ListTutoringSessions:input_type -> joseph.wellbeing.v1.ListTutoringSessionsRequest
+	19, // 32: joseph.wellbeing.v1.TutoringService.SaveTutoringSession:input_type -> joseph.wellbeing.v1.SaveTutoringSessionRequest
+	21, // 33: joseph.wellbeing.v1.TutoringService.HoldTutoringSession:input_type -> joseph.wellbeing.v1.HoldTutoringSessionRequest
+	23, // 34: joseph.wellbeing.v1.TutoringService.SetTutoringSessionStatus:input_type -> joseph.wellbeing.v1.SetTutoringSessionStatusRequest
+	25, // 35: joseph.wellbeing.v1.TutoringService.ListThreads:input_type -> joseph.wellbeing.v1.ListThreadsRequest
+	27, // 36: joseph.wellbeing.v1.TutoringService.OpenThread:input_type -> joseph.wellbeing.v1.OpenThreadRequest
+	30, // 37: joseph.wellbeing.v1.TutoringService.GetThread:input_type -> joseph.wellbeing.v1.GetThreadRequest
+	32, // 38: joseph.wellbeing.v1.TutoringService.SendMessage:input_type -> joseph.wellbeing.v1.SendMessageRequest
+	34, // 39: joseph.wellbeing.v1.TutoringService.GetMyTutoring:input_type -> joseph.wellbeing.v1.GetMyTutoringRequest
+	36, // 40: joseph.wellbeing.v1.TutoringService.ReferSaanee:input_type -> joseph.wellbeing.v1.ReferSaaneeRequest
+	38, // 41: joseph.wellbeing.v1.TutoringService.UpdateSaanee:input_type -> joseph.wellbeing.v1.UpdateSaaneeRequest
+	12, // 42: joseph.wellbeing.v1.TutoringService.GetTutorBoard:output_type -> joseph.wellbeing.v1.GetTutorBoardResponse
+	14, // 43: joseph.wellbeing.v1.TutoringService.GetTutorAssignments:output_type -> joseph.wellbeing.v1.GetTutorAssignmentsResponse
+	16, // 44: joseph.wellbeing.v1.TutoringService.AssignTutor:output_type -> joseph.wellbeing.v1.AssignTutorResponse
+	18, // 45: joseph.wellbeing.v1.TutoringService.ListTutoringSessions:output_type -> joseph.wellbeing.v1.ListTutoringSessionsResponse
+	20, // 46: joseph.wellbeing.v1.TutoringService.SaveTutoringSession:output_type -> joseph.wellbeing.v1.SaveTutoringSessionResponse
+	22, // 47: joseph.wellbeing.v1.TutoringService.HoldTutoringSession:output_type -> joseph.wellbeing.v1.HoldTutoringSessionResponse
+	24, // 48: joseph.wellbeing.v1.TutoringService.SetTutoringSessionStatus:output_type -> joseph.wellbeing.v1.SetTutoringSessionStatusResponse
+	26, // 49: joseph.wellbeing.v1.TutoringService.ListThreads:output_type -> joseph.wellbeing.v1.ListThreadsResponse
+	29, // 50: joseph.wellbeing.v1.TutoringService.OpenThread:output_type -> joseph.wellbeing.v1.OpenThreadResponse
+	31, // 51: joseph.wellbeing.v1.TutoringService.GetThread:output_type -> joseph.wellbeing.v1.GetThreadResponse
+	33, // 52: joseph.wellbeing.v1.TutoringService.SendMessage:output_type -> joseph.wellbeing.v1.SendMessageResponse
+	35, // 53: joseph.wellbeing.v1.TutoringService.GetMyTutoring:output_type -> joseph.wellbeing.v1.GetMyTutoringResponse
+	37, // 54: joseph.wellbeing.v1.TutoringService.ReferSaanee:output_type -> joseph.wellbeing.v1.ReferSaaneeResponse
+	39, // 55: joseph.wellbeing.v1.TutoringService.UpdateSaanee:output_type -> joseph.wellbeing.v1.UpdateSaaneeResponse
+	42, // [42:56] is the sub-list for method output_type
+	28, // [28:42] is the sub-list for method input_type
+	28, // [28:28] is the sub-list for extension type_name
+	28, // [28:28] is the sub-list for extension extendee
+	0,  // [0:28] is the sub-list for field type_name
 }
 
 func init() { file_joseph_wellbeing_v1_tutoring_proto_init() }

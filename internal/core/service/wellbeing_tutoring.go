@@ -95,6 +95,8 @@ type TutorBoard struct {
 	// The viewer writes to the students (has a staff record and tutors them)
 	CanMessage bool
 	Today      time.Time
+	// SAANEE referrals still open
+	Saanee []domain.SaaneeReferral
 }
 
 // TutorBoard is the tutor's day: their students with what needs attention, the dropout alerts, the work pending, the
@@ -232,8 +234,11 @@ func (s *WellbeingService) TutorBoard(ctx context.Context, token, slug, staffID 
 			return b, err
 		}
 		for _, x := range refs {
-			if r, ok := rows[x.StudentID]; ok && x.Status != domain.SaaneeClosed && r.Saanee == "" {
-				r.Saanee = x.Status
+			if r, ok := rows[x.StudentID]; ok && x.Status != domain.SaaneeClosed {
+				if r.Saanee == "" {
+					r.Saanee = x.Status
+				}
+				b.Saanee = append(b.Saanee, x)
 			}
 		}
 	}
