@@ -73,3 +73,25 @@ func TestValidatePlatformSheet(t *testing.T) {
 		}
 	}
 }
+
+func TestGrantableRolesFollowTheInstitutionKind(t *testing.T) {
+	has := func(kind, role string) bool {
+		for _, r := range grantableRoles(kind) {
+			if r == role {
+				return true
+			}
+		}
+		return false
+	}
+	if !has(domain.KindEBA, domain.RoleTechnicalLead) || has(domain.KindEBR, domain.RoleTechnicalLead) {
+		t.Fatal("the Responsable técnico is a CEBA role")
+	}
+	if has(domain.KindEBA, "assistant") || !has(domain.KindEBE, RoleSpecialEd) || !has(domain.KindInstitute, "program_coordinator") {
+		t.Fatal("roles must match the README role matrix")
+	}
+	for kind := range grantableStaffRoles {
+		if has(kind, "student") || has(kind, "guardian") || has(kind, domain.RoleSuperadmin) {
+			t.Fatalf("%s: families and the superadmin never get access here", kind)
+		}
+	}
+}

@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"regexp"
+	"slices"
 	"strings"
 	"time"
 	"unicode/utf8"
@@ -267,4 +268,133 @@ func (s *InstitutionService) SavePlatformSheet(ctx context.Context, token, slug 
 		Summary: "Actualizó la ficha de la plataforma"})
 	s.changed(ctx, sc, "platform")
 	return out, nil
+}
+
+// ---------- members ----------
+
+// membersManagers: only dirección (and the platform superadmin) gives and takes the staff's access
+var membersManagers = map[string]bool{domain.RoleSuperadmin: true, "director": true}
+
+// grantableStaffRoles are the accesses Configuración › Usuarios hands out, per institution kind. Students and guardians
+// get theirs from enrollment, and teachers can also come from the staff module (same invitations underneath)
+var grantableStaffRoles = map[string][]string{
+	domain.KindEBR:       {"director", "academic_coordinator", "secretary", "teacher", "tutor", "assistant", "psychologist", "treasurer"},
+	domain.KindEBA:       {"director", "academic_coordinator", "secretary", "teacher", "tutor", "psychologist", "treasurer", domain.RoleTechnicalLead},
+	domain.KindEBE:       {"director", "academic_coordinator", "secretary", "teacher", "assistant", "psychologist", "treasurer", RoleSpecialEd},
+	domain.KindCEPRE:     {"director", "academic_coordinator", "secretary", "teacher", "tutor", "treasurer"},
+	domain.KindInstitute: {"director", "academic_coordinator", "program_coordinator", "secretary", "teacher", "tutor", "psychologist", "treasurer"},
+}
+
+// grantableRoles is grantableStaffRoles of the kind (EBR's when unknown)
+func grantableRoles(kind string) []string {
+	if roles, ok := grantableStaffRoles[kind]; ok {
+		return roles
+	}
+	return grantableStaffRoles[domain.KindEBR]
+}
+
+// InstitutionMembers is the Usuarios page: the staff's accesses and the roles that can be given here
+type InstitutionMembers struct {
+	Members        []domain.Member
+	GrantableRoles []string
+	SelfUserID     string
+}
+
+func (s *InstitutionService) membersScope(ctx context.Context, token, slug string) (institutionFileScope, error) {
+	sc, err := resolveInstitution(ctx, s.auth, s.repo.InstitutionBySlug, token, slug)
+	if err != nil {
+		return institutionFileScope{}, err
+	}
+	if !membersManagers[sc.role] {
+		return institutionFileScope{}, domain.ErrMembersForbidden
+	}
+	return institutionFileScope{institutionScope: sc}, nil
+}
+
+func (s *InstitutionService) Members(ctx context.Context, token, slug string) (InstitutionMembers, error) {
+	sc, err := s.membersScope(ctx, token, slug)
+	if err != nil {
+		return InstitutionMembers{}, err
+	}
+	roles := grantableRoles(sc.institution.Kind)
+	members, err := s.repo.Members(ctx, sc.institution.ID, roles)
+	if err != nil {
+		return InstitutionMembers{}, err
+	}
+	return InstitutionMembers{Members: members, GrantableRoles: roles, SelfUserID: sc.userID}, nil
+}
+
+// GrantMember gives a staff role to an email: at once when the account exists, or as an invitation the person
+// accepts by signing up with that email (the platform never lets them pick a role). pending tells which
+func (s *InstitutionService) GrantMember(ctx context.Context, token, slug, email, roleCode string) (bool, error) {
+	sc, err := s.membersScope(ctx, token, slug)
+	if err != nil {
+		return false, err
+	}
+	email = normalizeEmail(email)
+	fields := map[string]string{}
+	if !validEmail(email) {
+		fields["email"] = "Ingresa un correo válido."
+	}
+	if !slices.Contains(grantableRoles(sc.institution.Kind), roleCode) {
+		fields["role"] = domain.ErrRoleNotGrantable.Message
+	}
+	if len(fields) > 0 {
+		return false, domain.Validation(fields)
+	}
+	pending, err := s.repo.GrantRole(ctx, sc.institution.ID, email, roleCode, sc.userID)
+	if err != nil {
+		return false, err
+	}
+	summary := "Asignó el rol " + roleCode + " a " + email
+	if pending {
+		summary = "Invitó a " + email + " con el rol " + roleCode
+	}
+	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "users", Action: domain.AuditGrant, Entity: "member", EntityID: email, Summary: summary,
+		Changes: map[string]any{"role": roleCode, "pending": pending}})
+	s.changed(ctx, sc, "members")
+	return pending, nil
+}
+
+// RevokeMember takes a staff role away, or cancels the invitation. Nobody removes their own access, and the
+// institution always keeps one director
+func (s *InstitutionService) RevokeMember(ctx context.Context, token, slug, id string) error {
+	sc, err := s.membersScope(ctx, token, slug)
+	if err != nil {
+		return err
+	}
+	m, err := s.repo.Member(ctx, sc.institution.ID, id)
+	if err != nil {
+		return err
+	}
+	if !slices.Contains(grantableRoles(sc.institution.Kind), m.RoleCode) {
+		return domain.ErrRoleNotGrantable
+	}
+	if !m.Pending && m.UserID == sc.userID {
+		return domain.ErrRevokeOwnAccess
+	}
+	if !m.Pending && m.RoleCode == "director" {
+		n, err := s.repo.CountRole(ctx, sc.institution.ID, "director")
+		if err != nil {
+			return err
+		}
+		if n <= 1 {
+			return domain.ErrLastDirector
+		}
+	}
+	if err := s.repo.RevokeMember(ctx, sc.institution.ID, id); err != nil {
+		return err
+	}
+	who := m.Email
+	if m.FullName != "" {
+		who = m.FullName + " (" + m.Email + ")"
+	}
+	summary := "Quitó el rol " + m.RoleCode + " a " + who
+	if m.Pending {
+		summary = "Canceló la invitación de " + m.Email + " como " + m.RoleCode
+	}
+	s.audit.Record(ctx, sc.institutionScope, AuditEntry{Module: "users", Action: domain.AuditRevoke, Entity: "member", EntityID: id, Summary: summary,
+		Changes: map[string]any{"role": m.RoleCode, "pending": m.Pending}})
+	s.changed(ctx, sc, "members")
+	return nil
 }

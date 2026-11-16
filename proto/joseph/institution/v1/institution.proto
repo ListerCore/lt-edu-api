@@ -18,6 +18,11 @@ service InstitutionService {
   rpc SavePlatformSheet(SavePlatformSheetRequest) returns (SavePlatformSheetResponse);
   // Audit log (Configuración › Auditoría), dirección only. Newest first, paged with the cursor of the last page
   rpc ListAuditEvents(ListAuditEventsRequest) returns (ListAuditEventsResponse);
+  // Staff accesses (Configuración › Usuarios), dirección only. Granting to an email without an account leaves an
+  // invitation the person accepts by signing up with it
+  rpc ListMembers(ListMembersRequest) returns (ListMembersResponse);
+  rpc GrantMember(GrantMemberRequest) returns (GrantMemberResponse);
+  rpc RevokeMember(RevokeMemberRequest) returns (RevokeMemberResponse);
 }
 
 message Authorization {
@@ -142,3 +147,46 @@ message ListAuditEventsResponse {
   string next_before_at = 3;
   string next_before_id = 4;
 }
+
+message Member {
+  // Role assignment id, or invitation id when pending
+  string id = 1;
+  bool pending = 2;
+  string user_id = 3;
+  string email = 4;
+  string full_name = 5;
+  string role = 6;
+  // RFC 3339: granted or invited at; last sign-in empty when never
+  string since = 7;
+  string last_sign_in_at = 8;
+}
+
+message ListMembersRequest {
+  string institution_slug = 1;
+}
+
+message ListMembersResponse {
+  repeated Member members = 1;
+  // Role codes this page can give in the institution's kind
+  repeated string grantable_roles = 2;
+  // The person asking, who cannot revoke their own access
+  string self_user_id = 3;
+}
+
+message GrantMemberRequest {
+  string institution_slug = 1;
+  string email = 2;
+  string role = 3;
+}
+
+message GrantMemberResponse {
+  // true: no account yet, an invitation was left
+  bool pending = 1;
+}
+
+message RevokeMemberRequest {
+  string institution_slug = 1;
+  string id = 2;
+}
+
+message RevokeMemberResponse {}

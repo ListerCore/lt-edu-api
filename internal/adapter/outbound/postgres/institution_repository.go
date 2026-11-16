@@ -179,3 +179,99 @@ func (r *InstitutionRepository) SavePlatformSheet(ctx context.Context, instituti
 	}
 	return r.PlatformSheet(ctx, institutionID)
 }
+
+// ---------- members ----------
+
+// memberQuery reads account roles and pending invitations of the institution; $2 filters by role codes (NULL: all)
+const memberQuery = `SELECT * FROM (
+	SELECT ur.id::text AS id, false AS pending, u.id::text AS user_id, u.email, u.full_name, r.code, ur.granted_at AS since, u.last_sign_in_at
+	FROM iam.user_roles ur JOIN iam.users u ON u.id = ur.user_id JOIN iam.roles r ON r.id = ur.role_id
+	WHERE ur.institution_id = $1 AND ($2::text[] IS NULL OR r.code = ANY($2))
+	UNION ALL
+	SELECT i.id::text, true, '', i.email, '', r.code, i.created_at, NULL::timestamptz
+	FROM iam.invitations i JOIN iam.roles r ON r.id = i.role_id
+	WHERE i.institution_id = $1 AND ($2::text[] IS NULL OR r.code = ANY($2)) AND i.accepted_at IS NULL AND i.revoked_at IS NULL
+) m`
+
+func scanMember(row pgx.Row) (domain.Member, error) {
+	var m domain.Member
+	err := row.Scan(&m.ID, &m.Pending, &m.UserID, &m.Email, &m.FullName, &m.RoleCode, &m.Since, &m.LastSignIn)
+	return m, err
+}
+
+func (r *InstitutionRepository) Members(ctx context.Context, institutionID string, roles []string) ([]domain.Member, error) {
+	rows, err := r.c.pool.Query(ctx, memberQuery+` ORDER BY pending, lower(full_name), email, code`, institutionID, roles)
+	if err != nil {
+		return nil, academicErr(err)
+	}
+	out, err := pgx.CollectRows(rows, func(row pgx.CollectableRow) (domain.Member, error) { return scanMember(row) })
+	if out == nil {
+		out = []domain.Member{}
+	}
+	return out, academicErr(err)
+}
+
+func (r *InstitutionRepository) Member(ctx context.Context, institutionID, id string) (domain.Member, error) {
+	// No role filter: any access of the institution
+	m, err := scanMember(r.c.pool.QueryRow(ctx, memberQuery+` WHERE m.id = $3`, institutionID, nil, id))
+	return m, academicErr(err)
+}
+
+func (r *InstitutionRepository) GrantRole(ctx context.Context, institutionID, email, roleCode, grantedBy string) (bool, error) {
+	pending := false
+	err := pgx.BeginFunc(ctx, r.c.pool, func(tx pgx.Tx) error {
+		var userID *string
+		if err := tx.QueryRow(ctx, `SELECT id::text FROM iam.users WHERE lower(email) = $1`, email).Scan(&userID); err != nil && !errors.Is(err, pgx.ErrNoRows) {
+			return err
+		}
+		var tag interface{ RowsAffected() int64 }
+		var err error
+		if userID != nil {
+			tag, err = tx.Exec(ctx, `INSERT INTO iam.user_roles (user_id, role_id, role_scope, institution_id, granted_by)
+				SELECT $1, r.id, 'institution', $2, $4::uuid FROM iam.roles r WHERE r.code = $3 AND r.scope = 'institution'
+				ON CONFLICT DO NOTHING`, *userID, institutionID, roleCode, nilIfEmpty(grantedBy))
+		} else {
+			pending = true
+			tag, err = tx.Exec(ctx, `INSERT INTO iam.invitations (institution_id, email, role_id, invited_by)
+				SELECT $1, $2, r.id, $4::uuid FROM iam.roles r WHERE r.code = $3 AND r.scope = 'institution'
+				ON CONFLICT DO NOTHING`, institutionID, email, roleCode, nilIfEmpty(grantedBy))
+		}
+		if err != nil {
+			return err
+		}
+		if tag.RowsAffected() == 0 {
+			return domain.ErrMemberExists
+		}
+		return nil
+	})
+	if errors.Is(err, domain.ErrMemberExists) {
+		return false, err
+	}
+	return pending, academicErr(err)
+}
+
+func (r *InstitutionRepository) CountRole(ctx context.Context, institutionID, roleCode string) (int, error) {
+	var n int
+	err := r.c.pool.QueryRow(ctx, `SELECT count(*) FROM iam.user_roles ur JOIN iam.roles r ON r.id = ur.role_id
+		WHERE ur.institution_id = $1 AND r.code = $2`, institutionID, roleCode).Scan(&n)
+	return n, err
+}
+
+func (r *InstitutionRepository) RevokeMember(ctx context.Context, institutionID, id string) error {
+	tag, err := r.c.pool.Exec(ctx, `DELETE FROM iam.user_roles WHERE institution_id = $1 AND id = $2`, institutionID, id)
+	if err != nil {
+		return academicErr(err)
+	}
+	if tag.RowsAffected() > 0 {
+		return nil
+	}
+	tag, err = r.c.pool.Exec(ctx, `UPDATE iam.invitations SET revoked_at = now()
+		WHERE institution_id = $1 AND id = $2 AND accepted_at IS NULL AND revoked_at IS NULL`, institutionID, id)
+	if err != nil {
+		return academicErr(err)
+	}
+	if tag.RowsAffected() == 0 {
+		return domain.ErrNotFound
+	}
+	return nil
+}

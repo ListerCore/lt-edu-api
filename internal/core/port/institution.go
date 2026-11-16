@@ -24,4 +24,16 @@ type InstitutionRepository interface {
 	// AuthorizedModes maps each level id to the forms of attention authorized for it on day; the "" key holds the
 	// forms authorized for every cycle. ok=false when the institution has no attention_mode authorization at all
 	AuthorizedModes(ctx context.Context, institutionID string, day time.Time) (modes map[string][]string, ok bool, err error)
+
+	// Members lists the accounts holding one of roles in the institution and the pending invitations to them
+	Members(ctx context.Context, institutionID string, roles []string) ([]domain.Member, error)
+	// GrantRole gives roleCode to the account with that email, or leaves an invitation when there is none yet;
+	// pending=true in the latter case. domain.ErrMemberExists when the role or invitation is already there
+	GrantRole(ctx context.Context, institutionID, email, roleCode, grantedBy string) (pending bool, err error)
+	// Member reads one access (account role or pending invitation) of the institution
+	Member(ctx context.Context, institutionID, id string) (domain.Member, error)
+	// CountRole counts the accounts holding roleCode in the institution
+	CountRole(ctx context.Context, institutionID, roleCode string) (int, error)
+	// RevokeMember removes the role from the account, or revokes the pending invitation
+	RevokeMember(ctx context.Context, institutionID, id string) error
 }

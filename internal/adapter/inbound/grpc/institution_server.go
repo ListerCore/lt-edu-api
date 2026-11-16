@@ -147,3 +147,35 @@ func (s *institutionServer) ListAuditEvents(ctx context.Context, req *institutio
 	}
 	return out, nil
 }
+
+func (s *institutionServer) ListMembers(ctx context.Context, req *institutionv1.ListMembersRequest) (*institutionv1.ListMembersResponse, error) {
+	m, err := s.institution.Members(ctx, bearer(ctx), req.GetInstitutionSlug())
+	if err != nil {
+		return nil, s.fail("ListMembers", err)
+	}
+	out := &institutionv1.ListMembersResponse{GrantableRoles: m.GrantableRoles, SelfUserId: m.SelfUserID}
+	for _, x := range m.Members {
+		last := ""
+		if x.LastSignIn != nil {
+			last = x.LastSignIn.UTC().Format(time.RFC3339)
+		}
+		out.Members = append(out.Members, &institutionv1.Member{Id: x.ID, Pending: x.Pending, UserId: x.UserID, Email: x.Email, FullName: x.FullName,
+			Role: x.RoleCode, Since: x.Since.UTC().Format(time.RFC3339), LastSignInAt: last})
+	}
+	return out, nil
+}
+
+func (s *institutionServer) GrantMember(ctx context.Context, req *institutionv1.GrantMemberRequest) (*institutionv1.GrantMemberResponse, error) {
+	pending, err := s.institution.GrantMember(ctx, bearer(ctx), req.GetInstitutionSlug(), req.GetEmail(), req.GetRole())
+	if err != nil {
+		return nil, s.fail("GrantMember", err)
+	}
+	return &institutionv1.GrantMemberResponse{Pending: pending}, nil
+}
+
+func (s *institutionServer) RevokeMember(ctx context.Context, req *institutionv1.RevokeMemberRequest) (*institutionv1.RevokeMemberResponse, error) {
+	if err := s.institution.RevokeMember(ctx, bearer(ctx), req.GetInstitutionSlug(), req.GetId()); err != nil {
+		return nil, s.fail("RevokeMember", err)
+	}
+	return &institutionv1.RevokeMemberResponse{}, nil
+}

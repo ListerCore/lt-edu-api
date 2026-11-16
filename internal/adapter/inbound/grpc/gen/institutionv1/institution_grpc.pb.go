@@ -29,6 +29,9 @@ const (
 	InstitutionService_DeleteAuthorization_FullMethodName = "/joseph.institution.v1.InstitutionService/DeleteAuthorization"
 	InstitutionService_SavePlatformSheet_FullMethodName   = "/joseph.institution.v1.InstitutionService/SavePlatformSheet"
 	InstitutionService_ListAuditEvents_FullMethodName     = "/joseph.institution.v1.InstitutionService/ListAuditEvents"
+	InstitutionService_ListMembers_FullMethodName         = "/joseph.institution.v1.InstitutionService/ListMembers"
+	InstitutionService_GrantMember_FullMethodName         = "/joseph.institution.v1.InstitutionService/GrantMember"
+	InstitutionService_RevokeMember_FullMethodName        = "/joseph.institution.v1.InstitutionService/RevokeMember"
 )
 
 // InstitutionServiceClient is the client API for InstitutionService service.
@@ -45,6 +48,11 @@ type InstitutionServiceClient interface {
 	SavePlatformSheet(ctx context.Context, in *SavePlatformSheetRequest, opts ...grpc.CallOption) (*SavePlatformSheetResponse, error)
 	// Audit log (Configuración › Auditoría), dirección only. Newest first, paged with the cursor of the last page
 	ListAuditEvents(ctx context.Context, in *ListAuditEventsRequest, opts ...grpc.CallOption) (*ListAuditEventsResponse, error)
+	// Staff accesses (Configuración › Usuarios), dirección only. Granting to an email without an account leaves an
+	// invitation the person accepts by signing up with it
+	ListMembers(ctx context.Context, in *ListMembersRequest, opts ...grpc.CallOption) (*ListMembersResponse, error)
+	GrantMember(ctx context.Context, in *GrantMemberRequest, opts ...grpc.CallOption) (*GrantMemberResponse, error)
+	RevokeMember(ctx context.Context, in *RevokeMemberRequest, opts ...grpc.CallOption) (*RevokeMemberResponse, error)
 }
 
 type institutionServiceClient struct {
@@ -105,6 +113,36 @@ func (c *institutionServiceClient) ListAuditEvents(ctx context.Context, in *List
 	return out, nil
 }
 
+func (c *institutionServiceClient) ListMembers(ctx context.Context, in *ListMembersRequest, opts ...grpc.CallOption) (*ListMembersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListMembersResponse)
+	err := c.cc.Invoke(ctx, InstitutionService_ListMembers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *institutionServiceClient) GrantMember(ctx context.Context, in *GrantMemberRequest, opts ...grpc.CallOption) (*GrantMemberResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GrantMemberResponse)
+	err := c.cc.Invoke(ctx, InstitutionService_GrantMember_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *institutionServiceClient) RevokeMember(ctx context.Context, in *RevokeMemberRequest, opts ...grpc.CallOption) (*RevokeMemberResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RevokeMemberResponse)
+	err := c.cc.Invoke(ctx, InstitutionService_RevokeMember_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // InstitutionServiceServer is the server API for InstitutionService service.
 // All implementations must embed UnimplementedInstitutionServiceServer
 // for forward compatibility.
@@ -119,6 +157,11 @@ type InstitutionServiceServer interface {
 	SavePlatformSheet(context.Context, *SavePlatformSheetRequest) (*SavePlatformSheetResponse, error)
 	// Audit log (Configuración › Auditoría), dirección only. Newest first, paged with the cursor of the last page
 	ListAuditEvents(context.Context, *ListAuditEventsRequest) (*ListAuditEventsResponse, error)
+	// Staff accesses (Configuración › Usuarios), dirección only. Granting to an email without an account leaves an
+	// invitation the person accepts by signing up with it
+	ListMembers(context.Context, *ListMembersRequest) (*ListMembersResponse, error)
+	GrantMember(context.Context, *GrantMemberRequest) (*GrantMemberResponse, error)
+	RevokeMember(context.Context, *RevokeMemberRequest) (*RevokeMemberResponse, error)
 	mustEmbedUnimplementedInstitutionServiceServer()
 }
 
@@ -143,6 +186,15 @@ func (UnimplementedInstitutionServiceServer) SavePlatformSheet(context.Context, 
 }
 func (UnimplementedInstitutionServiceServer) ListAuditEvents(context.Context, *ListAuditEventsRequest) (*ListAuditEventsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListAuditEvents not implemented")
+}
+func (UnimplementedInstitutionServiceServer) ListMembers(context.Context, *ListMembersRequest) (*ListMembersResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListMembers not implemented")
+}
+func (UnimplementedInstitutionServiceServer) GrantMember(context.Context, *GrantMemberRequest) (*GrantMemberResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GrantMember not implemented")
+}
+func (UnimplementedInstitutionServiceServer) RevokeMember(context.Context, *RevokeMemberRequest) (*RevokeMemberResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RevokeMember not implemented")
 }
 func (UnimplementedInstitutionServiceServer) mustEmbedUnimplementedInstitutionServiceServer() {}
 func (UnimplementedInstitutionServiceServer) testEmbeddedByValue()                            {}
@@ -255,6 +307,60 @@ func _InstitutionService_ListAuditEvents_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _InstitutionService_ListMembers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListMembersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InstitutionServiceServer).ListMembers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InstitutionService_ListMembers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InstitutionServiceServer).ListMembers(ctx, req.(*ListMembersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _InstitutionService_GrantMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GrantMemberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InstitutionServiceServer).GrantMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InstitutionService_GrantMember_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InstitutionServiceServer).GrantMember(ctx, req.(*GrantMemberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _InstitutionService_RevokeMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RevokeMemberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InstitutionServiceServer).RevokeMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InstitutionService_RevokeMember_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InstitutionServiceServer).RevokeMember(ctx, req.(*RevokeMemberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // InstitutionService_ServiceDesc is the grpc.ServiceDesc for InstitutionService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -281,6 +387,18 @@ var InstitutionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListAuditEvents",
 			Handler:    _InstitutionService_ListAuditEvents_Handler,
+		},
+		{
+			MethodName: "ListMembers",
+			Handler:    _InstitutionService_ListMembers_Handler,
+		},
+		{
+			MethodName: "GrantMember",
+			Handler:    _InstitutionService_GrantMember_Handler,
+		},
+		{
+			MethodName: "RevokeMember",
+			Handler:    _InstitutionService_RevokeMember_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

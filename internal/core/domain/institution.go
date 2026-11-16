@@ -67,6 +67,28 @@ type PlatformSheet struct {
 	Files int
 }
 
+// Member is one access of the institution's staff: a role held by an account, or an invitation still waiting for
+// that email to sign up (the role is granted on sign-up)
+type Member struct {
+	// user_roles id (account) or invitation id (pending)
+	ID         string
+	Pending    bool
+	UserID     string
+	Email      string
+	FullName   string
+	RoleCode   string
+	Since      time.Time
+	LastSignIn *time.Time
+}
+
+var (
+	ErrMembersForbidden = newError(KindForbidden, "members_forbidden", "Solo dirección gestiona los usuarios de la institución.")
+	ErrRoleNotGrantable = newError(KindInvalid, "role_not_grantable", "Ese rol no se asigna desde aquí en este tipo de institución.")
+	ErrLastDirector     = newError(KindConflict, "last_director", "La institución debe conservar al menos un director.")
+	ErrRevokeOwnAccess  = newError(KindConflict, "revoke_own_access", "No puedes quitarte tu propio acceso. Pide a otro director que lo haga.")
+	ErrMemberExists     = newError(KindConflict, "member_exists", "Esa persona ya tiene ese rol o una invitación pendiente.")
+)
+
 var (
 	ErrInstitutionFileForbidden = newError(KindForbidden, "institution_file_forbidden", "Tu rol no puede ver los datos de la institución.")
 	ErrInstitutionFileReadOnly  = newError(KindForbidden, "institution_file_read_only", "Solo dirección registra las autorizaciones de la institución.")

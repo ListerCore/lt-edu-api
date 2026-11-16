@@ -103,3 +103,53 @@ func TestInstitutionFileSQL(t *testing.T) {
 		t.Fatalf("updated sheet: %+v %v", again, err)
 	}
 }
+
+func TestInstitutionMembersSQL(t *testing.T) {
+	repo, instID, _ := testInstitutionRepo(t)
+	ctx := context.Background()
+	if _, err := repo.c.pool.Exec(ctx, `DELETE FROM iam.users WHERE email LIKE 'repo-test-member-%'`); err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _, _ = repo.c.pool.Exec(ctx, `DELETE FROM iam.users WHERE email LIKE 'repo-test-member-%'`) })
+	if _, err := repo.c.pool.Exec(ctx, `INSERT INTO iam.users (email, full_name) VALUES ('repo-test-member-ana@gmail.com', 'Ana Member')`); err != nil {
+		t.Fatal(err)
+	}
+
+	// An existing account gets the role at once; an unknown email gets an invitation
+	if pending, err := repo.GrantRole(ctx, instID, "repo-test-member-ana@gmail.com", "technical_lead", ""); err != nil || pending {
+		t.Fatalf("grant account: pending=%v %v", pending, err)
+	}
+	if pending, err := repo.GrantRole(ctx, instID, "repo-test-member-luis@gmail.com", "teacher", ""); err != nil || !pending {
+		t.Fatalf("grant invitation: pending=%v %v", pending, err)
+	}
+	if _, err := repo.GrantRole(ctx, instID, "repo-test-member-ana@gmail.com", "technical_lead", ""); !errors.Is(err, domain.ErrMemberExists) {
+		t.Fatalf("twice: %v", err)
+	}
+
+	members, err := repo.Members(ctx, instID, []string{"technical_lead", "teacher"})
+	if err != nil || len(members) != 2 || members[0].Pending || members[0].FullName != "Ana Member" || !members[1].Pending {
+		t.Fatalf("members: %+v %v", members, err)
+	}
+	if only, _ := repo.Members(ctx, instID, []string{"teacher"}); len(only) != 1 {
+		t.Fatalf("role filter: %d", len(only))
+	}
+	if n, _ := repo.CountRole(ctx, instID, "technical_lead"); n != 1 {
+		t.Fatalf("count: %d", n)
+	}
+	one, err := repo.Member(ctx, instID, members[1].ID)
+	if err != nil || !one.Pending || one.RoleCode != "teacher" {
+		t.Fatalf("member: %+v %v", one, err)
+	}
+
+	for _, m := range members {
+		if err := repo.RevokeMember(ctx, instID, m.ID); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if left, _ := repo.Members(ctx, instID, []string{"technical_lead", "teacher"}); len(left) != 0 {
+		t.Fatalf("after revoke: %+v", left)
+	}
+	if err := repo.RevokeMember(ctx, instID, members[0].ID); !errors.Is(err, domain.ErrNotFound) {
+		t.Fatalf("revoked twice: %v", err)
+	}
+}
