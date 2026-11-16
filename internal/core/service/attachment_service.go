@@ -151,10 +151,10 @@ var ownerSpecs = map[string]ownerSpec{
 	// (service/classroom_service.go checks who edits which room)
 	domain.OwnerClassroomItem: {module: "classroom",
 		read: roleSet(rDirector, rCoordinator, rTeacher, rTutor, rSecretary, rTechLead, rStudent, rGuardian), write: roleSet(rDirector, rCoordinator, rTeacher, rTutor),
-		categories: []string{"material", "guide", "worksheet", "presentation", "audio", "other"}},
+		categories: []string{"material", "guide", "worksheet", "presentation", "other"}},
 	domain.OwnerLibraryItem: {module: "classroom",
 		read: roleSet(rDirector, rCoordinator, rTeacher, rTutor, rSecretary, rTechLead, rStudent, rGuardian), write: roleSet(rDirector, rCoordinator, rTeacher, rTutor),
-		categories: []string{"material", "guide", "worksheet", "presentation", "audio", "other"}},
+		categories: []string{"material", "guide", "worksheet", "presentation", "other"}},
 }
 
 func isFamily(role string) bool { return role == rStudent || role == rGuardian }
