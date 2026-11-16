@@ -33,7 +33,12 @@ var (
 type WellbeingService struct {
 	repo       port.WellbeingRepository
 	attendance *AttendanceService
+	// Dropout alerts of the distance form (phase E5); set by the server
+	participation *ParticipationService
 }
+
+// SetParticipation adds the dropout alerts of the distance students to the inbox
+func (s *WellbeingService) SetParticipation(p *ParticipationService) { s.participation = p }
 
 func NewWellbeingService(repo port.WellbeingRepository, attendance *AttendanceService) *WellbeingService {
 	return &WellbeingService{repo: repo, attendance: attendance}
@@ -862,6 +867,22 @@ func (s *WellbeingService) Alerts(ctx context.Context, token, slug string) (Well
 			}
 			add(domain.WellAlert{Kind: "attendance", Level: level, StudentID: st.ID, StudentName: st.Name, Placement: st.Placement,
 				Title: "Inasistencias cerca del límite", Detail: percentText(t.Days.AbsentPercent()) + " de faltas (límite " + percentText(limit) + ")"})
+		}
+	}
+
+	// Distance form (EBA): no activity, work past its deadline, permanence under the institution's rule
+	if s.participation != nil && !sc.specialist() {
+		dropouts, err := s.participation.DropoutAlerts(ctx, inst)
+		if err != nil {
+			return out, err
+		}
+		for _, d := range dropouts {
+			st, ok := mine[d.Signal.StudentID]
+			if !ok {
+				continue
+			}
+			add(domain.WellAlert{Kind: "dropout", Level: d.Level, StudentID: st.ID, StudentName: st.Name, Placement: d.Signal.Placement,
+				Title: d.Title, Detail: d.Detail, Since: d.Signal.LastAt})
 		}
 	}
 

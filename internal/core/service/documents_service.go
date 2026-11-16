@@ -28,6 +28,8 @@ type DocumentService struct {
 	finance    *FinanceService
 	// EBA enrollment documents (phase E1); set by the server
 	people *PeopleService
+	// Permanence reports (phase E5); set by the server
+	participation *ParticipationService
 	// Public URL of joseph-app, where the QR of a document leads
 	siteURL string
 	now     func() time.Time

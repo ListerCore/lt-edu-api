@@ -37,6 +37,8 @@ const (
 	DocumentsService_SiagieXlsx_FullMethodName           = "/joseph.documents.v1.DocumentsService/SiagieXlsx"
 	DocumentsService_GeneratePlacementAct_FullMethodName = "/joseph.documents.v1.DocumentsService/GeneratePlacementAct"
 	DocumentsService_PlacementActPdf_FullMethodName      = "/joseph.documents.v1.DocumentsService/PlacementActPdf"
+	DocumentsService_PermanencePdf_FullMethodName        = "/joseph.documents.v1.DocumentsService/PermanencePdf"
+	DocumentsService_PermanenceXlsx_FullMethodName       = "/joseph.documents.v1.DocumentsService/PermanenceXlsx"
 	DocumentsService_SchedulesXlsx_FullMethodName        = "/joseph.documents.v1.DocumentsService/SchedulesXlsx"
 	DocumentsService_GetScheduleSigners_FullMethodName   = "/joseph.documents.v1.DocumentsService/GetScheduleSigners"
 	DocumentsService_SetScheduleSigners_FullMethodName   = "/joseph.documents.v1.DocumentsService/SetScheduleSigners"
@@ -64,6 +66,9 @@ type DocumentsServiceClient interface {
 	// Acta de ubicación o convalidación: a version for its signers (sign with SignVersion), and its PDF
 	GeneratePlacementAct(ctx context.Context, in *GeneratePlacementActRequest, opts ...grpc.CallOption) (*GeneratePlacementActResponse, error)
 	PlacementActPdf(ctx context.Context, in *PlacementActPdfRequest, opts ...grpc.CallOption) (*PlacementActPdfResponse, error)
+	// Permanence of a distance section (phase E5): summary PDF and the spreadsheet with every week
+	PermanencePdf(ctx context.Context, in *PermanencePdfRequest, opts ...grpc.CallOption) (*PermanencePdfResponse, error)
+	PermanenceXlsx(ctx context.Context, in *PermanenceXlsxRequest, opts ...grpc.CallOption) (*PermanenceXlsxResponse, error)
 	// Every class of a period as an Excel workbook (list, week of each section and teacher, legend)
 	SchedulesXlsx(ctx context.Context, in *SchedulesXlsxRequest, opts ...grpc.CallOption) (*SchedulesXlsxResponse, error)
 	// Who signs the timetables; managers also get the staff to pick from
@@ -190,6 +195,26 @@ func (c *documentsServiceClient) PlacementActPdf(ctx context.Context, in *Placem
 	return out, nil
 }
 
+func (c *documentsServiceClient) PermanencePdf(ctx context.Context, in *PermanencePdfRequest, opts ...grpc.CallOption) (*PermanencePdfResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PermanencePdfResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_PermanencePdf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *documentsServiceClient) PermanenceXlsx(ctx context.Context, in *PermanenceXlsxRequest, opts ...grpc.CallOption) (*PermanenceXlsxResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PermanenceXlsxResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_PermanenceXlsx_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *documentsServiceClient) SchedulesXlsx(ctx context.Context, in *SchedulesXlsxRequest, opts ...grpc.CallOption) (*SchedulesXlsxResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SchedulesXlsxResponse)
@@ -296,6 +321,9 @@ type DocumentsServiceServer interface {
 	// Acta de ubicación o convalidación: a version for its signers (sign with SignVersion), and its PDF
 	GeneratePlacementAct(context.Context, *GeneratePlacementActRequest) (*GeneratePlacementActResponse, error)
 	PlacementActPdf(context.Context, *PlacementActPdfRequest) (*PlacementActPdfResponse, error)
+	// Permanence of a distance section (phase E5): summary PDF and the spreadsheet with every week
+	PermanencePdf(context.Context, *PermanencePdfRequest) (*PermanencePdfResponse, error)
+	PermanenceXlsx(context.Context, *PermanenceXlsxRequest) (*PermanenceXlsxResponse, error)
 	// Every class of a period as an Excel workbook (list, week of each section and teacher, legend)
 	SchedulesXlsx(context.Context, *SchedulesXlsxRequest) (*SchedulesXlsxResponse, error)
 	// Who signs the timetables; managers also get the staff to pick from
@@ -351,6 +379,12 @@ func (UnimplementedDocumentsServiceServer) GeneratePlacementAct(context.Context,
 }
 func (UnimplementedDocumentsServiceServer) PlacementActPdf(context.Context, *PlacementActPdfRequest) (*PlacementActPdfResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method PlacementActPdf not implemented")
+}
+func (UnimplementedDocumentsServiceServer) PermanencePdf(context.Context, *PermanencePdfRequest) (*PermanencePdfResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method PermanencePdf not implemented")
+}
+func (UnimplementedDocumentsServiceServer) PermanenceXlsx(context.Context, *PermanenceXlsxRequest) (*PermanenceXlsxResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method PermanenceXlsx not implemented")
 }
 func (UnimplementedDocumentsServiceServer) SchedulesXlsx(context.Context, *SchedulesXlsxRequest) (*SchedulesXlsxResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SchedulesXlsx not implemented")
@@ -580,6 +614,42 @@ func _DocumentsService_PlacementActPdf_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DocumentsService_PermanencePdf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PermanencePdfRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).PermanencePdf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_PermanencePdf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).PermanencePdf(ctx, req.(*PermanencePdfRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DocumentsService_PermanenceXlsx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PermanenceXlsxRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).PermanenceXlsx(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_PermanenceXlsx_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).PermanenceXlsx(ctx, req.(*PermanenceXlsxRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _DocumentsService_SchedulesXlsx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SchedulesXlsxRequest)
 	if err := dec(in); err != nil {
@@ -788,6 +858,14 @@ var DocumentsService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PlacementActPdf",
 			Handler:    _DocumentsService_PlacementActPdf_Handler,
+		},
+		{
+			MethodName: "PermanencePdf",
+			Handler:    _DocumentsService_PermanencePdf_Handler,
+		},
+		{
+			MethodName: "PermanenceXlsx",
+			Handler:    _DocumentsService_PermanenceXlsx_Handler,
 		},
 		{
 			MethodName: "SchedulesXlsx",

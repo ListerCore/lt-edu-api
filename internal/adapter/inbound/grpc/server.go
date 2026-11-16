@@ -25,6 +25,7 @@ import (
 	"api/internal/adapter/inbound/grpc/gen/examsv1"
 	"api/internal/adapter/inbound/grpc/gen/financev1"
 	"api/internal/adapter/inbound/grpc/gen/institutionv1"
+	"api/internal/adapter/inbound/grpc/gen/participationv1"
 	"api/internal/adapter/inbound/grpc/gen/peoplev1"
 	"api/internal/adapter/inbound/grpc/gen/programsv1"
 	"api/internal/adapter/inbound/grpc/gen/reportsv1"
@@ -61,6 +62,7 @@ type Services struct {
 	Finance       *service.FinanceService
 	Apafa         *service.ApafaService
 	Institution   *service.InstitutionService
+	Participation *service.ParticipationService
 	Audit         *service.AuditService
 	Classroom     *service.ClassroomService
 }
@@ -127,6 +129,8 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	healthServer.SetServingStatus(apafav1.ApafaService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	institutionv1.RegisterInstitutionServiceServer(server, &institutionServer{institution: services.Institution, audit: services.Audit, logger: logger})
 	healthServer.SetServingStatus(institutionv1.InstitutionService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	participationv1.RegisterParticipationServiceServer(server, &participationServer{participation: services.Participation, logger: logger})
+	healthServer.SetServingStatus(participationv1.ParticipationService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	classroomv1.RegisterClassroomServiceServer(server, &classroomServer{classroom: services.Classroom, logger: logger})
 	healthServer.SetServingStatus(classroomv1.ClassroomService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	healthpb.RegisterHealthServer(server, healthServer)

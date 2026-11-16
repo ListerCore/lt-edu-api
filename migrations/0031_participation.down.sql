@@ -1,0 +1,16 @@
+DROP TABLE attendance.permanence_adjustments;
+DROP TABLE attendance.permanence_rules;
+DROP TRIGGER interviews_activity ON wellbeing.interviews;
+DROP TRIGGER sessions_activity ON iam.sessions;
+DROP TRIGGER posts_activity ON classroom.posts;
+DROP TRIGGER submissions_activity ON classroom.submissions;
+DROP TRIGGER item_views_activity ON classroom.item_views;
+DROP FUNCTION attendance.on_interview();
+DROP FUNCTION attendance.on_session();
+DROP FUNCTION attendance.on_post();
+DROP FUNCTION attendance.on_submission();
+DROP FUNCTION attendance.on_item_view();
+DROP FUNCTION attendance.record_activity(uuid, uuid, uuid, varchar, timestamptz);
+DROP TABLE attendance.activity_days;
+DROP TABLE attendance.activity_events;
+DROP FUNCTION attendance.activity_append_only();
