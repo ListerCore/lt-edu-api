@@ -94,7 +94,7 @@ func (r *ComplianceRepository) delete(ctx context.Context, sql string, args ...a
 
 const deviceSelect = `SELECT d.id, d.code, d.kind, d.brand, d.model, d.specs, coalesce(d.room_id::text, ''), coalesce(r.name, ''), d.purpose,
 	coalesce(d.staff_id::text, ''), coalesce(st.given_names || ' ' || st.surnames, ''), d.assigned_to, d.status, d.notes, ` + "%s" + `,
-	(SELECT max(c.created_at) FROM equipment.checks c WHERE c.device_id = d.id AND c.kind = 'platform_access' AND c.passed)
+	(SELECT (max(c.checked_on) + time '12:00') AT TIME ZONE 'America/Lima' FROM equipment.checks c WHERE c.device_id = d.id AND c.kind = 'platform_access' AND c.passed)
 	FROM equipment.devices d LEFT JOIN equipment.rooms r ON r.id = d.room_id LEFT JOIN people.staff st ON st.id = d.staff_id`
 
 func scanDevice(row pgx.Row) (domain.Device, error) {
