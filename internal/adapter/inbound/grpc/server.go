@@ -20,6 +20,7 @@ import (
 	"api/internal/adapter/inbound/grpc/gen/apafav1"
 	"api/internal/adapter/inbound/grpc/gen/assessmentv1"
 	"api/internal/adapter/inbound/grpc/gen/attendancev1"
+	"api/internal/adapter/inbound/grpc/gen/classroomv1"
 	"api/internal/adapter/inbound/grpc/gen/documentsv1"
 	"api/internal/adapter/inbound/grpc/gen/examsv1"
 	"api/internal/adapter/inbound/grpc/gen/financev1"
@@ -61,6 +62,7 @@ type Services struct {
 	Apafa         *service.ApafaService
 	Institution   *service.InstitutionService
 	Audit         *service.AuditService
+	Classroom     *service.ClassroomService
 }
 
 // limits brakes methods per client IP. Register a method here when it takes a password or costs a lot, e.g.
@@ -125,6 +127,8 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	healthServer.SetServingStatus(apafav1.ApafaService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	institutionv1.RegisterInstitutionServiceServer(server, &institutionServer{institution: services.Institution, audit: services.Audit, logger: logger})
 	healthServer.SetServingStatus(institutionv1.InstitutionService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	classroomv1.RegisterClassroomServiceServer(server, &classroomServer{classroom: services.Classroom, logger: logger})
+	healthServer.SetServingStatus(classroomv1.ClassroomService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	healthpb.RegisterHealthServer(server, healthServer)
 
 	if cfg.Development {

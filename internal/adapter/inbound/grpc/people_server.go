@@ -93,7 +93,9 @@ func toEnrollment(e domain.Enrollment) *peoplev1.Enrollment {
 
 func toPlacement(p domain.Placement) *peoplev1.Placement {
 	return &peoplev1.Placement{Id: p.ID, StudentId: p.StudentID, StudentName: p.StudentName, Kind: p.Kind, LevelId: p.LevelID, LevelName: p.LevelName,
-		GradeId: p.GradeID, GradeName: p.GradeName, DecidedOn: formatDate(p.DecidedOn), Reference: p.Reference, Notes: p.Notes}
+		GradeId: p.GradeID, GradeName: p.GradeName, DecidedOn: formatDate(p.DecidedOn), Reference: p.Reference, Notes: p.Notes,
+		Origin: p.Origin, OriginStudies: p.OriginStudies, SubjectIds: p.SubjectIDs, SubjectNames: p.SubjectNames, ActYear: int32(p.ActYear), ActNumber: int32(p.ActNumber),
+		ActVersionId: p.ActVersionID, ActStatus: p.ActStatus}
 }
 
 func toDetail(d service.StudentDetail) *peoplev1.StudentDetail {
@@ -334,6 +336,7 @@ func (s *peopleServer) CreatePlacement(ctx context.Context, req *peoplev1.Create
 	}
 	p, err := s.people.CreatePlacement(ctx, bearer(ctx), req.GetInstitutionSlug(), domain.PlacementInput{
 		StudentID: req.GetStudentId(), Kind: req.GetKind(), LevelID: req.GetLevelId(), GradeID: req.GetGradeId(), DecidedOn: on, Reference: req.GetReference(), Notes: req.GetNotes(),
+		Origin: req.GetOrigin(), OriginStudies: req.GetOriginStudies(), SubjectIDs: req.GetSubjectIds(),
 	})
 	if err != nil {
 		return nil, s.fail("CreatePlacement", err)

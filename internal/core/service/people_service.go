@@ -533,7 +533,8 @@ func (s *PeopleService) placement(ctx context.Context, sc academicScope, periodI
 		switch {
 		case i < 0:
 			fields["sectionId"] = "Esa " + strings.ToLower(sc.profile.vocabulary.Section) + " no es de este periodo."
-		case sections[i].LevelID != levelID || sections[i].GradeID != gradeID:
+		// A multigrade section takes any grade of its cycle
+		case sections[i].LevelID != levelID || (sections[i].GradeID != gradeID && !sections[i].Multigrade):
 			fields["sectionId"] = "Esa " + strings.ToLower(sc.profile.vocabulary.Section) + " no corresponde a lo elegido."
 		default:
 			occupancy, err := s.repo.Occupancy(ctx, sc.institution.ID, periodID)
@@ -633,6 +634,9 @@ func (s *PeopleService) enroll(ctx context.Context, sc academicScope, in domain.
 		return domain.Enrollment{}, err
 	}
 	if _, _, err := s.placement(ctx, sc, in.PeriodID, in.LevelID, in.GradeID, in.SectionID, ""); err != nil {
+		return domain.Enrollment{}, err
+	}
+	if err := s.checkAge(ctx, sc, st, in.SectionID, in.EnrolledOn); err != nil {
 		return domain.Enrollment{}, err
 	}
 	if in.UnitIDs, err = s.units(ctx, sc, in.LevelID, in.GradeID, in.UnitIDs); err != nil {
@@ -918,9 +922,6 @@ func (s *PeopleService) CreatePlacement(ctx context.Context, token, slug string,
 		return domain.Placement{}, &domain.Error{Kind: domain.KindInvalid, Code: "no_placements", Message: "La ubicación y convalidación son propias de la Educación Básica Alternativa."}
 	}
 	fields := map[string]string{}
-	if in.Kind != "placement_test" && in.Kind != "validation" {
-		fields["kind"] = "Elige si es prueba de ubicación o convalidación."
-	}
 	in.Reference, in.Notes = strings.TrimSpace(in.Reference), strings.TrimSpace(in.Notes)
 	if utf8.RuneCountInString(in.Reference) > 120 || utf8.RuneCountInString(in.Notes) > 1000 {
 		fields["reference"] = "El texto es demasiado largo."
@@ -936,6 +937,9 @@ func (s *PeopleService) CreatePlacement(ctx context.Context, token, slug string,
 	} else if !slices.ContainsFunc(level.Grades, func(g domain.Grade) bool { return g.ID == in.GradeID }) {
 		fields["gradeId"] = "Elige un grado de " + level.Name + "."
 	}
+	if err := s.validatePlacement(ctx, sc, &in, fields); err != nil {
+		return domain.Placement{}, err
+	}
 	if len(fields) > 0 {
 		return domain.Placement{}, domain.Validation(fields)
 	}
@@ -944,6 +948,8 @@ func (s *PeopleService) CreatePlacement(ctx context.Context, token, slug string,
 		return domain.Placement{}, domain.Validation(map[string]string{"studentId": "Elige un estudiante."})
 	}
 	if err == nil {
+		s.record(ctx, sc, AuditEntry{Action: domain.AuditCreate, Entity: "placement", EntityID: p.ID,
+			Summary: "Registró " + strings.ToLower(placementKinds[p.Kind]) + " de " + p.StudentName + " a " + p.GradeName + " de " + p.LevelName})
 		s.changed(ctx, sc, "placements")
 	}
 	return p, err
@@ -954,9 +960,18 @@ func (s *PeopleService) DeletePlacement(ctx context.Context, token, slug, id str
 	if err != nil {
 		return err
 	}
+	p, err := s.repo.Placement(ctx, sc.institution.ID, id)
+	if err != nil {
+		return err
+	}
+	// A signed acta is a public record: it stays, with its procedure
+	if p.ActStatus == domain.VersionPublished || p.ActStatus == domain.VersionSuperseded {
+		return domain.ErrPlacementSigned
+	}
 	if err := s.repo.DeletePlacement(ctx, sc.institution.ID, id); err != nil {
 		return err
 	}
+	s.record(ctx, sc, AuditEntry{Action: domain.AuditDelete, Entity: "placement", EntityID: id, Summary: "Eliminó el trámite de " + p.StudentName})
 	s.changed(ctx, sc, "placements")
 	return nil
 }

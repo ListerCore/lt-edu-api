@@ -26,6 +26,8 @@ type DocumentService struct {
 	closing    *ClosingService
 	teaching   *TeachingService
 	finance    *FinanceService
+	// EBA enrollment documents (phase E1); set by the server
+	people *PeopleService
 	// Public URL of joseph-app, where the QR of a document leads
 	siteURL string
 	now     func() time.Time
@@ -44,6 +46,9 @@ func NewDocumentService(deps DocumentDeps, assessment *AssessmentService, closin
 	return &DocumentService{render: deps.Render, sheets: deps.Sheets, docs: deps.Docs, staff: deps.Staff, siteURL: deps.SiteURL, now: time.Now,
 		assessment: assessment, closing: closing, teaching: teaching, finance: finance}
 }
+
+// SetPeople gives the service the enrollment documents (ficha, nómina, SIAGIE, actas de ubicación)
+func (s *DocumentService) SetPeople(p *PeopleService) { s.people = p }
 
 // PdfFile is a generated document and the name it downloads with
 type PdfFile struct {

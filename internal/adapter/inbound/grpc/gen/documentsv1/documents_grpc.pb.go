@@ -27,19 +27,25 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	DocumentsService_ReportCardsPdf_FullMethodName     = "/joseph.documents.v1.DocumentsService/ReportCardsPdf"
-	DocumentsService_SchedulesPdf_FullMethodName       = "/joseph.documents.v1.DocumentsService/SchedulesPdf"
-	DocumentsService_RecordPdf_FullMethodName          = "/joseph.documents.v1.DocumentsService/RecordPdf"
-	DocumentsService_ReceiptPdf_FullMethodName         = "/joseph.documents.v1.DocumentsService/ReceiptPdf"
-	DocumentsService_SchedulesXlsx_FullMethodName      = "/joseph.documents.v1.DocumentsService/SchedulesXlsx"
-	DocumentsService_GetScheduleSigners_FullMethodName = "/joseph.documents.v1.DocumentsService/GetScheduleSigners"
-	DocumentsService_SetScheduleSigners_FullMethodName = "/joseph.documents.v1.DocumentsService/SetScheduleSigners"
-	DocumentsService_ListScheduleIssues_FullMethodName = "/joseph.documents.v1.DocumentsService/ListScheduleIssues"
-	DocumentsService_GenerateSchedules_FullMethodName  = "/joseph.documents.v1.DocumentsService/GenerateSchedules"
-	DocumentsService_SignVersion_FullMethodName        = "/joseph.documents.v1.DocumentsService/SignVersion"
-	DocumentsService_VersionPdf_FullMethodName         = "/joseph.documents.v1.DocumentsService/VersionPdf"
-	DocumentsService_TrackDocument_FullMethodName      = "/joseph.documents.v1.DocumentsService/TrackDocument"
-	DocumentsService_TrackPdf_FullMethodName           = "/joseph.documents.v1.DocumentsService/TrackPdf"
+	DocumentsService_ReportCardsPdf_FullMethodName       = "/joseph.documents.v1.DocumentsService/ReportCardsPdf"
+	DocumentsService_SchedulesPdf_FullMethodName         = "/joseph.documents.v1.DocumentsService/SchedulesPdf"
+	DocumentsService_RecordPdf_FullMethodName            = "/joseph.documents.v1.DocumentsService/RecordPdf"
+	DocumentsService_ReceiptPdf_FullMethodName           = "/joseph.documents.v1.DocumentsService/ReceiptPdf"
+	DocumentsService_EnrollmentFormPdf_FullMethodName    = "/joseph.documents.v1.DocumentsService/EnrollmentFormPdf"
+	DocumentsService_RollPdf_FullMethodName              = "/joseph.documents.v1.DocumentsService/RollPdf"
+	DocumentsService_RollXlsx_FullMethodName             = "/joseph.documents.v1.DocumentsService/RollXlsx"
+	DocumentsService_SiagieXlsx_FullMethodName           = "/joseph.documents.v1.DocumentsService/SiagieXlsx"
+	DocumentsService_GeneratePlacementAct_FullMethodName = "/joseph.documents.v1.DocumentsService/GeneratePlacementAct"
+	DocumentsService_PlacementActPdf_FullMethodName      = "/joseph.documents.v1.DocumentsService/PlacementActPdf"
+	DocumentsService_SchedulesXlsx_FullMethodName        = "/joseph.documents.v1.DocumentsService/SchedulesXlsx"
+	DocumentsService_GetScheduleSigners_FullMethodName   = "/joseph.documents.v1.DocumentsService/GetScheduleSigners"
+	DocumentsService_SetScheduleSigners_FullMethodName   = "/joseph.documents.v1.DocumentsService/SetScheduleSigners"
+	DocumentsService_ListScheduleIssues_FullMethodName   = "/joseph.documents.v1.DocumentsService/ListScheduleIssues"
+	DocumentsService_GenerateSchedules_FullMethodName    = "/joseph.documents.v1.DocumentsService/GenerateSchedules"
+	DocumentsService_SignVersion_FullMethodName          = "/joseph.documents.v1.DocumentsService/SignVersion"
+	DocumentsService_VersionPdf_FullMethodName           = "/joseph.documents.v1.DocumentsService/VersionPdf"
+	DocumentsService_TrackDocument_FullMethodName        = "/joseph.documents.v1.DocumentsService/TrackDocument"
+	DocumentsService_TrackPdf_FullMethodName             = "/joseph.documents.v1.DocumentsService/TrackPdf"
 )
 
 // DocumentsServiceClient is the client API for DocumentsService service.
@@ -50,6 +56,14 @@ type DocumentsServiceClient interface {
 	SchedulesPdf(ctx context.Context, in *SchedulesPdfRequest, opts ...grpc.CallOption) (*SchedulesPdfResponse, error)
 	RecordPdf(ctx context.Context, in *RecordPdfRequest, opts ...grpc.CallOption) (*RecordPdfResponse, error)
 	ReceiptPdf(ctx context.Context, in *ReceiptPdfRequest, opts ...grpc.CallOption) (*ReceiptPdfResponse, error)
+	// EBA enrollment (phase E1): ficha única, nómina (PDF and spreadsheet) and the SIAGIE upload spreadsheet
+	EnrollmentFormPdf(ctx context.Context, in *EnrollmentFormPdfRequest, opts ...grpc.CallOption) (*EnrollmentFormPdfResponse, error)
+	RollPdf(ctx context.Context, in *RollPdfRequest, opts ...grpc.CallOption) (*RollPdfResponse, error)
+	RollXlsx(ctx context.Context, in *RollXlsxRequest, opts ...grpc.CallOption) (*RollXlsxResponse, error)
+	SiagieXlsx(ctx context.Context, in *SiagieXlsxRequest, opts ...grpc.CallOption) (*SiagieXlsxResponse, error)
+	// Acta de ubicación o convalidación: a version for its signers (sign with SignVersion), and its PDF
+	GeneratePlacementAct(ctx context.Context, in *GeneratePlacementActRequest, opts ...grpc.CallOption) (*GeneratePlacementActResponse, error)
+	PlacementActPdf(ctx context.Context, in *PlacementActPdfRequest, opts ...grpc.CallOption) (*PlacementActPdfResponse, error)
 	// Every class of a period as an Excel workbook (list, week of each section and teacher, legend)
 	SchedulesXlsx(ctx context.Context, in *SchedulesXlsxRequest, opts ...grpc.CallOption) (*SchedulesXlsxResponse, error)
 	// Who signs the timetables; managers also get the staff to pick from
@@ -110,6 +124,66 @@ func (c *documentsServiceClient) ReceiptPdf(ctx context.Context, in *ReceiptPdfR
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ReceiptPdfResponse)
 	err := c.cc.Invoke(ctx, DocumentsService_ReceiptPdf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *documentsServiceClient) EnrollmentFormPdf(ctx context.Context, in *EnrollmentFormPdfRequest, opts ...grpc.CallOption) (*EnrollmentFormPdfResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(EnrollmentFormPdfResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_EnrollmentFormPdf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *documentsServiceClient) RollPdf(ctx context.Context, in *RollPdfRequest, opts ...grpc.CallOption) (*RollPdfResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RollPdfResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_RollPdf_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *documentsServiceClient) RollXlsx(ctx context.Context, in *RollXlsxRequest, opts ...grpc.CallOption) (*RollXlsxResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RollXlsxResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_RollXlsx_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *documentsServiceClient) SiagieXlsx(ctx context.Context, in *SiagieXlsxRequest, opts ...grpc.CallOption) (*SiagieXlsxResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SiagieXlsxResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_SiagieXlsx_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *documentsServiceClient) GeneratePlacementAct(ctx context.Context, in *GeneratePlacementActRequest, opts ...grpc.CallOption) (*GeneratePlacementActResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GeneratePlacementActResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_GeneratePlacementAct_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *documentsServiceClient) PlacementActPdf(ctx context.Context, in *PlacementActPdfRequest, opts ...grpc.CallOption) (*PlacementActPdfResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PlacementActPdfResponse)
+	err := c.cc.Invoke(ctx, DocumentsService_PlacementActPdf_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -214,6 +288,14 @@ type DocumentsServiceServer interface {
 	SchedulesPdf(context.Context, *SchedulesPdfRequest) (*SchedulesPdfResponse, error)
 	RecordPdf(context.Context, *RecordPdfRequest) (*RecordPdfResponse, error)
 	ReceiptPdf(context.Context, *ReceiptPdfRequest) (*ReceiptPdfResponse, error)
+	// EBA enrollment (phase E1): ficha única, nómina (PDF and spreadsheet) and the SIAGIE upload spreadsheet
+	EnrollmentFormPdf(context.Context, *EnrollmentFormPdfRequest) (*EnrollmentFormPdfResponse, error)
+	RollPdf(context.Context, *RollPdfRequest) (*RollPdfResponse, error)
+	RollXlsx(context.Context, *RollXlsxRequest) (*RollXlsxResponse, error)
+	SiagieXlsx(context.Context, *SiagieXlsxRequest) (*SiagieXlsxResponse, error)
+	// Acta de ubicación o convalidación: a version for its signers (sign with SignVersion), and its PDF
+	GeneratePlacementAct(context.Context, *GeneratePlacementActRequest) (*GeneratePlacementActResponse, error)
+	PlacementActPdf(context.Context, *PlacementActPdfRequest) (*PlacementActPdfResponse, error)
 	// Every class of a period as an Excel workbook (list, week of each section and teacher, legend)
 	SchedulesXlsx(context.Context, *SchedulesXlsxRequest) (*SchedulesXlsxResponse, error)
 	// Who signs the timetables; managers also get the staff to pick from
@@ -251,6 +333,24 @@ func (UnimplementedDocumentsServiceServer) RecordPdf(context.Context, *RecordPdf
 }
 func (UnimplementedDocumentsServiceServer) ReceiptPdf(context.Context, *ReceiptPdfRequest) (*ReceiptPdfResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ReceiptPdf not implemented")
+}
+func (UnimplementedDocumentsServiceServer) EnrollmentFormPdf(context.Context, *EnrollmentFormPdfRequest) (*EnrollmentFormPdfResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method EnrollmentFormPdf not implemented")
+}
+func (UnimplementedDocumentsServiceServer) RollPdf(context.Context, *RollPdfRequest) (*RollPdfResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RollPdf not implemented")
+}
+func (UnimplementedDocumentsServiceServer) RollXlsx(context.Context, *RollXlsxRequest) (*RollXlsxResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RollXlsx not implemented")
+}
+func (UnimplementedDocumentsServiceServer) SiagieXlsx(context.Context, *SiagieXlsxRequest) (*SiagieXlsxResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SiagieXlsx not implemented")
+}
+func (UnimplementedDocumentsServiceServer) GeneratePlacementAct(context.Context, *GeneratePlacementActRequest) (*GeneratePlacementActResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GeneratePlacementAct not implemented")
+}
+func (UnimplementedDocumentsServiceServer) PlacementActPdf(context.Context, *PlacementActPdfRequest) (*PlacementActPdfResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method PlacementActPdf not implemented")
 }
 func (UnimplementedDocumentsServiceServer) SchedulesXlsx(context.Context, *SchedulesXlsxRequest) (*SchedulesXlsxResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SchedulesXlsx not implemented")
@@ -368,6 +468,114 @@ func _DocumentsService_ReceiptPdf_Handler(srv interface{}, ctx context.Context, 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DocumentsServiceServer).ReceiptPdf(ctx, req.(*ReceiptPdfRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DocumentsService_EnrollmentFormPdf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EnrollmentFormPdfRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).EnrollmentFormPdf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_EnrollmentFormPdf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).EnrollmentFormPdf(ctx, req.(*EnrollmentFormPdfRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DocumentsService_RollPdf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RollPdfRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).RollPdf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_RollPdf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).RollPdf(ctx, req.(*RollPdfRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DocumentsService_RollXlsx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RollXlsxRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).RollXlsx(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_RollXlsx_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).RollXlsx(ctx, req.(*RollXlsxRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DocumentsService_SiagieXlsx_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SiagieXlsxRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).SiagieXlsx(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_SiagieXlsx_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).SiagieXlsx(ctx, req.(*SiagieXlsxRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DocumentsService_GeneratePlacementAct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GeneratePlacementActRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).GeneratePlacementAct(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_GeneratePlacementAct_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).GeneratePlacementAct(ctx, req.(*GeneratePlacementActRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DocumentsService_PlacementActPdf_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PlacementActPdfRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DocumentsServiceServer).PlacementActPdf(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DocumentsService_PlacementActPdf_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DocumentsServiceServer).PlacementActPdf(ctx, req.(*PlacementActPdfRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -556,6 +764,30 @@ var DocumentsService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ReceiptPdf",
 			Handler:    _DocumentsService_ReceiptPdf_Handler,
+		},
+		{
+			MethodName: "EnrollmentFormPdf",
+			Handler:    _DocumentsService_EnrollmentFormPdf_Handler,
+		},
+		{
+			MethodName: "RollPdf",
+			Handler:    _DocumentsService_RollPdf_Handler,
+		},
+		{
+			MethodName: "RollXlsx",
+			Handler:    _DocumentsService_RollXlsx_Handler,
+		},
+		{
+			MethodName: "SiagieXlsx",
+			Handler:    _DocumentsService_SiagieXlsx_Handler,
+		},
+		{
+			MethodName: "GeneratePlacementAct",
+			Handler:    _DocumentsService_GeneratePlacementAct_Handler,
+		},
+		{
+			MethodName: "PlacementActPdf",
+			Handler:    _DocumentsService_PlacementActPdf_Handler,
 		},
 		{
 			MethodName: "SchedulesXlsx",

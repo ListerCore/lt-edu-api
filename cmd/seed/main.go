@@ -257,6 +257,46 @@ func main() {
 		logger.Info().Str("step", "go:0018_demo_apafa").Msg("seeded")
 	}
 
+	// Virtual classroom of the CEBA demo: rooms of the running period published, a library and units with material,
+	// once (after the plans and the teaching load, which give each room its teacher)
+	ran, err = seeder.RunOnce(ctx, "go:0019_demo_classroom", func(ctx context.Context) error {
+		n, err := service.SeedDemoClassroom(ctx, postgres.NewClassroomRepository(db), "demo-eba", time.Now())
+		logger.Info().Int("items", n).Msg("demo classroom seeded")
+		return err
+	})
+	if err != nil {
+		logger.Fatal().Err(err).Msg("demo classroom seed failed")
+	}
+	if ran {
+		logger.Info().Str("step", "go:0019_demo_classroom").Msg("seeded")
+	}
+
+	// Online assessments of the CEBA demo: a quiz and a task in the first unit of Matemática and Comunicación, once
+	ran, err = seeder.RunOnce(ctx, "go:0020_demo_classroom_assessments", func(ctx context.Context) error {
+		n, err := service.SeedDemoClassroomAssessments(ctx, postgres.NewClassroomRepository(db), "demo-eba", time.Now())
+		logger.Info().Int("assessments", n).Msg("demo classroom assessments seeded")
+		return err
+	})
+	if err != nil {
+		logger.Fatal().Err(err).Msg("demo classroom assessments seed failed")
+	}
+	if ran {
+		logger.Info().Str("step", "go:0020_demo_classroom_assessments").Msg("seeded")
+	}
+
+	// Forums of the CEBA demo: a debate with the teacher's pinned welcome in the first unit of the advanced cycle, once
+	ran, err = seeder.RunOnce(ctx, "go:0021_demo_classroom_forums", func(ctx context.Context) error {
+		n, err := service.SeedDemoClassroomForums(ctx, postgres.NewClassroomRepository(db), "demo-eba")
+		logger.Info().Int("forums", n).Msg("demo classroom forums seeded")
+		return err
+	})
+	if err != nil {
+		logger.Fatal().Err(err).Msg("demo classroom forums seed failed")
+	}
+	if ran {
+		logger.Info().Str("step", "go:0021_demo_classroom_forums").Msg("seeded")
+	}
+
 	auth, err := service.NewAuthService(postgres.NewAuthRepository(db), password.NewArgon2id(), nil, nil, nil, nil, service.AuthConfig{}, logger)
 	if err != nil {
 		logger.Fatal().Err(err).Msg("failed to initialize auth service")

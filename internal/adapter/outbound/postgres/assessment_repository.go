@@ -43,6 +43,9 @@ func (r *AssessmentRepository) Students(ctx context.Context, institutionID, sect
 	rows, err := r.c.pool.Query(ctx, `SELECT s.id, s.code, s.paternal_surname || coalesce(' ' || nullif(s.maternal_surname, ''), '') || ', ' || s.given_names, s.document_number
 		FROM enrollment.enrollments e JOIN people.students s ON s.id = e.student_id
 		WHERE e.institution_id = $1 AND e.section_id = $2 AND e.status = 'active' AND `+unitFilter("$3")+`
+		  -- Students exempted from Educación Religiosa leave its register
+		  AND NOT EXISTS (SELECT 1 FROM enrollment.religion_exemptions x JOIN academic.subjects sj ON sj.code = 'educacion-religiosa' AND sj.id::text = $3
+			WHERE x.enrollment_id = e.id)
 		ORDER BY s.paternal_surname, s.maternal_surname, s.given_names`, institutionID, sectionID, subjectID)
 	if err != nil {
 		return nil, academicErr(err)
