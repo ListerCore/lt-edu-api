@@ -48,12 +48,16 @@ var ownerQueries = map[string]string{
 	domain.OwnerAuthorization:           `SELECT institution_id, '' FROM academic.authorizations WHERE id = $1`,
 	// The platform sheet is one per institution, so the owner id is the institution's own
 	domain.OwnerPlatformSheet: `SELECT id, '' FROM iam.institutions WHERE id = $1`,
+	domain.OwnerLibraryItem:   `SELECT institution_id, '' FROM classroom.library_items WHERE id = $1`,
 }
 
 // draftOwnerQueries read (institution, student, hidden from families) of owners that may still be drafts: an APAFA
 // meeting not convened yet is invisible to guardians, and so are its files
 var draftOwnerQueries = map[string]string{
 	domain.OwnerApafaMeeting: `SELECT institution_id, '', notified_at IS NULL FROM apafa.meetings WHERE id = $1`,
+	// Material is hidden from families until the item, its unit and its room are all published
+	domain.OwnerClassroomItem: `SELECT r.institution_id, '', NOT (i.published AND u.published AND r.status = 'published')
+		FROM classroom.items i JOIN classroom.units u ON u.id = i.unit_id JOIN classroom.rooms r ON r.id = i.room_id WHERE i.id = $1`,
 }
 
 func (r *AttachmentRepository) Owner(ctx context.Context, ownerKind, ownerID string) (domain.AttachmentOwner, error) {
