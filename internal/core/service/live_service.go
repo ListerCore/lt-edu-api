@@ -10,7 +10,7 @@ import (
 )
 
 // Live events: what changed, so open pages refetch it instead of polling. Declare each type here and mirror it in
-// joseph-app/hooks/use-live.ts (LiveEventType)
+// lt-edu-app/hooks/use-live.ts (LiveEventType)
 const (
 	EventSystemPing    = "system.ping" // {}: test event, see `make live/ping`
 	livePublishTimeout = 2 * time.Second

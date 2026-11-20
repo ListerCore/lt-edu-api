@@ -24,7 +24,7 @@ const (
 	// Files one owner record may hold, and files one upload may carry
 	maxFilesPerOwner  = 20
 	maxFilesPerUpload = 10
-	// One upload stays under the HTTP body limit (cmd/server) and joseph-app's server action limit
+	// One upload stays under the HTTP body limit (cmd/server) and lt-edu-app's server action limit
 	maxUploadBytes = 40 << 20
 	maxTitleRunes  = 160
 	maxDescRunes   = 500
@@ -52,7 +52,7 @@ var attachmentTypes = map[string]fileType{
 	mimeXLSX:          {".xlsx", false},
 }
 
-// ownerSpec ties an owner kind to the panel module that governs it. read / write mirror joseph-app's rolePermissions
+// ownerSpec ties an owner kind to the panel module that governs it. read / write mirror lt-edu-app's rolePermissions
 // (features/protected/dashboard/data/permissions.ts: view vs create/update) with the API's role codes; the platform
 // superadmin always passes. familyScoped: students and guardians only reach owners about one of their own children
 type ownerSpec struct {

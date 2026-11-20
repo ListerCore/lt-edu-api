@@ -37,6 +37,8 @@ type WellbeingService struct {
 	participation *ParticipationService
 	// Virtual tutoring (phase E6); set by the server
 	tutoring port.TutoringRepository
+	// Live sessions: psychology appointments; set by the server
+	meetings port.MeetingsRepository
 }
 
 // SetParticipation adds the dropout alerts of the distance students to the inbox

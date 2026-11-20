@@ -37,7 +37,7 @@ const (
 
 type AuthConfig struct {
 	SessionTTL time.Duration
-	// Public URL of joseph-app, for the links in mail (https://demo.listercore.es)
+	// Public URL of lt-edu-app, for the links in mail (https://demo.listercore.es)
 	SiteURL    string
 	Production bool
 }
@@ -269,7 +269,7 @@ func (s *AuthService) startSession(ctx context.Context, userID, method string, m
 
 var base64URL43 = regexp.MustCompile(`^[A-Za-z0-9_-]{43}$`)
 
-// GoogleAuthorize returns Google's consent URL. joseph-app generates state and the PKCE verifier, keeps both in
+// GoogleAuthorize returns Google's consent URL. lt-edu-app generates state and the PKCE verifier, keeps both in
 // httpOnly cookies and sends only the state and the S256 challenge here
 func (s *AuthService) GoogleAuthorize(state, codeChallenge string) (string, error) {
 	if !s.google.Configured() {
@@ -856,7 +856,7 @@ func requireFields(values map[string]string) error {
 	return nil
 }
 
-// passwordProblem mirrors joseph-app's checklist (features/auth/data/auth-data.ts)
+// passwordProblem mirrors lt-edu-app's checklist (features/auth/data/auth-data.ts)
 func passwordProblem(password string) string {
 	if utf8.RuneCountInString(password) < 10 || len(password) > 128 {
 		return "La contraseña debe tener entre 10 y 128 caracteres."

@@ -29,7 +29,7 @@ type DocumentService struct {
 	people *PeopleService
 	// Permanence reports (phase E5); set by the server
 	participation *ParticipationService
-	// Public URL of joseph-app, where the QR of a document leads
+	// Public URL of lt-edu-app, where the QR of a document leads
 	siteURL string
 	now     func() time.Time
 }

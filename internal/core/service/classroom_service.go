@@ -43,7 +43,9 @@ type ClassroomService struct {
 	live   *LiveService
 	audit  *AuditService
 	grades *AssessmentService
-	now    func() time.Time
+	// Live sessions' store (agenda of live classes); nil: no agenda
+	meetings port.MeetingsRepository
+	now      func() time.Time
 }
 
 func NewClassroomService(repo port.ClassroomRepository, auth *AuthService, live *LiveService, audit *AuditService) *ClassroomService {
@@ -489,8 +491,17 @@ func validateItem(it *domain.Item) map[string]string {
 			fields["url"] = "Pega la dirección del video o del sitio."
 		}
 	case domain.ItemLive:
-		if it.URL == "" && fields["url"] == "" {
-			fields["url"] = "Pega el enlace de la videollamada."
+		if it.Provider == "" {
+			it.Provider = domain.ProviderMeet
+		}
+		if !domain.ValidProvider(it.Provider) {
+			fields["provider"] = "Elige dónde será la clase: en la plataforma o en Google Meet."
+		} else if it.Provider == domain.ProviderPlatform {
+			// The platform opens its own room: no external link
+			it.URL = ""
+			delete(fields, "url")
+		} else if it.URL == "" && fields["url"] == "" {
+			fields["url"] = "Pega el enlace de Google Meet (o de otra videollamada)."
 		}
 		if it.StartsAt == nil {
 			fields["startsAt"] = "Indica el día y la hora de la sesión."
@@ -500,7 +511,7 @@ func validateItem(it *domain.Item) map[string]string {
 		}
 	}
 	if it.Kind != domain.ItemLive {
-		it.StartsAt, it.DurationMinutes, it.RecordingURL = nil, nil, ""
+		it.StartsAt, it.DurationMinutes, it.RecordingURL, it.Provider = nil, nil, "", domain.ProviderMeet
 	}
 	return fields
 }

@@ -333,6 +333,7 @@ type SessionInput struct {
 	ScheduledAt time.Time
 	DurationMin int
 	Link        string
+	Provider    string
 	Reason      string
 	AlertKind   string
 	StudentIDs  []string
@@ -366,6 +367,16 @@ func (s *WellbeingService) SaveTutoringSession(ctx context.Context, token, slug 
 	}
 	if !sessionModes[in.Mode] {
 		errs["mode"] = "Elige virtual, presencial o por teléfono."
+	}
+	if in.Provider == "" {
+		in.Provider = domain.ProviderMeet
+	}
+	if !domain.ValidProvider(in.Provider) {
+		errs["provider"] = "Elige dónde será la tutoría: en la plataforma o en Google Meet."
+	}
+	if in.Mode != "virtual" || in.Provider == domain.ProviderPlatform {
+		// Only a virtual session on an external service carries a link
+		in.Link = ""
 	}
 	if in.Link != "" && !validLink(in.Link) {
 		errs["link"] = "El enlace empieza con https://."
@@ -417,7 +428,7 @@ func (s *WellbeingService) SaveTutoringSession(ctx context.Context, token, slug 
 		}
 	}
 	x, err := s.tutoring.SaveSession(ctx, sc.institution.ID, domain.TutoringSession{ID: in.ID, StaffID: staffID, Kind: in.Kind, Mode: in.Mode, ScheduledAt: in.ScheduledAt,
-		DurationMin: in.DurationMin, Link: in.Link, Reason: in.Reason, AlertKind: in.AlertKind, CreatedName: sc.name()}, in.StudentIDs)
+		DurationMin: in.DurationMin, Link: in.Link, Provider: in.Provider, Reason: in.Reason, AlertKind: in.AlertKind, CreatedName: sc.name()}, in.StudentIDs)
 	if err != nil {
 		return x, err
 	}
