@@ -1,12 +1,12 @@
 services:
   db:
     image: postgres:18-alpine
-    container_name: ${APP__DB__CONTAINER:-joseph-db}
+    container_name: ${APP__DB__CONTAINER:-lt-edu-db}
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${APP__DB__USER:-joseph}
-      POSTGRES_PASSWORD: ${APP__DB__PASSWORD:-joseph_dev}
-      POSTGRES_DB: ${APP__DB__NAME:-joseph_db}
+      POSTGRES_USER: ${APP__DB__USER:-ltedu}
+      POSTGRES_PASSWORD: ${APP__DB__PASSWORD:-ltedu_dev}
+      POSTGRES_DB: ${APP__DB__NAME:-ltedu_db}
       POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale-provider=icu --icu-locale=es-PE --locale=C.UTF-8"
       TZ: America/Lima
       PGTZ: America/Lima
@@ -17,14 +17,14 @@ services:
     networks:
       - svc
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${APP__DB__USER:-joseph} -d ${APP__DB__NAME:-joseph_db}"]
+      test: ["CMD-SHELL", "pg_isready -U ${APP__DB__USER:-ltedu} -d ${APP__DB__NAME:-ltedu_db}"]
       interval: 5s
       timeout: 5s
       retries: 10
 
   redis:
     image: redis:8-alpine
-    container_name: ${APP__REDIS__CONTAINER:-joseph-redis}
+    container_name: ${APP__REDIS__CONTAINER:-lt-edu-redis}
     restart: unless-stopped
     environment:
       TZ: America/Lima
@@ -40,9 +40,23 @@ services:
       timeout: 5s
       retries: 10
 
+  # Video calls inside the platform (clases en vivo). --dev: API key "devkey", secret "secret"; local use only.
+  # Production runs its own LiveKit (or LiveKit Cloud) and sets APP__LIVEKIT__URL / API_KEY / API_SECRET
+  livekit:
+    image: livekit/livekit-server:v1.8.4
+    container_name: ${APP__LIVEKIT__CONTAINER:-lt-edu-livekit}
+    restart: unless-stopped
+    command: ["--dev", "--bind", "0.0.0.0", "--node-ip", "127.0.0.1"]
+    ports:
+      - "7880:7880"
+      - "7881:7881"
+      - "7882:7882/udp"
+    networks:
+      - svc
+
 networks:
   svc:
-    name: ${APP__NETWORK__NAME:-joseph-net}
+    name: ${APP__NETWORK__NAME:-lt-edu-net}
     external: true
 
 volumes:

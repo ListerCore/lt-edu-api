@@ -5,15 +5,15 @@
 # database after the dump make its counts higher: the check fails only when the restore has fewer rows than the
 # dump should hold, i.e. a table came back empty or missing).
 #
-#   ./scripts/restore-check.sh backups/joseph-20261116-0315.dump
+#   ./scripts/restore-check.sh backups/lt-edu-20261116-0315.dump
 #
 # Environment: DB_CONTAINER (docker exec) or APP__DB__URL; APP__DB__USER and APP__DB__NAME for the container mode.
 set -eu
 
 DUMP="${1:?usage: restore-check.sh <file.dump>}"
-SCRATCH="joseph_restore_check"
-USER_NAME="${APP__DB__USER:-joseph}"
-DB_NAME="${APP__DB__NAME:-joseph_db}"
+SCRATCH="ltedu_restore_check"
+USER_NAME="${APP__DB__USER:-ltedu}"
+DB_NAME="${APP__DB__NAME:-ltedu_db}"
 TABLES="iam.institutions iam.users people.students people.staff enrollment.enrollments academic.sections assessment.competency_marks classroom.items classroom.submissions attendance.activity_events wellbeing.interviews documents.versions attachments.files"
 
 psql_live() {

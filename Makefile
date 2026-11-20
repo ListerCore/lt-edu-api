@@ -1,11 +1,11 @@
-APP__DB__USER := joseph
-APP__DB__PASSWORD := joseph_dev
-APP__DB__NAME := joseph_db
-APP__DB__CONTAINER := joseph-db
-APP__REDIS__CONTAINER := joseph-redis
+APP__DB__USER := ltedu
+APP__DB__PASSWORD := ltedu_dev
+APP__DB__NAME := ltedu_db
+APP__DB__CONTAINER := lt-edu-db
+APP__REDIS__CONTAINER := lt-edu-redis
 APP__HOST__PORT := 5050
 APP__GRPC__PORT := 5051
-APP__NETWORK__NAME := joseph-net
+APP__NETWORK__NAME := lt-edu-net
 
 ifeq ($(OS),Windows_NT)
     NULL_DEVICE := NUL
@@ -19,7 +19,7 @@ endif
         migrate/up migrate/down migrate/version migrate/create seed \
         network/create \
         up setup down \
-        db/start redis/start db/stop redis/stop db/psql redis/cli \
+        db/start redis/start livekit/start db/stop redis/stop livekit/stop db/psql redis/cli \
         logs
 
 dev:
@@ -80,11 +80,11 @@ grpc/list:
 	grpcurl -plaintext localhost:$(APP__GRPC__PORT) list
 
 grpc/health:
-	grpcurl -plaintext -d '{"include_db": true, "include_redis": true}' localhost:$(APP__GRPC__PORT) joseph.system.v1.SystemService/GetHealth
+	grpcurl -plaintext -d '{"include_db": true, "include_redis": true}' localhost:$(APP__GRPC__PORT) ltedu.system.v1.SystemService/GetHealth
 
 # Publishes a test event on the live stream; open pages receive it through /ws/live
 live/ping:
-	docker exec $(APP__REDIS__CONTAINER) redis-cli XADD joseph:live MAXLEN '~' 1000 '*' type system.ping data '{}'
+	docker exec $(APP__REDIS__CONTAINER) redis-cli XADD lt-edu:live MAXLEN '~' 1000 '*' type system.ping data '{}'
 
 network/create:
 	-@docker network create --driver bridge $(APP__NETWORK__NAME) > $(NULL_DEVICE) 2>&1 || true
@@ -118,6 +118,13 @@ redis/start: network/create
 
 redis/stop:
 	docker compose stop redis
+
+# LiveKit (video calls inside the platform) in dev mode: ws://localhost:7880, key devkey, secret secret
+livekit/start: network/create
+	docker compose up -d livekit
+
+livekit/stop:
+	docker compose stop livekit
 
 redis/cli:
 	docker exec -it $(APP__REDIS__CONTAINER) redis-cli
