@@ -297,6 +297,16 @@ func main() {
 		logger.Info().Str("step", "go:0021_demo_classroom_forums").Msg("seeded")
 	}
 
+	// Live sessions of the CEBA demo: classes on the platform and on Google Meet, a tutoring and a psychology
+	// appointment, once (after the classroom, the tutoring and the psychology data)
+	ran, err = seeder.RunOnce(ctx, "go:0022_demo_live", func(ctx context.Context) error { return postgres.SeedDemoLive(ctx, db) })
+	if err != nil {
+		logger.Fatal().Err(err).Msg("demo live sessions seed failed")
+	}
+	if ran {
+		logger.Info().Str("step", "go:0022_demo_live").Msg("seeded")
+	}
+
 	auth, err := service.NewAuthService(postgres.NewAuthRepository(db), password.NewArgon2id(), nil, nil, nil, nil, service.AuthConfig{}, logger)
 	if err != nil {
 		logger.Fatal().Err(err).Msg("failed to initialize auth service")

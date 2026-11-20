@@ -7,14 +7,14 @@ Guía para llevar ListerCore Edu a producción en un CEBA y entregarlo. Correspo
 
 ### Recorrido por rol
 
-`joseph-app/scripts/walkthrough.mjs` entra con cada rol y abre todas las páginas que le ofrece su menú. Lo hace en
+`lt-edu-app/scripts/walkthrough.mjs` entra con cada rol y abre todas las páginas que le ofrece su menú. Lo hace en
 escritorio y en celular, con tema claro y oscuro. Registra errores de consola, excepciones, pantallas de error y
 scroll horizontal en el celular, y deja una captura por página y un informe.
 
 ```sh
-cd joseph-api && go run ./cmd/demosessions -slug demo-eba > /tmp/sessions.json   # una sesión por rol
-cd joseph-app && node scripts/walkthrough.mjs --sessions /tmp/sessions.json --type EBA --out /tmp/recorrido
-cd joseph-api && go run ./cmd/demosessions -cleanup                              # borra las sesiones
+cd lt-edu-api && go run ./cmd/demosessions -slug demo-eba > /tmp/sessions.json   # una sesión por rol
+cd lt-edu-app && node scripts/walkthrough.mjs --sessions /tmp/sessions.json --type EBA --out /tmp/recorrido
+cd lt-edu-api && go run ./cmd/demosessions -cleanup                              # borra las sesiones
 ```
 
 Resultado en `demo-eba`: los 9 roles, en escritorio y en celular, con tema claro y oscuro, recorren su menú
@@ -79,7 +79,7 @@ registran en *Configuración › Institución › Ficha de la plataforma*, porqu
 
 | Tarea                                      | Cómo                                                                                                                     |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| Instancia, dominio y certificado TLS       | La API queda interna; solo joseph-app la alcanza por la red. El dominio apunta a joseph-app con HTTPS (Let's Encrypt del panel de hosting). |
+| Instancia, dominio y certificado TLS       | La API queda interna; solo lt-edu-app la alcanza por la red. El dominio apunta a lt-edu-app con HTTPS (Let's Encrypt del panel de hosting). |
 | Variables                                  | `APP__ENV=production`, base de datos, Redis, almacenamiento (MinIO/S3), correo, `APP__SITE__URL` con el dominio real y `APP__UPTIME__INTERVAL=15m`. |
 | Migraciones y datos iniciales              | El `entrypoint.sh` corre `migrate up` y `seed` al arrancar.                                                              |
 | Respaldo diario                            | `scripts/backup.sh` desde cron, con copia fuera del servidor (`BACKUP_COPY_CMD`). El bucket de archivos, con versionado o réplica. |
