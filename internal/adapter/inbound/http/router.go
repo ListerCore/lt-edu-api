@@ -17,7 +17,7 @@ type Handlers struct {
 	// Attachments: files (PDF, images, Word, Excel) hung on any record of an institution
 	Attachments *handler.AttachmentHandler
 	Live        *handler.LiveHandler
-	// Browser origins allowed to open the live WebSocket (joseph-app's origin, through its proxy)
+	// Browser origins allowed to open the live WebSocket (lt-edu-app's origin, through its proxy)
 	WebSocketOrigins []string
 	// Development relaxes the per-IP brake, for testing
 	Development bool
@@ -74,6 +74,6 @@ func RegisterRoutes(app *fiber.App, h Handlers) {
 	v1.Delete("/panel/attachments/:id", credentialLimit, h.Attachments.Delete)
 	v1.Get("/attachments/:id", h.Attachments.File)
 
-	// Live events for open pages (joseph-app relays /ws/live here); events carry ids only
+	// Live events for open pages (lt-edu-app relays /ws/live here); events carry ids only
 	v1.Get("/live", h.Live.Stream(h.WebSocketOrigins))
 }

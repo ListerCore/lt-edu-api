@@ -22,10 +22,10 @@ type Config struct {
 
 	// Proxies allowed to set X-Forwarded-For besides loopback and private ranges (IPs or CIDRs)
 	TrustedProxies []string
-	// Browser origins allowed to open the live WebSocket (joseph-app's public origin)
+	// Browser origins allowed to open the live WebSocket (lt-edu-app's public origin)
 	WSOrigins []string
 
-	// Public URL of joseph-app (links in mail)
+	// Public URL of lt-edu-app (links in mail)
 	SiteURL    string
 	SessionTTL time.Duration
 	// Base64 of 32 bytes: encrypts TOTP secrets at rest
@@ -34,7 +34,7 @@ type Config struct {
 	AdminEmail    string
 	AdminPassword string
 
-	// Google OAuth client (sign in with Google); the redirect is joseph-app's /api/auth/google/callback
+	// Google OAuth client (sign in with Google); the redirect is lt-edu-app's /api/auth/google/callback
 	GoogleClientID     string
 	GoogleClientSecret string
 	GoogleRedirectURL  string
@@ -54,6 +54,11 @@ type Config struct {
 	StorageRegion    string
 	StorageBucket    string
 
+	// LiveKit (video calls inside the platform). Empty URL: only external links (Google Meet) are offered
+	LiveKitURL       string
+	LiveKitAPIKey    string
+	LiveKitAPISecret string
+
 	// How often the platform URL of each institution is probed for the availability log (0 turns it off)
 	UptimeInterval time.Duration
 }
@@ -66,7 +71,7 @@ func Load() Config {
 	v.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 
 	v.SetDefault("APP__ENV", "development")
-	v.SetDefault("APP__NAME", "joseph-api")
+	v.SetDefault("APP__NAME", "lt-edu-api")
 	v.SetDefault("APP__HOST__PORT", "8080")
 	v.SetDefault("APP__LOG__LEVEL", "debug")
 	v.SetDefault("APP__GRPC__PORT", "9090")
@@ -76,9 +81,9 @@ func Load() Config {
 
 	v.SetDefault("APP__DB__HOST", "localhost")
 	v.SetDefault("APP__DB__PORT", "5432")
-	v.SetDefault("APP__DB__USER", "joseph")
-	v.SetDefault("APP__DB__PASSWORD", "joseph_dev")
-	v.SetDefault("APP__DB__NAME", "joseph_db")
+	v.SetDefault("APP__DB__USER", "ltedu")
+	v.SetDefault("APP__DB__PASSWORD", "ltedu_dev")
+	v.SetDefault("APP__DB__NAME", "ltedu_db")
 	v.SetDefault("APP__DB__SSLMODE", "disable")
 
 	v.SetDefault("APP__REDIS__HOST", "localhost")
@@ -109,7 +114,7 @@ func Load() Config {
 	v.SetDefault("APP__STORAGE__SECRET_KEY", "")
 	v.SetDefault("APP__STORAGE__USE_SSL", false)
 	v.SetDefault("APP__STORAGE__REGION", "us-east-1")
-	v.SetDefault("APP__STORAGE__BUCKET", "joseph")
+	v.SetDefault("APP__STORAGE__BUCKET", "lt-edu")
 
 	_ = v.ReadInConfig()
 
@@ -165,6 +170,10 @@ func Load() Config {
 		StorageUseSSL:    v.GetBool("APP__STORAGE__USE_SSL"),
 		StorageRegion:    v.GetString("APP__STORAGE__REGION"),
 		StorageBucket:    v.GetString("APP__STORAGE__BUCKET"),
+
+		LiveKitURL:       v.GetString("APP__LIVEKIT__URL"),
+		LiveKitAPIKey:    v.GetString("APP__LIVEKIT__API_KEY"),
+		LiveKitAPISecret: v.GetString("APP__LIVEKIT__API_SECRET"),
 	}
 }
 

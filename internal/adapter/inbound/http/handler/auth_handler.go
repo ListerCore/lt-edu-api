@@ -14,7 +14,7 @@ import (
 	"api/internal/core/service"
 )
 
-// AuthHandler serves /api/v1/auth/*. joseph-app's server is the only caller: it keeps the session token in an
+// AuthHandler serves /api/v1/auth/*. lt-edu-app's server is the only caller: it keeps the session token in an
 // httpOnly cookie and sends it here as Authorization: Bearer
 type AuthHandler struct {
 	auth   *service.AuthService
