@@ -84,8 +84,10 @@ type Item struct {
 	StartsAt        *time.Time
 	DurationMinutes *int
 	RecordingURL    string
-	LibraryItemID   string
-	Published       bool
+	// Live sessions: where the call happens (ProviderPlatform | ProviderMeet)
+	Provider      string
+	LibraryItemID string
+	Published     bool
 	// Read-only: files (own or of the library entry) and, for a student, whether they opened it
 	Files  int
 	Viewed bool

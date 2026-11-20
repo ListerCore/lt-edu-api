@@ -69,6 +69,7 @@ type TutoringSession struct {
 	ScheduledAt time.Time
 	DurationMin int
 	Link        string
+	Provider    string
 	Reason      string
 	AlertKind   string
 	Status      string
