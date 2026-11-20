@@ -27,7 +27,7 @@ type Client struct {
 	http                 *http.Client
 }
 
-// New takes the OAuth client of Google Cloud; redirect is joseph-app's /api/auth/google/callback and must be listed
+// New takes the OAuth client of Google Cloud; redirect is lt-edu-app's /api/auth/google/callback and must be listed
 // among the client's authorized redirect URIs
 func New(id, secret, redirect string) *Client {
 	return &Client{id: id, secret: secret, redirect: redirect, http: &http.Client{Timeout: 10 * time.Second}}

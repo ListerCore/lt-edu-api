@@ -69,7 +69,7 @@ func TestSchedulesRecordReceipt(t *testing.T) {
 	// A signed version, with two signers (one still waiting) and a teacher week split in course and section
 	signed := time.Date(2026, 10, 31, 22, 11, 0, 0, time.UTC)
 	doc.Seal = &port.DocumentSeal{Version: 2, State: "Pendiente de firma", Mark: "PENDIENTE DE FIRMA", VerificationCode: "817E-6AD9-4CFA", TrackingCode: "6hg6je7rwt7k",
-		TrackingURL: "https://joseph.pe/seguimiento/6hg6je7rwt7k", QR: "https://joseph.pe/seguimiento/6hg6je7rwt7k?codigo=817E-6AD9-4CFA",
+		TrackingURL: "https://listercore.es/seguimiento/6hg6je7rwt7k", QR: "https://listercore.es/seguimiento/6hg6je7rwt7k?codigo=817E-6AD9-4CFA",
 		Signatures: []port.SealSignature{{Name: "Isaías Ramos López", Position: "Responsable de la Oficina de Tecnologías de la Información", SignedAt: &signed, Code: "A1B2-C3D4-E5F6"}, {Name: "Rosa Quispe Mamani", Position: "Directora"}}}
 	sub := []port.GridRow{{Head: "07:45\n08:30", Cells: []port.GridCell{{Code: "MAT", Fill: fill}, {Code: "1.° A", Detail: "Secundaria", Fill: fill}, {}, {}, {}, {}, {}, {}, {}, {}}}}
 	doc.Pages = append(doc.Pages, port.SchedulePage{Title: "HORARIO DEL DOCENTE 2026", Subtitle: "Manuel Pari Medina",

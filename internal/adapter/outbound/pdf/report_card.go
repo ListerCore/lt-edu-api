@@ -275,7 +275,7 @@ func cardBack(p *pen, c port.ReportCardDoc, x, y float64) float64 {
 	}
 	p.text(x, y+0.5, sigW, "Firma y sello del docente o tutor(a)", false, 1.1, "C")
 	y += 0.5 + p.text(x+sigW+12, y+0.5, sigW, "Firma y sello del director(a)", false, 1.1, "C") + 1.5
-	y += p.text(x, y, faceW, "Emitido: "+longDate(c.IssuedOn)+"\nGenerado con joseph", false, 0.85, "R")
+	y += p.text(x, y, faceW, "Emitido: "+longDate(c.IssuedOn)+"\nGenerado con ListerCore Edu", false, 0.85, "R")
 	return y - start
 }
 
@@ -395,7 +395,7 @@ func numericCard(pdf *fpdf.Fpdf, c port.ReportCardDoc) {
 	pdf.Line(x+sigW+20, y, x+w, y)
 	p.text(x, y+1, sigW, "Coordinación académica", false, 1, "C")
 	p.text(x+sigW+20, y+1, sigW, "Dirección", false, 1, "C")
-	p.text(x, 297-margin-5, w, "Emitido: "+longDate(c.IssuedOn)+" · Generado con joseph", false, 0.8, "R")
+	p.text(x, 297-margin-5, w, "Emitido: "+longDate(c.IssuedOn)+" · Generado con ListerCore Edu", false, 0.8, "R")
 }
 
 func nonEmpty(values ...string) []string {

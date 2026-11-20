@@ -14,7 +14,7 @@ func (r *Renderer) Receipt(doc port.ReceiptDoc) ([]byte, error) {
 	pdf.AddUTF8FontFromBytes(family, "", fontRegular)
 	pdf.AddUTF8FontFromBytes(family, "B", fontBold)
 	pdf.SetTitle("Recibo "+doc.Number, true)
-	pdf.SetCreator("joseph", true)
+	pdf.SetCreator("ListerCore Edu", true)
 	pdf.SetLineWidth(0.2)
 	pdf.AddPage()
 	const w = 148 - 2*margin

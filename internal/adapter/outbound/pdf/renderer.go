@@ -47,7 +47,7 @@ func newDoc(landscape bool, title string) *fpdf.Fpdf {
 	pdf.AddUTF8FontFromBytes(family, "", fontRegular)
 	pdf.AddUTF8FontFromBytes(family, "B", fontBold)
 	pdf.SetTitle(title, true)
-	pdf.SetCreator("joseph", true)
+	pdf.SetCreator("ListerCore Edu", true)
 	pdf.SetDrawColor(0, 0, 0)
 	pdf.SetTextColor(0, 0, 0)
 	pdf.SetLineWidth(0.2)

@@ -118,7 +118,7 @@ func schedulePage(p *pen, doc port.ScheduleDoc, pg port.SchedulePage, at sheetAt
 	if doc.Seal != nil && doc.Seal.Version > 0 {
 		issued = "Versión " + strconv.Itoa(doc.Seal.Version) + " · " + issued
 	}
-	p.text(x, pageH-margin-footer+1.5, fullW, issued+" · joseph", false, 0.8, "R")
+	p.text(x, pageH-margin-footer+1.5, fullW, issued+" · ListerCore Edu", false, 0.8, "R")
 	if at.total > 0 {
 		p.text(x, pageH-margin-footer+1.5, fullW, "Página "+strconv.Itoa(at.number)+" de "+strconv.Itoa(at.total), true, 0.8, "L")
 	}
