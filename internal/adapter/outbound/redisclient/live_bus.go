@@ -13,7 +13,7 @@ import (
 
 // Stream of live events shared by every API instance; pages only need what happens while they are open
 const (
-	liveStream    = "joseph:live"
+	liveStream    = "lt-edu:live"
 	liveMaxLength = 1000
 )
 

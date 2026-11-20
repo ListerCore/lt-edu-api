@@ -615,3 +615,11 @@ func (r *AcademicRepository) DeleteSection(ctx context.Context, institutionID, s
 	}
 	return academicErr(err)
 }
+
+// providerOrMeet stores where a live session happens; empty (older clients) keeps the external link
+func providerOrMeet(p string) string {
+	if p == "" {
+		return "meet"
+	}
+	return p
+}

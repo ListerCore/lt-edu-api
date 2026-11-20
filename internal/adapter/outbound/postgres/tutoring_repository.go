@@ -117,14 +117,14 @@ func (r *TutoringRepository) IndividualTutees(ctx context.Context, institutionID
 // ---------- sessions ----------
 
 const sessionSelect = `SELECT ts.id, ts.staff_id, ` + staffName + `, ts.kind, ts.mode, ts.scheduled_at, ts.duration_min, ts.link, ts.reason, ts.alert_kind, ts.status,
-	ts.notes, ts.agreements, ts.held_at, ts.created_by_name
+	ts.notes, ts.agreements, ts.held_at, ts.created_by_name, ts.provider
 	FROM wellbeing.tutoring_sessions ts JOIN people.staff st ON st.id = ts.staff_id`
 
 func scanSession(row pgx.Row) (domain.TutoringSession, error) {
 	var s domain.TutoringSession
 	var duration int16
 	err := row.Scan(&s.ID, &s.StaffID, &s.StaffName, &s.Kind, &s.Mode, &s.ScheduledAt, &duration, &s.Link, &s.Reason, &s.AlertKind, &s.Status,
-		&s.Notes, &s.Agreements, &s.HeldAt, &s.CreatedName)
+		&s.Notes, &s.Agreements, &s.HeldAt, &s.CreatedName, &s.Provider)
 	s.DurationMin = int(duration)
 	return s, err
 }
@@ -186,14 +186,14 @@ func (r *TutoringRepository) SaveSession(ctx context.Context, institutionID stri
 	id := s.ID
 	err := pgx.BeginFunc(ctx, r.c.pool, func(tx pgx.Tx) error {
 		if id == "" {
-			if err := tx.QueryRow(ctx, `INSERT INTO wellbeing.tutoring_sessions (institution_id, staff_id, kind, mode, scheduled_at, duration_min, link, reason, alert_kind, created_by_name)
-				SELECT $1, st.id, $3, $4, $5, $6, $7, $8, $9, $10 FROM people.staff st WHERE st.institution_id = $1 AND st.id = $2 RETURNING id`,
-				institutionID, s.StaffID, s.Kind, s.Mode, s.ScheduledAt, s.DurationMin, s.Link, s.Reason, s.AlertKind, s.CreatedName).Scan(&id); err != nil {
+			if err := tx.QueryRow(ctx, `INSERT INTO wellbeing.tutoring_sessions (institution_id, staff_id, kind, mode, scheduled_at, duration_min, link, reason, alert_kind, created_by_name, provider)
+				SELECT $1, st.id, $3, $4, $5, $6, $7, $8, $9, $10, $11 FROM people.staff st WHERE st.institution_id = $1 AND st.id = $2 RETURNING id`,
+				institutionID, s.StaffID, s.Kind, s.Mode, s.ScheduledAt, s.DurationMin, s.Link, s.Reason, s.AlertKind, s.CreatedName, providerOrMeet(s.Provider)).Scan(&id); err != nil {
 				return err
 			}
 		} else {
-			tag, err := tx.Exec(ctx, `UPDATE wellbeing.tutoring_sessions SET kind = $3, mode = $4, scheduled_at = $5, duration_min = $6, link = $7, reason = $8, status = 'scheduled'
-				WHERE institution_id = $1 AND id = $2 AND status IN ('scheduled', 'missed', 'cancelled')`, institutionID, id, s.Kind, s.Mode, s.ScheduledAt, s.DurationMin, s.Link, s.Reason)
+			tag, err := tx.Exec(ctx, `UPDATE wellbeing.tutoring_sessions SET kind = $3, mode = $4, scheduled_at = $5, duration_min = $6, link = $7, reason = $8, provider = $9, status = 'scheduled'
+				WHERE institution_id = $1 AND id = $2 AND status IN ('scheduled', 'missed', 'cancelled')`, institutionID, id, s.Kind, s.Mode, s.ScheduledAt, s.DurationMin, s.Link, s.Reason, providerOrMeet(s.Provider))
 			if err != nil {
 				return err
 			}

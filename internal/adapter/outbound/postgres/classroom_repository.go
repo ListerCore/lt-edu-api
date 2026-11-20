@@ -206,7 +206,7 @@ func scanUnit(row pgx.Row) (domain.Unit, error) {
 // student whose views are marked (” for none), $3 whether to count views
 const itemColumns = `i.id, i.room_id, i.unit_id, i.position, i.kind, i.title,
 	CASE WHEN l.id IS NULL THEN i.body ELSE l.body END, CASE WHEN l.id IS NULL THEN i.url ELSE l.url END,
-	i.complementary, i.starts_at, i.duration_minutes, i.recording_url, coalesce(i.library_item_id::text, ''), i.published,
+	i.complementary, i.starts_at, i.duration_minutes, i.recording_url, coalesce(i.library_item_id::text, ''), i.published, i.provider,
 	(SELECT count(*) FROM attachments.files f WHERE f.institution_id = $1 AND
 		((f.owner_kind = 'classroom_item' AND f.owner_id = i.id) OR (f.owner_kind = 'library_item' AND f.owner_id = i.library_item_id))),
 	($2 <> '' AND EXISTS (SELECT 1 FROM classroom.item_views v WHERE v.item_id = i.id AND v.student_id::text = $2)),
@@ -220,7 +220,7 @@ func scanItem(row pgx.Row) (domain.Item, error) {
 	var duration *int16
 	var files, views int64
 	err := row.Scan(&it.ID, &it.RoomID, &it.UnitID, &pos, &it.Kind, &it.Title, &it.Body, &it.URL, &it.Complementary, &it.StartsAt, &duration,
-		&it.RecordingURL, &it.LibraryItemID, &it.Published, &files, &it.Viewed, &views)
+		&it.RecordingURL, &it.LibraryItemID, &it.Published, &it.Provider, &files, &it.Viewed, &views)
 	it.Position, it.Files, it.Views = int(pos), int(files), int(views)
 	if duration != nil {
 		d := int(*duration)
@@ -372,8 +372,8 @@ func (r *ClassroomRepository) CopyUnits(ctx context.Context, institutionID, from
 		// Items keep their content and library link (live sessions keep their link; dates are edited later)
 		for pos, id := range newByPos {
 			if _, err := tx.Exec(ctx, `INSERT INTO classroom.items (room_id, unit_id, position, kind, title, body, url, complementary, starts_at,
-				duration_minutes, recording_url, library_item_id, published, created_by)
-				SELECT $2, $3, i.position, i.kind, i.title, i.body, i.url, i.complementary, i.starts_at, i.duration_minutes, '', i.library_item_id, false, i.created_by
+				duration_minutes, recording_url, library_item_id, published, created_by, provider)
+				SELECT $2, $3, i.position, i.kind, i.title, i.body, i.url, i.complementary, i.starts_at, i.duration_minutes, '', i.library_item_id, false, i.created_by, i.provider
 				FROM classroom.items i JOIN classroom.units u ON u.id = i.unit_id WHERE u.room_id = $1 AND u.position = $4`,
 				fromRoomID, toRoomID, id, pos); err != nil {
 				return err
@@ -403,19 +403,19 @@ func (r *ClassroomRepository) SaveItem(ctx context.Context, institutionID, userI
 	// The unit (and the library entry, when given) must belong to the institution
 	if it.ID == "" {
 		err = r.c.pool.QueryRow(ctx, `INSERT INTO classroom.items (room_id, unit_id, position, kind, title, body, url, complementary, starts_at,
-			duration_minutes, recording_url, library_item_id, published, created_by)
-			SELECT u.room_id, u.id, coalesce((SELECT max(position) + 1 FROM classroom.items WHERE unit_id = u.id), 0), $3, $4, $5, $6, $7, $8, $9, $10, $11::uuid, $12, $13::uuid
+			duration_minutes, recording_url, library_item_id, published, created_by, provider)
+			SELECT u.room_id, u.id, coalesce((SELECT max(position) + 1 FROM classroom.items WHERE unit_id = u.id), 0), $3, $4, $5, $6, $7, $8, $9, $10, $11::uuid, $12, $13::uuid, $14
 			FROM classroom.units u JOIN classroom.rooms r ON r.id = u.room_id
 			WHERE r.institution_id = $1 AND u.id = $2
 			  AND ($11::uuid IS NULL OR EXISTS (SELECT 1 FROM classroom.library_items WHERE id = $11::uuid AND institution_id = $1))
 			RETURNING id`,
 			institutionID, it.UnitID, it.Kind, it.Title, it.Body, it.URL, it.Complementary, it.StartsAt, duration, it.RecordingURL,
-			nilIfEmpty(it.LibraryItemID), it.Published, nilIfEmpty(userID)).Scan(&id)
+			nilIfEmpty(it.LibraryItemID), it.Published, nilIfEmpty(userID), providerOrMeet(it.Provider)).Scan(&id)
 	} else {
 		err = r.c.pool.QueryRow(ctx, `UPDATE classroom.items i SET kind = $3, title = $4, body = $5, url = $6, complementary = $7, starts_at = $8,
-			duration_minutes = $9, recording_url = $10, published = $11
+			duration_minutes = $9, recording_url = $10, published = $11, provider = $12
 			FROM classroom.rooms r WHERE r.id = i.room_id AND r.institution_id = $1 AND i.id = $2 RETURNING i.id`,
-			institutionID, it.ID, it.Kind, it.Title, it.Body, it.URL, it.Complementary, it.StartsAt, duration, it.RecordingURL, it.Published).Scan(&id)
+			institutionID, it.ID, it.Kind, it.Title, it.Body, it.URL, it.Complementary, it.StartsAt, duration, it.RecordingURL, it.Published, providerOrMeet(it.Provider)).Scan(&id)
 	}
 	if err != nil {
 		return domain.Item{}, academicErr(err)

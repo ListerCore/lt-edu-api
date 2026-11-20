@@ -71,7 +71,7 @@ func sheetName(s string) string {
 func (r *Renderer) Workbook(book port.Workbook) ([]byte, error) {
 	f := excelize.NewFile()
 	defer func() { _ = f.Close() }()
-	_ = f.SetDocProps(&excelize.DocProperties{Title: book.Title, Creator: "joseph"})
+	_ = f.SetDocProps(&excelize.DocProperties{Title: book.Title, Creator: "ListerCore Edu"})
 	st := &styles{f: f, cache: map[string]int{}}
 	for i, sh := range book.Sheets {
 		name := sheetName(sh.Name)

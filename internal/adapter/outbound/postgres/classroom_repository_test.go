@@ -18,12 +18,12 @@ type classroomFixture struct {
 	virtualStudent, itinerantStudent      string
 }
 
-// Runs against a migrated database only: JOSEPH_TEST_DATABASE_URL=postgres://... go test ./internal/adapter/outbound/postgres/
+// Runs against a migrated database only: LTEDU_TEST_DATABASE_URL=postgres://... go test ./internal/adapter/outbound/postgres/
 func newClassroomFixture(t *testing.T) classroomFixture {
 	t.Helper()
-	dsn := os.Getenv("JOSEPH_TEST_DATABASE_URL")
+	dsn := os.Getenv("LTEDU_TEST_DATABASE_URL")
 	if dsn == "" {
-		t.Skip("JOSEPH_TEST_DATABASE_URL not set")
+		t.Skip("LTEDU_TEST_DATABASE_URL not set")
 	}
 	c, err := New(dsn)
 	if err != nil {
