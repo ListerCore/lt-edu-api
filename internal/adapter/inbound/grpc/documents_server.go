@@ -13,7 +13,7 @@ import (
 	"api/internal/core/service"
 )
 
-// documentsServer exposes service.DocumentService to joseph-app's server
+// documentsServer exposes service.DocumentService to lt-edu-app's server
 type documentsServer struct {
 	documentsv1.UnimplementedDocumentsServiceServer
 	documents *service.DocumentService

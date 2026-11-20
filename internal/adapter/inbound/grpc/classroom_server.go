@@ -12,7 +12,7 @@ import (
 	"api/internal/core/service"
 )
 
-// classroomServer exposes service.ClassroomService (the virtual classroom) to joseph-app's server
+// classroomServer exposes service.ClassroomService (the virtual classroom) to lt-edu-app's server
 type classroomServer struct {
 	classroomv1.UnimplementedClassroomServiceServer
 	classroom *service.ClassroomService
@@ -36,7 +36,7 @@ func toRoom(r domain.Room) *classroomv1.Room {
 
 func toClassroomItem(it domain.Item) *classroomv1.Item {
 	out := &classroomv1.Item{Id: it.ID, UnitId: it.UnitID, Kind: it.Kind, Title: it.Title, Body: it.Body, Url: it.URL, Complementary: it.Complementary,
-		DurationMinutes: int32Ptr(it.DurationMinutes), RecordingUrl: it.RecordingURL, LibraryItemId: it.LibraryItemID, Published: it.Published,
+		DurationMinutes: int32Ptr(it.DurationMinutes), RecordingUrl: it.RecordingURL, Provider: it.Provider, LibraryItemId: it.LibraryItemID, Published: it.Published,
 		Files: int32(it.Files), Viewed: it.Viewed, Views: int32(it.Views)}
 	if it.StartsAt != nil {
 		out.StartsAt = it.StartsAt.UTC().Format(time.RFC3339)
@@ -138,7 +138,7 @@ func (s *classroomServer) ReorderUnits(ctx context.Context, req *classroomv1.Reo
 func (s *classroomServer) SaveItem(ctx context.Context, req *classroomv1.SaveItemRequest) (*classroomv1.SaveItemResponse, error) {
 	in := req.GetItem()
 	it := domain.Item{ID: in.GetId(), UnitID: in.GetUnitId(), Kind: in.GetKind(), Title: in.GetTitle(), Body: in.GetBody(), URL: in.GetUrl(),
-		Complementary: in.GetComplementary(), DurationMinutes: intPtr(in.DurationMinutes), RecordingURL: in.GetRecordingUrl(),
+		Complementary: in.GetComplementary(), DurationMinutes: intPtr(in.DurationMinutes), RecordingURL: in.GetRecordingUrl(), Provider: in.GetProvider(),
 		LibraryItemID: in.GetLibraryItemId(), Published: in.GetPublished()}
 	if in.GetStartsAt() != "" {
 		at, err := parseInstant("startsAt", in.GetStartsAt())

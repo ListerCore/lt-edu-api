@@ -12,7 +12,7 @@ import (
 	"api/internal/core/service"
 )
 
-// wellbeingServer exposes service.WellbeingService to joseph-app's server
+// wellbeingServer exposes service.WellbeingService to lt-edu-app's server
 type wellbeingServer struct {
 	wellbeingv1.UnimplementedWellbeingServiceServer
 	wellbeing *service.WellbeingService

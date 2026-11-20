@@ -14,7 +14,7 @@ import (
 
 const dateLayout = "2006-01-02"
 
-// academicServer exposes service.AcademicService to joseph-app's server
+// academicServer exposes service.AcademicService to lt-edu-app's server
 type academicServer struct {
 	academicv1.UnimplementedAcademicServiceServer
 	academic *service.AcademicService

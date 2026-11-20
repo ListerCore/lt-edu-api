@@ -12,7 +12,7 @@ import (
 	"api/internal/core/service"
 )
 
-// curriculumServer exposes service.CurriculumService to joseph-app's server
+// curriculumServer exposes service.CurriculumService to lt-edu-app's server
 type curriculumServer struct {
 	academicv1.UnimplementedCurriculumServiceServer
 	curricula *service.CurriculumService

@@ -11,7 +11,7 @@ import (
 	"api/internal/core/service"
 )
 
-// staffServer and teachingServer expose service.StaffService and service.TeachingService to joseph-app's server
+// staffServer and teachingServer expose service.StaffService and service.TeachingService to lt-edu-app's server
 type staffServer struct {
 	teachingv1.UnimplementedStaffServiceServer
 	staff  *service.StaffService

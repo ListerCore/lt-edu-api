@@ -1,4 +1,4 @@
-// Package grpc serves joseph-api over gRPC for joseph-app's server. It runs on its own port next to the HTTP API,
+// Package grpc serves lt-edu-api over gRPC for lt-edu-app's server. It runs on its own port next to the HTTP API,
 // over plaintext HTTP/2: like the HTTP API it must only be reachable on the internal network
 package grpc
 
@@ -26,6 +26,7 @@ import (
 	"api/internal/adapter/inbound/grpc/gen/examsv1"
 	"api/internal/adapter/inbound/grpc/gen/financev1"
 	"api/internal/adapter/inbound/grpc/gen/institutionv1"
+	"api/internal/adapter/inbound/grpc/gen/meetingsv1"
 	"api/internal/adapter/inbound/grpc/gen/participationv1"
 	"api/internal/adapter/inbound/grpc/gen/peoplev1"
 	"api/internal/adapter/inbound/grpc/gen/programsv1"
@@ -67,6 +68,7 @@ type Services struct {
 	Participation *service.ParticipationService
 	Audit         *service.AuditService
 	Classroom     *service.ClassroomService
+	Meetings      *service.MeetingService
 }
 
 // limits brakes methods per client IP. Register a method here when it takes a password or costs a lot, e.g.
@@ -139,6 +141,10 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	healthServer.SetServingStatus(participationv1.ParticipationService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	classroomv1.RegisterClassroomServiceServer(server, &classroomServer{classroom: services.Classroom, logger: logger})
 	healthServer.SetServingStatus(classroomv1.ClassroomService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	if services.Meetings != nil {
+		meetingsv1.RegisterMeetingsServiceServer(server, &meetingsServer{meetings: services.Meetings, wellbeing: services.Wellbeing, logger: logger})
+		healthServer.SetServingStatus(meetingsv1.MeetingsService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
+	}
 	healthpb.RegisterHealthServer(server, healthServer)
 
 	if cfg.Development {

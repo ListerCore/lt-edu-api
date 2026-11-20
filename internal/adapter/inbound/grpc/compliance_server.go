@@ -12,7 +12,7 @@ import (
 	"api/internal/core/service"
 )
 
-// complianceServer exposes service.ComplianceService (phase E8) to joseph-app's server
+// complianceServer exposes service.ComplianceService (phase E8) to lt-edu-app's server
 type complianceServer struct {
 	compliancev1.UnimplementedComplianceServiceServer
 	compliance *service.ComplianceService

@@ -12,7 +12,7 @@ import (
 	"api/internal/core/service"
 )
 
-// apafaServer exposes service.ApafaService to joseph-app's server
+// apafaServer exposes service.ApafaService to lt-edu-app's server
 type apafaServer struct {
 	apafav1.UnimplementedApafaServiceServer
 	apafa  *service.ApafaService

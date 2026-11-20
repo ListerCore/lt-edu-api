@@ -12,7 +12,7 @@ import (
 	"api/internal/core/service"
 )
 
-// peopleServer exposes service.PeopleService to joseph-app's server
+// peopleServer exposes service.PeopleService to lt-edu-app's server
 type peopleServer struct {
 	peoplev1.UnimplementedPeopleServiceServer
 	people *service.PeopleService

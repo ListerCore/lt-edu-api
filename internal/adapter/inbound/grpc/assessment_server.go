@@ -11,7 +11,7 @@ import (
 	"api/internal/core/service"
 )
 
-// assessmentServer exposes service.AssessmentService to joseph-app's server
+// assessmentServer exposes service.AssessmentService to lt-edu-app's server
 type assessmentServer struct {
 	assessmentv1.UnimplementedAssessmentServiceServer
 	assessment *service.AssessmentService

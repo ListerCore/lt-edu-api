@@ -11,7 +11,7 @@ import (
 	"api/internal/core/service"
 )
 
-// closingServer exposes service.ClosingService to joseph-app's server
+// closingServer exposes service.ClosingService to lt-edu-app's server
 type closingServer struct {
 	assessmentv1.UnimplementedClosingServiceServer
 	closing *service.ClosingService

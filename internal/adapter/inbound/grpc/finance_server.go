@@ -12,7 +12,7 @@ import (
 	"api/internal/core/service"
 )
 
-// financeServer exposes service.FinanceService to joseph-app's server
+// financeServer exposes service.FinanceService to lt-edu-app's server
 type financeServer struct {
 	financev1.UnimplementedFinanceServiceServer
 	finance *service.FinanceService

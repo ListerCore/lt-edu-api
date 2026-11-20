@@ -10,7 +10,7 @@ import (
 	"api/internal/core/domain"
 )
 
-// Fault is an error the client is meant to see: gRPC code plus the ErrorDetail joseph-app decodes
+// Fault is an error the client is meant to see: gRPC code plus the ErrorDetail lt-edu-app decodes
 type Fault struct {
 	Status  codes.Code
 	Code    string

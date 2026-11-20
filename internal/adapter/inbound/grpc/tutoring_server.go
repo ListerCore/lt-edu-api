@@ -12,7 +12,7 @@ import (
 	"api/internal/core/service"
 )
 
-// tutoringServer exposes the virtual tutoring of service.WellbeingService (phase E6) to joseph-app's server
+// tutoringServer exposes the virtual tutoring of service.WellbeingService (phase E6) to lt-edu-app's server
 type tutoringServer struct {
 	wellbeingv1.UnimplementedTutoringServiceServer
 	wellbeing *service.WellbeingService
@@ -42,7 +42,7 @@ func toTutorLoads(items []domain.TutorLoad) []*wellbeingv1.TutorLoad {
 
 func toTutoringSession(x domain.TutoringSession) *wellbeingv1.TutoringSession {
 	out := &wellbeingv1.TutoringSession{Id: x.ID, StaffId: x.StaffID, StaffName: x.StaffName, Kind: x.Kind, Mode: x.Mode, ScheduledAt: instant(&x.ScheduledAt),
-		DurationMin: int32(x.DurationMin), Link: x.Link, Reason: x.Reason, AlertKind: x.AlertKind, Status: x.Status, Notes: x.Notes, Agreements: x.Agreements,
+		DurationMin: int32(x.DurationMin), Link: x.Link, Provider: x.Provider, Reason: x.Reason, AlertKind: x.AlertKind, Status: x.Status, Notes: x.Notes, Agreements: x.Agreements,
 		HeldAt: instant(x.HeldAt), CreatedName: x.CreatedName}
 	for _, a := range x.Attendees {
 		out.Attendees = append(out.Attendees, &wellbeingv1.SessionAttendee{StudentId: a.StudentID, StudentName: a.StudentName, Placement: a.Placement, Attended: a.Attended,
@@ -163,7 +163,7 @@ func (s *tutoringServer) SaveTutoringSession(ctx context.Context, req *wellbeing
 		return nil, s.fail("SaveTutoringSession", domain.Validation(map[string]string{"scheduledAt": "Fecha y hora no válidas."}))
 	}
 	x, err := s.wellbeing.SaveTutoringSession(ctx, bearer(ctx), req.GetInstitutionSlug(), service.SessionInput{ID: req.GetId(), StaffID: req.GetStaffId(), Kind: req.GetKind(),
-		Mode: req.GetMode(), ScheduledAt: at, DurationMin: int(req.GetDurationMin()), Link: req.GetLink(), Reason: req.GetReason(), AlertKind: req.GetAlertKind(),
+		Mode: req.GetMode(), ScheduledAt: at, DurationMin: int(req.GetDurationMin()), Link: req.GetLink(), Provider: req.GetProvider(), Reason: req.GetReason(), AlertKind: req.GetAlertKind(),
 		StudentIDs: req.GetStudentIds()})
 	if err != nil {
 		return nil, s.fail("SaveTutoringSession", err)

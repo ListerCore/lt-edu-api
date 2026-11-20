@@ -13,7 +13,7 @@ import (
 	"api/internal/core/domain"
 )
 
-// Metadata keys joseph-app sends with every call (see proto/joseph/system/v1/system.proto)
+// Metadata keys lt-edu-app sends with every call (see proto/ltedu/system/v1/system.proto)
 const (
 	forwardedForKey = "x-forwarded-for"
 	userAgentKey    = "x-user-agent"
@@ -23,7 +23,7 @@ const (
 type metaKey struct{}
 
 // clientResolver works out who is calling. The visitor's IP comes from x-forwarded-for only when the connection
-// itself comes from a trusted proxy (joseph-app), mirroring the HTTP API's TrustProxy settings
+// itself comes from a trusted proxy (lt-edu-app), mirroring the HTTP API's TrustProxy settings
 type clientResolver struct {
 	trusted []netip.Prefix
 }

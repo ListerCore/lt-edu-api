@@ -11,7 +11,7 @@ import (
 	"api/internal/core/service"
 )
 
-// reportsServer exposes service.ReportsService to joseph-app's server
+// reportsServer exposes service.ReportsService to lt-edu-app's server
 type reportsServer struct {
 	reportsv1.UnimplementedReportsServiceServer
 	reports *service.ReportsService

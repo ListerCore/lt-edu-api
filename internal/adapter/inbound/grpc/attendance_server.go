@@ -12,7 +12,7 @@ import (
 	"api/internal/core/service"
 )
 
-// attendanceServer exposes service.AttendanceService to joseph-app's server
+// attendanceServer exposes service.AttendanceService to lt-edu-app's server
 type attendanceServer struct {
 	attendancev1.UnimplementedAttendanceServiceServer
 	attendance *service.AttendanceService

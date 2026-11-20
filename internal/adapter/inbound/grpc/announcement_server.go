@@ -12,7 +12,7 @@ import (
 	"api/internal/core/service"
 )
 
-// announcementServer exposes service.AnnouncementService reads to joseph-app's server
+// announcementServer exposes service.AnnouncementService reads to lt-edu-app's server
 type announcementServer struct {
 	announcementsv1.UnimplementedAnnouncementServiceServer
 	announcements *service.AnnouncementService

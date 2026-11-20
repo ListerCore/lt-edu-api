@@ -11,7 +11,7 @@ import (
 	"api/internal/core/service"
 )
 
-// examsServer exposes service.ExamsService to joseph-app's server
+// examsServer exposes service.ExamsService to lt-edu-app's server
 type examsServer struct {
 	examsv1.UnimplementedExamsServiceServer
 	exams  *service.ExamsService

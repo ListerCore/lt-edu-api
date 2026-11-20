@@ -13,7 +13,7 @@ import (
 	"api/internal/core/service"
 )
 
-// institutionServer exposes service.InstitutionService (the institution file) to joseph-app's server
+// institutionServer exposes service.InstitutionService (the institution file) to lt-edu-app's server
 type institutionServer struct {
 	institutionv1.UnimplementedInstitutionServiceServer
 	institution *service.InstitutionService
