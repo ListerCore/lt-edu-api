@@ -2,10 +2,10 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/apafa/v1/apafa.proto
+// source: ltedu/apafa/v1/apafa.proto
 
 // APAFA (Asociación de Padres de Familia, Ley N.° 28628) of public institutions of Educación Básica: the meetings
-// it convenes, their acta and the board. Same metadata and institution scoping as joseph.academic.v1. Private
+// it convenes, their acta and the board. Same metadata and institution scoping as ltedu.academic.v1. Private
 // institutions get apafa_private on every call
 
 package apafav1
@@ -63,7 +63,7 @@ type Meeting struct {
 
 func (x *Meeting) Reset() {
 	*x = Meeting{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[0]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -75,7 +75,7 @@ func (x *Meeting) String() string {
 func (*Meeting) ProtoMessage() {}
 
 func (x *Meeting) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[0]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -88,7 +88,7 @@ func (x *Meeting) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Meeting.ProtoReflect.Descriptor instead.
 func (*Meeting) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Meeting) GetId() string {
@@ -268,7 +268,7 @@ type BoardMember struct {
 
 func (x *BoardMember) Reset() {
 	*x = BoardMember{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[1]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -280,7 +280,7 @@ func (x *BoardMember) String() string {
 func (*BoardMember) ProtoMessage() {}
 
 func (x *BoardMember) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[1]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -293,7 +293,7 @@ func (x *BoardMember) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BoardMember.ProtoReflect.Descriptor instead.
 func (*BoardMember) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *BoardMember) GetId() string {
@@ -352,7 +352,7 @@ type Fees struct {
 
 func (x *Fees) Reset() {
 	*x = Fees{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[2]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -364,7 +364,7 @@ func (x *Fees) String() string {
 func (*Fees) ProtoMessage() {}
 
 func (x *Fees) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[2]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -377,7 +377,7 @@ func (x *Fees) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Fees.ProtoReflect.Descriptor instead.
 func (*Fees) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Fees) GetExpected() int64 {
@@ -424,7 +424,7 @@ type GetApafaRequest struct {
 
 func (x *GetApafaRequest) Reset() {
 	*x = GetApafaRequest{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[3]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -436,7 +436,7 @@ func (x *GetApafaRequest) String() string {
 func (*GetApafaRequest) ProtoMessage() {}
 
 func (x *GetApafaRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[3]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -449,7 +449,7 @@ func (x *GetApafaRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetApafaRequest.ProtoReflect.Descriptor instead.
 func (*GetApafaRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetApafaRequest) GetInstitutionSlug() string {
@@ -472,7 +472,7 @@ type GetApafaResponse struct {
 
 func (x *GetApafaResponse) Reset() {
 	*x = GetApafaResponse{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[4]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -484,7 +484,7 @@ func (x *GetApafaResponse) String() string {
 func (*GetApafaResponse) ProtoMessage() {}
 
 func (x *GetApafaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[4]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -497,7 +497,7 @@ func (x *GetApafaResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetApafaResponse.ProtoReflect.Descriptor instead.
 func (*GetApafaResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetApafaResponse) GetMeetings() []*Meeting {
@@ -538,7 +538,7 @@ type GetMeetingRequest struct {
 
 func (x *GetMeetingRequest) Reset() {
 	*x = GetMeetingRequest{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[5]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -550,7 +550,7 @@ func (x *GetMeetingRequest) String() string {
 func (*GetMeetingRequest) ProtoMessage() {}
 
 func (x *GetMeetingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[5]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -563,7 +563,7 @@ func (x *GetMeetingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMeetingRequest.ProtoReflect.Descriptor instead.
 func (*GetMeetingRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetMeetingRequest) GetInstitutionSlug() string {
@@ -590,7 +590,7 @@ type GetMeetingResponse struct {
 
 func (x *GetMeetingResponse) Reset() {
 	*x = GetMeetingResponse{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[6]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -602,7 +602,7 @@ func (x *GetMeetingResponse) String() string {
 func (*GetMeetingResponse) ProtoMessage() {}
 
 func (x *GetMeetingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[6]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -615,7 +615,7 @@ func (x *GetMeetingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMeetingResponse.ProtoReflect.Descriptor instead.
 func (*GetMeetingResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetMeetingResponse) GetMeeting() *Meeting {
@@ -645,7 +645,7 @@ type SaveMeetingRequest struct {
 
 func (x *SaveMeetingRequest) Reset() {
 	*x = SaveMeetingRequest{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[7]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -657,7 +657,7 @@ func (x *SaveMeetingRequest) String() string {
 func (*SaveMeetingRequest) ProtoMessage() {}
 
 func (x *SaveMeetingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[7]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -670,7 +670,7 @@ func (x *SaveMeetingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveMeetingRequest.ProtoReflect.Descriptor instead.
 func (*SaveMeetingRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *SaveMeetingRequest) GetInstitutionSlug() string {
@@ -703,7 +703,7 @@ type SaveMeetingResponse struct {
 
 func (x *SaveMeetingResponse) Reset() {
 	*x = SaveMeetingResponse{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[8]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -715,7 +715,7 @@ func (x *SaveMeetingResponse) String() string {
 func (*SaveMeetingResponse) ProtoMessage() {}
 
 func (x *SaveMeetingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[8]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -728,7 +728,7 @@ func (x *SaveMeetingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveMeetingResponse.ProtoReflect.Descriptor instead.
 func (*SaveMeetingResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *SaveMeetingResponse) GetMeeting() *Meeting {
@@ -748,7 +748,7 @@ type ConveneMeetingRequest struct {
 
 func (x *ConveneMeetingRequest) Reset() {
 	*x = ConveneMeetingRequest{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[9]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -760,7 +760,7 @@ func (x *ConveneMeetingRequest) String() string {
 func (*ConveneMeetingRequest) ProtoMessage() {}
 
 func (x *ConveneMeetingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[9]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -773,7 +773,7 @@ func (x *ConveneMeetingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConveneMeetingRequest.ProtoReflect.Descriptor instead.
 func (*ConveneMeetingRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ConveneMeetingRequest) GetInstitutionSlug() string {
@@ -799,7 +799,7 @@ type ConveneMeetingResponse struct {
 
 func (x *ConveneMeetingResponse) Reset() {
 	*x = ConveneMeetingResponse{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[10]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -811,7 +811,7 @@ func (x *ConveneMeetingResponse) String() string {
 func (*ConveneMeetingResponse) ProtoMessage() {}
 
 func (x *ConveneMeetingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[10]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -824,7 +824,7 @@ func (x *ConveneMeetingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConveneMeetingResponse.ProtoReflect.Descriptor instead.
 func (*ConveneMeetingResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ConveneMeetingResponse) GetMeeting() *Meeting {
@@ -848,7 +848,7 @@ type RescheduleMeetingRequest struct {
 
 func (x *RescheduleMeetingRequest) Reset() {
 	*x = RescheduleMeetingRequest{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[11]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -860,7 +860,7 @@ func (x *RescheduleMeetingRequest) String() string {
 func (*RescheduleMeetingRequest) ProtoMessage() {}
 
 func (x *RescheduleMeetingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[11]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -873,7 +873,7 @@ func (x *RescheduleMeetingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RescheduleMeetingRequest.ProtoReflect.Descriptor instead.
 func (*RescheduleMeetingRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *RescheduleMeetingRequest) GetInstitutionSlug() string {
@@ -920,7 +920,7 @@ type RescheduleMeetingResponse struct {
 
 func (x *RescheduleMeetingResponse) Reset() {
 	*x = RescheduleMeetingResponse{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[12]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -932,7 +932,7 @@ func (x *RescheduleMeetingResponse) String() string {
 func (*RescheduleMeetingResponse) ProtoMessage() {}
 
 func (x *RescheduleMeetingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[12]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -945,7 +945,7 @@ func (x *RescheduleMeetingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RescheduleMeetingResponse.ProtoReflect.Descriptor instead.
 func (*RescheduleMeetingResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *RescheduleMeetingResponse) GetMeeting() *Meeting {
@@ -967,7 +967,7 @@ type CancelMeetingRequest struct {
 
 func (x *CancelMeetingRequest) Reset() {
 	*x = CancelMeetingRequest{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[13]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -979,7 +979,7 @@ func (x *CancelMeetingRequest) String() string {
 func (*CancelMeetingRequest) ProtoMessage() {}
 
 func (x *CancelMeetingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[13]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -992,7 +992,7 @@ func (x *CancelMeetingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelMeetingRequest.ProtoReflect.Descriptor instead.
 func (*CancelMeetingRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *CancelMeetingRequest) GetInstitutionSlug() string {
@@ -1032,7 +1032,7 @@ type CancelMeetingResponse struct {
 
 func (x *CancelMeetingResponse) Reset() {
 	*x = CancelMeetingResponse{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[14]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1044,7 +1044,7 @@ func (x *CancelMeetingResponse) String() string {
 func (*CancelMeetingResponse) ProtoMessage() {}
 
 func (x *CancelMeetingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[14]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1057,7 +1057,7 @@ func (x *CancelMeetingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelMeetingResponse.ProtoReflect.Descriptor instead.
 func (*CancelMeetingResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *CancelMeetingResponse) GetMeeting() *Meeting {
@@ -1082,7 +1082,7 @@ type RecordMinutesRequest struct {
 
 func (x *RecordMinutesRequest) Reset() {
 	*x = RecordMinutesRequest{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[15]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1094,7 +1094,7 @@ func (x *RecordMinutesRequest) String() string {
 func (*RecordMinutesRequest) ProtoMessage() {}
 
 func (x *RecordMinutesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[15]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1107,7 +1107,7 @@ func (x *RecordMinutesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordMinutesRequest.ProtoReflect.Descriptor instead.
 func (*RecordMinutesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *RecordMinutesRequest) GetInstitutionSlug() string {
@@ -1161,7 +1161,7 @@ type RecordMinutesResponse struct {
 
 func (x *RecordMinutesResponse) Reset() {
 	*x = RecordMinutesResponse{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[16]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1173,7 +1173,7 @@ func (x *RecordMinutesResponse) String() string {
 func (*RecordMinutesResponse) ProtoMessage() {}
 
 func (x *RecordMinutesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[16]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1186,7 +1186,7 @@ func (x *RecordMinutesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordMinutesResponse.ProtoReflect.Descriptor instead.
 func (*RecordMinutesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *RecordMinutesResponse) GetMeeting() *Meeting {
@@ -1206,7 +1206,7 @@ type DeleteMeetingRequest struct {
 
 func (x *DeleteMeetingRequest) Reset() {
 	*x = DeleteMeetingRequest{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[17]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1218,7 +1218,7 @@ func (x *DeleteMeetingRequest) String() string {
 func (*DeleteMeetingRequest) ProtoMessage() {}
 
 func (x *DeleteMeetingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[17]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1231,7 +1231,7 @@ func (x *DeleteMeetingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMeetingRequest.ProtoReflect.Descriptor instead.
 func (*DeleteMeetingRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *DeleteMeetingRequest) GetInstitutionSlug() string {
@@ -1256,7 +1256,7 @@ type DeleteMeetingResponse struct {
 
 func (x *DeleteMeetingResponse) Reset() {
 	*x = DeleteMeetingResponse{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[18]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1268,7 +1268,7 @@ func (x *DeleteMeetingResponse) String() string {
 func (*DeleteMeetingResponse) ProtoMessage() {}
 
 func (x *DeleteMeetingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[18]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1281,7 +1281,7 @@ func (x *DeleteMeetingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMeetingResponse.ProtoReflect.Descriptor instead.
 func (*DeleteMeetingResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{18}
 }
 
 type SaveBoardMemberRequest struct {
@@ -1295,7 +1295,7 @@ type SaveBoardMemberRequest struct {
 
 func (x *SaveBoardMemberRequest) Reset() {
 	*x = SaveBoardMemberRequest{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[19]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1307,7 +1307,7 @@ func (x *SaveBoardMemberRequest) String() string {
 func (*SaveBoardMemberRequest) ProtoMessage() {}
 
 func (x *SaveBoardMemberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[19]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1320,7 +1320,7 @@ func (x *SaveBoardMemberRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveBoardMemberRequest.ProtoReflect.Descriptor instead.
 func (*SaveBoardMemberRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *SaveBoardMemberRequest) GetInstitutionSlug() string {
@@ -1346,7 +1346,7 @@ type SaveBoardMemberResponse struct {
 
 func (x *SaveBoardMemberResponse) Reset() {
 	*x = SaveBoardMemberResponse{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[20]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1358,7 +1358,7 @@ func (x *SaveBoardMemberResponse) String() string {
 func (*SaveBoardMemberResponse) ProtoMessage() {}
 
 func (x *SaveBoardMemberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[20]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1371,7 +1371,7 @@ func (x *SaveBoardMemberResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveBoardMemberResponse.ProtoReflect.Descriptor instead.
 func (*SaveBoardMemberResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *SaveBoardMemberResponse) GetMember() *BoardMember {
@@ -1391,7 +1391,7 @@ type DeleteBoardMemberRequest struct {
 
 func (x *DeleteBoardMemberRequest) Reset() {
 	*x = DeleteBoardMemberRequest{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[21]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1403,7 +1403,7 @@ func (x *DeleteBoardMemberRequest) String() string {
 func (*DeleteBoardMemberRequest) ProtoMessage() {}
 
 func (x *DeleteBoardMemberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[21]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1416,7 +1416,7 @@ func (x *DeleteBoardMemberRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteBoardMemberRequest.ProtoReflect.Descriptor instead.
 func (*DeleteBoardMemberRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *DeleteBoardMemberRequest) GetInstitutionSlug() string {
@@ -1441,7 +1441,7 @@ type DeleteBoardMemberResponse struct {
 
 func (x *DeleteBoardMemberResponse) Reset() {
 	*x = DeleteBoardMemberResponse{}
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[22]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1453,7 +1453,7 @@ func (x *DeleteBoardMemberResponse) String() string {
 func (*DeleteBoardMemberResponse) ProtoMessage() {}
 
 func (x *DeleteBoardMemberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_apafa_v1_apafa_proto_msgTypes[22]
+	mi := &file_ltedu_apafa_v1_apafa_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1466,14 +1466,14 @@ func (x *DeleteBoardMemberResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteBoardMemberResponse.ProtoReflect.Descriptor instead.
 func (*DeleteBoardMemberResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_apafa_v1_apafa_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_apafa_v1_apafa_proto_rawDescGZIP(), []int{22}
 }
 
-var File_joseph_apafa_v1_apafa_proto protoreflect.FileDescriptor
+var File_ltedu_apafa_v1_apafa_proto protoreflect.FileDescriptor
 
-const file_joseph_apafa_v1_apafa_proto_rawDesc = "" +
+const file_ltedu_apafa_v1_apafa_proto_rawDesc = "" +
 	"\n" +
-	"\x1bjoseph/apafa/v1/apafa.proto\x12\x0fjoseph.apafa.v1\"\xd6\x05\n" +
+	"\x1altedu/apafa/v1/apafa.proto\x12\x0eltedu.apafa.v1\"\xd6\x05\n" +
 	"\aMeeting\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
@@ -1522,46 +1522,46 @@ const file_joseph_apafa_v1_apafa_proto_rawDesc = "" +
 	"\acharged\x18\x04 \x01(\x05R\acharged\x12\x18\n" +
 	"\asettled\x18\x05 \x01(\x05R\asettled\"<\n" +
 	"\x0fGetApafaRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xc6\x01\n" +
-	"\x10GetApafaResponse\x124\n" +
-	"\bmeetings\x18\x01 \x03(\v2\x18.joseph.apafa.v1.MeetingR\bmeetings\x122\n" +
-	"\x05board\x18\x02 \x03(\v2\x1c.joseph.apafa.v1.BoardMemberR\x05board\x12)\n" +
-	"\x04fees\x18\x03 \x01(\v2\x15.joseph.apafa.v1.FeesR\x04fees\x12\x1d\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xc3\x01\n" +
+	"\x10GetApafaResponse\x123\n" +
+	"\bmeetings\x18\x01 \x03(\v2\x17.ltedu.apafa.v1.MeetingR\bmeetings\x121\n" +
+	"\x05board\x18\x02 \x03(\v2\x1b.ltedu.apafa.v1.BoardMemberR\x05board\x12(\n" +
+	"\x04fees\x18\x03 \x01(\v2\x14.ltedu.apafa.v1.FeesR\x04fees\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\x04 \x01(\bR\tcanManage\"N\n" +
 	"\x11GetMeetingRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"g\n" +
-	"\x12GetMeetingResponse\x122\n" +
-	"\ameeting\x18\x01 \x01(\v2\x18.joseph.apafa.v1.MeetingR\ameeting\x12\x1d\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"f\n" +
+	"\x12GetMeetingResponse\x121\n" +
+	"\ameeting\x18\x01 \x01(\v2\x17.ltedu.apafa.v1.MeetingR\ameeting\x12\x1d\n" +
 	"\n" +
-	"can_manage\x18\x02 \x01(\bR\tcanManage\"\x8b\x01\n" +
+	"can_manage\x18\x02 \x01(\bR\tcanManage\"\x8a\x01\n" +
 	"\x12SaveMeetingRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x122\n" +
-	"\ameeting\x18\x02 \x01(\v2\x18.joseph.apafa.v1.MeetingR\ameeting\x12\x16\n" +
-	"\x06notify\x18\x03 \x01(\bR\x06notify\"I\n" +
-	"\x13SaveMeetingResponse\x122\n" +
-	"\ameeting\x18\x01 \x01(\v2\x18.joseph.apafa.v1.MeetingR\ameeting\"R\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x121\n" +
+	"\ameeting\x18\x02 \x01(\v2\x17.ltedu.apafa.v1.MeetingR\ameeting\x12\x16\n" +
+	"\x06notify\x18\x03 \x01(\bR\x06notify\"H\n" +
+	"\x13SaveMeetingResponse\x121\n" +
+	"\ameeting\x18\x01 \x01(\v2\x17.ltedu.apafa.v1.MeetingR\ameeting\"R\n" +
 	"\x15ConveneMeetingRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"L\n" +
-	"\x16ConveneMeetingResponse\x122\n" +
-	"\ameeting\x18\x01 \x01(\v2\x18.joseph.apafa.v1.MeetingR\ameeting\"\xa8\x01\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"K\n" +
+	"\x16ConveneMeetingResponse\x121\n" +
+	"\ameeting\x18\x01 \x01(\v2\x17.ltedu.apafa.v1.MeetingR\ameeting\"\xa8\x01\n" +
 	"\x18RescheduleMeetingRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12!\n" +
 	"\fscheduled_at\x18\x03 \x01(\tR\vscheduledAt\x12\x16\n" +
 	"\x06reason\x18\x04 \x01(\tR\x06reason\x12\x16\n" +
-	"\x06notify\x18\x05 \x01(\bR\x06notify\"O\n" +
-	"\x19RescheduleMeetingResponse\x122\n" +
-	"\ameeting\x18\x01 \x01(\v2\x18.joseph.apafa.v1.MeetingR\ameeting\"\x81\x01\n" +
+	"\x06notify\x18\x05 \x01(\bR\x06notify\"N\n" +
+	"\x19RescheduleMeetingResponse\x121\n" +
+	"\ameeting\x18\x01 \x01(\v2\x17.ltedu.apafa.v1.MeetingR\ameeting\"\x81\x01\n" +
 	"\x14CancelMeetingRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x16\n" +
 	"\x06reason\x18\x03 \x01(\tR\x06reason\x12\x16\n" +
-	"\x06notify\x18\x04 \x01(\bR\x06notify\"K\n" +
-	"\x15CancelMeetingResponse\x122\n" +
-	"\ameeting\x18\x01 \x01(\v2\x18.joseph.apafa.v1.MeetingR\ameeting\"\xd6\x01\n" +
+	"\x06notify\x18\x04 \x01(\bR\x06notify\"J\n" +
+	"\x15CancelMeetingResponse\x121\n" +
+	"\ameeting\x18\x01 \x01(\v2\x17.ltedu.apafa.v1.MeetingR\ameeting\"\xd6\x01\n" +
 	"\x14RecordMinutesRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x18\n" +
@@ -1572,106 +1572,106 @@ const file_joseph_apafa_v1_apafa_proto_rawDesc = "" +
 	"\tattendees\x18\x05 \x01(\x05H\x00R\tattendees\x88\x01\x01\x12\x18\n" +
 	"\apublish\x18\x06 \x01(\bR\apublishB\f\n" +
 	"\n" +
-	"_attendees\"K\n" +
-	"\x15RecordMinutesResponse\x122\n" +
-	"\ameeting\x18\x01 \x01(\v2\x18.joseph.apafa.v1.MeetingR\ameeting\"Q\n" +
+	"_attendees\"J\n" +
+	"\x15RecordMinutesResponse\x121\n" +
+	"\ameeting\x18\x01 \x01(\v2\x17.ltedu.apafa.v1.MeetingR\ameeting\"Q\n" +
 	"\x14DeleteMeetingRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x17\n" +
-	"\x15DeleteMeetingResponse\"y\n" +
+	"\x15DeleteMeetingResponse\"x\n" +
 	"\x16SaveBoardMemberRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x124\n" +
-	"\x06member\x18\x02 \x01(\v2\x1c.joseph.apafa.v1.BoardMemberR\x06member\"O\n" +
-	"\x17SaveBoardMemberResponse\x124\n" +
-	"\x06member\x18\x01 \x01(\v2\x1c.joseph.apafa.v1.BoardMemberR\x06member\"U\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x123\n" +
+	"\x06member\x18\x02 \x01(\v2\x1b.ltedu.apafa.v1.BoardMemberR\x06member\"N\n" +
+	"\x17SaveBoardMemberResponse\x123\n" +
+	"\x06member\x18\x01 \x01(\v2\x1b.ltedu.apafa.v1.BoardMemberR\x06member\"U\n" +
 	"\x18DeleteBoardMemberRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x1b\n" +
-	"\x19DeleteBoardMemberResponse2\xd1\a\n" +
-	"\fApafaService\x12O\n" +
-	"\bGetApafa\x12 .joseph.apafa.v1.GetApafaRequest\x1a!.joseph.apafa.v1.GetApafaResponse\x12U\n" +
+	"\x19DeleteBoardMemberResponse2\xbd\a\n" +
+	"\fApafaService\x12M\n" +
+	"\bGetApafa\x12\x1f.ltedu.apafa.v1.GetApafaRequest\x1a .ltedu.apafa.v1.GetApafaResponse\x12S\n" +
 	"\n" +
-	"GetMeeting\x12\".joseph.apafa.v1.GetMeetingRequest\x1a#.joseph.apafa.v1.GetMeetingResponse\x12X\n" +
-	"\vSaveMeeting\x12#.joseph.apafa.v1.SaveMeetingRequest\x1a$.joseph.apafa.v1.SaveMeetingResponse\x12a\n" +
-	"\x0eConveneMeeting\x12&.joseph.apafa.v1.ConveneMeetingRequest\x1a'.joseph.apafa.v1.ConveneMeetingResponse\x12j\n" +
-	"\x11RescheduleMeeting\x12).joseph.apafa.v1.RescheduleMeetingRequest\x1a*.joseph.apafa.v1.RescheduleMeetingResponse\x12^\n" +
-	"\rCancelMeeting\x12%.joseph.apafa.v1.CancelMeetingRequest\x1a&.joseph.apafa.v1.CancelMeetingResponse\x12^\n" +
-	"\rRecordMinutes\x12%.joseph.apafa.v1.RecordMinutesRequest\x1a&.joseph.apafa.v1.RecordMinutesResponse\x12^\n" +
-	"\rDeleteMeeting\x12%.joseph.apafa.v1.DeleteMeetingRequest\x1a&.joseph.apafa.v1.DeleteMeetingResponse\x12d\n" +
-	"\x0fSaveBoardMember\x12'.joseph.apafa.v1.SaveBoardMemberRequest\x1a(.joseph.apafa.v1.SaveBoardMemberResponse\x12j\n" +
-	"\x11DeleteBoardMember\x12).joseph.apafa.v1.DeleteBoardMemberRequest\x1a*.joseph.apafa.v1.DeleteBoardMemberResponseB7Z5api/internal/adapter/inbound/grpc/gen/apafav1;apafav1b\x06proto3"
+	"GetMeeting\x12!.ltedu.apafa.v1.GetMeetingRequest\x1a\".ltedu.apafa.v1.GetMeetingResponse\x12V\n" +
+	"\vSaveMeeting\x12\".ltedu.apafa.v1.SaveMeetingRequest\x1a#.ltedu.apafa.v1.SaveMeetingResponse\x12_\n" +
+	"\x0eConveneMeeting\x12%.ltedu.apafa.v1.ConveneMeetingRequest\x1a&.ltedu.apafa.v1.ConveneMeetingResponse\x12h\n" +
+	"\x11RescheduleMeeting\x12(.ltedu.apafa.v1.RescheduleMeetingRequest\x1a).ltedu.apafa.v1.RescheduleMeetingResponse\x12\\\n" +
+	"\rCancelMeeting\x12$.ltedu.apafa.v1.CancelMeetingRequest\x1a%.ltedu.apafa.v1.CancelMeetingResponse\x12\\\n" +
+	"\rRecordMinutes\x12$.ltedu.apafa.v1.RecordMinutesRequest\x1a%.ltedu.apafa.v1.RecordMinutesResponse\x12\\\n" +
+	"\rDeleteMeeting\x12$.ltedu.apafa.v1.DeleteMeetingRequest\x1a%.ltedu.apafa.v1.DeleteMeetingResponse\x12b\n" +
+	"\x0fSaveBoardMember\x12&.ltedu.apafa.v1.SaveBoardMemberRequest\x1a'.ltedu.apafa.v1.SaveBoardMemberResponse\x12h\n" +
+	"\x11DeleteBoardMember\x12(.ltedu.apafa.v1.DeleteBoardMemberRequest\x1a).ltedu.apafa.v1.DeleteBoardMemberResponseB7Z5api/internal/adapter/inbound/grpc/gen/apafav1;apafav1b\x06proto3"
 
 var (
-	file_joseph_apafa_v1_apafa_proto_rawDescOnce sync.Once
-	file_joseph_apafa_v1_apafa_proto_rawDescData []byte
+	file_ltedu_apafa_v1_apafa_proto_rawDescOnce sync.Once
+	file_ltedu_apafa_v1_apafa_proto_rawDescData []byte
 )
 
-func file_joseph_apafa_v1_apafa_proto_rawDescGZIP() []byte {
-	file_joseph_apafa_v1_apafa_proto_rawDescOnce.Do(func() {
-		file_joseph_apafa_v1_apafa_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_apafa_v1_apafa_proto_rawDesc), len(file_joseph_apafa_v1_apafa_proto_rawDesc)))
+func file_ltedu_apafa_v1_apafa_proto_rawDescGZIP() []byte {
+	file_ltedu_apafa_v1_apafa_proto_rawDescOnce.Do(func() {
+		file_ltedu_apafa_v1_apafa_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_apafa_v1_apafa_proto_rawDesc), len(file_ltedu_apafa_v1_apafa_proto_rawDesc)))
 	})
-	return file_joseph_apafa_v1_apafa_proto_rawDescData
+	return file_ltedu_apafa_v1_apafa_proto_rawDescData
 }
 
-var file_joseph_apafa_v1_apafa_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
-var file_joseph_apafa_v1_apafa_proto_goTypes = []any{
-	(*Meeting)(nil),                   // 0: joseph.apafa.v1.Meeting
-	(*BoardMember)(nil),               // 1: joseph.apafa.v1.BoardMember
-	(*Fees)(nil),                      // 2: joseph.apafa.v1.Fees
-	(*GetApafaRequest)(nil),           // 3: joseph.apafa.v1.GetApafaRequest
-	(*GetApafaResponse)(nil),          // 4: joseph.apafa.v1.GetApafaResponse
-	(*GetMeetingRequest)(nil),         // 5: joseph.apafa.v1.GetMeetingRequest
-	(*GetMeetingResponse)(nil),        // 6: joseph.apafa.v1.GetMeetingResponse
-	(*SaveMeetingRequest)(nil),        // 7: joseph.apafa.v1.SaveMeetingRequest
-	(*SaveMeetingResponse)(nil),       // 8: joseph.apafa.v1.SaveMeetingResponse
-	(*ConveneMeetingRequest)(nil),     // 9: joseph.apafa.v1.ConveneMeetingRequest
-	(*ConveneMeetingResponse)(nil),    // 10: joseph.apafa.v1.ConveneMeetingResponse
-	(*RescheduleMeetingRequest)(nil),  // 11: joseph.apafa.v1.RescheduleMeetingRequest
-	(*RescheduleMeetingResponse)(nil), // 12: joseph.apafa.v1.RescheduleMeetingResponse
-	(*CancelMeetingRequest)(nil),      // 13: joseph.apafa.v1.CancelMeetingRequest
-	(*CancelMeetingResponse)(nil),     // 14: joseph.apafa.v1.CancelMeetingResponse
-	(*RecordMinutesRequest)(nil),      // 15: joseph.apafa.v1.RecordMinutesRequest
-	(*RecordMinutesResponse)(nil),     // 16: joseph.apafa.v1.RecordMinutesResponse
-	(*DeleteMeetingRequest)(nil),      // 17: joseph.apafa.v1.DeleteMeetingRequest
-	(*DeleteMeetingResponse)(nil),     // 18: joseph.apafa.v1.DeleteMeetingResponse
-	(*SaveBoardMemberRequest)(nil),    // 19: joseph.apafa.v1.SaveBoardMemberRequest
-	(*SaveBoardMemberResponse)(nil),   // 20: joseph.apafa.v1.SaveBoardMemberResponse
-	(*DeleteBoardMemberRequest)(nil),  // 21: joseph.apafa.v1.DeleteBoardMemberRequest
-	(*DeleteBoardMemberResponse)(nil), // 22: joseph.apafa.v1.DeleteBoardMemberResponse
+var file_ltedu_apafa_v1_apafa_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
+var file_ltedu_apafa_v1_apafa_proto_goTypes = []any{
+	(*Meeting)(nil),                   // 0: ltedu.apafa.v1.Meeting
+	(*BoardMember)(nil),               // 1: ltedu.apafa.v1.BoardMember
+	(*Fees)(nil),                      // 2: ltedu.apafa.v1.Fees
+	(*GetApafaRequest)(nil),           // 3: ltedu.apafa.v1.GetApafaRequest
+	(*GetApafaResponse)(nil),          // 4: ltedu.apafa.v1.GetApafaResponse
+	(*GetMeetingRequest)(nil),         // 5: ltedu.apafa.v1.GetMeetingRequest
+	(*GetMeetingResponse)(nil),        // 6: ltedu.apafa.v1.GetMeetingResponse
+	(*SaveMeetingRequest)(nil),        // 7: ltedu.apafa.v1.SaveMeetingRequest
+	(*SaveMeetingResponse)(nil),       // 8: ltedu.apafa.v1.SaveMeetingResponse
+	(*ConveneMeetingRequest)(nil),     // 9: ltedu.apafa.v1.ConveneMeetingRequest
+	(*ConveneMeetingResponse)(nil),    // 10: ltedu.apafa.v1.ConveneMeetingResponse
+	(*RescheduleMeetingRequest)(nil),  // 11: ltedu.apafa.v1.RescheduleMeetingRequest
+	(*RescheduleMeetingResponse)(nil), // 12: ltedu.apafa.v1.RescheduleMeetingResponse
+	(*CancelMeetingRequest)(nil),      // 13: ltedu.apafa.v1.CancelMeetingRequest
+	(*CancelMeetingResponse)(nil),     // 14: ltedu.apafa.v1.CancelMeetingResponse
+	(*RecordMinutesRequest)(nil),      // 15: ltedu.apafa.v1.RecordMinutesRequest
+	(*RecordMinutesResponse)(nil),     // 16: ltedu.apafa.v1.RecordMinutesResponse
+	(*DeleteMeetingRequest)(nil),      // 17: ltedu.apafa.v1.DeleteMeetingRequest
+	(*DeleteMeetingResponse)(nil),     // 18: ltedu.apafa.v1.DeleteMeetingResponse
+	(*SaveBoardMemberRequest)(nil),    // 19: ltedu.apafa.v1.SaveBoardMemberRequest
+	(*SaveBoardMemberResponse)(nil),   // 20: ltedu.apafa.v1.SaveBoardMemberResponse
+	(*DeleteBoardMemberRequest)(nil),  // 21: ltedu.apafa.v1.DeleteBoardMemberRequest
+	(*DeleteBoardMemberResponse)(nil), // 22: ltedu.apafa.v1.DeleteBoardMemberResponse
 }
-var file_joseph_apafa_v1_apafa_proto_depIdxs = []int32{
-	0,  // 0: joseph.apafa.v1.GetApafaResponse.meetings:type_name -> joseph.apafa.v1.Meeting
-	1,  // 1: joseph.apafa.v1.GetApafaResponse.board:type_name -> joseph.apafa.v1.BoardMember
-	2,  // 2: joseph.apafa.v1.GetApafaResponse.fees:type_name -> joseph.apafa.v1.Fees
-	0,  // 3: joseph.apafa.v1.GetMeetingResponse.meeting:type_name -> joseph.apafa.v1.Meeting
-	0,  // 4: joseph.apafa.v1.SaveMeetingRequest.meeting:type_name -> joseph.apafa.v1.Meeting
-	0,  // 5: joseph.apafa.v1.SaveMeetingResponse.meeting:type_name -> joseph.apafa.v1.Meeting
-	0,  // 6: joseph.apafa.v1.ConveneMeetingResponse.meeting:type_name -> joseph.apafa.v1.Meeting
-	0,  // 7: joseph.apafa.v1.RescheduleMeetingResponse.meeting:type_name -> joseph.apafa.v1.Meeting
-	0,  // 8: joseph.apafa.v1.CancelMeetingResponse.meeting:type_name -> joseph.apafa.v1.Meeting
-	0,  // 9: joseph.apafa.v1.RecordMinutesResponse.meeting:type_name -> joseph.apafa.v1.Meeting
-	1,  // 10: joseph.apafa.v1.SaveBoardMemberRequest.member:type_name -> joseph.apafa.v1.BoardMember
-	1,  // 11: joseph.apafa.v1.SaveBoardMemberResponse.member:type_name -> joseph.apafa.v1.BoardMember
-	3,  // 12: joseph.apafa.v1.ApafaService.GetApafa:input_type -> joseph.apafa.v1.GetApafaRequest
-	5,  // 13: joseph.apafa.v1.ApafaService.GetMeeting:input_type -> joseph.apafa.v1.GetMeetingRequest
-	7,  // 14: joseph.apafa.v1.ApafaService.SaveMeeting:input_type -> joseph.apafa.v1.SaveMeetingRequest
-	9,  // 15: joseph.apafa.v1.ApafaService.ConveneMeeting:input_type -> joseph.apafa.v1.ConveneMeetingRequest
-	11, // 16: joseph.apafa.v1.ApafaService.RescheduleMeeting:input_type -> joseph.apafa.v1.RescheduleMeetingRequest
-	13, // 17: joseph.apafa.v1.ApafaService.CancelMeeting:input_type -> joseph.apafa.v1.CancelMeetingRequest
-	15, // 18: joseph.apafa.v1.ApafaService.RecordMinutes:input_type -> joseph.apafa.v1.RecordMinutesRequest
-	17, // 19: joseph.apafa.v1.ApafaService.DeleteMeeting:input_type -> joseph.apafa.v1.DeleteMeetingRequest
-	19, // 20: joseph.apafa.v1.ApafaService.SaveBoardMember:input_type -> joseph.apafa.v1.SaveBoardMemberRequest
-	21, // 21: joseph.apafa.v1.ApafaService.DeleteBoardMember:input_type -> joseph.apafa.v1.DeleteBoardMemberRequest
-	4,  // 22: joseph.apafa.v1.ApafaService.GetApafa:output_type -> joseph.apafa.v1.GetApafaResponse
-	6,  // 23: joseph.apafa.v1.ApafaService.GetMeeting:output_type -> joseph.apafa.v1.GetMeetingResponse
-	8,  // 24: joseph.apafa.v1.ApafaService.SaveMeeting:output_type -> joseph.apafa.v1.SaveMeetingResponse
-	10, // 25: joseph.apafa.v1.ApafaService.ConveneMeeting:output_type -> joseph.apafa.v1.ConveneMeetingResponse
-	12, // 26: joseph.apafa.v1.ApafaService.RescheduleMeeting:output_type -> joseph.apafa.v1.RescheduleMeetingResponse
-	14, // 27: joseph.apafa.v1.ApafaService.CancelMeeting:output_type -> joseph.apafa.v1.CancelMeetingResponse
-	16, // 28: joseph.apafa.v1.ApafaService.RecordMinutes:output_type -> joseph.apafa.v1.RecordMinutesResponse
-	18, // 29: joseph.apafa.v1.ApafaService.DeleteMeeting:output_type -> joseph.apafa.v1.DeleteMeetingResponse
-	20, // 30: joseph.apafa.v1.ApafaService.SaveBoardMember:output_type -> joseph.apafa.v1.SaveBoardMemberResponse
-	22, // 31: joseph.apafa.v1.ApafaService.DeleteBoardMember:output_type -> joseph.apafa.v1.DeleteBoardMemberResponse
+var file_ltedu_apafa_v1_apafa_proto_depIdxs = []int32{
+	0,  // 0: ltedu.apafa.v1.GetApafaResponse.meetings:type_name -> ltedu.apafa.v1.Meeting
+	1,  // 1: ltedu.apafa.v1.GetApafaResponse.board:type_name -> ltedu.apafa.v1.BoardMember
+	2,  // 2: ltedu.apafa.v1.GetApafaResponse.fees:type_name -> ltedu.apafa.v1.Fees
+	0,  // 3: ltedu.apafa.v1.GetMeetingResponse.meeting:type_name -> ltedu.apafa.v1.Meeting
+	0,  // 4: ltedu.apafa.v1.SaveMeetingRequest.meeting:type_name -> ltedu.apafa.v1.Meeting
+	0,  // 5: ltedu.apafa.v1.SaveMeetingResponse.meeting:type_name -> ltedu.apafa.v1.Meeting
+	0,  // 6: ltedu.apafa.v1.ConveneMeetingResponse.meeting:type_name -> ltedu.apafa.v1.Meeting
+	0,  // 7: ltedu.apafa.v1.RescheduleMeetingResponse.meeting:type_name -> ltedu.apafa.v1.Meeting
+	0,  // 8: ltedu.apafa.v1.CancelMeetingResponse.meeting:type_name -> ltedu.apafa.v1.Meeting
+	0,  // 9: ltedu.apafa.v1.RecordMinutesResponse.meeting:type_name -> ltedu.apafa.v1.Meeting
+	1,  // 10: ltedu.apafa.v1.SaveBoardMemberRequest.member:type_name -> ltedu.apafa.v1.BoardMember
+	1,  // 11: ltedu.apafa.v1.SaveBoardMemberResponse.member:type_name -> ltedu.apafa.v1.BoardMember
+	3,  // 12: ltedu.apafa.v1.ApafaService.GetApafa:input_type -> ltedu.apafa.v1.GetApafaRequest
+	5,  // 13: ltedu.apafa.v1.ApafaService.GetMeeting:input_type -> ltedu.apafa.v1.GetMeetingRequest
+	7,  // 14: ltedu.apafa.v1.ApafaService.SaveMeeting:input_type -> ltedu.apafa.v1.SaveMeetingRequest
+	9,  // 15: ltedu.apafa.v1.ApafaService.ConveneMeeting:input_type -> ltedu.apafa.v1.ConveneMeetingRequest
+	11, // 16: ltedu.apafa.v1.ApafaService.RescheduleMeeting:input_type -> ltedu.apafa.v1.RescheduleMeetingRequest
+	13, // 17: ltedu.apafa.v1.ApafaService.CancelMeeting:input_type -> ltedu.apafa.v1.CancelMeetingRequest
+	15, // 18: ltedu.apafa.v1.ApafaService.RecordMinutes:input_type -> ltedu.apafa.v1.RecordMinutesRequest
+	17, // 19: ltedu.apafa.v1.ApafaService.DeleteMeeting:input_type -> ltedu.apafa.v1.DeleteMeetingRequest
+	19, // 20: ltedu.apafa.v1.ApafaService.SaveBoardMember:input_type -> ltedu.apafa.v1.SaveBoardMemberRequest
+	21, // 21: ltedu.apafa.v1.ApafaService.DeleteBoardMember:input_type -> ltedu.apafa.v1.DeleteBoardMemberRequest
+	4,  // 22: ltedu.apafa.v1.ApafaService.GetApafa:output_type -> ltedu.apafa.v1.GetApafaResponse
+	6,  // 23: ltedu.apafa.v1.ApafaService.GetMeeting:output_type -> ltedu.apafa.v1.GetMeetingResponse
+	8,  // 24: ltedu.apafa.v1.ApafaService.SaveMeeting:output_type -> ltedu.apafa.v1.SaveMeetingResponse
+	10, // 25: ltedu.apafa.v1.ApafaService.ConveneMeeting:output_type -> ltedu.apafa.v1.ConveneMeetingResponse
+	12, // 26: ltedu.apafa.v1.ApafaService.RescheduleMeeting:output_type -> ltedu.apafa.v1.RescheduleMeetingResponse
+	14, // 27: ltedu.apafa.v1.ApafaService.CancelMeeting:output_type -> ltedu.apafa.v1.CancelMeetingResponse
+	16, // 28: ltedu.apafa.v1.ApafaService.RecordMinutes:output_type -> ltedu.apafa.v1.RecordMinutesResponse
+	18, // 29: ltedu.apafa.v1.ApafaService.DeleteMeeting:output_type -> ltedu.apafa.v1.DeleteMeetingResponse
+	20, // 30: ltedu.apafa.v1.ApafaService.SaveBoardMember:output_type -> ltedu.apafa.v1.SaveBoardMemberResponse
+	22, // 31: ltedu.apafa.v1.ApafaService.DeleteBoardMember:output_type -> ltedu.apafa.v1.DeleteBoardMemberResponse
 	22, // [22:32] is the sub-list for method output_type
 	12, // [12:22] is the sub-list for method input_type
 	12, // [12:12] is the sub-list for extension type_name
@@ -1679,28 +1679,28 @@ var file_joseph_apafa_v1_apafa_proto_depIdxs = []int32{
 	0,  // [0:12] is the sub-list for field type_name
 }
 
-func init() { file_joseph_apafa_v1_apafa_proto_init() }
-func file_joseph_apafa_v1_apafa_proto_init() {
-	if File_joseph_apafa_v1_apafa_proto != nil {
+func init() { file_ltedu_apafa_v1_apafa_proto_init() }
+func file_ltedu_apafa_v1_apafa_proto_init() {
+	if File_ltedu_apafa_v1_apafa_proto != nil {
 		return
 	}
-	file_joseph_apafa_v1_apafa_proto_msgTypes[0].OneofWrappers = []any{}
-	file_joseph_apafa_v1_apafa_proto_msgTypes[15].OneofWrappers = []any{}
+	file_ltedu_apafa_v1_apafa_proto_msgTypes[0].OneofWrappers = []any{}
+	file_ltedu_apafa_v1_apafa_proto_msgTypes[15].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_apafa_v1_apafa_proto_rawDesc), len(file_joseph_apafa_v1_apafa_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_apafa_v1_apafa_proto_rawDesc), len(file_ltedu_apafa_v1_apafa_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_apafa_v1_apafa_proto_goTypes,
-		DependencyIndexes: file_joseph_apafa_v1_apafa_proto_depIdxs,
-		MessageInfos:      file_joseph_apafa_v1_apafa_proto_msgTypes,
+		GoTypes:           file_ltedu_apafa_v1_apafa_proto_goTypes,
+		DependencyIndexes: file_ltedu_apafa_v1_apafa_proto_depIdxs,
+		MessageInfos:      file_ltedu_apafa_v1_apafa_proto_msgTypes,
 	}.Build()
-	File_joseph_apafa_v1_apafa_proto = out.File
-	file_joseph_apafa_v1_apafa_proto_goTypes = nil
-	file_joseph_apafa_v1_apafa_proto_depIdxs = nil
+	File_ltedu_apafa_v1_apafa_proto = out.File
+	file_ltedu_apafa_v1_apafa_proto_goTypes = nil
+	file_ltedu_apafa_v1_apafa_proto_depIdxs = nil
 }

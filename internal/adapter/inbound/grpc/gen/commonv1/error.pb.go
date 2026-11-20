@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/common/v1/error.proto
+// source: ltedu/common/v1/error.proto
 
-// Types shared by every joseph-api gRPC service
+// Types shared by every lt-edu-api gRPC service
 
 package commonv1
 
@@ -23,7 +23,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Every failure joseph-api expects carries one ErrorDetail in the gRPC status details: the same code, message and
+// Every failure lt-edu-api expects carries one ErrorDetail in the gRPC status details: the same code, message and
 // per-field errors the HTTP API sends in {"error": {...}}
 type ErrorDetail struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -39,7 +39,7 @@ type ErrorDetail struct {
 
 func (x *ErrorDetail) Reset() {
 	*x = ErrorDetail{}
-	mi := &file_joseph_common_v1_error_proto_msgTypes[0]
+	mi := &file_ltedu_common_v1_error_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -51,7 +51,7 @@ func (x *ErrorDetail) String() string {
 func (*ErrorDetail) ProtoMessage() {}
 
 func (x *ErrorDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_common_v1_error_proto_msgTypes[0]
+	mi := &file_ltedu_common_v1_error_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -64,7 +64,7 @@ func (x *ErrorDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ErrorDetail.ProtoReflect.Descriptor instead.
 func (*ErrorDetail) Descriptor() ([]byte, []int) {
-	return file_joseph_common_v1_error_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_common_v1_error_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ErrorDetail) GetCode() string {
@@ -88,38 +88,38 @@ func (x *ErrorDetail) GetFields() map[string]string {
 	return nil
 }
 
-var File_joseph_common_v1_error_proto protoreflect.FileDescriptor
+var File_ltedu_common_v1_error_proto protoreflect.FileDescriptor
 
-const file_joseph_common_v1_error_proto_rawDesc = "" +
+const file_ltedu_common_v1_error_proto_rawDesc = "" +
 	"\n" +
-	"\x1cjoseph/common/v1/error.proto\x12\x10joseph.common.v1\"\xb9\x01\n" +
+	"\x1bltedu/common/v1/error.proto\x12\x0fltedu.common.v1\"\xb8\x01\n" +
 	"\vErrorDetail\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\tR\x04code\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\x12A\n" +
-	"\x06fields\x18\x03 \x03(\v2).joseph.common.v1.ErrorDetail.FieldsEntryR\x06fields\x1a9\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage\x12@\n" +
+	"\x06fields\x18\x03 \x03(\v2(.ltedu.common.v1.ErrorDetail.FieldsEntryR\x06fields\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B9Z7api/internal/adapter/inbound/grpc/gen/commonv1;commonv1b\x06proto3"
 
 var (
-	file_joseph_common_v1_error_proto_rawDescOnce sync.Once
-	file_joseph_common_v1_error_proto_rawDescData []byte
+	file_ltedu_common_v1_error_proto_rawDescOnce sync.Once
+	file_ltedu_common_v1_error_proto_rawDescData []byte
 )
 
-func file_joseph_common_v1_error_proto_rawDescGZIP() []byte {
-	file_joseph_common_v1_error_proto_rawDescOnce.Do(func() {
-		file_joseph_common_v1_error_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_common_v1_error_proto_rawDesc), len(file_joseph_common_v1_error_proto_rawDesc)))
+func file_ltedu_common_v1_error_proto_rawDescGZIP() []byte {
+	file_ltedu_common_v1_error_proto_rawDescOnce.Do(func() {
+		file_ltedu_common_v1_error_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_common_v1_error_proto_rawDesc), len(file_ltedu_common_v1_error_proto_rawDesc)))
 	})
-	return file_joseph_common_v1_error_proto_rawDescData
+	return file_ltedu_common_v1_error_proto_rawDescData
 }
 
-var file_joseph_common_v1_error_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_joseph_common_v1_error_proto_goTypes = []any{
-	(*ErrorDetail)(nil), // 0: joseph.common.v1.ErrorDetail
-	nil,                 // 1: joseph.common.v1.ErrorDetail.FieldsEntry
+var file_ltedu_common_v1_error_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_ltedu_common_v1_error_proto_goTypes = []any{
+	(*ErrorDetail)(nil), // 0: ltedu.common.v1.ErrorDetail
+	nil,                 // 1: ltedu.common.v1.ErrorDetail.FieldsEntry
 }
-var file_joseph_common_v1_error_proto_depIdxs = []int32{
-	1, // 0: joseph.common.v1.ErrorDetail.fields:type_name -> joseph.common.v1.ErrorDetail.FieldsEntry
+var file_ltedu_common_v1_error_proto_depIdxs = []int32{
+	1, // 0: ltedu.common.v1.ErrorDetail.fields:type_name -> ltedu.common.v1.ErrorDetail.FieldsEntry
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -127,26 +127,26 @@ var file_joseph_common_v1_error_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_joseph_common_v1_error_proto_init() }
-func file_joseph_common_v1_error_proto_init() {
-	if File_joseph_common_v1_error_proto != nil {
+func init() { file_ltedu_common_v1_error_proto_init() }
+func file_ltedu_common_v1_error_proto_init() {
+	if File_ltedu_common_v1_error_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_common_v1_error_proto_rawDesc), len(file_joseph_common_v1_error_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_common_v1_error_proto_rawDesc), len(file_ltedu_common_v1_error_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_joseph_common_v1_error_proto_goTypes,
-		DependencyIndexes: file_joseph_common_v1_error_proto_depIdxs,
-		MessageInfos:      file_joseph_common_v1_error_proto_msgTypes,
+		GoTypes:           file_ltedu_common_v1_error_proto_goTypes,
+		DependencyIndexes: file_ltedu_common_v1_error_proto_depIdxs,
+		MessageInfos:      file_ltedu_common_v1_error_proto_msgTypes,
 	}.Build()
-	File_joseph_common_v1_error_proto = out.File
-	file_joseph_common_v1_error_proto_goTypes = nil
-	file_joseph_common_v1_error_proto_depIdxs = nil
+	File_ltedu_common_v1_error_proto = out.File
+	file_ltedu_common_v1_error_proto_goTypes = nil
+	file_ltedu_common_v1_error_proto_depIdxs = nil
 }

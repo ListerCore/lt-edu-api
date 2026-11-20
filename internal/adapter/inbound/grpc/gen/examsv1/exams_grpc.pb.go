@@ -2,10 +2,10 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/exams/v1/exams.proto
+// source: ltedu/exams/v1/exams.proto
 
 // Academies (phase 8 of docs/plan-academico.md): question bank, mock admission exams, answer sheets, rankings and
-// admissions. Same metadata and institution scoping as joseph.academic.v1. Courses are identified by the code they
+// admissions. Same metadata and institution scoping as ltedu.academic.v1. Courses are identified by the code they
 // share across the areas' plans. Answers: one character per question, A–E or '-' blank
 
 package examsv1
@@ -23,28 +23,28 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ExamsService_GetOverview_FullMethodName      = "/joseph.exams.v1.ExamsService/GetOverview"
-	ExamsService_ListQuestions_FullMethodName    = "/joseph.exams.v1.ExamsService/ListQuestions"
-	ExamsService_SaveQuestion_FullMethodName     = "/joseph.exams.v1.ExamsService/SaveQuestion"
-	ExamsService_DeleteQuestion_FullMethodName   = "/joseph.exams.v1.ExamsService/DeleteQuestion"
-	ExamsService_GetMock_FullMethodName          = "/joseph.exams.v1.ExamsService/GetMock"
-	ExamsService_SaveMock_FullMethodName         = "/joseph.exams.v1.ExamsService/SaveMock"
-	ExamsService_DeleteMock_FullMethodName       = "/joseph.exams.v1.ExamsService/DeleteMock"
-	ExamsService_SuggestStructure_FullMethodName = "/joseph.exams.v1.ExamsService/SuggestStructure"
-	ExamsService_SetStructure_FullMethodName     = "/joseph.exams.v1.ExamsService/SetStructure"
-	ExamsService_FillFromBank_FullMethodName     = "/joseph.exams.v1.ExamsService/FillFromBank"
-	ExamsService_SaveKey_FullMethodName          = "/joseph.exams.v1.ExamsService/SaveKey"
-	ExamsService_PublishMock_FullMethodName      = "/joseph.exams.v1.ExamsService/PublishMock"
-	ExamsService_GetBooklet_FullMethodName       = "/joseph.exams.v1.ExamsService/GetBooklet"
-	ExamsService_LoadSheets_FullMethodName       = "/joseph.exams.v1.ExamsService/LoadSheets"
-	ExamsService_LoadReaderFile_FullMethodName   = "/joseph.exams.v1.ExamsService/LoadReaderFile"
-	ExamsService_DeleteSheet_FullMethodName      = "/joseph.exams.v1.ExamsService/DeleteSheet"
-	ExamsService_GetResults_FullMethodName       = "/joseph.exams.v1.ExamsService/GetResults"
-	ExamsService_GetStudentExams_FullMethodName  = "/joseph.exams.v1.ExamsService/GetStudentExams"
-	ExamsService_MyExams_FullMethodName          = "/joseph.exams.v1.ExamsService/MyExams"
-	ExamsService_ListAdmissions_FullMethodName   = "/joseph.exams.v1.ExamsService/ListAdmissions"
-	ExamsService_SaveAdmission_FullMethodName    = "/joseph.exams.v1.ExamsService/SaveAdmission"
-	ExamsService_DeleteAdmission_FullMethodName  = "/joseph.exams.v1.ExamsService/DeleteAdmission"
+	ExamsService_GetOverview_FullMethodName      = "/ltedu.exams.v1.ExamsService/GetOverview"
+	ExamsService_ListQuestions_FullMethodName    = "/ltedu.exams.v1.ExamsService/ListQuestions"
+	ExamsService_SaveQuestion_FullMethodName     = "/ltedu.exams.v1.ExamsService/SaveQuestion"
+	ExamsService_DeleteQuestion_FullMethodName   = "/ltedu.exams.v1.ExamsService/DeleteQuestion"
+	ExamsService_GetMock_FullMethodName          = "/ltedu.exams.v1.ExamsService/GetMock"
+	ExamsService_SaveMock_FullMethodName         = "/ltedu.exams.v1.ExamsService/SaveMock"
+	ExamsService_DeleteMock_FullMethodName       = "/ltedu.exams.v1.ExamsService/DeleteMock"
+	ExamsService_SuggestStructure_FullMethodName = "/ltedu.exams.v1.ExamsService/SuggestStructure"
+	ExamsService_SetStructure_FullMethodName     = "/ltedu.exams.v1.ExamsService/SetStructure"
+	ExamsService_FillFromBank_FullMethodName     = "/ltedu.exams.v1.ExamsService/FillFromBank"
+	ExamsService_SaveKey_FullMethodName          = "/ltedu.exams.v1.ExamsService/SaveKey"
+	ExamsService_PublishMock_FullMethodName      = "/ltedu.exams.v1.ExamsService/PublishMock"
+	ExamsService_GetBooklet_FullMethodName       = "/ltedu.exams.v1.ExamsService/GetBooklet"
+	ExamsService_LoadSheets_FullMethodName       = "/ltedu.exams.v1.ExamsService/LoadSheets"
+	ExamsService_LoadReaderFile_FullMethodName   = "/ltedu.exams.v1.ExamsService/LoadReaderFile"
+	ExamsService_DeleteSheet_FullMethodName      = "/ltedu.exams.v1.ExamsService/DeleteSheet"
+	ExamsService_GetResults_FullMethodName       = "/ltedu.exams.v1.ExamsService/GetResults"
+	ExamsService_GetStudentExams_FullMethodName  = "/ltedu.exams.v1.ExamsService/GetStudentExams"
+	ExamsService_MyExams_FullMethodName          = "/ltedu.exams.v1.ExamsService/MyExams"
+	ExamsService_ListAdmissions_FullMethodName   = "/ltedu.exams.v1.ExamsService/ListAdmissions"
+	ExamsService_SaveAdmission_FullMethodName    = "/ltedu.exams.v1.ExamsService/SaveAdmission"
+	ExamsService_DeleteAdmission_FullMethodName  = "/ltedu.exams.v1.ExamsService/DeleteAdmission"
 )
 
 // ExamsServiceClient is the client API for ExamsService service.
@@ -836,7 +836,7 @@ func _ExamsService_DeleteAdmission_Handler(srv interface{}, ctx context.Context,
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ExamsService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.exams.v1.ExamsService",
+	ServiceName: "ltedu.exams.v1.ExamsService",
 	HandlerType: (*ExamsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -929,5 +929,5 @@ var ExamsService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/exams/v1/exams.proto",
+	Metadata: "ltedu/exams/v1/exams.proto",
 }

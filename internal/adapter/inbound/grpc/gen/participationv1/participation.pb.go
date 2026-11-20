@@ -2,13 +2,13 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/participation/v1/participation.proto
+// source: ltedu/participation/v1/participation.proto
 
 // Participation and permanence (docs/ceba/PLAN.md, phase E5). The platform records each action of a student as an
 // activity event (sign-in, material opened, live session, attempt, task handed in, forum post, tutoring); these
 // calls read it: the permanence of the distance sections with the institution's rule (the tutor adjusts a week with
 // a reason) and the participation of each student in a classroom room. Same metadata and institution scoping as
-// joseph.academic.v1
+// ltedu.academic.v1
 
 package participationv1
 
@@ -44,7 +44,7 @@ type PermanenceRule struct {
 
 func (x *PermanenceRule) Reset() {
 	*x = PermanenceRule{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[0]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -56,7 +56,7 @@ func (x *PermanenceRule) String() string {
 func (*PermanenceRule) ProtoMessage() {}
 
 func (x *PermanenceRule) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[0]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -69,7 +69,7 @@ func (x *PermanenceRule) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PermanenceRule.ProtoReflect.Descriptor instead.
 func (*PermanenceRule) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *PermanenceRule) GetWindowDays() int32 {
@@ -130,7 +130,7 @@ type DistanceSection struct {
 
 func (x *DistanceSection) Reset() {
 	*x = DistanceSection{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[1]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -142,7 +142,7 @@ func (x *DistanceSection) String() string {
 func (*DistanceSection) ProtoMessage() {}
 
 func (x *DistanceSection) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[1]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -155,7 +155,7 @@ func (x *DistanceSection) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DistanceSection.ProtoReflect.Descriptor instead.
 func (*DistanceSection) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *DistanceSection) GetId() string {
@@ -218,7 +218,7 @@ type GetPermanenceBoardRequest struct {
 
 func (x *GetPermanenceBoardRequest) Reset() {
 	*x = GetPermanenceBoardRequest{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[2]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -230,7 +230,7 @@ func (x *GetPermanenceBoardRequest) String() string {
 func (*GetPermanenceBoardRequest) ProtoMessage() {}
 
 func (x *GetPermanenceBoardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[2]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -243,7 +243,7 @@ func (x *GetPermanenceBoardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPermanenceBoardRequest.ProtoReflect.Descriptor instead.
 func (*GetPermanenceBoardRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetPermanenceBoardRequest) GetInstitutionSlug() string {
@@ -272,7 +272,7 @@ type GetPermanenceBoardResponse struct {
 
 func (x *GetPermanenceBoardResponse) Reset() {
 	*x = GetPermanenceBoardResponse{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[3]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -284,7 +284,7 @@ func (x *GetPermanenceBoardResponse) String() string {
 func (*GetPermanenceBoardResponse) ProtoMessage() {}
 
 func (x *GetPermanenceBoardResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[3]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -297,7 +297,7 @@ func (x *GetPermanenceBoardResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPermanenceBoardResponse.ProtoReflect.Descriptor instead.
 func (*GetPermanenceBoardResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetPermanenceBoardResponse) GetRule() *PermanenceRule {
@@ -338,7 +338,7 @@ type SavePermanenceRuleRequest struct {
 
 func (x *SavePermanenceRuleRequest) Reset() {
 	*x = SavePermanenceRuleRequest{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[4]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -350,7 +350,7 @@ func (x *SavePermanenceRuleRequest) String() string {
 func (*SavePermanenceRuleRequest) ProtoMessage() {}
 
 func (x *SavePermanenceRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[4]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -363,7 +363,7 @@ func (x *SavePermanenceRuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SavePermanenceRuleRequest.ProtoReflect.Descriptor instead.
 func (*SavePermanenceRuleRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SavePermanenceRuleRequest) GetInstitutionSlug() string {
@@ -389,7 +389,7 @@ type SavePermanenceRuleResponse struct {
 
 func (x *SavePermanenceRuleResponse) Reset() {
 	*x = SavePermanenceRuleResponse{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[5]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -401,7 +401,7 @@ func (x *SavePermanenceRuleResponse) String() string {
 func (*SavePermanenceRuleResponse) ProtoMessage() {}
 
 func (x *SavePermanenceRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[5]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -414,7 +414,7 @@ func (x *SavePermanenceRuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SavePermanenceRuleResponse.ProtoReflect.Descriptor instead.
 func (*SavePermanenceRuleResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SavePermanenceRuleResponse) GetRule() *PermanenceRule {
@@ -439,7 +439,7 @@ type PermanenceWindow struct {
 
 func (x *PermanenceWindow) Reset() {
 	*x = PermanenceWindow{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[6]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -451,7 +451,7 @@ func (x *PermanenceWindow) String() string {
 func (*PermanenceWindow) ProtoMessage() {}
 
 func (x *PermanenceWindow) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[6]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -464,7 +464,7 @@ func (x *PermanenceWindow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PermanenceWindow.ProtoReflect.Descriptor instead.
 func (*PermanenceWindow) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *PermanenceWindow) GetStart() string {
@@ -526,7 +526,7 @@ type Activity struct {
 
 func (x *Activity) Reset() {
 	*x = Activity{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[7]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -538,7 +538,7 @@ func (x *Activity) String() string {
 func (*Activity) ProtoMessage() {}
 
 func (x *Activity) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[7]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -551,7 +551,7 @@ func (x *Activity) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Activity.ProtoReflect.Descriptor instead.
 func (*Activity) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Activity) GetActiveDays() int32 {
@@ -637,7 +637,7 @@ type StudentPermanence struct {
 
 func (x *StudentPermanence) Reset() {
 	*x = StudentPermanence{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[8]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -649,7 +649,7 @@ func (x *StudentPermanence) String() string {
 func (*StudentPermanence) ProtoMessage() {}
 
 func (x *StudentPermanence) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[8]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -662,7 +662,7 @@ func (x *StudentPermanence) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StudentPermanence.ProtoReflect.Descriptor instead.
 func (*StudentPermanence) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *StudentPermanence) GetEnrollmentId() string {
@@ -752,7 +752,7 @@ type GetSectionPermanenceRequest struct {
 
 func (x *GetSectionPermanenceRequest) Reset() {
 	*x = GetSectionPermanenceRequest{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[9]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -764,7 +764,7 @@ func (x *GetSectionPermanenceRequest) String() string {
 func (*GetSectionPermanenceRequest) ProtoMessage() {}
 
 func (x *GetSectionPermanenceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[9]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -777,7 +777,7 @@ func (x *GetSectionPermanenceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSectionPermanenceRequest.ProtoReflect.Descriptor instead.
 func (*GetSectionPermanenceRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GetSectionPermanenceRequest) GetInstitutionSlug() string {
@@ -809,7 +809,7 @@ type GetSectionPermanenceResponse struct {
 
 func (x *GetSectionPermanenceResponse) Reset() {
 	*x = GetSectionPermanenceResponse{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[10]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -821,7 +821,7 @@ func (x *GetSectionPermanenceResponse) String() string {
 func (*GetSectionPermanenceResponse) ProtoMessage() {}
 
 func (x *GetSectionPermanenceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[10]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -834,7 +834,7 @@ func (x *GetSectionPermanenceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSectionPermanenceResponse.ProtoReflect.Descriptor instead.
 func (*GetSectionPermanenceResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetSectionPermanenceResponse) GetLabel() string {
@@ -902,7 +902,7 @@ type AdjustPermanenceRequest struct {
 
 func (x *AdjustPermanenceRequest) Reset() {
 	*x = AdjustPermanenceRequest{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[11]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -914,7 +914,7 @@ func (x *AdjustPermanenceRequest) String() string {
 func (*AdjustPermanenceRequest) ProtoMessage() {}
 
 func (x *AdjustPermanenceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[11]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -927,7 +927,7 @@ func (x *AdjustPermanenceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdjustPermanenceRequest.ProtoReflect.Descriptor instead.
 func (*AdjustPermanenceRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AdjustPermanenceRequest) GetInstitutionSlug() string {
@@ -980,7 +980,7 @@ type AdjustPermanenceResponse struct {
 
 func (x *AdjustPermanenceResponse) Reset() {
 	*x = AdjustPermanenceResponse{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[12]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -992,7 +992,7 @@ func (x *AdjustPermanenceResponse) String() string {
 func (*AdjustPermanenceResponse) ProtoMessage() {}
 
 func (x *AdjustPermanenceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[12]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1005,7 +1005,7 @@ func (x *AdjustPermanenceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdjustPermanenceResponse.ProtoReflect.Descriptor instead.
 func (*AdjustPermanenceResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{12}
 }
 
 type RoomParticipation struct {
@@ -1028,7 +1028,7 @@ type RoomParticipation struct {
 
 func (x *RoomParticipation) Reset() {
 	*x = RoomParticipation{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[13]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1040,7 +1040,7 @@ func (x *RoomParticipation) String() string {
 func (*RoomParticipation) ProtoMessage() {}
 
 func (x *RoomParticipation) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[13]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1053,7 +1053,7 @@ func (x *RoomParticipation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RoomParticipation.ProtoReflect.Descriptor instead.
 func (*RoomParticipation) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *RoomParticipation) GetStudentId() string {
@@ -1143,7 +1143,7 @@ type GetRoomParticipationRequest struct {
 
 func (x *GetRoomParticipationRequest) Reset() {
 	*x = GetRoomParticipationRequest{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[14]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1155,7 +1155,7 @@ func (x *GetRoomParticipationRequest) String() string {
 func (*GetRoomParticipationRequest) ProtoMessage() {}
 
 func (x *GetRoomParticipationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[14]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1168,7 +1168,7 @@ func (x *GetRoomParticipationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoomParticipationRequest.ProtoReflect.Descriptor instead.
 func (*GetRoomParticipationRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetRoomParticipationRequest) GetInstitutionSlug() string {
@@ -1194,7 +1194,7 @@ type GetRoomParticipationResponse struct {
 
 func (x *GetRoomParticipationResponse) Reset() {
 	*x = GetRoomParticipationResponse{}
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[15]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1206,7 +1206,7 @@ func (x *GetRoomParticipationResponse) String() string {
 func (*GetRoomParticipationResponse) ProtoMessage() {}
 
 func (x *GetRoomParticipationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_participation_v1_participation_proto_msgTypes[15]
+	mi := &file_ltedu_participation_v1_participation_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1219,7 +1219,7 @@ func (x *GetRoomParticipationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoomParticipationResponse.ProtoReflect.Descriptor instead.
 func (*GetRoomParticipationResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_participation_v1_participation_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_participation_v1_participation_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetRoomParticipationResponse) GetStudents() []*RoomParticipation {
@@ -1229,11 +1229,11 @@ func (x *GetRoomParticipationResponse) GetStudents() []*RoomParticipation {
 	return nil
 }
 
-var File_joseph_participation_v1_participation_proto protoreflect.FileDescriptor
+var File_ltedu_participation_v1_participation_proto protoreflect.FileDescriptor
 
-const file_joseph_participation_v1_participation_proto_rawDesc = "" +
+const file_ltedu_participation_v1_participation_proto_rawDesc = "" +
 	"\n" +
-	"+joseph/participation/v1/participation.proto\x12\x17joseph.participation.v1\"\xe6\x01\n" +
+	"*ltedu/participation/v1/participation.proto\x12\x16ltedu.participation.v1\"\xe6\x01\n" +
 	"\x0ePermanenceRule\x12\x1f\n" +
 	"\vwindow_days\x18\x01 \x01(\x05R\n" +
 	"windowDays\x12&\n" +
@@ -1257,17 +1257,17 @@ const file_joseph_participation_v1_participation_proto_rawDesc = "" +
 	"\bstudents\x18\a \x01(\x05R\bstudents\"c\n" +
 	"\x19GetPermanenceBoardRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
-	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xe0\x01\n" +
-	"\x1aGetPermanenceBoardResponse\x12;\n" +
-	"\x04rule\x18\x01 \x01(\v2'.joseph.participation.v1.PermanenceRuleR\x04rule\x12\x1b\n" +
-	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12D\n" +
-	"\bsections\x18\x03 \x03(\v2(.joseph.participation.v1.DistanceSectionR\bsections\x12\"\n" +
-	"\rcan_edit_rule\x18\x04 \x01(\bR\vcanEditRule\"\x83\x01\n" +
+	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xde\x01\n" +
+	"\x1aGetPermanenceBoardResponse\x12:\n" +
+	"\x04rule\x18\x01 \x01(\v2&.ltedu.participation.v1.PermanenceRuleR\x04rule\x12\x1b\n" +
+	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12C\n" +
+	"\bsections\x18\x03 \x03(\v2'.ltedu.participation.v1.DistanceSectionR\bsections\x12\"\n" +
+	"\rcan_edit_rule\x18\x04 \x01(\bR\vcanEditRule\"\x82\x01\n" +
 	"\x19SavePermanenceRuleRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12;\n" +
-	"\x04rule\x18\x02 \x01(\v2'.joseph.participation.v1.PermanenceRuleR\x04rule\"Y\n" +
-	"\x1aSavePermanenceRuleResponse\x12;\n" +
-	"\x04rule\x18\x01 \x01(\v2'.joseph.participation.v1.PermanenceRuleR\x04rule\"\xa9\x01\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12:\n" +
+	"\x04rule\x18\x02 \x01(\v2&.ltedu.participation.v1.PermanenceRuleR\x04rule\"X\n" +
+	"\x1aSavePermanenceRuleResponse\x12:\n" +
+	"\x04rule\x18\x01 \x01(\v2&.ltedu.participation.v1.PermanenceRuleR\x04rule\"\xa9\x01\n" +
 	"\x10PermanenceWindow\x12\x14\n" +
 	"\x05start\x18\x01 \x01(\tR\x05start\x12\x10\n" +
 	"\x03end\x18\x02 \x01(\tR\x03end\x12\x1f\n" +
@@ -1286,31 +1286,31 @@ const file_joseph_participation_v1_participation_proto_rawDesc = "" +
 	"\vsubmissions\x18\x06 \x01(\x05R\vsubmissions\x12\x14\n" +
 	"\x05posts\x18\a \x01(\x05R\x05posts\x12\x1a\n" +
 	"\btutoring\x18\b \x01(\x05R\btutoring\x12\x17\n" +
-	"\alast_at\x18\t \x01(\tR\x06lastAt\"\xa4\x03\n" +
+	"\alast_at\x18\t \x01(\tR\x06lastAt\"\xa2\x03\n" +
 	"\x11StudentPermanence\x12#\n" +
 	"\renrollment_id\x18\x01 \x01(\tR\fenrollmentId\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x02 \x01(\tR\tstudentId\x12!\n" +
 	"\fstudent_name\x18\x03 \x01(\tR\vstudentName\x12!\n" +
 	"\fstudent_code\x18\x04 \x01(\tR\vstudentCode\x12\x16\n" +
-	"\x06status\x18\x05 \x01(\tR\x06status\x12C\n" +
-	"\awindows\x18\x06 \x03(\v2).joseph.participation.v1.PermanenceWindowR\awindows\x12\x18\n" +
+	"\x06status\x18\x05 \x01(\tR\x06status\x12B\n" +
+	"\awindows\x18\x06 \x03(\v2(.ltedu.participation.v1.PermanenceWindowR\awindows\x12\x18\n" +
 	"\apresent\x18\a \x01(\x05R\apresent\x12\x18\n" +
 	"\acounted\x18\b \x01(\x05R\acounted\x12\x18\n" +
-	"\apercent\x18\t \x01(\x05R\apercent\x12=\n" +
+	"\apercent\x18\t \x01(\x05R\apercent\x12<\n" +
 	"\bactivity\x18\n" +
-	" \x01(\v2!.joseph.participation.v1.ActivityR\bactivity\x12\x1b\n" +
+	" \x01(\v2 .ltedu.participation.v1.ActivityR\bactivity\x12\x1b\n" +
 	"\tidle_days\x18\v \x01(\x05R\bidleDays\"g\n" +
 	"\x1bGetSectionPermanenceRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"section_id\x18\x02 \x01(\tR\tsectionId\"\x9d\x02\n" +
+	"section_id\x18\x02 \x01(\tR\tsectionId\"\x9b\x02\n" +
 	"\x1cGetSectionPermanenceResponse\x12\x14\n" +
 	"\x05label\x18\x01 \x01(\tR\x05label\x12\x1f\n" +
 	"\vperiod_name\x18\x02 \x01(\tR\n" +
-	"periodName\x12;\n" +
-	"\x04rule\x18\x03 \x01(\v2'.joseph.participation.v1.PermanenceRuleR\x04rule\x12F\n" +
-	"\bstudents\x18\x04 \x03(\v2*.joseph.participation.v1.StudentPermanenceR\bstudents\x12\x1d\n" +
+	"periodName\x12:\n" +
+	"\x04rule\x18\x03 \x01(\v2&.ltedu.participation.v1.PermanenceRuleR\x04rule\x12E\n" +
+	"\bstudents\x18\x04 \x03(\v2).ltedu.participation.v1.StudentPermanenceR\bstudents\x12\x1d\n" +
 	"\n" +
 	"can_adjust\x18\x05 \x01(\bR\tcanAdjust\x12\x12\n" +
 	"\x04from\x18\x06 \x01(\tR\x04from\x12\x0e\n" +
@@ -1341,67 +1341,67 @@ const file_joseph_participation_v1_participation_proto_rawDesc = "" +
 	"\alast_at\x18\v \x01(\tR\x06lastAt\"a\n" +
 	"\x1bGetRoomParticipationRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
-	"\aroom_id\x18\x02 \x01(\tR\x06roomId\"f\n" +
-	"\x1cGetRoomParticipationResponse\x12F\n" +
-	"\bstudents\x18\x01 \x03(\v2*.joseph.participation.v1.RoomParticipationR\bstudents2\x99\x05\n" +
-	"\x14ParticipationService\x12}\n" +
-	"\x12GetPermanenceBoard\x122.joseph.participation.v1.GetPermanenceBoardRequest\x1a3.joseph.participation.v1.GetPermanenceBoardResponse\x12}\n" +
-	"\x12SavePermanenceRule\x122.joseph.participation.v1.SavePermanenceRuleRequest\x1a3.joseph.participation.v1.SavePermanenceRuleResponse\x12\x83\x01\n" +
-	"\x14GetSectionPermanence\x124.joseph.participation.v1.GetSectionPermanenceRequest\x1a5.joseph.participation.v1.GetSectionPermanenceResponse\x12w\n" +
-	"\x10AdjustPermanence\x120.joseph.participation.v1.AdjustPermanenceRequest\x1a1.joseph.participation.v1.AdjustPermanenceResponse\x12\x83\x01\n" +
-	"\x14GetRoomParticipation\x124.joseph.participation.v1.GetRoomParticipationRequest\x1a5.joseph.participation.v1.GetRoomParticipationResponseBGZEapi/internal/adapter/inbound/grpc/gen/participationv1;participationv1b\x06proto3"
+	"\aroom_id\x18\x02 \x01(\tR\x06roomId\"e\n" +
+	"\x1cGetRoomParticipationResponse\x12E\n" +
+	"\bstudents\x18\x01 \x03(\v2).ltedu.participation.v1.RoomParticipationR\bstudents2\x8f\x05\n" +
+	"\x14ParticipationService\x12{\n" +
+	"\x12GetPermanenceBoard\x121.ltedu.participation.v1.GetPermanenceBoardRequest\x1a2.ltedu.participation.v1.GetPermanenceBoardResponse\x12{\n" +
+	"\x12SavePermanenceRule\x121.ltedu.participation.v1.SavePermanenceRuleRequest\x1a2.ltedu.participation.v1.SavePermanenceRuleResponse\x12\x81\x01\n" +
+	"\x14GetSectionPermanence\x123.ltedu.participation.v1.GetSectionPermanenceRequest\x1a4.ltedu.participation.v1.GetSectionPermanenceResponse\x12u\n" +
+	"\x10AdjustPermanence\x12/.ltedu.participation.v1.AdjustPermanenceRequest\x1a0.ltedu.participation.v1.AdjustPermanenceResponse\x12\x81\x01\n" +
+	"\x14GetRoomParticipation\x123.ltedu.participation.v1.GetRoomParticipationRequest\x1a4.ltedu.participation.v1.GetRoomParticipationResponseBGZEapi/internal/adapter/inbound/grpc/gen/participationv1;participationv1b\x06proto3"
 
 var (
-	file_joseph_participation_v1_participation_proto_rawDescOnce sync.Once
-	file_joseph_participation_v1_participation_proto_rawDescData []byte
+	file_ltedu_participation_v1_participation_proto_rawDescOnce sync.Once
+	file_ltedu_participation_v1_participation_proto_rawDescData []byte
 )
 
-func file_joseph_participation_v1_participation_proto_rawDescGZIP() []byte {
-	file_joseph_participation_v1_participation_proto_rawDescOnce.Do(func() {
-		file_joseph_participation_v1_participation_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_participation_v1_participation_proto_rawDesc), len(file_joseph_participation_v1_participation_proto_rawDesc)))
+func file_ltedu_participation_v1_participation_proto_rawDescGZIP() []byte {
+	file_ltedu_participation_v1_participation_proto_rawDescOnce.Do(func() {
+		file_ltedu_participation_v1_participation_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_participation_v1_participation_proto_rawDesc), len(file_ltedu_participation_v1_participation_proto_rawDesc)))
 	})
-	return file_joseph_participation_v1_participation_proto_rawDescData
+	return file_ltedu_participation_v1_participation_proto_rawDescData
 }
 
-var file_joseph_participation_v1_participation_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
-var file_joseph_participation_v1_participation_proto_goTypes = []any{
-	(*PermanenceRule)(nil),               // 0: joseph.participation.v1.PermanenceRule
-	(*DistanceSection)(nil),              // 1: joseph.participation.v1.DistanceSection
-	(*GetPermanenceBoardRequest)(nil),    // 2: joseph.participation.v1.GetPermanenceBoardRequest
-	(*GetPermanenceBoardResponse)(nil),   // 3: joseph.participation.v1.GetPermanenceBoardResponse
-	(*SavePermanenceRuleRequest)(nil),    // 4: joseph.participation.v1.SavePermanenceRuleRequest
-	(*SavePermanenceRuleResponse)(nil),   // 5: joseph.participation.v1.SavePermanenceRuleResponse
-	(*PermanenceWindow)(nil),             // 6: joseph.participation.v1.PermanenceWindow
-	(*Activity)(nil),                     // 7: joseph.participation.v1.Activity
-	(*StudentPermanence)(nil),            // 8: joseph.participation.v1.StudentPermanence
-	(*GetSectionPermanenceRequest)(nil),  // 9: joseph.participation.v1.GetSectionPermanenceRequest
-	(*GetSectionPermanenceResponse)(nil), // 10: joseph.participation.v1.GetSectionPermanenceResponse
-	(*AdjustPermanenceRequest)(nil),      // 11: joseph.participation.v1.AdjustPermanenceRequest
-	(*AdjustPermanenceResponse)(nil),     // 12: joseph.participation.v1.AdjustPermanenceResponse
-	(*RoomParticipation)(nil),            // 13: joseph.participation.v1.RoomParticipation
-	(*GetRoomParticipationRequest)(nil),  // 14: joseph.participation.v1.GetRoomParticipationRequest
-	(*GetRoomParticipationResponse)(nil), // 15: joseph.participation.v1.GetRoomParticipationResponse
+var file_ltedu_participation_v1_participation_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_ltedu_participation_v1_participation_proto_goTypes = []any{
+	(*PermanenceRule)(nil),               // 0: ltedu.participation.v1.PermanenceRule
+	(*DistanceSection)(nil),              // 1: ltedu.participation.v1.DistanceSection
+	(*GetPermanenceBoardRequest)(nil),    // 2: ltedu.participation.v1.GetPermanenceBoardRequest
+	(*GetPermanenceBoardResponse)(nil),   // 3: ltedu.participation.v1.GetPermanenceBoardResponse
+	(*SavePermanenceRuleRequest)(nil),    // 4: ltedu.participation.v1.SavePermanenceRuleRequest
+	(*SavePermanenceRuleResponse)(nil),   // 5: ltedu.participation.v1.SavePermanenceRuleResponse
+	(*PermanenceWindow)(nil),             // 6: ltedu.participation.v1.PermanenceWindow
+	(*Activity)(nil),                     // 7: ltedu.participation.v1.Activity
+	(*StudentPermanence)(nil),            // 8: ltedu.participation.v1.StudentPermanence
+	(*GetSectionPermanenceRequest)(nil),  // 9: ltedu.participation.v1.GetSectionPermanenceRequest
+	(*GetSectionPermanenceResponse)(nil), // 10: ltedu.participation.v1.GetSectionPermanenceResponse
+	(*AdjustPermanenceRequest)(nil),      // 11: ltedu.participation.v1.AdjustPermanenceRequest
+	(*AdjustPermanenceResponse)(nil),     // 12: ltedu.participation.v1.AdjustPermanenceResponse
+	(*RoomParticipation)(nil),            // 13: ltedu.participation.v1.RoomParticipation
+	(*GetRoomParticipationRequest)(nil),  // 14: ltedu.participation.v1.GetRoomParticipationRequest
+	(*GetRoomParticipationResponse)(nil), // 15: ltedu.participation.v1.GetRoomParticipationResponse
 }
-var file_joseph_participation_v1_participation_proto_depIdxs = []int32{
-	0,  // 0: joseph.participation.v1.GetPermanenceBoardResponse.rule:type_name -> joseph.participation.v1.PermanenceRule
-	1,  // 1: joseph.participation.v1.GetPermanenceBoardResponse.sections:type_name -> joseph.participation.v1.DistanceSection
-	0,  // 2: joseph.participation.v1.SavePermanenceRuleRequest.rule:type_name -> joseph.participation.v1.PermanenceRule
-	0,  // 3: joseph.participation.v1.SavePermanenceRuleResponse.rule:type_name -> joseph.participation.v1.PermanenceRule
-	6,  // 4: joseph.participation.v1.StudentPermanence.windows:type_name -> joseph.participation.v1.PermanenceWindow
-	7,  // 5: joseph.participation.v1.StudentPermanence.activity:type_name -> joseph.participation.v1.Activity
-	0,  // 6: joseph.participation.v1.GetSectionPermanenceResponse.rule:type_name -> joseph.participation.v1.PermanenceRule
-	8,  // 7: joseph.participation.v1.GetSectionPermanenceResponse.students:type_name -> joseph.participation.v1.StudentPermanence
-	13, // 8: joseph.participation.v1.GetRoomParticipationResponse.students:type_name -> joseph.participation.v1.RoomParticipation
-	2,  // 9: joseph.participation.v1.ParticipationService.GetPermanenceBoard:input_type -> joseph.participation.v1.GetPermanenceBoardRequest
-	4,  // 10: joseph.participation.v1.ParticipationService.SavePermanenceRule:input_type -> joseph.participation.v1.SavePermanenceRuleRequest
-	9,  // 11: joseph.participation.v1.ParticipationService.GetSectionPermanence:input_type -> joseph.participation.v1.GetSectionPermanenceRequest
-	11, // 12: joseph.participation.v1.ParticipationService.AdjustPermanence:input_type -> joseph.participation.v1.AdjustPermanenceRequest
-	14, // 13: joseph.participation.v1.ParticipationService.GetRoomParticipation:input_type -> joseph.participation.v1.GetRoomParticipationRequest
-	3,  // 14: joseph.participation.v1.ParticipationService.GetPermanenceBoard:output_type -> joseph.participation.v1.GetPermanenceBoardResponse
-	5,  // 15: joseph.participation.v1.ParticipationService.SavePermanenceRule:output_type -> joseph.participation.v1.SavePermanenceRuleResponse
-	10, // 16: joseph.participation.v1.ParticipationService.GetSectionPermanence:output_type -> joseph.participation.v1.GetSectionPermanenceResponse
-	12, // 17: joseph.participation.v1.ParticipationService.AdjustPermanence:output_type -> joseph.participation.v1.AdjustPermanenceResponse
-	15, // 18: joseph.participation.v1.ParticipationService.GetRoomParticipation:output_type -> joseph.participation.v1.GetRoomParticipationResponse
+var file_ltedu_participation_v1_participation_proto_depIdxs = []int32{
+	0,  // 0: ltedu.participation.v1.GetPermanenceBoardResponse.rule:type_name -> ltedu.participation.v1.PermanenceRule
+	1,  // 1: ltedu.participation.v1.GetPermanenceBoardResponse.sections:type_name -> ltedu.participation.v1.DistanceSection
+	0,  // 2: ltedu.participation.v1.SavePermanenceRuleRequest.rule:type_name -> ltedu.participation.v1.PermanenceRule
+	0,  // 3: ltedu.participation.v1.SavePermanenceRuleResponse.rule:type_name -> ltedu.participation.v1.PermanenceRule
+	6,  // 4: ltedu.participation.v1.StudentPermanence.windows:type_name -> ltedu.participation.v1.PermanenceWindow
+	7,  // 5: ltedu.participation.v1.StudentPermanence.activity:type_name -> ltedu.participation.v1.Activity
+	0,  // 6: ltedu.participation.v1.GetSectionPermanenceResponse.rule:type_name -> ltedu.participation.v1.PermanenceRule
+	8,  // 7: ltedu.participation.v1.GetSectionPermanenceResponse.students:type_name -> ltedu.participation.v1.StudentPermanence
+	13, // 8: ltedu.participation.v1.GetRoomParticipationResponse.students:type_name -> ltedu.participation.v1.RoomParticipation
+	2,  // 9: ltedu.participation.v1.ParticipationService.GetPermanenceBoard:input_type -> ltedu.participation.v1.GetPermanenceBoardRequest
+	4,  // 10: ltedu.participation.v1.ParticipationService.SavePermanenceRule:input_type -> ltedu.participation.v1.SavePermanenceRuleRequest
+	9,  // 11: ltedu.participation.v1.ParticipationService.GetSectionPermanence:input_type -> ltedu.participation.v1.GetSectionPermanenceRequest
+	11, // 12: ltedu.participation.v1.ParticipationService.AdjustPermanence:input_type -> ltedu.participation.v1.AdjustPermanenceRequest
+	14, // 13: ltedu.participation.v1.ParticipationService.GetRoomParticipation:input_type -> ltedu.participation.v1.GetRoomParticipationRequest
+	3,  // 14: ltedu.participation.v1.ParticipationService.GetPermanenceBoard:output_type -> ltedu.participation.v1.GetPermanenceBoardResponse
+	5,  // 15: ltedu.participation.v1.ParticipationService.SavePermanenceRule:output_type -> ltedu.participation.v1.SavePermanenceRuleResponse
+	10, // 16: ltedu.participation.v1.ParticipationService.GetSectionPermanence:output_type -> ltedu.participation.v1.GetSectionPermanenceResponse
+	12, // 17: ltedu.participation.v1.ParticipationService.AdjustPermanence:output_type -> ltedu.participation.v1.AdjustPermanenceResponse
+	15, // 18: ltedu.participation.v1.ParticipationService.GetRoomParticipation:output_type -> ltedu.participation.v1.GetRoomParticipationResponse
 	14, // [14:19] is the sub-list for method output_type
 	9,  // [9:14] is the sub-list for method input_type
 	9,  // [9:9] is the sub-list for extension type_name
@@ -1409,26 +1409,26 @@ var file_joseph_participation_v1_participation_proto_depIdxs = []int32{
 	0,  // [0:9] is the sub-list for field type_name
 }
 
-func init() { file_joseph_participation_v1_participation_proto_init() }
-func file_joseph_participation_v1_participation_proto_init() {
-	if File_joseph_participation_v1_participation_proto != nil {
+func init() { file_ltedu_participation_v1_participation_proto_init() }
+func file_ltedu_participation_v1_participation_proto_init() {
+	if File_ltedu_participation_v1_participation_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_participation_v1_participation_proto_rawDesc), len(file_joseph_participation_v1_participation_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_participation_v1_participation_proto_rawDesc), len(file_ltedu_participation_v1_participation_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_participation_v1_participation_proto_goTypes,
-		DependencyIndexes: file_joseph_participation_v1_participation_proto_depIdxs,
-		MessageInfos:      file_joseph_participation_v1_participation_proto_msgTypes,
+		GoTypes:           file_ltedu_participation_v1_participation_proto_goTypes,
+		DependencyIndexes: file_ltedu_participation_v1_participation_proto_depIdxs,
+		MessageInfos:      file_ltedu_participation_v1_participation_proto_msgTypes,
 	}.Build()
-	File_joseph_participation_v1_participation_proto = out.File
-	file_joseph_participation_v1_participation_proto_goTypes = nil
-	file_joseph_participation_v1_participation_proto_depIdxs = nil
+	File_ltedu_participation_v1_participation_proto = out.File
+	file_ltedu_participation_v1_participation_proto_goTypes = nil
+	file_ltedu_participation_v1_participation_proto_depIdxs = nil
 }

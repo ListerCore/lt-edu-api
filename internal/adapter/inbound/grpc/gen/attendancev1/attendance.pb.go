@@ -2,11 +2,11 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/attendance/v1/attendance.proto
+// source: ltedu/attendance/v1/attendance.proto
 
 // Attendance (phase 5 of docs/plan-academico.md): ID card at the gate, the day of each section and of the staff,
 // attendance per class, justifications and absence alerts. Same metadata and institution scoping as
-// joseph.academic.v1. Dates travel as YYYY-MM-DD (empty: today in Lima), instants as RFC 3339, times as HH:MM.
+// ltedu.academic.v1. Dates travel as YYYY-MM-DD (empty: today in Lima), instants as RFC 3339, times as HH:MM.
 // Statuses: present | late | absent | justified (empty: not marked yet)
 
 package attendancev1
@@ -38,7 +38,7 @@ type Tally struct {
 
 func (x *Tally) Reset() {
 	*x = Tally{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[0]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -50,7 +50,7 @@ func (x *Tally) String() string {
 func (*Tally) ProtoMessage() {}
 
 func (x *Tally) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[0]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -63,7 +63,7 @@ func (x *Tally) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Tally.ProtoReflect.Descriptor instead.
 func (*Tally) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Tally) GetPresent() int32 {
@@ -109,7 +109,7 @@ type SectionDay struct {
 
 func (x *SectionDay) Reset() {
 	*x = SectionDay{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[1]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -121,7 +121,7 @@ func (x *SectionDay) String() string {
 func (*SectionDay) ProtoMessage() {}
 
 func (x *SectionDay) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[1]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -134,7 +134,7 @@ func (x *SectionDay) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SectionDay.ProtoReflect.Descriptor instead.
 func (*SectionDay) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *SectionDay) GetSectionId() string {
@@ -198,7 +198,7 @@ type Vocabulary struct {
 
 func (x *Vocabulary) Reset() {
 	*x = Vocabulary{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[2]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -210,7 +210,7 @@ func (x *Vocabulary) String() string {
 func (*Vocabulary) ProtoMessage() {}
 
 func (x *Vocabulary) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[2]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -223,7 +223,7 @@ func (x *Vocabulary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Vocabulary.ProtoReflect.Descriptor instead.
 func (*Vocabulary) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Vocabulary) GetLevel() string {
@@ -264,7 +264,7 @@ type GetOverviewRequest struct {
 
 func (x *GetOverviewRequest) Reset() {
 	*x = GetOverviewRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[3]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -276,7 +276,7 @@ func (x *GetOverviewRequest) String() string {
 func (*GetOverviewRequest) ProtoMessage() {}
 
 func (x *GetOverviewRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[3]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -289,7 +289,7 @@ func (x *GetOverviewRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOverviewRequest.ProtoReflect.Descriptor instead.
 func (*GetOverviewRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetOverviewRequest) GetInstitutionSlug() string {
@@ -330,7 +330,7 @@ type GetOverviewResponse struct {
 
 func (x *GetOverviewResponse) Reset() {
 	*x = GetOverviewResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[4]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -342,7 +342,7 @@ func (x *GetOverviewResponse) String() string {
 func (*GetOverviewResponse) ProtoMessage() {}
 
 func (x *GetOverviewResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[4]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -355,7 +355,7 @@ func (x *GetOverviewResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOverviewResponse.ProtoReflect.Descriptor instead.
 func (*GetOverviewResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetOverviewResponse) GetDay() string {
@@ -484,7 +484,7 @@ type CardHolder struct {
 
 func (x *CardHolder) Reset() {
 	*x = CardHolder{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[5]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -496,7 +496,7 @@ func (x *CardHolder) String() string {
 func (*CardHolder) ProtoMessage() {}
 
 func (x *CardHolder) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[5]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -509,7 +509,7 @@ func (x *CardHolder) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardHolder.ProtoReflect.Descriptor instead.
 func (*CardHolder) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CardHolder) GetKind() string {
@@ -557,7 +557,7 @@ type ScanRequest struct {
 
 func (x *ScanRequest) Reset() {
 	*x = ScanRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[6]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -569,7 +569,7 @@ func (x *ScanRequest) String() string {
 func (*ScanRequest) ProtoMessage() {}
 
 func (x *ScanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[6]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -582,7 +582,7 @@ func (x *ScanRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScanRequest.ProtoReflect.Descriptor instead.
 func (*ScanRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ScanRequest) GetInstitutionSlug() string {
@@ -611,7 +611,7 @@ type ScanResponse struct {
 
 func (x *ScanResponse) Reset() {
 	*x = ScanResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[7]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -623,7 +623,7 @@ func (x *ScanResponse) String() string {
 func (*ScanResponse) ProtoMessage() {}
 
 func (x *ScanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[7]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -636,7 +636,7 @@ func (x *ScanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScanResponse.ProtoReflect.Descriptor instead.
 func (*ScanResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ScanResponse) GetHolder() *CardHolder {
@@ -681,7 +681,7 @@ type GateScan struct {
 
 func (x *GateScan) Reset() {
 	*x = GateScan{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[8]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -693,7 +693,7 @@ func (x *GateScan) String() string {
 func (*GateScan) ProtoMessage() {}
 
 func (x *GateScan) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[8]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -706,7 +706,7 @@ func (x *GateScan) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GateScan.ProtoReflect.Descriptor instead.
 func (*GateScan) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GateScan) GetId() string {
@@ -754,7 +754,7 @@ type RecentScansRequest struct {
 
 func (x *RecentScansRequest) Reset() {
 	*x = RecentScansRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[9]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -766,7 +766,7 @@ func (x *RecentScansRequest) String() string {
 func (*RecentScansRequest) ProtoMessage() {}
 
 func (x *RecentScansRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[9]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -779,7 +779,7 @@ func (x *RecentScansRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecentScansRequest.ProtoReflect.Descriptor instead.
 func (*RecentScansRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *RecentScansRequest) GetInstitutionSlug() string {
@@ -805,7 +805,7 @@ type RecentScansResponse struct {
 
 func (x *RecentScansResponse) Reset() {
 	*x = RecentScansResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[10]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -817,7 +817,7 @@ func (x *RecentScansResponse) String() string {
 func (*RecentScansResponse) ProtoMessage() {}
 
 func (x *RecentScansResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[10]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -830,7 +830,7 @@ func (x *RecentScansResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecentScansResponse.ProtoReflect.Descriptor instead.
 func (*RecentScansResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *RecentScansResponse) GetScans() []*GateScan {
@@ -857,7 +857,7 @@ type RosterRow struct {
 
 func (x *RosterRow) Reset() {
 	*x = RosterRow{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[11]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -869,7 +869,7 @@ func (x *RosterRow) String() string {
 func (*RosterRow) ProtoMessage() {}
 
 func (x *RosterRow) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[11]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -882,7 +882,7 @@ func (x *RosterRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RosterRow.ProtoReflect.Descriptor instead.
 func (*RosterRow) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *RosterRow) GetStudentId() string {
@@ -952,7 +952,7 @@ type GetRosterRequest struct {
 
 func (x *GetRosterRequest) Reset() {
 	*x = GetRosterRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[12]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -964,7 +964,7 @@ func (x *GetRosterRequest) String() string {
 func (*GetRosterRequest) ProtoMessage() {}
 
 func (x *GetRosterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[12]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -977,7 +977,7 @@ func (x *GetRosterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRosterRequest.ProtoReflect.Descriptor instead.
 func (*GetRosterRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetRosterRequest) GetInstitutionSlug() string {
@@ -1015,7 +1015,7 @@ type GetRosterResponse struct {
 
 func (x *GetRosterResponse) Reset() {
 	*x = GetRosterResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[13]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1027,7 +1027,7 @@ func (x *GetRosterResponse) String() string {
 func (*GetRosterResponse) ProtoMessage() {}
 
 func (x *GetRosterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[13]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1040,7 +1040,7 @@ func (x *GetRosterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRosterResponse.ProtoReflect.Descriptor instead.
 func (*GetRosterResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetRosterResponse) GetDay() string {
@@ -1096,7 +1096,7 @@ type MarkInput struct {
 
 func (x *MarkInput) Reset() {
 	*x = MarkInput{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[14]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1108,7 +1108,7 @@ func (x *MarkInput) String() string {
 func (*MarkInput) ProtoMessage() {}
 
 func (x *MarkInput) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[14]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1121,7 +1121,7 @@ func (x *MarkInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MarkInput.ProtoReflect.Descriptor instead.
 func (*MarkInput) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *MarkInput) GetPersonId() string {
@@ -1157,7 +1157,7 @@ type MarkStudentsRequest struct {
 
 func (x *MarkStudentsRequest) Reset() {
 	*x = MarkStudentsRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[15]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1169,7 +1169,7 @@ func (x *MarkStudentsRequest) String() string {
 func (*MarkStudentsRequest) ProtoMessage() {}
 
 func (x *MarkStudentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[15]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1182,7 +1182,7 @@ func (x *MarkStudentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MarkStudentsRequest.ProtoReflect.Descriptor instead.
 func (*MarkStudentsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *MarkStudentsRequest) GetInstitutionSlug() string {
@@ -1225,7 +1225,7 @@ type CloseDayRequest struct {
 
 func (x *CloseDayRequest) Reset() {
 	*x = CloseDayRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[16]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1237,7 +1237,7 @@ func (x *CloseDayRequest) String() string {
 func (*CloseDayRequest) ProtoMessage() {}
 
 func (x *CloseDayRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[16]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1250,7 +1250,7 @@ func (x *CloseDayRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CloseDayRequest.ProtoReflect.Descriptor instead.
 func (*CloseDayRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *CloseDayRequest) GetInstitutionSlug() string {
@@ -1283,7 +1283,7 @@ type CloseDayResponse struct {
 
 func (x *CloseDayResponse) Reset() {
 	*x = CloseDayResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[17]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1295,7 +1295,7 @@ func (x *CloseDayResponse) String() string {
 func (*CloseDayResponse) ProtoMessage() {}
 
 func (x *CloseDayResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[17]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1308,7 +1308,7 @@ func (x *CloseDayResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CloseDayResponse.ProtoReflect.Descriptor instead.
 func (*CloseDayResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *CloseDayResponse) GetMarked() int32 {
@@ -1334,7 +1334,7 @@ type StaffRow struct {
 
 func (x *StaffRow) Reset() {
 	*x = StaffRow{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[18]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1346,7 +1346,7 @@ func (x *StaffRow) String() string {
 func (*StaffRow) ProtoMessage() {}
 
 func (x *StaffRow) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[18]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1359,7 +1359,7 @@ func (x *StaffRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StaffRow.ProtoReflect.Descriptor instead.
 func (*StaffRow) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *StaffRow) GetStaffId() string {
@@ -1428,7 +1428,7 @@ type GetStaffDayRequest struct {
 
 func (x *GetStaffDayRequest) Reset() {
 	*x = GetStaffDayRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[19]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1440,7 +1440,7 @@ func (x *GetStaffDayRequest) String() string {
 func (*GetStaffDayRequest) ProtoMessage() {}
 
 func (x *GetStaffDayRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[19]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1453,7 +1453,7 @@ func (x *GetStaffDayRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStaffDayRequest.ProtoReflect.Descriptor instead.
 func (*GetStaffDayRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetStaffDayRequest) GetInstitutionSlug() string {
@@ -1482,7 +1482,7 @@ type GetStaffDayResponse struct {
 
 func (x *GetStaffDayResponse) Reset() {
 	*x = GetStaffDayResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[20]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1494,7 +1494,7 @@ func (x *GetStaffDayResponse) String() string {
 func (*GetStaffDayResponse) ProtoMessage() {}
 
 func (x *GetStaffDayResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[20]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1507,7 +1507,7 @@ func (x *GetStaffDayResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStaffDayResponse.ProtoReflect.Descriptor instead.
 func (*GetStaffDayResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetStaffDayResponse) GetDay() string {
@@ -1549,7 +1549,7 @@ type MarkStaffRequest struct {
 
 func (x *MarkStaffRequest) Reset() {
 	*x = MarkStaffRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[21]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1561,7 +1561,7 @@ func (x *MarkStaffRequest) String() string {
 func (*MarkStaffRequest) ProtoMessage() {}
 
 func (x *MarkStaffRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[21]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1574,7 +1574,7 @@ func (x *MarkStaffRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MarkStaffRequest.ProtoReflect.Descriptor instead.
 func (*MarkStaffRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *MarkStaffRequest) GetInstitutionSlug() string {
@@ -1608,7 +1608,7 @@ type CloseStaffDayRequest struct {
 
 func (x *CloseStaffDayRequest) Reset() {
 	*x = CloseStaffDayRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[22]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1620,7 +1620,7 @@ func (x *CloseStaffDayRequest) String() string {
 func (*CloseStaffDayRequest) ProtoMessage() {}
 
 func (x *CloseStaffDayRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[22]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1633,7 +1633,7 @@ func (x *CloseStaffDayRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CloseStaffDayRequest.ProtoReflect.Descriptor instead.
 func (*CloseStaffDayRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *CloseStaffDayRequest) GetInstitutionSlug() string {
@@ -1672,7 +1672,7 @@ type ClassSlot struct {
 
 func (x *ClassSlot) Reset() {
 	*x = ClassSlot{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[23]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1684,7 +1684,7 @@ func (x *ClassSlot) String() string {
 func (*ClassSlot) ProtoMessage() {}
 
 func (x *ClassSlot) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[23]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1697,7 +1697,7 @@ func (x *ClassSlot) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClassSlot.ProtoReflect.Descriptor instead.
 func (*ClassSlot) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{23}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ClassSlot) GetAssignmentId() string {
@@ -1803,7 +1803,7 @@ type ListClassesRequest struct {
 
 func (x *ListClassesRequest) Reset() {
 	*x = ListClassesRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[24]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1815,7 +1815,7 @@ func (x *ListClassesRequest) String() string {
 func (*ListClassesRequest) ProtoMessage() {}
 
 func (x *ListClassesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[24]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1828,7 +1828,7 @@ func (x *ListClassesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListClassesRequest.ProtoReflect.Descriptor instead.
 func (*ListClassesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{24}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ListClassesRequest) GetInstitutionSlug() string {
@@ -1865,7 +1865,7 @@ type ListClassesResponse struct {
 
 func (x *ListClassesResponse) Reset() {
 	*x = ListClassesResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[25]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1877,7 +1877,7 @@ func (x *ListClassesResponse) String() string {
 func (*ListClassesResponse) ProtoMessage() {}
 
 func (x *ListClassesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[25]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1890,7 +1890,7 @@ func (x *ListClassesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListClassesResponse.ProtoReflect.Descriptor instead.
 func (*ListClassesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{25}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *ListClassesResponse) GetDay() string {
@@ -1937,7 +1937,7 @@ type ClassMark struct {
 
 func (x *ClassMark) Reset() {
 	*x = ClassMark{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[26]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1949,7 +1949,7 @@ func (x *ClassMark) String() string {
 func (*ClassMark) ProtoMessage() {}
 
 func (x *ClassMark) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[26]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1962,7 +1962,7 @@ func (x *ClassMark) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClassMark.ProtoReflect.Descriptor instead.
 func (*ClassMark) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{26}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ClassMark) GetStudentId() string {
@@ -2019,7 +2019,7 @@ type GetClassRequest struct {
 
 func (x *GetClassRequest) Reset() {
 	*x = GetClassRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[27]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2031,7 +2031,7 @@ func (x *GetClassRequest) String() string {
 func (*GetClassRequest) ProtoMessage() {}
 
 func (x *GetClassRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[27]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2044,7 +2044,7 @@ func (x *GetClassRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetClassRequest.ProtoReflect.Descriptor instead.
 func (*GetClassRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{27}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *GetClassRequest) GetInstitutionSlug() string {
@@ -2087,7 +2087,7 @@ type GetClassResponse struct {
 
 func (x *GetClassResponse) Reset() {
 	*x = GetClassResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[28]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2099,7 +2099,7 @@ func (x *GetClassResponse) String() string {
 func (*GetClassResponse) ProtoMessage() {}
 
 func (x *GetClassResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[28]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2112,7 +2112,7 @@ func (x *GetClassResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetClassResponse.ProtoReflect.Descriptor instead.
 func (*GetClassResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{28}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *GetClassResponse) GetDay() string {
@@ -2157,7 +2157,7 @@ type SaveClassRequest struct {
 
 func (x *SaveClassRequest) Reset() {
 	*x = SaveClassRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[29]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2169,7 +2169,7 @@ func (x *SaveClassRequest) String() string {
 func (*SaveClassRequest) ProtoMessage() {}
 
 func (x *SaveClassRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[29]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2182,7 +2182,7 @@ func (x *SaveClassRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveClassRequest.ProtoReflect.Descriptor instead.
 func (*SaveClassRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{29}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *SaveClassRequest) GetInstitutionSlug() string {
@@ -2252,7 +2252,7 @@ type Justification struct {
 
 func (x *Justification) Reset() {
 	*x = Justification{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[30]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2264,7 +2264,7 @@ func (x *Justification) String() string {
 func (*Justification) ProtoMessage() {}
 
 func (x *Justification) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[30]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2277,7 +2277,7 @@ func (x *Justification) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Justification.ProtoReflect.Descriptor instead.
 func (*Justification) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{30}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *Justification) GetId() string {
@@ -2398,7 +2398,7 @@ type ListJustificationsRequest struct {
 
 func (x *ListJustificationsRequest) Reset() {
 	*x = ListJustificationsRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[31]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2410,7 +2410,7 @@ func (x *ListJustificationsRequest) String() string {
 func (*ListJustificationsRequest) ProtoMessage() {}
 
 func (x *ListJustificationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[31]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2423,7 +2423,7 @@ func (x *ListJustificationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListJustificationsRequest.ProtoReflect.Descriptor instead.
 func (*ListJustificationsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{31}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ListJustificationsRequest) GetInstitutionSlug() string {
@@ -2472,7 +2472,7 @@ type ListJustificationsResponse struct {
 
 func (x *ListJustificationsResponse) Reset() {
 	*x = ListJustificationsResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[32]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2484,7 +2484,7 @@ func (x *ListJustificationsResponse) String() string {
 func (*ListJustificationsResponse) ProtoMessage() {}
 
 func (x *ListJustificationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[32]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2497,7 +2497,7 @@ func (x *ListJustificationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListJustificationsResponse.ProtoReflect.Descriptor instead.
 func (*ListJustificationsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{32}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *ListJustificationsResponse) GetItems() []*Justification {
@@ -2535,7 +2535,7 @@ type SubmitJustificationRequest struct {
 
 func (x *SubmitJustificationRequest) Reset() {
 	*x = SubmitJustificationRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[33]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2547,7 +2547,7 @@ func (x *SubmitJustificationRequest) String() string {
 func (*SubmitJustificationRequest) ProtoMessage() {}
 
 func (x *SubmitJustificationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[33]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2560,7 +2560,7 @@ func (x *SubmitJustificationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubmitJustificationRequest.ProtoReflect.Descriptor instead.
 func (*SubmitJustificationRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{33}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *SubmitJustificationRequest) GetInstitutionSlug() string {
@@ -2617,7 +2617,7 @@ type ReviewJustificationRequest struct {
 
 func (x *ReviewJustificationRequest) Reset() {
 	*x = ReviewJustificationRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[34]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2629,7 +2629,7 @@ func (x *ReviewJustificationRequest) String() string {
 func (*ReviewJustificationRequest) ProtoMessage() {}
 
 func (x *ReviewJustificationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[34]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2642,7 +2642,7 @@ func (x *ReviewJustificationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReviewJustificationRequest.ProtoReflect.Descriptor instead.
 func (*ReviewJustificationRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{34}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *ReviewJustificationRequest) GetInstitutionSlug() string {
@@ -2682,7 +2682,7 @@ type SubmitJustificationResponse struct {
 
 func (x *SubmitJustificationResponse) Reset() {
 	*x = SubmitJustificationResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[35]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2694,7 +2694,7 @@ func (x *SubmitJustificationResponse) String() string {
 func (*SubmitJustificationResponse) ProtoMessage() {}
 
 func (x *SubmitJustificationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[35]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2707,7 +2707,7 @@ func (x *SubmitJustificationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubmitJustificationResponse.ProtoReflect.Descriptor instead.
 func (*SubmitJustificationResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{35}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *SubmitJustificationResponse) GetJustification() *Justification {
@@ -2726,7 +2726,7 @@ type ReviewJustificationResponse struct {
 
 func (x *ReviewJustificationResponse) Reset() {
 	*x = ReviewJustificationResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[36]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2738,7 +2738,7 @@ func (x *ReviewJustificationResponse) String() string {
 func (*ReviewJustificationResponse) ProtoMessage() {}
 
 func (x *ReviewJustificationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[36]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2751,7 +2751,7 @@ func (x *ReviewJustificationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReviewJustificationResponse.ProtoReflect.Descriptor instead.
 func (*ReviewJustificationResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{36}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ReviewJustificationResponse) GetJustification() *Justification {
@@ -2775,7 +2775,7 @@ type StudentTally struct {
 
 func (x *StudentTally) Reset() {
 	*x = StudentTally{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[37]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2787,7 +2787,7 @@ func (x *StudentTally) String() string {
 func (*StudentTally) ProtoMessage() {}
 
 func (x *StudentTally) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[37]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2800,7 +2800,7 @@ func (x *StudentTally) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StudentTally.ProtoReflect.Descriptor instead.
 func (*StudentTally) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{37}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *StudentTally) GetStudentId() string {
@@ -2859,7 +2859,7 @@ type SubjectTally struct {
 
 func (x *SubjectTally) Reset() {
 	*x = SubjectTally{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[38]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2871,7 +2871,7 @@ func (x *SubjectTally) String() string {
 func (*SubjectTally) ProtoMessage() {}
 
 func (x *SubjectTally) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[38]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2884,7 +2884,7 @@ func (x *SubjectTally) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubjectTally.ProtoReflect.Descriptor instead.
 func (*SubjectTally) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{38}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *SubjectTally) GetStudentId() string {
@@ -2941,7 +2941,7 @@ type GetReportRequest struct {
 
 func (x *GetReportRequest) Reset() {
 	*x = GetReportRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[39]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2953,7 +2953,7 @@ func (x *GetReportRequest) String() string {
 func (*GetReportRequest) ProtoMessage() {}
 
 func (x *GetReportRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[39]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2966,7 +2966,7 @@ func (x *GetReportRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetReportRequest.ProtoReflect.Descriptor instead.
 func (*GetReportRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{39}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *GetReportRequest) GetInstitutionSlug() string {
@@ -3003,7 +3003,7 @@ type GetReportResponse struct {
 
 func (x *GetReportResponse) Reset() {
 	*x = GetReportResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[40]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3015,7 +3015,7 @@ func (x *GetReportResponse) String() string {
 func (*GetReportResponse) ProtoMessage() {}
 
 func (x *GetReportResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[40]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3028,7 +3028,7 @@ func (x *GetReportResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetReportResponse.ProtoReflect.Descriptor instead.
 func (*GetReportResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{40}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *GetReportResponse) GetPeriodId() string {
@@ -3072,7 +3072,7 @@ type DailyMark struct {
 
 func (x *DailyMark) Reset() {
 	*x = DailyMark{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[41]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3084,7 +3084,7 @@ func (x *DailyMark) String() string {
 func (*DailyMark) ProtoMessage() {}
 
 func (x *DailyMark) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[41]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3097,7 +3097,7 @@ func (x *DailyMark) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DailyMark.ProtoReflect.Descriptor instead.
 func (*DailyMark) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{41}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *DailyMark) GetDay() string {
@@ -3145,7 +3145,7 @@ type GetStudentRequest struct {
 
 func (x *GetStudentRequest) Reset() {
 	*x = GetStudentRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[42]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3157,7 +3157,7 @@ func (x *GetStudentRequest) String() string {
 func (*GetStudentRequest) ProtoMessage() {}
 
 func (x *GetStudentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[42]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3170,7 +3170,7 @@ func (x *GetStudentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentRequest.ProtoReflect.Descriptor instead.
 func (*GetStudentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{42}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *GetStudentRequest) GetInstitutionSlug() string {
@@ -3205,7 +3205,7 @@ type StudentAttendance struct {
 
 func (x *StudentAttendance) Reset() {
 	*x = StudentAttendance{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[43]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3217,7 +3217,7 @@ func (x *StudentAttendance) String() string {
 func (*StudentAttendance) ProtoMessage() {}
 
 func (x *StudentAttendance) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[43]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3230,7 +3230,7 @@ func (x *StudentAttendance) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StudentAttendance.ProtoReflect.Descriptor instead.
 func (*StudentAttendance) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{43}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *StudentAttendance) GetStudent() *CardHolder {
@@ -3298,7 +3298,7 @@ type MyAttendanceRequest struct {
 
 func (x *MyAttendanceRequest) Reset() {
 	*x = MyAttendanceRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[44]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3310,7 +3310,7 @@ func (x *MyAttendanceRequest) String() string {
 func (*MyAttendanceRequest) ProtoMessage() {}
 
 func (x *MyAttendanceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[44]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3323,7 +3323,7 @@ func (x *MyAttendanceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MyAttendanceRequest.ProtoReflect.Descriptor instead.
 func (*MyAttendanceRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{44}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *MyAttendanceRequest) GetInstitutionSlug() string {
@@ -3342,7 +3342,7 @@ type MyAttendanceResponse struct {
 
 func (x *MyAttendanceResponse) Reset() {
 	*x = MyAttendanceResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[45]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3354,7 +3354,7 @@ func (x *MyAttendanceResponse) String() string {
 func (*MyAttendanceResponse) ProtoMessage() {}
 
 func (x *MyAttendanceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[45]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3367,7 +3367,7 @@ func (x *MyAttendanceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MyAttendanceResponse.ProtoReflect.Descriptor instead.
 func (*MyAttendanceResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{45}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *MyAttendanceResponse) GetStudents() []*StudentAttendance {
@@ -3390,7 +3390,7 @@ type CardCode struct {
 
 func (x *CardCode) Reset() {
 	*x = CardCode{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[46]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3402,7 +3402,7 @@ func (x *CardCode) String() string {
 func (*CardCode) ProtoMessage() {}
 
 func (x *CardCode) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[46]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3415,7 +3415,7 @@ func (x *CardCode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardCode.ProtoReflect.Descriptor instead.
 func (*CardCode) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{46}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *CardCode) GetId() string {
@@ -3458,7 +3458,7 @@ type CardCodesRequest struct {
 
 func (x *CardCodesRequest) Reset() {
 	*x = CardCodesRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[47]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3470,7 +3470,7 @@ func (x *CardCodesRequest) String() string {
 func (*CardCodesRequest) ProtoMessage() {}
 
 func (x *CardCodesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[47]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3483,7 +3483,7 @@ func (x *CardCodesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardCodesRequest.ProtoReflect.Descriptor instead.
 func (*CardCodesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{47}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *CardCodesRequest) GetInstitutionSlug() string {
@@ -3516,7 +3516,7 @@ type CardCodesResponse struct {
 
 func (x *CardCodesResponse) Reset() {
 	*x = CardCodesResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[48]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3528,7 +3528,7 @@ func (x *CardCodesResponse) String() string {
 func (*CardCodesResponse) ProtoMessage() {}
 
 func (x *CardCodesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[48]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3541,7 +3541,7 @@ func (x *CardCodesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardCodesResponse.ProtoReflect.Descriptor instead.
 func (*CardCodesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{48}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *CardCodesResponse) GetCodes() []*CardCode {
@@ -3562,7 +3562,7 @@ type RenewCardRequest struct {
 
 func (x *RenewCardRequest) Reset() {
 	*x = RenewCardRequest{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[49]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3574,7 +3574,7 @@ func (x *RenewCardRequest) String() string {
 func (*RenewCardRequest) ProtoMessage() {}
 
 func (x *RenewCardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[49]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3587,7 +3587,7 @@ func (x *RenewCardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RenewCardRequest.ProtoReflect.Descriptor instead.
 func (*RenewCardRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{49}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *RenewCardRequest) GetInstitutionSlug() string {
@@ -3620,7 +3620,7 @@ type MarkStudentsResponse struct {
 
 func (x *MarkStudentsResponse) Reset() {
 	*x = MarkStudentsResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[50]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3632,7 +3632,7 @@ func (x *MarkStudentsResponse) String() string {
 func (*MarkStudentsResponse) ProtoMessage() {}
 
 func (x *MarkStudentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[50]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3645,7 +3645,7 @@ func (x *MarkStudentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MarkStudentsResponse.ProtoReflect.Descriptor instead.
 func (*MarkStudentsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{50}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *MarkStudentsResponse) GetRoster() *GetRosterResponse {
@@ -3664,7 +3664,7 @@ type MarkStaffResponse struct {
 
 func (x *MarkStaffResponse) Reset() {
 	*x = MarkStaffResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[51]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3676,7 +3676,7 @@ func (x *MarkStaffResponse) String() string {
 func (*MarkStaffResponse) ProtoMessage() {}
 
 func (x *MarkStaffResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[51]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3689,7 +3689,7 @@ func (x *MarkStaffResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MarkStaffResponse.ProtoReflect.Descriptor instead.
 func (*MarkStaffResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{51}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *MarkStaffResponse) GetDay() *GetStaffDayResponse {
@@ -3708,7 +3708,7 @@ type CloseStaffDayResponse struct {
 
 func (x *CloseStaffDayResponse) Reset() {
 	*x = CloseStaffDayResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[52]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3720,7 +3720,7 @@ func (x *CloseStaffDayResponse) String() string {
 func (*CloseStaffDayResponse) ProtoMessage() {}
 
 func (x *CloseStaffDayResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[52]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3733,7 +3733,7 @@ func (x *CloseStaffDayResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CloseStaffDayResponse.ProtoReflect.Descriptor instead.
 func (*CloseStaffDayResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{52}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *CloseStaffDayResponse) GetMarked() int32 {
@@ -3752,7 +3752,7 @@ type SaveClassResponse struct {
 
 func (x *SaveClassResponse) Reset() {
 	*x = SaveClassResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[53]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3764,7 +3764,7 @@ func (x *SaveClassResponse) String() string {
 func (*SaveClassResponse) ProtoMessage() {}
 
 func (x *SaveClassResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[53]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3777,7 +3777,7 @@ func (x *SaveClassResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveClassResponse.ProtoReflect.Descriptor instead.
 func (*SaveClassResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{53}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *SaveClassResponse) GetSheet() *GetClassResponse {
@@ -3796,7 +3796,7 @@ type GetStudentResponse struct {
 
 func (x *GetStudentResponse) Reset() {
 	*x = GetStudentResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[54]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3808,7 +3808,7 @@ func (x *GetStudentResponse) String() string {
 func (*GetStudentResponse) ProtoMessage() {}
 
 func (x *GetStudentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[54]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3821,7 +3821,7 @@ func (x *GetStudentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentResponse.ProtoReflect.Descriptor instead.
 func (*GetStudentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{54}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *GetStudentResponse) GetAttendance() *StudentAttendance {
@@ -3840,7 +3840,7 @@ type RenewCardResponse struct {
 
 func (x *RenewCardResponse) Reset() {
 	*x = RenewCardResponse{}
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[55]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3852,7 +3852,7 @@ func (x *RenewCardResponse) String() string {
 func (*RenewCardResponse) ProtoMessage() {}
 
 func (x *RenewCardResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_attendance_v1_attendance_proto_msgTypes[55]
+	mi := &file_ltedu_attendance_v1_attendance_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3865,7 +3865,7 @@ func (x *RenewCardResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RenewCardResponse.ProtoReflect.Descriptor instead.
 func (*RenewCardResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_attendance_v1_attendance_proto_rawDescGZIP(), []int{55}
+	return file_ltedu_attendance_v1_attendance_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *RenewCardResponse) GetCode() *CardCode {
@@ -3875,16 +3875,16 @@ func (x *RenewCardResponse) GetCode() *CardCode {
 	return nil
 }
 
-var File_joseph_attendance_v1_attendance_proto protoreflect.FileDescriptor
+var File_ltedu_attendance_v1_attendance_proto protoreflect.FileDescriptor
 
-const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
+const file_ltedu_attendance_v1_attendance_proto_rawDesc = "" +
 	"\n" +
-	"%joseph/attendance/v1/attendance.proto\x12\x14joseph.attendance.v1\"k\n" +
+	"$ltedu/attendance/v1/attendance.proto\x12\x13ltedu.attendance.v1\"k\n" +
 	"\x05Tally\x12\x18\n" +
 	"\apresent\x18\x01 \x01(\x05R\apresent\x12\x12\n" +
 	"\x04late\x18\x02 \x01(\x05R\x04late\x12\x16\n" +
 	"\x06absent\x18\x03 \x01(\x05R\x06absent\x12\x1c\n" +
-	"\tjustified\x18\x04 \x01(\x05R\tjustified\"\xf3\x01\n" +
+	"\tjustified\x18\x04 \x01(\x05R\tjustified\"\xf2\x01\n" +
 	"\n" +
 	"SectionDay\x12\x1d\n" +
 	"\n" +
@@ -3895,8 +3895,8 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\x05shift\x18\x04 \x01(\tR\x05shift\x12\x1d\n" +
 	"\n" +
 	"tutor_name\x18\x05 \x01(\tR\ttutorName\x12\x1a\n" +
-	"\benrolled\x18\x06 \x01(\x05R\benrolled\x121\n" +
-	"\x05tally\x18\a \x01(\v2\x1b.joseph.attendance.v1.TallyR\x05tally\"j\n" +
+	"\benrolled\x18\x06 \x01(\x05R\benrolled\x120\n" +
+	"\x05tally\x18\a \x01(\v2\x1a.ltedu.attendance.v1.TallyR\x05tally\"j\n" +
 	"\n" +
 	"Vocabulary\x12\x14\n" +
 	"\x05level\x18\x01 \x01(\tR\x05level\x12\x14\n" +
@@ -3905,15 +3905,15 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\x06period\x18\x04 \x01(\tR\x06period\"Q\n" +
 	"\x12GetOverviewRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x10\n" +
-	"\x03day\x18\x02 \x01(\tR\x03day\"\x9b\x05\n" +
+	"\x03day\x18\x02 \x01(\tR\x03day\"\x98\x05\n" +
 	"\x13GetOverviewResponse\x12\x10\n" +
 	"\x03day\x18\x01 \x01(\tR\x03day\x12\x14\n" +
 	"\x05today\x18\x02 \x01(\tR\x05today\x12\x1d\n" +
 	"\n" +
 	"school_day\x18\x03 \x01(\bR\tschoolDay\x12,\n" +
 	"\x12late_after_minutes\x18\x04 \x01(\x05R\x10lateAfterMinutes\x122\n" +
-	"\x15absence_limit_percent\x18\x05 \x01(\x05R\x13absenceLimitPercent\x12<\n" +
-	"\bsections\x18\x06 \x03(\v2 .joseph.attendance.v1.SectionDayR\bsections\x12\x19\n" +
+	"\x15absence_limit_percent\x18\x05 \x01(\x05R\x13absenceLimitPercent\x12;\n" +
+	"\bsections\x18\x06 \x03(\v2\x1f.ltedu.attendance.v1.SectionDayR\bsections\x12\x19\n" +
 	"\bcan_scan\x18\a \x01(\bR\acanScan\x12(\n" +
 	"\x10can_manage_staff\x18\b \x01(\bR\x0ecanManageStaff\x12\x1d\n" +
 	"\n" +
@@ -3921,11 +3921,11 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\x10can_take_classes\x18\n" +
 	" \x01(\bR\x0ecanTakeClasses\x12\x1a\n" +
 	"\btutoring\x18\v \x03(\tR\btutoring\x125\n" +
-	"\x16pending_justifications\x18\f \x01(\x05R\x15pendingJustifications\x12@\n" +
+	"\x16pending_justifications\x18\f \x01(\x05R\x15pendingJustifications\x12?\n" +
 	"\n" +
-	"vocabulary\x18\r \x01(\v2 .joseph.attendance.v1.VocabularyR\n" +
-	"vocabulary\x12<\n" +
-	"\vstaff_tally\x18\x0e \x01(\v2\x1b.joseph.attendance.v1.TallyR\n" +
+	"vocabulary\x18\r \x01(\v2\x1f.ltedu.attendance.v1.VocabularyR\n" +
+	"vocabulary\x12;\n" +
+	"\vstaff_tally\x18\x0e \x01(\v2\x1a.ltedu.attendance.v1.TallyR\n" +
 	"staffTally\x12\x1f\n" +
 	"\vstaff_total\x18\x0f \x01(\x05R\n" +
 	"staffTotal\x12\x1b\n" +
@@ -3939,25 +3939,25 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\x06detail\x18\x05 \x01(\tR\x06detail\"N\n" +
 	"\vScanRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x14\n" +
-	"\x05input\x18\x02 \x01(\tR\x05input\"\x9b\x01\n" +
-	"\fScanResponse\x128\n" +
-	"\x06holder\x18\x01 \x01(\v2 .joseph.attendance.v1.CardHolderR\x06holder\x12\x16\n" +
+	"\x05input\x18\x02 \x01(\tR\x05input\"\x9a\x01\n" +
+	"\fScanResponse\x127\n" +
+	"\x06holder\x18\x01 \x01(\v2\x1f.ltedu.attendance.v1.CardHolderR\x06holder\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\x12\x1d\n" +
 	"\n" +
 	"arrived_at\x18\x03 \x01(\tR\tarrivedAt\x12\x1a\n" +
-	"\brepeated\x18\x04 \x01(\bR\brepeated\"\xa3\x01\n" +
+	"\brepeated\x18\x04 \x01(\bR\brepeated\"\xa2\x01\n" +
 	"\bGateScan\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x128\n" +
-	"\x06holder\x18\x02 \x01(\v2 .joseph.attendance.v1.CardHolderR\x06holder\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x127\n" +
+	"\x06holder\x18\x02 \x01(\v2\x1f.ltedu.attendance.v1.CardHolderR\x06holder\x12\x1d\n" +
 	"\n" +
 	"scanned_at\x18\x03 \x01(\tR\tscannedAt\x12\x16\n" +
 	"\x06source\x18\x04 \x01(\tR\x06source\x12\x16\n" +
 	"\x06status\x18\x05 \x01(\tR\x06status\"U\n" +
 	"\x12RecentScansRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x14\n" +
-	"\x05limit\x18\x02 \x01(\x05R\x05limit\"K\n" +
-	"\x13RecentScansResponse\x124\n" +
-	"\x05scans\x18\x01 \x03(\v2\x1e.joseph.attendance.v1.GateScanR\x05scans\"\xea\x01\n" +
+	"\x05limit\x18\x02 \x01(\x05R\x05limit\"J\n" +
+	"\x13RecentScansResponse\x123\n" +
+	"\x05scans\x18\x01 \x03(\v2\x1d.ltedu.attendance.v1.GateScanR\x05scans\"\xea\x01\n" +
 	"\tRosterRow\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12\x12\n" +
@@ -3973,26 +3973,26 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x02 \x01(\tR\tsectionId\x12\x10\n" +
-	"\x03day\x18\x03 \x01(\tR\x03day\"\xef\x01\n" +
+	"\x03day\x18\x03 \x01(\tR\x03day\"\xed\x01\n" +
 	"\x11GetRosterResponse\x12\x10\n" +
 	"\x03day\x18\x01 \x01(\tR\x03day\x12\x1d\n" +
 	"\n" +
-	"school_day\x18\x02 \x01(\bR\tschoolDay\x12:\n" +
-	"\asection\x18\x03 \x01(\v2 .joseph.attendance.v1.SectionDayR\asection\x123\n" +
-	"\x04rows\x18\x04 \x03(\v2\x1f.joseph.attendance.v1.RosterRowR\x04rows\x12\x19\n" +
+	"school_day\x18\x02 \x01(\bR\tschoolDay\x129\n" +
+	"\asection\x18\x03 \x01(\v2\x1f.ltedu.attendance.v1.SectionDayR\asection\x122\n" +
+	"\x04rows\x18\x04 \x03(\v2\x1e.ltedu.attendance.v1.RosterRowR\x04rows\x12\x19\n" +
 	"\bcan_edit\x18\x05 \x01(\bR\acanEdit\x12\x1d\n" +
 	"\n" +
 	"late_after\x18\x06 \x01(\tR\tlateAfter\"T\n" +
 	"\tMarkInput\x12\x1b\n" +
 	"\tperson_id\x18\x01 \x01(\tR\bpersonId\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\x12\x12\n" +
-	"\x04note\x18\x03 \x01(\tR\x04note\"\xa8\x01\n" +
+	"\x04note\x18\x03 \x01(\tR\x04note\"\xa7\x01\n" +
 	"\x13MarkStudentsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x02 \x01(\tR\tsectionId\x12\x10\n" +
-	"\x03day\x18\x03 \x01(\tR\x03day\x125\n" +
-	"\x05marks\x18\x04 \x03(\v2\x1f.joseph.attendance.v1.MarkInputR\x05marks\"m\n" +
+	"\x03day\x18\x03 \x01(\tR\x03day\x124\n" +
+	"\x05marks\x18\x04 \x03(\v2\x1e.ltedu.attendance.v1.MarkInputR\x05marks\"m\n" +
 	"\x0fCloseDayRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x10\n" +
 	"\x03day\x18\x02 \x01(\tR\x03day\x12\x1d\n" +
@@ -4012,18 +4012,18 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\x04note\x18\b \x01(\tR\x04note\"Q\n" +
 	"\x12GetStaffDayRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x10\n" +
-	"\x03day\x18\x02 \x01(\tR\x03day\"\x99\x01\n" +
+	"\x03day\x18\x02 \x01(\tR\x03day\"\x98\x01\n" +
 	"\x13GetStaffDayResponse\x12\x10\n" +
 	"\x03day\x18\x01 \x01(\tR\x03day\x12\x1d\n" +
 	"\n" +
-	"school_day\x18\x02 \x01(\bR\tschoolDay\x122\n" +
-	"\x04rows\x18\x03 \x03(\v2\x1e.joseph.attendance.v1.StaffRowR\x04rows\x12\x1d\n" +
+	"school_day\x18\x02 \x01(\bR\tschoolDay\x121\n" +
+	"\x04rows\x18\x03 \x03(\v2\x1d.ltedu.attendance.v1.StaffRowR\x04rows\x12\x1d\n" +
 	"\n" +
-	"late_after\x18\x04 \x01(\tR\tlateAfter\"\x86\x01\n" +
+	"late_after\x18\x04 \x01(\tR\tlateAfter\"\x85\x01\n" +
 	"\x10MarkStaffRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x10\n" +
-	"\x03day\x18\x02 \x01(\tR\x03day\x125\n" +
-	"\x05marks\x18\x03 \x03(\v2\x1f.joseph.attendance.v1.MarkInputR\x05marks\"S\n" +
+	"\x03day\x18\x02 \x01(\tR\x03day\x124\n" +
+	"\x05marks\x18\x03 \x03(\v2\x1e.ltedu.attendance.v1.MarkInputR\x05marks\"S\n" +
 	"\x14CloseStaffDayRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x10\n" +
 	"\x03day\x18\x02 \x01(\tR\x03day\"\x84\x03\n" +
@@ -4049,12 +4049,12 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x10\n" +
 	"\x03day\x18\x02 \x01(\tR\x03day\x12\x1d\n" +
 	"\n" +
-	"section_id\x18\x03 \x01(\tR\tsectionId\"\x93\x01\n" +
+	"section_id\x18\x03 \x01(\tR\tsectionId\"\x92\x01\n" +
 	"\x13ListClassesResponse\x12\x10\n" +
 	"\x03day\x18\x01 \x01(\tR\x03day\x12\x1d\n" +
 	"\n" +
-	"school_day\x18\x02 \x01(\bR\tschoolDay\x125\n" +
-	"\x05slots\x18\x03 \x03(\v2\x1f.joseph.attendance.v1.ClassSlotR\x05slots\x12\x14\n" +
+	"school_day\x18\x02 \x01(\bR\tschoolDay\x124\n" +
+	"\x05slots\x18\x03 \x03(\v2\x1e.ltedu.attendance.v1.ClassSlotR\x05slots\x12\x14\n" +
 	"\x05scope\x18\x04 \x01(\tR\x05scope\"\x9d\x01\n" +
 	"\tClassMark\x12\x1d\n" +
 	"\n" +
@@ -4069,19 +4069,19 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
 	"\rassignment_id\x18\x02 \x01(\tR\fassignmentId\x12\x19\n" +
 	"\bblock_id\x18\x03 \x01(\tR\ablockId\x12\x10\n" +
-	"\x03day\x18\x04 \x01(\tR\x03day\"\xab\x01\n" +
+	"\x03day\x18\x04 \x01(\tR\x03day\"\xa9\x01\n" +
 	"\x10GetClassResponse\x12\x10\n" +
-	"\x03day\x18\x01 \x01(\tR\x03day\x123\n" +
-	"\x04slot\x18\x02 \x01(\v2\x1f.joseph.attendance.v1.ClassSlotR\x04slot\x125\n" +
-	"\x05marks\x18\x03 \x03(\v2\x1f.joseph.attendance.v1.ClassMarkR\x05marks\x12\x19\n" +
-	"\bcan_edit\x18\x04 \x01(\bR\acanEdit\"\xdc\x01\n" +
+	"\x03day\x18\x01 \x01(\tR\x03day\x122\n" +
+	"\x04slot\x18\x02 \x01(\v2\x1e.ltedu.attendance.v1.ClassSlotR\x04slot\x124\n" +
+	"\x05marks\x18\x03 \x03(\v2\x1e.ltedu.attendance.v1.ClassMarkR\x05marks\x12\x19\n" +
+	"\bcan_edit\x18\x04 \x01(\bR\acanEdit\"\xdb\x01\n" +
 	"\x10SaveClassRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
 	"\rassignment_id\x18\x02 \x01(\tR\fassignmentId\x12\x19\n" +
 	"\bblock_id\x18\x03 \x01(\tR\ablockId\x12\x10\n" +
 	"\x03day\x18\x04 \x01(\tR\x03day\x12\x14\n" +
-	"\x05topic\x18\x05 \x01(\tR\x05topic\x125\n" +
-	"\x05marks\x18\x06 \x03(\v2\x1f.joseph.attendance.v1.MarkInputR\x05marks\"\xdc\x03\n" +
+	"\x05topic\x18\x05 \x01(\tR\x05topic\x124\n" +
+	"\x05marks\x18\x06 \x03(\v2\x1e.ltedu.attendance.v1.MarkInputR\x05marks\"\xdc\x03\n" +
 	"\rJustification\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
@@ -4109,9 +4109,9 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\n" +
 	"student_id\x18\x03 \x01(\tR\tstudentId\x12\x14\n" +
 	"\x05limit\x18\x04 \x01(\x05R\x05limit\x12\x16\n" +
-	"\x06offset\x18\x05 \x01(\x05R\x06offset\"\x8c\x01\n" +
-	"\x1aListJustificationsResponse\x129\n" +
-	"\x05items\x18\x01 \x03(\v2#.joseph.attendance.v1.JustificationR\x05items\x12\x14\n" +
+	"\x06offset\x18\x05 \x01(\x05R\x06offset\"\x8b\x01\n" +
+	"\x1aListJustificationsResponse\x128\n" +
+	"\x05items\x18\x01 \x03(\v2\".ltedu.attendance.v1.JustificationR\x05items\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x05R\x05total\x12\x1d\n" +
 	"\n" +
 	"can_review\x18\x03 \x01(\bR\tcanReview\"\xd2\x01\n" +
@@ -4127,11 +4127,11 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x18\n" +
 	"\aapprove\x18\x03 \x01(\bR\aapprove\x12\x12\n" +
-	"\x04note\x18\x04 \x01(\tR\x04note\"h\n" +
-	"\x1bSubmitJustificationResponse\x12I\n" +
-	"\rjustification\x18\x01 \x01(\v2#.joseph.attendance.v1.JustificationR\rjustification\"h\n" +
-	"\x1bReviewJustificationResponse\x12I\n" +
-	"\rjustification\x18\x01 \x01(\v2#.joseph.attendance.v1.JustificationR\rjustification\"\xca\x01\n" +
+	"\x04note\x18\x04 \x01(\tR\x04note\"g\n" +
+	"\x1bSubmitJustificationResponse\x12H\n" +
+	"\rjustification\x18\x01 \x01(\v2\".ltedu.attendance.v1.JustificationR\rjustification\"g\n" +
+	"\x1bReviewJustificationResponse\x12H\n" +
+	"\rjustification\x18\x01 \x01(\v2\".ltedu.attendance.v1.JustificationR\rjustification\"\xc9\x01\n" +
 	"\fStudentTally\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12\x12\n" +
@@ -4139,26 +4139,26 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x04 \x01(\tR\tsectionId\x12#\n" +
-	"\rsection_label\x18\x05 \x01(\tR\fsectionLabel\x12/\n" +
-	"\x04days\x18\x06 \x01(\v2\x1b.joseph.attendance.v1.TallyR\x04days\"\xf4\x01\n" +
+	"\rsection_label\x18\x05 \x01(\tR\fsectionLabel\x12.\n" +
+	"\x04days\x18\x06 \x01(\v2\x1a.ltedu.attendance.v1.TallyR\x04days\"\xf3\x01\n" +
 	"\fSubjectTally\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12!\n" +
 	"\fstudent_name\x18\x02 \x01(\tR\vstudentName\x12#\n" +
 	"\rsection_label\x18\x03 \x01(\tR\fsectionLabel\x12#\n" +
 	"\rassignment_id\x18\x04 \x01(\tR\fassignmentId\x12!\n" +
-	"\fsubject_name\x18\x05 \x01(\tR\vsubjectName\x125\n" +
-	"\aclasses\x18\x06 \x01(\v2\x1b.joseph.attendance.v1.TallyR\aclasses\"y\n" +
+	"\fsubject_name\x18\x05 \x01(\tR\vsubjectName\x124\n" +
+	"\aclasses\x18\x06 \x01(\v2\x1a.ltedu.attendance.v1.TallyR\aclasses\"y\n" +
 	"\x10GetReportRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
 	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12\x1d\n" +
 	"\n" +
-	"section_id\x18\x03 \x01(\tR\tsectionId\"\xc6\x01\n" +
+	"section_id\x18\x03 \x01(\tR\tsectionId\"\xc4\x01\n" +
 	"\x11GetReportResponse\x12\x1b\n" +
 	"\tperiod_id\x18\x01 \x01(\tR\bperiodId\x12\x14\n" +
-	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12>\n" +
-	"\bstudents\x18\x03 \x03(\v2\".joseph.attendance.v1.StudentTallyR\bstudents\x12>\n" +
-	"\bsubjects\x18\x04 \x03(\v2\".joseph.attendance.v1.SubjectTallyR\bsubjects\"\x80\x01\n" +
+	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12=\n" +
+	"\bstudents\x18\x03 \x03(\v2!.ltedu.attendance.v1.StudentTallyR\bstudents\x12=\n" +
+	"\bsubjects\x18\x04 \x03(\v2!.ltedu.attendance.v1.SubjectTallyR\bsubjects\"\x80\x01\n" +
 	"\tDailyMark\x12\x10\n" +
 	"\x03day\x18\x01 \x01(\tR\x03day\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\x12\x1d\n" +
@@ -4169,20 +4169,20 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\x11GetStudentRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x02 \x01(\tR\tstudentId\"\xb6\x03\n" +
-	"\x11StudentAttendance\x12:\n" +
-	"\astudent\x18\x01 \x01(\v2 .joseph.attendance.v1.CardHolderR\astudent\x12#\n" +
+	"student_id\x18\x02 \x01(\tR\tstudentId\"\xb0\x03\n" +
+	"\x11StudentAttendance\x129\n" +
+	"\astudent\x18\x01 \x01(\v2\x1f.ltedu.attendance.v1.CardHolderR\astudent\x12#\n" +
 	"\rsection_label\x18\x02 \x01(\tR\fsectionLabel\x12\x14\n" +
-	"\x05limit\x18\x03 \x01(\x05R\x05limit\x125\n" +
-	"\x05today\x18\x04 \x01(\v2\x1f.joseph.attendance.v1.DailyMarkR\x05today\x12/\n" +
-	"\x04days\x18\x05 \x01(\v2\x1b.joseph.attendance.v1.TallyR\x04days\x125\n" +
-	"\x05marks\x18\x06 \x03(\v2\x1f.joseph.attendance.v1.DailyMarkR\x05marks\x12>\n" +
-	"\bsubjects\x18\a \x03(\v2\".joseph.attendance.v1.SubjectTallyR\bsubjects\x12K\n" +
-	"\x0ejustifications\x18\b \x03(\v2#.joseph.attendance.v1.JustificationR\x0ejustifications\"@\n" +
+	"\x05limit\x18\x03 \x01(\x05R\x05limit\x124\n" +
+	"\x05today\x18\x04 \x01(\v2\x1e.ltedu.attendance.v1.DailyMarkR\x05today\x12.\n" +
+	"\x04days\x18\x05 \x01(\v2\x1a.ltedu.attendance.v1.TallyR\x04days\x124\n" +
+	"\x05marks\x18\x06 \x03(\v2\x1e.ltedu.attendance.v1.DailyMarkR\x05marks\x12=\n" +
+	"\bsubjects\x18\a \x03(\v2!.ltedu.attendance.v1.SubjectTallyR\bsubjects\x12J\n" +
+	"\x0ejustifications\x18\b \x03(\v2\".ltedu.attendance.v1.JustificationR\x0ejustifications\"@\n" +
 	"\x13MyAttendanceRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"[\n" +
-	"\x14MyAttendanceResponse\x12C\n" +
-	"\bstudents\x18\x01 \x03(\v2'.joseph.attendance.v1.StudentAttendanceR\bstudents\"b\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"Z\n" +
+	"\x14MyAttendanceResponse\x12B\n" +
+	"\bstudents\x18\x01 \x03(\v2&.ltedu.attendance.v1.StudentAttendanceR\bstudents\"b\n" +
 	"\bCardCode\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
 	"\apayload\x18\x02 \x01(\tR\apayload\x12\x12\n" +
@@ -4191,198 +4191,198 @@ const file_joseph_attendance_v1_attendance_proto_rawDesc = "" +
 	"\x10CardCodesRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x12\n" +
 	"\x04kind\x18\x02 \x01(\tR\x04kind\x12\x10\n" +
-	"\x03ids\x18\x03 \x03(\tR\x03ids\"I\n" +
-	"\x11CardCodesResponse\x124\n" +
-	"\x05codes\x18\x01 \x03(\v2\x1e.joseph.attendance.v1.CardCodeR\x05codes\"a\n" +
+	"\x03ids\x18\x03 \x03(\tR\x03ids\"H\n" +
+	"\x11CardCodesResponse\x123\n" +
+	"\x05codes\x18\x01 \x03(\v2\x1d.ltedu.attendance.v1.CardCodeR\x05codes\"a\n" +
 	"\x10RenewCardRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x12\n" +
 	"\x04kind\x18\x02 \x01(\tR\x04kind\x12\x0e\n" +
-	"\x02id\x18\x03 \x01(\tR\x02id\"W\n" +
-	"\x14MarkStudentsResponse\x12?\n" +
-	"\x06roster\x18\x01 \x01(\v2'.joseph.attendance.v1.GetRosterResponseR\x06roster\"P\n" +
-	"\x11MarkStaffResponse\x12;\n" +
-	"\x03day\x18\x01 \x01(\v2).joseph.attendance.v1.GetStaffDayResponseR\x03day\"/\n" +
+	"\x02id\x18\x03 \x01(\tR\x02id\"V\n" +
+	"\x14MarkStudentsResponse\x12>\n" +
+	"\x06roster\x18\x01 \x01(\v2&.ltedu.attendance.v1.GetRosterResponseR\x06roster\"O\n" +
+	"\x11MarkStaffResponse\x12:\n" +
+	"\x03day\x18\x01 \x01(\v2(.ltedu.attendance.v1.GetStaffDayResponseR\x03day\"/\n" +
 	"\x15CloseStaffDayResponse\x12\x16\n" +
-	"\x06marked\x18\x01 \x01(\x05R\x06marked\"Q\n" +
-	"\x11SaveClassResponse\x12<\n" +
-	"\x05sheet\x18\x01 \x01(\v2&.joseph.attendance.v1.GetClassResponseR\x05sheet\"]\n" +
-	"\x12GetStudentResponse\x12G\n" +
+	"\x06marked\x18\x01 \x01(\x05R\x06marked\"P\n" +
+	"\x11SaveClassResponse\x12;\n" +
+	"\x05sheet\x18\x01 \x01(\v2%.ltedu.attendance.v1.GetClassResponseR\x05sheet\"\\\n" +
+	"\x12GetStudentResponse\x12F\n" +
 	"\n" +
-	"attendance\x18\x01 \x01(\v2'.joseph.attendance.v1.StudentAttendanceR\n" +
-	"attendance\"G\n" +
-	"\x11RenewCardResponse\x122\n" +
-	"\x04code\x18\x01 \x01(\v2\x1e.joseph.attendance.v1.CardCodeR\x04code2\xe6\x0f\n" +
-	"\x11AttendanceService\x12b\n" +
-	"\vGetOverview\x12(.joseph.attendance.v1.GetOverviewRequest\x1a).joseph.attendance.v1.GetOverviewResponse\x12M\n" +
-	"\x04Scan\x12!.joseph.attendance.v1.ScanRequest\x1a\".joseph.attendance.v1.ScanResponse\x12b\n" +
-	"\vRecentScans\x12(.joseph.attendance.v1.RecentScansRequest\x1a).joseph.attendance.v1.RecentScansResponse\x12\\\n" +
-	"\tGetRoster\x12&.joseph.attendance.v1.GetRosterRequest\x1a'.joseph.attendance.v1.GetRosterResponse\x12e\n" +
-	"\fMarkStudents\x12).joseph.attendance.v1.MarkStudentsRequest\x1a*.joseph.attendance.v1.MarkStudentsResponse\x12Y\n" +
-	"\bCloseDay\x12%.joseph.attendance.v1.CloseDayRequest\x1a&.joseph.attendance.v1.CloseDayResponse\x12b\n" +
-	"\vGetStaffDay\x12(.joseph.attendance.v1.GetStaffDayRequest\x1a).joseph.attendance.v1.GetStaffDayResponse\x12\\\n" +
-	"\tMarkStaff\x12&.joseph.attendance.v1.MarkStaffRequest\x1a'.joseph.attendance.v1.MarkStaffResponse\x12h\n" +
-	"\rCloseStaffDay\x12*.joseph.attendance.v1.CloseStaffDayRequest\x1a+.joseph.attendance.v1.CloseStaffDayResponse\x12b\n" +
-	"\vListClasses\x12(.joseph.attendance.v1.ListClassesRequest\x1a).joseph.attendance.v1.ListClassesResponse\x12Y\n" +
-	"\bGetClass\x12%.joseph.attendance.v1.GetClassRequest\x1a&.joseph.attendance.v1.GetClassResponse\x12\\\n" +
-	"\tSaveClass\x12&.joseph.attendance.v1.SaveClassRequest\x1a'.joseph.attendance.v1.SaveClassResponse\x12w\n" +
-	"\x12ListJustifications\x12/.joseph.attendance.v1.ListJustificationsRequest\x1a0.joseph.attendance.v1.ListJustificationsResponse\x12z\n" +
-	"\x13SubmitJustification\x120.joseph.attendance.v1.SubmitJustificationRequest\x1a1.joseph.attendance.v1.SubmitJustificationResponse\x12z\n" +
-	"\x13ReviewJustification\x120.joseph.attendance.v1.ReviewJustificationRequest\x1a1.joseph.attendance.v1.ReviewJustificationResponse\x12\\\n" +
-	"\tGetReport\x12&.joseph.attendance.v1.GetReportRequest\x1a'.joseph.attendance.v1.GetReportResponse\x12_\n" +
+	"attendance\x18\x01 \x01(\v2&.ltedu.attendance.v1.StudentAttendanceR\n" +
+	"attendance\"F\n" +
+	"\x11RenewCardResponse\x121\n" +
+	"\x04code\x18\x01 \x01(\v2\x1d.ltedu.attendance.v1.CardCodeR\x04code2\xbe\x0f\n" +
+	"\x11AttendanceService\x12`\n" +
+	"\vGetOverview\x12'.ltedu.attendance.v1.GetOverviewRequest\x1a(.ltedu.attendance.v1.GetOverviewResponse\x12K\n" +
+	"\x04Scan\x12 .ltedu.attendance.v1.ScanRequest\x1a!.ltedu.attendance.v1.ScanResponse\x12`\n" +
+	"\vRecentScans\x12'.ltedu.attendance.v1.RecentScansRequest\x1a(.ltedu.attendance.v1.RecentScansResponse\x12Z\n" +
+	"\tGetRoster\x12%.ltedu.attendance.v1.GetRosterRequest\x1a&.ltedu.attendance.v1.GetRosterResponse\x12c\n" +
+	"\fMarkStudents\x12(.ltedu.attendance.v1.MarkStudentsRequest\x1a).ltedu.attendance.v1.MarkStudentsResponse\x12W\n" +
+	"\bCloseDay\x12$.ltedu.attendance.v1.CloseDayRequest\x1a%.ltedu.attendance.v1.CloseDayResponse\x12`\n" +
+	"\vGetStaffDay\x12'.ltedu.attendance.v1.GetStaffDayRequest\x1a(.ltedu.attendance.v1.GetStaffDayResponse\x12Z\n" +
+	"\tMarkStaff\x12%.ltedu.attendance.v1.MarkStaffRequest\x1a&.ltedu.attendance.v1.MarkStaffResponse\x12f\n" +
+	"\rCloseStaffDay\x12).ltedu.attendance.v1.CloseStaffDayRequest\x1a*.ltedu.attendance.v1.CloseStaffDayResponse\x12`\n" +
+	"\vListClasses\x12'.ltedu.attendance.v1.ListClassesRequest\x1a(.ltedu.attendance.v1.ListClassesResponse\x12W\n" +
+	"\bGetClass\x12$.ltedu.attendance.v1.GetClassRequest\x1a%.ltedu.attendance.v1.GetClassResponse\x12Z\n" +
+	"\tSaveClass\x12%.ltedu.attendance.v1.SaveClassRequest\x1a&.ltedu.attendance.v1.SaveClassResponse\x12u\n" +
+	"\x12ListJustifications\x12..ltedu.attendance.v1.ListJustificationsRequest\x1a/.ltedu.attendance.v1.ListJustificationsResponse\x12x\n" +
+	"\x13SubmitJustification\x12/.ltedu.attendance.v1.SubmitJustificationRequest\x1a0.ltedu.attendance.v1.SubmitJustificationResponse\x12x\n" +
+	"\x13ReviewJustification\x12/.ltedu.attendance.v1.ReviewJustificationRequest\x1a0.ltedu.attendance.v1.ReviewJustificationResponse\x12Z\n" +
+	"\tGetReport\x12%.ltedu.attendance.v1.GetReportRequest\x1a&.ltedu.attendance.v1.GetReportResponse\x12]\n" +
 	"\n" +
-	"GetStudent\x12'.joseph.attendance.v1.GetStudentRequest\x1a(.joseph.attendance.v1.GetStudentResponse\x12e\n" +
-	"\fMyAttendance\x12).joseph.attendance.v1.MyAttendanceRequest\x1a*.joseph.attendance.v1.MyAttendanceResponse\x12\\\n" +
-	"\tCardCodes\x12&.joseph.attendance.v1.CardCodesRequest\x1a'.joseph.attendance.v1.CardCodesResponse\x12\\\n" +
-	"\tRenewCard\x12&.joseph.attendance.v1.RenewCardRequest\x1a'.joseph.attendance.v1.RenewCardResponseBAZ?api/internal/adapter/inbound/grpc/gen/attendancev1;attendancev1b\x06proto3"
+	"GetStudent\x12&.ltedu.attendance.v1.GetStudentRequest\x1a'.ltedu.attendance.v1.GetStudentResponse\x12c\n" +
+	"\fMyAttendance\x12(.ltedu.attendance.v1.MyAttendanceRequest\x1a).ltedu.attendance.v1.MyAttendanceResponse\x12Z\n" +
+	"\tCardCodes\x12%.ltedu.attendance.v1.CardCodesRequest\x1a&.ltedu.attendance.v1.CardCodesResponse\x12Z\n" +
+	"\tRenewCard\x12%.ltedu.attendance.v1.RenewCardRequest\x1a&.ltedu.attendance.v1.RenewCardResponseBAZ?api/internal/adapter/inbound/grpc/gen/attendancev1;attendancev1b\x06proto3"
 
 var (
-	file_joseph_attendance_v1_attendance_proto_rawDescOnce sync.Once
-	file_joseph_attendance_v1_attendance_proto_rawDescData []byte
+	file_ltedu_attendance_v1_attendance_proto_rawDescOnce sync.Once
+	file_ltedu_attendance_v1_attendance_proto_rawDescData []byte
 )
 
-func file_joseph_attendance_v1_attendance_proto_rawDescGZIP() []byte {
-	file_joseph_attendance_v1_attendance_proto_rawDescOnce.Do(func() {
-		file_joseph_attendance_v1_attendance_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_attendance_v1_attendance_proto_rawDesc), len(file_joseph_attendance_v1_attendance_proto_rawDesc)))
+func file_ltedu_attendance_v1_attendance_proto_rawDescGZIP() []byte {
+	file_ltedu_attendance_v1_attendance_proto_rawDescOnce.Do(func() {
+		file_ltedu_attendance_v1_attendance_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_attendance_v1_attendance_proto_rawDesc), len(file_ltedu_attendance_v1_attendance_proto_rawDesc)))
 	})
-	return file_joseph_attendance_v1_attendance_proto_rawDescData
+	return file_ltedu_attendance_v1_attendance_proto_rawDescData
 }
 
-var file_joseph_attendance_v1_attendance_proto_msgTypes = make([]protoimpl.MessageInfo, 56)
-var file_joseph_attendance_v1_attendance_proto_goTypes = []any{
-	(*Tally)(nil),                       // 0: joseph.attendance.v1.Tally
-	(*SectionDay)(nil),                  // 1: joseph.attendance.v1.SectionDay
-	(*Vocabulary)(nil),                  // 2: joseph.attendance.v1.Vocabulary
-	(*GetOverviewRequest)(nil),          // 3: joseph.attendance.v1.GetOverviewRequest
-	(*GetOverviewResponse)(nil),         // 4: joseph.attendance.v1.GetOverviewResponse
-	(*CardHolder)(nil),                  // 5: joseph.attendance.v1.CardHolder
-	(*ScanRequest)(nil),                 // 6: joseph.attendance.v1.ScanRequest
-	(*ScanResponse)(nil),                // 7: joseph.attendance.v1.ScanResponse
-	(*GateScan)(nil),                    // 8: joseph.attendance.v1.GateScan
-	(*RecentScansRequest)(nil),          // 9: joseph.attendance.v1.RecentScansRequest
-	(*RecentScansResponse)(nil),         // 10: joseph.attendance.v1.RecentScansResponse
-	(*RosterRow)(nil),                   // 11: joseph.attendance.v1.RosterRow
-	(*GetRosterRequest)(nil),            // 12: joseph.attendance.v1.GetRosterRequest
-	(*GetRosterResponse)(nil),           // 13: joseph.attendance.v1.GetRosterResponse
-	(*MarkInput)(nil),                   // 14: joseph.attendance.v1.MarkInput
-	(*MarkStudentsRequest)(nil),         // 15: joseph.attendance.v1.MarkStudentsRequest
-	(*CloseDayRequest)(nil),             // 16: joseph.attendance.v1.CloseDayRequest
-	(*CloseDayResponse)(nil),            // 17: joseph.attendance.v1.CloseDayResponse
-	(*StaffRow)(nil),                    // 18: joseph.attendance.v1.StaffRow
-	(*GetStaffDayRequest)(nil),          // 19: joseph.attendance.v1.GetStaffDayRequest
-	(*GetStaffDayResponse)(nil),         // 20: joseph.attendance.v1.GetStaffDayResponse
-	(*MarkStaffRequest)(nil),            // 21: joseph.attendance.v1.MarkStaffRequest
-	(*CloseStaffDayRequest)(nil),        // 22: joseph.attendance.v1.CloseStaffDayRequest
-	(*ClassSlot)(nil),                   // 23: joseph.attendance.v1.ClassSlot
-	(*ListClassesRequest)(nil),          // 24: joseph.attendance.v1.ListClassesRequest
-	(*ListClassesResponse)(nil),         // 25: joseph.attendance.v1.ListClassesResponse
-	(*ClassMark)(nil),                   // 26: joseph.attendance.v1.ClassMark
-	(*GetClassRequest)(nil),             // 27: joseph.attendance.v1.GetClassRequest
-	(*GetClassResponse)(nil),            // 28: joseph.attendance.v1.GetClassResponse
-	(*SaveClassRequest)(nil),            // 29: joseph.attendance.v1.SaveClassRequest
-	(*Justification)(nil),               // 30: joseph.attendance.v1.Justification
-	(*ListJustificationsRequest)(nil),   // 31: joseph.attendance.v1.ListJustificationsRequest
-	(*ListJustificationsResponse)(nil),  // 32: joseph.attendance.v1.ListJustificationsResponse
-	(*SubmitJustificationRequest)(nil),  // 33: joseph.attendance.v1.SubmitJustificationRequest
-	(*ReviewJustificationRequest)(nil),  // 34: joseph.attendance.v1.ReviewJustificationRequest
-	(*SubmitJustificationResponse)(nil), // 35: joseph.attendance.v1.SubmitJustificationResponse
-	(*ReviewJustificationResponse)(nil), // 36: joseph.attendance.v1.ReviewJustificationResponse
-	(*StudentTally)(nil),                // 37: joseph.attendance.v1.StudentTally
-	(*SubjectTally)(nil),                // 38: joseph.attendance.v1.SubjectTally
-	(*GetReportRequest)(nil),            // 39: joseph.attendance.v1.GetReportRequest
-	(*GetReportResponse)(nil),           // 40: joseph.attendance.v1.GetReportResponse
-	(*DailyMark)(nil),                   // 41: joseph.attendance.v1.DailyMark
-	(*GetStudentRequest)(nil),           // 42: joseph.attendance.v1.GetStudentRequest
-	(*StudentAttendance)(nil),           // 43: joseph.attendance.v1.StudentAttendance
-	(*MyAttendanceRequest)(nil),         // 44: joseph.attendance.v1.MyAttendanceRequest
-	(*MyAttendanceResponse)(nil),        // 45: joseph.attendance.v1.MyAttendanceResponse
-	(*CardCode)(nil),                    // 46: joseph.attendance.v1.CardCode
-	(*CardCodesRequest)(nil),            // 47: joseph.attendance.v1.CardCodesRequest
-	(*CardCodesResponse)(nil),           // 48: joseph.attendance.v1.CardCodesResponse
-	(*RenewCardRequest)(nil),            // 49: joseph.attendance.v1.RenewCardRequest
-	(*MarkStudentsResponse)(nil),        // 50: joseph.attendance.v1.MarkStudentsResponse
-	(*MarkStaffResponse)(nil),           // 51: joseph.attendance.v1.MarkStaffResponse
-	(*CloseStaffDayResponse)(nil),       // 52: joseph.attendance.v1.CloseStaffDayResponse
-	(*SaveClassResponse)(nil),           // 53: joseph.attendance.v1.SaveClassResponse
-	(*GetStudentResponse)(nil),          // 54: joseph.attendance.v1.GetStudentResponse
-	(*RenewCardResponse)(nil),           // 55: joseph.attendance.v1.RenewCardResponse
+var file_ltedu_attendance_v1_attendance_proto_msgTypes = make([]protoimpl.MessageInfo, 56)
+var file_ltedu_attendance_v1_attendance_proto_goTypes = []any{
+	(*Tally)(nil),                       // 0: ltedu.attendance.v1.Tally
+	(*SectionDay)(nil),                  // 1: ltedu.attendance.v1.SectionDay
+	(*Vocabulary)(nil),                  // 2: ltedu.attendance.v1.Vocabulary
+	(*GetOverviewRequest)(nil),          // 3: ltedu.attendance.v1.GetOverviewRequest
+	(*GetOverviewResponse)(nil),         // 4: ltedu.attendance.v1.GetOverviewResponse
+	(*CardHolder)(nil),                  // 5: ltedu.attendance.v1.CardHolder
+	(*ScanRequest)(nil),                 // 6: ltedu.attendance.v1.ScanRequest
+	(*ScanResponse)(nil),                // 7: ltedu.attendance.v1.ScanResponse
+	(*GateScan)(nil),                    // 8: ltedu.attendance.v1.GateScan
+	(*RecentScansRequest)(nil),          // 9: ltedu.attendance.v1.RecentScansRequest
+	(*RecentScansResponse)(nil),         // 10: ltedu.attendance.v1.RecentScansResponse
+	(*RosterRow)(nil),                   // 11: ltedu.attendance.v1.RosterRow
+	(*GetRosterRequest)(nil),            // 12: ltedu.attendance.v1.GetRosterRequest
+	(*GetRosterResponse)(nil),           // 13: ltedu.attendance.v1.GetRosterResponse
+	(*MarkInput)(nil),                   // 14: ltedu.attendance.v1.MarkInput
+	(*MarkStudentsRequest)(nil),         // 15: ltedu.attendance.v1.MarkStudentsRequest
+	(*CloseDayRequest)(nil),             // 16: ltedu.attendance.v1.CloseDayRequest
+	(*CloseDayResponse)(nil),            // 17: ltedu.attendance.v1.CloseDayResponse
+	(*StaffRow)(nil),                    // 18: ltedu.attendance.v1.StaffRow
+	(*GetStaffDayRequest)(nil),          // 19: ltedu.attendance.v1.GetStaffDayRequest
+	(*GetStaffDayResponse)(nil),         // 20: ltedu.attendance.v1.GetStaffDayResponse
+	(*MarkStaffRequest)(nil),            // 21: ltedu.attendance.v1.MarkStaffRequest
+	(*CloseStaffDayRequest)(nil),        // 22: ltedu.attendance.v1.CloseStaffDayRequest
+	(*ClassSlot)(nil),                   // 23: ltedu.attendance.v1.ClassSlot
+	(*ListClassesRequest)(nil),          // 24: ltedu.attendance.v1.ListClassesRequest
+	(*ListClassesResponse)(nil),         // 25: ltedu.attendance.v1.ListClassesResponse
+	(*ClassMark)(nil),                   // 26: ltedu.attendance.v1.ClassMark
+	(*GetClassRequest)(nil),             // 27: ltedu.attendance.v1.GetClassRequest
+	(*GetClassResponse)(nil),            // 28: ltedu.attendance.v1.GetClassResponse
+	(*SaveClassRequest)(nil),            // 29: ltedu.attendance.v1.SaveClassRequest
+	(*Justification)(nil),               // 30: ltedu.attendance.v1.Justification
+	(*ListJustificationsRequest)(nil),   // 31: ltedu.attendance.v1.ListJustificationsRequest
+	(*ListJustificationsResponse)(nil),  // 32: ltedu.attendance.v1.ListJustificationsResponse
+	(*SubmitJustificationRequest)(nil),  // 33: ltedu.attendance.v1.SubmitJustificationRequest
+	(*ReviewJustificationRequest)(nil),  // 34: ltedu.attendance.v1.ReviewJustificationRequest
+	(*SubmitJustificationResponse)(nil), // 35: ltedu.attendance.v1.SubmitJustificationResponse
+	(*ReviewJustificationResponse)(nil), // 36: ltedu.attendance.v1.ReviewJustificationResponse
+	(*StudentTally)(nil),                // 37: ltedu.attendance.v1.StudentTally
+	(*SubjectTally)(nil),                // 38: ltedu.attendance.v1.SubjectTally
+	(*GetReportRequest)(nil),            // 39: ltedu.attendance.v1.GetReportRequest
+	(*GetReportResponse)(nil),           // 40: ltedu.attendance.v1.GetReportResponse
+	(*DailyMark)(nil),                   // 41: ltedu.attendance.v1.DailyMark
+	(*GetStudentRequest)(nil),           // 42: ltedu.attendance.v1.GetStudentRequest
+	(*StudentAttendance)(nil),           // 43: ltedu.attendance.v1.StudentAttendance
+	(*MyAttendanceRequest)(nil),         // 44: ltedu.attendance.v1.MyAttendanceRequest
+	(*MyAttendanceResponse)(nil),        // 45: ltedu.attendance.v1.MyAttendanceResponse
+	(*CardCode)(nil),                    // 46: ltedu.attendance.v1.CardCode
+	(*CardCodesRequest)(nil),            // 47: ltedu.attendance.v1.CardCodesRequest
+	(*CardCodesResponse)(nil),           // 48: ltedu.attendance.v1.CardCodesResponse
+	(*RenewCardRequest)(nil),            // 49: ltedu.attendance.v1.RenewCardRequest
+	(*MarkStudentsResponse)(nil),        // 50: ltedu.attendance.v1.MarkStudentsResponse
+	(*MarkStaffResponse)(nil),           // 51: ltedu.attendance.v1.MarkStaffResponse
+	(*CloseStaffDayResponse)(nil),       // 52: ltedu.attendance.v1.CloseStaffDayResponse
+	(*SaveClassResponse)(nil),           // 53: ltedu.attendance.v1.SaveClassResponse
+	(*GetStudentResponse)(nil),          // 54: ltedu.attendance.v1.GetStudentResponse
+	(*RenewCardResponse)(nil),           // 55: ltedu.attendance.v1.RenewCardResponse
 }
-var file_joseph_attendance_v1_attendance_proto_depIdxs = []int32{
-	0,  // 0: joseph.attendance.v1.SectionDay.tally:type_name -> joseph.attendance.v1.Tally
-	1,  // 1: joseph.attendance.v1.GetOverviewResponse.sections:type_name -> joseph.attendance.v1.SectionDay
-	2,  // 2: joseph.attendance.v1.GetOverviewResponse.vocabulary:type_name -> joseph.attendance.v1.Vocabulary
-	0,  // 3: joseph.attendance.v1.GetOverviewResponse.staff_tally:type_name -> joseph.attendance.v1.Tally
-	5,  // 4: joseph.attendance.v1.ScanResponse.holder:type_name -> joseph.attendance.v1.CardHolder
-	5,  // 5: joseph.attendance.v1.GateScan.holder:type_name -> joseph.attendance.v1.CardHolder
-	8,  // 6: joseph.attendance.v1.RecentScansResponse.scans:type_name -> joseph.attendance.v1.GateScan
-	1,  // 7: joseph.attendance.v1.GetRosterResponse.section:type_name -> joseph.attendance.v1.SectionDay
-	11, // 8: joseph.attendance.v1.GetRosterResponse.rows:type_name -> joseph.attendance.v1.RosterRow
-	14, // 9: joseph.attendance.v1.MarkStudentsRequest.marks:type_name -> joseph.attendance.v1.MarkInput
-	18, // 10: joseph.attendance.v1.GetStaffDayResponse.rows:type_name -> joseph.attendance.v1.StaffRow
-	14, // 11: joseph.attendance.v1.MarkStaffRequest.marks:type_name -> joseph.attendance.v1.MarkInput
-	23, // 12: joseph.attendance.v1.ListClassesResponse.slots:type_name -> joseph.attendance.v1.ClassSlot
-	23, // 13: joseph.attendance.v1.GetClassResponse.slot:type_name -> joseph.attendance.v1.ClassSlot
-	26, // 14: joseph.attendance.v1.GetClassResponse.marks:type_name -> joseph.attendance.v1.ClassMark
-	14, // 15: joseph.attendance.v1.SaveClassRequest.marks:type_name -> joseph.attendance.v1.MarkInput
-	30, // 16: joseph.attendance.v1.ListJustificationsResponse.items:type_name -> joseph.attendance.v1.Justification
-	30, // 17: joseph.attendance.v1.SubmitJustificationResponse.justification:type_name -> joseph.attendance.v1.Justification
-	30, // 18: joseph.attendance.v1.ReviewJustificationResponse.justification:type_name -> joseph.attendance.v1.Justification
-	0,  // 19: joseph.attendance.v1.StudentTally.days:type_name -> joseph.attendance.v1.Tally
-	0,  // 20: joseph.attendance.v1.SubjectTally.classes:type_name -> joseph.attendance.v1.Tally
-	37, // 21: joseph.attendance.v1.GetReportResponse.students:type_name -> joseph.attendance.v1.StudentTally
-	38, // 22: joseph.attendance.v1.GetReportResponse.subjects:type_name -> joseph.attendance.v1.SubjectTally
-	5,  // 23: joseph.attendance.v1.StudentAttendance.student:type_name -> joseph.attendance.v1.CardHolder
-	41, // 24: joseph.attendance.v1.StudentAttendance.today:type_name -> joseph.attendance.v1.DailyMark
-	0,  // 25: joseph.attendance.v1.StudentAttendance.days:type_name -> joseph.attendance.v1.Tally
-	41, // 26: joseph.attendance.v1.StudentAttendance.marks:type_name -> joseph.attendance.v1.DailyMark
-	38, // 27: joseph.attendance.v1.StudentAttendance.subjects:type_name -> joseph.attendance.v1.SubjectTally
-	30, // 28: joseph.attendance.v1.StudentAttendance.justifications:type_name -> joseph.attendance.v1.Justification
-	43, // 29: joseph.attendance.v1.MyAttendanceResponse.students:type_name -> joseph.attendance.v1.StudentAttendance
-	46, // 30: joseph.attendance.v1.CardCodesResponse.codes:type_name -> joseph.attendance.v1.CardCode
-	13, // 31: joseph.attendance.v1.MarkStudentsResponse.roster:type_name -> joseph.attendance.v1.GetRosterResponse
-	20, // 32: joseph.attendance.v1.MarkStaffResponse.day:type_name -> joseph.attendance.v1.GetStaffDayResponse
-	28, // 33: joseph.attendance.v1.SaveClassResponse.sheet:type_name -> joseph.attendance.v1.GetClassResponse
-	43, // 34: joseph.attendance.v1.GetStudentResponse.attendance:type_name -> joseph.attendance.v1.StudentAttendance
-	46, // 35: joseph.attendance.v1.RenewCardResponse.code:type_name -> joseph.attendance.v1.CardCode
-	3,  // 36: joseph.attendance.v1.AttendanceService.GetOverview:input_type -> joseph.attendance.v1.GetOverviewRequest
-	6,  // 37: joseph.attendance.v1.AttendanceService.Scan:input_type -> joseph.attendance.v1.ScanRequest
-	9,  // 38: joseph.attendance.v1.AttendanceService.RecentScans:input_type -> joseph.attendance.v1.RecentScansRequest
-	12, // 39: joseph.attendance.v1.AttendanceService.GetRoster:input_type -> joseph.attendance.v1.GetRosterRequest
-	15, // 40: joseph.attendance.v1.AttendanceService.MarkStudents:input_type -> joseph.attendance.v1.MarkStudentsRequest
-	16, // 41: joseph.attendance.v1.AttendanceService.CloseDay:input_type -> joseph.attendance.v1.CloseDayRequest
-	19, // 42: joseph.attendance.v1.AttendanceService.GetStaffDay:input_type -> joseph.attendance.v1.GetStaffDayRequest
-	21, // 43: joseph.attendance.v1.AttendanceService.MarkStaff:input_type -> joseph.attendance.v1.MarkStaffRequest
-	22, // 44: joseph.attendance.v1.AttendanceService.CloseStaffDay:input_type -> joseph.attendance.v1.CloseStaffDayRequest
-	24, // 45: joseph.attendance.v1.AttendanceService.ListClasses:input_type -> joseph.attendance.v1.ListClassesRequest
-	27, // 46: joseph.attendance.v1.AttendanceService.GetClass:input_type -> joseph.attendance.v1.GetClassRequest
-	29, // 47: joseph.attendance.v1.AttendanceService.SaveClass:input_type -> joseph.attendance.v1.SaveClassRequest
-	31, // 48: joseph.attendance.v1.AttendanceService.ListJustifications:input_type -> joseph.attendance.v1.ListJustificationsRequest
-	33, // 49: joseph.attendance.v1.AttendanceService.SubmitJustification:input_type -> joseph.attendance.v1.SubmitJustificationRequest
-	34, // 50: joseph.attendance.v1.AttendanceService.ReviewJustification:input_type -> joseph.attendance.v1.ReviewJustificationRequest
-	39, // 51: joseph.attendance.v1.AttendanceService.GetReport:input_type -> joseph.attendance.v1.GetReportRequest
-	42, // 52: joseph.attendance.v1.AttendanceService.GetStudent:input_type -> joseph.attendance.v1.GetStudentRequest
-	44, // 53: joseph.attendance.v1.AttendanceService.MyAttendance:input_type -> joseph.attendance.v1.MyAttendanceRequest
-	47, // 54: joseph.attendance.v1.AttendanceService.CardCodes:input_type -> joseph.attendance.v1.CardCodesRequest
-	49, // 55: joseph.attendance.v1.AttendanceService.RenewCard:input_type -> joseph.attendance.v1.RenewCardRequest
-	4,  // 56: joseph.attendance.v1.AttendanceService.GetOverview:output_type -> joseph.attendance.v1.GetOverviewResponse
-	7,  // 57: joseph.attendance.v1.AttendanceService.Scan:output_type -> joseph.attendance.v1.ScanResponse
-	10, // 58: joseph.attendance.v1.AttendanceService.RecentScans:output_type -> joseph.attendance.v1.RecentScansResponse
-	13, // 59: joseph.attendance.v1.AttendanceService.GetRoster:output_type -> joseph.attendance.v1.GetRosterResponse
-	50, // 60: joseph.attendance.v1.AttendanceService.MarkStudents:output_type -> joseph.attendance.v1.MarkStudentsResponse
-	17, // 61: joseph.attendance.v1.AttendanceService.CloseDay:output_type -> joseph.attendance.v1.CloseDayResponse
-	20, // 62: joseph.attendance.v1.AttendanceService.GetStaffDay:output_type -> joseph.attendance.v1.GetStaffDayResponse
-	51, // 63: joseph.attendance.v1.AttendanceService.MarkStaff:output_type -> joseph.attendance.v1.MarkStaffResponse
-	52, // 64: joseph.attendance.v1.AttendanceService.CloseStaffDay:output_type -> joseph.attendance.v1.CloseStaffDayResponse
-	25, // 65: joseph.attendance.v1.AttendanceService.ListClasses:output_type -> joseph.attendance.v1.ListClassesResponse
-	28, // 66: joseph.attendance.v1.AttendanceService.GetClass:output_type -> joseph.attendance.v1.GetClassResponse
-	53, // 67: joseph.attendance.v1.AttendanceService.SaveClass:output_type -> joseph.attendance.v1.SaveClassResponse
-	32, // 68: joseph.attendance.v1.AttendanceService.ListJustifications:output_type -> joseph.attendance.v1.ListJustificationsResponse
-	35, // 69: joseph.attendance.v1.AttendanceService.SubmitJustification:output_type -> joseph.attendance.v1.SubmitJustificationResponse
-	36, // 70: joseph.attendance.v1.AttendanceService.ReviewJustification:output_type -> joseph.attendance.v1.ReviewJustificationResponse
-	40, // 71: joseph.attendance.v1.AttendanceService.GetReport:output_type -> joseph.attendance.v1.GetReportResponse
-	54, // 72: joseph.attendance.v1.AttendanceService.GetStudent:output_type -> joseph.attendance.v1.GetStudentResponse
-	45, // 73: joseph.attendance.v1.AttendanceService.MyAttendance:output_type -> joseph.attendance.v1.MyAttendanceResponse
-	48, // 74: joseph.attendance.v1.AttendanceService.CardCodes:output_type -> joseph.attendance.v1.CardCodesResponse
-	55, // 75: joseph.attendance.v1.AttendanceService.RenewCard:output_type -> joseph.attendance.v1.RenewCardResponse
+var file_ltedu_attendance_v1_attendance_proto_depIdxs = []int32{
+	0,  // 0: ltedu.attendance.v1.SectionDay.tally:type_name -> ltedu.attendance.v1.Tally
+	1,  // 1: ltedu.attendance.v1.GetOverviewResponse.sections:type_name -> ltedu.attendance.v1.SectionDay
+	2,  // 2: ltedu.attendance.v1.GetOverviewResponse.vocabulary:type_name -> ltedu.attendance.v1.Vocabulary
+	0,  // 3: ltedu.attendance.v1.GetOverviewResponse.staff_tally:type_name -> ltedu.attendance.v1.Tally
+	5,  // 4: ltedu.attendance.v1.ScanResponse.holder:type_name -> ltedu.attendance.v1.CardHolder
+	5,  // 5: ltedu.attendance.v1.GateScan.holder:type_name -> ltedu.attendance.v1.CardHolder
+	8,  // 6: ltedu.attendance.v1.RecentScansResponse.scans:type_name -> ltedu.attendance.v1.GateScan
+	1,  // 7: ltedu.attendance.v1.GetRosterResponse.section:type_name -> ltedu.attendance.v1.SectionDay
+	11, // 8: ltedu.attendance.v1.GetRosterResponse.rows:type_name -> ltedu.attendance.v1.RosterRow
+	14, // 9: ltedu.attendance.v1.MarkStudentsRequest.marks:type_name -> ltedu.attendance.v1.MarkInput
+	18, // 10: ltedu.attendance.v1.GetStaffDayResponse.rows:type_name -> ltedu.attendance.v1.StaffRow
+	14, // 11: ltedu.attendance.v1.MarkStaffRequest.marks:type_name -> ltedu.attendance.v1.MarkInput
+	23, // 12: ltedu.attendance.v1.ListClassesResponse.slots:type_name -> ltedu.attendance.v1.ClassSlot
+	23, // 13: ltedu.attendance.v1.GetClassResponse.slot:type_name -> ltedu.attendance.v1.ClassSlot
+	26, // 14: ltedu.attendance.v1.GetClassResponse.marks:type_name -> ltedu.attendance.v1.ClassMark
+	14, // 15: ltedu.attendance.v1.SaveClassRequest.marks:type_name -> ltedu.attendance.v1.MarkInput
+	30, // 16: ltedu.attendance.v1.ListJustificationsResponse.items:type_name -> ltedu.attendance.v1.Justification
+	30, // 17: ltedu.attendance.v1.SubmitJustificationResponse.justification:type_name -> ltedu.attendance.v1.Justification
+	30, // 18: ltedu.attendance.v1.ReviewJustificationResponse.justification:type_name -> ltedu.attendance.v1.Justification
+	0,  // 19: ltedu.attendance.v1.StudentTally.days:type_name -> ltedu.attendance.v1.Tally
+	0,  // 20: ltedu.attendance.v1.SubjectTally.classes:type_name -> ltedu.attendance.v1.Tally
+	37, // 21: ltedu.attendance.v1.GetReportResponse.students:type_name -> ltedu.attendance.v1.StudentTally
+	38, // 22: ltedu.attendance.v1.GetReportResponse.subjects:type_name -> ltedu.attendance.v1.SubjectTally
+	5,  // 23: ltedu.attendance.v1.StudentAttendance.student:type_name -> ltedu.attendance.v1.CardHolder
+	41, // 24: ltedu.attendance.v1.StudentAttendance.today:type_name -> ltedu.attendance.v1.DailyMark
+	0,  // 25: ltedu.attendance.v1.StudentAttendance.days:type_name -> ltedu.attendance.v1.Tally
+	41, // 26: ltedu.attendance.v1.StudentAttendance.marks:type_name -> ltedu.attendance.v1.DailyMark
+	38, // 27: ltedu.attendance.v1.StudentAttendance.subjects:type_name -> ltedu.attendance.v1.SubjectTally
+	30, // 28: ltedu.attendance.v1.StudentAttendance.justifications:type_name -> ltedu.attendance.v1.Justification
+	43, // 29: ltedu.attendance.v1.MyAttendanceResponse.students:type_name -> ltedu.attendance.v1.StudentAttendance
+	46, // 30: ltedu.attendance.v1.CardCodesResponse.codes:type_name -> ltedu.attendance.v1.CardCode
+	13, // 31: ltedu.attendance.v1.MarkStudentsResponse.roster:type_name -> ltedu.attendance.v1.GetRosterResponse
+	20, // 32: ltedu.attendance.v1.MarkStaffResponse.day:type_name -> ltedu.attendance.v1.GetStaffDayResponse
+	28, // 33: ltedu.attendance.v1.SaveClassResponse.sheet:type_name -> ltedu.attendance.v1.GetClassResponse
+	43, // 34: ltedu.attendance.v1.GetStudentResponse.attendance:type_name -> ltedu.attendance.v1.StudentAttendance
+	46, // 35: ltedu.attendance.v1.RenewCardResponse.code:type_name -> ltedu.attendance.v1.CardCode
+	3,  // 36: ltedu.attendance.v1.AttendanceService.GetOverview:input_type -> ltedu.attendance.v1.GetOverviewRequest
+	6,  // 37: ltedu.attendance.v1.AttendanceService.Scan:input_type -> ltedu.attendance.v1.ScanRequest
+	9,  // 38: ltedu.attendance.v1.AttendanceService.RecentScans:input_type -> ltedu.attendance.v1.RecentScansRequest
+	12, // 39: ltedu.attendance.v1.AttendanceService.GetRoster:input_type -> ltedu.attendance.v1.GetRosterRequest
+	15, // 40: ltedu.attendance.v1.AttendanceService.MarkStudents:input_type -> ltedu.attendance.v1.MarkStudentsRequest
+	16, // 41: ltedu.attendance.v1.AttendanceService.CloseDay:input_type -> ltedu.attendance.v1.CloseDayRequest
+	19, // 42: ltedu.attendance.v1.AttendanceService.GetStaffDay:input_type -> ltedu.attendance.v1.GetStaffDayRequest
+	21, // 43: ltedu.attendance.v1.AttendanceService.MarkStaff:input_type -> ltedu.attendance.v1.MarkStaffRequest
+	22, // 44: ltedu.attendance.v1.AttendanceService.CloseStaffDay:input_type -> ltedu.attendance.v1.CloseStaffDayRequest
+	24, // 45: ltedu.attendance.v1.AttendanceService.ListClasses:input_type -> ltedu.attendance.v1.ListClassesRequest
+	27, // 46: ltedu.attendance.v1.AttendanceService.GetClass:input_type -> ltedu.attendance.v1.GetClassRequest
+	29, // 47: ltedu.attendance.v1.AttendanceService.SaveClass:input_type -> ltedu.attendance.v1.SaveClassRequest
+	31, // 48: ltedu.attendance.v1.AttendanceService.ListJustifications:input_type -> ltedu.attendance.v1.ListJustificationsRequest
+	33, // 49: ltedu.attendance.v1.AttendanceService.SubmitJustification:input_type -> ltedu.attendance.v1.SubmitJustificationRequest
+	34, // 50: ltedu.attendance.v1.AttendanceService.ReviewJustification:input_type -> ltedu.attendance.v1.ReviewJustificationRequest
+	39, // 51: ltedu.attendance.v1.AttendanceService.GetReport:input_type -> ltedu.attendance.v1.GetReportRequest
+	42, // 52: ltedu.attendance.v1.AttendanceService.GetStudent:input_type -> ltedu.attendance.v1.GetStudentRequest
+	44, // 53: ltedu.attendance.v1.AttendanceService.MyAttendance:input_type -> ltedu.attendance.v1.MyAttendanceRequest
+	47, // 54: ltedu.attendance.v1.AttendanceService.CardCodes:input_type -> ltedu.attendance.v1.CardCodesRequest
+	49, // 55: ltedu.attendance.v1.AttendanceService.RenewCard:input_type -> ltedu.attendance.v1.RenewCardRequest
+	4,  // 56: ltedu.attendance.v1.AttendanceService.GetOverview:output_type -> ltedu.attendance.v1.GetOverviewResponse
+	7,  // 57: ltedu.attendance.v1.AttendanceService.Scan:output_type -> ltedu.attendance.v1.ScanResponse
+	10, // 58: ltedu.attendance.v1.AttendanceService.RecentScans:output_type -> ltedu.attendance.v1.RecentScansResponse
+	13, // 59: ltedu.attendance.v1.AttendanceService.GetRoster:output_type -> ltedu.attendance.v1.GetRosterResponse
+	50, // 60: ltedu.attendance.v1.AttendanceService.MarkStudents:output_type -> ltedu.attendance.v1.MarkStudentsResponse
+	17, // 61: ltedu.attendance.v1.AttendanceService.CloseDay:output_type -> ltedu.attendance.v1.CloseDayResponse
+	20, // 62: ltedu.attendance.v1.AttendanceService.GetStaffDay:output_type -> ltedu.attendance.v1.GetStaffDayResponse
+	51, // 63: ltedu.attendance.v1.AttendanceService.MarkStaff:output_type -> ltedu.attendance.v1.MarkStaffResponse
+	52, // 64: ltedu.attendance.v1.AttendanceService.CloseStaffDay:output_type -> ltedu.attendance.v1.CloseStaffDayResponse
+	25, // 65: ltedu.attendance.v1.AttendanceService.ListClasses:output_type -> ltedu.attendance.v1.ListClassesResponse
+	28, // 66: ltedu.attendance.v1.AttendanceService.GetClass:output_type -> ltedu.attendance.v1.GetClassResponse
+	53, // 67: ltedu.attendance.v1.AttendanceService.SaveClass:output_type -> ltedu.attendance.v1.SaveClassResponse
+	32, // 68: ltedu.attendance.v1.AttendanceService.ListJustifications:output_type -> ltedu.attendance.v1.ListJustificationsResponse
+	35, // 69: ltedu.attendance.v1.AttendanceService.SubmitJustification:output_type -> ltedu.attendance.v1.SubmitJustificationResponse
+	36, // 70: ltedu.attendance.v1.AttendanceService.ReviewJustification:output_type -> ltedu.attendance.v1.ReviewJustificationResponse
+	40, // 71: ltedu.attendance.v1.AttendanceService.GetReport:output_type -> ltedu.attendance.v1.GetReportResponse
+	54, // 72: ltedu.attendance.v1.AttendanceService.GetStudent:output_type -> ltedu.attendance.v1.GetStudentResponse
+	45, // 73: ltedu.attendance.v1.AttendanceService.MyAttendance:output_type -> ltedu.attendance.v1.MyAttendanceResponse
+	48, // 74: ltedu.attendance.v1.AttendanceService.CardCodes:output_type -> ltedu.attendance.v1.CardCodesResponse
+	55, // 75: ltedu.attendance.v1.AttendanceService.RenewCard:output_type -> ltedu.attendance.v1.RenewCardResponse
 	56, // [56:76] is the sub-list for method output_type
 	36, // [36:56] is the sub-list for method input_type
 	36, // [36:36] is the sub-list for extension type_name
@@ -4390,26 +4390,26 @@ var file_joseph_attendance_v1_attendance_proto_depIdxs = []int32{
 	0,  // [0:36] is the sub-list for field type_name
 }
 
-func init() { file_joseph_attendance_v1_attendance_proto_init() }
-func file_joseph_attendance_v1_attendance_proto_init() {
-	if File_joseph_attendance_v1_attendance_proto != nil {
+func init() { file_ltedu_attendance_v1_attendance_proto_init() }
+func file_ltedu_attendance_v1_attendance_proto_init() {
+	if File_ltedu_attendance_v1_attendance_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_attendance_v1_attendance_proto_rawDesc), len(file_joseph_attendance_v1_attendance_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_attendance_v1_attendance_proto_rawDesc), len(file_ltedu_attendance_v1_attendance_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   56,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_attendance_v1_attendance_proto_goTypes,
-		DependencyIndexes: file_joseph_attendance_v1_attendance_proto_depIdxs,
-		MessageInfos:      file_joseph_attendance_v1_attendance_proto_msgTypes,
+		GoTypes:           file_ltedu_attendance_v1_attendance_proto_goTypes,
+		DependencyIndexes: file_ltedu_attendance_v1_attendance_proto_depIdxs,
+		MessageInfos:      file_ltedu_attendance_v1_attendance_proto_msgTypes,
 	}.Build()
-	File_joseph_attendance_v1_attendance_proto = out.File
-	file_joseph_attendance_v1_attendance_proto_goTypes = nil
-	file_joseph_attendance_v1_attendance_proto_depIdxs = nil
+	File_ltedu_attendance_v1_attendance_proto = out.File
+	file_ltedu_attendance_v1_attendance_proto_goTypes = nil
+	file_ltedu_attendance_v1_attendance_proto_depIdxs = nil
 }

@@ -2,12 +2,12 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/institution/v1/institution.proto
+// source: ltedu/institution/v1/institution.proto
 
 // Institution file (Configuración › Institución): the resolutions that authorize the institution (creation, each
 // form of attention per cycle in a CEBA, expansions) and the technical sheet of its e-learning platform, which a
 // CEBA presents to the DRE (RSG N.° 613-2014-MINEDU, numeral 6.2.1). Same metadata and institution scoping as
-// joseph.academic.v1
+// ltedu.academic.v1
 
 package institutionv1
 
@@ -51,7 +51,7 @@ type Authorization struct {
 
 func (x *Authorization) Reset() {
 	*x = Authorization{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[0]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -63,7 +63,7 @@ func (x *Authorization) String() string {
 func (*Authorization) ProtoMessage() {}
 
 func (x *Authorization) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[0]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -76,7 +76,7 @@ func (x *Authorization) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Authorization.ProtoReflect.Descriptor instead.
 func (*Authorization) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Authorization) GetId() string {
@@ -199,7 +199,7 @@ type PlatformSheet struct {
 
 func (x *PlatformSheet) Reset() {
 	*x = PlatformSheet{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[1]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -211,7 +211,7 @@ func (x *PlatformSheet) String() string {
 func (*PlatformSheet) ProtoMessage() {}
 
 func (x *PlatformSheet) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[1]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -224,7 +224,7 @@ func (x *PlatformSheet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlatformSheet.ProtoReflect.Descriptor instead.
 func (*PlatformSheet) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *PlatformSheet) GetPlatformName() string {
@@ -362,7 +362,7 @@ type GetInstitutionFileRequest struct {
 
 func (x *GetInstitutionFileRequest) Reset() {
 	*x = GetInstitutionFileRequest{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[2]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -374,7 +374,7 @@ func (x *GetInstitutionFileRequest) String() string {
 func (*GetInstitutionFileRequest) ProtoMessage() {}
 
 func (x *GetInstitutionFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[2]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -387,7 +387,7 @@ func (x *GetInstitutionFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetInstitutionFileRequest.ProtoReflect.Descriptor instead.
 func (*GetInstitutionFileRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetInstitutionFileRequest) GetInstitutionSlug() string {
@@ -413,7 +413,7 @@ type GetInstitutionFileResponse struct {
 
 func (x *GetInstitutionFileResponse) Reset() {
 	*x = GetInstitutionFileResponse{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[3]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -425,7 +425,7 @@ func (x *GetInstitutionFileResponse) String() string {
 func (*GetInstitutionFileResponse) ProtoMessage() {}
 
 func (x *GetInstitutionFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[3]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -438,7 +438,7 @@ func (x *GetInstitutionFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetInstitutionFileResponse.ProtoReflect.Descriptor instead.
 func (*GetInstitutionFileResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetInstitutionFileResponse) GetInstitutionId() string {
@@ -501,7 +501,7 @@ type SaveAuthorizationRequest struct {
 
 func (x *SaveAuthorizationRequest) Reset() {
 	*x = SaveAuthorizationRequest{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[4]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -513,7 +513,7 @@ func (x *SaveAuthorizationRequest) String() string {
 func (*SaveAuthorizationRequest) ProtoMessage() {}
 
 func (x *SaveAuthorizationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[4]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -526,7 +526,7 @@ func (x *SaveAuthorizationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveAuthorizationRequest.ProtoReflect.Descriptor instead.
 func (*SaveAuthorizationRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SaveAuthorizationRequest) GetInstitutionSlug() string {
@@ -552,7 +552,7 @@ type SaveAuthorizationResponse struct {
 
 func (x *SaveAuthorizationResponse) Reset() {
 	*x = SaveAuthorizationResponse{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[5]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -564,7 +564,7 @@ func (x *SaveAuthorizationResponse) String() string {
 func (*SaveAuthorizationResponse) ProtoMessage() {}
 
 func (x *SaveAuthorizationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[5]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -577,7 +577,7 @@ func (x *SaveAuthorizationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveAuthorizationResponse.ProtoReflect.Descriptor instead.
 func (*SaveAuthorizationResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SaveAuthorizationResponse) GetAuthorization() *Authorization {
@@ -597,7 +597,7 @@ type DeleteAuthorizationRequest struct {
 
 func (x *DeleteAuthorizationRequest) Reset() {
 	*x = DeleteAuthorizationRequest{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[6]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -609,7 +609,7 @@ func (x *DeleteAuthorizationRequest) String() string {
 func (*DeleteAuthorizationRequest) ProtoMessage() {}
 
 func (x *DeleteAuthorizationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[6]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -622,7 +622,7 @@ func (x *DeleteAuthorizationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAuthorizationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteAuthorizationRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *DeleteAuthorizationRequest) GetInstitutionSlug() string {
@@ -647,7 +647,7 @@ type DeleteAuthorizationResponse struct {
 
 func (x *DeleteAuthorizationResponse) Reset() {
 	*x = DeleteAuthorizationResponse{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[7]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -659,7 +659,7 @@ func (x *DeleteAuthorizationResponse) String() string {
 func (*DeleteAuthorizationResponse) ProtoMessage() {}
 
 func (x *DeleteAuthorizationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[7]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -672,7 +672,7 @@ func (x *DeleteAuthorizationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAuthorizationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteAuthorizationResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{7}
 }
 
 type SavePlatformSheetRequest struct {
@@ -685,7 +685,7 @@ type SavePlatformSheetRequest struct {
 
 func (x *SavePlatformSheetRequest) Reset() {
 	*x = SavePlatformSheetRequest{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[8]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -697,7 +697,7 @@ func (x *SavePlatformSheetRequest) String() string {
 func (*SavePlatformSheetRequest) ProtoMessage() {}
 
 func (x *SavePlatformSheetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[8]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -710,7 +710,7 @@ func (x *SavePlatformSheetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SavePlatformSheetRequest.ProtoReflect.Descriptor instead.
 func (*SavePlatformSheetRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *SavePlatformSheetRequest) GetInstitutionSlug() string {
@@ -736,7 +736,7 @@ type SavePlatformSheetResponse struct {
 
 func (x *SavePlatformSheetResponse) Reset() {
 	*x = SavePlatformSheetResponse{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[9]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -748,7 +748,7 @@ func (x *SavePlatformSheetResponse) String() string {
 func (*SavePlatformSheetResponse) ProtoMessage() {}
 
 func (x *SavePlatformSheetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[9]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -761,7 +761,7 @@ func (x *SavePlatformSheetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SavePlatformSheetResponse.ProtoReflect.Descriptor instead.
 func (*SavePlatformSheetResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *SavePlatformSheetResponse) GetPlatform() *PlatformSheet {
@@ -794,7 +794,7 @@ type AuditEvent struct {
 
 func (x *AuditEvent) Reset() {
 	*x = AuditEvent{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[10]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -806,7 +806,7 @@ func (x *AuditEvent) String() string {
 func (*AuditEvent) ProtoMessage() {}
 
 func (x *AuditEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[10]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -819,7 +819,7 @@ func (x *AuditEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuditEvent.ProtoReflect.Descriptor instead.
 func (*AuditEvent) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *AuditEvent) GetId() string {
@@ -917,7 +917,7 @@ type ListAuditEventsRequest struct {
 
 func (x *ListAuditEventsRequest) Reset() {
 	*x = ListAuditEventsRequest{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[11]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -929,7 +929,7 @@ func (x *ListAuditEventsRequest) String() string {
 func (*ListAuditEventsRequest) ProtoMessage() {}
 
 func (x *ListAuditEventsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[11]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -942,7 +942,7 @@ func (x *ListAuditEventsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAuditEventsRequest.ProtoReflect.Descriptor instead.
 func (*ListAuditEventsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ListAuditEventsRequest) GetInstitutionSlug() string {
@@ -1013,7 +1013,7 @@ type ListAuditEventsResponse struct {
 
 func (x *ListAuditEventsResponse) Reset() {
 	*x = ListAuditEventsResponse{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[12]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1025,7 +1025,7 @@ func (x *ListAuditEventsResponse) String() string {
 func (*ListAuditEventsResponse) ProtoMessage() {}
 
 func (x *ListAuditEventsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[12]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1038,7 +1038,7 @@ func (x *ListAuditEventsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAuditEventsResponse.ProtoReflect.Descriptor instead.
 func (*ListAuditEventsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ListAuditEventsResponse) GetEvents() []*AuditEvent {
@@ -1087,7 +1087,7 @@ type Member struct {
 
 func (x *Member) Reset() {
 	*x = Member{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[13]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1099,7 +1099,7 @@ func (x *Member) String() string {
 func (*Member) ProtoMessage() {}
 
 func (x *Member) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[13]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1112,7 +1112,7 @@ func (x *Member) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Member.ProtoReflect.Descriptor instead.
 func (*Member) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *Member) GetId() string {
@@ -1180,7 +1180,7 @@ type ListMembersRequest struct {
 
 func (x *ListMembersRequest) Reset() {
 	*x = ListMembersRequest{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[14]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1192,7 +1192,7 @@ func (x *ListMembersRequest) String() string {
 func (*ListMembersRequest) ProtoMessage() {}
 
 func (x *ListMembersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[14]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1205,7 +1205,7 @@ func (x *ListMembersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMembersRequest.ProtoReflect.Descriptor instead.
 func (*ListMembersRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ListMembersRequest) GetInstitutionSlug() string {
@@ -1228,7 +1228,7 @@ type ListMembersResponse struct {
 
 func (x *ListMembersResponse) Reset() {
 	*x = ListMembersResponse{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[15]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1240,7 +1240,7 @@ func (x *ListMembersResponse) String() string {
 func (*ListMembersResponse) ProtoMessage() {}
 
 func (x *ListMembersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[15]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1253,7 +1253,7 @@ func (x *ListMembersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMembersResponse.ProtoReflect.Descriptor instead.
 func (*ListMembersResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ListMembersResponse) GetMembers() []*Member {
@@ -1288,7 +1288,7 @@ type GrantMemberRequest struct {
 
 func (x *GrantMemberRequest) Reset() {
 	*x = GrantMemberRequest{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[16]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1300,7 +1300,7 @@ func (x *GrantMemberRequest) String() string {
 func (*GrantMemberRequest) ProtoMessage() {}
 
 func (x *GrantMemberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[16]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1313,7 +1313,7 @@ func (x *GrantMemberRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantMemberRequest.ProtoReflect.Descriptor instead.
 func (*GrantMemberRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GrantMemberRequest) GetInstitutionSlug() string {
@@ -1347,7 +1347,7 @@ type GrantMemberResponse struct {
 
 func (x *GrantMemberResponse) Reset() {
 	*x = GrantMemberResponse{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[17]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1359,7 +1359,7 @@ func (x *GrantMemberResponse) String() string {
 func (*GrantMemberResponse) ProtoMessage() {}
 
 func (x *GrantMemberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[17]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1372,7 +1372,7 @@ func (x *GrantMemberResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantMemberResponse.ProtoReflect.Descriptor instead.
 func (*GrantMemberResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GrantMemberResponse) GetPending() bool {
@@ -1392,7 +1392,7 @@ type RevokeMemberRequest struct {
 
 func (x *RevokeMemberRequest) Reset() {
 	*x = RevokeMemberRequest{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[18]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1404,7 +1404,7 @@ func (x *RevokeMemberRequest) String() string {
 func (*RevokeMemberRequest) ProtoMessage() {}
 
 func (x *RevokeMemberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[18]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1417,7 +1417,7 @@ func (x *RevokeMemberRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeMemberRequest.ProtoReflect.Descriptor instead.
 func (*RevokeMemberRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *RevokeMemberRequest) GetInstitutionSlug() string {
@@ -1442,7 +1442,7 @@ type RevokeMemberResponse struct {
 
 func (x *RevokeMemberResponse) Reset() {
 	*x = RevokeMemberResponse{}
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[19]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1454,7 +1454,7 @@ func (x *RevokeMemberResponse) String() string {
 func (*RevokeMemberResponse) ProtoMessage() {}
 
 func (x *RevokeMemberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_institution_v1_institution_proto_msgTypes[19]
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1467,14 +1467,14 @@ func (x *RevokeMemberResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeMemberResponse.ProtoReflect.Descriptor instead.
 func (*RevokeMemberResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_institution_v1_institution_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{19}
 }
 
-var File_joseph_institution_v1_institution_proto protoreflect.FileDescriptor
+var File_ltedu_institution_v1_institution_proto protoreflect.FileDescriptor
 
-const file_joseph_institution_v1_institution_proto_rawDesc = "" +
+const file_ltedu_institution_v1_institution_proto_rawDesc = "" +
 	"\n" +
-	"'joseph/institution/v1/institution.proto\x12\x15joseph.institution.v1\"\xf5\x02\n" +
+	"&ltedu/institution/v1/institution.proto\x12\x14ltedu.institution.v1\"\xf5\x02\n" +
 	"\rAuthorization\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04kind\x18\x02 \x01(\tR\x04kind\x12\x19\n" +
@@ -1520,29 +1520,29 @@ const file_joseph_institution_v1_institution_proto_rawDesc = "" +
 	"updated_at\x18\x11 \x01(\tR\tupdatedAt\x12\x14\n" +
 	"\x05files\x18\x12 \x01(\x05R\x05files\"F\n" +
 	"\x19GetInstitutionFileRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x91\x03\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x8f\x03\n" +
 	"\x1aGetInstitutionFileResponse\x12%\n" +
 	"\x0einstitution_id\x18\x01 \x01(\tR\rinstitutionId\x12)\n" +
 	"\x10institution_name\x18\x02 \x01(\tR\x0finstitutionName\x12)\n" +
-	"\x10institution_kind\x18\x03 \x01(\tR\x0finstitutionKind\x12L\n" +
-	"\x0eauthorizations\x18\x04 \x03(\v2$.joseph.institution.v1.AuthorizationR\x0eauthorizations\x12@\n" +
-	"\bplatform\x18\x05 \x01(\v2$.joseph.institution.v1.PlatformSheetR\bplatform\x12:\n" +
+	"\x10institution_kind\x18\x03 \x01(\tR\x0finstitutionKind\x12K\n" +
+	"\x0eauthorizations\x18\x04 \x03(\v2#.ltedu.institution.v1.AuthorizationR\x0eauthorizations\x12?\n" +
+	"\bplatform\x18\x05 \x01(\v2#.ltedu.institution.v1.PlatformSheetR\bplatform\x12:\n" +
 	"\x19can_manage_authorizations\x18\x06 \x01(\bR\x17canManageAuthorizations\x12*\n" +
-	"\x11can_edit_platform\x18\a \x01(\bR\x0fcanEditPlatform\"\x91\x01\n" +
+	"\x11can_edit_platform\x18\a \x01(\bR\x0fcanEditPlatform\"\x90\x01\n" +
 	"\x18SaveAuthorizationRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12J\n" +
-	"\rauthorization\x18\x02 \x01(\v2$.joseph.institution.v1.AuthorizationR\rauthorization\"g\n" +
-	"\x19SaveAuthorizationResponse\x12J\n" +
-	"\rauthorization\x18\x01 \x01(\v2$.joseph.institution.v1.AuthorizationR\rauthorization\"W\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12I\n" +
+	"\rauthorization\x18\x02 \x01(\v2#.ltedu.institution.v1.AuthorizationR\rauthorization\"f\n" +
+	"\x19SaveAuthorizationResponse\x12I\n" +
+	"\rauthorization\x18\x01 \x01(\v2#.ltedu.institution.v1.AuthorizationR\rauthorization\"W\n" +
 	"\x1aDeleteAuthorizationRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x1d\n" +
-	"\x1bDeleteAuthorizationResponse\"\x87\x01\n" +
+	"\x1bDeleteAuthorizationResponse\"\x86\x01\n" +
 	"\x18SavePlatformSheetRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12@\n" +
-	"\bplatform\x18\x02 \x01(\v2$.joseph.institution.v1.PlatformSheetR\bplatform\"]\n" +
-	"\x19SavePlatformSheetResponse\x12@\n" +
-	"\bplatform\x18\x01 \x01(\v2$.joseph.institution.v1.PlatformSheetR\bplatform\"\xa7\x02\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12?\n" +
+	"\bplatform\x18\x02 \x01(\v2#.ltedu.institution.v1.PlatformSheetR\bplatform\"\\\n" +
+	"\x19SavePlatformSheetResponse\x12?\n" +
+	"\bplatform\x18\x01 \x01(\v2#.ltedu.institution.v1.PlatformSheetR\bplatform\"\xa7\x02\n" +
 	"\n" +
 	"AuditEvent\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
@@ -1566,9 +1566,9 @@ const file_joseph_institution_v1_institution_proto_rawDesc = "" +
 	"\x02to\x18\x05 \x01(\tR\x02to\x12\x1b\n" +
 	"\tbefore_at\x18\x06 \x01(\tR\bbeforeAt\x12\x1b\n" +
 	"\tbefore_id\x18\a \x01(\tR\bbeforeId\x12\x14\n" +
-	"\x05limit\x18\b \x01(\x05R\x05limit\"\xbb\x01\n" +
-	"\x17ListAuditEventsResponse\x129\n" +
-	"\x06events\x18\x01 \x03(\v2!.joseph.institution.v1.AuditEventR\x06events\x12\x19\n" +
+	"\x05limit\x18\b \x01(\x05R\x05limit\"\xba\x01\n" +
+	"\x17ListAuditEventsResponse\x128\n" +
+	"\x06events\x18\x01 \x03(\v2 .ltedu.institution.v1.AuditEventR\x06events\x12\x19\n" +
 	"\bhas_more\x18\x02 \x01(\bR\ahasMore\x12$\n" +
 	"\x0enext_before_at\x18\x03 \x01(\tR\fnextBeforeAt\x12$\n" +
 	"\x0enext_before_id\x18\x04 \x01(\tR\fnextBeforeId\"\xcf\x01\n" +
@@ -1582,9 +1582,9 @@ const file_joseph_institution_v1_institution_proto_rawDesc = "" +
 	"\x05since\x18\a \x01(\tR\x05since\x12%\n" +
 	"\x0flast_sign_in_at\x18\b \x01(\tR\flastSignInAt\"?\n" +
 	"\x12ListMembersRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x99\x01\n" +
-	"\x13ListMembersResponse\x127\n" +
-	"\amembers\x18\x01 \x03(\v2\x1d.joseph.institution.v1.MemberR\amembers\x12'\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x98\x01\n" +
+	"\x13ListMembersResponse\x126\n" +
+	"\amembers\x18\x01 \x03(\v2\x1c.ltedu.institution.v1.MemberR\amembers\x12'\n" +
 	"\x0fgrantable_roles\x18\x02 \x03(\tR\x0egrantableRoles\x12 \n" +
 	"\fself_user_id\x18\x03 \x01(\tR\n" +
 	"selfUserId\"i\n" +
@@ -1597,77 +1597,77 @@ const file_joseph_institution_v1_institution_proto_rawDesc = "" +
 	"\x13RevokeMemberRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x16\n" +
-	"\x14RevokeMemberResponse2\xa4\a\n" +
-	"\x12InstitutionService\x12y\n" +
-	"\x12GetInstitutionFile\x120.joseph.institution.v1.GetInstitutionFileRequest\x1a1.joseph.institution.v1.GetInstitutionFileResponse\x12v\n" +
-	"\x11SaveAuthorization\x12/.joseph.institution.v1.SaveAuthorizationRequest\x1a0.joseph.institution.v1.SaveAuthorizationResponse\x12|\n" +
-	"\x13DeleteAuthorization\x121.joseph.institution.v1.DeleteAuthorizationRequest\x1a2.joseph.institution.v1.DeleteAuthorizationResponse\x12v\n" +
-	"\x11SavePlatformSheet\x12/.joseph.institution.v1.SavePlatformSheetRequest\x1a0.joseph.institution.v1.SavePlatformSheetResponse\x12p\n" +
-	"\x0fListAuditEvents\x12-.joseph.institution.v1.ListAuditEventsRequest\x1a..joseph.institution.v1.ListAuditEventsResponse\x12d\n" +
-	"\vListMembers\x12).joseph.institution.v1.ListMembersRequest\x1a*.joseph.institution.v1.ListMembersResponse\x12d\n" +
-	"\vGrantMember\x12).joseph.institution.v1.GrantMemberRequest\x1a*.joseph.institution.v1.GrantMemberResponse\x12g\n" +
-	"\fRevokeMember\x12*.joseph.institution.v1.RevokeMemberRequest\x1a+.joseph.institution.v1.RevokeMemberResponseBCZAapi/internal/adapter/inbound/grpc/gen/institutionv1;institutionv1b\x06proto3"
+	"\x14RevokeMemberResponse2\x94\a\n" +
+	"\x12InstitutionService\x12w\n" +
+	"\x12GetInstitutionFile\x12/.ltedu.institution.v1.GetInstitutionFileRequest\x1a0.ltedu.institution.v1.GetInstitutionFileResponse\x12t\n" +
+	"\x11SaveAuthorization\x12..ltedu.institution.v1.SaveAuthorizationRequest\x1a/.ltedu.institution.v1.SaveAuthorizationResponse\x12z\n" +
+	"\x13DeleteAuthorization\x120.ltedu.institution.v1.DeleteAuthorizationRequest\x1a1.ltedu.institution.v1.DeleteAuthorizationResponse\x12t\n" +
+	"\x11SavePlatformSheet\x12..ltedu.institution.v1.SavePlatformSheetRequest\x1a/.ltedu.institution.v1.SavePlatformSheetResponse\x12n\n" +
+	"\x0fListAuditEvents\x12,.ltedu.institution.v1.ListAuditEventsRequest\x1a-.ltedu.institution.v1.ListAuditEventsResponse\x12b\n" +
+	"\vListMembers\x12(.ltedu.institution.v1.ListMembersRequest\x1a).ltedu.institution.v1.ListMembersResponse\x12b\n" +
+	"\vGrantMember\x12(.ltedu.institution.v1.GrantMemberRequest\x1a).ltedu.institution.v1.GrantMemberResponse\x12e\n" +
+	"\fRevokeMember\x12).ltedu.institution.v1.RevokeMemberRequest\x1a*.ltedu.institution.v1.RevokeMemberResponseBCZAapi/internal/adapter/inbound/grpc/gen/institutionv1;institutionv1b\x06proto3"
 
 var (
-	file_joseph_institution_v1_institution_proto_rawDescOnce sync.Once
-	file_joseph_institution_v1_institution_proto_rawDescData []byte
+	file_ltedu_institution_v1_institution_proto_rawDescOnce sync.Once
+	file_ltedu_institution_v1_institution_proto_rawDescData []byte
 )
 
-func file_joseph_institution_v1_institution_proto_rawDescGZIP() []byte {
-	file_joseph_institution_v1_institution_proto_rawDescOnce.Do(func() {
-		file_joseph_institution_v1_institution_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_institution_v1_institution_proto_rawDesc), len(file_joseph_institution_v1_institution_proto_rawDesc)))
+func file_ltedu_institution_v1_institution_proto_rawDescGZIP() []byte {
+	file_ltedu_institution_v1_institution_proto_rawDescOnce.Do(func() {
+		file_ltedu_institution_v1_institution_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_institution_v1_institution_proto_rawDesc), len(file_ltedu_institution_v1_institution_proto_rawDesc)))
 	})
-	return file_joseph_institution_v1_institution_proto_rawDescData
+	return file_ltedu_institution_v1_institution_proto_rawDescData
 }
 
-var file_joseph_institution_v1_institution_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
-var file_joseph_institution_v1_institution_proto_goTypes = []any{
-	(*Authorization)(nil),               // 0: joseph.institution.v1.Authorization
-	(*PlatformSheet)(nil),               // 1: joseph.institution.v1.PlatformSheet
-	(*GetInstitutionFileRequest)(nil),   // 2: joseph.institution.v1.GetInstitutionFileRequest
-	(*GetInstitutionFileResponse)(nil),  // 3: joseph.institution.v1.GetInstitutionFileResponse
-	(*SaveAuthorizationRequest)(nil),    // 4: joseph.institution.v1.SaveAuthorizationRequest
-	(*SaveAuthorizationResponse)(nil),   // 5: joseph.institution.v1.SaveAuthorizationResponse
-	(*DeleteAuthorizationRequest)(nil),  // 6: joseph.institution.v1.DeleteAuthorizationRequest
-	(*DeleteAuthorizationResponse)(nil), // 7: joseph.institution.v1.DeleteAuthorizationResponse
-	(*SavePlatformSheetRequest)(nil),    // 8: joseph.institution.v1.SavePlatformSheetRequest
-	(*SavePlatformSheetResponse)(nil),   // 9: joseph.institution.v1.SavePlatformSheetResponse
-	(*AuditEvent)(nil),                  // 10: joseph.institution.v1.AuditEvent
-	(*ListAuditEventsRequest)(nil),      // 11: joseph.institution.v1.ListAuditEventsRequest
-	(*ListAuditEventsResponse)(nil),     // 12: joseph.institution.v1.ListAuditEventsResponse
-	(*Member)(nil),                      // 13: joseph.institution.v1.Member
-	(*ListMembersRequest)(nil),          // 14: joseph.institution.v1.ListMembersRequest
-	(*ListMembersResponse)(nil),         // 15: joseph.institution.v1.ListMembersResponse
-	(*GrantMemberRequest)(nil),          // 16: joseph.institution.v1.GrantMemberRequest
-	(*GrantMemberResponse)(nil),         // 17: joseph.institution.v1.GrantMemberResponse
-	(*RevokeMemberRequest)(nil),         // 18: joseph.institution.v1.RevokeMemberRequest
-	(*RevokeMemberResponse)(nil),        // 19: joseph.institution.v1.RevokeMemberResponse
+var file_ltedu_institution_v1_institution_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_ltedu_institution_v1_institution_proto_goTypes = []any{
+	(*Authorization)(nil),               // 0: ltedu.institution.v1.Authorization
+	(*PlatformSheet)(nil),               // 1: ltedu.institution.v1.PlatformSheet
+	(*GetInstitutionFileRequest)(nil),   // 2: ltedu.institution.v1.GetInstitutionFileRequest
+	(*GetInstitutionFileResponse)(nil),  // 3: ltedu.institution.v1.GetInstitutionFileResponse
+	(*SaveAuthorizationRequest)(nil),    // 4: ltedu.institution.v1.SaveAuthorizationRequest
+	(*SaveAuthorizationResponse)(nil),   // 5: ltedu.institution.v1.SaveAuthorizationResponse
+	(*DeleteAuthorizationRequest)(nil),  // 6: ltedu.institution.v1.DeleteAuthorizationRequest
+	(*DeleteAuthorizationResponse)(nil), // 7: ltedu.institution.v1.DeleteAuthorizationResponse
+	(*SavePlatformSheetRequest)(nil),    // 8: ltedu.institution.v1.SavePlatformSheetRequest
+	(*SavePlatformSheetResponse)(nil),   // 9: ltedu.institution.v1.SavePlatformSheetResponse
+	(*AuditEvent)(nil),                  // 10: ltedu.institution.v1.AuditEvent
+	(*ListAuditEventsRequest)(nil),      // 11: ltedu.institution.v1.ListAuditEventsRequest
+	(*ListAuditEventsResponse)(nil),     // 12: ltedu.institution.v1.ListAuditEventsResponse
+	(*Member)(nil),                      // 13: ltedu.institution.v1.Member
+	(*ListMembersRequest)(nil),          // 14: ltedu.institution.v1.ListMembersRequest
+	(*ListMembersResponse)(nil),         // 15: ltedu.institution.v1.ListMembersResponse
+	(*GrantMemberRequest)(nil),          // 16: ltedu.institution.v1.GrantMemberRequest
+	(*GrantMemberResponse)(nil),         // 17: ltedu.institution.v1.GrantMemberResponse
+	(*RevokeMemberRequest)(nil),         // 18: ltedu.institution.v1.RevokeMemberRequest
+	(*RevokeMemberResponse)(nil),        // 19: ltedu.institution.v1.RevokeMemberResponse
 }
-var file_joseph_institution_v1_institution_proto_depIdxs = []int32{
-	0,  // 0: joseph.institution.v1.GetInstitutionFileResponse.authorizations:type_name -> joseph.institution.v1.Authorization
-	1,  // 1: joseph.institution.v1.GetInstitutionFileResponse.platform:type_name -> joseph.institution.v1.PlatformSheet
-	0,  // 2: joseph.institution.v1.SaveAuthorizationRequest.authorization:type_name -> joseph.institution.v1.Authorization
-	0,  // 3: joseph.institution.v1.SaveAuthorizationResponse.authorization:type_name -> joseph.institution.v1.Authorization
-	1,  // 4: joseph.institution.v1.SavePlatformSheetRequest.platform:type_name -> joseph.institution.v1.PlatformSheet
-	1,  // 5: joseph.institution.v1.SavePlatformSheetResponse.platform:type_name -> joseph.institution.v1.PlatformSheet
-	10, // 6: joseph.institution.v1.ListAuditEventsResponse.events:type_name -> joseph.institution.v1.AuditEvent
-	13, // 7: joseph.institution.v1.ListMembersResponse.members:type_name -> joseph.institution.v1.Member
-	2,  // 8: joseph.institution.v1.InstitutionService.GetInstitutionFile:input_type -> joseph.institution.v1.GetInstitutionFileRequest
-	4,  // 9: joseph.institution.v1.InstitutionService.SaveAuthorization:input_type -> joseph.institution.v1.SaveAuthorizationRequest
-	6,  // 10: joseph.institution.v1.InstitutionService.DeleteAuthorization:input_type -> joseph.institution.v1.DeleteAuthorizationRequest
-	8,  // 11: joseph.institution.v1.InstitutionService.SavePlatformSheet:input_type -> joseph.institution.v1.SavePlatformSheetRequest
-	11, // 12: joseph.institution.v1.InstitutionService.ListAuditEvents:input_type -> joseph.institution.v1.ListAuditEventsRequest
-	14, // 13: joseph.institution.v1.InstitutionService.ListMembers:input_type -> joseph.institution.v1.ListMembersRequest
-	16, // 14: joseph.institution.v1.InstitutionService.GrantMember:input_type -> joseph.institution.v1.GrantMemberRequest
-	18, // 15: joseph.institution.v1.InstitutionService.RevokeMember:input_type -> joseph.institution.v1.RevokeMemberRequest
-	3,  // 16: joseph.institution.v1.InstitutionService.GetInstitutionFile:output_type -> joseph.institution.v1.GetInstitutionFileResponse
-	5,  // 17: joseph.institution.v1.InstitutionService.SaveAuthorization:output_type -> joseph.institution.v1.SaveAuthorizationResponse
-	7,  // 18: joseph.institution.v1.InstitutionService.DeleteAuthorization:output_type -> joseph.institution.v1.DeleteAuthorizationResponse
-	9,  // 19: joseph.institution.v1.InstitutionService.SavePlatformSheet:output_type -> joseph.institution.v1.SavePlatformSheetResponse
-	12, // 20: joseph.institution.v1.InstitutionService.ListAuditEvents:output_type -> joseph.institution.v1.ListAuditEventsResponse
-	15, // 21: joseph.institution.v1.InstitutionService.ListMembers:output_type -> joseph.institution.v1.ListMembersResponse
-	17, // 22: joseph.institution.v1.InstitutionService.GrantMember:output_type -> joseph.institution.v1.GrantMemberResponse
-	19, // 23: joseph.institution.v1.InstitutionService.RevokeMember:output_type -> joseph.institution.v1.RevokeMemberResponse
+var file_ltedu_institution_v1_institution_proto_depIdxs = []int32{
+	0,  // 0: ltedu.institution.v1.GetInstitutionFileResponse.authorizations:type_name -> ltedu.institution.v1.Authorization
+	1,  // 1: ltedu.institution.v1.GetInstitutionFileResponse.platform:type_name -> ltedu.institution.v1.PlatformSheet
+	0,  // 2: ltedu.institution.v1.SaveAuthorizationRequest.authorization:type_name -> ltedu.institution.v1.Authorization
+	0,  // 3: ltedu.institution.v1.SaveAuthorizationResponse.authorization:type_name -> ltedu.institution.v1.Authorization
+	1,  // 4: ltedu.institution.v1.SavePlatformSheetRequest.platform:type_name -> ltedu.institution.v1.PlatformSheet
+	1,  // 5: ltedu.institution.v1.SavePlatformSheetResponse.platform:type_name -> ltedu.institution.v1.PlatformSheet
+	10, // 6: ltedu.institution.v1.ListAuditEventsResponse.events:type_name -> ltedu.institution.v1.AuditEvent
+	13, // 7: ltedu.institution.v1.ListMembersResponse.members:type_name -> ltedu.institution.v1.Member
+	2,  // 8: ltedu.institution.v1.InstitutionService.GetInstitutionFile:input_type -> ltedu.institution.v1.GetInstitutionFileRequest
+	4,  // 9: ltedu.institution.v1.InstitutionService.SaveAuthorization:input_type -> ltedu.institution.v1.SaveAuthorizationRequest
+	6,  // 10: ltedu.institution.v1.InstitutionService.DeleteAuthorization:input_type -> ltedu.institution.v1.DeleteAuthorizationRequest
+	8,  // 11: ltedu.institution.v1.InstitutionService.SavePlatformSheet:input_type -> ltedu.institution.v1.SavePlatformSheetRequest
+	11, // 12: ltedu.institution.v1.InstitutionService.ListAuditEvents:input_type -> ltedu.institution.v1.ListAuditEventsRequest
+	14, // 13: ltedu.institution.v1.InstitutionService.ListMembers:input_type -> ltedu.institution.v1.ListMembersRequest
+	16, // 14: ltedu.institution.v1.InstitutionService.GrantMember:input_type -> ltedu.institution.v1.GrantMemberRequest
+	18, // 15: ltedu.institution.v1.InstitutionService.RevokeMember:input_type -> ltedu.institution.v1.RevokeMemberRequest
+	3,  // 16: ltedu.institution.v1.InstitutionService.GetInstitutionFile:output_type -> ltedu.institution.v1.GetInstitutionFileResponse
+	5,  // 17: ltedu.institution.v1.InstitutionService.SaveAuthorization:output_type -> ltedu.institution.v1.SaveAuthorizationResponse
+	7,  // 18: ltedu.institution.v1.InstitutionService.DeleteAuthorization:output_type -> ltedu.institution.v1.DeleteAuthorizationResponse
+	9,  // 19: ltedu.institution.v1.InstitutionService.SavePlatformSheet:output_type -> ltedu.institution.v1.SavePlatformSheetResponse
+	12, // 20: ltedu.institution.v1.InstitutionService.ListAuditEvents:output_type -> ltedu.institution.v1.ListAuditEventsResponse
+	15, // 21: ltedu.institution.v1.InstitutionService.ListMembers:output_type -> ltedu.institution.v1.ListMembersResponse
+	17, // 22: ltedu.institution.v1.InstitutionService.GrantMember:output_type -> ltedu.institution.v1.GrantMemberResponse
+	19, // 23: ltedu.institution.v1.InstitutionService.RevokeMember:output_type -> ltedu.institution.v1.RevokeMemberResponse
 	16, // [16:24] is the sub-list for method output_type
 	8,  // [8:16] is the sub-list for method input_type
 	8,  // [8:8] is the sub-list for extension type_name
@@ -1675,26 +1675,26 @@ var file_joseph_institution_v1_institution_proto_depIdxs = []int32{
 	0,  // [0:8] is the sub-list for field type_name
 }
 
-func init() { file_joseph_institution_v1_institution_proto_init() }
-func file_joseph_institution_v1_institution_proto_init() {
-	if File_joseph_institution_v1_institution_proto != nil {
+func init() { file_ltedu_institution_v1_institution_proto_init() }
+func file_ltedu_institution_v1_institution_proto_init() {
+	if File_ltedu_institution_v1_institution_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_institution_v1_institution_proto_rawDesc), len(file_joseph_institution_v1_institution_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_institution_v1_institution_proto_rawDesc), len(file_ltedu_institution_v1_institution_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_institution_v1_institution_proto_goTypes,
-		DependencyIndexes: file_joseph_institution_v1_institution_proto_depIdxs,
-		MessageInfos:      file_joseph_institution_v1_institution_proto_msgTypes,
+		GoTypes:           file_ltedu_institution_v1_institution_proto_goTypes,
+		DependencyIndexes: file_ltedu_institution_v1_institution_proto_depIdxs,
+		MessageInfos:      file_ltedu_institution_v1_institution_proto_msgTypes,
 	}.Build()
-	File_joseph_institution_v1_institution_proto = out.File
-	file_joseph_institution_v1_institution_proto_goTypes = nil
-	file_joseph_institution_v1_institution_proto_depIdxs = nil
+	File_ltedu_institution_v1_institution_proto = out.File
+	file_ltedu_institution_v1_institution_proto_goTypes = nil
+	file_ltedu_institution_v1_institution_proto_depIdxs = nil
 }

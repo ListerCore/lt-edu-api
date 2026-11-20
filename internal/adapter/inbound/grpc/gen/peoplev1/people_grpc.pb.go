@@ -2,10 +2,10 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/people/v1/people.proto
+// source: ltedu/people/v1/people.proto
 
 // Students, guardians and enrollment (phase 3 of docs/plan-academico.md). Same metadata and institution scoping as
-// joseph.academic.v1: every request carries institution_slug. Secretaría, dirección and coordinación change; the
+// ltedu.academic.v1: every request carries institution_slug. Secretaría, dirección and coordinación change; the
 // rest of the staff reads. Dates travel as YYYY-MM-DD
 
 package peoplev1
@@ -23,33 +23,33 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	PeopleService_GetPeopleContext_FullMethodName     = "/joseph.people.v1.PeopleService/GetPeopleContext"
-	PeopleService_ListStudents_FullMethodName         = "/joseph.people.v1.PeopleService/ListStudents"
-	PeopleService_GetStudent_FullMethodName           = "/joseph.people.v1.PeopleService/GetStudent"
-	PeopleService_CreateStudent_FullMethodName        = "/joseph.people.v1.PeopleService/CreateStudent"
-	PeopleService_UpdateStudent_FullMethodName        = "/joseph.people.v1.PeopleService/UpdateStudent"
-	PeopleService_DeleteStudent_FullMethodName        = "/joseph.people.v1.PeopleService/DeleteStudent"
-	PeopleService_FindGuardian_FullMethodName         = "/joseph.people.v1.PeopleService/FindGuardian"
-	PeopleService_AddGuardian_FullMethodName          = "/joseph.people.v1.PeopleService/AddGuardian"
-	PeopleService_UpdateGuardian_FullMethodName       = "/joseph.people.v1.PeopleService/UpdateGuardian"
-	PeopleService_RemoveGuardian_FullMethodName       = "/joseph.people.v1.PeopleService/RemoveGuardian"
-	PeopleService_GrantAccess_FullMethodName          = "/joseph.people.v1.PeopleService/GrantAccess"
-	PeopleService_GetEnrollmentBoard_FullMethodName   = "/joseph.people.v1.PeopleService/GetEnrollmentBoard"
-	PeopleService_Enroll_FullMethodName               = "/joseph.people.v1.PeopleService/Enroll"
-	PeopleService_UpdateEnrollment_FullMethodName     = "/joseph.people.v1.PeopleService/UpdateEnrollment"
-	PeopleService_EndEnrollment_FullMethodName        = "/joseph.people.v1.PeopleService/EndEnrollment"
-	PeopleService_DeleteEnrollment_FullMethodName     = "/joseph.people.v1.PeopleService/DeleteEnrollment"
-	PeopleService_RatifyEnrollments_FullMethodName    = "/joseph.people.v1.PeopleService/RatifyEnrollments"
-	PeopleService_ListPlacements_FullMethodName       = "/joseph.people.v1.PeopleService/ListPlacements"
-	PeopleService_CreatePlacement_FullMethodName      = "/joseph.people.v1.PeopleService/CreatePlacement"
-	PeopleService_DeletePlacement_FullMethodName      = "/joseph.people.v1.PeopleService/DeletePlacement"
-	PeopleService_ProposePlacement_FullMethodName     = "/joseph.people.v1.PeopleService/ProposePlacement"
-	PeopleService_GetEnrollmentFile_FullMethodName    = "/joseph.people.v1.PeopleService/GetEnrollmentFile"
-	PeopleService_SaveEnrollmentFile_FullMethodName   = "/joseph.people.v1.PeopleService/SaveEnrollmentFile"
-	PeopleService_SetReligionExemption_FullMethodName = "/joseph.people.v1.PeopleService/SetReligionExemption"
-	PeopleService_ListRoll_FullMethodName             = "/joseph.people.v1.PeopleService/ListRoll"
-	PeopleService_SetSiagieStatus_FullMethodName      = "/joseph.people.v1.PeopleService/SetSiagieStatus"
-	PeopleService_ImportRoll_FullMethodName           = "/joseph.people.v1.PeopleService/ImportRoll"
+	PeopleService_GetPeopleContext_FullMethodName     = "/ltedu.people.v1.PeopleService/GetPeopleContext"
+	PeopleService_ListStudents_FullMethodName         = "/ltedu.people.v1.PeopleService/ListStudents"
+	PeopleService_GetStudent_FullMethodName           = "/ltedu.people.v1.PeopleService/GetStudent"
+	PeopleService_CreateStudent_FullMethodName        = "/ltedu.people.v1.PeopleService/CreateStudent"
+	PeopleService_UpdateStudent_FullMethodName        = "/ltedu.people.v1.PeopleService/UpdateStudent"
+	PeopleService_DeleteStudent_FullMethodName        = "/ltedu.people.v1.PeopleService/DeleteStudent"
+	PeopleService_FindGuardian_FullMethodName         = "/ltedu.people.v1.PeopleService/FindGuardian"
+	PeopleService_AddGuardian_FullMethodName          = "/ltedu.people.v1.PeopleService/AddGuardian"
+	PeopleService_UpdateGuardian_FullMethodName       = "/ltedu.people.v1.PeopleService/UpdateGuardian"
+	PeopleService_RemoveGuardian_FullMethodName       = "/ltedu.people.v1.PeopleService/RemoveGuardian"
+	PeopleService_GrantAccess_FullMethodName          = "/ltedu.people.v1.PeopleService/GrantAccess"
+	PeopleService_GetEnrollmentBoard_FullMethodName   = "/ltedu.people.v1.PeopleService/GetEnrollmentBoard"
+	PeopleService_Enroll_FullMethodName               = "/ltedu.people.v1.PeopleService/Enroll"
+	PeopleService_UpdateEnrollment_FullMethodName     = "/ltedu.people.v1.PeopleService/UpdateEnrollment"
+	PeopleService_EndEnrollment_FullMethodName        = "/ltedu.people.v1.PeopleService/EndEnrollment"
+	PeopleService_DeleteEnrollment_FullMethodName     = "/ltedu.people.v1.PeopleService/DeleteEnrollment"
+	PeopleService_RatifyEnrollments_FullMethodName    = "/ltedu.people.v1.PeopleService/RatifyEnrollments"
+	PeopleService_ListPlacements_FullMethodName       = "/ltedu.people.v1.PeopleService/ListPlacements"
+	PeopleService_CreatePlacement_FullMethodName      = "/ltedu.people.v1.PeopleService/CreatePlacement"
+	PeopleService_DeletePlacement_FullMethodName      = "/ltedu.people.v1.PeopleService/DeletePlacement"
+	PeopleService_ProposePlacement_FullMethodName     = "/ltedu.people.v1.PeopleService/ProposePlacement"
+	PeopleService_GetEnrollmentFile_FullMethodName    = "/ltedu.people.v1.PeopleService/GetEnrollmentFile"
+	PeopleService_SaveEnrollmentFile_FullMethodName   = "/ltedu.people.v1.PeopleService/SaveEnrollmentFile"
+	PeopleService_SetReligionExemption_FullMethodName = "/ltedu.people.v1.PeopleService/SetReligionExemption"
+	PeopleService_ListRoll_FullMethodName             = "/ltedu.people.v1.PeopleService/ListRoll"
+	PeopleService_SetSiagieStatus_FullMethodName      = "/ltedu.people.v1.PeopleService/SetSiagieStatus"
+	PeopleService_ImportRoll_FullMethodName           = "/ltedu.people.v1.PeopleService/ImportRoll"
 )
 
 // PeopleServiceClient is the client API for PeopleService service.
@@ -1020,7 +1020,7 @@ func _PeopleService_ImportRoll_Handler(srv interface{}, ctx context.Context, dec
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var PeopleService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.people.v1.PeopleService",
+	ServiceName: "ltedu.people.v1.PeopleService",
 	HandlerType: (*PeopleServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -1133,5 +1133,5 @@ var PeopleService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/people/v1/people.proto",
+	Metadata: "ltedu/people/v1/people.proto",
 }

@@ -2,10 +2,10 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/assessment/v1/assessment.proto
+// source: ltedu/assessment/v1/assessment.proto
 
 // Assessment by term (phase 6 of docs/plan-academico.md). Same metadata and institution scoping as
-// joseph.academic.v1. term_id empty means the whole period (IEST semesters and CEPRE cycles have no terms).
+// ltedu.academic.v1. term_id empty means the whole period (IEST semesters and CEPRE cycles have no terms).
 // Levels: AD | A | B | C. Scores: 0–20
 
 package assessmentv1
@@ -36,7 +36,7 @@ type Submission struct {
 
 func (x *Submission) Reset() {
 	*x = Submission{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[0]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -48,7 +48,7 @@ func (x *Submission) String() string {
 func (*Submission) ProtoMessage() {}
 
 func (x *Submission) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[0]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -61,7 +61,7 @@ func (x *Submission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Submission.ProtoReflect.Descriptor instead.
 func (*Submission) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Submission) GetSubmittedName() string {
@@ -99,7 +99,7 @@ type SheetProgress struct {
 
 func (x *SheetProgress) Reset() {
 	*x = SheetProgress{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[1]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -111,7 +111,7 @@ func (x *SheetProgress) String() string {
 func (*SheetProgress) ProtoMessage() {}
 
 func (x *SheetProgress) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[1]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -124,7 +124,7 @@ func (x *SheetProgress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SheetProgress.ProtoReflect.Descriptor instead.
 func (*SheetProgress) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *SheetProgress) GetSectionId() string {
@@ -226,7 +226,7 @@ type TutorProgress struct {
 
 func (x *TutorProgress) Reset() {
 	*x = TutorProgress{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[2]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -238,7 +238,7 @@ func (x *TutorProgress) String() string {
 func (*TutorProgress) ProtoMessage() {}
 
 func (x *TutorProgress) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[2]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -251,7 +251,7 @@ func (x *TutorProgress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TutorProgress.ProtoReflect.Descriptor instead.
 func (*TutorProgress) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *TutorProgress) GetSectionId() string {
@@ -314,7 +314,7 @@ type GetGradebookRequest struct {
 
 func (x *GetGradebookRequest) Reset() {
 	*x = GetGradebookRequest{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[3]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -326,7 +326,7 @@ func (x *GetGradebookRequest) String() string {
 func (*GetGradebookRequest) ProtoMessage() {}
 
 func (x *GetGradebookRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[3]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -339,7 +339,7 @@ func (x *GetGradebookRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGradebookRequest.ProtoReflect.Descriptor instead.
 func (*GetGradebookRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetGradebookRequest) GetInstitutionSlug() string {
@@ -383,7 +383,7 @@ type GetGradebookResponse struct {
 
 func (x *GetGradebookResponse) Reset() {
 	*x = GetGradebookResponse{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[4]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -395,7 +395,7 @@ func (x *GetGradebookResponse) String() string {
 func (*GetGradebookResponse) ProtoMessage() {}
 
 func (x *GetGradebookResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[4]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -408,7 +408,7 @@ func (x *GetGradebookResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGradebookResponse.ProtoReflect.Descriptor instead.
 func (*GetGradebookResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetGradebookResponse) GetPeriods() []*academicv1.Period {
@@ -500,7 +500,7 @@ type StudentRef struct {
 
 func (x *StudentRef) Reset() {
 	*x = StudentRef{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[5]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -512,7 +512,7 @@ func (x *StudentRef) String() string {
 func (*StudentRef) ProtoMessage() {}
 
 func (x *StudentRef) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[5]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -525,7 +525,7 @@ func (x *StudentRef) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StudentRef.ProtoReflect.Descriptor instead.
 func (*StudentRef) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *StudentRef) GetId() string {
@@ -568,7 +568,7 @@ type Competency struct {
 
 func (x *Competency) Reset() {
 	*x = Competency{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[6]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -580,7 +580,7 @@ func (x *Competency) String() string {
 func (*Competency) ProtoMessage() {}
 
 func (x *Competency) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[6]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -593,7 +593,7 @@ func (x *Competency) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Competency.ProtoReflect.Descriptor instead.
 func (*Competency) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Competency) GetId() string {
@@ -636,7 +636,7 @@ type LevelMark struct {
 
 func (x *LevelMark) Reset() {
 	*x = LevelMark{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[7]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -648,7 +648,7 @@ func (x *LevelMark) String() string {
 func (*LevelMark) ProtoMessage() {}
 
 func (x *LevelMark) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[7]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -661,7 +661,7 @@ func (x *LevelMark) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LevelMark.ProtoReflect.Descriptor instead.
 func (*LevelMark) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *LevelMark) GetStudentId() string {
@@ -704,7 +704,7 @@ type Evaluation struct {
 
 func (x *Evaluation) Reset() {
 	*x = Evaluation{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[8]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -716,7 +716,7 @@ func (x *Evaluation) String() string {
 func (*Evaluation) ProtoMessage() {}
 
 func (x *Evaluation) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[8]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -729,7 +729,7 @@ func (x *Evaluation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Evaluation.ProtoReflect.Descriptor instead.
 func (*Evaluation) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Evaluation) GetId() string {
@@ -771,7 +771,7 @@ type ScoreMark struct {
 
 func (x *ScoreMark) Reset() {
 	*x = ScoreMark{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[9]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -783,7 +783,7 @@ func (x *ScoreMark) String() string {
 func (*ScoreMark) ProtoMessage() {}
 
 func (x *ScoreMark) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[9]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -796,7 +796,7 @@ func (x *ScoreMark) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScoreMark.ProtoReflect.Descriptor instead.
 func (*ScoreMark) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ScoreMark) GetEvaluationId() string {
@@ -831,7 +831,7 @@ type ConductMark struct {
 
 func (x *ConductMark) Reset() {
 	*x = ConductMark{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[10]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -843,7 +843,7 @@ func (x *ConductMark) String() string {
 func (*ConductMark) ProtoMessage() {}
 
 func (x *ConductMark) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[10]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -856,7 +856,7 @@ func (x *ConductMark) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConductMark.ProtoReflect.Descriptor instead.
 func (*ConductMark) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ConductMark) GetStudentId() string {
@@ -890,7 +890,7 @@ type TutorComment struct {
 
 func (x *TutorComment) Reset() {
 	*x = TutorComment{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[11]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -902,7 +902,7 @@ func (x *TutorComment) String() string {
 func (*TutorComment) ProtoMessage() {}
 
 func (x *TutorComment) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[11]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -915,7 +915,7 @@ func (x *TutorComment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TutorComment.ProtoReflect.Descriptor instead.
 func (*TutorComment) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *TutorComment) GetStudentId() string {
@@ -963,7 +963,7 @@ type Sheet struct {
 
 func (x *Sheet) Reset() {
 	*x = Sheet{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[12]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -975,7 +975,7 @@ func (x *Sheet) String() string {
 func (*Sheet) ProtoMessage() {}
 
 func (x *Sheet) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[12]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -988,7 +988,7 @@ func (x *Sheet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Sheet.ProtoReflect.Descriptor instead.
 func (*Sheet) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *Sheet) GetKind() string {
@@ -1156,7 +1156,7 @@ type GetSheetRequest struct {
 
 func (x *GetSheetRequest) Reset() {
 	*x = GetSheetRequest{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[13]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1168,7 +1168,7 @@ func (x *GetSheetRequest) String() string {
 func (*GetSheetRequest) ProtoMessage() {}
 
 func (x *GetSheetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[13]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1181,7 +1181,7 @@ func (x *GetSheetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSheetRequest.ProtoReflect.Descriptor instead.
 func (*GetSheetRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetSheetRequest) GetInstitutionSlug() string {
@@ -1214,7 +1214,7 @@ type GetSheetResponse struct {
 
 func (x *GetSheetResponse) Reset() {
 	*x = GetSheetResponse{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[14]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1226,7 +1226,7 @@ func (x *GetSheetResponse) String() string {
 func (*GetSheetResponse) ProtoMessage() {}
 
 func (x *GetSheetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[14]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1239,7 +1239,7 @@ func (x *GetSheetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSheetResponse.ProtoReflect.Descriptor instead.
 func (*GetSheetResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetSheetResponse) GetSheet() *Sheet {
@@ -1261,7 +1261,7 @@ type SaveLevelsRequest struct {
 
 func (x *SaveLevelsRequest) Reset() {
 	*x = SaveLevelsRequest{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[15]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1273,7 +1273,7 @@ func (x *SaveLevelsRequest) String() string {
 func (*SaveLevelsRequest) ProtoMessage() {}
 
 func (x *SaveLevelsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[15]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1286,7 +1286,7 @@ func (x *SaveLevelsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveLevelsRequest.ProtoReflect.Descriptor instead.
 func (*SaveLevelsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SaveLevelsRequest) GetInstitutionSlug() string {
@@ -1326,7 +1326,7 @@ type SaveLevelsResponse struct {
 
 func (x *SaveLevelsResponse) Reset() {
 	*x = SaveLevelsResponse{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[16]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1338,7 +1338,7 @@ func (x *SaveLevelsResponse) String() string {
 func (*SaveLevelsResponse) ProtoMessage() {}
 
 func (x *SaveLevelsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[16]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1351,7 +1351,7 @@ func (x *SaveLevelsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveLevelsResponse.ProtoReflect.Descriptor instead.
 func (*SaveLevelsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *SaveLevelsResponse) GetSheet() *Sheet {
@@ -1377,7 +1377,7 @@ type SaveEvaluationRequest struct {
 
 func (x *SaveEvaluationRequest) Reset() {
 	*x = SaveEvaluationRequest{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[17]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1389,7 +1389,7 @@ func (x *SaveEvaluationRequest) String() string {
 func (*SaveEvaluationRequest) ProtoMessage() {}
 
 func (x *SaveEvaluationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[17]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1402,7 +1402,7 @@ func (x *SaveEvaluationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveEvaluationRequest.ProtoReflect.Descriptor instead.
 func (*SaveEvaluationRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *SaveEvaluationRequest) GetInstitutionSlug() string {
@@ -1463,7 +1463,7 @@ type SaveEvaluationResponse struct {
 
 func (x *SaveEvaluationResponse) Reset() {
 	*x = SaveEvaluationResponse{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[18]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1475,7 +1475,7 @@ func (x *SaveEvaluationResponse) String() string {
 func (*SaveEvaluationResponse) ProtoMessage() {}
 
 func (x *SaveEvaluationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[18]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1488,7 +1488,7 @@ func (x *SaveEvaluationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveEvaluationResponse.ProtoReflect.Descriptor instead.
 func (*SaveEvaluationResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *SaveEvaluationResponse) GetSheet() *Sheet {
@@ -1510,7 +1510,7 @@ type DeleteEvaluationRequest struct {
 
 func (x *DeleteEvaluationRequest) Reset() {
 	*x = DeleteEvaluationRequest{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[19]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1522,7 +1522,7 @@ func (x *DeleteEvaluationRequest) String() string {
 func (*DeleteEvaluationRequest) ProtoMessage() {}
 
 func (x *DeleteEvaluationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[19]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1535,7 +1535,7 @@ func (x *DeleteEvaluationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteEvaluationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteEvaluationRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *DeleteEvaluationRequest) GetInstitutionSlug() string {
@@ -1575,7 +1575,7 @@ type DeleteEvaluationResponse struct {
 
 func (x *DeleteEvaluationResponse) Reset() {
 	*x = DeleteEvaluationResponse{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[20]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1587,7 +1587,7 @@ func (x *DeleteEvaluationResponse) String() string {
 func (*DeleteEvaluationResponse) ProtoMessage() {}
 
 func (x *DeleteEvaluationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[20]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1600,7 +1600,7 @@ func (x *DeleteEvaluationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteEvaluationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteEvaluationResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *DeleteEvaluationResponse) GetSheet() *Sheet {
@@ -1621,7 +1621,7 @@ type ScoreInput struct {
 
 func (x *ScoreInput) Reset() {
 	*x = ScoreInput{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[21]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1633,7 +1633,7 @@ func (x *ScoreInput) String() string {
 func (*ScoreInput) ProtoMessage() {}
 
 func (x *ScoreInput) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[21]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1646,7 +1646,7 @@ func (x *ScoreInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScoreInput.ProtoReflect.Descriptor instead.
 func (*ScoreInput) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ScoreInput) GetStudentId() string {
@@ -1676,7 +1676,7 @@ type SaveScoresRequest struct {
 
 func (x *SaveScoresRequest) Reset() {
 	*x = SaveScoresRequest{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[22]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1688,7 +1688,7 @@ func (x *SaveScoresRequest) String() string {
 func (*SaveScoresRequest) ProtoMessage() {}
 
 func (x *SaveScoresRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[22]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1701,7 +1701,7 @@ func (x *SaveScoresRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveScoresRequest.ProtoReflect.Descriptor instead.
 func (*SaveScoresRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *SaveScoresRequest) GetInstitutionSlug() string {
@@ -1748,7 +1748,7 @@ type SaveScoresResponse struct {
 
 func (x *SaveScoresResponse) Reset() {
 	*x = SaveScoresResponse{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[23]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1760,7 +1760,7 @@ func (x *SaveScoresResponse) String() string {
 func (*SaveScoresResponse) ProtoMessage() {}
 
 func (x *SaveScoresResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[23]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1773,7 +1773,7 @@ func (x *SaveScoresResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveScoresResponse.ProtoReflect.Descriptor instead.
 func (*SaveScoresResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{23}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *SaveScoresResponse) GetSheet() *Sheet {
@@ -1794,7 +1794,7 @@ type GetTutorSheetRequest struct {
 
 func (x *GetTutorSheetRequest) Reset() {
 	*x = GetTutorSheetRequest{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[24]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1806,7 +1806,7 @@ func (x *GetTutorSheetRequest) String() string {
 func (*GetTutorSheetRequest) ProtoMessage() {}
 
 func (x *GetTutorSheetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[24]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1819,7 +1819,7 @@ func (x *GetTutorSheetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutorSheetRequest.ProtoReflect.Descriptor instead.
 func (*GetTutorSheetRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{24}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GetTutorSheetRequest) GetInstitutionSlug() string {
@@ -1852,7 +1852,7 @@ type GetTutorSheetResponse struct {
 
 func (x *GetTutorSheetResponse) Reset() {
 	*x = GetTutorSheetResponse{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[25]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1864,7 +1864,7 @@ func (x *GetTutorSheetResponse) String() string {
 func (*GetTutorSheetResponse) ProtoMessage() {}
 
 func (x *GetTutorSheetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[25]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1877,7 +1877,7 @@ func (x *GetTutorSheetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutorSheetResponse.ProtoReflect.Descriptor instead.
 func (*GetTutorSheetResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{25}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *GetTutorSheetResponse) GetSheet() *Sheet {
@@ -1898,7 +1898,7 @@ type ConductInput struct {
 
 func (x *ConductInput) Reset() {
 	*x = ConductInput{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[26]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1910,7 +1910,7 @@ func (x *ConductInput) String() string {
 func (*ConductInput) ProtoMessage() {}
 
 func (x *ConductInput) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[26]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1923,7 +1923,7 @@ func (x *ConductInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConductInput.ProtoReflect.Descriptor instead.
 func (*ConductInput) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{26}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ConductInput) GetStudentId() string {
@@ -1961,7 +1961,7 @@ type SaveTutorSheetRequest struct {
 
 func (x *SaveTutorSheetRequest) Reset() {
 	*x = SaveTutorSheetRequest{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[27]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1973,7 +1973,7 @@ func (x *SaveTutorSheetRequest) String() string {
 func (*SaveTutorSheetRequest) ProtoMessage() {}
 
 func (x *SaveTutorSheetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[27]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1986,7 +1986,7 @@ func (x *SaveTutorSheetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveTutorSheetRequest.ProtoReflect.Descriptor instead.
 func (*SaveTutorSheetRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{27}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *SaveTutorSheetRequest) GetInstitutionSlug() string {
@@ -2040,7 +2040,7 @@ type SaveTutorSheetResponse struct {
 
 func (x *SaveTutorSheetResponse) Reset() {
 	*x = SaveTutorSheetResponse{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[28]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2052,7 +2052,7 @@ func (x *SaveTutorSheetResponse) String() string {
 func (*SaveTutorSheetResponse) ProtoMessage() {}
 
 func (x *SaveTutorSheetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[28]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2065,7 +2065,7 @@ func (x *SaveTutorSheetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveTutorSheetResponse.ProtoReflect.Descriptor instead.
 func (*SaveTutorSheetResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{28}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *SaveTutorSheetResponse) GetSheet() *Sheet {
@@ -2088,7 +2088,7 @@ type SubmitRequest struct {
 
 func (x *SubmitRequest) Reset() {
 	*x = SubmitRequest{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[29]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2100,7 +2100,7 @@ func (x *SubmitRequest) String() string {
 func (*SubmitRequest) ProtoMessage() {}
 
 func (x *SubmitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[29]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2113,7 +2113,7 @@ func (x *SubmitRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubmitRequest.ProtoReflect.Descriptor instead.
 func (*SubmitRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{29}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *SubmitRequest) GetInstitutionSlug() string {
@@ -2159,7 +2159,7 @@ type SubmitResponse struct {
 
 func (x *SubmitResponse) Reset() {
 	*x = SubmitResponse{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[30]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2171,7 +2171,7 @@ func (x *SubmitResponse) String() string {
 func (*SubmitResponse) ProtoMessage() {}
 
 func (x *SubmitResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[30]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2184,7 +2184,7 @@ func (x *SubmitResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubmitResponse.ProtoReflect.Descriptor instead.
 func (*SubmitResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{30}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{30}
 }
 
 type CardCompetency struct {
@@ -2202,7 +2202,7 @@ type CardCompetency struct {
 
 func (x *CardCompetency) Reset() {
 	*x = CardCompetency{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[31]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2214,7 +2214,7 @@ func (x *CardCompetency) String() string {
 func (*CardCompetency) ProtoMessage() {}
 
 func (x *CardCompetency) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[31]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2227,7 +2227,7 @@ func (x *CardCompetency) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardCompetency.ProtoReflect.Descriptor instead.
 func (*CardCompetency) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{31}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *CardCompetency) GetId() string {
@@ -2276,7 +2276,7 @@ type CardEvaluation struct {
 
 func (x *CardEvaluation) Reset() {
 	*x = CardEvaluation{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[32]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2288,7 +2288,7 @@ func (x *CardEvaluation) String() string {
 func (*CardEvaluation) ProtoMessage() {}
 
 func (x *CardEvaluation) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[32]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2301,7 +2301,7 @@ func (x *CardEvaluation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardEvaluation.ProtoReflect.Descriptor instead.
 func (*CardEvaluation) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{32}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *CardEvaluation) GetName() string {
@@ -2341,7 +2341,7 @@ type CardSubject struct {
 
 func (x *CardSubject) Reset() {
 	*x = CardSubject{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[33]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2353,7 +2353,7 @@ func (x *CardSubject) String() string {
 func (*CardSubject) ProtoMessage() {}
 
 func (x *CardSubject) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[33]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2366,7 +2366,7 @@ func (x *CardSubject) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardSubject.ProtoReflect.Descriptor instead.
 func (*CardSubject) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{33}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *CardSubject) GetId() string {
@@ -2430,7 +2430,7 @@ type AttendanceTally struct {
 
 func (x *AttendanceTally) Reset() {
 	*x = AttendanceTally{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[34]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2442,7 +2442,7 @@ func (x *AttendanceTally) String() string {
 func (*AttendanceTally) ProtoMessage() {}
 
 func (x *AttendanceTally) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[34]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2455,7 +2455,7 @@ func (x *AttendanceTally) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttendanceTally.ProtoReflect.Descriptor instead.
 func (*AttendanceTally) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{34}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *AttendanceTally) GetPresent() int32 {
@@ -2501,7 +2501,7 @@ type CardTerm struct {
 
 func (x *CardTerm) Reset() {
 	*x = CardTerm{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[35]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2513,7 +2513,7 @@ func (x *CardTerm) String() string {
 func (*CardTerm) ProtoMessage() {}
 
 func (x *CardTerm) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[35]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2526,7 +2526,7 @@ func (x *CardTerm) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardTerm.ProtoReflect.Descriptor instead.
 func (*CardTerm) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{35}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *CardTerm) GetId() string {
@@ -2581,7 +2581,7 @@ type PeriodRef struct {
 
 func (x *PeriodRef) Reset() {
 	*x = PeriodRef{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[36]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2593,7 +2593,7 @@ func (x *PeriodRef) String() string {
 func (*PeriodRef) ProtoMessage() {}
 
 func (x *PeriodRef) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[36]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2606,7 +2606,7 @@ func (x *PeriodRef) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PeriodRef.ProtoReflect.Descriptor instead.
 func (*PeriodRef) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{36}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *PeriodRef) GetId() string {
@@ -2660,7 +2660,7 @@ type ReportCard struct {
 
 func (x *ReportCard) Reset() {
 	*x = ReportCard{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[37]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2672,7 +2672,7 @@ func (x *ReportCard) String() string {
 func (*ReportCard) ProtoMessage() {}
 
 func (x *ReportCard) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[37]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2685,7 +2685,7 @@ func (x *ReportCard) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReportCard.ProtoReflect.Descriptor instead.
 func (*ReportCard) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{37}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *ReportCard) GetInstitution() string {
@@ -2882,7 +2882,7 @@ type GetReportCardRequest struct {
 
 func (x *GetReportCardRequest) Reset() {
 	*x = GetReportCardRequest{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[38]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2894,7 +2894,7 @@ func (x *GetReportCardRequest) String() string {
 func (*GetReportCardRequest) ProtoMessage() {}
 
 func (x *GetReportCardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[38]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2907,7 +2907,7 @@ func (x *GetReportCardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetReportCardRequest.ProtoReflect.Descriptor instead.
 func (*GetReportCardRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{38}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *GetReportCardRequest) GetInstitutionSlug() string {
@@ -2947,7 +2947,7 @@ type GetReportCardResponse struct {
 
 func (x *GetReportCardResponse) Reset() {
 	*x = GetReportCardResponse{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[39]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2959,7 +2959,7 @@ func (x *GetReportCardResponse) String() string {
 func (*GetReportCardResponse) ProtoMessage() {}
 
 func (x *GetReportCardResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[39]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2972,7 +2972,7 @@ func (x *GetReportCardResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetReportCardResponse.ProtoReflect.Descriptor instead.
 func (*GetReportCardResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{39}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *GetReportCardResponse) GetCard() *ReportCard {
@@ -2993,7 +2993,7 @@ type GetSectionCardsRequest struct {
 
 func (x *GetSectionCardsRequest) Reset() {
 	*x = GetSectionCardsRequest{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[40]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3005,7 +3005,7 @@ func (x *GetSectionCardsRequest) String() string {
 func (*GetSectionCardsRequest) ProtoMessage() {}
 
 func (x *GetSectionCardsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[40]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3018,7 +3018,7 @@ func (x *GetSectionCardsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSectionCardsRequest.ProtoReflect.Descriptor instead.
 func (*GetSectionCardsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{40}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *GetSectionCardsRequest) GetInstitutionSlug() string {
@@ -3051,7 +3051,7 @@ type GetSectionCardsResponse struct {
 
 func (x *GetSectionCardsResponse) Reset() {
 	*x = GetSectionCardsResponse{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[41]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3063,7 +3063,7 @@ func (x *GetSectionCardsResponse) String() string {
 func (*GetSectionCardsResponse) ProtoMessage() {}
 
 func (x *GetSectionCardsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[41]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3076,7 +3076,7 @@ func (x *GetSectionCardsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSectionCardsResponse.ProtoReflect.Descriptor instead.
 func (*GetSectionCardsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{41}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *GetSectionCardsResponse) GetCards() []*ReportCard {
@@ -3095,7 +3095,7 @@ type MyReportCardsRequest struct {
 
 func (x *MyReportCardsRequest) Reset() {
 	*x = MyReportCardsRequest{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[42]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3107,7 +3107,7 @@ func (x *MyReportCardsRequest) String() string {
 func (*MyReportCardsRequest) ProtoMessage() {}
 
 func (x *MyReportCardsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[42]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3120,7 +3120,7 @@ func (x *MyReportCardsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MyReportCardsRequest.ProtoReflect.Descriptor instead.
 func (*MyReportCardsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{42}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *MyReportCardsRequest) GetInstitutionSlug() string {
@@ -3142,7 +3142,7 @@ type FamilyCard struct {
 
 func (x *FamilyCard) Reset() {
 	*x = FamilyCard{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[43]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3154,7 +3154,7 @@ func (x *FamilyCard) String() string {
 func (*FamilyCard) ProtoMessage() {}
 
 func (x *FamilyCard) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[43]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3167,7 +3167,7 @@ func (x *FamilyCard) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FamilyCard.ProtoReflect.Descriptor instead.
 func (*FamilyCard) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{43}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *FamilyCard) GetStudentId() string {
@@ -3207,7 +3207,7 @@ type MyReportCardsResponse struct {
 
 func (x *MyReportCardsResponse) Reset() {
 	*x = MyReportCardsResponse{}
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[44]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3219,7 +3219,7 @@ func (x *MyReportCardsResponse) String() string {
 func (*MyReportCardsResponse) ProtoMessage() {}
 
 func (x *MyReportCardsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_assessment_proto_msgTypes[44]
+	mi := &file_ltedu_assessment_v1_assessment_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3232,7 +3232,7 @@ func (x *MyReportCardsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MyReportCardsResponse.ProtoReflect.Descriptor instead.
 func (*MyReportCardsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_assessment_proto_rawDescGZIP(), []int{44}
+	return file_ltedu_assessment_v1_assessment_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *MyReportCardsResponse) GetCards() []*FamilyCard {
@@ -3242,15 +3242,15 @@ func (x *MyReportCardsResponse) GetCards() []*FamilyCard {
 	return nil
 }
 
-var File_joseph_assessment_v1_assessment_proto protoreflect.FileDescriptor
+var File_ltedu_assessment_v1_assessment_proto protoreflect.FileDescriptor
 
-const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
+const file_ltedu_assessment_v1_assessment_proto_rawDesc = "" +
 	"\n" +
-	"%joseph/assessment/v1/assessment.proto\x12\x14joseph.assessment.v1\x1a!joseph/academic/v1/academic.proto\"V\n" +
+	"$ltedu/assessment/v1/assessment.proto\x12\x13ltedu.assessment.v1\x1a ltedu/academic/v1/academic.proto\"V\n" +
 	"\n" +
 	"Submission\x12%\n" +
 	"\x0esubmitted_name\x18\x01 \x01(\tR\rsubmittedName\x12!\n" +
-	"\fsubmitted_at\x18\x02 \x01(\tR\vsubmittedAt\"\xa6\x03\n" +
+	"\fsubmitted_at\x18\x02 \x01(\tR\vsubmittedAt\"\xa5\x03\n" +
 	"\rSheetProgress\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x01 \x01(\tR\tsectionId\x12#\n" +
@@ -3266,8 +3266,8 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"\bexpected\x18\t \x01(\x05R\bexpected\x12\x16\n" +
 	"\x06filled\x18\n" +
 	" \x01(\x05R\x06filled\x12 \n" +
-	"\vevaluations\x18\v \x01(\x05R\vevaluations\x12>\n" +
-	"\tsubmitted\x18\f \x01(\v2 .joseph.assessment.v1.SubmissionR\tsubmitted\"\x82\x02\n" +
+	"\vevaluations\x18\v \x01(\x05R\vevaluations\x12=\n" +
+	"\tsubmitted\x18\f \x01(\v2\x1f.ltedu.assessment.v1.SubmissionR\tsubmitted\"\x81\x02\n" +
 	"\rTutorProgress\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x01 \x01(\tR\tsectionId\x12#\n" +
@@ -3276,22 +3276,22 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"tutor_name\x18\x03 \x01(\tR\ttutorName\x12\x1a\n" +
 	"\bstudents\x18\x04 \x01(\x05R\bstudents\x12\x1a\n" +
 	"\bexpected\x18\x05 \x01(\x05R\bexpected\x12\x16\n" +
-	"\x06filled\x18\x06 \x01(\x05R\x06filled\x12>\n" +
-	"\tsubmitted\x18\a \x01(\v2 .joseph.assessment.v1.SubmissionR\tsubmitted\"v\n" +
+	"\x06filled\x18\x06 \x01(\x05R\x06filled\x12=\n" +
+	"\tsubmitted\x18\a \x01(\v2\x1f.ltedu.assessment.v1.SubmissionR\tsubmitted\"v\n" +
 	"\x13GetGradebookRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
 	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12\x17\n" +
-	"\aterm_id\x18\x03 \x01(\tR\x06termId\"\xcf\x03\n" +
-	"\x14GetGradebookResponse\x124\n" +
-	"\aperiods\x18\x01 \x03(\v2\x1a.joseph.academic.v1.PeriodR\aperiods\x122\n" +
-	"\x06period\x18\x02 \x01(\v2\x1a.joseph.academic.v1.PeriodR\x06period\x12\x17\n" +
+	"\aterm_id\x18\x03 \x01(\tR\x06termId\"\xcb\x03\n" +
+	"\x14GetGradebookResponse\x123\n" +
+	"\aperiods\x18\x01 \x03(\v2\x19.ltedu.academic.v1.PeriodR\aperiods\x121\n" +
+	"\x06period\x18\x02 \x01(\v2\x19.ltedu.academic.v1.PeriodR\x06period\x12\x17\n" +
 	"\aterm_id\x18\x03 \x01(\tR\x06termId\x12\x16\n" +
 	"\x06locked\x18\x04 \x01(\bR\x06locked\x12\x14\n" +
 	"\x05scale\x18\x05 \x01(\tR\x05scale\x12(\n" +
 	"\rpassing_grade\x18\x06 \x01(\x05H\x00R\fpassingGrade\x88\x01\x01\x12\x18\n" +
-	"\aconduct\x18\a \x01(\bR\aconduct\x12;\n" +
-	"\x06sheets\x18\b \x03(\v2#.joseph.assessment.v1.SheetProgressR\x06sheets\x129\n" +
-	"\x05tutor\x18\t \x03(\v2#.joseph.assessment.v1.TutorProgressR\x05tutor\x12\x1d\n" +
+	"\aconduct\x18\a \x01(\bR\aconduct\x12:\n" +
+	"\x06sheets\x18\b \x03(\v2\".ltedu.assessment.v1.SheetProgressR\x06sheets\x128\n" +
+	"\x05tutor\x18\t \x03(\v2\".ltedu.assessment.v1.TutorProgressR\x05tutor\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\n" +
 	" \x01(\bR\tcanManage\x12\x19\n" +
@@ -3336,7 +3336,7 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"\fTutorComment\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12\x18\n" +
-	"\acomment\x18\x02 \x01(\tR\acomment\"\xc3\a\n" +
+	"\acomment\x18\x02 \x01(\tR\acomment\"\xbb\a\n" +
 	"\x05Sheet\x12\x12\n" +
 	"\x04kind\x18\x01 \x01(\tR\x04kind\x12\x1d\n" +
 	"\n" +
@@ -3354,31 +3354,31 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	" \x01(\bR\x06locked\x12\x19\n" +
 	"\bcan_edit\x18\v \x01(\bR\acanEdit\x12(\n" +
 	"\rpassing_grade\x18\f \x01(\x05H\x00R\fpassingGrade\x88\x01\x01\x12\x18\n" +
-	"\aconduct\x18\r \x01(\bR\aconduct\x12<\n" +
-	"\bstudents\x18\x0e \x03(\v2 .joseph.assessment.v1.StudentRefR\bstudents\x12D\n" +
-	"\fcompetencies\x18\x0f \x03(\v2 .joseph.assessment.v1.CompetencyR\fcompetencies\x125\n" +
-	"\x05marks\x18\x10 \x03(\v2\x1f.joseph.assessment.v1.LevelMarkR\x05marks\x12B\n" +
-	"\vevaluations\x18\x11 \x03(\v2 .joseph.assessment.v1.EvaluationR\vevaluations\x127\n" +
-	"\x06scores\x18\x12 \x03(\v2\x1f.joseph.assessment.v1.ScoreMarkR\x06scores\x12F\n" +
-	"\rconduct_marks\x18\x13 \x03(\v2!.joseph.assessment.v1.ConductMarkR\fconductMarks\x12>\n" +
-	"\bcomments\x18\x14 \x03(\v2\".joseph.assessment.v1.TutorCommentR\bcomments\x12>\n" +
-	"\tsubmitted\x18\x15 \x01(\v2 .joseph.assessment.v1.SubmissionR\tsubmitted\x12\x1d\n" +
+	"\aconduct\x18\r \x01(\bR\aconduct\x12;\n" +
+	"\bstudents\x18\x0e \x03(\v2\x1f.ltedu.assessment.v1.StudentRefR\bstudents\x12C\n" +
+	"\fcompetencies\x18\x0f \x03(\v2\x1f.ltedu.assessment.v1.CompetencyR\fcompetencies\x124\n" +
+	"\x05marks\x18\x10 \x03(\v2\x1e.ltedu.assessment.v1.LevelMarkR\x05marks\x12A\n" +
+	"\vevaluations\x18\x11 \x03(\v2\x1f.ltedu.assessment.v1.EvaluationR\vevaluations\x126\n" +
+	"\x06scores\x18\x12 \x03(\v2\x1e.ltedu.assessment.v1.ScoreMarkR\x06scores\x12E\n" +
+	"\rconduct_marks\x18\x13 \x03(\v2 .ltedu.assessment.v1.ConductMarkR\fconductMarks\x12=\n" +
+	"\bcomments\x18\x14 \x03(\v2!.ltedu.assessment.v1.TutorCommentR\bcomments\x12=\n" +
+	"\tsubmitted\x18\x15 \x01(\v2\x1f.ltedu.assessment.v1.SubmissionR\tsubmitted\x12\x1d\n" +
 	"\n" +
 	"tutor_name\x18\x16 \x01(\tR\ttutorNameB\x10\n" +
 	"\x0e_passing_grade\"z\n" +
 	"\x0fGetSheetRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
 	"\rassignment_id\x18\x02 \x01(\tR\fassignmentId\x12\x17\n" +
-	"\aterm_id\x18\x03 \x01(\tR\x06termId\"E\n" +
-	"\x10GetSheetResponse\x121\n" +
-	"\x05sheet\x18\x01 \x01(\v2\x1b.joseph.assessment.v1.SheetR\x05sheet\"\xb3\x01\n" +
+	"\aterm_id\x18\x03 \x01(\tR\x06termId\"D\n" +
+	"\x10GetSheetResponse\x120\n" +
+	"\x05sheet\x18\x01 \x01(\v2\x1a.ltedu.assessment.v1.SheetR\x05sheet\"\xb2\x01\n" +
 	"\x11SaveLevelsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
 	"\rassignment_id\x18\x02 \x01(\tR\fassignmentId\x12\x17\n" +
-	"\aterm_id\x18\x03 \x01(\tR\x06termId\x125\n" +
-	"\x05marks\x18\x04 \x03(\v2\x1f.joseph.assessment.v1.LevelMarkR\x05marks\"G\n" +
-	"\x12SaveLevelsResponse\x121\n" +
-	"\x05sheet\x18\x01 \x01(\v2\x1b.joseph.assessment.v1.SheetR\x05sheet\"\xd5\x01\n" +
+	"\aterm_id\x18\x03 \x01(\tR\x06termId\x124\n" +
+	"\x05marks\x18\x04 \x03(\v2\x1e.ltedu.assessment.v1.LevelMarkR\x05marks\"F\n" +
+	"\x12SaveLevelsResponse\x120\n" +
+	"\x05sheet\x18\x01 \x01(\v2\x1a.ltedu.assessment.v1.SheetR\x05sheet\"\xd5\x01\n" +
 	"\x15SaveEvaluationRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
 	"\rassignment_id\x18\x02 \x01(\tR\fassignmentId\x12\x17\n" +
@@ -3386,53 +3386,53 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"\x02id\x18\x04 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12\x16\n" +
 	"\x06weight\x18\x06 \x01(\x05R\x06weight\x12\x17\n" +
-	"\aheld_on\x18\a \x01(\tR\x06heldOn\"K\n" +
-	"\x16SaveEvaluationResponse\x121\n" +
-	"\x05sheet\x18\x01 \x01(\v2\x1b.joseph.assessment.v1.SheetR\x05sheet\"\x92\x01\n" +
+	"\aheld_on\x18\a \x01(\tR\x06heldOn\"J\n" +
+	"\x16SaveEvaluationResponse\x120\n" +
+	"\x05sheet\x18\x01 \x01(\v2\x1a.ltedu.assessment.v1.SheetR\x05sheet\"\x92\x01\n" +
 	"\x17DeleteEvaluationRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
 	"\rassignment_id\x18\x02 \x01(\tR\fassignmentId\x12\x17\n" +
 	"\aterm_id\x18\x03 \x01(\tR\x06termId\x12\x0e\n" +
-	"\x02id\x18\x04 \x01(\tR\x02id\"M\n" +
-	"\x18DeleteEvaluationResponse\x121\n" +
-	"\x05sheet\x18\x01 \x01(\v2\x1b.joseph.assessment.v1.SheetR\x05sheet\"P\n" +
+	"\x02id\x18\x04 \x01(\tR\x02id\"L\n" +
+	"\x18DeleteEvaluationResponse\x120\n" +
+	"\x05sheet\x18\x01 \x01(\v2\x1a.ltedu.assessment.v1.SheetR\x05sheet\"P\n" +
 	"\n" +
 	"ScoreInput\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12\x19\n" +
 	"\x05score\x18\x02 \x01(\x05H\x00R\x05score\x88\x01\x01B\b\n" +
-	"\x06_score\"\xdb\x01\n" +
+	"\x06_score\"\xda\x01\n" +
 	"\x11SaveScoresRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
 	"\rassignment_id\x18\x02 \x01(\tR\fassignmentId\x12\x17\n" +
 	"\aterm_id\x18\x03 \x01(\tR\x06termId\x12#\n" +
-	"\revaluation_id\x18\x04 \x01(\tR\fevaluationId\x128\n" +
-	"\x06scores\x18\x05 \x03(\v2 .joseph.assessment.v1.ScoreInputR\x06scores\"G\n" +
-	"\x12SaveScoresResponse\x121\n" +
-	"\x05sheet\x18\x01 \x01(\v2\x1b.joseph.assessment.v1.SheetR\x05sheet\"y\n" +
+	"\revaluation_id\x18\x04 \x01(\tR\fevaluationId\x127\n" +
+	"\x06scores\x18\x05 \x03(\v2\x1f.ltedu.assessment.v1.ScoreInputR\x06scores\"F\n" +
+	"\x12SaveScoresResponse\x120\n" +
+	"\x05sheet\x18\x01 \x01(\v2\x1a.ltedu.assessment.v1.SheetR\x05sheet\"y\n" +
 	"\x14GetTutorSheetRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x02 \x01(\tR\tsectionId\x12\x17\n" +
-	"\aterm_id\x18\x03 \x01(\tR\x06termId\"J\n" +
-	"\x15GetTutorSheetResponse\x121\n" +
-	"\x05sheet\x18\x01 \x01(\v2\x1b.joseph.assessment.v1.SheetR\x05sheet\"f\n" +
+	"\aterm_id\x18\x03 \x01(\tR\x06termId\"I\n" +
+	"\x15GetTutorSheetResponse\x120\n" +
+	"\x05sheet\x18\x01 \x01(\v2\x1a.ltedu.assessment.v1.SheetR\x05sheet\"f\n" +
 	"\fConductInput\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12\x19\n" +
 	"\x05score\x18\x02 \x01(\x05H\x00R\x05score\x88\x01\x01\x12\x12\n" +
 	"\x04note\x18\x03 \x01(\tR\x04noteB\b\n" +
-	"\x06_score\"\xaf\x02\n" +
+	"\x06_score\"\xac\x02\n" +
 	"\x15SaveTutorSheetRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x02 \x01(\tR\tsectionId\x12\x17\n" +
-	"\aterm_id\x18\x03 \x01(\tR\x06termId\x125\n" +
-	"\x05marks\x18\x04 \x03(\v2\x1f.joseph.assessment.v1.LevelMarkR\x05marks\x12<\n" +
-	"\aconduct\x18\x05 \x03(\v2\".joseph.assessment.v1.ConductInputR\aconduct\x12>\n" +
-	"\bcomments\x18\x06 \x03(\v2\".joseph.assessment.v1.TutorCommentR\bcomments\"K\n" +
-	"\x16SaveTutorSheetResponse\x121\n" +
-	"\x05sheet\x18\x01 \x01(\v2\x1b.joseph.assessment.v1.SheetR\x05sheet\"\xab\x01\n" +
+	"\aterm_id\x18\x03 \x01(\tR\x06termId\x124\n" +
+	"\x05marks\x18\x04 \x03(\v2\x1e.ltedu.assessment.v1.LevelMarkR\x05marks\x12;\n" +
+	"\aconduct\x18\x05 \x03(\v2!.ltedu.assessment.v1.ConductInputR\aconduct\x12=\n" +
+	"\bcomments\x18\x06 \x03(\v2!.ltedu.assessment.v1.TutorCommentR\bcomments\"J\n" +
+	"\x16SaveTutorSheetResponse\x120\n" +
+	"\x05sheet\x18\x01 \x01(\v2\x1a.ltedu.assessment.v1.SheetR\x05sheet\"\xab\x01\n" +
 	"\rSubmitRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
@@ -3440,15 +3440,15 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"\rassignment_id\x18\x03 \x01(\tR\fassignmentId\x12\x17\n" +
 	"\aterm_id\x18\x04 \x01(\tR\x06termId\x12\x12\n" +
 	"\x04sent\x18\x05 \x01(\bR\x04sent\"\x10\n" +
-	"\x0eSubmitResponse\"\xf2\x02\n" +
+	"\x0eSubmitResponse\"\xf0\x02\n" +
 	"\x0eCardCompetency\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12H\n" +
-	"\x06levels\x18\x03 \x03(\v20.joseph.assessment.v1.CardCompetency.LevelsEntryR\x06levels\x12\x1e\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12G\n" +
+	"\x06levels\x18\x03 \x03(\v2/.ltedu.assessment.v1.CardCompetency.LevelsEntryR\x06levels\x12\x1e\n" +
 	"\n" +
 	"conclusion\x18\x04 \x01(\tR\n" +
-	"conclusion\x12W\n" +
-	"\vconclusions\x18\x05 \x03(\v25.joseph.assessment.v1.CardCompetency.ConclusionsEntryR\vconclusions\x1a9\n" +
+	"conclusion\x12V\n" +
+	"\vconclusions\x18\x05 \x03(\v24.ltedu.assessment.v1.CardCompetency.ConclusionsEntryR\vconclusions\x1a9\n" +
 	"\vLevelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a>\n" +
@@ -3459,15 +3459,15 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x16\n" +
 	"\x06weight\x18\x02 \x01(\x05R\x06weight\x12\x19\n" +
 	"\x05score\x18\x03 \x01(\x05H\x00R\x05score\x88\x01\x01B\b\n" +
-	"\x06_score\"\x84\x03\n" +
+	"\x06_score\"\x81\x03\n" +
 	"\vCardSubject\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04kind\x18\x03 \x01(\tR\x04kind\x12!\n" +
-	"\fteacher_name\x18\x04 \x01(\tR\vteacherName\x12H\n" +
-	"\fcompetencies\x18\x05 \x03(\v2$.joseph.assessment.v1.CardCompetencyR\fcompetencies\x12K\n" +
-	"\baverages\x18\x06 \x03(\v2/.joseph.assessment.v1.CardSubject.AveragesEntryR\baverages\x12F\n" +
-	"\vevaluations\x18\a \x03(\v2$.joseph.assessment.v1.CardEvaluationR\vevaluations\x1a;\n" +
+	"\fteacher_name\x18\x04 \x01(\tR\vteacherName\x12G\n" +
+	"\fcompetencies\x18\x05 \x03(\v2#.ltedu.assessment.v1.CardCompetencyR\fcompetencies\x12J\n" +
+	"\baverages\x18\x06 \x03(\v2..ltedu.assessment.v1.CardSubject.AveragesEntryR\baverages\x12E\n" +
+	"\vevaluations\x18\a \x03(\v2#.ltedu.assessment.v1.CardEvaluationR\vevaluations\x1a;\n" +
 	"\rAveragesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"u\n" +
@@ -3475,13 +3475,13 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"\apresent\x18\x01 \x01(\x05R\apresent\x12\x12\n" +
 	"\x04late\x18\x02 \x01(\x05R\x04late\x12\x16\n" +
 	"\x06absent\x18\x03 \x01(\x05R\x06absent\x12\x1c\n" +
-	"\tjustified\x18\x04 \x01(\x05R\tjustified\"\xd2\x01\n" +
+	"\tjustified\x18\x04 \x01(\x05R\tjustified\"\xd1\x01\n" +
 	"\bCardTerm\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\tR\x06status\x12E\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x12D\n" +
 	"\n" +
-	"attendance\x18\x04 \x01(\v2%.joseph.assessment.v1.AttendanceTallyR\n" +
+	"attendance\x18\x04 \x01(\v2$.ltedu.assessment.v1.AttendanceTallyR\n" +
 	"attendance\x12\x1d\n" +
 	"\aconduct\x18\x05 \x01(\x05H\x00R\aconduct\x88\x01\x01\x12\x18\n" +
 	"\acomment\x18\x06 \x01(\tR\acommentB\n" +
@@ -3489,12 +3489,12 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"\b_conduct\"/\n" +
 	"\tPeriodRef\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"\xba\a\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"\xb5\a\n" +
 	"\n" +
 	"ReportCard\x12 \n" +
 	"\vinstitution\x18\x01 \x01(\tR\vinstitution\x12\x12\n" +
-	"\x04kind\x18\x02 \x01(\tR\x04kind\x12:\n" +
-	"\astudent\x18\x03 \x01(\v2 .joseph.assessment.v1.StudentRefR\astudent\x12#\n" +
+	"\x04kind\x18\x02 \x01(\tR\x04kind\x129\n" +
+	"\astudent\x18\x03 \x01(\v2\x1f.ltedu.assessment.v1.StudentRefR\astudent\x12#\n" +
 	"\rsection_label\x18\x04 \x01(\tR\fsectionLabel\x12\x1d\n" +
 	"\n" +
 	"level_name\x18\x05 \x01(\tR\tlevelName\x12\x1d\n" +
@@ -3505,14 +3505,14 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"periodName\x12\x14\n" +
 	"\x05scale\x18\t \x01(\tR\x05scale\x12(\n" +
 	"\rpassing_grade\x18\n" +
-	" \x01(\x05H\x00R\fpassingGrade\x88\x01\x01\x124\n" +
-	"\x05terms\x18\v \x03(\v2\x1e.joseph.assessment.v1.CardTermR\x05terms\x12\x17\n" +
-	"\aterm_id\x18\f \x01(\tR\x06termId\x12=\n" +
-	"\bsubjects\x18\r \x03(\v2!.joseph.assessment.v1.CardSubjectR\bsubjects\x12F\n" +
-	"\vtransversal\x18\x0e \x03(\v2$.joseph.assessment.v1.CardCompetencyR\vtransversal\x12#\n" +
+	" \x01(\x05H\x00R\fpassingGrade\x88\x01\x01\x123\n" +
+	"\x05terms\x18\v \x03(\v2\x1d.ltedu.assessment.v1.CardTermR\x05terms\x12\x17\n" +
+	"\aterm_id\x18\f \x01(\tR\x06termId\x12<\n" +
+	"\bsubjects\x18\r \x03(\v2 .ltedu.assessment.v1.CardSubjectR\bsubjects\x12E\n" +
+	"\vtransversal\x18\x0e \x03(\v2#.ltedu.assessment.v1.CardCompetencyR\vtransversal\x12#\n" +
 	"\rtutor_comment\x18\x0f \x01(\tR\ftutorComment\x12 \n" +
-	"\vprovisional\x18\x10 \x01(\bR\vprovisional\x129\n" +
-	"\aperiods\x18\x11 \x03(\v2\x1f.joseph.assessment.v1.PeriodRefR\aperiods\x12\x10\n" +
+	"\vprovisional\x18\x10 \x01(\bR\vprovisional\x128\n" +
+	"\aperiods\x18\x11 \x03(\v2\x1e.ltedu.assessment.v1.PeriodRefR\aperiods\x12\x10\n" +
 	"\x03dre\x18\x12 \x01(\tR\x03dre\x12\x12\n" +
 	"\x04ugel\x18\x13 \x01(\tR\x04ugel\x12!\n" +
 	"\fmodular_code\x18\x14 \x01(\tR\vmodularCode\x12\x12\n" +
@@ -3530,173 +3530,173 @@ const file_joseph_assessment_v1_assessment_proto_rawDesc = "" +
 	"\n" +
 	"student_id\x18\x02 \x01(\tR\tstudentId\x12\x1b\n" +
 	"\tperiod_id\x18\x03 \x01(\tR\bperiodId\x12\x17\n" +
-	"\aterm_id\x18\x04 \x01(\tR\x06termId\"M\n" +
-	"\x15GetReportCardResponse\x124\n" +
-	"\x04card\x18\x01 \x01(\v2 .joseph.assessment.v1.ReportCardR\x04card\"{\n" +
+	"\aterm_id\x18\x04 \x01(\tR\x06termId\"L\n" +
+	"\x15GetReportCardResponse\x123\n" +
+	"\x04card\x18\x01 \x01(\v2\x1f.ltedu.assessment.v1.ReportCardR\x04card\"{\n" +
 	"\x16GetSectionCardsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x02 \x01(\tR\tsectionId\x12\x17\n" +
-	"\aterm_id\x18\x03 \x01(\tR\x06termId\"Q\n" +
-	"\x17GetSectionCardsResponse\x126\n" +
-	"\x05cards\x18\x01 \x03(\v2 .joseph.assessment.v1.ReportCardR\x05cards\"A\n" +
+	"\aterm_id\x18\x03 \x01(\tR\x06termId\"P\n" +
+	"\x17GetSectionCardsResponse\x125\n" +
+	"\x05cards\x18\x01 \x03(\v2\x1f.ltedu.assessment.v1.ReportCardR\x05cards\"A\n" +
 	"\x14MyReportCardsRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x9e\x01\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x9d\x01\n" +
 	"\n" +
 	"FamilyCard\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12!\n" +
-	"\fstudent_name\x18\x02 \x01(\tR\vstudentName\x124\n" +
-	"\x04card\x18\x03 \x01(\v2 .joseph.assessment.v1.ReportCardR\x04card\x12\x18\n" +
-	"\amessage\x18\x04 \x01(\tR\amessage\"O\n" +
-	"\x15MyReportCardsResponse\x126\n" +
-	"\x05cards\x18\x01 \x03(\v2 .joseph.assessment.v1.FamilyCardR\x05cards2\xe7\t\n" +
-	"\x11AssessmentService\x12e\n" +
-	"\fGetGradebook\x12).joseph.assessment.v1.GetGradebookRequest\x1a*.joseph.assessment.v1.GetGradebookResponse\x12Y\n" +
-	"\bGetSheet\x12%.joseph.assessment.v1.GetSheetRequest\x1a&.joseph.assessment.v1.GetSheetResponse\x12_\n" +
+	"\fstudent_name\x18\x02 \x01(\tR\vstudentName\x123\n" +
+	"\x04card\x18\x03 \x01(\v2\x1f.ltedu.assessment.v1.ReportCardR\x04card\x12\x18\n" +
+	"\amessage\x18\x04 \x01(\tR\amessage\"N\n" +
+	"\x15MyReportCardsResponse\x125\n" +
+	"\x05cards\x18\x01 \x03(\v2\x1f.ltedu.assessment.v1.FamilyCardR\x05cards2\xcf\t\n" +
+	"\x11AssessmentService\x12c\n" +
+	"\fGetGradebook\x12(.ltedu.assessment.v1.GetGradebookRequest\x1a).ltedu.assessment.v1.GetGradebookResponse\x12W\n" +
+	"\bGetSheet\x12$.ltedu.assessment.v1.GetSheetRequest\x1a%.ltedu.assessment.v1.GetSheetResponse\x12]\n" +
 	"\n" +
-	"SaveLevels\x12'.joseph.assessment.v1.SaveLevelsRequest\x1a(.joseph.assessment.v1.SaveLevelsResponse\x12k\n" +
-	"\x0eSaveEvaluation\x12+.joseph.assessment.v1.SaveEvaluationRequest\x1a,.joseph.assessment.v1.SaveEvaluationResponse\x12q\n" +
-	"\x10DeleteEvaluation\x12-.joseph.assessment.v1.DeleteEvaluationRequest\x1a..joseph.assessment.v1.DeleteEvaluationResponse\x12_\n" +
+	"SaveLevels\x12&.ltedu.assessment.v1.SaveLevelsRequest\x1a'.ltedu.assessment.v1.SaveLevelsResponse\x12i\n" +
+	"\x0eSaveEvaluation\x12*.ltedu.assessment.v1.SaveEvaluationRequest\x1a+.ltedu.assessment.v1.SaveEvaluationResponse\x12o\n" +
+	"\x10DeleteEvaluation\x12,.ltedu.assessment.v1.DeleteEvaluationRequest\x1a-.ltedu.assessment.v1.DeleteEvaluationResponse\x12]\n" +
 	"\n" +
-	"SaveScores\x12'.joseph.assessment.v1.SaveScoresRequest\x1a(.joseph.assessment.v1.SaveScoresResponse\x12h\n" +
-	"\rGetTutorSheet\x12*.joseph.assessment.v1.GetTutorSheetRequest\x1a+.joseph.assessment.v1.GetTutorSheetResponse\x12k\n" +
-	"\x0eSaveTutorSheet\x12+.joseph.assessment.v1.SaveTutorSheetRequest\x1a,.joseph.assessment.v1.SaveTutorSheetResponse\x12S\n" +
-	"\x06Submit\x12#.joseph.assessment.v1.SubmitRequest\x1a$.joseph.assessment.v1.SubmitResponse\x12h\n" +
-	"\rGetReportCard\x12*.joseph.assessment.v1.GetReportCardRequest\x1a+.joseph.assessment.v1.GetReportCardResponse\x12n\n" +
-	"\x0fGetSectionCards\x12,.joseph.assessment.v1.GetSectionCardsRequest\x1a-.joseph.assessment.v1.GetSectionCardsResponse\x12h\n" +
-	"\rMyReportCards\x12*.joseph.assessment.v1.MyReportCardsRequest\x1a+.joseph.assessment.v1.MyReportCardsResponseBAZ?api/internal/adapter/inbound/grpc/gen/assessmentv1;assessmentv1b\x06proto3"
+	"SaveScores\x12&.ltedu.assessment.v1.SaveScoresRequest\x1a'.ltedu.assessment.v1.SaveScoresResponse\x12f\n" +
+	"\rGetTutorSheet\x12).ltedu.assessment.v1.GetTutorSheetRequest\x1a*.ltedu.assessment.v1.GetTutorSheetResponse\x12i\n" +
+	"\x0eSaveTutorSheet\x12*.ltedu.assessment.v1.SaveTutorSheetRequest\x1a+.ltedu.assessment.v1.SaveTutorSheetResponse\x12Q\n" +
+	"\x06Submit\x12\".ltedu.assessment.v1.SubmitRequest\x1a#.ltedu.assessment.v1.SubmitResponse\x12f\n" +
+	"\rGetReportCard\x12).ltedu.assessment.v1.GetReportCardRequest\x1a*.ltedu.assessment.v1.GetReportCardResponse\x12l\n" +
+	"\x0fGetSectionCards\x12+.ltedu.assessment.v1.GetSectionCardsRequest\x1a,.ltedu.assessment.v1.GetSectionCardsResponse\x12f\n" +
+	"\rMyReportCards\x12).ltedu.assessment.v1.MyReportCardsRequest\x1a*.ltedu.assessment.v1.MyReportCardsResponseBAZ?api/internal/adapter/inbound/grpc/gen/assessmentv1;assessmentv1b\x06proto3"
 
 var (
-	file_joseph_assessment_v1_assessment_proto_rawDescOnce sync.Once
-	file_joseph_assessment_v1_assessment_proto_rawDescData []byte
+	file_ltedu_assessment_v1_assessment_proto_rawDescOnce sync.Once
+	file_ltedu_assessment_v1_assessment_proto_rawDescData []byte
 )
 
-func file_joseph_assessment_v1_assessment_proto_rawDescGZIP() []byte {
-	file_joseph_assessment_v1_assessment_proto_rawDescOnce.Do(func() {
-		file_joseph_assessment_v1_assessment_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_assessment_v1_assessment_proto_rawDesc), len(file_joseph_assessment_v1_assessment_proto_rawDesc)))
+func file_ltedu_assessment_v1_assessment_proto_rawDescGZIP() []byte {
+	file_ltedu_assessment_v1_assessment_proto_rawDescOnce.Do(func() {
+		file_ltedu_assessment_v1_assessment_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_assessment_v1_assessment_proto_rawDesc), len(file_ltedu_assessment_v1_assessment_proto_rawDesc)))
 	})
-	return file_joseph_assessment_v1_assessment_proto_rawDescData
+	return file_ltedu_assessment_v1_assessment_proto_rawDescData
 }
 
-var file_joseph_assessment_v1_assessment_proto_msgTypes = make([]protoimpl.MessageInfo, 48)
-var file_joseph_assessment_v1_assessment_proto_goTypes = []any{
-	(*Submission)(nil),               // 0: joseph.assessment.v1.Submission
-	(*SheetProgress)(nil),            // 1: joseph.assessment.v1.SheetProgress
-	(*TutorProgress)(nil),            // 2: joseph.assessment.v1.TutorProgress
-	(*GetGradebookRequest)(nil),      // 3: joseph.assessment.v1.GetGradebookRequest
-	(*GetGradebookResponse)(nil),     // 4: joseph.assessment.v1.GetGradebookResponse
-	(*StudentRef)(nil),               // 5: joseph.assessment.v1.StudentRef
-	(*Competency)(nil),               // 6: joseph.assessment.v1.Competency
-	(*LevelMark)(nil),                // 7: joseph.assessment.v1.LevelMark
-	(*Evaluation)(nil),               // 8: joseph.assessment.v1.Evaluation
-	(*ScoreMark)(nil),                // 9: joseph.assessment.v1.ScoreMark
-	(*ConductMark)(nil),              // 10: joseph.assessment.v1.ConductMark
-	(*TutorComment)(nil),             // 11: joseph.assessment.v1.TutorComment
-	(*Sheet)(nil),                    // 12: joseph.assessment.v1.Sheet
-	(*GetSheetRequest)(nil),          // 13: joseph.assessment.v1.GetSheetRequest
-	(*GetSheetResponse)(nil),         // 14: joseph.assessment.v1.GetSheetResponse
-	(*SaveLevelsRequest)(nil),        // 15: joseph.assessment.v1.SaveLevelsRequest
-	(*SaveLevelsResponse)(nil),       // 16: joseph.assessment.v1.SaveLevelsResponse
-	(*SaveEvaluationRequest)(nil),    // 17: joseph.assessment.v1.SaveEvaluationRequest
-	(*SaveEvaluationResponse)(nil),   // 18: joseph.assessment.v1.SaveEvaluationResponse
-	(*DeleteEvaluationRequest)(nil),  // 19: joseph.assessment.v1.DeleteEvaluationRequest
-	(*DeleteEvaluationResponse)(nil), // 20: joseph.assessment.v1.DeleteEvaluationResponse
-	(*ScoreInput)(nil),               // 21: joseph.assessment.v1.ScoreInput
-	(*SaveScoresRequest)(nil),        // 22: joseph.assessment.v1.SaveScoresRequest
-	(*SaveScoresResponse)(nil),       // 23: joseph.assessment.v1.SaveScoresResponse
-	(*GetTutorSheetRequest)(nil),     // 24: joseph.assessment.v1.GetTutorSheetRequest
-	(*GetTutorSheetResponse)(nil),    // 25: joseph.assessment.v1.GetTutorSheetResponse
-	(*ConductInput)(nil),             // 26: joseph.assessment.v1.ConductInput
-	(*SaveTutorSheetRequest)(nil),    // 27: joseph.assessment.v1.SaveTutorSheetRequest
-	(*SaveTutorSheetResponse)(nil),   // 28: joseph.assessment.v1.SaveTutorSheetResponse
-	(*SubmitRequest)(nil),            // 29: joseph.assessment.v1.SubmitRequest
-	(*SubmitResponse)(nil),           // 30: joseph.assessment.v1.SubmitResponse
-	(*CardCompetency)(nil),           // 31: joseph.assessment.v1.CardCompetency
-	(*CardEvaluation)(nil),           // 32: joseph.assessment.v1.CardEvaluation
-	(*CardSubject)(nil),              // 33: joseph.assessment.v1.CardSubject
-	(*AttendanceTally)(nil),          // 34: joseph.assessment.v1.AttendanceTally
-	(*CardTerm)(nil),                 // 35: joseph.assessment.v1.CardTerm
-	(*PeriodRef)(nil),                // 36: joseph.assessment.v1.PeriodRef
-	(*ReportCard)(nil),               // 37: joseph.assessment.v1.ReportCard
-	(*GetReportCardRequest)(nil),     // 38: joseph.assessment.v1.GetReportCardRequest
-	(*GetReportCardResponse)(nil),    // 39: joseph.assessment.v1.GetReportCardResponse
-	(*GetSectionCardsRequest)(nil),   // 40: joseph.assessment.v1.GetSectionCardsRequest
-	(*GetSectionCardsResponse)(nil),  // 41: joseph.assessment.v1.GetSectionCardsResponse
-	(*MyReportCardsRequest)(nil),     // 42: joseph.assessment.v1.MyReportCardsRequest
-	(*FamilyCard)(nil),               // 43: joseph.assessment.v1.FamilyCard
-	(*MyReportCardsResponse)(nil),    // 44: joseph.assessment.v1.MyReportCardsResponse
-	nil,                              // 45: joseph.assessment.v1.CardCompetency.LevelsEntry
-	nil,                              // 46: joseph.assessment.v1.CardCompetency.ConclusionsEntry
-	nil,                              // 47: joseph.assessment.v1.CardSubject.AveragesEntry
-	(*academicv1.Period)(nil),        // 48: joseph.academic.v1.Period
+var file_ltedu_assessment_v1_assessment_proto_msgTypes = make([]protoimpl.MessageInfo, 48)
+var file_ltedu_assessment_v1_assessment_proto_goTypes = []any{
+	(*Submission)(nil),               // 0: ltedu.assessment.v1.Submission
+	(*SheetProgress)(nil),            // 1: ltedu.assessment.v1.SheetProgress
+	(*TutorProgress)(nil),            // 2: ltedu.assessment.v1.TutorProgress
+	(*GetGradebookRequest)(nil),      // 3: ltedu.assessment.v1.GetGradebookRequest
+	(*GetGradebookResponse)(nil),     // 4: ltedu.assessment.v1.GetGradebookResponse
+	(*StudentRef)(nil),               // 5: ltedu.assessment.v1.StudentRef
+	(*Competency)(nil),               // 6: ltedu.assessment.v1.Competency
+	(*LevelMark)(nil),                // 7: ltedu.assessment.v1.LevelMark
+	(*Evaluation)(nil),               // 8: ltedu.assessment.v1.Evaluation
+	(*ScoreMark)(nil),                // 9: ltedu.assessment.v1.ScoreMark
+	(*ConductMark)(nil),              // 10: ltedu.assessment.v1.ConductMark
+	(*TutorComment)(nil),             // 11: ltedu.assessment.v1.TutorComment
+	(*Sheet)(nil),                    // 12: ltedu.assessment.v1.Sheet
+	(*GetSheetRequest)(nil),          // 13: ltedu.assessment.v1.GetSheetRequest
+	(*GetSheetResponse)(nil),         // 14: ltedu.assessment.v1.GetSheetResponse
+	(*SaveLevelsRequest)(nil),        // 15: ltedu.assessment.v1.SaveLevelsRequest
+	(*SaveLevelsResponse)(nil),       // 16: ltedu.assessment.v1.SaveLevelsResponse
+	(*SaveEvaluationRequest)(nil),    // 17: ltedu.assessment.v1.SaveEvaluationRequest
+	(*SaveEvaluationResponse)(nil),   // 18: ltedu.assessment.v1.SaveEvaluationResponse
+	(*DeleteEvaluationRequest)(nil),  // 19: ltedu.assessment.v1.DeleteEvaluationRequest
+	(*DeleteEvaluationResponse)(nil), // 20: ltedu.assessment.v1.DeleteEvaluationResponse
+	(*ScoreInput)(nil),               // 21: ltedu.assessment.v1.ScoreInput
+	(*SaveScoresRequest)(nil),        // 22: ltedu.assessment.v1.SaveScoresRequest
+	(*SaveScoresResponse)(nil),       // 23: ltedu.assessment.v1.SaveScoresResponse
+	(*GetTutorSheetRequest)(nil),     // 24: ltedu.assessment.v1.GetTutorSheetRequest
+	(*GetTutorSheetResponse)(nil),    // 25: ltedu.assessment.v1.GetTutorSheetResponse
+	(*ConductInput)(nil),             // 26: ltedu.assessment.v1.ConductInput
+	(*SaveTutorSheetRequest)(nil),    // 27: ltedu.assessment.v1.SaveTutorSheetRequest
+	(*SaveTutorSheetResponse)(nil),   // 28: ltedu.assessment.v1.SaveTutorSheetResponse
+	(*SubmitRequest)(nil),            // 29: ltedu.assessment.v1.SubmitRequest
+	(*SubmitResponse)(nil),           // 30: ltedu.assessment.v1.SubmitResponse
+	(*CardCompetency)(nil),           // 31: ltedu.assessment.v1.CardCompetency
+	(*CardEvaluation)(nil),           // 32: ltedu.assessment.v1.CardEvaluation
+	(*CardSubject)(nil),              // 33: ltedu.assessment.v1.CardSubject
+	(*AttendanceTally)(nil),          // 34: ltedu.assessment.v1.AttendanceTally
+	(*CardTerm)(nil),                 // 35: ltedu.assessment.v1.CardTerm
+	(*PeriodRef)(nil),                // 36: ltedu.assessment.v1.PeriodRef
+	(*ReportCard)(nil),               // 37: ltedu.assessment.v1.ReportCard
+	(*GetReportCardRequest)(nil),     // 38: ltedu.assessment.v1.GetReportCardRequest
+	(*GetReportCardResponse)(nil),    // 39: ltedu.assessment.v1.GetReportCardResponse
+	(*GetSectionCardsRequest)(nil),   // 40: ltedu.assessment.v1.GetSectionCardsRequest
+	(*GetSectionCardsResponse)(nil),  // 41: ltedu.assessment.v1.GetSectionCardsResponse
+	(*MyReportCardsRequest)(nil),     // 42: ltedu.assessment.v1.MyReportCardsRequest
+	(*FamilyCard)(nil),               // 43: ltedu.assessment.v1.FamilyCard
+	(*MyReportCardsResponse)(nil),    // 44: ltedu.assessment.v1.MyReportCardsResponse
+	nil,                              // 45: ltedu.assessment.v1.CardCompetency.LevelsEntry
+	nil,                              // 46: ltedu.assessment.v1.CardCompetency.ConclusionsEntry
+	nil,                              // 47: ltedu.assessment.v1.CardSubject.AveragesEntry
+	(*academicv1.Period)(nil),        // 48: ltedu.academic.v1.Period
 }
-var file_joseph_assessment_v1_assessment_proto_depIdxs = []int32{
-	0,  // 0: joseph.assessment.v1.SheetProgress.submitted:type_name -> joseph.assessment.v1.Submission
-	0,  // 1: joseph.assessment.v1.TutorProgress.submitted:type_name -> joseph.assessment.v1.Submission
-	48, // 2: joseph.assessment.v1.GetGradebookResponse.periods:type_name -> joseph.academic.v1.Period
-	48, // 3: joseph.assessment.v1.GetGradebookResponse.period:type_name -> joseph.academic.v1.Period
-	1,  // 4: joseph.assessment.v1.GetGradebookResponse.sheets:type_name -> joseph.assessment.v1.SheetProgress
-	2,  // 5: joseph.assessment.v1.GetGradebookResponse.tutor:type_name -> joseph.assessment.v1.TutorProgress
-	5,  // 6: joseph.assessment.v1.Sheet.students:type_name -> joseph.assessment.v1.StudentRef
-	6,  // 7: joseph.assessment.v1.Sheet.competencies:type_name -> joseph.assessment.v1.Competency
-	7,  // 8: joseph.assessment.v1.Sheet.marks:type_name -> joseph.assessment.v1.LevelMark
-	8,  // 9: joseph.assessment.v1.Sheet.evaluations:type_name -> joseph.assessment.v1.Evaluation
-	9,  // 10: joseph.assessment.v1.Sheet.scores:type_name -> joseph.assessment.v1.ScoreMark
-	10, // 11: joseph.assessment.v1.Sheet.conduct_marks:type_name -> joseph.assessment.v1.ConductMark
-	11, // 12: joseph.assessment.v1.Sheet.comments:type_name -> joseph.assessment.v1.TutorComment
-	0,  // 13: joseph.assessment.v1.Sheet.submitted:type_name -> joseph.assessment.v1.Submission
-	12, // 14: joseph.assessment.v1.GetSheetResponse.sheet:type_name -> joseph.assessment.v1.Sheet
-	7,  // 15: joseph.assessment.v1.SaveLevelsRequest.marks:type_name -> joseph.assessment.v1.LevelMark
-	12, // 16: joseph.assessment.v1.SaveLevelsResponse.sheet:type_name -> joseph.assessment.v1.Sheet
-	12, // 17: joseph.assessment.v1.SaveEvaluationResponse.sheet:type_name -> joseph.assessment.v1.Sheet
-	12, // 18: joseph.assessment.v1.DeleteEvaluationResponse.sheet:type_name -> joseph.assessment.v1.Sheet
-	21, // 19: joseph.assessment.v1.SaveScoresRequest.scores:type_name -> joseph.assessment.v1.ScoreInput
-	12, // 20: joseph.assessment.v1.SaveScoresResponse.sheet:type_name -> joseph.assessment.v1.Sheet
-	12, // 21: joseph.assessment.v1.GetTutorSheetResponse.sheet:type_name -> joseph.assessment.v1.Sheet
-	7,  // 22: joseph.assessment.v1.SaveTutorSheetRequest.marks:type_name -> joseph.assessment.v1.LevelMark
-	26, // 23: joseph.assessment.v1.SaveTutorSheetRequest.conduct:type_name -> joseph.assessment.v1.ConductInput
-	11, // 24: joseph.assessment.v1.SaveTutorSheetRequest.comments:type_name -> joseph.assessment.v1.TutorComment
-	12, // 25: joseph.assessment.v1.SaveTutorSheetResponse.sheet:type_name -> joseph.assessment.v1.Sheet
-	45, // 26: joseph.assessment.v1.CardCompetency.levels:type_name -> joseph.assessment.v1.CardCompetency.LevelsEntry
-	46, // 27: joseph.assessment.v1.CardCompetency.conclusions:type_name -> joseph.assessment.v1.CardCompetency.ConclusionsEntry
-	31, // 28: joseph.assessment.v1.CardSubject.competencies:type_name -> joseph.assessment.v1.CardCompetency
-	47, // 29: joseph.assessment.v1.CardSubject.averages:type_name -> joseph.assessment.v1.CardSubject.AveragesEntry
-	32, // 30: joseph.assessment.v1.CardSubject.evaluations:type_name -> joseph.assessment.v1.CardEvaluation
-	34, // 31: joseph.assessment.v1.CardTerm.attendance:type_name -> joseph.assessment.v1.AttendanceTally
-	5,  // 32: joseph.assessment.v1.ReportCard.student:type_name -> joseph.assessment.v1.StudentRef
-	35, // 33: joseph.assessment.v1.ReportCard.terms:type_name -> joseph.assessment.v1.CardTerm
-	33, // 34: joseph.assessment.v1.ReportCard.subjects:type_name -> joseph.assessment.v1.CardSubject
-	31, // 35: joseph.assessment.v1.ReportCard.transversal:type_name -> joseph.assessment.v1.CardCompetency
-	36, // 36: joseph.assessment.v1.ReportCard.periods:type_name -> joseph.assessment.v1.PeriodRef
-	37, // 37: joseph.assessment.v1.GetReportCardResponse.card:type_name -> joseph.assessment.v1.ReportCard
-	37, // 38: joseph.assessment.v1.GetSectionCardsResponse.cards:type_name -> joseph.assessment.v1.ReportCard
-	37, // 39: joseph.assessment.v1.FamilyCard.card:type_name -> joseph.assessment.v1.ReportCard
-	43, // 40: joseph.assessment.v1.MyReportCardsResponse.cards:type_name -> joseph.assessment.v1.FamilyCard
-	3,  // 41: joseph.assessment.v1.AssessmentService.GetGradebook:input_type -> joseph.assessment.v1.GetGradebookRequest
-	13, // 42: joseph.assessment.v1.AssessmentService.GetSheet:input_type -> joseph.assessment.v1.GetSheetRequest
-	15, // 43: joseph.assessment.v1.AssessmentService.SaveLevels:input_type -> joseph.assessment.v1.SaveLevelsRequest
-	17, // 44: joseph.assessment.v1.AssessmentService.SaveEvaluation:input_type -> joseph.assessment.v1.SaveEvaluationRequest
-	19, // 45: joseph.assessment.v1.AssessmentService.DeleteEvaluation:input_type -> joseph.assessment.v1.DeleteEvaluationRequest
-	22, // 46: joseph.assessment.v1.AssessmentService.SaveScores:input_type -> joseph.assessment.v1.SaveScoresRequest
-	24, // 47: joseph.assessment.v1.AssessmentService.GetTutorSheet:input_type -> joseph.assessment.v1.GetTutorSheetRequest
-	27, // 48: joseph.assessment.v1.AssessmentService.SaveTutorSheet:input_type -> joseph.assessment.v1.SaveTutorSheetRequest
-	29, // 49: joseph.assessment.v1.AssessmentService.Submit:input_type -> joseph.assessment.v1.SubmitRequest
-	38, // 50: joseph.assessment.v1.AssessmentService.GetReportCard:input_type -> joseph.assessment.v1.GetReportCardRequest
-	40, // 51: joseph.assessment.v1.AssessmentService.GetSectionCards:input_type -> joseph.assessment.v1.GetSectionCardsRequest
-	42, // 52: joseph.assessment.v1.AssessmentService.MyReportCards:input_type -> joseph.assessment.v1.MyReportCardsRequest
-	4,  // 53: joseph.assessment.v1.AssessmentService.GetGradebook:output_type -> joseph.assessment.v1.GetGradebookResponse
-	14, // 54: joseph.assessment.v1.AssessmentService.GetSheet:output_type -> joseph.assessment.v1.GetSheetResponse
-	16, // 55: joseph.assessment.v1.AssessmentService.SaveLevels:output_type -> joseph.assessment.v1.SaveLevelsResponse
-	18, // 56: joseph.assessment.v1.AssessmentService.SaveEvaluation:output_type -> joseph.assessment.v1.SaveEvaluationResponse
-	20, // 57: joseph.assessment.v1.AssessmentService.DeleteEvaluation:output_type -> joseph.assessment.v1.DeleteEvaluationResponse
-	23, // 58: joseph.assessment.v1.AssessmentService.SaveScores:output_type -> joseph.assessment.v1.SaveScoresResponse
-	25, // 59: joseph.assessment.v1.AssessmentService.GetTutorSheet:output_type -> joseph.assessment.v1.GetTutorSheetResponse
-	28, // 60: joseph.assessment.v1.AssessmentService.SaveTutorSheet:output_type -> joseph.assessment.v1.SaveTutorSheetResponse
-	30, // 61: joseph.assessment.v1.AssessmentService.Submit:output_type -> joseph.assessment.v1.SubmitResponse
-	39, // 62: joseph.assessment.v1.AssessmentService.GetReportCard:output_type -> joseph.assessment.v1.GetReportCardResponse
-	41, // 63: joseph.assessment.v1.AssessmentService.GetSectionCards:output_type -> joseph.assessment.v1.GetSectionCardsResponse
-	44, // 64: joseph.assessment.v1.AssessmentService.MyReportCards:output_type -> joseph.assessment.v1.MyReportCardsResponse
+var file_ltedu_assessment_v1_assessment_proto_depIdxs = []int32{
+	0,  // 0: ltedu.assessment.v1.SheetProgress.submitted:type_name -> ltedu.assessment.v1.Submission
+	0,  // 1: ltedu.assessment.v1.TutorProgress.submitted:type_name -> ltedu.assessment.v1.Submission
+	48, // 2: ltedu.assessment.v1.GetGradebookResponse.periods:type_name -> ltedu.academic.v1.Period
+	48, // 3: ltedu.assessment.v1.GetGradebookResponse.period:type_name -> ltedu.academic.v1.Period
+	1,  // 4: ltedu.assessment.v1.GetGradebookResponse.sheets:type_name -> ltedu.assessment.v1.SheetProgress
+	2,  // 5: ltedu.assessment.v1.GetGradebookResponse.tutor:type_name -> ltedu.assessment.v1.TutorProgress
+	5,  // 6: ltedu.assessment.v1.Sheet.students:type_name -> ltedu.assessment.v1.StudentRef
+	6,  // 7: ltedu.assessment.v1.Sheet.competencies:type_name -> ltedu.assessment.v1.Competency
+	7,  // 8: ltedu.assessment.v1.Sheet.marks:type_name -> ltedu.assessment.v1.LevelMark
+	8,  // 9: ltedu.assessment.v1.Sheet.evaluations:type_name -> ltedu.assessment.v1.Evaluation
+	9,  // 10: ltedu.assessment.v1.Sheet.scores:type_name -> ltedu.assessment.v1.ScoreMark
+	10, // 11: ltedu.assessment.v1.Sheet.conduct_marks:type_name -> ltedu.assessment.v1.ConductMark
+	11, // 12: ltedu.assessment.v1.Sheet.comments:type_name -> ltedu.assessment.v1.TutorComment
+	0,  // 13: ltedu.assessment.v1.Sheet.submitted:type_name -> ltedu.assessment.v1.Submission
+	12, // 14: ltedu.assessment.v1.GetSheetResponse.sheet:type_name -> ltedu.assessment.v1.Sheet
+	7,  // 15: ltedu.assessment.v1.SaveLevelsRequest.marks:type_name -> ltedu.assessment.v1.LevelMark
+	12, // 16: ltedu.assessment.v1.SaveLevelsResponse.sheet:type_name -> ltedu.assessment.v1.Sheet
+	12, // 17: ltedu.assessment.v1.SaveEvaluationResponse.sheet:type_name -> ltedu.assessment.v1.Sheet
+	12, // 18: ltedu.assessment.v1.DeleteEvaluationResponse.sheet:type_name -> ltedu.assessment.v1.Sheet
+	21, // 19: ltedu.assessment.v1.SaveScoresRequest.scores:type_name -> ltedu.assessment.v1.ScoreInput
+	12, // 20: ltedu.assessment.v1.SaveScoresResponse.sheet:type_name -> ltedu.assessment.v1.Sheet
+	12, // 21: ltedu.assessment.v1.GetTutorSheetResponse.sheet:type_name -> ltedu.assessment.v1.Sheet
+	7,  // 22: ltedu.assessment.v1.SaveTutorSheetRequest.marks:type_name -> ltedu.assessment.v1.LevelMark
+	26, // 23: ltedu.assessment.v1.SaveTutorSheetRequest.conduct:type_name -> ltedu.assessment.v1.ConductInput
+	11, // 24: ltedu.assessment.v1.SaveTutorSheetRequest.comments:type_name -> ltedu.assessment.v1.TutorComment
+	12, // 25: ltedu.assessment.v1.SaveTutorSheetResponse.sheet:type_name -> ltedu.assessment.v1.Sheet
+	45, // 26: ltedu.assessment.v1.CardCompetency.levels:type_name -> ltedu.assessment.v1.CardCompetency.LevelsEntry
+	46, // 27: ltedu.assessment.v1.CardCompetency.conclusions:type_name -> ltedu.assessment.v1.CardCompetency.ConclusionsEntry
+	31, // 28: ltedu.assessment.v1.CardSubject.competencies:type_name -> ltedu.assessment.v1.CardCompetency
+	47, // 29: ltedu.assessment.v1.CardSubject.averages:type_name -> ltedu.assessment.v1.CardSubject.AveragesEntry
+	32, // 30: ltedu.assessment.v1.CardSubject.evaluations:type_name -> ltedu.assessment.v1.CardEvaluation
+	34, // 31: ltedu.assessment.v1.CardTerm.attendance:type_name -> ltedu.assessment.v1.AttendanceTally
+	5,  // 32: ltedu.assessment.v1.ReportCard.student:type_name -> ltedu.assessment.v1.StudentRef
+	35, // 33: ltedu.assessment.v1.ReportCard.terms:type_name -> ltedu.assessment.v1.CardTerm
+	33, // 34: ltedu.assessment.v1.ReportCard.subjects:type_name -> ltedu.assessment.v1.CardSubject
+	31, // 35: ltedu.assessment.v1.ReportCard.transversal:type_name -> ltedu.assessment.v1.CardCompetency
+	36, // 36: ltedu.assessment.v1.ReportCard.periods:type_name -> ltedu.assessment.v1.PeriodRef
+	37, // 37: ltedu.assessment.v1.GetReportCardResponse.card:type_name -> ltedu.assessment.v1.ReportCard
+	37, // 38: ltedu.assessment.v1.GetSectionCardsResponse.cards:type_name -> ltedu.assessment.v1.ReportCard
+	37, // 39: ltedu.assessment.v1.FamilyCard.card:type_name -> ltedu.assessment.v1.ReportCard
+	43, // 40: ltedu.assessment.v1.MyReportCardsResponse.cards:type_name -> ltedu.assessment.v1.FamilyCard
+	3,  // 41: ltedu.assessment.v1.AssessmentService.GetGradebook:input_type -> ltedu.assessment.v1.GetGradebookRequest
+	13, // 42: ltedu.assessment.v1.AssessmentService.GetSheet:input_type -> ltedu.assessment.v1.GetSheetRequest
+	15, // 43: ltedu.assessment.v1.AssessmentService.SaveLevels:input_type -> ltedu.assessment.v1.SaveLevelsRequest
+	17, // 44: ltedu.assessment.v1.AssessmentService.SaveEvaluation:input_type -> ltedu.assessment.v1.SaveEvaluationRequest
+	19, // 45: ltedu.assessment.v1.AssessmentService.DeleteEvaluation:input_type -> ltedu.assessment.v1.DeleteEvaluationRequest
+	22, // 46: ltedu.assessment.v1.AssessmentService.SaveScores:input_type -> ltedu.assessment.v1.SaveScoresRequest
+	24, // 47: ltedu.assessment.v1.AssessmentService.GetTutorSheet:input_type -> ltedu.assessment.v1.GetTutorSheetRequest
+	27, // 48: ltedu.assessment.v1.AssessmentService.SaveTutorSheet:input_type -> ltedu.assessment.v1.SaveTutorSheetRequest
+	29, // 49: ltedu.assessment.v1.AssessmentService.Submit:input_type -> ltedu.assessment.v1.SubmitRequest
+	38, // 50: ltedu.assessment.v1.AssessmentService.GetReportCard:input_type -> ltedu.assessment.v1.GetReportCardRequest
+	40, // 51: ltedu.assessment.v1.AssessmentService.GetSectionCards:input_type -> ltedu.assessment.v1.GetSectionCardsRequest
+	42, // 52: ltedu.assessment.v1.AssessmentService.MyReportCards:input_type -> ltedu.assessment.v1.MyReportCardsRequest
+	4,  // 53: ltedu.assessment.v1.AssessmentService.GetGradebook:output_type -> ltedu.assessment.v1.GetGradebookResponse
+	14, // 54: ltedu.assessment.v1.AssessmentService.GetSheet:output_type -> ltedu.assessment.v1.GetSheetResponse
+	16, // 55: ltedu.assessment.v1.AssessmentService.SaveLevels:output_type -> ltedu.assessment.v1.SaveLevelsResponse
+	18, // 56: ltedu.assessment.v1.AssessmentService.SaveEvaluation:output_type -> ltedu.assessment.v1.SaveEvaluationResponse
+	20, // 57: ltedu.assessment.v1.AssessmentService.DeleteEvaluation:output_type -> ltedu.assessment.v1.DeleteEvaluationResponse
+	23, // 58: ltedu.assessment.v1.AssessmentService.SaveScores:output_type -> ltedu.assessment.v1.SaveScoresResponse
+	25, // 59: ltedu.assessment.v1.AssessmentService.GetTutorSheet:output_type -> ltedu.assessment.v1.GetTutorSheetResponse
+	28, // 60: ltedu.assessment.v1.AssessmentService.SaveTutorSheet:output_type -> ltedu.assessment.v1.SaveTutorSheetResponse
+	30, // 61: ltedu.assessment.v1.AssessmentService.Submit:output_type -> ltedu.assessment.v1.SubmitResponse
+	39, // 62: ltedu.assessment.v1.AssessmentService.GetReportCard:output_type -> ltedu.assessment.v1.GetReportCardResponse
+	41, // 63: ltedu.assessment.v1.AssessmentService.GetSectionCards:output_type -> ltedu.assessment.v1.GetSectionCardsResponse
+	44, // 64: ltedu.assessment.v1.AssessmentService.MyReportCards:output_type -> ltedu.assessment.v1.MyReportCardsResponse
 	53, // [53:65] is the sub-list for method output_type
 	41, // [41:53] is the sub-list for method input_type
 	41, // [41:41] is the sub-list for extension type_name
@@ -3704,33 +3704,33 @@ var file_joseph_assessment_v1_assessment_proto_depIdxs = []int32{
 	0,  // [0:41] is the sub-list for field type_name
 }
 
-func init() { file_joseph_assessment_v1_assessment_proto_init() }
-func file_joseph_assessment_v1_assessment_proto_init() {
-	if File_joseph_assessment_v1_assessment_proto != nil {
+func init() { file_ltedu_assessment_v1_assessment_proto_init() }
+func file_ltedu_assessment_v1_assessment_proto_init() {
+	if File_ltedu_assessment_v1_assessment_proto != nil {
 		return
 	}
-	file_joseph_assessment_v1_assessment_proto_msgTypes[4].OneofWrappers = []any{}
-	file_joseph_assessment_v1_assessment_proto_msgTypes[12].OneofWrappers = []any{}
-	file_joseph_assessment_v1_assessment_proto_msgTypes[21].OneofWrappers = []any{}
-	file_joseph_assessment_v1_assessment_proto_msgTypes[26].OneofWrappers = []any{}
-	file_joseph_assessment_v1_assessment_proto_msgTypes[32].OneofWrappers = []any{}
-	file_joseph_assessment_v1_assessment_proto_msgTypes[35].OneofWrappers = []any{}
-	file_joseph_assessment_v1_assessment_proto_msgTypes[37].OneofWrappers = []any{}
+	file_ltedu_assessment_v1_assessment_proto_msgTypes[4].OneofWrappers = []any{}
+	file_ltedu_assessment_v1_assessment_proto_msgTypes[12].OneofWrappers = []any{}
+	file_ltedu_assessment_v1_assessment_proto_msgTypes[21].OneofWrappers = []any{}
+	file_ltedu_assessment_v1_assessment_proto_msgTypes[26].OneofWrappers = []any{}
+	file_ltedu_assessment_v1_assessment_proto_msgTypes[32].OneofWrappers = []any{}
+	file_ltedu_assessment_v1_assessment_proto_msgTypes[35].OneofWrappers = []any{}
+	file_ltedu_assessment_v1_assessment_proto_msgTypes[37].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_assessment_v1_assessment_proto_rawDesc), len(file_joseph_assessment_v1_assessment_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_assessment_v1_assessment_proto_rawDesc), len(file_ltedu_assessment_v1_assessment_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   48,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_assessment_v1_assessment_proto_goTypes,
-		DependencyIndexes: file_joseph_assessment_v1_assessment_proto_depIdxs,
-		MessageInfos:      file_joseph_assessment_v1_assessment_proto_msgTypes,
+		GoTypes:           file_ltedu_assessment_v1_assessment_proto_goTypes,
+		DependencyIndexes: file_ltedu_assessment_v1_assessment_proto_depIdxs,
+		MessageInfos:      file_ltedu_assessment_v1_assessment_proto_msgTypes,
 	}.Build()
-	File_joseph_assessment_v1_assessment_proto = out.File
-	file_joseph_assessment_v1_assessment_proto_goTypes = nil
-	file_joseph_assessment_v1_assessment_proto_depIdxs = nil
+	File_ltedu_assessment_v1_assessment_proto = out.File
+	file_ltedu_assessment_v1_assessment_proto_goTypes = nil
+	file_ltedu_assessment_v1_assessment_proto_depIdxs = nil
 }

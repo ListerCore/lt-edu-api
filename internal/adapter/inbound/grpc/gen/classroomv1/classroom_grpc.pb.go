@@ -2,11 +2,11 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/classroom/v1/classroom.proto
+// source: ltedu/classroom/v1/classroom.proto
 
 // Virtual classroom (sección de aula virtual, Anexo 2 of RSG N.° 613-2014-MINEDU): one room per subject × grade of
 // each period, its units and material, the institution's library and the itinerant deliveries. Same metadata and
-// institution scoping as joseph.academic.v1. Files go through the attachments API (owner_kind classroom_item and
+// institution scoping as ltedu.academic.v1. Files go through the attachments API (owner_kind classroom_item and
 // library_item)
 
 package classroomv1
@@ -24,37 +24,37 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ClassroomService_ListRooms_FullMethodName         = "/joseph.classroom.v1.ClassroomService/ListRooms"
-	ClassroomService_GenerateRooms_FullMethodName     = "/joseph.classroom.v1.ClassroomService/GenerateRooms"
-	ClassroomService_GetRoom_FullMethodName           = "/joseph.classroom.v1.ClassroomService/GetRoom"
-	ClassroomService_UpdateRoom_FullMethodName        = "/joseph.classroom.v1.ClassroomService/UpdateRoom"
-	ClassroomService_CopyRoom_FullMethodName          = "/joseph.classroom.v1.ClassroomService/CopyRoom"
-	ClassroomService_SaveUnit_FullMethodName          = "/joseph.classroom.v1.ClassroomService/SaveUnit"
-	ClassroomService_DeleteUnit_FullMethodName        = "/joseph.classroom.v1.ClassroomService/DeleteUnit"
-	ClassroomService_ReorderUnits_FullMethodName      = "/joseph.classroom.v1.ClassroomService/ReorderUnits"
-	ClassroomService_SaveItem_FullMethodName          = "/joseph.classroom.v1.ClassroomService/SaveItem"
-	ClassroomService_DeleteItem_FullMethodName        = "/joseph.classroom.v1.ClassroomService/DeleteItem"
-	ClassroomService_ReorderItems_FullMethodName      = "/joseph.classroom.v1.ClassroomService/ReorderItems"
-	ClassroomService_RecordView_FullMethodName        = "/joseph.classroom.v1.ClassroomService/RecordView"
-	ClassroomService_ListLibrary_FullMethodName       = "/joseph.classroom.v1.ClassroomService/ListLibrary"
-	ClassroomService_SaveLibraryItem_FullMethodName   = "/joseph.classroom.v1.ClassroomService/SaveLibraryItem"
-	ClassroomService_DeleteLibraryItem_FullMethodName = "/joseph.classroom.v1.ClassroomService/DeleteLibraryItem"
-	ClassroomService_ListDeliveries_FullMethodName    = "/joseph.classroom.v1.ClassroomService/ListDeliveries"
-	ClassroomService_SaveDelivery_FullMethodName      = "/joseph.classroom.v1.ClassroomService/SaveDelivery"
-	ClassroomService_GetAssessment_FullMethodName     = "/joseph.classroom.v1.ClassroomService/GetAssessment"
-	ClassroomService_SaveAssessment_FullMethodName    = "/joseph.classroom.v1.ClassroomService/SaveAssessment"
-	ClassroomService_StartAttempt_FullMethodName      = "/joseph.classroom.v1.ClassroomService/StartAttempt"
-	ClassroomService_SaveAnswers_FullMethodName       = "/joseph.classroom.v1.ClassroomService/SaveAnswers"
-	ClassroomService_HandIn_FullMethodName            = "/joseph.classroom.v1.ClassroomService/HandIn"
-	ClassroomService_GradeSubmission_FullMethodName   = "/joseph.classroom.v1.ClassroomService/GradeSubmission"
-	ClassroomService_SetExtension_FullMethodName      = "/joseph.classroom.v1.ClassroomService/SetExtension"
-	ClassroomService_RecordLevels_FullMethodName      = "/joseph.classroom.v1.ClassroomService/RecordLevels"
-	ClassroomService_GetForum_FullMethodName          = "/joseph.classroom.v1.ClassroomService/GetForum"
-	ClassroomService_SaveForum_FullMethodName         = "/joseph.classroom.v1.ClassroomService/SaveForum"
-	ClassroomService_CreatePost_FullMethodName        = "/joseph.classroom.v1.ClassroomService/CreatePost"
-	ClassroomService_EditPost_FullMethodName          = "/joseph.classroom.v1.ClassroomService/EditPost"
-	ClassroomService_DeletePost_FullMethodName        = "/joseph.classroom.v1.ClassroomService/DeletePost"
-	ClassroomService_ModeratePost_FullMethodName      = "/joseph.classroom.v1.ClassroomService/ModeratePost"
+	ClassroomService_ListRooms_FullMethodName         = "/ltedu.classroom.v1.ClassroomService/ListRooms"
+	ClassroomService_GenerateRooms_FullMethodName     = "/ltedu.classroom.v1.ClassroomService/GenerateRooms"
+	ClassroomService_GetRoom_FullMethodName           = "/ltedu.classroom.v1.ClassroomService/GetRoom"
+	ClassroomService_UpdateRoom_FullMethodName        = "/ltedu.classroom.v1.ClassroomService/UpdateRoom"
+	ClassroomService_CopyRoom_FullMethodName          = "/ltedu.classroom.v1.ClassroomService/CopyRoom"
+	ClassroomService_SaveUnit_FullMethodName          = "/ltedu.classroom.v1.ClassroomService/SaveUnit"
+	ClassroomService_DeleteUnit_FullMethodName        = "/ltedu.classroom.v1.ClassroomService/DeleteUnit"
+	ClassroomService_ReorderUnits_FullMethodName      = "/ltedu.classroom.v1.ClassroomService/ReorderUnits"
+	ClassroomService_SaveItem_FullMethodName          = "/ltedu.classroom.v1.ClassroomService/SaveItem"
+	ClassroomService_DeleteItem_FullMethodName        = "/ltedu.classroom.v1.ClassroomService/DeleteItem"
+	ClassroomService_ReorderItems_FullMethodName      = "/ltedu.classroom.v1.ClassroomService/ReorderItems"
+	ClassroomService_RecordView_FullMethodName        = "/ltedu.classroom.v1.ClassroomService/RecordView"
+	ClassroomService_ListLibrary_FullMethodName       = "/ltedu.classroom.v1.ClassroomService/ListLibrary"
+	ClassroomService_SaveLibraryItem_FullMethodName   = "/ltedu.classroom.v1.ClassroomService/SaveLibraryItem"
+	ClassroomService_DeleteLibraryItem_FullMethodName = "/ltedu.classroom.v1.ClassroomService/DeleteLibraryItem"
+	ClassroomService_ListDeliveries_FullMethodName    = "/ltedu.classroom.v1.ClassroomService/ListDeliveries"
+	ClassroomService_SaveDelivery_FullMethodName      = "/ltedu.classroom.v1.ClassroomService/SaveDelivery"
+	ClassroomService_GetAssessment_FullMethodName     = "/ltedu.classroom.v1.ClassroomService/GetAssessment"
+	ClassroomService_SaveAssessment_FullMethodName    = "/ltedu.classroom.v1.ClassroomService/SaveAssessment"
+	ClassroomService_StartAttempt_FullMethodName      = "/ltedu.classroom.v1.ClassroomService/StartAttempt"
+	ClassroomService_SaveAnswers_FullMethodName       = "/ltedu.classroom.v1.ClassroomService/SaveAnswers"
+	ClassroomService_HandIn_FullMethodName            = "/ltedu.classroom.v1.ClassroomService/HandIn"
+	ClassroomService_GradeSubmission_FullMethodName   = "/ltedu.classroom.v1.ClassroomService/GradeSubmission"
+	ClassroomService_SetExtension_FullMethodName      = "/ltedu.classroom.v1.ClassroomService/SetExtension"
+	ClassroomService_RecordLevels_FullMethodName      = "/ltedu.classroom.v1.ClassroomService/RecordLevels"
+	ClassroomService_GetForum_FullMethodName          = "/ltedu.classroom.v1.ClassroomService/GetForum"
+	ClassroomService_SaveForum_FullMethodName         = "/ltedu.classroom.v1.ClassroomService/SaveForum"
+	ClassroomService_CreatePost_FullMethodName        = "/ltedu.classroom.v1.ClassroomService/CreatePost"
+	ClassroomService_EditPost_FullMethodName          = "/ltedu.classroom.v1.ClassroomService/EditPost"
+	ClassroomService_DeletePost_FullMethodName        = "/ltedu.classroom.v1.ClassroomService/DeletePost"
+	ClassroomService_ModeratePost_FullMethodName      = "/ltedu.classroom.v1.ClassroomService/ModeratePost"
 )
 
 // ClassroomServiceClient is the client API for ClassroomService service.
@@ -1149,7 +1149,7 @@ func _ClassroomService_ModeratePost_Handler(srv interface{}, ctx context.Context
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ClassroomService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.classroom.v1.ClassroomService",
+	ServiceName: "ltedu.classroom.v1.ClassroomService",
 	HandlerType: (*ClassroomServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -1278,5 +1278,5 @@ var ClassroomService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/classroom/v1/classroom.proto",
+	Metadata: "ltedu/classroom/v1/classroom.proto",
 }

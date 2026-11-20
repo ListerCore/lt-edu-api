@@ -2,11 +2,11 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/attendance/v1/attendance.proto
+// source: ltedu/attendance/v1/attendance.proto
 
 // Attendance (phase 5 of docs/plan-academico.md): ID card at the gate, the day of each section and of the staff,
 // attendance per class, justifications and absence alerts. Same metadata and institution scoping as
-// joseph.academic.v1. Dates travel as YYYY-MM-DD (empty: today in Lima), instants as RFC 3339, times as HH:MM.
+// ltedu.academic.v1. Dates travel as YYYY-MM-DD (empty: today in Lima), instants as RFC 3339, times as HH:MM.
 // Statuses: present | late | absent | justified (empty: not marked yet)
 
 package attendancev1
@@ -24,26 +24,26 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AttendanceService_GetOverview_FullMethodName         = "/joseph.attendance.v1.AttendanceService/GetOverview"
-	AttendanceService_Scan_FullMethodName                = "/joseph.attendance.v1.AttendanceService/Scan"
-	AttendanceService_RecentScans_FullMethodName         = "/joseph.attendance.v1.AttendanceService/RecentScans"
-	AttendanceService_GetRoster_FullMethodName           = "/joseph.attendance.v1.AttendanceService/GetRoster"
-	AttendanceService_MarkStudents_FullMethodName        = "/joseph.attendance.v1.AttendanceService/MarkStudents"
-	AttendanceService_CloseDay_FullMethodName            = "/joseph.attendance.v1.AttendanceService/CloseDay"
-	AttendanceService_GetStaffDay_FullMethodName         = "/joseph.attendance.v1.AttendanceService/GetStaffDay"
-	AttendanceService_MarkStaff_FullMethodName           = "/joseph.attendance.v1.AttendanceService/MarkStaff"
-	AttendanceService_CloseStaffDay_FullMethodName       = "/joseph.attendance.v1.AttendanceService/CloseStaffDay"
-	AttendanceService_ListClasses_FullMethodName         = "/joseph.attendance.v1.AttendanceService/ListClasses"
-	AttendanceService_GetClass_FullMethodName            = "/joseph.attendance.v1.AttendanceService/GetClass"
-	AttendanceService_SaveClass_FullMethodName           = "/joseph.attendance.v1.AttendanceService/SaveClass"
-	AttendanceService_ListJustifications_FullMethodName  = "/joseph.attendance.v1.AttendanceService/ListJustifications"
-	AttendanceService_SubmitJustification_FullMethodName = "/joseph.attendance.v1.AttendanceService/SubmitJustification"
-	AttendanceService_ReviewJustification_FullMethodName = "/joseph.attendance.v1.AttendanceService/ReviewJustification"
-	AttendanceService_GetReport_FullMethodName           = "/joseph.attendance.v1.AttendanceService/GetReport"
-	AttendanceService_GetStudent_FullMethodName          = "/joseph.attendance.v1.AttendanceService/GetStudent"
-	AttendanceService_MyAttendance_FullMethodName        = "/joseph.attendance.v1.AttendanceService/MyAttendance"
-	AttendanceService_CardCodes_FullMethodName           = "/joseph.attendance.v1.AttendanceService/CardCodes"
-	AttendanceService_RenewCard_FullMethodName           = "/joseph.attendance.v1.AttendanceService/RenewCard"
+	AttendanceService_GetOverview_FullMethodName         = "/ltedu.attendance.v1.AttendanceService/GetOverview"
+	AttendanceService_Scan_FullMethodName                = "/ltedu.attendance.v1.AttendanceService/Scan"
+	AttendanceService_RecentScans_FullMethodName         = "/ltedu.attendance.v1.AttendanceService/RecentScans"
+	AttendanceService_GetRoster_FullMethodName           = "/ltedu.attendance.v1.AttendanceService/GetRoster"
+	AttendanceService_MarkStudents_FullMethodName        = "/ltedu.attendance.v1.AttendanceService/MarkStudents"
+	AttendanceService_CloseDay_FullMethodName            = "/ltedu.attendance.v1.AttendanceService/CloseDay"
+	AttendanceService_GetStaffDay_FullMethodName         = "/ltedu.attendance.v1.AttendanceService/GetStaffDay"
+	AttendanceService_MarkStaff_FullMethodName           = "/ltedu.attendance.v1.AttendanceService/MarkStaff"
+	AttendanceService_CloseStaffDay_FullMethodName       = "/ltedu.attendance.v1.AttendanceService/CloseStaffDay"
+	AttendanceService_ListClasses_FullMethodName         = "/ltedu.attendance.v1.AttendanceService/ListClasses"
+	AttendanceService_GetClass_FullMethodName            = "/ltedu.attendance.v1.AttendanceService/GetClass"
+	AttendanceService_SaveClass_FullMethodName           = "/ltedu.attendance.v1.AttendanceService/SaveClass"
+	AttendanceService_ListJustifications_FullMethodName  = "/ltedu.attendance.v1.AttendanceService/ListJustifications"
+	AttendanceService_SubmitJustification_FullMethodName = "/ltedu.attendance.v1.AttendanceService/SubmitJustification"
+	AttendanceService_ReviewJustification_FullMethodName = "/ltedu.attendance.v1.AttendanceService/ReviewJustification"
+	AttendanceService_GetReport_FullMethodName           = "/ltedu.attendance.v1.AttendanceService/GetReport"
+	AttendanceService_GetStudent_FullMethodName          = "/ltedu.attendance.v1.AttendanceService/GetStudent"
+	AttendanceService_MyAttendance_FullMethodName        = "/ltedu.attendance.v1.AttendanceService/MyAttendance"
+	AttendanceService_CardCodes_FullMethodName           = "/ltedu.attendance.v1.AttendanceService/CardCodes"
+	AttendanceService_RenewCard_FullMethodName           = "/ltedu.attendance.v1.AttendanceService/RenewCard"
 )
 
 // AttendanceServiceClient is the client API for AttendanceService service.
@@ -775,7 +775,7 @@ func _AttendanceService_RenewCard_Handler(srv interface{}, ctx context.Context, 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AttendanceService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.attendance.v1.AttendanceService",
+	ServiceName: "ltedu.attendance.v1.AttendanceService",
 	HandlerType: (*AttendanceServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -860,5 +860,5 @@ var AttendanceService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/attendance/v1/attendance.proto",
+	Metadata: "ltedu/attendance/v1/attendance.proto",
 }

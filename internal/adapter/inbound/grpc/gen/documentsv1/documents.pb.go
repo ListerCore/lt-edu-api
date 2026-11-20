@@ -2,11 +2,11 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/documents/v1/documents.proto
+// source: ltedu/documents/v1/documents.proto
 
 // Printable documents generated on the server as PDF: report cards, published timetables, issued actas and payment
 // receipts. Each one checks the same permissions as the screen it comes from. Same metadata and institution
-// scoping as joseph.academic.v1.
+// scoping as ltedu.academic.v1.
 //
 // Timetables are published as versioned documents: dirección or coordinación generate a version (frozen content,
 // verification code, the signatures it needs), the signers sign it and with the last signature it is published.
@@ -39,7 +39,7 @@ type PdfFile struct {
 
 func (x *PdfFile) Reset() {
 	*x = PdfFile{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[0]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -51,7 +51,7 @@ func (x *PdfFile) String() string {
 func (*PdfFile) ProtoMessage() {}
 
 func (x *PdfFile) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[0]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -64,7 +64,7 @@ func (x *PdfFile) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PdfFile.ProtoReflect.Descriptor instead.
 func (*PdfFile) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *PdfFile) GetFileName() string {
@@ -95,7 +95,7 @@ type ReportCardsPdfRequest struct {
 
 func (x *ReportCardsPdfRequest) Reset() {
 	*x = ReportCardsPdfRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[1]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -107,7 +107,7 @@ func (x *ReportCardsPdfRequest) String() string {
 func (*ReportCardsPdfRequest) ProtoMessage() {}
 
 func (x *ReportCardsPdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[1]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -120,7 +120,7 @@ func (x *ReportCardsPdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReportCardsPdfRequest.ProtoReflect.Descriptor instead.
 func (*ReportCardsPdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ReportCardsPdfRequest) GetInstitutionSlug() string {
@@ -173,7 +173,7 @@ type SchedulesPdfRequest struct {
 
 func (x *SchedulesPdfRequest) Reset() {
 	*x = SchedulesPdfRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[2]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -185,7 +185,7 @@ func (x *SchedulesPdfRequest) String() string {
 func (*SchedulesPdfRequest) ProtoMessage() {}
 
 func (x *SchedulesPdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[2]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -198,7 +198,7 @@ func (x *SchedulesPdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SchedulesPdfRequest.ProtoReflect.Descriptor instead.
 func (*SchedulesPdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *SchedulesPdfRequest) GetInstitutionSlug() string {
@@ -239,7 +239,7 @@ type RecordPdfRequest struct {
 
 func (x *RecordPdfRequest) Reset() {
 	*x = RecordPdfRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[3]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -251,7 +251,7 @@ func (x *RecordPdfRequest) String() string {
 func (*RecordPdfRequest) ProtoMessage() {}
 
 func (x *RecordPdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[3]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -264,7 +264,7 @@ func (x *RecordPdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordPdfRequest.ProtoReflect.Descriptor instead.
 func (*RecordPdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *RecordPdfRequest) GetInstitutionSlug() string {
@@ -291,7 +291,7 @@ type ReceiptPdfRequest struct {
 
 func (x *ReceiptPdfRequest) Reset() {
 	*x = ReceiptPdfRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[4]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -303,7 +303,7 @@ func (x *ReceiptPdfRequest) String() string {
 func (*ReceiptPdfRequest) ProtoMessage() {}
 
 func (x *ReceiptPdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[4]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -316,7 +316,7 @@ func (x *ReceiptPdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReceiptPdfRequest.ProtoReflect.Descriptor instead.
 func (*ReceiptPdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ReceiptPdfRequest) GetInstitutionSlug() string {
@@ -342,7 +342,7 @@ type ReportCardsPdfResponse struct {
 
 func (x *ReportCardsPdfResponse) Reset() {
 	*x = ReportCardsPdfResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[5]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -354,7 +354,7 @@ func (x *ReportCardsPdfResponse) String() string {
 func (*ReportCardsPdfResponse) ProtoMessage() {}
 
 func (x *ReportCardsPdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[5]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -367,7 +367,7 @@ func (x *ReportCardsPdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReportCardsPdfResponse.ProtoReflect.Descriptor instead.
 func (*ReportCardsPdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ReportCardsPdfResponse) GetFile() *PdfFile {
@@ -386,7 +386,7 @@ type SchedulesPdfResponse struct {
 
 func (x *SchedulesPdfResponse) Reset() {
 	*x = SchedulesPdfResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[6]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -398,7 +398,7 @@ func (x *SchedulesPdfResponse) String() string {
 func (*SchedulesPdfResponse) ProtoMessage() {}
 
 func (x *SchedulesPdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[6]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -411,7 +411,7 @@ func (x *SchedulesPdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SchedulesPdfResponse.ProtoReflect.Descriptor instead.
 func (*SchedulesPdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *SchedulesPdfResponse) GetFile() *PdfFile {
@@ -430,7 +430,7 @@ type RecordPdfResponse struct {
 
 func (x *RecordPdfResponse) Reset() {
 	*x = RecordPdfResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[7]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -442,7 +442,7 @@ func (x *RecordPdfResponse) String() string {
 func (*RecordPdfResponse) ProtoMessage() {}
 
 func (x *RecordPdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[7]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -455,7 +455,7 @@ func (x *RecordPdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordPdfResponse.ProtoReflect.Descriptor instead.
 func (*RecordPdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *RecordPdfResponse) GetFile() *PdfFile {
@@ -474,7 +474,7 @@ type ReceiptPdfResponse struct {
 
 func (x *ReceiptPdfResponse) Reset() {
 	*x = ReceiptPdfResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[8]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -486,7 +486,7 @@ func (x *ReceiptPdfResponse) String() string {
 func (*ReceiptPdfResponse) ProtoMessage() {}
 
 func (x *ReceiptPdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[8]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -499,7 +499,7 @@ func (x *ReceiptPdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReceiptPdfResponse.ProtoReflect.Descriptor instead.
 func (*ReceiptPdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ReceiptPdfResponse) GetFile() *PdfFile {
@@ -519,7 +519,7 @@ type SchedulesXlsxRequest struct {
 
 func (x *SchedulesXlsxRequest) Reset() {
 	*x = SchedulesXlsxRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[9]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -531,7 +531,7 @@ func (x *SchedulesXlsxRequest) String() string {
 func (*SchedulesXlsxRequest) ProtoMessage() {}
 
 func (x *SchedulesXlsxRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[9]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -544,7 +544,7 @@ func (x *SchedulesXlsxRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SchedulesXlsxRequest.ProtoReflect.Descriptor instead.
 func (*SchedulesXlsxRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *SchedulesXlsxRequest) GetInstitutionSlug() string {
@@ -570,7 +570,7 @@ type SchedulesXlsxResponse struct {
 
 func (x *SchedulesXlsxResponse) Reset() {
 	*x = SchedulesXlsxResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[10]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -582,7 +582,7 @@ func (x *SchedulesXlsxResponse) String() string {
 func (*SchedulesXlsxResponse) ProtoMessage() {}
 
 func (x *SchedulesXlsxResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[10]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -595,7 +595,7 @@ func (x *SchedulesXlsxResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SchedulesXlsxResponse.ProtoReflect.Descriptor instead.
 func (*SchedulesXlsxResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *SchedulesXlsxResponse) GetFile() *PdfFile {
@@ -617,7 +617,7 @@ type Signer struct {
 
 func (x *Signer) Reset() {
 	*x = Signer{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[11]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -629,7 +629,7 @@ func (x *Signer) String() string {
 func (*Signer) ProtoMessage() {}
 
 func (x *Signer) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[11]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -642,7 +642,7 @@ func (x *Signer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Signer.ProtoReflect.Descriptor instead.
 func (*Signer) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *Signer) GetStaffId() string {
@@ -677,7 +677,7 @@ type GetScheduleSignersRequest struct {
 
 func (x *GetScheduleSignersRequest) Reset() {
 	*x = GetScheduleSignersRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[12]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -689,7 +689,7 @@ func (x *GetScheduleSignersRequest) String() string {
 func (*GetScheduleSignersRequest) ProtoMessage() {}
 
 func (x *GetScheduleSignersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[12]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -702,7 +702,7 @@ func (x *GetScheduleSignersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetScheduleSignersRequest.ProtoReflect.Descriptor instead.
 func (*GetScheduleSignersRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetScheduleSignersRequest) GetInstitutionSlug() string {
@@ -731,7 +731,7 @@ type GetScheduleSignersResponse struct {
 
 func (x *GetScheduleSignersResponse) Reset() {
 	*x = GetScheduleSignersResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[13]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -743,7 +743,7 @@ func (x *GetScheduleSignersResponse) String() string {
 func (*GetScheduleSignersResponse) ProtoMessage() {}
 
 func (x *GetScheduleSignersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[13]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -756,7 +756,7 @@ func (x *GetScheduleSignersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetScheduleSignersResponse.ProtoReflect.Descriptor instead.
 func (*GetScheduleSignersResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetScheduleSignersResponse) GetSigners() []*Signer {
@@ -793,7 +793,7 @@ type SetScheduleSignersRequest struct {
 
 func (x *SetScheduleSignersRequest) Reset() {
 	*x = SetScheduleSignersRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[14]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -805,7 +805,7 @@ func (x *SetScheduleSignersRequest) String() string {
 func (*SetScheduleSignersRequest) ProtoMessage() {}
 
 func (x *SetScheduleSignersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[14]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -818,7 +818,7 @@ func (x *SetScheduleSignersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetScheduleSignersRequest.ProtoReflect.Descriptor instead.
 func (*SetScheduleSignersRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *SetScheduleSignersRequest) GetInstitutionSlug() string {
@@ -851,7 +851,7 @@ type SetScheduleSignersResponse struct {
 
 func (x *SetScheduleSignersResponse) Reset() {
 	*x = SetScheduleSignersResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[15]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -863,7 +863,7 @@ func (x *SetScheduleSignersResponse) String() string {
 func (*SetScheduleSignersResponse) ProtoMessage() {}
 
 func (x *SetScheduleSignersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[15]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -876,7 +876,7 @@ func (x *SetScheduleSignersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetScheduleSignersResponse.ProtoReflect.Descriptor instead.
 func (*SetScheduleSignersResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SetScheduleSignersResponse) GetSigners() []*Signer {
@@ -901,7 +901,7 @@ type Signature struct {
 
 func (x *Signature) Reset() {
 	*x = Signature{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[16]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -913,7 +913,7 @@ func (x *Signature) String() string {
 func (*Signature) ProtoMessage() {}
 
 func (x *Signature) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[16]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -926,7 +926,7 @@ func (x *Signature) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Signature.ProtoReflect.Descriptor instead.
 func (*Signature) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *Signature) GetSort() int32 {
@@ -990,7 +990,7 @@ type DocumentVersion struct {
 
 func (x *DocumentVersion) Reset() {
 	*x = DocumentVersion{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[17]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1002,7 +1002,7 @@ func (x *DocumentVersion) String() string {
 func (*DocumentVersion) ProtoMessage() {}
 
 func (x *DocumentVersion) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[17]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1015,7 +1015,7 @@ func (x *DocumentVersion) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DocumentVersion.ProtoReflect.Descriptor instead.
 func (*DocumentVersion) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *DocumentVersion) GetId() string {
@@ -1102,7 +1102,7 @@ type DocumentEvent struct {
 
 func (x *DocumentEvent) Reset() {
 	*x = DocumentEvent{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[18]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1114,7 +1114,7 @@ func (x *DocumentEvent) String() string {
 func (*DocumentEvent) ProtoMessage() {}
 
 func (x *DocumentEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[18]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1127,7 +1127,7 @@ func (x *DocumentEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DocumentEvent.ProtoReflect.Descriptor instead.
 func (*DocumentEvent) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *DocumentEvent) GetVersion() int32 {
@@ -1183,7 +1183,7 @@ type IssuedDocument struct {
 
 func (x *IssuedDocument) Reset() {
 	*x = IssuedDocument{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[19]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1195,7 +1195,7 @@ func (x *IssuedDocument) String() string {
 func (*IssuedDocument) ProtoMessage() {}
 
 func (x *IssuedDocument) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[19]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1208,7 +1208,7 @@ func (x *IssuedDocument) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IssuedDocument.ProtoReflect.Descriptor instead.
 func (*IssuedDocument) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *IssuedDocument) GetId() string {
@@ -1284,7 +1284,7 @@ type ListScheduleIssuesRequest struct {
 
 func (x *ListScheduleIssuesRequest) Reset() {
 	*x = ListScheduleIssuesRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[20]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1296,7 +1296,7 @@ func (x *ListScheduleIssuesRequest) String() string {
 func (*ListScheduleIssuesRequest) ProtoMessage() {}
 
 func (x *ListScheduleIssuesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[20]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1309,7 +1309,7 @@ func (x *ListScheduleIssuesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListScheduleIssuesRequest.ProtoReflect.Descriptor instead.
 func (*ListScheduleIssuesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ListScheduleIssuesRequest) GetInstitutionSlug() string {
@@ -1338,7 +1338,7 @@ type ListScheduleIssuesResponse struct {
 
 func (x *ListScheduleIssuesResponse) Reset() {
 	*x = ListScheduleIssuesResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[21]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1350,7 +1350,7 @@ func (x *ListScheduleIssuesResponse) String() string {
 func (*ListScheduleIssuesResponse) ProtoMessage() {}
 
 func (x *ListScheduleIssuesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[21]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1363,7 +1363,7 @@ func (x *ListScheduleIssuesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListScheduleIssuesResponse.ProtoReflect.Descriptor instead.
 func (*ListScheduleIssuesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ListScheduleIssuesResponse) GetDocuments() []*IssuedDocument {
@@ -1408,7 +1408,7 @@ type GenerateSchedulesRequest struct {
 
 func (x *GenerateSchedulesRequest) Reset() {
 	*x = GenerateSchedulesRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[22]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1420,7 +1420,7 @@ func (x *GenerateSchedulesRequest) String() string {
 func (*GenerateSchedulesRequest) ProtoMessage() {}
 
 func (x *GenerateSchedulesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[22]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1433,7 +1433,7 @@ func (x *GenerateSchedulesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateSchedulesRequest.ProtoReflect.Descriptor instead.
 func (*GenerateSchedulesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *GenerateSchedulesRequest) GetInstitutionSlug() string {
@@ -1482,7 +1482,7 @@ type GenerateSchedulesResponse struct {
 
 func (x *GenerateSchedulesResponse) Reset() {
 	*x = GenerateSchedulesResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[23]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1494,7 +1494,7 @@ func (x *GenerateSchedulesResponse) String() string {
 func (*GenerateSchedulesResponse) ProtoMessage() {}
 
 func (x *GenerateSchedulesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[23]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1507,7 +1507,7 @@ func (x *GenerateSchedulesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateSchedulesResponse.ProtoReflect.Descriptor instead.
 func (*GenerateSchedulesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{23}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GenerateSchedulesResponse) GetDocument() *IssuedDocument {
@@ -1541,7 +1541,7 @@ type SignVersionRequest struct {
 
 func (x *SignVersionRequest) Reset() {
 	*x = SignVersionRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[24]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1553,7 +1553,7 @@ func (x *SignVersionRequest) String() string {
 func (*SignVersionRequest) ProtoMessage() {}
 
 func (x *SignVersionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[24]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1566,7 +1566,7 @@ func (x *SignVersionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SignVersionRequest.ProtoReflect.Descriptor instead.
 func (*SignVersionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{24}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *SignVersionRequest) GetInstitutionSlug() string {
@@ -1593,7 +1593,7 @@ type SignVersionResponse struct {
 
 func (x *SignVersionResponse) Reset() {
 	*x = SignVersionResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[25]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1605,7 +1605,7 @@ func (x *SignVersionResponse) String() string {
 func (*SignVersionResponse) ProtoMessage() {}
 
 func (x *SignVersionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[25]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1618,7 +1618,7 @@ func (x *SignVersionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SignVersionResponse.ProtoReflect.Descriptor instead.
 func (*SignVersionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{25}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *SignVersionResponse) GetVersion() *DocumentVersion {
@@ -1645,7 +1645,7 @@ type VersionPdfRequest struct {
 
 func (x *VersionPdfRequest) Reset() {
 	*x = VersionPdfRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[26]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1657,7 +1657,7 @@ func (x *VersionPdfRequest) String() string {
 func (*VersionPdfRequest) ProtoMessage() {}
 
 func (x *VersionPdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[26]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1670,7 +1670,7 @@ func (x *VersionPdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VersionPdfRequest.ProtoReflect.Descriptor instead.
 func (*VersionPdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{26}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *VersionPdfRequest) GetInstitutionSlug() string {
@@ -1696,7 +1696,7 @@ type VersionPdfResponse struct {
 
 func (x *VersionPdfResponse) Reset() {
 	*x = VersionPdfResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[27]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1708,7 +1708,7 @@ func (x *VersionPdfResponse) String() string {
 func (*VersionPdfResponse) ProtoMessage() {}
 
 func (x *VersionPdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[27]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1721,7 +1721,7 @@ func (x *VersionPdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VersionPdfResponse.ProtoReflect.Descriptor instead.
 func (*VersionPdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{27}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *VersionPdfResponse) GetFile() *PdfFile {
@@ -1742,7 +1742,7 @@ type TrackDocumentRequest struct {
 
 func (x *TrackDocumentRequest) Reset() {
 	*x = TrackDocumentRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[28]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1754,7 +1754,7 @@ func (x *TrackDocumentRequest) String() string {
 func (*TrackDocumentRequest) ProtoMessage() {}
 
 func (x *TrackDocumentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[28]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1767,7 +1767,7 @@ func (x *TrackDocumentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TrackDocumentRequest.ProtoReflect.Descriptor instead.
 func (*TrackDocumentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{28}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *TrackDocumentRequest) GetTrackingCode() string {
@@ -1795,7 +1795,7 @@ type TrackDocumentResponse struct {
 
 func (x *TrackDocumentResponse) Reset() {
 	*x = TrackDocumentResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[29]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1807,7 +1807,7 @@ func (x *TrackDocumentResponse) String() string {
 func (*TrackDocumentResponse) ProtoMessage() {}
 
 func (x *TrackDocumentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[29]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1820,7 +1820,7 @@ func (x *TrackDocumentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TrackDocumentResponse.ProtoReflect.Descriptor instead.
 func (*TrackDocumentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{29}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *TrackDocumentResponse) GetDocument() *IssuedDocument {
@@ -1847,7 +1847,7 @@ type TrackPdfRequest struct {
 
 func (x *TrackPdfRequest) Reset() {
 	*x = TrackPdfRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[30]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1859,7 +1859,7 @@ func (x *TrackPdfRequest) String() string {
 func (*TrackPdfRequest) ProtoMessage() {}
 
 func (x *TrackPdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[30]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1872,7 +1872,7 @@ func (x *TrackPdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TrackPdfRequest.ProtoReflect.Descriptor instead.
 func (*TrackPdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{30}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *TrackPdfRequest) GetTrackingCode() string {
@@ -1898,7 +1898,7 @@ type TrackPdfResponse struct {
 
 func (x *TrackPdfResponse) Reset() {
 	*x = TrackPdfResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[31]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1910,7 +1910,7 @@ func (x *TrackPdfResponse) String() string {
 func (*TrackPdfResponse) ProtoMessage() {}
 
 func (x *TrackPdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[31]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1923,7 +1923,7 @@ func (x *TrackPdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TrackPdfResponse.ProtoReflect.Descriptor instead.
 func (*TrackPdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{31}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *TrackPdfResponse) GetFile() *PdfFile {
@@ -1945,7 +1945,7 @@ type EnrollmentFormPdfRequest struct {
 
 func (x *EnrollmentFormPdfRequest) Reset() {
 	*x = EnrollmentFormPdfRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[32]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1957,7 +1957,7 @@ func (x *EnrollmentFormPdfRequest) String() string {
 func (*EnrollmentFormPdfRequest) ProtoMessage() {}
 
 func (x *EnrollmentFormPdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[32]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1970,7 +1970,7 @@ func (x *EnrollmentFormPdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EnrollmentFormPdfRequest.ProtoReflect.Descriptor instead.
 func (*EnrollmentFormPdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{32}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *EnrollmentFormPdfRequest) GetInstitutionSlug() string {
@@ -2003,7 +2003,7 @@ type EnrollmentFormPdfResponse struct {
 
 func (x *EnrollmentFormPdfResponse) Reset() {
 	*x = EnrollmentFormPdfResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[33]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2015,7 +2015,7 @@ func (x *EnrollmentFormPdfResponse) String() string {
 func (*EnrollmentFormPdfResponse) ProtoMessage() {}
 
 func (x *EnrollmentFormPdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[33]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2028,7 +2028,7 @@ func (x *EnrollmentFormPdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EnrollmentFormPdfResponse.ProtoReflect.Descriptor instead.
 func (*EnrollmentFormPdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{33}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *EnrollmentFormPdfResponse) GetFile() *PdfFile {
@@ -2038,7 +2038,7 @@ func (x *EnrollmentFormPdfResponse) GetFile() *PdfFile {
 	return nil
 }
 
-// Same as joseph.people.v1.RollFilter
+// Same as ltedu.people.v1.RollFilter
 type RollQuery struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PeriodId      string                 `protobuf:"bytes,1,opt,name=period_id,json=periodId,proto3" json:"period_id,omitempty"`
@@ -2053,7 +2053,7 @@ type RollQuery struct {
 
 func (x *RollQuery) Reset() {
 	*x = RollQuery{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[34]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2065,7 +2065,7 @@ func (x *RollQuery) String() string {
 func (*RollQuery) ProtoMessage() {}
 
 func (x *RollQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[34]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2078,7 +2078,7 @@ func (x *RollQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RollQuery.ProtoReflect.Descriptor instead.
 func (*RollQuery) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{34}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *RollQuery) GetPeriodId() string {
@@ -2133,7 +2133,7 @@ type RollPdfRequest struct {
 
 func (x *RollPdfRequest) Reset() {
 	*x = RollPdfRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[35]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2145,7 +2145,7 @@ func (x *RollPdfRequest) String() string {
 func (*RollPdfRequest) ProtoMessage() {}
 
 func (x *RollPdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[35]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2158,7 +2158,7 @@ func (x *RollPdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RollPdfRequest.ProtoReflect.Descriptor instead.
 func (*RollPdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{35}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *RollPdfRequest) GetInstitutionSlug() string {
@@ -2184,7 +2184,7 @@ type RollPdfResponse struct {
 
 func (x *RollPdfResponse) Reset() {
 	*x = RollPdfResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[36]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2196,7 +2196,7 @@ func (x *RollPdfResponse) String() string {
 func (*RollPdfResponse) ProtoMessage() {}
 
 func (x *RollPdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[36]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2209,7 +2209,7 @@ func (x *RollPdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RollPdfResponse.ProtoReflect.Descriptor instead.
 func (*RollPdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{36}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *RollPdfResponse) GetFile() *PdfFile {
@@ -2229,7 +2229,7 @@ type RollXlsxRequest struct {
 
 func (x *RollXlsxRequest) Reset() {
 	*x = RollXlsxRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[37]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2241,7 +2241,7 @@ func (x *RollXlsxRequest) String() string {
 func (*RollXlsxRequest) ProtoMessage() {}
 
 func (x *RollXlsxRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[37]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2254,7 +2254,7 @@ func (x *RollXlsxRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RollXlsxRequest.ProtoReflect.Descriptor instead.
 func (*RollXlsxRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{37}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *RollXlsxRequest) GetInstitutionSlug() string {
@@ -2280,7 +2280,7 @@ type RollXlsxResponse struct {
 
 func (x *RollXlsxResponse) Reset() {
 	*x = RollXlsxResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[38]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2292,7 +2292,7 @@ func (x *RollXlsxResponse) String() string {
 func (*RollXlsxResponse) ProtoMessage() {}
 
 func (x *RollXlsxResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[38]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2305,7 +2305,7 @@ func (x *RollXlsxResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RollXlsxResponse.ProtoReflect.Descriptor instead.
 func (*RollXlsxResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{38}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *RollXlsxResponse) GetFile() *PdfFile {
@@ -2327,7 +2327,7 @@ type SiagieXlsxRequest struct {
 
 func (x *SiagieXlsxRequest) Reset() {
 	*x = SiagieXlsxRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[39]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2339,7 +2339,7 @@ func (x *SiagieXlsxRequest) String() string {
 func (*SiagieXlsxRequest) ProtoMessage() {}
 
 func (x *SiagieXlsxRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[39]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2352,7 +2352,7 @@ func (x *SiagieXlsxRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SiagieXlsxRequest.ProtoReflect.Descriptor instead.
 func (*SiagieXlsxRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{39}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *SiagieXlsxRequest) GetInstitutionSlug() string {
@@ -2386,7 +2386,7 @@ type SiagieXlsxResponse struct {
 
 func (x *SiagieXlsxResponse) Reset() {
 	*x = SiagieXlsxResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[40]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2398,7 +2398,7 @@ func (x *SiagieXlsxResponse) String() string {
 func (*SiagieXlsxResponse) ProtoMessage() {}
 
 func (x *SiagieXlsxResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[40]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2411,7 +2411,7 @@ func (x *SiagieXlsxResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SiagieXlsxResponse.ProtoReflect.Descriptor instead.
 func (*SiagieXlsxResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{40}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *SiagieXlsxResponse) GetFile() *PdfFile {
@@ -2439,7 +2439,7 @@ type GeneratePlacementActRequest struct {
 
 func (x *GeneratePlacementActRequest) Reset() {
 	*x = GeneratePlacementActRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[41]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2451,7 +2451,7 @@ func (x *GeneratePlacementActRequest) String() string {
 func (*GeneratePlacementActRequest) ProtoMessage() {}
 
 func (x *GeneratePlacementActRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[41]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2464,7 +2464,7 @@ func (x *GeneratePlacementActRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GeneratePlacementActRequest.ProtoReflect.Descriptor instead.
 func (*GeneratePlacementActRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{41}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *GeneratePlacementActRequest) GetInstitutionSlug() string {
@@ -2499,7 +2499,7 @@ type GeneratePlacementActResponse struct {
 
 func (x *GeneratePlacementActResponse) Reset() {
 	*x = GeneratePlacementActResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[42]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2511,7 +2511,7 @@ func (x *GeneratePlacementActResponse) String() string {
 func (*GeneratePlacementActResponse) ProtoMessage() {}
 
 func (x *GeneratePlacementActResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[42]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2524,7 +2524,7 @@ func (x *GeneratePlacementActResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GeneratePlacementActResponse.ProtoReflect.Descriptor instead.
 func (*GeneratePlacementActResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{42}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *GeneratePlacementActResponse) GetVersion() *DocumentVersion {
@@ -2551,7 +2551,7 @@ type PlacementActPdfRequest struct {
 
 func (x *PlacementActPdfRequest) Reset() {
 	*x = PlacementActPdfRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[43]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2563,7 +2563,7 @@ func (x *PlacementActPdfRequest) String() string {
 func (*PlacementActPdfRequest) ProtoMessage() {}
 
 func (x *PlacementActPdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[43]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2576,7 +2576,7 @@ func (x *PlacementActPdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlacementActPdfRequest.ProtoReflect.Descriptor instead.
 func (*PlacementActPdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{43}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *PlacementActPdfRequest) GetInstitutionSlug() string {
@@ -2602,7 +2602,7 @@ type PlacementActPdfResponse struct {
 
 func (x *PlacementActPdfResponse) Reset() {
 	*x = PlacementActPdfResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[44]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2614,7 +2614,7 @@ func (x *PlacementActPdfResponse) String() string {
 func (*PlacementActPdfResponse) ProtoMessage() {}
 
 func (x *PlacementActPdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[44]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2627,7 +2627,7 @@ func (x *PlacementActPdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlacementActPdfResponse.ProtoReflect.Descriptor instead.
 func (*PlacementActPdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{44}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *PlacementActPdfResponse) GetFile() *PdfFile {
@@ -2647,7 +2647,7 @@ type PermanencePdfRequest struct {
 
 func (x *PermanencePdfRequest) Reset() {
 	*x = PermanencePdfRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[45]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2659,7 +2659,7 @@ func (x *PermanencePdfRequest) String() string {
 func (*PermanencePdfRequest) ProtoMessage() {}
 
 func (x *PermanencePdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[45]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2672,7 +2672,7 @@ func (x *PermanencePdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PermanencePdfRequest.ProtoReflect.Descriptor instead.
 func (*PermanencePdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{45}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *PermanencePdfRequest) GetInstitutionSlug() string {
@@ -2698,7 +2698,7 @@ type PermanencePdfResponse struct {
 
 func (x *PermanencePdfResponse) Reset() {
 	*x = PermanencePdfResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[46]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2710,7 +2710,7 @@ func (x *PermanencePdfResponse) String() string {
 func (*PermanencePdfResponse) ProtoMessage() {}
 
 func (x *PermanencePdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[46]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2723,7 +2723,7 @@ func (x *PermanencePdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PermanencePdfResponse.ProtoReflect.Descriptor instead.
 func (*PermanencePdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{46}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *PermanencePdfResponse) GetFile() *PdfFile {
@@ -2743,7 +2743,7 @@ type PermanenceXlsxRequest struct {
 
 func (x *PermanenceXlsxRequest) Reset() {
 	*x = PermanenceXlsxRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[47]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2755,7 +2755,7 @@ func (x *PermanenceXlsxRequest) String() string {
 func (*PermanenceXlsxRequest) ProtoMessage() {}
 
 func (x *PermanenceXlsxRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[47]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2768,7 +2768,7 @@ func (x *PermanenceXlsxRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PermanenceXlsxRequest.ProtoReflect.Descriptor instead.
 func (*PermanenceXlsxRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{47}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *PermanenceXlsxRequest) GetInstitutionSlug() string {
@@ -2794,7 +2794,7 @@ type PermanenceXlsxResponse struct {
 
 func (x *PermanenceXlsxResponse) Reset() {
 	*x = PermanenceXlsxResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[48]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2806,7 +2806,7 @@ func (x *PermanenceXlsxResponse) String() string {
 func (*PermanenceXlsxResponse) ProtoMessage() {}
 
 func (x *PermanenceXlsxResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[48]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2819,7 +2819,7 @@ func (x *PermanenceXlsxResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PermanenceXlsxResponse.ProtoReflect.Descriptor instead.
 func (*PermanenceXlsxResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{48}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *PermanenceXlsxResponse) GetFile() *PdfFile {
@@ -2840,7 +2840,7 @@ type GenerateRecordActRequest struct {
 
 func (x *GenerateRecordActRequest) Reset() {
 	*x = GenerateRecordActRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[49]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2852,7 +2852,7 @@ func (x *GenerateRecordActRequest) String() string {
 func (*GenerateRecordActRequest) ProtoMessage() {}
 
 func (x *GenerateRecordActRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[49]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2865,7 +2865,7 @@ func (x *GenerateRecordActRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateRecordActRequest.ProtoReflect.Descriptor instead.
 func (*GenerateRecordActRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{49}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *GenerateRecordActRequest) GetInstitutionSlug() string {
@@ -2898,7 +2898,7 @@ type GenerateRecordActResponse struct {
 
 func (x *GenerateRecordActResponse) Reset() {
 	*x = GenerateRecordActResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[50]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2910,7 +2910,7 @@ func (x *GenerateRecordActResponse) String() string {
 func (*GenerateRecordActResponse) ProtoMessage() {}
 
 func (x *GenerateRecordActResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[50]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2923,7 +2923,7 @@ func (x *GenerateRecordActResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateRecordActResponse.ProtoReflect.Descriptor instead.
 func (*GenerateRecordActResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{50}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *GenerateRecordActResponse) GetVersion() *DocumentVersion {
@@ -2943,7 +2943,7 @@ type RecordActPdfRequest struct {
 
 func (x *RecordActPdfRequest) Reset() {
 	*x = RecordActPdfRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[51]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2955,7 +2955,7 @@ func (x *RecordActPdfRequest) String() string {
 func (*RecordActPdfRequest) ProtoMessage() {}
 
 func (x *RecordActPdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[51]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2968,7 +2968,7 @@ func (x *RecordActPdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordActPdfRequest.ProtoReflect.Descriptor instead.
 func (*RecordActPdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{51}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *RecordActPdfRequest) GetInstitutionSlug() string {
@@ -2994,7 +2994,7 @@ type RecordActPdfResponse struct {
 
 func (x *RecordActPdfResponse) Reset() {
 	*x = RecordActPdfResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[52]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3006,7 +3006,7 @@ func (x *RecordActPdfResponse) String() string {
 func (*RecordActPdfResponse) ProtoMessage() {}
 
 func (x *RecordActPdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[52]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3019,7 +3019,7 @@ func (x *RecordActPdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordActPdfResponse.ProtoReflect.Descriptor instead.
 func (*RecordActPdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{52}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *RecordActPdfResponse) GetFile() *PdfFile {
@@ -3041,7 +3041,7 @@ type SiagieGradesXlsxRequest struct {
 
 func (x *SiagieGradesXlsxRequest) Reset() {
 	*x = SiagieGradesXlsxRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[53]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3053,7 +3053,7 @@ func (x *SiagieGradesXlsxRequest) String() string {
 func (*SiagieGradesXlsxRequest) ProtoMessage() {}
 
 func (x *SiagieGradesXlsxRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[53]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3066,7 +3066,7 @@ func (x *SiagieGradesXlsxRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SiagieGradesXlsxRequest.ProtoReflect.Descriptor instead.
 func (*SiagieGradesXlsxRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{53}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *SiagieGradesXlsxRequest) GetInstitutionSlug() string {
@@ -3100,7 +3100,7 @@ type SiagieGradesXlsxResponse struct {
 
 func (x *SiagieGradesXlsxResponse) Reset() {
 	*x = SiagieGradesXlsxResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[54]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3112,7 +3112,7 @@ func (x *SiagieGradesXlsxResponse) String() string {
 func (*SiagieGradesXlsxResponse) ProtoMessage() {}
 
 func (x *SiagieGradesXlsxResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[54]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3125,7 +3125,7 @@ func (x *SiagieGradesXlsxResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SiagieGradesXlsxResponse.ProtoReflect.Descriptor instead.
 func (*SiagieGradesXlsxResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{54}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *SiagieGradesXlsxResponse) GetFile() *PdfFile {
@@ -3169,7 +3169,7 @@ type StudentCertificate struct {
 
 func (x *StudentCertificate) Reset() {
 	*x = StudentCertificate{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[55]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3181,7 +3181,7 @@ func (x *StudentCertificate) String() string {
 func (*StudentCertificate) ProtoMessage() {}
 
 func (x *StudentCertificate) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[55]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3194,7 +3194,7 @@ func (x *StudentCertificate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StudentCertificate.ProtoReflect.Descriptor instead.
 func (*StudentCertificate) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{55}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *StudentCertificate) GetId() string {
@@ -3333,7 +3333,7 @@ type StudyRecord struct {
 
 func (x *StudyRecord) Reset() {
 	*x = StudyRecord{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[56]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3345,7 +3345,7 @@ func (x *StudyRecord) String() string {
 func (*StudyRecord) ProtoMessage() {}
 
 func (x *StudyRecord) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[56]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3358,7 +3358,7 @@ func (x *StudyRecord) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StudyRecord.ProtoReflect.Descriptor instead.
 func (*StudyRecord) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{56}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *StudyRecord) GetEnrollmentId() string {
@@ -3469,7 +3469,7 @@ type GetStudentCertificatesRequest struct {
 
 func (x *GetStudentCertificatesRequest) Reset() {
 	*x = GetStudentCertificatesRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[57]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3481,7 +3481,7 @@ func (x *GetStudentCertificatesRequest) String() string {
 func (*GetStudentCertificatesRequest) ProtoMessage() {}
 
 func (x *GetStudentCertificatesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[57]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3494,7 +3494,7 @@ func (x *GetStudentCertificatesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentCertificatesRequest.ProtoReflect.Descriptor instead.
 func (*GetStudentCertificatesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{57}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *GetStudentCertificatesRequest) GetInstitutionSlug() string {
@@ -3524,7 +3524,7 @@ type GetStudentCertificatesResponse struct {
 
 func (x *GetStudentCertificatesResponse) Reset() {
 	*x = GetStudentCertificatesResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[58]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3536,7 +3536,7 @@ func (x *GetStudentCertificatesResponse) String() string {
 func (*GetStudentCertificatesResponse) ProtoMessage() {}
 
 func (x *GetStudentCertificatesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[58]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3549,7 +3549,7 @@ func (x *GetStudentCertificatesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentCertificatesResponse.ProtoReflect.Descriptor instead.
 func (*GetStudentCertificatesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{58}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *GetStudentCertificatesResponse) GetCertificates() []*StudentCertificate {
@@ -3596,7 +3596,7 @@ type GenerateCertificateRequest struct {
 
 func (x *GenerateCertificateRequest) Reset() {
 	*x = GenerateCertificateRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[59]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3608,7 +3608,7 @@ func (x *GenerateCertificateRequest) String() string {
 func (*GenerateCertificateRequest) ProtoMessage() {}
 
 func (x *GenerateCertificateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[59]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3621,7 +3621,7 @@ func (x *GenerateCertificateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateCertificateRequest.ProtoReflect.Descriptor instead.
 func (*GenerateCertificateRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{59}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *GenerateCertificateRequest) GetInstitutionSlug() string {
@@ -3683,7 +3683,7 @@ type GenerateCertificateResponse struct {
 
 func (x *GenerateCertificateResponse) Reset() {
 	*x = GenerateCertificateResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[60]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3695,7 +3695,7 @@ func (x *GenerateCertificateResponse) String() string {
 func (*GenerateCertificateResponse) ProtoMessage() {}
 
 func (x *GenerateCertificateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[60]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3708,7 +3708,7 @@ func (x *GenerateCertificateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateCertificateResponse.ProtoReflect.Descriptor instead.
 func (*GenerateCertificateResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{60}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *GenerateCertificateResponse) GetCertificate() *StudentCertificate {
@@ -3735,7 +3735,7 @@ type CertificatePdfRequest struct {
 
 func (x *CertificatePdfRequest) Reset() {
 	*x = CertificatePdfRequest{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[61]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3747,7 +3747,7 @@ func (x *CertificatePdfRequest) String() string {
 func (*CertificatePdfRequest) ProtoMessage() {}
 
 func (x *CertificatePdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[61]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3760,7 +3760,7 @@ func (x *CertificatePdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CertificatePdfRequest.ProtoReflect.Descriptor instead.
 func (*CertificatePdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{61}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *CertificatePdfRequest) GetInstitutionSlug() string {
@@ -3786,7 +3786,7 @@ type CertificatePdfResponse struct {
 
 func (x *CertificatePdfResponse) Reset() {
 	*x = CertificatePdfResponse{}
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[62]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3798,7 +3798,7 @@ func (x *CertificatePdfResponse) String() string {
 func (*CertificatePdfResponse) ProtoMessage() {}
 
 func (x *CertificatePdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_documents_v1_documents_proto_msgTypes[62]
+	mi := &file_ltedu_documents_v1_documents_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3811,7 +3811,7 @@ func (x *CertificatePdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CertificatePdfResponse.ProtoReflect.Descriptor instead.
 func (*CertificatePdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_documents_v1_documents_proto_rawDescGZIP(), []int{62}
+	return file_ltedu_documents_v1_documents_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *CertificatePdfResponse) GetFile() *PdfFile {
@@ -3821,11 +3821,11 @@ func (x *CertificatePdfResponse) GetFile() *PdfFile {
 	return nil
 }
 
-var File_joseph_documents_v1_documents_proto protoreflect.FileDescriptor
+var File_ltedu_documents_v1_documents_proto protoreflect.FileDescriptor
 
-const file_joseph_documents_v1_documents_proto_rawDesc = "" +
+const file_ltedu_documents_v1_documents_proto_rawDesc = "" +
 	"\n" +
-	"#joseph/documents/v1/documents.proto\x12\x13joseph.documents.v1\"@\n" +
+	"\"ltedu/documents/v1/documents.proto\x12\x12ltedu.documents.v1\"@\n" +
 	"\aPdfFile\x12\x1b\n" +
 	"\tfile_name\x18\x01 \x01(\tR\bfileName\x12\x18\n" +
 	"\acontent\x18\x02 \x01(\fR\acontent\"\xb6\x01\n" +
@@ -3847,47 +3847,47 @@ const file_joseph_documents_v1_documents_proto_rawDesc = "" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"N\n" +
 	"\x11ReceiptPdfRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"J\n" +
-	"\x16ReportCardsPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"H\n" +
-	"\x14SchedulesPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"E\n" +
-	"\x11RecordPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"F\n" +
-	"\x12ReceiptPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"^\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"I\n" +
+	"\x16ReportCardsPdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"G\n" +
+	"\x14SchedulesPdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"D\n" +
+	"\x11RecordPdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"E\n" +
+	"\x12ReceiptPdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"^\n" +
 	"\x14SchedulesXlsxRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
-	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"I\n" +
-	"\x15SchedulesXlsxResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"S\n" +
+	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"H\n" +
+	"\x15SchedulesXlsxResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"S\n" +
 	"\x06Signer\x12\x19\n" +
 	"\bstaff_id\x18\x01 \x01(\tR\astaffId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
 	"\bposition\x18\x03 \x01(\tR\bposition\"Z\n" +
 	"\x19GetScheduleSignersRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x12\n" +
-	"\x04kind\x18\x02 \x01(\tR\x04kind\"\xaf\x01\n" +
-	"\x1aGetScheduleSignersResponse\x125\n" +
-	"\asigners\x18\x01 \x03(\v2\x1b.joseph.documents.v1.SignerR\asigners\x12;\n" +
+	"\x04kind\x18\x02 \x01(\tR\x04kind\"\xad\x01\n" +
+	"\x1aGetScheduleSignersResponse\x124\n" +
+	"\asigners\x18\x01 \x03(\v2\x1a.ltedu.documents.v1.SignerR\asigners\x12:\n" +
 	"\n" +
-	"candidates\x18\x02 \x03(\v2\x1b.joseph.documents.v1.SignerR\n" +
+	"candidates\x18\x02 \x03(\v2\x1a.ltedu.documents.v1.SignerR\n" +
 	"candidates\x12\x1d\n" +
 	"\n" +
-	"can_manage\x18\x03 \x01(\bR\tcanManage\"\x91\x01\n" +
+	"can_manage\x18\x03 \x01(\bR\tcanManage\"\x90\x01\n" +
 	"\x19SetScheduleSignersRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x125\n" +
-	"\asigners\x18\x02 \x03(\v2\x1b.joseph.documents.v1.SignerR\asigners\x12\x12\n" +
-	"\x04kind\x18\x03 \x01(\tR\x04kind\"S\n" +
-	"\x1aSetScheduleSignersResponse\x125\n" +
-	"\asigners\x18\x01 \x03(\v2\x1b.joseph.documents.v1.SignerR\asigners\"\x9b\x01\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x124\n" +
+	"\asigners\x18\x02 \x03(\v2\x1a.ltedu.documents.v1.SignerR\asigners\x12\x12\n" +
+	"\x04kind\x18\x03 \x01(\tR\x04kind\"R\n" +
+	"\x1aSetScheduleSignersResponse\x124\n" +
+	"\asigners\x18\x01 \x03(\v2\x1a.ltedu.documents.v1.SignerR\asigners\"\x9b\x01\n" +
 	"\tSignature\x12\x12\n" +
 	"\x04sort\x18\x01 \x01(\x05R\x04sort\x12\x19\n" +
 	"\bstaff_id\x18\x02 \x01(\tR\astaffId\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x1a\n" +
 	"\bposition\x18\x04 \x01(\tR\bposition\x12\x1b\n" +
 	"\tsigned_at\x18\x05 \x01(\tR\bsignedAt\x12\x12\n" +
-	"\x04code\x18\x06 \x01(\tR\x04code\"\xda\x02\n" +
+	"\x04code\x18\x06 \x01(\tR\x04code\"\xd9\x02\n" +
 	"\x0fDocumentVersion\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06number\x18\x02 \x01(\x05R\x06number\x12+\n" +
@@ -3897,9 +3897,9 @@ const file_joseph_documents_v1_documents_proto_rawDesc = "" +
 	"\fcreated_name\x18\x06 \x01(\tR\vcreatedName\x12\x1d\n" +
 	"\n" +
 	"created_at\x18\a \x01(\tR\tcreatedAt\x12!\n" +
-	"\fpublished_at\x18\b \x01(\tR\vpublishedAt\x12>\n" +
+	"\fpublished_at\x18\b \x01(\tR\vpublishedAt\x12=\n" +
 	"\n" +
-	"signatures\x18\t \x03(\v2\x1e.joseph.documents.v1.SignatureR\n" +
+	"signatures\x18\t \x03(\v2\x1d.ltedu.documents.v1.SignatureR\n" +
 	"signatures\x12!\n" +
 	"\fcontent_hash\x18\n" +
 	" \x01(\tR\vcontentHash\"{\n" +
@@ -3908,23 +3908,23 @@ const file_joseph_documents_v1_documents_proto_rawDesc = "" +
 	"\x06action\x18\x02 \x01(\tR\x06action\x12\x14\n" +
 	"\x05actor\x18\x03 \x01(\tR\x05actor\x12\x12\n" +
 	"\x04note\x18\x04 \x01(\tR\x04note\x12\x0e\n" +
-	"\x02at\x18\x05 \x01(\tR\x02at\"\xd8\x02\n" +
+	"\x02at\x18\x05 \x01(\tR\x02at\"\xd6\x02\n" +
 	"\x0eIssuedDocument\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12#\n" +
 	"\rtracking_code\x18\x03 \x01(\tR\ftrackingCode\x12!\n" +
 	"\ftracking_url\x18\x04 \x01(\tR\vtrackingUrl\x12\x12\n" +
 	"\x04mode\x18\x05 \x01(\tR\x04mode\x12\x1b\n" +
-	"\ttarget_id\x18\x06 \x01(\tR\btargetId\x12@\n" +
-	"\bversions\x18\a \x03(\v2$.joseph.documents.v1.DocumentVersionR\bversions\x12:\n" +
-	"\x06events\x18\b \x03(\v2\".joseph.documents.v1.DocumentEventR\x06events\x12)\n" +
+	"\ttarget_id\x18\x06 \x01(\tR\btargetId\x12?\n" +
+	"\bversions\x18\a \x03(\v2#.ltedu.documents.v1.DocumentVersionR\bversions\x129\n" +
+	"\x06events\x18\b \x03(\v2!.ltedu.documents.v1.DocumentEventR\x06events\x12)\n" +
 	"\x10institution_name\x18\t \x01(\tR\x0finstitutionName\"c\n" +
 	"\x19ListScheduleIssuesRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
-	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xd5\x01\n" +
-	"\x1aListScheduleIssuesResponse\x12A\n" +
-	"\tdocuments\x18\x01 \x03(\v2#.joseph.documents.v1.IssuedDocumentR\tdocuments\x125\n" +
-	"\asigners\x18\x02 \x03(\v2\x1b.joseph.documents.v1.SignerR\asigners\x12\x1d\n" +
+	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xd3\x01\n" +
+	"\x1aListScheduleIssuesResponse\x12@\n" +
+	"\tdocuments\x18\x01 \x03(\v2\".ltedu.documents.v1.IssuedDocumentR\tdocuments\x124\n" +
+	"\asigners\x18\x02 \x03(\v2\x1a.ltedu.documents.v1.SignerR\asigners\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\x03 \x01(\bR\tcanManage\x12\x1e\n" +
 	"\vmy_staff_id\x18\x04 \x01(\tR\tmyStaffId\"\xa7\x01\n" +
@@ -3933,42 +3933,42 @@ const file_joseph_documents_v1_documents_proto_rawDesc = "" +
 	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12\x12\n" +
 	"\x04mode\x18\x03 \x01(\tR\x04mode\x12\x1b\n" +
 	"\ttarget_id\x18\x04 \x01(\tR\btargetId\x12\x12\n" +
-	"\x04note\x18\x05 \x01(\tR\x04note\"\xb6\x01\n" +
-	"\x19GenerateSchedulesResponse\x12?\n" +
-	"\bdocument\x18\x01 \x01(\v2#.joseph.documents.v1.IssuedDocumentR\bdocument\x12>\n" +
-	"\aversion\x18\x02 \x01(\v2$.joseph.documents.v1.DocumentVersionR\aversion\x12\x18\n" +
+	"\x04note\x18\x05 \x01(\tR\x04note\"\xb4\x01\n" +
+	"\x19GenerateSchedulesResponse\x12>\n" +
+	"\bdocument\x18\x01 \x01(\v2\".ltedu.documents.v1.IssuedDocumentR\bdocument\x12=\n" +
+	"\aversion\x18\x02 \x01(\v2#.ltedu.documents.v1.DocumentVersionR\aversion\x12\x18\n" +
 	"\acreated\x18\x03 \x01(\bR\acreated\"^\n" +
 	"\x12SignVersionRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"version_id\x18\x02 \x01(\tR\tversionId\"s\n" +
-	"\x13SignVersionResponse\x12>\n" +
-	"\aversion\x18\x01 \x01(\v2$.joseph.documents.v1.DocumentVersionR\aversion\x12\x1c\n" +
+	"version_id\x18\x02 \x01(\tR\tversionId\"r\n" +
+	"\x13SignVersionResponse\x12=\n" +
+	"\aversion\x18\x01 \x01(\v2#.ltedu.documents.v1.DocumentVersionR\aversion\x12\x1c\n" +
 	"\tpublished\x18\x02 \x01(\bR\tpublished\"]\n" +
 	"\x11VersionPdfRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"version_id\x18\x02 \x01(\tR\tversionId\"F\n" +
-	"\x12VersionPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"O\n" +
+	"version_id\x18\x02 \x01(\tR\tversionId\"E\n" +
+	"\x12VersionPdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"O\n" +
 	"\x14TrackDocumentRequest\x12#\n" +
 	"\rtracking_code\x18\x01 \x01(\tR\ftrackingCode\x12\x12\n" +
-	"\x04code\x18\x02 \x01(\tR\x04code\"r\n" +
-	"\x15TrackDocumentResponse\x12?\n" +
-	"\bdocument\x18\x01 \x01(\v2#.joseph.documents.v1.IssuedDocumentR\bdocument\x12\x18\n" +
+	"\x04code\x18\x02 \x01(\tR\x04code\"q\n" +
+	"\x15TrackDocumentResponse\x12>\n" +
+	"\bdocument\x18\x01 \x01(\v2\".ltedu.documents.v1.IssuedDocumentR\bdocument\x12\x18\n" +
 	"\amatched\x18\x02 \x01(\x05R\amatched\"N\n" +
 	"\x0fTrackPdfRequest\x12#\n" +
 	"\rtracking_code\x18\x01 \x01(\tR\ftrackingCode\x12\x16\n" +
-	"\x06number\x18\x02 \x01(\x05R\x06number\"D\n" +
-	"\x10TrackPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"\x81\x01\n" +
+	"\x06number\x18\x02 \x01(\x05R\x06number\"C\n" +
+	"\x10TrackPdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"\x81\x01\n" +
 	"\x18EnrollmentFormPdfRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x02 \x01(\tR\tstudentId\x12\x1b\n" +
-	"\tperiod_id\x18\x03 \x01(\tR\bperiodId\"M\n" +
-	"\x19EnrollmentFormPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"\xb4\x01\n" +
+	"\tperiod_id\x18\x03 \x01(\tR\bperiodId\"L\n" +
+	"\x19EnrollmentFormPdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"\xb4\x01\n" +
 	"\tRollQuery\x12\x1b\n" +
 	"\tperiod_id\x18\x01 \x01(\tR\bperiodId\x12\x19\n" +
 	"\blevel_id\x18\x02 \x01(\tR\alevelId\x12\x19\n" +
@@ -3976,66 +3976,66 @@ const file_joseph_documents_v1_documents_proto_rawDesc = "" +
 	"\n" +
 	"section_id\x18\x04 \x01(\tR\tsectionId\x12#\n" +
 	"\rsiagie_status\x18\x05 \x01(\tR\fsiagieStatus\x12\x10\n" +
-	"\x03all\x18\x06 \x01(\bR\x03all\"s\n" +
+	"\x03all\x18\x06 \x01(\bR\x03all\"r\n" +
 	"\x0eRollPdfRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x126\n" +
-	"\x06filter\x18\x02 \x01(\v2\x1e.joseph.documents.v1.RollQueryR\x06filter\"C\n" +
-	"\x0fRollPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"t\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x125\n" +
+	"\x06filter\x18\x02 \x01(\v2\x1d.ltedu.documents.v1.RollQueryR\x06filter\"B\n" +
+	"\x0fRollPdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"s\n" +
 	"\x0fRollXlsxRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x126\n" +
-	"\x06filter\x18\x02 \x01(\v2\x1e.joseph.documents.v1.RollQueryR\x06filter\"D\n" +
-	"\x10RollXlsxResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"\x9b\x01\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x125\n" +
+	"\x06filter\x18\x02 \x01(\v2\x1d.ltedu.documents.v1.RollQueryR\x06filter\"C\n" +
+	"\x10RollXlsxResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"\x9a\x01\n" +
 	"\x11SiagieXlsxRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x126\n" +
-	"\x06filter\x18\x02 \x01(\v2\x1e.joseph.documents.v1.RollQueryR\x06filter\x12#\n" +
-	"\rmark_exported\x18\x03 \x01(\bR\fmarkExported\"^\n" +
-	"\x12SiagieXlsxResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\x12\x16\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x125\n" +
+	"\x06filter\x18\x02 \x01(\v2\x1d.ltedu.documents.v1.RollQueryR\x06filter\x12#\n" +
+	"\rmark_exported\x18\x03 \x01(\bR\fmarkExported\"]\n" +
+	"\x12SiagieXlsxResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\x12\x16\n" +
 	"\x06marked\x18\x02 \x01(\x05R\x06marked\"\x7f\n" +
 	"\x1bGeneratePlacementActRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12!\n" +
 	"\fplacement_id\x18\x02 \x01(\tR\vplacementId\x12\x12\n" +
-	"\x04note\x18\x03 \x01(\tR\x04note\"y\n" +
-	"\x1cGeneratePlacementActResponse\x12>\n" +
-	"\aversion\x18\x01 \x01(\v2$.joseph.documents.v1.DocumentVersionR\aversion\x12\x19\n" +
+	"\x04note\x18\x03 \x01(\tR\x04note\"x\n" +
+	"\x1cGeneratePlacementActResponse\x12=\n" +
+	"\aversion\x18\x01 \x01(\v2#.ltedu.documents.v1.DocumentVersionR\aversion\x12\x19\n" +
 	"\bact_code\x18\x02 \x01(\tR\aactCode\"f\n" +
 	"\x16PlacementActPdfRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12!\n" +
-	"\fplacement_id\x18\x02 \x01(\tR\vplacementId\"K\n" +
-	"\x17PlacementActPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"`\n" +
+	"\fplacement_id\x18\x02 \x01(\tR\vplacementId\"J\n" +
+	"\x17PlacementActPdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"`\n" +
 	"\x14PermanencePdfRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"section_id\x18\x02 \x01(\tR\tsectionId\"I\n" +
-	"\x15PermanencePdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"a\n" +
+	"section_id\x18\x02 \x01(\tR\tsectionId\"H\n" +
+	"\x15PermanencePdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"a\n" +
 	"\x15PermanenceXlsxRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"section_id\x18\x02 \x01(\tR\tsectionId\"J\n" +
-	"\x16PermanenceXlsxResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"v\n" +
+	"section_id\x18\x02 \x01(\tR\tsectionId\"I\n" +
+	"\x16PermanenceXlsxResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"v\n" +
 	"\x18GenerateRecordActRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
 	"\trecord_id\x18\x02 \x01(\tR\brecordId\x12\x12\n" +
-	"\x04note\x18\x03 \x01(\tR\x04note\"[\n" +
-	"\x19GenerateRecordActResponse\x12>\n" +
-	"\aversion\x18\x01 \x01(\v2$.joseph.documents.v1.DocumentVersionR\aversion\"]\n" +
+	"\x04note\x18\x03 \x01(\tR\x04note\"Z\n" +
+	"\x19GenerateRecordActResponse\x12=\n" +
+	"\aversion\x18\x01 \x01(\v2#.ltedu.documents.v1.DocumentVersionR\aversion\"]\n" +
 	"\x13RecordActPdfRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
-	"\trecord_id\x18\x02 \x01(\tR\brecordId\"H\n" +
-	"\x14RecordActPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"\x88\x01\n" +
+	"\trecord_id\x18\x02 \x01(\tR\brecordId\"G\n" +
+	"\x14RecordActPdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"\x88\x01\n" +
 	"\x17SiagieGradesXlsxRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x02 \x01(\tR\tsectionId\x12#\n" +
-	"\rmark_exported\x18\x03 \x01(\bR\fmarkExported\"d\n" +
-	"\x18SiagieGradesXlsxResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\x12\x16\n" +
+	"\rmark_exported\x18\x03 \x01(\bR\fmarkExported\"c\n" +
+	"\x18SiagieGradesXlsxResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\x12\x16\n" +
 	"\x06marked\x18\x02 \x01(\x05R\x06marked\"\xd4\x03\n" +
 	"\x12StudentCertificate\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
@@ -4084,11 +4084,11 @@ const file_joseph_documents_v1_documents_proto_rawDesc = "" +
 	"\x1dGetStudentCertificatesRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x02 \x01(\tR\tstudentId\"\x88\x02\n" +
-	"\x1eGetStudentCertificatesResponse\x12K\n" +
-	"\fcertificates\x18\x01 \x03(\v2'.joseph.documents.v1.StudentCertificateR\fcertificates\x12:\n" +
-	"\astudies\x18\x02 \x03(\v2 .joseph.documents.v1.StudyRecordR\astudies\x12>\n" +
-	"\tconcluded\x18\x03 \x03(\v2 .joseph.documents.v1.StudyRecordR\tconcluded\x12\x1d\n" +
+	"student_id\x18\x02 \x01(\tR\tstudentId\"\x85\x02\n" +
+	"\x1eGetStudentCertificatesResponse\x12J\n" +
+	"\fcertificates\x18\x01 \x03(\v2&.ltedu.documents.v1.StudentCertificateR\fcertificates\x129\n" +
+	"\astudies\x18\x02 \x03(\v2\x1f.ltedu.documents.v1.StudyRecordR\astudies\x12=\n" +
+	"\tconcluded\x18\x03 \x03(\v2\x1f.ltedu.documents.v1.StudyRecordR\tconcluded\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\x04 \x01(\bR\tcanManage\"\xe0\x01\n" +
 	"\x1aGenerateCertificateRequest\x12)\n" +
@@ -4099,220 +4099,220 @@ const file_joseph_documents_v1_documents_proto_rawDesc = "" +
 	"\tperiod_id\x18\x04 \x01(\tR\bperiodId\x12\x19\n" +
 	"\blevel_id\x18\x05 \x01(\tR\alevelId\x12\x18\n" +
 	"\apurpose\x18\x06 \x01(\tR\apurpose\x12\x12\n" +
-	"\x04note\x18\a \x01(\tR\x04note\"\xa8\x01\n" +
-	"\x1bGenerateCertificateResponse\x12I\n" +
-	"\vcertificate\x18\x01 \x01(\v2'.joseph.documents.v1.StudentCertificateR\vcertificate\x12>\n" +
-	"\aversion\x18\x02 \x01(\v2$.joseph.documents.v1.DocumentVersionR\aversion\"i\n" +
+	"\x04note\x18\a \x01(\tR\x04note\"\xa6\x01\n" +
+	"\x1bGenerateCertificateResponse\x12H\n" +
+	"\vcertificate\x18\x01 \x01(\v2&.ltedu.documents.v1.StudentCertificateR\vcertificate\x12=\n" +
+	"\aversion\x18\x02 \x01(\v2#.ltedu.documents.v1.DocumentVersionR\aversion\"i\n" +
 	"\x15CertificatePdfRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12%\n" +
-	"\x0ecertificate_id\x18\x02 \x01(\tR\rcertificateId\"J\n" +
-	"\x16CertificatePdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file2\xd3\x16\n" +
-	"\x10DocumentsService\x12i\n" +
-	"\x0eReportCardsPdf\x12*.joseph.documents.v1.ReportCardsPdfRequest\x1a+.joseph.documents.v1.ReportCardsPdfResponse\x12c\n" +
-	"\fSchedulesPdf\x12(.joseph.documents.v1.SchedulesPdfRequest\x1a).joseph.documents.v1.SchedulesPdfResponse\x12Z\n" +
-	"\tRecordPdf\x12%.joseph.documents.v1.RecordPdfRequest\x1a&.joseph.documents.v1.RecordPdfResponse\x12]\n" +
+	"\x0ecertificate_id\x18\x02 \x01(\tR\rcertificateId\"I\n" +
+	"\x16CertificatePdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file2\x9c\x16\n" +
+	"\x10DocumentsService\x12g\n" +
+	"\x0eReportCardsPdf\x12).ltedu.documents.v1.ReportCardsPdfRequest\x1a*.ltedu.documents.v1.ReportCardsPdfResponse\x12a\n" +
+	"\fSchedulesPdf\x12'.ltedu.documents.v1.SchedulesPdfRequest\x1a(.ltedu.documents.v1.SchedulesPdfResponse\x12X\n" +
+	"\tRecordPdf\x12$.ltedu.documents.v1.RecordPdfRequest\x1a%.ltedu.documents.v1.RecordPdfResponse\x12[\n" +
 	"\n" +
-	"ReceiptPdf\x12&.joseph.documents.v1.ReceiptPdfRequest\x1a'.joseph.documents.v1.ReceiptPdfResponse\x12r\n" +
-	"\x11EnrollmentFormPdf\x12-.joseph.documents.v1.EnrollmentFormPdfRequest\x1a..joseph.documents.v1.EnrollmentFormPdfResponse\x12T\n" +
-	"\aRollPdf\x12#.joseph.documents.v1.RollPdfRequest\x1a$.joseph.documents.v1.RollPdfResponse\x12W\n" +
-	"\bRollXlsx\x12$.joseph.documents.v1.RollXlsxRequest\x1a%.joseph.documents.v1.RollXlsxResponse\x12]\n" +
+	"ReceiptPdf\x12%.ltedu.documents.v1.ReceiptPdfRequest\x1a&.ltedu.documents.v1.ReceiptPdfResponse\x12p\n" +
+	"\x11EnrollmentFormPdf\x12,.ltedu.documents.v1.EnrollmentFormPdfRequest\x1a-.ltedu.documents.v1.EnrollmentFormPdfResponse\x12R\n" +
+	"\aRollPdf\x12\".ltedu.documents.v1.RollPdfRequest\x1a#.ltedu.documents.v1.RollPdfResponse\x12U\n" +
+	"\bRollXlsx\x12#.ltedu.documents.v1.RollXlsxRequest\x1a$.ltedu.documents.v1.RollXlsxResponse\x12[\n" +
 	"\n" +
-	"SiagieXlsx\x12&.joseph.documents.v1.SiagieXlsxRequest\x1a'.joseph.documents.v1.SiagieXlsxResponse\x12{\n" +
-	"\x14GeneratePlacementAct\x120.joseph.documents.v1.GeneratePlacementActRequest\x1a1.joseph.documents.v1.GeneratePlacementActResponse\x12l\n" +
-	"\x0fPlacementActPdf\x12+.joseph.documents.v1.PlacementActPdfRequest\x1a,.joseph.documents.v1.PlacementActPdfResponse\x12f\n" +
-	"\rPermanencePdf\x12).joseph.documents.v1.PermanencePdfRequest\x1a*.joseph.documents.v1.PermanencePdfResponse\x12i\n" +
-	"\x0ePermanenceXlsx\x12*.joseph.documents.v1.PermanenceXlsxRequest\x1a+.joseph.documents.v1.PermanenceXlsxResponse\x12r\n" +
-	"\x11GenerateRecordAct\x12-.joseph.documents.v1.GenerateRecordActRequest\x1a..joseph.documents.v1.GenerateRecordActResponse\x12c\n" +
-	"\fRecordActPdf\x12(.joseph.documents.v1.RecordActPdfRequest\x1a).joseph.documents.v1.RecordActPdfResponse\x12o\n" +
-	"\x10SiagieGradesXlsx\x12,.joseph.documents.v1.SiagieGradesXlsxRequest\x1a-.joseph.documents.v1.SiagieGradesXlsxResponse\x12\x81\x01\n" +
-	"\x16GetStudentCertificates\x122.joseph.documents.v1.GetStudentCertificatesRequest\x1a3.joseph.documents.v1.GetStudentCertificatesResponse\x12x\n" +
-	"\x13GenerateCertificate\x12/.joseph.documents.v1.GenerateCertificateRequest\x1a0.joseph.documents.v1.GenerateCertificateResponse\x12i\n" +
-	"\x0eCertificatePdf\x12*.joseph.documents.v1.CertificatePdfRequest\x1a+.joseph.documents.v1.CertificatePdfResponse\x12f\n" +
-	"\rSchedulesXlsx\x12).joseph.documents.v1.SchedulesXlsxRequest\x1a*.joseph.documents.v1.SchedulesXlsxResponse\x12u\n" +
-	"\x12GetScheduleSigners\x12..joseph.documents.v1.GetScheduleSignersRequest\x1a/.joseph.documents.v1.GetScheduleSignersResponse\x12u\n" +
-	"\x12SetScheduleSigners\x12..joseph.documents.v1.SetScheduleSignersRequest\x1a/.joseph.documents.v1.SetScheduleSignersResponse\x12u\n" +
-	"\x12ListScheduleIssues\x12..joseph.documents.v1.ListScheduleIssuesRequest\x1a/.joseph.documents.v1.ListScheduleIssuesResponse\x12r\n" +
-	"\x11GenerateSchedules\x12-.joseph.documents.v1.GenerateSchedulesRequest\x1a..joseph.documents.v1.GenerateSchedulesResponse\x12`\n" +
-	"\vSignVersion\x12'.joseph.documents.v1.SignVersionRequest\x1a(.joseph.documents.v1.SignVersionResponse\x12]\n" +
+	"SiagieXlsx\x12%.ltedu.documents.v1.SiagieXlsxRequest\x1a&.ltedu.documents.v1.SiagieXlsxResponse\x12y\n" +
+	"\x14GeneratePlacementAct\x12/.ltedu.documents.v1.GeneratePlacementActRequest\x1a0.ltedu.documents.v1.GeneratePlacementActResponse\x12j\n" +
+	"\x0fPlacementActPdf\x12*.ltedu.documents.v1.PlacementActPdfRequest\x1a+.ltedu.documents.v1.PlacementActPdfResponse\x12d\n" +
+	"\rPermanencePdf\x12(.ltedu.documents.v1.PermanencePdfRequest\x1a).ltedu.documents.v1.PermanencePdfResponse\x12g\n" +
+	"\x0ePermanenceXlsx\x12).ltedu.documents.v1.PermanenceXlsxRequest\x1a*.ltedu.documents.v1.PermanenceXlsxResponse\x12p\n" +
+	"\x11GenerateRecordAct\x12,.ltedu.documents.v1.GenerateRecordActRequest\x1a-.ltedu.documents.v1.GenerateRecordActResponse\x12a\n" +
+	"\fRecordActPdf\x12'.ltedu.documents.v1.RecordActPdfRequest\x1a(.ltedu.documents.v1.RecordActPdfResponse\x12m\n" +
+	"\x10SiagieGradesXlsx\x12+.ltedu.documents.v1.SiagieGradesXlsxRequest\x1a,.ltedu.documents.v1.SiagieGradesXlsxResponse\x12\x7f\n" +
+	"\x16GetStudentCertificates\x121.ltedu.documents.v1.GetStudentCertificatesRequest\x1a2.ltedu.documents.v1.GetStudentCertificatesResponse\x12v\n" +
+	"\x13GenerateCertificate\x12..ltedu.documents.v1.GenerateCertificateRequest\x1a/.ltedu.documents.v1.GenerateCertificateResponse\x12g\n" +
+	"\x0eCertificatePdf\x12).ltedu.documents.v1.CertificatePdfRequest\x1a*.ltedu.documents.v1.CertificatePdfResponse\x12d\n" +
+	"\rSchedulesXlsx\x12(.ltedu.documents.v1.SchedulesXlsxRequest\x1a).ltedu.documents.v1.SchedulesXlsxResponse\x12s\n" +
+	"\x12GetScheduleSigners\x12-.ltedu.documents.v1.GetScheduleSignersRequest\x1a..ltedu.documents.v1.GetScheduleSignersResponse\x12s\n" +
+	"\x12SetScheduleSigners\x12-.ltedu.documents.v1.SetScheduleSignersRequest\x1a..ltedu.documents.v1.SetScheduleSignersResponse\x12s\n" +
+	"\x12ListScheduleIssues\x12-.ltedu.documents.v1.ListScheduleIssuesRequest\x1a..ltedu.documents.v1.ListScheduleIssuesResponse\x12p\n" +
+	"\x11GenerateSchedules\x12,.ltedu.documents.v1.GenerateSchedulesRequest\x1a-.ltedu.documents.v1.GenerateSchedulesResponse\x12^\n" +
+	"\vSignVersion\x12&.ltedu.documents.v1.SignVersionRequest\x1a'.ltedu.documents.v1.SignVersionResponse\x12[\n" +
 	"\n" +
-	"VersionPdf\x12&.joseph.documents.v1.VersionPdfRequest\x1a'.joseph.documents.v1.VersionPdfResponse\x12f\n" +
-	"\rTrackDocument\x12).joseph.documents.v1.TrackDocumentRequest\x1a*.joseph.documents.v1.TrackDocumentResponse\x12W\n" +
-	"\bTrackPdf\x12$.joseph.documents.v1.TrackPdfRequest\x1a%.joseph.documents.v1.TrackPdfResponseB?Z=api/internal/adapter/inbound/grpc/gen/documentsv1;documentsv1b\x06proto3"
+	"VersionPdf\x12%.ltedu.documents.v1.VersionPdfRequest\x1a&.ltedu.documents.v1.VersionPdfResponse\x12d\n" +
+	"\rTrackDocument\x12(.ltedu.documents.v1.TrackDocumentRequest\x1a).ltedu.documents.v1.TrackDocumentResponse\x12U\n" +
+	"\bTrackPdf\x12#.ltedu.documents.v1.TrackPdfRequest\x1a$.ltedu.documents.v1.TrackPdfResponseB?Z=api/internal/adapter/inbound/grpc/gen/documentsv1;documentsv1b\x06proto3"
 
 var (
-	file_joseph_documents_v1_documents_proto_rawDescOnce sync.Once
-	file_joseph_documents_v1_documents_proto_rawDescData []byte
+	file_ltedu_documents_v1_documents_proto_rawDescOnce sync.Once
+	file_ltedu_documents_v1_documents_proto_rawDescData []byte
 )
 
-func file_joseph_documents_v1_documents_proto_rawDescGZIP() []byte {
-	file_joseph_documents_v1_documents_proto_rawDescOnce.Do(func() {
-		file_joseph_documents_v1_documents_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_documents_v1_documents_proto_rawDesc), len(file_joseph_documents_v1_documents_proto_rawDesc)))
+func file_ltedu_documents_v1_documents_proto_rawDescGZIP() []byte {
+	file_ltedu_documents_v1_documents_proto_rawDescOnce.Do(func() {
+		file_ltedu_documents_v1_documents_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_documents_v1_documents_proto_rawDesc), len(file_ltedu_documents_v1_documents_proto_rawDesc)))
 	})
-	return file_joseph_documents_v1_documents_proto_rawDescData
+	return file_ltedu_documents_v1_documents_proto_rawDescData
 }
 
-var file_joseph_documents_v1_documents_proto_msgTypes = make([]protoimpl.MessageInfo, 63)
-var file_joseph_documents_v1_documents_proto_goTypes = []any{
-	(*PdfFile)(nil),                        // 0: joseph.documents.v1.PdfFile
-	(*ReportCardsPdfRequest)(nil),          // 1: joseph.documents.v1.ReportCardsPdfRequest
-	(*SchedulesPdfRequest)(nil),            // 2: joseph.documents.v1.SchedulesPdfRequest
-	(*RecordPdfRequest)(nil),               // 3: joseph.documents.v1.RecordPdfRequest
-	(*ReceiptPdfRequest)(nil),              // 4: joseph.documents.v1.ReceiptPdfRequest
-	(*ReportCardsPdfResponse)(nil),         // 5: joseph.documents.v1.ReportCardsPdfResponse
-	(*SchedulesPdfResponse)(nil),           // 6: joseph.documents.v1.SchedulesPdfResponse
-	(*RecordPdfResponse)(nil),              // 7: joseph.documents.v1.RecordPdfResponse
-	(*ReceiptPdfResponse)(nil),             // 8: joseph.documents.v1.ReceiptPdfResponse
-	(*SchedulesXlsxRequest)(nil),           // 9: joseph.documents.v1.SchedulesXlsxRequest
-	(*SchedulesXlsxResponse)(nil),          // 10: joseph.documents.v1.SchedulesXlsxResponse
-	(*Signer)(nil),                         // 11: joseph.documents.v1.Signer
-	(*GetScheduleSignersRequest)(nil),      // 12: joseph.documents.v1.GetScheduleSignersRequest
-	(*GetScheduleSignersResponse)(nil),     // 13: joseph.documents.v1.GetScheduleSignersResponse
-	(*SetScheduleSignersRequest)(nil),      // 14: joseph.documents.v1.SetScheduleSignersRequest
-	(*SetScheduleSignersResponse)(nil),     // 15: joseph.documents.v1.SetScheduleSignersResponse
-	(*Signature)(nil),                      // 16: joseph.documents.v1.Signature
-	(*DocumentVersion)(nil),                // 17: joseph.documents.v1.DocumentVersion
-	(*DocumentEvent)(nil),                  // 18: joseph.documents.v1.DocumentEvent
-	(*IssuedDocument)(nil),                 // 19: joseph.documents.v1.IssuedDocument
-	(*ListScheduleIssuesRequest)(nil),      // 20: joseph.documents.v1.ListScheduleIssuesRequest
-	(*ListScheduleIssuesResponse)(nil),     // 21: joseph.documents.v1.ListScheduleIssuesResponse
-	(*GenerateSchedulesRequest)(nil),       // 22: joseph.documents.v1.GenerateSchedulesRequest
-	(*GenerateSchedulesResponse)(nil),      // 23: joseph.documents.v1.GenerateSchedulesResponse
-	(*SignVersionRequest)(nil),             // 24: joseph.documents.v1.SignVersionRequest
-	(*SignVersionResponse)(nil),            // 25: joseph.documents.v1.SignVersionResponse
-	(*VersionPdfRequest)(nil),              // 26: joseph.documents.v1.VersionPdfRequest
-	(*VersionPdfResponse)(nil),             // 27: joseph.documents.v1.VersionPdfResponse
-	(*TrackDocumentRequest)(nil),           // 28: joseph.documents.v1.TrackDocumentRequest
-	(*TrackDocumentResponse)(nil),          // 29: joseph.documents.v1.TrackDocumentResponse
-	(*TrackPdfRequest)(nil),                // 30: joseph.documents.v1.TrackPdfRequest
-	(*TrackPdfResponse)(nil),               // 31: joseph.documents.v1.TrackPdfResponse
-	(*EnrollmentFormPdfRequest)(nil),       // 32: joseph.documents.v1.EnrollmentFormPdfRequest
-	(*EnrollmentFormPdfResponse)(nil),      // 33: joseph.documents.v1.EnrollmentFormPdfResponse
-	(*RollQuery)(nil),                      // 34: joseph.documents.v1.RollQuery
-	(*RollPdfRequest)(nil),                 // 35: joseph.documents.v1.RollPdfRequest
-	(*RollPdfResponse)(nil),                // 36: joseph.documents.v1.RollPdfResponse
-	(*RollXlsxRequest)(nil),                // 37: joseph.documents.v1.RollXlsxRequest
-	(*RollXlsxResponse)(nil),               // 38: joseph.documents.v1.RollXlsxResponse
-	(*SiagieXlsxRequest)(nil),              // 39: joseph.documents.v1.SiagieXlsxRequest
-	(*SiagieXlsxResponse)(nil),             // 40: joseph.documents.v1.SiagieXlsxResponse
-	(*GeneratePlacementActRequest)(nil),    // 41: joseph.documents.v1.GeneratePlacementActRequest
-	(*GeneratePlacementActResponse)(nil),   // 42: joseph.documents.v1.GeneratePlacementActResponse
-	(*PlacementActPdfRequest)(nil),         // 43: joseph.documents.v1.PlacementActPdfRequest
-	(*PlacementActPdfResponse)(nil),        // 44: joseph.documents.v1.PlacementActPdfResponse
-	(*PermanencePdfRequest)(nil),           // 45: joseph.documents.v1.PermanencePdfRequest
-	(*PermanencePdfResponse)(nil),          // 46: joseph.documents.v1.PermanencePdfResponse
-	(*PermanenceXlsxRequest)(nil),          // 47: joseph.documents.v1.PermanenceXlsxRequest
-	(*PermanenceXlsxResponse)(nil),         // 48: joseph.documents.v1.PermanenceXlsxResponse
-	(*GenerateRecordActRequest)(nil),       // 49: joseph.documents.v1.GenerateRecordActRequest
-	(*GenerateRecordActResponse)(nil),      // 50: joseph.documents.v1.GenerateRecordActResponse
-	(*RecordActPdfRequest)(nil),            // 51: joseph.documents.v1.RecordActPdfRequest
-	(*RecordActPdfResponse)(nil),           // 52: joseph.documents.v1.RecordActPdfResponse
-	(*SiagieGradesXlsxRequest)(nil),        // 53: joseph.documents.v1.SiagieGradesXlsxRequest
-	(*SiagieGradesXlsxResponse)(nil),       // 54: joseph.documents.v1.SiagieGradesXlsxResponse
-	(*StudentCertificate)(nil),             // 55: joseph.documents.v1.StudentCertificate
-	(*StudyRecord)(nil),                    // 56: joseph.documents.v1.StudyRecord
-	(*GetStudentCertificatesRequest)(nil),  // 57: joseph.documents.v1.GetStudentCertificatesRequest
-	(*GetStudentCertificatesResponse)(nil), // 58: joseph.documents.v1.GetStudentCertificatesResponse
-	(*GenerateCertificateRequest)(nil),     // 59: joseph.documents.v1.GenerateCertificateRequest
-	(*GenerateCertificateResponse)(nil),    // 60: joseph.documents.v1.GenerateCertificateResponse
-	(*CertificatePdfRequest)(nil),          // 61: joseph.documents.v1.CertificatePdfRequest
-	(*CertificatePdfResponse)(nil),         // 62: joseph.documents.v1.CertificatePdfResponse
+var file_ltedu_documents_v1_documents_proto_msgTypes = make([]protoimpl.MessageInfo, 63)
+var file_ltedu_documents_v1_documents_proto_goTypes = []any{
+	(*PdfFile)(nil),                        // 0: ltedu.documents.v1.PdfFile
+	(*ReportCardsPdfRequest)(nil),          // 1: ltedu.documents.v1.ReportCardsPdfRequest
+	(*SchedulesPdfRequest)(nil),            // 2: ltedu.documents.v1.SchedulesPdfRequest
+	(*RecordPdfRequest)(nil),               // 3: ltedu.documents.v1.RecordPdfRequest
+	(*ReceiptPdfRequest)(nil),              // 4: ltedu.documents.v1.ReceiptPdfRequest
+	(*ReportCardsPdfResponse)(nil),         // 5: ltedu.documents.v1.ReportCardsPdfResponse
+	(*SchedulesPdfResponse)(nil),           // 6: ltedu.documents.v1.SchedulesPdfResponse
+	(*RecordPdfResponse)(nil),              // 7: ltedu.documents.v1.RecordPdfResponse
+	(*ReceiptPdfResponse)(nil),             // 8: ltedu.documents.v1.ReceiptPdfResponse
+	(*SchedulesXlsxRequest)(nil),           // 9: ltedu.documents.v1.SchedulesXlsxRequest
+	(*SchedulesXlsxResponse)(nil),          // 10: ltedu.documents.v1.SchedulesXlsxResponse
+	(*Signer)(nil),                         // 11: ltedu.documents.v1.Signer
+	(*GetScheduleSignersRequest)(nil),      // 12: ltedu.documents.v1.GetScheduleSignersRequest
+	(*GetScheduleSignersResponse)(nil),     // 13: ltedu.documents.v1.GetScheduleSignersResponse
+	(*SetScheduleSignersRequest)(nil),      // 14: ltedu.documents.v1.SetScheduleSignersRequest
+	(*SetScheduleSignersResponse)(nil),     // 15: ltedu.documents.v1.SetScheduleSignersResponse
+	(*Signature)(nil),                      // 16: ltedu.documents.v1.Signature
+	(*DocumentVersion)(nil),                // 17: ltedu.documents.v1.DocumentVersion
+	(*DocumentEvent)(nil),                  // 18: ltedu.documents.v1.DocumentEvent
+	(*IssuedDocument)(nil),                 // 19: ltedu.documents.v1.IssuedDocument
+	(*ListScheduleIssuesRequest)(nil),      // 20: ltedu.documents.v1.ListScheduleIssuesRequest
+	(*ListScheduleIssuesResponse)(nil),     // 21: ltedu.documents.v1.ListScheduleIssuesResponse
+	(*GenerateSchedulesRequest)(nil),       // 22: ltedu.documents.v1.GenerateSchedulesRequest
+	(*GenerateSchedulesResponse)(nil),      // 23: ltedu.documents.v1.GenerateSchedulesResponse
+	(*SignVersionRequest)(nil),             // 24: ltedu.documents.v1.SignVersionRequest
+	(*SignVersionResponse)(nil),            // 25: ltedu.documents.v1.SignVersionResponse
+	(*VersionPdfRequest)(nil),              // 26: ltedu.documents.v1.VersionPdfRequest
+	(*VersionPdfResponse)(nil),             // 27: ltedu.documents.v1.VersionPdfResponse
+	(*TrackDocumentRequest)(nil),           // 28: ltedu.documents.v1.TrackDocumentRequest
+	(*TrackDocumentResponse)(nil),          // 29: ltedu.documents.v1.TrackDocumentResponse
+	(*TrackPdfRequest)(nil),                // 30: ltedu.documents.v1.TrackPdfRequest
+	(*TrackPdfResponse)(nil),               // 31: ltedu.documents.v1.TrackPdfResponse
+	(*EnrollmentFormPdfRequest)(nil),       // 32: ltedu.documents.v1.EnrollmentFormPdfRequest
+	(*EnrollmentFormPdfResponse)(nil),      // 33: ltedu.documents.v1.EnrollmentFormPdfResponse
+	(*RollQuery)(nil),                      // 34: ltedu.documents.v1.RollQuery
+	(*RollPdfRequest)(nil),                 // 35: ltedu.documents.v1.RollPdfRequest
+	(*RollPdfResponse)(nil),                // 36: ltedu.documents.v1.RollPdfResponse
+	(*RollXlsxRequest)(nil),                // 37: ltedu.documents.v1.RollXlsxRequest
+	(*RollXlsxResponse)(nil),               // 38: ltedu.documents.v1.RollXlsxResponse
+	(*SiagieXlsxRequest)(nil),              // 39: ltedu.documents.v1.SiagieXlsxRequest
+	(*SiagieXlsxResponse)(nil),             // 40: ltedu.documents.v1.SiagieXlsxResponse
+	(*GeneratePlacementActRequest)(nil),    // 41: ltedu.documents.v1.GeneratePlacementActRequest
+	(*GeneratePlacementActResponse)(nil),   // 42: ltedu.documents.v1.GeneratePlacementActResponse
+	(*PlacementActPdfRequest)(nil),         // 43: ltedu.documents.v1.PlacementActPdfRequest
+	(*PlacementActPdfResponse)(nil),        // 44: ltedu.documents.v1.PlacementActPdfResponse
+	(*PermanencePdfRequest)(nil),           // 45: ltedu.documents.v1.PermanencePdfRequest
+	(*PermanencePdfResponse)(nil),          // 46: ltedu.documents.v1.PermanencePdfResponse
+	(*PermanenceXlsxRequest)(nil),          // 47: ltedu.documents.v1.PermanenceXlsxRequest
+	(*PermanenceXlsxResponse)(nil),         // 48: ltedu.documents.v1.PermanenceXlsxResponse
+	(*GenerateRecordActRequest)(nil),       // 49: ltedu.documents.v1.GenerateRecordActRequest
+	(*GenerateRecordActResponse)(nil),      // 50: ltedu.documents.v1.GenerateRecordActResponse
+	(*RecordActPdfRequest)(nil),            // 51: ltedu.documents.v1.RecordActPdfRequest
+	(*RecordActPdfResponse)(nil),           // 52: ltedu.documents.v1.RecordActPdfResponse
+	(*SiagieGradesXlsxRequest)(nil),        // 53: ltedu.documents.v1.SiagieGradesXlsxRequest
+	(*SiagieGradesXlsxResponse)(nil),       // 54: ltedu.documents.v1.SiagieGradesXlsxResponse
+	(*StudentCertificate)(nil),             // 55: ltedu.documents.v1.StudentCertificate
+	(*StudyRecord)(nil),                    // 56: ltedu.documents.v1.StudyRecord
+	(*GetStudentCertificatesRequest)(nil),  // 57: ltedu.documents.v1.GetStudentCertificatesRequest
+	(*GetStudentCertificatesResponse)(nil), // 58: ltedu.documents.v1.GetStudentCertificatesResponse
+	(*GenerateCertificateRequest)(nil),     // 59: ltedu.documents.v1.GenerateCertificateRequest
+	(*GenerateCertificateResponse)(nil),    // 60: ltedu.documents.v1.GenerateCertificateResponse
+	(*CertificatePdfRequest)(nil),          // 61: ltedu.documents.v1.CertificatePdfRequest
+	(*CertificatePdfResponse)(nil),         // 62: ltedu.documents.v1.CertificatePdfResponse
 }
-var file_joseph_documents_v1_documents_proto_depIdxs = []int32{
-	0,  // 0: joseph.documents.v1.ReportCardsPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	0,  // 1: joseph.documents.v1.SchedulesPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	0,  // 2: joseph.documents.v1.RecordPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	0,  // 3: joseph.documents.v1.ReceiptPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	0,  // 4: joseph.documents.v1.SchedulesXlsxResponse.file:type_name -> joseph.documents.v1.PdfFile
-	11, // 5: joseph.documents.v1.GetScheduleSignersResponse.signers:type_name -> joseph.documents.v1.Signer
-	11, // 6: joseph.documents.v1.GetScheduleSignersResponse.candidates:type_name -> joseph.documents.v1.Signer
-	11, // 7: joseph.documents.v1.SetScheduleSignersRequest.signers:type_name -> joseph.documents.v1.Signer
-	11, // 8: joseph.documents.v1.SetScheduleSignersResponse.signers:type_name -> joseph.documents.v1.Signer
-	16, // 9: joseph.documents.v1.DocumentVersion.signatures:type_name -> joseph.documents.v1.Signature
-	17, // 10: joseph.documents.v1.IssuedDocument.versions:type_name -> joseph.documents.v1.DocumentVersion
-	18, // 11: joseph.documents.v1.IssuedDocument.events:type_name -> joseph.documents.v1.DocumentEvent
-	19, // 12: joseph.documents.v1.ListScheduleIssuesResponse.documents:type_name -> joseph.documents.v1.IssuedDocument
-	11, // 13: joseph.documents.v1.ListScheduleIssuesResponse.signers:type_name -> joseph.documents.v1.Signer
-	19, // 14: joseph.documents.v1.GenerateSchedulesResponse.document:type_name -> joseph.documents.v1.IssuedDocument
-	17, // 15: joseph.documents.v1.GenerateSchedulesResponse.version:type_name -> joseph.documents.v1.DocumentVersion
-	17, // 16: joseph.documents.v1.SignVersionResponse.version:type_name -> joseph.documents.v1.DocumentVersion
-	0,  // 17: joseph.documents.v1.VersionPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	19, // 18: joseph.documents.v1.TrackDocumentResponse.document:type_name -> joseph.documents.v1.IssuedDocument
-	0,  // 19: joseph.documents.v1.TrackPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	0,  // 20: joseph.documents.v1.EnrollmentFormPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	34, // 21: joseph.documents.v1.RollPdfRequest.filter:type_name -> joseph.documents.v1.RollQuery
-	0,  // 22: joseph.documents.v1.RollPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	34, // 23: joseph.documents.v1.RollXlsxRequest.filter:type_name -> joseph.documents.v1.RollQuery
-	0,  // 24: joseph.documents.v1.RollXlsxResponse.file:type_name -> joseph.documents.v1.PdfFile
-	34, // 25: joseph.documents.v1.SiagieXlsxRequest.filter:type_name -> joseph.documents.v1.RollQuery
-	0,  // 26: joseph.documents.v1.SiagieXlsxResponse.file:type_name -> joseph.documents.v1.PdfFile
-	17, // 27: joseph.documents.v1.GeneratePlacementActResponse.version:type_name -> joseph.documents.v1.DocumentVersion
-	0,  // 28: joseph.documents.v1.PlacementActPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	0,  // 29: joseph.documents.v1.PermanencePdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	0,  // 30: joseph.documents.v1.PermanenceXlsxResponse.file:type_name -> joseph.documents.v1.PdfFile
-	17, // 31: joseph.documents.v1.GenerateRecordActResponse.version:type_name -> joseph.documents.v1.DocumentVersion
-	0,  // 32: joseph.documents.v1.RecordActPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	0,  // 33: joseph.documents.v1.SiagieGradesXlsxResponse.file:type_name -> joseph.documents.v1.PdfFile
-	55, // 34: joseph.documents.v1.GetStudentCertificatesResponse.certificates:type_name -> joseph.documents.v1.StudentCertificate
-	56, // 35: joseph.documents.v1.GetStudentCertificatesResponse.studies:type_name -> joseph.documents.v1.StudyRecord
-	56, // 36: joseph.documents.v1.GetStudentCertificatesResponse.concluded:type_name -> joseph.documents.v1.StudyRecord
-	55, // 37: joseph.documents.v1.GenerateCertificateResponse.certificate:type_name -> joseph.documents.v1.StudentCertificate
-	17, // 38: joseph.documents.v1.GenerateCertificateResponse.version:type_name -> joseph.documents.v1.DocumentVersion
-	0,  // 39: joseph.documents.v1.CertificatePdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	1,  // 40: joseph.documents.v1.DocumentsService.ReportCardsPdf:input_type -> joseph.documents.v1.ReportCardsPdfRequest
-	2,  // 41: joseph.documents.v1.DocumentsService.SchedulesPdf:input_type -> joseph.documents.v1.SchedulesPdfRequest
-	3,  // 42: joseph.documents.v1.DocumentsService.RecordPdf:input_type -> joseph.documents.v1.RecordPdfRequest
-	4,  // 43: joseph.documents.v1.DocumentsService.ReceiptPdf:input_type -> joseph.documents.v1.ReceiptPdfRequest
-	32, // 44: joseph.documents.v1.DocumentsService.EnrollmentFormPdf:input_type -> joseph.documents.v1.EnrollmentFormPdfRequest
-	35, // 45: joseph.documents.v1.DocumentsService.RollPdf:input_type -> joseph.documents.v1.RollPdfRequest
-	37, // 46: joseph.documents.v1.DocumentsService.RollXlsx:input_type -> joseph.documents.v1.RollXlsxRequest
-	39, // 47: joseph.documents.v1.DocumentsService.SiagieXlsx:input_type -> joseph.documents.v1.SiagieXlsxRequest
-	41, // 48: joseph.documents.v1.DocumentsService.GeneratePlacementAct:input_type -> joseph.documents.v1.GeneratePlacementActRequest
-	43, // 49: joseph.documents.v1.DocumentsService.PlacementActPdf:input_type -> joseph.documents.v1.PlacementActPdfRequest
-	45, // 50: joseph.documents.v1.DocumentsService.PermanencePdf:input_type -> joseph.documents.v1.PermanencePdfRequest
-	47, // 51: joseph.documents.v1.DocumentsService.PermanenceXlsx:input_type -> joseph.documents.v1.PermanenceXlsxRequest
-	49, // 52: joseph.documents.v1.DocumentsService.GenerateRecordAct:input_type -> joseph.documents.v1.GenerateRecordActRequest
-	51, // 53: joseph.documents.v1.DocumentsService.RecordActPdf:input_type -> joseph.documents.v1.RecordActPdfRequest
-	53, // 54: joseph.documents.v1.DocumentsService.SiagieGradesXlsx:input_type -> joseph.documents.v1.SiagieGradesXlsxRequest
-	57, // 55: joseph.documents.v1.DocumentsService.GetStudentCertificates:input_type -> joseph.documents.v1.GetStudentCertificatesRequest
-	59, // 56: joseph.documents.v1.DocumentsService.GenerateCertificate:input_type -> joseph.documents.v1.GenerateCertificateRequest
-	61, // 57: joseph.documents.v1.DocumentsService.CertificatePdf:input_type -> joseph.documents.v1.CertificatePdfRequest
-	9,  // 58: joseph.documents.v1.DocumentsService.SchedulesXlsx:input_type -> joseph.documents.v1.SchedulesXlsxRequest
-	12, // 59: joseph.documents.v1.DocumentsService.GetScheduleSigners:input_type -> joseph.documents.v1.GetScheduleSignersRequest
-	14, // 60: joseph.documents.v1.DocumentsService.SetScheduleSigners:input_type -> joseph.documents.v1.SetScheduleSignersRequest
-	20, // 61: joseph.documents.v1.DocumentsService.ListScheduleIssues:input_type -> joseph.documents.v1.ListScheduleIssuesRequest
-	22, // 62: joseph.documents.v1.DocumentsService.GenerateSchedules:input_type -> joseph.documents.v1.GenerateSchedulesRequest
-	24, // 63: joseph.documents.v1.DocumentsService.SignVersion:input_type -> joseph.documents.v1.SignVersionRequest
-	26, // 64: joseph.documents.v1.DocumentsService.VersionPdf:input_type -> joseph.documents.v1.VersionPdfRequest
-	28, // 65: joseph.documents.v1.DocumentsService.TrackDocument:input_type -> joseph.documents.v1.TrackDocumentRequest
-	30, // 66: joseph.documents.v1.DocumentsService.TrackPdf:input_type -> joseph.documents.v1.TrackPdfRequest
-	5,  // 67: joseph.documents.v1.DocumentsService.ReportCardsPdf:output_type -> joseph.documents.v1.ReportCardsPdfResponse
-	6,  // 68: joseph.documents.v1.DocumentsService.SchedulesPdf:output_type -> joseph.documents.v1.SchedulesPdfResponse
-	7,  // 69: joseph.documents.v1.DocumentsService.RecordPdf:output_type -> joseph.documents.v1.RecordPdfResponse
-	8,  // 70: joseph.documents.v1.DocumentsService.ReceiptPdf:output_type -> joseph.documents.v1.ReceiptPdfResponse
-	33, // 71: joseph.documents.v1.DocumentsService.EnrollmentFormPdf:output_type -> joseph.documents.v1.EnrollmentFormPdfResponse
-	36, // 72: joseph.documents.v1.DocumentsService.RollPdf:output_type -> joseph.documents.v1.RollPdfResponse
-	38, // 73: joseph.documents.v1.DocumentsService.RollXlsx:output_type -> joseph.documents.v1.RollXlsxResponse
-	40, // 74: joseph.documents.v1.DocumentsService.SiagieXlsx:output_type -> joseph.documents.v1.SiagieXlsxResponse
-	42, // 75: joseph.documents.v1.DocumentsService.GeneratePlacementAct:output_type -> joseph.documents.v1.GeneratePlacementActResponse
-	44, // 76: joseph.documents.v1.DocumentsService.PlacementActPdf:output_type -> joseph.documents.v1.PlacementActPdfResponse
-	46, // 77: joseph.documents.v1.DocumentsService.PermanencePdf:output_type -> joseph.documents.v1.PermanencePdfResponse
-	48, // 78: joseph.documents.v1.DocumentsService.PermanenceXlsx:output_type -> joseph.documents.v1.PermanenceXlsxResponse
-	50, // 79: joseph.documents.v1.DocumentsService.GenerateRecordAct:output_type -> joseph.documents.v1.GenerateRecordActResponse
-	52, // 80: joseph.documents.v1.DocumentsService.RecordActPdf:output_type -> joseph.documents.v1.RecordActPdfResponse
-	54, // 81: joseph.documents.v1.DocumentsService.SiagieGradesXlsx:output_type -> joseph.documents.v1.SiagieGradesXlsxResponse
-	58, // 82: joseph.documents.v1.DocumentsService.GetStudentCertificates:output_type -> joseph.documents.v1.GetStudentCertificatesResponse
-	60, // 83: joseph.documents.v1.DocumentsService.GenerateCertificate:output_type -> joseph.documents.v1.GenerateCertificateResponse
-	62, // 84: joseph.documents.v1.DocumentsService.CertificatePdf:output_type -> joseph.documents.v1.CertificatePdfResponse
-	10, // 85: joseph.documents.v1.DocumentsService.SchedulesXlsx:output_type -> joseph.documents.v1.SchedulesXlsxResponse
-	13, // 86: joseph.documents.v1.DocumentsService.GetScheduleSigners:output_type -> joseph.documents.v1.GetScheduleSignersResponse
-	15, // 87: joseph.documents.v1.DocumentsService.SetScheduleSigners:output_type -> joseph.documents.v1.SetScheduleSignersResponse
-	21, // 88: joseph.documents.v1.DocumentsService.ListScheduleIssues:output_type -> joseph.documents.v1.ListScheduleIssuesResponse
-	23, // 89: joseph.documents.v1.DocumentsService.GenerateSchedules:output_type -> joseph.documents.v1.GenerateSchedulesResponse
-	25, // 90: joseph.documents.v1.DocumentsService.SignVersion:output_type -> joseph.documents.v1.SignVersionResponse
-	27, // 91: joseph.documents.v1.DocumentsService.VersionPdf:output_type -> joseph.documents.v1.VersionPdfResponse
-	29, // 92: joseph.documents.v1.DocumentsService.TrackDocument:output_type -> joseph.documents.v1.TrackDocumentResponse
-	31, // 93: joseph.documents.v1.DocumentsService.TrackPdf:output_type -> joseph.documents.v1.TrackPdfResponse
+var file_ltedu_documents_v1_documents_proto_depIdxs = []int32{
+	0,  // 0: ltedu.documents.v1.ReportCardsPdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	0,  // 1: ltedu.documents.v1.SchedulesPdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	0,  // 2: ltedu.documents.v1.RecordPdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	0,  // 3: ltedu.documents.v1.ReceiptPdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	0,  // 4: ltedu.documents.v1.SchedulesXlsxResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	11, // 5: ltedu.documents.v1.GetScheduleSignersResponse.signers:type_name -> ltedu.documents.v1.Signer
+	11, // 6: ltedu.documents.v1.GetScheduleSignersResponse.candidates:type_name -> ltedu.documents.v1.Signer
+	11, // 7: ltedu.documents.v1.SetScheduleSignersRequest.signers:type_name -> ltedu.documents.v1.Signer
+	11, // 8: ltedu.documents.v1.SetScheduleSignersResponse.signers:type_name -> ltedu.documents.v1.Signer
+	16, // 9: ltedu.documents.v1.DocumentVersion.signatures:type_name -> ltedu.documents.v1.Signature
+	17, // 10: ltedu.documents.v1.IssuedDocument.versions:type_name -> ltedu.documents.v1.DocumentVersion
+	18, // 11: ltedu.documents.v1.IssuedDocument.events:type_name -> ltedu.documents.v1.DocumentEvent
+	19, // 12: ltedu.documents.v1.ListScheduleIssuesResponse.documents:type_name -> ltedu.documents.v1.IssuedDocument
+	11, // 13: ltedu.documents.v1.ListScheduleIssuesResponse.signers:type_name -> ltedu.documents.v1.Signer
+	19, // 14: ltedu.documents.v1.GenerateSchedulesResponse.document:type_name -> ltedu.documents.v1.IssuedDocument
+	17, // 15: ltedu.documents.v1.GenerateSchedulesResponse.version:type_name -> ltedu.documents.v1.DocumentVersion
+	17, // 16: ltedu.documents.v1.SignVersionResponse.version:type_name -> ltedu.documents.v1.DocumentVersion
+	0,  // 17: ltedu.documents.v1.VersionPdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	19, // 18: ltedu.documents.v1.TrackDocumentResponse.document:type_name -> ltedu.documents.v1.IssuedDocument
+	0,  // 19: ltedu.documents.v1.TrackPdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	0,  // 20: ltedu.documents.v1.EnrollmentFormPdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	34, // 21: ltedu.documents.v1.RollPdfRequest.filter:type_name -> ltedu.documents.v1.RollQuery
+	0,  // 22: ltedu.documents.v1.RollPdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	34, // 23: ltedu.documents.v1.RollXlsxRequest.filter:type_name -> ltedu.documents.v1.RollQuery
+	0,  // 24: ltedu.documents.v1.RollXlsxResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	34, // 25: ltedu.documents.v1.SiagieXlsxRequest.filter:type_name -> ltedu.documents.v1.RollQuery
+	0,  // 26: ltedu.documents.v1.SiagieXlsxResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	17, // 27: ltedu.documents.v1.GeneratePlacementActResponse.version:type_name -> ltedu.documents.v1.DocumentVersion
+	0,  // 28: ltedu.documents.v1.PlacementActPdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	0,  // 29: ltedu.documents.v1.PermanencePdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	0,  // 30: ltedu.documents.v1.PermanenceXlsxResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	17, // 31: ltedu.documents.v1.GenerateRecordActResponse.version:type_name -> ltedu.documents.v1.DocumentVersion
+	0,  // 32: ltedu.documents.v1.RecordActPdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	0,  // 33: ltedu.documents.v1.SiagieGradesXlsxResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	55, // 34: ltedu.documents.v1.GetStudentCertificatesResponse.certificates:type_name -> ltedu.documents.v1.StudentCertificate
+	56, // 35: ltedu.documents.v1.GetStudentCertificatesResponse.studies:type_name -> ltedu.documents.v1.StudyRecord
+	56, // 36: ltedu.documents.v1.GetStudentCertificatesResponse.concluded:type_name -> ltedu.documents.v1.StudyRecord
+	55, // 37: ltedu.documents.v1.GenerateCertificateResponse.certificate:type_name -> ltedu.documents.v1.StudentCertificate
+	17, // 38: ltedu.documents.v1.GenerateCertificateResponse.version:type_name -> ltedu.documents.v1.DocumentVersion
+	0,  // 39: ltedu.documents.v1.CertificatePdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	1,  // 40: ltedu.documents.v1.DocumentsService.ReportCardsPdf:input_type -> ltedu.documents.v1.ReportCardsPdfRequest
+	2,  // 41: ltedu.documents.v1.DocumentsService.SchedulesPdf:input_type -> ltedu.documents.v1.SchedulesPdfRequest
+	3,  // 42: ltedu.documents.v1.DocumentsService.RecordPdf:input_type -> ltedu.documents.v1.RecordPdfRequest
+	4,  // 43: ltedu.documents.v1.DocumentsService.ReceiptPdf:input_type -> ltedu.documents.v1.ReceiptPdfRequest
+	32, // 44: ltedu.documents.v1.DocumentsService.EnrollmentFormPdf:input_type -> ltedu.documents.v1.EnrollmentFormPdfRequest
+	35, // 45: ltedu.documents.v1.DocumentsService.RollPdf:input_type -> ltedu.documents.v1.RollPdfRequest
+	37, // 46: ltedu.documents.v1.DocumentsService.RollXlsx:input_type -> ltedu.documents.v1.RollXlsxRequest
+	39, // 47: ltedu.documents.v1.DocumentsService.SiagieXlsx:input_type -> ltedu.documents.v1.SiagieXlsxRequest
+	41, // 48: ltedu.documents.v1.DocumentsService.GeneratePlacementAct:input_type -> ltedu.documents.v1.GeneratePlacementActRequest
+	43, // 49: ltedu.documents.v1.DocumentsService.PlacementActPdf:input_type -> ltedu.documents.v1.PlacementActPdfRequest
+	45, // 50: ltedu.documents.v1.DocumentsService.PermanencePdf:input_type -> ltedu.documents.v1.PermanencePdfRequest
+	47, // 51: ltedu.documents.v1.DocumentsService.PermanenceXlsx:input_type -> ltedu.documents.v1.PermanenceXlsxRequest
+	49, // 52: ltedu.documents.v1.DocumentsService.GenerateRecordAct:input_type -> ltedu.documents.v1.GenerateRecordActRequest
+	51, // 53: ltedu.documents.v1.DocumentsService.RecordActPdf:input_type -> ltedu.documents.v1.RecordActPdfRequest
+	53, // 54: ltedu.documents.v1.DocumentsService.SiagieGradesXlsx:input_type -> ltedu.documents.v1.SiagieGradesXlsxRequest
+	57, // 55: ltedu.documents.v1.DocumentsService.GetStudentCertificates:input_type -> ltedu.documents.v1.GetStudentCertificatesRequest
+	59, // 56: ltedu.documents.v1.DocumentsService.GenerateCertificate:input_type -> ltedu.documents.v1.GenerateCertificateRequest
+	61, // 57: ltedu.documents.v1.DocumentsService.CertificatePdf:input_type -> ltedu.documents.v1.CertificatePdfRequest
+	9,  // 58: ltedu.documents.v1.DocumentsService.SchedulesXlsx:input_type -> ltedu.documents.v1.SchedulesXlsxRequest
+	12, // 59: ltedu.documents.v1.DocumentsService.GetScheduleSigners:input_type -> ltedu.documents.v1.GetScheduleSignersRequest
+	14, // 60: ltedu.documents.v1.DocumentsService.SetScheduleSigners:input_type -> ltedu.documents.v1.SetScheduleSignersRequest
+	20, // 61: ltedu.documents.v1.DocumentsService.ListScheduleIssues:input_type -> ltedu.documents.v1.ListScheduleIssuesRequest
+	22, // 62: ltedu.documents.v1.DocumentsService.GenerateSchedules:input_type -> ltedu.documents.v1.GenerateSchedulesRequest
+	24, // 63: ltedu.documents.v1.DocumentsService.SignVersion:input_type -> ltedu.documents.v1.SignVersionRequest
+	26, // 64: ltedu.documents.v1.DocumentsService.VersionPdf:input_type -> ltedu.documents.v1.VersionPdfRequest
+	28, // 65: ltedu.documents.v1.DocumentsService.TrackDocument:input_type -> ltedu.documents.v1.TrackDocumentRequest
+	30, // 66: ltedu.documents.v1.DocumentsService.TrackPdf:input_type -> ltedu.documents.v1.TrackPdfRequest
+	5,  // 67: ltedu.documents.v1.DocumentsService.ReportCardsPdf:output_type -> ltedu.documents.v1.ReportCardsPdfResponse
+	6,  // 68: ltedu.documents.v1.DocumentsService.SchedulesPdf:output_type -> ltedu.documents.v1.SchedulesPdfResponse
+	7,  // 69: ltedu.documents.v1.DocumentsService.RecordPdf:output_type -> ltedu.documents.v1.RecordPdfResponse
+	8,  // 70: ltedu.documents.v1.DocumentsService.ReceiptPdf:output_type -> ltedu.documents.v1.ReceiptPdfResponse
+	33, // 71: ltedu.documents.v1.DocumentsService.EnrollmentFormPdf:output_type -> ltedu.documents.v1.EnrollmentFormPdfResponse
+	36, // 72: ltedu.documents.v1.DocumentsService.RollPdf:output_type -> ltedu.documents.v1.RollPdfResponse
+	38, // 73: ltedu.documents.v1.DocumentsService.RollXlsx:output_type -> ltedu.documents.v1.RollXlsxResponse
+	40, // 74: ltedu.documents.v1.DocumentsService.SiagieXlsx:output_type -> ltedu.documents.v1.SiagieXlsxResponse
+	42, // 75: ltedu.documents.v1.DocumentsService.GeneratePlacementAct:output_type -> ltedu.documents.v1.GeneratePlacementActResponse
+	44, // 76: ltedu.documents.v1.DocumentsService.PlacementActPdf:output_type -> ltedu.documents.v1.PlacementActPdfResponse
+	46, // 77: ltedu.documents.v1.DocumentsService.PermanencePdf:output_type -> ltedu.documents.v1.PermanencePdfResponse
+	48, // 78: ltedu.documents.v1.DocumentsService.PermanenceXlsx:output_type -> ltedu.documents.v1.PermanenceXlsxResponse
+	50, // 79: ltedu.documents.v1.DocumentsService.GenerateRecordAct:output_type -> ltedu.documents.v1.GenerateRecordActResponse
+	52, // 80: ltedu.documents.v1.DocumentsService.RecordActPdf:output_type -> ltedu.documents.v1.RecordActPdfResponse
+	54, // 81: ltedu.documents.v1.DocumentsService.SiagieGradesXlsx:output_type -> ltedu.documents.v1.SiagieGradesXlsxResponse
+	58, // 82: ltedu.documents.v1.DocumentsService.GetStudentCertificates:output_type -> ltedu.documents.v1.GetStudentCertificatesResponse
+	60, // 83: ltedu.documents.v1.DocumentsService.GenerateCertificate:output_type -> ltedu.documents.v1.GenerateCertificateResponse
+	62, // 84: ltedu.documents.v1.DocumentsService.CertificatePdf:output_type -> ltedu.documents.v1.CertificatePdfResponse
+	10, // 85: ltedu.documents.v1.DocumentsService.SchedulesXlsx:output_type -> ltedu.documents.v1.SchedulesXlsxResponse
+	13, // 86: ltedu.documents.v1.DocumentsService.GetScheduleSigners:output_type -> ltedu.documents.v1.GetScheduleSignersResponse
+	15, // 87: ltedu.documents.v1.DocumentsService.SetScheduleSigners:output_type -> ltedu.documents.v1.SetScheduleSignersResponse
+	21, // 88: ltedu.documents.v1.DocumentsService.ListScheduleIssues:output_type -> ltedu.documents.v1.ListScheduleIssuesResponse
+	23, // 89: ltedu.documents.v1.DocumentsService.GenerateSchedules:output_type -> ltedu.documents.v1.GenerateSchedulesResponse
+	25, // 90: ltedu.documents.v1.DocumentsService.SignVersion:output_type -> ltedu.documents.v1.SignVersionResponse
+	27, // 91: ltedu.documents.v1.DocumentsService.VersionPdf:output_type -> ltedu.documents.v1.VersionPdfResponse
+	29, // 92: ltedu.documents.v1.DocumentsService.TrackDocument:output_type -> ltedu.documents.v1.TrackDocumentResponse
+	31, // 93: ltedu.documents.v1.DocumentsService.TrackPdf:output_type -> ltedu.documents.v1.TrackPdfResponse
 	67, // [67:94] is the sub-list for method output_type
 	40, // [40:67] is the sub-list for method input_type
 	40, // [40:40] is the sub-list for extension type_name
@@ -4320,26 +4320,26 @@ var file_joseph_documents_v1_documents_proto_depIdxs = []int32{
 	0,  // [0:40] is the sub-list for field type_name
 }
 
-func init() { file_joseph_documents_v1_documents_proto_init() }
-func file_joseph_documents_v1_documents_proto_init() {
-	if File_joseph_documents_v1_documents_proto != nil {
+func init() { file_ltedu_documents_v1_documents_proto_init() }
+func file_ltedu_documents_v1_documents_proto_init() {
+	if File_ltedu_documents_v1_documents_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_documents_v1_documents_proto_rawDesc), len(file_joseph_documents_v1_documents_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_documents_v1_documents_proto_rawDesc), len(file_ltedu_documents_v1_documents_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   63,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_documents_v1_documents_proto_goTypes,
-		DependencyIndexes: file_joseph_documents_v1_documents_proto_depIdxs,
-		MessageInfos:      file_joseph_documents_v1_documents_proto_msgTypes,
+		GoTypes:           file_ltedu_documents_v1_documents_proto_goTypes,
+		DependencyIndexes: file_ltedu_documents_v1_documents_proto_depIdxs,
+		MessageInfos:      file_ltedu_documents_v1_documents_proto_msgTypes,
 	}.Build()
-	File_joseph_documents_v1_documents_proto = out.File
-	file_joseph_documents_v1_documents_proto_goTypes = nil
-	file_joseph_documents_v1_documents_proto_depIdxs = nil
+	File_ltedu_documents_v1_documents_proto = out.File
+	file_ltedu_documents_v1_documents_proto_goTypes = nil
+	file_ltedu_documents_v1_documents_proto_depIdxs = nil
 }

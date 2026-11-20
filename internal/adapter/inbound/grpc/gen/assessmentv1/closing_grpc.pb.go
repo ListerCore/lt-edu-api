@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/assessment/v1/closing.proto
+// source: ltedu/assessment/v1/closing.proto
 
 // Year and semester closing (phase 7 of docs/plan-academico.md). Situations: PRO (promovido), PER (permanece), RR
 // (recuperación pedagógica), PEN (levels missing). IEST unit statuses: approved | recovery | failed | barred
@@ -22,21 +22,21 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ClosingService_GetClosing_FullMethodName         = "/joseph.assessment.v1.ClosingService/GetClosing"
-	ClosingService_GetSectionClosing_FullMethodName  = "/joseph.assessment.v1.ClosingService/GetSectionClosing"
-	ClosingService_DecideSituation_FullMethodName    = "/joseph.assessment.v1.ClosingService/DecideSituation"
-	ClosingService_ConfirmSection_FullMethodName     = "/joseph.assessment.v1.ClosingService/ConfirmSection"
-	ClosingService_SaveRecovery_FullMethodName       = "/joseph.assessment.v1.ClosingService/SaveRecovery"
-	ClosingService_GetUnitClosing_FullMethodName     = "/joseph.assessment.v1.ClosingService/GetUnitClosing"
-	ClosingService_ConfirmUnit_FullMethodName        = "/joseph.assessment.v1.ClosingService/ConfirmUnit"
-	ClosingService_SaveUnitRecovery_FullMethodName   = "/joseph.assessment.v1.ClosingService/SaveUnitRecovery"
-	ClosingService_IssueRecord_FullMethodName        = "/joseph.assessment.v1.ClosingService/IssueRecord"
-	ClosingService_GetRecord_FullMethodName          = "/joseph.assessment.v1.ClosingService/GetRecord"
-	ClosingService_ExportResults_FullMethodName      = "/joseph.assessment.v1.ClosingService/ExportResults"
-	ClosingService_GetPromotionRules_FullMethodName  = "/joseph.assessment.v1.ClosingService/GetPromotionRules"
-	ClosingService_SavePromotionRule_FullMethodName  = "/joseph.assessment.v1.ClosingService/SavePromotionRule"
-	ClosingService_ResetPromotionRule_FullMethodName = "/joseph.assessment.v1.ClosingService/ResetPromotionRule"
-	ClosingService_SetSiagieGrades_FullMethodName    = "/joseph.assessment.v1.ClosingService/SetSiagieGrades"
+	ClosingService_GetClosing_FullMethodName         = "/ltedu.assessment.v1.ClosingService/GetClosing"
+	ClosingService_GetSectionClosing_FullMethodName  = "/ltedu.assessment.v1.ClosingService/GetSectionClosing"
+	ClosingService_DecideSituation_FullMethodName    = "/ltedu.assessment.v1.ClosingService/DecideSituation"
+	ClosingService_ConfirmSection_FullMethodName     = "/ltedu.assessment.v1.ClosingService/ConfirmSection"
+	ClosingService_SaveRecovery_FullMethodName       = "/ltedu.assessment.v1.ClosingService/SaveRecovery"
+	ClosingService_GetUnitClosing_FullMethodName     = "/ltedu.assessment.v1.ClosingService/GetUnitClosing"
+	ClosingService_ConfirmUnit_FullMethodName        = "/ltedu.assessment.v1.ClosingService/ConfirmUnit"
+	ClosingService_SaveUnitRecovery_FullMethodName   = "/ltedu.assessment.v1.ClosingService/SaveUnitRecovery"
+	ClosingService_IssueRecord_FullMethodName        = "/ltedu.assessment.v1.ClosingService/IssueRecord"
+	ClosingService_GetRecord_FullMethodName          = "/ltedu.assessment.v1.ClosingService/GetRecord"
+	ClosingService_ExportResults_FullMethodName      = "/ltedu.assessment.v1.ClosingService/ExportResults"
+	ClosingService_GetPromotionRules_FullMethodName  = "/ltedu.assessment.v1.ClosingService/GetPromotionRules"
+	ClosingService_SavePromotionRule_FullMethodName  = "/ltedu.assessment.v1.ClosingService/SavePromotionRule"
+	ClosingService_ResetPromotionRule_FullMethodName = "/ltedu.assessment.v1.ClosingService/ResetPromotionRule"
+	ClosingService_SetSiagieGrades_FullMethodName    = "/ltedu.assessment.v1.ClosingService/SetSiagieGrades"
 )
 
 // ClosingServiceClient is the client API for ClosingService service.
@@ -603,7 +603,7 @@ func _ClosingService_SetSiagieGrades_Handler(srv interface{}, ctx context.Contex
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ClosingService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.assessment.v1.ClosingService",
+	ServiceName: "ltedu.assessment.v1.ClosingService",
 	HandlerType: (*ClosingServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -668,5 +668,5 @@ var ClosingService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/assessment/v1/closing.proto",
+	Metadata: "ltedu/assessment/v1/closing.proto",
 }

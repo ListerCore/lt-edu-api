@@ -2,10 +2,10 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/people/v1/people.proto
+// source: ltedu/people/v1/people.proto
 
 // Students, guardians and enrollment (phase 3 of docs/plan-academico.md). Same metadata and institution scoping as
-// joseph.academic.v1: every request carries institution_slug. Secretaría, dirección and coordinación change; the
+// ltedu.academic.v1: every request carries institution_slug. Secretaría, dirección and coordinación change; the
 // rest of the staff reads. Dates travel as YYYY-MM-DD
 
 package peoplev1
@@ -46,7 +46,7 @@ type EnrollmentSummary struct {
 
 func (x *EnrollmentSummary) Reset() {
 	*x = EnrollmentSummary{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[0]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -58,7 +58,7 @@ func (x *EnrollmentSummary) String() string {
 func (*EnrollmentSummary) ProtoMessage() {}
 
 func (x *EnrollmentSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[0]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -71,7 +71,7 @@ func (x *EnrollmentSummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EnrollmentSummary.ProtoReflect.Descriptor instead.
 func (*EnrollmentSummary) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *EnrollmentSummary) GetId() string {
@@ -190,7 +190,7 @@ type Student struct {
 
 func (x *Student) Reset() {
 	*x = Student{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[1]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -202,7 +202,7 @@ func (x *Student) String() string {
 func (*Student) ProtoMessage() {}
 
 func (x *Student) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[1]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -215,7 +215,7 @@ func (x *Student) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Student.ProtoReflect.Descriptor instead.
 func (*Student) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Student) GetId() string {
@@ -381,7 +381,7 @@ type Guardian struct {
 
 func (x *Guardian) Reset() {
 	*x = Guardian{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[2]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -393,7 +393,7 @@ func (x *Guardian) String() string {
 func (*Guardian) ProtoMessage() {}
 
 func (x *Guardian) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[2]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -406,7 +406,7 @@ func (x *Guardian) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Guardian.ProtoReflect.Descriptor instead.
 func (*Guardian) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Guardian) GetId() string {
@@ -542,7 +542,7 @@ type Enrollment struct {
 
 func (x *Enrollment) Reset() {
 	*x = Enrollment{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[3]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -554,7 +554,7 @@ func (x *Enrollment) String() string {
 func (*Enrollment) ProtoMessage() {}
 
 func (x *Enrollment) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[3]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -567,7 +567,7 @@ func (x *Enrollment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Enrollment.ProtoReflect.Descriptor instead.
 func (*Enrollment) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Enrollment) GetId() string {
@@ -775,7 +775,7 @@ type Placement struct {
 
 func (x *Placement) Reset() {
 	*x = Placement{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[4]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -787,7 +787,7 @@ func (x *Placement) String() string {
 func (*Placement) ProtoMessage() {}
 
 func (x *Placement) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[4]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -800,7 +800,7 @@ func (x *Placement) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Placement.ProtoReflect.Descriptor instead.
 func (*Placement) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Placement) GetId() string {
@@ -947,7 +947,7 @@ type SectionOccupancy struct {
 
 func (x *SectionOccupancy) Reset() {
 	*x = SectionOccupancy{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[5]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -959,7 +959,7 @@ func (x *SectionOccupancy) String() string {
 func (*SectionOccupancy) ProtoMessage() {}
 
 func (x *SectionOccupancy) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[5]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -972,7 +972,7 @@ func (x *SectionOccupancy) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SectionOccupancy.ProtoReflect.Descriptor instead.
 func (*SectionOccupancy) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SectionOccupancy) GetSectionId() string {
@@ -1018,7 +1018,7 @@ type StudentInput struct {
 
 func (x *StudentInput) Reset() {
 	*x = StudentInput{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[6]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1030,7 +1030,7 @@ func (x *StudentInput) String() string {
 func (*StudentInput) ProtoMessage() {}
 
 func (x *StudentInput) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[6]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1043,7 +1043,7 @@ func (x *StudentInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StudentInput.ProtoReflect.Descriptor instead.
 func (*StudentInput) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *StudentInput) GetCode() string {
@@ -1159,7 +1159,7 @@ type GuardianInput struct {
 
 func (x *GuardianInput) Reset() {
 	*x = GuardianInput{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[7]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1171,7 +1171,7 @@ func (x *GuardianInput) String() string {
 func (*GuardianInput) ProtoMessage() {}
 
 func (x *GuardianInput) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[7]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1184,7 +1184,7 @@ func (x *GuardianInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuardianInput.ProtoReflect.Descriptor instead.
 func (*GuardianInput) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GuardianInput) GetDocumentType() string {
@@ -1248,7 +1248,7 @@ type GuardianLink struct {
 
 func (x *GuardianLink) Reset() {
 	*x = GuardianLink{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[8]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1260,7 +1260,7 @@ func (x *GuardianLink) String() string {
 func (*GuardianLink) ProtoMessage() {}
 
 func (x *GuardianLink) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[8]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1273,7 +1273,7 @@ func (x *GuardianLink) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuardianLink.ProtoReflect.Descriptor instead.
 func (*GuardianLink) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GuardianLink) GetRelationship() string {
@@ -1317,7 +1317,7 @@ type StudentDetail struct {
 
 func (x *StudentDetail) Reset() {
 	*x = StudentDetail{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[9]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1329,7 +1329,7 @@ func (x *StudentDetail) String() string {
 func (*StudentDetail) ProtoMessage() {}
 
 func (x *StudentDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[9]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1342,7 +1342,7 @@ func (x *StudentDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StudentDetail.ProtoReflect.Descriptor instead.
 func (*StudentDetail) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *StudentDetail) GetStudent() *Student {
@@ -1389,7 +1389,7 @@ type GetPeopleContextRequest struct {
 
 func (x *GetPeopleContextRequest) Reset() {
 	*x = GetPeopleContextRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[10]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1401,7 +1401,7 @@ func (x *GetPeopleContextRequest) String() string {
 func (*GetPeopleContextRequest) ProtoMessage() {}
 
 func (x *GetPeopleContextRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[10]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1414,7 +1414,7 @@ func (x *GetPeopleContextRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPeopleContextRequest.ProtoReflect.Descriptor instead.
 func (*GetPeopleContextRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetPeopleContextRequest) GetInstitutionSlug() string {
@@ -1436,7 +1436,7 @@ type GetPeopleContextResponse struct {
 
 func (x *GetPeopleContextResponse) Reset() {
 	*x = GetPeopleContextResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[11]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1448,7 +1448,7 @@ func (x *GetPeopleContextResponse) String() string {
 func (*GetPeopleContextResponse) ProtoMessage() {}
 
 func (x *GetPeopleContextResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[11]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1461,7 +1461,7 @@ func (x *GetPeopleContextResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPeopleContextResponse.ProtoReflect.Descriptor instead.
 func (*GetPeopleContextResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetPeopleContextResponse) GetContext() *academicv1.AcademicContext {
@@ -1512,7 +1512,7 @@ type ListStudentsRequest struct {
 
 func (x *ListStudentsRequest) Reset() {
 	*x = ListStudentsRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[12]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1524,7 +1524,7 @@ func (x *ListStudentsRequest) String() string {
 func (*ListStudentsRequest) ProtoMessage() {}
 
 func (x *ListStudentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[12]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1537,7 +1537,7 @@ func (x *ListStudentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStudentsRequest.ProtoReflect.Descriptor instead.
 func (*ListStudentsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ListStudentsRequest) GetInstitutionSlug() string {
@@ -1620,7 +1620,7 @@ type ListStudentsResponse struct {
 
 func (x *ListStudentsResponse) Reset() {
 	*x = ListStudentsResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[13]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1632,7 +1632,7 @@ func (x *ListStudentsResponse) String() string {
 func (*ListStudentsResponse) ProtoMessage() {}
 
 func (x *ListStudentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[13]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1645,7 +1645,7 @@ func (x *ListStudentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStudentsResponse.ProtoReflect.Descriptor instead.
 func (*ListStudentsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListStudentsResponse) GetStudents() []*Student {
@@ -1672,7 +1672,7 @@ type GetStudentRequest struct {
 
 func (x *GetStudentRequest) Reset() {
 	*x = GetStudentRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[14]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1684,7 +1684,7 @@ func (x *GetStudentRequest) String() string {
 func (*GetStudentRequest) ProtoMessage() {}
 
 func (x *GetStudentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[14]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1697,7 +1697,7 @@ func (x *GetStudentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentRequest.ProtoReflect.Descriptor instead.
 func (*GetStudentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetStudentRequest) GetInstitutionSlug() string {
@@ -1723,7 +1723,7 @@ type GetStudentResponse struct {
 
 func (x *GetStudentResponse) Reset() {
 	*x = GetStudentResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[15]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1735,7 +1735,7 @@ func (x *GetStudentResponse) String() string {
 func (*GetStudentResponse) ProtoMessage() {}
 
 func (x *GetStudentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[15]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1748,7 +1748,7 @@ func (x *GetStudentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentResponse.ProtoReflect.Descriptor instead.
 func (*GetStudentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetStudentResponse) GetDetail() *StudentDetail {
@@ -1768,7 +1768,7 @@ type CreateStudentRequest struct {
 
 func (x *CreateStudentRequest) Reset() {
 	*x = CreateStudentRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[16]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1780,7 +1780,7 @@ func (x *CreateStudentRequest) String() string {
 func (*CreateStudentRequest) ProtoMessage() {}
 
 func (x *CreateStudentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[16]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1793,7 +1793,7 @@ func (x *CreateStudentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateStudentRequest.ProtoReflect.Descriptor instead.
 func (*CreateStudentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *CreateStudentRequest) GetInstitutionSlug() string {
@@ -1819,7 +1819,7 @@ type CreateStudentResponse struct {
 
 func (x *CreateStudentResponse) Reset() {
 	*x = CreateStudentResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[17]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1831,7 +1831,7 @@ func (x *CreateStudentResponse) String() string {
 func (*CreateStudentResponse) ProtoMessage() {}
 
 func (x *CreateStudentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[17]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1844,7 +1844,7 @@ func (x *CreateStudentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateStudentResponse.ProtoReflect.Descriptor instead.
 func (*CreateStudentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *CreateStudentResponse) GetStudent() *Student {
@@ -1865,7 +1865,7 @@ type UpdateStudentRequest struct {
 
 func (x *UpdateStudentRequest) Reset() {
 	*x = UpdateStudentRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[18]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1877,7 +1877,7 @@ func (x *UpdateStudentRequest) String() string {
 func (*UpdateStudentRequest) ProtoMessage() {}
 
 func (x *UpdateStudentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[18]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1890,7 +1890,7 @@ func (x *UpdateStudentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateStudentRequest.ProtoReflect.Descriptor instead.
 func (*UpdateStudentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *UpdateStudentRequest) GetInstitutionSlug() string {
@@ -1923,7 +1923,7 @@ type UpdateStudentResponse struct {
 
 func (x *UpdateStudentResponse) Reset() {
 	*x = UpdateStudentResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[19]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1935,7 +1935,7 @@ func (x *UpdateStudentResponse) String() string {
 func (*UpdateStudentResponse) ProtoMessage() {}
 
 func (x *UpdateStudentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[19]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1948,7 +1948,7 @@ func (x *UpdateStudentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateStudentResponse.ProtoReflect.Descriptor instead.
 func (*UpdateStudentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *UpdateStudentResponse) GetStudent() *Student {
@@ -1968,7 +1968,7 @@ type DeleteStudentRequest struct {
 
 func (x *DeleteStudentRequest) Reset() {
 	*x = DeleteStudentRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[20]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1980,7 +1980,7 @@ func (x *DeleteStudentRequest) String() string {
 func (*DeleteStudentRequest) ProtoMessage() {}
 
 func (x *DeleteStudentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[20]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1993,7 +1993,7 @@ func (x *DeleteStudentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteStudentRequest.ProtoReflect.Descriptor instead.
 func (*DeleteStudentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *DeleteStudentRequest) GetInstitutionSlug() string {
@@ -2018,7 +2018,7 @@ type DeleteStudentResponse struct {
 
 func (x *DeleteStudentResponse) Reset() {
 	*x = DeleteStudentResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[21]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2030,7 +2030,7 @@ func (x *DeleteStudentResponse) String() string {
 func (*DeleteStudentResponse) ProtoMessage() {}
 
 func (x *DeleteStudentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[21]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2043,7 +2043,7 @@ func (x *DeleteStudentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteStudentResponse.ProtoReflect.Descriptor instead.
 func (*DeleteStudentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{21}
 }
 
 type FindGuardianRequest struct {
@@ -2057,7 +2057,7 @@ type FindGuardianRequest struct {
 
 func (x *FindGuardianRequest) Reset() {
 	*x = FindGuardianRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[22]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2069,7 +2069,7 @@ func (x *FindGuardianRequest) String() string {
 func (*FindGuardianRequest) ProtoMessage() {}
 
 func (x *FindGuardianRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[22]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2082,7 +2082,7 @@ func (x *FindGuardianRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FindGuardianRequest.ProtoReflect.Descriptor instead.
 func (*FindGuardianRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *FindGuardianRequest) GetInstitutionSlug() string {
@@ -2115,7 +2115,7 @@ type FindGuardianResponse struct {
 
 func (x *FindGuardianResponse) Reset() {
 	*x = FindGuardianResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[23]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2127,7 +2127,7 @@ func (x *FindGuardianResponse) String() string {
 func (*FindGuardianResponse) ProtoMessage() {}
 
 func (x *FindGuardianResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[23]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2140,7 +2140,7 @@ func (x *FindGuardianResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FindGuardianResponse.ProtoReflect.Descriptor instead.
 func (*FindGuardianResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{23}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *FindGuardianResponse) GetGuardian() *Guardian {
@@ -2164,7 +2164,7 @@ type AddGuardianRequest struct {
 
 func (x *AddGuardianRequest) Reset() {
 	*x = AddGuardianRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[24]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2176,7 +2176,7 @@ func (x *AddGuardianRequest) String() string {
 func (*AddGuardianRequest) ProtoMessage() {}
 
 func (x *AddGuardianRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[24]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2189,7 +2189,7 @@ func (x *AddGuardianRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddGuardianRequest.ProtoReflect.Descriptor instead.
 func (*AddGuardianRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{24}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *AddGuardianRequest) GetInstitutionSlug() string {
@@ -2236,7 +2236,7 @@ type AddGuardianResponse struct {
 
 func (x *AddGuardianResponse) Reset() {
 	*x = AddGuardianResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[25]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2248,7 +2248,7 @@ func (x *AddGuardianResponse) String() string {
 func (*AddGuardianResponse) ProtoMessage() {}
 
 func (x *AddGuardianResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[25]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2261,7 +2261,7 @@ func (x *AddGuardianResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddGuardianResponse.ProtoReflect.Descriptor instead.
 func (*AddGuardianResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{25}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *AddGuardianResponse) GetDetail() *StudentDetail {
@@ -2284,7 +2284,7 @@ type UpdateGuardianRequest struct {
 
 func (x *UpdateGuardianRequest) Reset() {
 	*x = UpdateGuardianRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[26]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2296,7 +2296,7 @@ func (x *UpdateGuardianRequest) String() string {
 func (*UpdateGuardianRequest) ProtoMessage() {}
 
 func (x *UpdateGuardianRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[26]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2309,7 +2309,7 @@ func (x *UpdateGuardianRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateGuardianRequest.ProtoReflect.Descriptor instead.
 func (*UpdateGuardianRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{26}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *UpdateGuardianRequest) GetInstitutionSlug() string {
@@ -2356,7 +2356,7 @@ type UpdateGuardianResponse struct {
 
 func (x *UpdateGuardianResponse) Reset() {
 	*x = UpdateGuardianResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[27]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2368,7 +2368,7 @@ func (x *UpdateGuardianResponse) String() string {
 func (*UpdateGuardianResponse) ProtoMessage() {}
 
 func (x *UpdateGuardianResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[27]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2381,7 +2381,7 @@ func (x *UpdateGuardianResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateGuardianResponse.ProtoReflect.Descriptor instead.
 func (*UpdateGuardianResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{27}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *UpdateGuardianResponse) GetDetail() *StudentDetail {
@@ -2402,7 +2402,7 @@ type RemoveGuardianRequest struct {
 
 func (x *RemoveGuardianRequest) Reset() {
 	*x = RemoveGuardianRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[28]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2414,7 +2414,7 @@ func (x *RemoveGuardianRequest) String() string {
 func (*RemoveGuardianRequest) ProtoMessage() {}
 
 func (x *RemoveGuardianRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[28]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2427,7 +2427,7 @@ func (x *RemoveGuardianRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveGuardianRequest.ProtoReflect.Descriptor instead.
 func (*RemoveGuardianRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{28}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *RemoveGuardianRequest) GetInstitutionSlug() string {
@@ -2460,7 +2460,7 @@ type RemoveGuardianResponse struct {
 
 func (x *RemoveGuardianResponse) Reset() {
 	*x = RemoveGuardianResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[29]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2472,7 +2472,7 @@ func (x *RemoveGuardianResponse) String() string {
 func (*RemoveGuardianResponse) ProtoMessage() {}
 
 func (x *RemoveGuardianResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[29]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2485,7 +2485,7 @@ func (x *RemoveGuardianResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveGuardianResponse.ProtoReflect.Descriptor instead.
 func (*RemoveGuardianResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{29}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *RemoveGuardianResponse) GetDetail() *StudentDetail {
@@ -2507,7 +2507,7 @@ type GrantAccessRequest struct {
 
 func (x *GrantAccessRequest) Reset() {
 	*x = GrantAccessRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[30]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2519,7 +2519,7 @@ func (x *GrantAccessRequest) String() string {
 func (*GrantAccessRequest) ProtoMessage() {}
 
 func (x *GrantAccessRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[30]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2532,7 +2532,7 @@ func (x *GrantAccessRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantAccessRequest.ProtoReflect.Descriptor instead.
 func (*GrantAccessRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{30}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *GrantAccessRequest) GetInstitutionSlug() string {
@@ -2565,7 +2565,7 @@ type GrantAccessResponse struct {
 
 func (x *GrantAccessResponse) Reset() {
 	*x = GrantAccessResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[31]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2577,7 +2577,7 @@ func (x *GrantAccessResponse) String() string {
 func (*GrantAccessResponse) ProtoMessage() {}
 
 func (x *GrantAccessResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[31]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2590,7 +2590,7 @@ func (x *GrantAccessResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantAccessResponse.ProtoReflect.Descriptor instead.
 func (*GrantAccessResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{31}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *GrantAccessResponse) GetDetail() *StudentDetail {
@@ -2617,7 +2617,7 @@ type GetEnrollmentBoardRequest struct {
 
 func (x *GetEnrollmentBoardRequest) Reset() {
 	*x = GetEnrollmentBoardRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[32]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2629,7 +2629,7 @@ func (x *GetEnrollmentBoardRequest) String() string {
 func (*GetEnrollmentBoardRequest) ProtoMessage() {}
 
 func (x *GetEnrollmentBoardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[32]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2642,7 +2642,7 @@ func (x *GetEnrollmentBoardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEnrollmentBoardRequest.ProtoReflect.Descriptor instead.
 func (*GetEnrollmentBoardRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{32}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *GetEnrollmentBoardRequest) GetInstitutionSlug() string {
@@ -2725,7 +2725,7 @@ type GetEnrollmentBoardResponse struct {
 
 func (x *GetEnrollmentBoardResponse) Reset() {
 	*x = GetEnrollmentBoardResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[33]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2737,7 +2737,7 @@ func (x *GetEnrollmentBoardResponse) String() string {
 func (*GetEnrollmentBoardResponse) ProtoMessage() {}
 
 func (x *GetEnrollmentBoardResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[33]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2750,7 +2750,7 @@ func (x *GetEnrollmentBoardResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEnrollmentBoardResponse.ProtoReflect.Descriptor instead.
 func (*GetEnrollmentBoardResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{33}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *GetEnrollmentBoardResponse) GetPeriod() *academicv1.Period {
@@ -2822,7 +2822,7 @@ type EnrollRequest struct {
 
 func (x *EnrollRequest) Reset() {
 	*x = EnrollRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[34]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2834,7 +2834,7 @@ func (x *EnrollRequest) String() string {
 func (*EnrollRequest) ProtoMessage() {}
 
 func (x *EnrollRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[34]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2847,7 +2847,7 @@ func (x *EnrollRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EnrollRequest.ProtoReflect.Descriptor instead.
 func (*EnrollRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{34}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *EnrollRequest) GetInstitutionSlug() string {
@@ -2936,7 +2936,7 @@ type EnrollResponse struct {
 
 func (x *EnrollResponse) Reset() {
 	*x = EnrollResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[35]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2948,7 +2948,7 @@ func (x *EnrollResponse) String() string {
 func (*EnrollResponse) ProtoMessage() {}
 
 func (x *EnrollResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[35]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2961,7 +2961,7 @@ func (x *EnrollResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EnrollResponse.ProtoReflect.Descriptor instead.
 func (*EnrollResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{35}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *EnrollResponse) GetEnrollment() *Enrollment {
@@ -2987,7 +2987,7 @@ type UpdateEnrollmentRequest struct {
 
 func (x *UpdateEnrollmentRequest) Reset() {
 	*x = UpdateEnrollmentRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[36]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2999,7 +2999,7 @@ func (x *UpdateEnrollmentRequest) String() string {
 func (*UpdateEnrollmentRequest) ProtoMessage() {}
 
 func (x *UpdateEnrollmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[36]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3012,7 +3012,7 @@ func (x *UpdateEnrollmentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateEnrollmentRequest.ProtoReflect.Descriptor instead.
 func (*UpdateEnrollmentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{36}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *UpdateEnrollmentRequest) GetInstitutionSlug() string {
@@ -3073,7 +3073,7 @@ type UpdateEnrollmentResponse struct {
 
 func (x *UpdateEnrollmentResponse) Reset() {
 	*x = UpdateEnrollmentResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[37]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3085,7 +3085,7 @@ func (x *UpdateEnrollmentResponse) String() string {
 func (*UpdateEnrollmentResponse) ProtoMessage() {}
 
 func (x *UpdateEnrollmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[37]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3098,7 +3098,7 @@ func (x *UpdateEnrollmentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateEnrollmentResponse.ProtoReflect.Descriptor instead.
 func (*UpdateEnrollmentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{37}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *UpdateEnrollmentResponse) GetEnrollment() *Enrollment {
@@ -3122,7 +3122,7 @@ type EndEnrollmentRequest struct {
 
 func (x *EndEnrollmentRequest) Reset() {
 	*x = EndEnrollmentRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[38]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3134,7 +3134,7 @@ func (x *EndEnrollmentRequest) String() string {
 func (*EndEnrollmentRequest) ProtoMessage() {}
 
 func (x *EndEnrollmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[38]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3147,7 +3147,7 @@ func (x *EndEnrollmentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndEnrollmentRequest.ProtoReflect.Descriptor instead.
 func (*EndEnrollmentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{38}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *EndEnrollmentRequest) GetInstitutionSlug() string {
@@ -3194,7 +3194,7 @@ type EndEnrollmentResponse struct {
 
 func (x *EndEnrollmentResponse) Reset() {
 	*x = EndEnrollmentResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[39]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3206,7 +3206,7 @@ func (x *EndEnrollmentResponse) String() string {
 func (*EndEnrollmentResponse) ProtoMessage() {}
 
 func (x *EndEnrollmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[39]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3219,7 +3219,7 @@ func (x *EndEnrollmentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndEnrollmentResponse.ProtoReflect.Descriptor instead.
 func (*EndEnrollmentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{39}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *EndEnrollmentResponse) GetEnrollment() *Enrollment {
@@ -3239,7 +3239,7 @@ type DeleteEnrollmentRequest struct {
 
 func (x *DeleteEnrollmentRequest) Reset() {
 	*x = DeleteEnrollmentRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[40]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3251,7 +3251,7 @@ func (x *DeleteEnrollmentRequest) String() string {
 func (*DeleteEnrollmentRequest) ProtoMessage() {}
 
 func (x *DeleteEnrollmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[40]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3264,7 +3264,7 @@ func (x *DeleteEnrollmentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteEnrollmentRequest.ProtoReflect.Descriptor instead.
 func (*DeleteEnrollmentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{40}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *DeleteEnrollmentRequest) GetInstitutionSlug() string {
@@ -3289,7 +3289,7 @@ type DeleteEnrollmentResponse struct {
 
 func (x *DeleteEnrollmentResponse) Reset() {
 	*x = DeleteEnrollmentResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[41]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3301,7 +3301,7 @@ func (x *DeleteEnrollmentResponse) String() string {
 func (*DeleteEnrollmentResponse) ProtoMessage() {}
 
 func (x *DeleteEnrollmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[41]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3314,7 +3314,7 @@ func (x *DeleteEnrollmentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteEnrollmentResponse.ProtoReflect.Descriptor instead.
 func (*DeleteEnrollmentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{41}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{41}
 }
 
 type RatifyEnrollmentsRequest struct {
@@ -3330,7 +3330,7 @@ type RatifyEnrollmentsRequest struct {
 
 func (x *RatifyEnrollmentsRequest) Reset() {
 	*x = RatifyEnrollmentsRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[42]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3342,7 +3342,7 @@ func (x *RatifyEnrollmentsRequest) String() string {
 func (*RatifyEnrollmentsRequest) ProtoMessage() {}
 
 func (x *RatifyEnrollmentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[42]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3355,7 +3355,7 @@ func (x *RatifyEnrollmentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RatifyEnrollmentsRequest.ProtoReflect.Descriptor instead.
 func (*RatifyEnrollmentsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{42}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *RatifyEnrollmentsRequest) GetInstitutionSlug() string {
@@ -3399,7 +3399,7 @@ type RatifyEnrollmentsResponse struct {
 
 func (x *RatifyEnrollmentsResponse) Reset() {
 	*x = RatifyEnrollmentsResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[43]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3411,7 +3411,7 @@ func (x *RatifyEnrollmentsResponse) String() string {
 func (*RatifyEnrollmentsResponse) ProtoMessage() {}
 
 func (x *RatifyEnrollmentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[43]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3424,7 +3424,7 @@ func (x *RatifyEnrollmentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RatifyEnrollmentsResponse.ProtoReflect.Descriptor instead.
 func (*RatifyEnrollmentsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{43}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *RatifyEnrollmentsResponse) GetEnrolled() int32 {
@@ -3471,7 +3471,7 @@ type ListPlacementsRequest struct {
 
 func (x *ListPlacementsRequest) Reset() {
 	*x = ListPlacementsRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[44]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3483,7 +3483,7 @@ func (x *ListPlacementsRequest) String() string {
 func (*ListPlacementsRequest) ProtoMessage() {}
 
 func (x *ListPlacementsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[44]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3496,7 +3496,7 @@ func (x *ListPlacementsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPlacementsRequest.ProtoReflect.Descriptor instead.
 func (*ListPlacementsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{44}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *ListPlacementsRequest) GetInstitutionSlug() string {
@@ -3515,7 +3515,7 @@ type ListPlacementsResponse struct {
 
 func (x *ListPlacementsResponse) Reset() {
 	*x = ListPlacementsResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[45]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3527,7 +3527,7 @@ func (x *ListPlacementsResponse) String() string {
 func (*ListPlacementsResponse) ProtoMessage() {}
 
 func (x *ListPlacementsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[45]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3540,7 +3540,7 @@ func (x *ListPlacementsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPlacementsResponse.ProtoReflect.Descriptor instead.
 func (*ListPlacementsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{45}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *ListPlacementsResponse) GetPlacements() []*Placement {
@@ -3570,7 +3570,7 @@ type CreatePlacementRequest struct {
 
 func (x *CreatePlacementRequest) Reset() {
 	*x = CreatePlacementRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[46]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3582,7 +3582,7 @@ func (x *CreatePlacementRequest) String() string {
 func (*CreatePlacementRequest) ProtoMessage() {}
 
 func (x *CreatePlacementRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[46]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3595,7 +3595,7 @@ func (x *CreatePlacementRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePlacementRequest.ProtoReflect.Descriptor instead.
 func (*CreatePlacementRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{46}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *CreatePlacementRequest) GetInstitutionSlug() string {
@@ -3684,7 +3684,7 @@ type CreatePlacementResponse struct {
 
 func (x *CreatePlacementResponse) Reset() {
 	*x = CreatePlacementResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[47]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3696,7 +3696,7 @@ func (x *CreatePlacementResponse) String() string {
 func (*CreatePlacementResponse) ProtoMessage() {}
 
 func (x *CreatePlacementResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[47]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3709,7 +3709,7 @@ func (x *CreatePlacementResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePlacementResponse.ProtoReflect.Descriptor instead.
 func (*CreatePlacementResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{47}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *CreatePlacementResponse) GetPlacement() *Placement {
@@ -3729,7 +3729,7 @@ type DeletePlacementRequest struct {
 
 func (x *DeletePlacementRequest) Reset() {
 	*x = DeletePlacementRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[48]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3741,7 +3741,7 @@ func (x *DeletePlacementRequest) String() string {
 func (*DeletePlacementRequest) ProtoMessage() {}
 
 func (x *DeletePlacementRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[48]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3754,7 +3754,7 @@ func (x *DeletePlacementRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePlacementRequest.ProtoReflect.Descriptor instead.
 func (*DeletePlacementRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{48}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *DeletePlacementRequest) GetInstitutionSlug() string {
@@ -3779,7 +3779,7 @@ type DeletePlacementResponse struct {
 
 func (x *DeletePlacementResponse) Reset() {
 	*x = DeletePlacementResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[49]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3791,7 +3791,7 @@ func (x *DeletePlacementResponse) String() string {
 func (*DeletePlacementResponse) ProtoMessage() {}
 
 func (x *DeletePlacementResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[49]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3804,7 +3804,7 @@ func (x *DeletePlacementResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePlacementResponse.ProtoReflect.Descriptor instead.
 func (*DeletePlacementResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{49}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{49}
 }
 
 type ProposePlacementRequest struct {
@@ -3820,7 +3820,7 @@ type ProposePlacementRequest struct {
 
 func (x *ProposePlacementRequest) Reset() {
 	*x = ProposePlacementRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[50]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3832,7 +3832,7 @@ func (x *ProposePlacementRequest) String() string {
 func (*ProposePlacementRequest) ProtoMessage() {}
 
 func (x *ProposePlacementRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[50]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3845,7 +3845,7 @@ func (x *ProposePlacementRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProposePlacementRequest.ProtoReflect.Descriptor instead.
 func (*ProposePlacementRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{50}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *ProposePlacementRequest) GetInstitutionSlug() string {
@@ -3883,7 +3883,7 @@ type ProposePlacementResponse struct {
 
 func (x *ProposePlacementResponse) Reset() {
 	*x = ProposePlacementResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[51]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3895,7 +3895,7 @@ func (x *ProposePlacementResponse) String() string {
 func (*ProposePlacementResponse) ProtoMessage() {}
 
 func (x *ProposePlacementResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[51]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3908,7 +3908,7 @@ func (x *ProposePlacementResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProposePlacementResponse.ProtoReflect.Descriptor instead.
 func (*ProposePlacementResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{51}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *ProposePlacementResponse) GetLevelId() string {
@@ -3971,7 +3971,7 @@ type EnrollmentFile struct {
 
 func (x *EnrollmentFile) Reset() {
 	*x = EnrollmentFile{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[52]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3983,7 +3983,7 @@ func (x *EnrollmentFile) String() string {
 func (*EnrollmentFile) ProtoMessage() {}
 
 func (x *EnrollmentFile) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[52]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3996,7 +3996,7 @@ func (x *EnrollmentFile) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EnrollmentFile.ProtoReflect.Descriptor instead.
 func (*EnrollmentFile) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{52}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *EnrollmentFile) GetStudentId() string {
@@ -4093,7 +4093,7 @@ type GetEnrollmentFileRequest struct {
 
 func (x *GetEnrollmentFileRequest) Reset() {
 	*x = GetEnrollmentFileRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[53]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4105,7 +4105,7 @@ func (x *GetEnrollmentFileRequest) String() string {
 func (*GetEnrollmentFileRequest) ProtoMessage() {}
 
 func (x *GetEnrollmentFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[53]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4118,7 +4118,7 @@ func (x *GetEnrollmentFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEnrollmentFileRequest.ProtoReflect.Descriptor instead.
 func (*GetEnrollmentFileRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{53}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *GetEnrollmentFileRequest) GetInstitutionSlug() string {
@@ -4144,7 +4144,7 @@ type GetEnrollmentFileResponse struct {
 
 func (x *GetEnrollmentFileResponse) Reset() {
 	*x = GetEnrollmentFileResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[54]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4156,7 +4156,7 @@ func (x *GetEnrollmentFileResponse) String() string {
 func (*GetEnrollmentFileResponse) ProtoMessage() {}
 
 func (x *GetEnrollmentFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[54]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4169,7 +4169,7 @@ func (x *GetEnrollmentFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEnrollmentFileResponse.ProtoReflect.Descriptor instead.
 func (*GetEnrollmentFileResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{54}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *GetEnrollmentFileResponse) GetFile() *EnrollmentFile {
@@ -4189,7 +4189,7 @@ type SaveEnrollmentFileRequest struct {
 
 func (x *SaveEnrollmentFileRequest) Reset() {
 	*x = SaveEnrollmentFileRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[55]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4201,7 +4201,7 @@ func (x *SaveEnrollmentFileRequest) String() string {
 func (*SaveEnrollmentFileRequest) ProtoMessage() {}
 
 func (x *SaveEnrollmentFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[55]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4214,7 +4214,7 @@ func (x *SaveEnrollmentFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveEnrollmentFileRequest.ProtoReflect.Descriptor instead.
 func (*SaveEnrollmentFileRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{55}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *SaveEnrollmentFileRequest) GetInstitutionSlug() string {
@@ -4240,7 +4240,7 @@ type SaveEnrollmentFileResponse struct {
 
 func (x *SaveEnrollmentFileResponse) Reset() {
 	*x = SaveEnrollmentFileResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[56]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4252,7 +4252,7 @@ func (x *SaveEnrollmentFileResponse) String() string {
 func (*SaveEnrollmentFileResponse) ProtoMessage() {}
 
 func (x *SaveEnrollmentFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[56]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4265,7 +4265,7 @@ func (x *SaveEnrollmentFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveEnrollmentFileResponse.ProtoReflect.Descriptor instead.
 func (*SaveEnrollmentFileResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{56}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *SaveEnrollmentFileResponse) GetFile() *EnrollmentFile {
@@ -4289,7 +4289,7 @@ type SetReligionExemptionRequest struct {
 
 func (x *SetReligionExemptionRequest) Reset() {
 	*x = SetReligionExemptionRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[57]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4301,7 +4301,7 @@ func (x *SetReligionExemptionRequest) String() string {
 func (*SetReligionExemptionRequest) ProtoMessage() {}
 
 func (x *SetReligionExemptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[57]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4314,7 +4314,7 @@ func (x *SetReligionExemptionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetReligionExemptionRequest.ProtoReflect.Descriptor instead.
 func (*SetReligionExemptionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{57}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *SetReligionExemptionRequest) GetInstitutionSlug() string {
@@ -4360,7 +4360,7 @@ type SetReligionExemptionResponse struct {
 
 func (x *SetReligionExemptionResponse) Reset() {
 	*x = SetReligionExemptionResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[58]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4372,7 +4372,7 @@ func (x *SetReligionExemptionResponse) String() string {
 func (*SetReligionExemptionResponse) ProtoMessage() {}
 
 func (x *SetReligionExemptionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[58]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4385,7 +4385,7 @@ func (x *SetReligionExemptionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetReligionExemptionResponse.ProtoReflect.Descriptor instead.
 func (*SetReligionExemptionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{58}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{58}
 }
 
 type RollRow struct {
@@ -4420,7 +4420,7 @@ type RollRow struct {
 
 func (x *RollRow) Reset() {
 	*x = RollRow{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[59]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4432,7 +4432,7 @@ func (x *RollRow) String() string {
 func (*RollRow) ProtoMessage() {}
 
 func (x *RollRow) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[59]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4445,7 +4445,7 @@ func (x *RollRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RollRow.ProtoReflect.Descriptor instead.
 func (*RollRow) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{59}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *RollRow) GetEnrollmentId() string {
@@ -4625,7 +4625,7 @@ type RollFilter struct {
 
 func (x *RollFilter) Reset() {
 	*x = RollFilter{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[60]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4637,7 +4637,7 @@ func (x *RollFilter) String() string {
 func (*RollFilter) ProtoMessage() {}
 
 func (x *RollFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[60]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4650,7 +4650,7 @@ func (x *RollFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RollFilter.ProtoReflect.Descriptor instead.
 func (*RollFilter) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{60}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *RollFilter) GetPeriodId() string {
@@ -4705,7 +4705,7 @@ type ListRollRequest struct {
 
 func (x *ListRollRequest) Reset() {
 	*x = ListRollRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[61]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4717,7 +4717,7 @@ func (x *ListRollRequest) String() string {
 func (*ListRollRequest) ProtoMessage() {}
 
 func (x *ListRollRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[61]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4730,7 +4730,7 @@ func (x *ListRollRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRollRequest.ProtoReflect.Descriptor instead.
 func (*ListRollRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{61}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *ListRollRequest) GetInstitutionSlug() string {
@@ -4761,7 +4761,7 @@ type ListRollResponse struct {
 
 func (x *ListRollResponse) Reset() {
 	*x = ListRollResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[62]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4773,7 +4773,7 @@ func (x *ListRollResponse) String() string {
 func (*ListRollResponse) ProtoMessage() {}
 
 func (x *ListRollResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[62]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4786,7 +4786,7 @@ func (x *ListRollResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRollResponse.ProtoReflect.Descriptor instead.
 func (*ListRollResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{62}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *ListRollResponse) GetRows() []*RollRow {
@@ -4844,7 +4844,7 @@ type SetSiagieStatusRequest struct {
 
 func (x *SetSiagieStatusRequest) Reset() {
 	*x = SetSiagieStatusRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[63]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4856,7 +4856,7 @@ func (x *SetSiagieStatusRequest) String() string {
 func (*SetSiagieStatusRequest) ProtoMessage() {}
 
 func (x *SetSiagieStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[63]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4869,7 +4869,7 @@ func (x *SetSiagieStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetSiagieStatusRequest.ProtoReflect.Descriptor instead.
 func (*SetSiagieStatusRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{63}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *SetSiagieStatusRequest) GetInstitutionSlug() string {
@@ -4909,7 +4909,7 @@ type SetSiagieStatusResponse struct {
 
 func (x *SetSiagieStatusResponse) Reset() {
 	*x = SetSiagieStatusResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[64]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4921,7 +4921,7 @@ func (x *SetSiagieStatusResponse) String() string {
 func (*SetSiagieStatusResponse) ProtoMessage() {}
 
 func (x *SetSiagieStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[64]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4934,7 +4934,7 @@ func (x *SetSiagieStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetSiagieStatusResponse.ProtoReflect.Descriptor instead.
 func (*SetSiagieStatusResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{64}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *SetSiagieStatusResponse) GetUpdated() int32 {
@@ -4970,7 +4970,7 @@ type ImportRow struct {
 
 func (x *ImportRow) Reset() {
 	*x = ImportRow{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[65]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4982,7 +4982,7 @@ func (x *ImportRow) String() string {
 func (*ImportRow) ProtoMessage() {}
 
 func (x *ImportRow) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[65]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4995,7 +4995,7 @@ func (x *ImportRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImportRow.ProtoReflect.Descriptor instead.
 func (*ImportRow) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{65}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *ImportRow) GetLine() int32 {
@@ -5118,7 +5118,7 @@ type ImportResult struct {
 
 func (x *ImportResult) Reset() {
 	*x = ImportResult{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[66]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5130,7 +5130,7 @@ func (x *ImportResult) String() string {
 func (*ImportResult) ProtoMessage() {}
 
 func (x *ImportResult) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[66]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5143,7 +5143,7 @@ func (x *ImportResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImportResult.ProtoReflect.Descriptor instead.
 func (*ImportResult) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{66}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *ImportResult) GetLine() int32 {
@@ -5202,7 +5202,7 @@ type ImportSection struct {
 
 func (x *ImportSection) Reset() {
 	*x = ImportSection{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[67]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5214,7 +5214,7 @@ func (x *ImportSection) String() string {
 func (*ImportSection) ProtoMessage() {}
 
 func (x *ImportSection) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[67]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5227,7 +5227,7 @@ func (x *ImportSection) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImportSection.ProtoReflect.Descriptor instead.
 func (*ImportSection) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{67}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *ImportSection) GetSectionId() string {
@@ -5284,7 +5284,7 @@ type ImportRollRequest struct {
 
 func (x *ImportRollRequest) Reset() {
 	*x = ImportRollRequest{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[68]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5296,7 +5296,7 @@ func (x *ImportRollRequest) String() string {
 func (*ImportRollRequest) ProtoMessage() {}
 
 func (x *ImportRollRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[68]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5309,7 +5309,7 @@ func (x *ImportRollRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImportRollRequest.ProtoReflect.Descriptor instead.
 func (*ImportRollRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{68}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *ImportRollRequest) GetInstitutionSlug() string {
@@ -5359,7 +5359,7 @@ type ImportRollResponse struct {
 
 func (x *ImportRollResponse) Reset() {
 	*x = ImportRollResponse{}
-	mi := &file_joseph_people_v1_people_proto_msgTypes[69]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5371,7 +5371,7 @@ func (x *ImportRollResponse) String() string {
 func (*ImportRollResponse) ProtoMessage() {}
 
 func (x *ImportRollResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_people_v1_people_proto_msgTypes[69]
+	mi := &file_ltedu_people_v1_people_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5384,7 +5384,7 @@ func (x *ImportRollResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImportRollResponse.ProtoReflect.Descriptor instead.
 func (*ImportRollResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_people_v1_people_proto_rawDescGZIP(), []int{69}
+	return file_ltedu_people_v1_people_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *ImportRollResponse) GetRows() []*ImportResult {
@@ -5464,11 +5464,11 @@ func (x *ImportRollResponse) GetPeriodAfter() int32 {
 	return 0
 }
 
-var File_joseph_people_v1_people_proto protoreflect.FileDescriptor
+var File_ltedu_people_v1_people_proto protoreflect.FileDescriptor
 
-const file_joseph_people_v1_people_proto_rawDesc = "" +
+const file_ltedu_people_v1_people_proto_rawDesc = "" +
 	"\n" +
-	"\x1djoseph/people/v1/people.proto\x12\x10joseph.people.v1\x1a!joseph/academic/v1/academic.proto\x1a#joseph/academic/v1/curriculum.proto\"\xe6\x02\n" +
+	"\x1cltedu/people/v1/people.proto\x12\x0fltedu.people.v1\x1a ltedu/academic/v1/academic.proto\x1a\"ltedu/academic/v1/curriculum.proto\"\xe6\x02\n" +
 	"\x11EnrollmentSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12\x1f\n" +
@@ -5487,7 +5487,7 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\fsection_name\x18\n" +
 	" \x01(\tR\vsectionName\x12\x14\n" +
 	"\x05shift\x18\v \x01(\tR\x05shift\x12\x16\n" +
-	"\x06status\x18\f \x01(\tR\x06status\"\xaa\x05\n" +
+	"\x06status\x18\f \x01(\tR\x06status\"\xa9\x05\n" +
 	"\aStudent\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12#\n" +
@@ -5507,9 +5507,9 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\rspecial_needs\x18\r \x01(\bR\fspecialNeeds\x12\x14\n" +
 	"\x05notes\x18\x0e \x01(\tR\x05notes\x12\x16\n" +
 	"\x06status\x18\x0f \x01(\tR\x06status\x12\x16\n" +
-	"\x06access\x18\x10 \x01(\tR\x06access\x12C\n" +
+	"\x06access\x18\x10 \x01(\tR\x06access\x12B\n" +
 	"\n" +
-	"enrollment\x18\x11 \x01(\v2#.joseph.people.v1.EnrollmentSummaryR\n" +
+	"enrollment\x18\x11 \x01(\v2\".ltedu.people.v1.EnrollmentSummaryR\n" +
 	"enrollment\x122\n" +
 	"\x15primary_guardian_name\x18\x12 \x01(\tR\x13primaryGuardianName\x124\n" +
 	"\x16primary_guardian_phone\x18\x13 \x01(\tR\x14primaryGuardianPhone\x12%\n" +
@@ -5638,24 +5638,24 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"is_primary\x18\x02 \x01(\bR\tisPrimary\x12\x1e\n" +
 	"\vcan_pick_up\x18\x03 \x01(\bR\tcanPickUp\x12\x1d\n" +
 	"\n" +
-	"lives_with\x18\x04 \x01(\bR\tlivesWith\"\x9a\x02\n" +
-	"\rStudentDetail\x123\n" +
-	"\astudent\x18\x01 \x01(\v2\x19.joseph.people.v1.StudentR\astudent\x128\n" +
-	"\tguardians\x18\x02 \x03(\v2\x1a.joseph.people.v1.GuardianR\tguardians\x12>\n" +
-	"\venrollments\x18\x03 \x03(\v2\x1c.joseph.people.v1.EnrollmentR\venrollments\x12;\n" +
+	"lives_with\x18\x04 \x01(\bR\tlivesWith\"\x96\x02\n" +
+	"\rStudentDetail\x122\n" +
+	"\astudent\x18\x01 \x01(\v2\x18.ltedu.people.v1.StudentR\astudent\x127\n" +
+	"\tguardians\x18\x02 \x03(\v2\x19.ltedu.people.v1.GuardianR\tguardians\x12=\n" +
+	"\venrollments\x18\x03 \x03(\v2\x1b.ltedu.people.v1.EnrollmentR\venrollments\x12:\n" +
 	"\n" +
-	"placements\x18\x04 \x03(\v2\x1b.joseph.people.v1.PlacementR\n" +
+	"placements\x18\x04 \x03(\v2\x1a.ltedu.people.v1.PlacementR\n" +
 	"placements\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\x05 \x01(\bR\tcanManage\"D\n" +
 	"\x17GetPeopleContextRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xe1\x01\n" +
-	"\x18GetPeopleContextResponse\x12=\n" +
-	"\acontext\x18\x01 \x01(\v2#.joseph.academic.v1.AcademicContextR\acontext\x12\x1d\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xde\x01\n" +
+	"\x18GetPeopleContextResponse\x12<\n" +
+	"\acontext\x18\x01 \x01(\v2\".ltedu.academic.v1.AcademicContextR\acontext\x12\x1d\n" +
 	"\n" +
-	"can_manage\x18\x02 \x01(\bR\tcanManage\x121\n" +
-	"\x06levels\x18\x03 \x03(\v2\x19.joseph.academic.v1.LevelR\x06levels\x124\n" +
-	"\aperiods\x18\x04 \x03(\v2\x1a.joseph.academic.v1.PeriodR\aperiods\"\xb1\x02\n" +
+	"can_manage\x18\x02 \x01(\bR\tcanManage\x120\n" +
+	"\x06levels\x18\x03 \x03(\v2\x18.ltedu.academic.v1.LevelR\x06levels\x123\n" +
+	"\aperiods\x18\x04 \x03(\v2\x19.ltedu.academic.v1.PeriodR\aperiods\"\xb1\x02\n" +
 	"\x13ListStudentsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x14\n" +
 	"\x05query\x18\x02 \x01(\tR\x05query\x12\x16\n" +
@@ -5668,26 +5668,26 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\fnot_enrolled\x18\b \x01(\bR\vnotEnrolled\x12\x14\n" +
 	"\x05limit\x18\t \x01(\x05R\x05limit\x12\x16\n" +
 	"\x06offset\x18\n" +
-	" \x01(\x05R\x06offset\"c\n" +
-	"\x14ListStudentsResponse\x125\n" +
-	"\bstudents\x18\x01 \x03(\v2\x19.joseph.people.v1.StudentR\bstudents\x12\x14\n" +
+	" \x01(\x05R\x06offset\"b\n" +
+	"\x14ListStudentsResponse\x124\n" +
+	"\bstudents\x18\x01 \x03(\v2\x18.ltedu.people.v1.StudentR\bstudents\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x05R\x05total\"N\n" +
 	"\x11GetStudentRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"M\n" +
-	"\x12GetStudentResponse\x127\n" +
-	"\x06detail\x18\x01 \x01(\v2\x1f.joseph.people.v1.StudentDetailR\x06detail\"{\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"L\n" +
+	"\x12GetStudentResponse\x126\n" +
+	"\x06detail\x18\x01 \x01(\v2\x1e.ltedu.people.v1.StudentDetailR\x06detail\"z\n" +
 	"\x14CreateStudentRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x128\n" +
-	"\astudent\x18\x02 \x01(\v2\x1e.joseph.people.v1.StudentInputR\astudent\"L\n" +
-	"\x15CreateStudentResponse\x123\n" +
-	"\astudent\x18\x01 \x01(\v2\x19.joseph.people.v1.StudentR\astudent\"\x8b\x01\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x127\n" +
+	"\astudent\x18\x02 \x01(\v2\x1d.ltedu.people.v1.StudentInputR\astudent\"K\n" +
+	"\x15CreateStudentResponse\x122\n" +
+	"\astudent\x18\x01 \x01(\v2\x18.ltedu.people.v1.StudentR\astudent\"\x8a\x01\n" +
 	"\x14UpdateStudentRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\x128\n" +
-	"\astudent\x18\x03 \x01(\v2\x1e.joseph.people.v1.StudentInputR\astudent\"L\n" +
-	"\x15UpdateStudentResponse\x123\n" +
-	"\astudent\x18\x01 \x01(\v2\x19.joseph.people.v1.StudentR\astudent\"Q\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\x127\n" +
+	"\astudent\x18\x03 \x01(\v2\x1d.ltedu.people.v1.StudentInputR\astudent\"K\n" +
+	"\x15UpdateStudentResponse\x122\n" +
+	"\astudent\x18\x01 \x01(\v2\x18.ltedu.people.v1.StudentR\astudent\"Q\n" +
 	"\x14DeleteStudentRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x17\n" +
@@ -5695,45 +5695,45 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\x13FindGuardianRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
 	"\rdocument_type\x18\x02 \x01(\tR\fdocumentType\x12'\n" +
-	"\x0fdocument_number\x18\x03 \x01(\tR\x0edocumentNumber\"N\n" +
-	"\x14FindGuardianResponse\x126\n" +
-	"\bguardian\x18\x01 \x01(\v2\x1a.joseph.people.v1.GuardianR\bguardian\"\xf0\x01\n" +
+	"\x0fdocument_number\x18\x03 \x01(\tR\x0edocumentNumber\"M\n" +
+	"\x14FindGuardianResponse\x125\n" +
+	"\bguardian\x18\x01 \x01(\v2\x19.ltedu.people.v1.GuardianR\bguardian\"\xee\x01\n" +
 	"\x12AddGuardianRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x02 \x01(\tR\tstudentId\x12\x1f\n" +
 	"\vguardian_id\x18\x03 \x01(\tR\n" +
-	"guardianId\x12;\n" +
-	"\bguardian\x18\x04 \x01(\v2\x1f.joseph.people.v1.GuardianInputR\bguardian\x122\n" +
-	"\x04link\x18\x05 \x01(\v2\x1e.joseph.people.v1.GuardianLinkR\x04link\"N\n" +
-	"\x13AddGuardianResponse\x127\n" +
-	"\x06detail\x18\x01 \x01(\v2\x1f.joseph.people.v1.StudentDetailR\x06detail\"\xf3\x01\n" +
+	"guardianId\x12:\n" +
+	"\bguardian\x18\x04 \x01(\v2\x1e.ltedu.people.v1.GuardianInputR\bguardian\x121\n" +
+	"\x04link\x18\x05 \x01(\v2\x1d.ltedu.people.v1.GuardianLinkR\x04link\"M\n" +
+	"\x13AddGuardianResponse\x126\n" +
+	"\x06detail\x18\x01 \x01(\v2\x1e.ltedu.people.v1.StudentDetailR\x06detail\"\xf1\x01\n" +
 	"\x15UpdateGuardianRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x02 \x01(\tR\tstudentId\x12\x1f\n" +
 	"\vguardian_id\x18\x03 \x01(\tR\n" +
-	"guardianId\x12;\n" +
-	"\bguardian\x18\x04 \x01(\v2\x1f.joseph.people.v1.GuardianInputR\bguardian\x122\n" +
-	"\x04link\x18\x05 \x01(\v2\x1e.joseph.people.v1.GuardianLinkR\x04link\"Q\n" +
-	"\x16UpdateGuardianResponse\x127\n" +
-	"\x06detail\x18\x01 \x01(\v2\x1f.joseph.people.v1.StudentDetailR\x06detail\"\x82\x01\n" +
+	"guardianId\x12:\n" +
+	"\bguardian\x18\x04 \x01(\v2\x1e.ltedu.people.v1.GuardianInputR\bguardian\x121\n" +
+	"\x04link\x18\x05 \x01(\v2\x1d.ltedu.people.v1.GuardianLinkR\x04link\"P\n" +
+	"\x16UpdateGuardianResponse\x126\n" +
+	"\x06detail\x18\x01 \x01(\v2\x1e.ltedu.people.v1.StudentDetailR\x06detail\"\x82\x01\n" +
 	"\x15RemoveGuardianRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x02 \x01(\tR\tstudentId\x12\x1f\n" +
 	"\vguardian_id\x18\x03 \x01(\tR\n" +
-	"guardianId\"Q\n" +
-	"\x16RemoveGuardianResponse\x127\n" +
-	"\x06detail\x18\x01 \x01(\v2\x1f.joseph.people.v1.StudentDetailR\x06detail\"\x7f\n" +
+	"guardianId\"P\n" +
+	"\x16RemoveGuardianResponse\x126\n" +
+	"\x06detail\x18\x01 \x01(\v2\x1e.ltedu.people.v1.StudentDetailR\x06detail\"\x7f\n" +
 	"\x12GrantAccessRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x02 \x01(\tR\tstudentId\x12\x1f\n" +
 	"\vguardian_id\x18\x03 \x01(\tR\n" +
-	"guardianId\"N\n" +
-	"\x13GrantAccessResponse\x127\n" +
-	"\x06detail\x18\x01 \x01(\v2\x1f.joseph.people.v1.StudentDetailR\x06detail\"\x94\x02\n" +
+	"guardianId\"M\n" +
+	"\x13GrantAccessResponse\x126\n" +
+	"\x06detail\x18\x01 \x01(\v2\x1e.ltedu.people.v1.StudentDetailR\x06detail\"\x94\x02\n" +
 	"\x19GetEnrollmentBoardRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
 	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12\x19\n" +
@@ -5744,14 +5744,14 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\x06status\x18\x06 \x01(\tR\x06status\x12\x14\n" +
 	"\x05query\x18\a \x01(\tR\x05query\x12\x14\n" +
 	"\x05limit\x18\b \x01(\x05R\x05limit\x12\x16\n" +
-	"\x06offset\x18\t \x01(\x05R\x06offset\"\xfa\x02\n" +
-	"\x1aGetEnrollmentBoardResponse\x122\n" +
-	"\x06period\x18\x01 \x01(\v2\x1a.joseph.academic.v1.PeriodR\x06period\x127\n" +
-	"\bsections\x18\x02 \x03(\v2\x1b.joseph.academic.v1.SectionR\bsections\x12@\n" +
-	"\toccupancy\x18\x03 \x03(\v2\".joseph.people.v1.SectionOccupancyR\toccupancy\x12>\n" +
-	"\venrollments\x18\x04 \x03(\v2\x1c.joseph.people.v1.EnrollmentR\venrollments\x12\x14\n" +
-	"\x05total\x18\x05 \x01(\x05R\x05total\x121\n" +
-	"\x05units\x18\x06 \x03(\v2\x1b.joseph.academic.v1.SubjectR\x05units\x12$\n" +
+	"\x06offset\x18\t \x01(\x05R\x06offset\"\xf5\x02\n" +
+	"\x1aGetEnrollmentBoardResponse\x121\n" +
+	"\x06period\x18\x01 \x01(\v2\x19.ltedu.academic.v1.PeriodR\x06period\x126\n" +
+	"\bsections\x18\x02 \x03(\v2\x1a.ltedu.academic.v1.SectionR\bsections\x12?\n" +
+	"\toccupancy\x18\x03 \x03(\v2!.ltedu.people.v1.SectionOccupancyR\toccupancy\x12=\n" +
+	"\venrollments\x18\x04 \x03(\v2\x1b.ltedu.people.v1.EnrollmentR\venrollments\x12\x14\n" +
+	"\x05total\x18\x05 \x01(\x05R\x05total\x120\n" +
+	"\x05units\x18\x06 \x03(\v2\x1a.ltedu.academic.v1.SubjectR\x05units\x12$\n" +
 	"\x0eunit_level_ids\x18\a \x03(\tR\funitLevelIds\"\xc9\x02\n" +
 	"\rEnrollRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
@@ -5768,10 +5768,10 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\x06origin\x18\t \x01(\tR\x06origin\x12\x14\n" +
 	"\x05notes\x18\n" +
 	" \x01(\tR\x05notes\x12\x19\n" +
-	"\bunit_ids\x18\v \x03(\tR\aunitIds\"N\n" +
-	"\x0eEnrollResponse\x12<\n" +
+	"\bunit_ids\x18\v \x03(\tR\aunitIds\"M\n" +
+	"\x0eEnrollResponse\x12;\n" +
 	"\n" +
-	"enrollment\x18\x01 \x01(\v2\x1c.joseph.people.v1.EnrollmentR\n" +
+	"enrollment\x18\x01 \x01(\v2\x1b.ltedu.people.v1.EnrollmentR\n" +
 	"enrollment\"\xdc\x01\n" +
 	"\x17UpdateEnrollmentRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
@@ -5781,20 +5781,20 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"section_id\x18\x04 \x01(\tR\tsectionId\x12\x14\n" +
 	"\x05notes\x18\x05 \x01(\tR\x05notes\x12\x1b\n" +
 	"\tset_units\x18\x06 \x01(\bR\bsetUnits\x12\x19\n" +
-	"\bunit_ids\x18\a \x03(\tR\aunitIds\"X\n" +
-	"\x18UpdateEnrollmentResponse\x12<\n" +
+	"\bunit_ids\x18\a \x03(\tR\aunitIds\"W\n" +
+	"\x18UpdateEnrollmentResponse\x12;\n" +
 	"\n" +
-	"enrollment\x18\x01 \x01(\v2\x1c.joseph.people.v1.EnrollmentR\n" +
+	"enrollment\x18\x01 \x01(\v2\x1b.ltedu.people.v1.EnrollmentR\n" +
 	"enrollment\"\xa6\x01\n" +
 	"\x14EndEnrollmentRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x16\n" +
 	"\x06status\x18\x03 \x01(\tR\x06status\x12\x19\n" +
 	"\bended_on\x18\x04 \x01(\tR\aendedOn\x12 \n" +
-	"\vdestination\x18\x05 \x01(\tR\vdestination\"U\n" +
-	"\x15EndEnrollmentResponse\x12<\n" +
+	"\vdestination\x18\x05 \x01(\tR\vdestination\"T\n" +
+	"\x15EndEnrollmentResponse\x12;\n" +
 	"\n" +
-	"enrollment\x18\x01 \x01(\v2\x1c.joseph.people.v1.EnrollmentR\n" +
+	"enrollment\x18\x01 \x01(\v2\x1b.ltedu.people.v1.EnrollmentR\n" +
 	"enrollment\"T\n" +
 	"\x17DeleteEnrollmentRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
@@ -5813,10 +5813,10 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\tfinishing\x18\x04 \x01(\x05R\tfinishing\x12\x1a\n" +
 	"\binactive\x18\x05 \x01(\x05R\binactive\"B\n" +
 	"\x15ListPlacementsRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"U\n" +
-	"\x16ListPlacementsResponse\x12;\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"T\n" +
+	"\x16ListPlacementsResponse\x12:\n" +
 	"\n" +
-	"placements\x18\x01 \x03(\v2\x1b.joseph.people.v1.PlacementR\n" +
+	"placements\x18\x01 \x03(\v2\x1a.ltedu.people.v1.PlacementR\n" +
 	"placements\"\xdf\x02\n" +
 	"\x16CreatePlacementRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
@@ -5833,9 +5833,9 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\x0eorigin_studies\x18\n" +
 	" \x01(\tR\roriginStudies\x12\x1f\n" +
 	"\vsubject_ids\x18\v \x03(\tR\n" +
-	"subjectIds\"T\n" +
-	"\x17CreatePlacementResponse\x129\n" +
-	"\tplacement\x18\x01 \x01(\v2\x1b.joseph.people.v1.PlacementR\tplacement\"S\n" +
+	"subjectIds\"S\n" +
+	"\x17CreatePlacementResponse\x128\n" +
+	"\tplacement\x18\x01 \x01(\v2\x1a.ltedu.people.v1.PlacementR\tplacement\"S\n" +
 	"\x16DeletePlacementRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x19\n" +
@@ -5875,14 +5875,14 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\x18GetEnrollmentFileRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x02 \x01(\tR\tstudentId\"Q\n" +
-	"\x19GetEnrollmentFileResponse\x124\n" +
-	"\x04file\x18\x01 \x01(\v2 .joseph.people.v1.EnrollmentFileR\x04file\"|\n" +
+	"student_id\x18\x02 \x01(\tR\tstudentId\"P\n" +
+	"\x19GetEnrollmentFileResponse\x123\n" +
+	"\x04file\x18\x01 \x01(\v2\x1f.ltedu.people.v1.EnrollmentFileR\x04file\"{\n" +
 	"\x19SaveEnrollmentFileRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x124\n" +
-	"\x04file\x18\x02 \x01(\v2 .joseph.people.v1.EnrollmentFileR\x04file\"R\n" +
-	"\x1aSaveEnrollmentFileResponse\x124\n" +
-	"\x04file\x18\x01 \x01(\v2 .joseph.people.v1.EnrollmentFileR\x04file\"\xc6\x01\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x123\n" +
+	"\x04file\x18\x02 \x01(\v2\x1f.ltedu.people.v1.EnrollmentFileR\x04file\"Q\n" +
+	"\x1aSaveEnrollmentFileResponse\x123\n" +
+	"\x04file\x18\x01 \x01(\v2\x1f.ltedu.people.v1.EnrollmentFileR\x04file\"\xc6\x01\n" +
 	"\x1bSetReligionExemptionRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
 	"\renrollment_id\x18\x02 \x01(\tR\fenrollmentId\x12\x16\n" +
@@ -5930,12 +5930,12 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\n" +
 	"section_id\x18\x04 \x01(\tR\tsectionId\x12#\n" +
 	"\rsiagie_status\x18\x05 \x01(\tR\fsiagieStatus\x12\x10\n" +
-	"\x03all\x18\x06 \x01(\bR\x03all\"r\n" +
+	"\x03all\x18\x06 \x01(\bR\x03all\"q\n" +
 	"\x0fListRollRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x124\n" +
-	"\x06filter\x18\x02 \x01(\v2\x1c.joseph.people.v1.RollFilterR\x06filter\"\xca\x01\n" +
-	"\x10ListRollResponse\x12-\n" +
-	"\x04rows\x18\x01 \x03(\v2\x19.joseph.people.v1.RollRowR\x04rows\x12\x18\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x123\n" +
+	"\x06filter\x18\x02 \x01(\v2\x1b.ltedu.people.v1.RollFilterR\x06filter\"\xc9\x01\n" +
+	"\x10ListRollResponse\x12,\n" +
+	"\x04rows\x18\x01 \x03(\v2\x18.ltedu.people.v1.RollRowR\x04rows\x12\x18\n" +
 	"\apending\x18\x02 \x01(\x05R\apending\x12\x1a\n" +
 	"\bexported\x18\x03 \x01(\x05R\bexported\x12\x1a\n" +
 	"\bobserved\x18\x04 \x01(\x05R\bobserved\x12\x16\n" +
@@ -5982,15 +5982,15 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\bcapacity\x18\x03 \x01(\x05R\bcapacity\x12\x16\n" +
 	"\x06before\x18\x04 \x01(\x05R\x06before\x12\x1a\n" +
 	"\bincoming\x18\x05 \x01(\x05R\bincoming\x12\x14\n" +
-	"\x05after\x18\x06 \x01(\x05R\x05after\"\xa4\x01\n" +
+	"\x05after\x18\x06 \x01(\x05R\x05after\"\xa3\x01\n" +
 	"\x11ImportRollRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
-	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12/\n" +
-	"\x04rows\x18\x03 \x03(\v2\x1b.joseph.people.v1.ImportRowR\x04rows\x12\x16\n" +
-	"\x06commit\x18\x04 \x01(\bR\x06commit\"\xff\x02\n" +
-	"\x12ImportRollResponse\x122\n" +
-	"\x04rows\x18\x01 \x03(\v2\x1e.joseph.people.v1.ImportResultR\x04rows\x12;\n" +
-	"\bsections\x18\x02 \x03(\v2\x1f.joseph.people.v1.ImportSectionR\bsections\x12\x14\n" +
+	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12.\n" +
+	"\x04rows\x18\x03 \x03(\v2\x1a.ltedu.people.v1.ImportRowR\x04rows\x12\x16\n" +
+	"\x06commit\x18\x04 \x01(\bR\x06commit\"\xfd\x02\n" +
+	"\x12ImportRollResponse\x121\n" +
+	"\x04rows\x18\x01 \x03(\v2\x1d.ltedu.people.v1.ImportResultR\x04rows\x12:\n" +
+	"\bsections\x18\x02 \x03(\v2\x1e.ltedu.people.v1.ImportSectionR\bsections\x12\x14\n" +
 	"\x05total\x18\x03 \x01(\x05R\x05total\x12\x14\n" +
 	"\x05ready\x18\x04 \x01(\x05R\x05ready\x12\x18\n" +
 	"\askipped\x18\x05 \x01(\x05R\askipped\x12\x16\n" +
@@ -6000,224 +6000,224 @@ const file_joseph_people_v1_people_proto_rawDesc = "" +
 	"\tcommitted\x18\t \x01(\bR\tcommitted\x12#\n" +
 	"\rperiod_before\x18\n" +
 	" \x01(\x05R\fperiodBefore\x12!\n" +
-	"\fperiod_after\x18\v \x01(\x05R\vperiodAfter2\xa7\x15\n" +
-	"\rPeopleService\x12i\n" +
-	"\x10GetPeopleContext\x12).joseph.people.v1.GetPeopleContextRequest\x1a*.joseph.people.v1.GetPeopleContextResponse\x12]\n" +
-	"\fListStudents\x12%.joseph.people.v1.ListStudentsRequest\x1a&.joseph.people.v1.ListStudentsResponse\x12W\n" +
+	"\fperiod_after\x18\v \x01(\x05R\vperiodAfter2\xf1\x14\n" +
+	"\rPeopleService\x12g\n" +
+	"\x10GetPeopleContext\x12(.ltedu.people.v1.GetPeopleContextRequest\x1a).ltedu.people.v1.GetPeopleContextResponse\x12[\n" +
+	"\fListStudents\x12$.ltedu.people.v1.ListStudentsRequest\x1a%.ltedu.people.v1.ListStudentsResponse\x12U\n" +
 	"\n" +
-	"GetStudent\x12#.joseph.people.v1.GetStudentRequest\x1a$.joseph.people.v1.GetStudentResponse\x12`\n" +
-	"\rCreateStudent\x12&.joseph.people.v1.CreateStudentRequest\x1a'.joseph.people.v1.CreateStudentResponse\x12`\n" +
-	"\rUpdateStudent\x12&.joseph.people.v1.UpdateStudentRequest\x1a'.joseph.people.v1.UpdateStudentResponse\x12`\n" +
-	"\rDeleteStudent\x12&.joseph.people.v1.DeleteStudentRequest\x1a'.joseph.people.v1.DeleteStudentResponse\x12]\n" +
-	"\fFindGuardian\x12%.joseph.people.v1.FindGuardianRequest\x1a&.joseph.people.v1.FindGuardianResponse\x12Z\n" +
-	"\vAddGuardian\x12$.joseph.people.v1.AddGuardianRequest\x1a%.joseph.people.v1.AddGuardianResponse\x12c\n" +
-	"\x0eUpdateGuardian\x12'.joseph.people.v1.UpdateGuardianRequest\x1a(.joseph.people.v1.UpdateGuardianResponse\x12c\n" +
-	"\x0eRemoveGuardian\x12'.joseph.people.v1.RemoveGuardianRequest\x1a(.joseph.people.v1.RemoveGuardianResponse\x12Z\n" +
-	"\vGrantAccess\x12$.joseph.people.v1.GrantAccessRequest\x1a%.joseph.people.v1.GrantAccessResponse\x12o\n" +
-	"\x12GetEnrollmentBoard\x12+.joseph.people.v1.GetEnrollmentBoardRequest\x1a,.joseph.people.v1.GetEnrollmentBoardResponse\x12K\n" +
-	"\x06Enroll\x12\x1f.joseph.people.v1.EnrollRequest\x1a .joseph.people.v1.EnrollResponse\x12i\n" +
-	"\x10UpdateEnrollment\x12).joseph.people.v1.UpdateEnrollmentRequest\x1a*.joseph.people.v1.UpdateEnrollmentResponse\x12`\n" +
-	"\rEndEnrollment\x12&.joseph.people.v1.EndEnrollmentRequest\x1a'.joseph.people.v1.EndEnrollmentResponse\x12i\n" +
-	"\x10DeleteEnrollment\x12).joseph.people.v1.DeleteEnrollmentRequest\x1a*.joseph.people.v1.DeleteEnrollmentResponse\x12l\n" +
-	"\x11RatifyEnrollments\x12*.joseph.people.v1.RatifyEnrollmentsRequest\x1a+.joseph.people.v1.RatifyEnrollmentsResponse\x12c\n" +
-	"\x0eListPlacements\x12'.joseph.people.v1.ListPlacementsRequest\x1a(.joseph.people.v1.ListPlacementsResponse\x12f\n" +
-	"\x0fCreatePlacement\x12(.joseph.people.v1.CreatePlacementRequest\x1a).joseph.people.v1.CreatePlacementResponse\x12f\n" +
-	"\x0fDeletePlacement\x12(.joseph.people.v1.DeletePlacementRequest\x1a).joseph.people.v1.DeletePlacementResponse\x12i\n" +
-	"\x10ProposePlacement\x12).joseph.people.v1.ProposePlacementRequest\x1a*.joseph.people.v1.ProposePlacementResponse\x12l\n" +
-	"\x11GetEnrollmentFile\x12*.joseph.people.v1.GetEnrollmentFileRequest\x1a+.joseph.people.v1.GetEnrollmentFileResponse\x12o\n" +
-	"\x12SaveEnrollmentFile\x12+.joseph.people.v1.SaveEnrollmentFileRequest\x1a,.joseph.people.v1.SaveEnrollmentFileResponse\x12u\n" +
-	"\x14SetReligionExemption\x12-.joseph.people.v1.SetReligionExemptionRequest\x1a..joseph.people.v1.SetReligionExemptionResponse\x12Q\n" +
-	"\bListRoll\x12!.joseph.people.v1.ListRollRequest\x1a\".joseph.people.v1.ListRollResponse\x12f\n" +
-	"\x0fSetSiagieStatus\x12(.joseph.people.v1.SetSiagieStatusRequest\x1a).joseph.people.v1.SetSiagieStatusResponse\x12W\n" +
+	"GetStudent\x12\".ltedu.people.v1.GetStudentRequest\x1a#.ltedu.people.v1.GetStudentResponse\x12^\n" +
+	"\rCreateStudent\x12%.ltedu.people.v1.CreateStudentRequest\x1a&.ltedu.people.v1.CreateStudentResponse\x12^\n" +
+	"\rUpdateStudent\x12%.ltedu.people.v1.UpdateStudentRequest\x1a&.ltedu.people.v1.UpdateStudentResponse\x12^\n" +
+	"\rDeleteStudent\x12%.ltedu.people.v1.DeleteStudentRequest\x1a&.ltedu.people.v1.DeleteStudentResponse\x12[\n" +
+	"\fFindGuardian\x12$.ltedu.people.v1.FindGuardianRequest\x1a%.ltedu.people.v1.FindGuardianResponse\x12X\n" +
+	"\vAddGuardian\x12#.ltedu.people.v1.AddGuardianRequest\x1a$.ltedu.people.v1.AddGuardianResponse\x12a\n" +
+	"\x0eUpdateGuardian\x12&.ltedu.people.v1.UpdateGuardianRequest\x1a'.ltedu.people.v1.UpdateGuardianResponse\x12a\n" +
+	"\x0eRemoveGuardian\x12&.ltedu.people.v1.RemoveGuardianRequest\x1a'.ltedu.people.v1.RemoveGuardianResponse\x12X\n" +
+	"\vGrantAccess\x12#.ltedu.people.v1.GrantAccessRequest\x1a$.ltedu.people.v1.GrantAccessResponse\x12m\n" +
+	"\x12GetEnrollmentBoard\x12*.ltedu.people.v1.GetEnrollmentBoardRequest\x1a+.ltedu.people.v1.GetEnrollmentBoardResponse\x12I\n" +
+	"\x06Enroll\x12\x1e.ltedu.people.v1.EnrollRequest\x1a\x1f.ltedu.people.v1.EnrollResponse\x12g\n" +
+	"\x10UpdateEnrollment\x12(.ltedu.people.v1.UpdateEnrollmentRequest\x1a).ltedu.people.v1.UpdateEnrollmentResponse\x12^\n" +
+	"\rEndEnrollment\x12%.ltedu.people.v1.EndEnrollmentRequest\x1a&.ltedu.people.v1.EndEnrollmentResponse\x12g\n" +
+	"\x10DeleteEnrollment\x12(.ltedu.people.v1.DeleteEnrollmentRequest\x1a).ltedu.people.v1.DeleteEnrollmentResponse\x12j\n" +
+	"\x11RatifyEnrollments\x12).ltedu.people.v1.RatifyEnrollmentsRequest\x1a*.ltedu.people.v1.RatifyEnrollmentsResponse\x12a\n" +
+	"\x0eListPlacements\x12&.ltedu.people.v1.ListPlacementsRequest\x1a'.ltedu.people.v1.ListPlacementsResponse\x12d\n" +
+	"\x0fCreatePlacement\x12'.ltedu.people.v1.CreatePlacementRequest\x1a(.ltedu.people.v1.CreatePlacementResponse\x12d\n" +
+	"\x0fDeletePlacement\x12'.ltedu.people.v1.DeletePlacementRequest\x1a(.ltedu.people.v1.DeletePlacementResponse\x12g\n" +
+	"\x10ProposePlacement\x12(.ltedu.people.v1.ProposePlacementRequest\x1a).ltedu.people.v1.ProposePlacementResponse\x12j\n" +
+	"\x11GetEnrollmentFile\x12).ltedu.people.v1.GetEnrollmentFileRequest\x1a*.ltedu.people.v1.GetEnrollmentFileResponse\x12m\n" +
+	"\x12SaveEnrollmentFile\x12*.ltedu.people.v1.SaveEnrollmentFileRequest\x1a+.ltedu.people.v1.SaveEnrollmentFileResponse\x12s\n" +
+	"\x14SetReligionExemption\x12,.ltedu.people.v1.SetReligionExemptionRequest\x1a-.ltedu.people.v1.SetReligionExemptionResponse\x12O\n" +
+	"\bListRoll\x12 .ltedu.people.v1.ListRollRequest\x1a!.ltedu.people.v1.ListRollResponse\x12d\n" +
+	"\x0fSetSiagieStatus\x12'.ltedu.people.v1.SetSiagieStatusRequest\x1a(.ltedu.people.v1.SetSiagieStatusResponse\x12U\n" +
 	"\n" +
-	"ImportRoll\x12#.joseph.people.v1.ImportRollRequest\x1a$.joseph.people.v1.ImportRollResponseB9Z7api/internal/adapter/inbound/grpc/gen/peoplev1;peoplev1b\x06proto3"
+	"ImportRoll\x12\".ltedu.people.v1.ImportRollRequest\x1a#.ltedu.people.v1.ImportRollResponseB9Z7api/internal/adapter/inbound/grpc/gen/peoplev1;peoplev1b\x06proto3"
 
 var (
-	file_joseph_people_v1_people_proto_rawDescOnce sync.Once
-	file_joseph_people_v1_people_proto_rawDescData []byte
+	file_ltedu_people_v1_people_proto_rawDescOnce sync.Once
+	file_ltedu_people_v1_people_proto_rawDescData []byte
 )
 
-func file_joseph_people_v1_people_proto_rawDescGZIP() []byte {
-	file_joseph_people_v1_people_proto_rawDescOnce.Do(func() {
-		file_joseph_people_v1_people_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_people_v1_people_proto_rawDesc), len(file_joseph_people_v1_people_proto_rawDesc)))
+func file_ltedu_people_v1_people_proto_rawDescGZIP() []byte {
+	file_ltedu_people_v1_people_proto_rawDescOnce.Do(func() {
+		file_ltedu_people_v1_people_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_people_v1_people_proto_rawDesc), len(file_ltedu_people_v1_people_proto_rawDesc)))
 	})
-	return file_joseph_people_v1_people_proto_rawDescData
+	return file_ltedu_people_v1_people_proto_rawDescData
 }
 
-var file_joseph_people_v1_people_proto_msgTypes = make([]protoimpl.MessageInfo, 70)
-var file_joseph_people_v1_people_proto_goTypes = []any{
-	(*EnrollmentSummary)(nil),            // 0: joseph.people.v1.EnrollmentSummary
-	(*Student)(nil),                      // 1: joseph.people.v1.Student
-	(*Guardian)(nil),                     // 2: joseph.people.v1.Guardian
-	(*Enrollment)(nil),                   // 3: joseph.people.v1.Enrollment
-	(*Placement)(nil),                    // 4: joseph.people.v1.Placement
-	(*SectionOccupancy)(nil),             // 5: joseph.people.v1.SectionOccupancy
-	(*StudentInput)(nil),                 // 6: joseph.people.v1.StudentInput
-	(*GuardianInput)(nil),                // 7: joseph.people.v1.GuardianInput
-	(*GuardianLink)(nil),                 // 8: joseph.people.v1.GuardianLink
-	(*StudentDetail)(nil),                // 9: joseph.people.v1.StudentDetail
-	(*GetPeopleContextRequest)(nil),      // 10: joseph.people.v1.GetPeopleContextRequest
-	(*GetPeopleContextResponse)(nil),     // 11: joseph.people.v1.GetPeopleContextResponse
-	(*ListStudentsRequest)(nil),          // 12: joseph.people.v1.ListStudentsRequest
-	(*ListStudentsResponse)(nil),         // 13: joseph.people.v1.ListStudentsResponse
-	(*GetStudentRequest)(nil),            // 14: joseph.people.v1.GetStudentRequest
-	(*GetStudentResponse)(nil),           // 15: joseph.people.v1.GetStudentResponse
-	(*CreateStudentRequest)(nil),         // 16: joseph.people.v1.CreateStudentRequest
-	(*CreateStudentResponse)(nil),        // 17: joseph.people.v1.CreateStudentResponse
-	(*UpdateStudentRequest)(nil),         // 18: joseph.people.v1.UpdateStudentRequest
-	(*UpdateStudentResponse)(nil),        // 19: joseph.people.v1.UpdateStudentResponse
-	(*DeleteStudentRequest)(nil),         // 20: joseph.people.v1.DeleteStudentRequest
-	(*DeleteStudentResponse)(nil),        // 21: joseph.people.v1.DeleteStudentResponse
-	(*FindGuardianRequest)(nil),          // 22: joseph.people.v1.FindGuardianRequest
-	(*FindGuardianResponse)(nil),         // 23: joseph.people.v1.FindGuardianResponse
-	(*AddGuardianRequest)(nil),           // 24: joseph.people.v1.AddGuardianRequest
-	(*AddGuardianResponse)(nil),          // 25: joseph.people.v1.AddGuardianResponse
-	(*UpdateGuardianRequest)(nil),        // 26: joseph.people.v1.UpdateGuardianRequest
-	(*UpdateGuardianResponse)(nil),       // 27: joseph.people.v1.UpdateGuardianResponse
-	(*RemoveGuardianRequest)(nil),        // 28: joseph.people.v1.RemoveGuardianRequest
-	(*RemoveGuardianResponse)(nil),       // 29: joseph.people.v1.RemoveGuardianResponse
-	(*GrantAccessRequest)(nil),           // 30: joseph.people.v1.GrantAccessRequest
-	(*GrantAccessResponse)(nil),          // 31: joseph.people.v1.GrantAccessResponse
-	(*GetEnrollmentBoardRequest)(nil),    // 32: joseph.people.v1.GetEnrollmentBoardRequest
-	(*GetEnrollmentBoardResponse)(nil),   // 33: joseph.people.v1.GetEnrollmentBoardResponse
-	(*EnrollRequest)(nil),                // 34: joseph.people.v1.EnrollRequest
-	(*EnrollResponse)(nil),               // 35: joseph.people.v1.EnrollResponse
-	(*UpdateEnrollmentRequest)(nil),      // 36: joseph.people.v1.UpdateEnrollmentRequest
-	(*UpdateEnrollmentResponse)(nil),     // 37: joseph.people.v1.UpdateEnrollmentResponse
-	(*EndEnrollmentRequest)(nil),         // 38: joseph.people.v1.EndEnrollmentRequest
-	(*EndEnrollmentResponse)(nil),        // 39: joseph.people.v1.EndEnrollmentResponse
-	(*DeleteEnrollmentRequest)(nil),      // 40: joseph.people.v1.DeleteEnrollmentRequest
-	(*DeleteEnrollmentResponse)(nil),     // 41: joseph.people.v1.DeleteEnrollmentResponse
-	(*RatifyEnrollmentsRequest)(nil),     // 42: joseph.people.v1.RatifyEnrollmentsRequest
-	(*RatifyEnrollmentsResponse)(nil),    // 43: joseph.people.v1.RatifyEnrollmentsResponse
-	(*ListPlacementsRequest)(nil),        // 44: joseph.people.v1.ListPlacementsRequest
-	(*ListPlacementsResponse)(nil),       // 45: joseph.people.v1.ListPlacementsResponse
-	(*CreatePlacementRequest)(nil),       // 46: joseph.people.v1.CreatePlacementRequest
-	(*CreatePlacementResponse)(nil),      // 47: joseph.people.v1.CreatePlacementResponse
-	(*DeletePlacementRequest)(nil),       // 48: joseph.people.v1.DeletePlacementRequest
-	(*DeletePlacementResponse)(nil),      // 49: joseph.people.v1.DeletePlacementResponse
-	(*ProposePlacementRequest)(nil),      // 50: joseph.people.v1.ProposePlacementRequest
-	(*ProposePlacementResponse)(nil),     // 51: joseph.people.v1.ProposePlacementResponse
-	(*EnrollmentFile)(nil),               // 52: joseph.people.v1.EnrollmentFile
-	(*GetEnrollmentFileRequest)(nil),     // 53: joseph.people.v1.GetEnrollmentFileRequest
-	(*GetEnrollmentFileResponse)(nil),    // 54: joseph.people.v1.GetEnrollmentFileResponse
-	(*SaveEnrollmentFileRequest)(nil),    // 55: joseph.people.v1.SaveEnrollmentFileRequest
-	(*SaveEnrollmentFileResponse)(nil),   // 56: joseph.people.v1.SaveEnrollmentFileResponse
-	(*SetReligionExemptionRequest)(nil),  // 57: joseph.people.v1.SetReligionExemptionRequest
-	(*SetReligionExemptionResponse)(nil), // 58: joseph.people.v1.SetReligionExemptionResponse
-	(*RollRow)(nil),                      // 59: joseph.people.v1.RollRow
-	(*RollFilter)(nil),                   // 60: joseph.people.v1.RollFilter
-	(*ListRollRequest)(nil),              // 61: joseph.people.v1.ListRollRequest
-	(*ListRollResponse)(nil),             // 62: joseph.people.v1.ListRollResponse
-	(*SetSiagieStatusRequest)(nil),       // 63: joseph.people.v1.SetSiagieStatusRequest
-	(*SetSiagieStatusResponse)(nil),      // 64: joseph.people.v1.SetSiagieStatusResponse
-	(*ImportRow)(nil),                    // 65: joseph.people.v1.ImportRow
-	(*ImportResult)(nil),                 // 66: joseph.people.v1.ImportResult
-	(*ImportSection)(nil),                // 67: joseph.people.v1.ImportSection
-	(*ImportRollRequest)(nil),            // 68: joseph.people.v1.ImportRollRequest
-	(*ImportRollResponse)(nil),           // 69: joseph.people.v1.ImportRollResponse
-	(*academicv1.AcademicContext)(nil),   // 70: joseph.academic.v1.AcademicContext
-	(*academicv1.Level)(nil),             // 71: joseph.academic.v1.Level
-	(*academicv1.Period)(nil),            // 72: joseph.academic.v1.Period
-	(*academicv1.Section)(nil),           // 73: joseph.academic.v1.Section
-	(*academicv1.Subject)(nil),           // 74: joseph.academic.v1.Subject
+var file_ltedu_people_v1_people_proto_msgTypes = make([]protoimpl.MessageInfo, 70)
+var file_ltedu_people_v1_people_proto_goTypes = []any{
+	(*EnrollmentSummary)(nil),            // 0: ltedu.people.v1.EnrollmentSummary
+	(*Student)(nil),                      // 1: ltedu.people.v1.Student
+	(*Guardian)(nil),                     // 2: ltedu.people.v1.Guardian
+	(*Enrollment)(nil),                   // 3: ltedu.people.v1.Enrollment
+	(*Placement)(nil),                    // 4: ltedu.people.v1.Placement
+	(*SectionOccupancy)(nil),             // 5: ltedu.people.v1.SectionOccupancy
+	(*StudentInput)(nil),                 // 6: ltedu.people.v1.StudentInput
+	(*GuardianInput)(nil),                // 7: ltedu.people.v1.GuardianInput
+	(*GuardianLink)(nil),                 // 8: ltedu.people.v1.GuardianLink
+	(*StudentDetail)(nil),                // 9: ltedu.people.v1.StudentDetail
+	(*GetPeopleContextRequest)(nil),      // 10: ltedu.people.v1.GetPeopleContextRequest
+	(*GetPeopleContextResponse)(nil),     // 11: ltedu.people.v1.GetPeopleContextResponse
+	(*ListStudentsRequest)(nil),          // 12: ltedu.people.v1.ListStudentsRequest
+	(*ListStudentsResponse)(nil),         // 13: ltedu.people.v1.ListStudentsResponse
+	(*GetStudentRequest)(nil),            // 14: ltedu.people.v1.GetStudentRequest
+	(*GetStudentResponse)(nil),           // 15: ltedu.people.v1.GetStudentResponse
+	(*CreateStudentRequest)(nil),         // 16: ltedu.people.v1.CreateStudentRequest
+	(*CreateStudentResponse)(nil),        // 17: ltedu.people.v1.CreateStudentResponse
+	(*UpdateStudentRequest)(nil),         // 18: ltedu.people.v1.UpdateStudentRequest
+	(*UpdateStudentResponse)(nil),        // 19: ltedu.people.v1.UpdateStudentResponse
+	(*DeleteStudentRequest)(nil),         // 20: ltedu.people.v1.DeleteStudentRequest
+	(*DeleteStudentResponse)(nil),        // 21: ltedu.people.v1.DeleteStudentResponse
+	(*FindGuardianRequest)(nil),          // 22: ltedu.people.v1.FindGuardianRequest
+	(*FindGuardianResponse)(nil),         // 23: ltedu.people.v1.FindGuardianResponse
+	(*AddGuardianRequest)(nil),           // 24: ltedu.people.v1.AddGuardianRequest
+	(*AddGuardianResponse)(nil),          // 25: ltedu.people.v1.AddGuardianResponse
+	(*UpdateGuardianRequest)(nil),        // 26: ltedu.people.v1.UpdateGuardianRequest
+	(*UpdateGuardianResponse)(nil),       // 27: ltedu.people.v1.UpdateGuardianResponse
+	(*RemoveGuardianRequest)(nil),        // 28: ltedu.people.v1.RemoveGuardianRequest
+	(*RemoveGuardianResponse)(nil),       // 29: ltedu.people.v1.RemoveGuardianResponse
+	(*GrantAccessRequest)(nil),           // 30: ltedu.people.v1.GrantAccessRequest
+	(*GrantAccessResponse)(nil),          // 31: ltedu.people.v1.GrantAccessResponse
+	(*GetEnrollmentBoardRequest)(nil),    // 32: ltedu.people.v1.GetEnrollmentBoardRequest
+	(*GetEnrollmentBoardResponse)(nil),   // 33: ltedu.people.v1.GetEnrollmentBoardResponse
+	(*EnrollRequest)(nil),                // 34: ltedu.people.v1.EnrollRequest
+	(*EnrollResponse)(nil),               // 35: ltedu.people.v1.EnrollResponse
+	(*UpdateEnrollmentRequest)(nil),      // 36: ltedu.people.v1.UpdateEnrollmentRequest
+	(*UpdateEnrollmentResponse)(nil),     // 37: ltedu.people.v1.UpdateEnrollmentResponse
+	(*EndEnrollmentRequest)(nil),         // 38: ltedu.people.v1.EndEnrollmentRequest
+	(*EndEnrollmentResponse)(nil),        // 39: ltedu.people.v1.EndEnrollmentResponse
+	(*DeleteEnrollmentRequest)(nil),      // 40: ltedu.people.v1.DeleteEnrollmentRequest
+	(*DeleteEnrollmentResponse)(nil),     // 41: ltedu.people.v1.DeleteEnrollmentResponse
+	(*RatifyEnrollmentsRequest)(nil),     // 42: ltedu.people.v1.RatifyEnrollmentsRequest
+	(*RatifyEnrollmentsResponse)(nil),    // 43: ltedu.people.v1.RatifyEnrollmentsResponse
+	(*ListPlacementsRequest)(nil),        // 44: ltedu.people.v1.ListPlacementsRequest
+	(*ListPlacementsResponse)(nil),       // 45: ltedu.people.v1.ListPlacementsResponse
+	(*CreatePlacementRequest)(nil),       // 46: ltedu.people.v1.CreatePlacementRequest
+	(*CreatePlacementResponse)(nil),      // 47: ltedu.people.v1.CreatePlacementResponse
+	(*DeletePlacementRequest)(nil),       // 48: ltedu.people.v1.DeletePlacementRequest
+	(*DeletePlacementResponse)(nil),      // 49: ltedu.people.v1.DeletePlacementResponse
+	(*ProposePlacementRequest)(nil),      // 50: ltedu.people.v1.ProposePlacementRequest
+	(*ProposePlacementResponse)(nil),     // 51: ltedu.people.v1.ProposePlacementResponse
+	(*EnrollmentFile)(nil),               // 52: ltedu.people.v1.EnrollmentFile
+	(*GetEnrollmentFileRequest)(nil),     // 53: ltedu.people.v1.GetEnrollmentFileRequest
+	(*GetEnrollmentFileResponse)(nil),    // 54: ltedu.people.v1.GetEnrollmentFileResponse
+	(*SaveEnrollmentFileRequest)(nil),    // 55: ltedu.people.v1.SaveEnrollmentFileRequest
+	(*SaveEnrollmentFileResponse)(nil),   // 56: ltedu.people.v1.SaveEnrollmentFileResponse
+	(*SetReligionExemptionRequest)(nil),  // 57: ltedu.people.v1.SetReligionExemptionRequest
+	(*SetReligionExemptionResponse)(nil), // 58: ltedu.people.v1.SetReligionExemptionResponse
+	(*RollRow)(nil),                      // 59: ltedu.people.v1.RollRow
+	(*RollFilter)(nil),                   // 60: ltedu.people.v1.RollFilter
+	(*ListRollRequest)(nil),              // 61: ltedu.people.v1.ListRollRequest
+	(*ListRollResponse)(nil),             // 62: ltedu.people.v1.ListRollResponse
+	(*SetSiagieStatusRequest)(nil),       // 63: ltedu.people.v1.SetSiagieStatusRequest
+	(*SetSiagieStatusResponse)(nil),      // 64: ltedu.people.v1.SetSiagieStatusResponse
+	(*ImportRow)(nil),                    // 65: ltedu.people.v1.ImportRow
+	(*ImportResult)(nil),                 // 66: ltedu.people.v1.ImportResult
+	(*ImportSection)(nil),                // 67: ltedu.people.v1.ImportSection
+	(*ImportRollRequest)(nil),            // 68: ltedu.people.v1.ImportRollRequest
+	(*ImportRollResponse)(nil),           // 69: ltedu.people.v1.ImportRollResponse
+	(*academicv1.AcademicContext)(nil),   // 70: ltedu.academic.v1.AcademicContext
+	(*academicv1.Level)(nil),             // 71: ltedu.academic.v1.Level
+	(*academicv1.Period)(nil),            // 72: ltedu.academic.v1.Period
+	(*academicv1.Section)(nil),           // 73: ltedu.academic.v1.Section
+	(*academicv1.Subject)(nil),           // 74: ltedu.academic.v1.Subject
 }
-var file_joseph_people_v1_people_proto_depIdxs = []int32{
-	0,  // 0: joseph.people.v1.Student.enrollment:type_name -> joseph.people.v1.EnrollmentSummary
-	1,  // 1: joseph.people.v1.StudentDetail.student:type_name -> joseph.people.v1.Student
-	2,  // 2: joseph.people.v1.StudentDetail.guardians:type_name -> joseph.people.v1.Guardian
-	3,  // 3: joseph.people.v1.StudentDetail.enrollments:type_name -> joseph.people.v1.Enrollment
-	4,  // 4: joseph.people.v1.StudentDetail.placements:type_name -> joseph.people.v1.Placement
-	70, // 5: joseph.people.v1.GetPeopleContextResponse.context:type_name -> joseph.academic.v1.AcademicContext
-	71, // 6: joseph.people.v1.GetPeopleContextResponse.levels:type_name -> joseph.academic.v1.Level
-	72, // 7: joseph.people.v1.GetPeopleContextResponse.periods:type_name -> joseph.academic.v1.Period
-	1,  // 8: joseph.people.v1.ListStudentsResponse.students:type_name -> joseph.people.v1.Student
-	9,  // 9: joseph.people.v1.GetStudentResponse.detail:type_name -> joseph.people.v1.StudentDetail
-	6,  // 10: joseph.people.v1.CreateStudentRequest.student:type_name -> joseph.people.v1.StudentInput
-	1,  // 11: joseph.people.v1.CreateStudentResponse.student:type_name -> joseph.people.v1.Student
-	6,  // 12: joseph.people.v1.UpdateStudentRequest.student:type_name -> joseph.people.v1.StudentInput
-	1,  // 13: joseph.people.v1.UpdateStudentResponse.student:type_name -> joseph.people.v1.Student
-	2,  // 14: joseph.people.v1.FindGuardianResponse.guardian:type_name -> joseph.people.v1.Guardian
-	7,  // 15: joseph.people.v1.AddGuardianRequest.guardian:type_name -> joseph.people.v1.GuardianInput
-	8,  // 16: joseph.people.v1.AddGuardianRequest.link:type_name -> joseph.people.v1.GuardianLink
-	9,  // 17: joseph.people.v1.AddGuardianResponse.detail:type_name -> joseph.people.v1.StudentDetail
-	7,  // 18: joseph.people.v1.UpdateGuardianRequest.guardian:type_name -> joseph.people.v1.GuardianInput
-	8,  // 19: joseph.people.v1.UpdateGuardianRequest.link:type_name -> joseph.people.v1.GuardianLink
-	9,  // 20: joseph.people.v1.UpdateGuardianResponse.detail:type_name -> joseph.people.v1.StudentDetail
-	9,  // 21: joseph.people.v1.RemoveGuardianResponse.detail:type_name -> joseph.people.v1.StudentDetail
-	9,  // 22: joseph.people.v1.GrantAccessResponse.detail:type_name -> joseph.people.v1.StudentDetail
-	72, // 23: joseph.people.v1.GetEnrollmentBoardResponse.period:type_name -> joseph.academic.v1.Period
-	73, // 24: joseph.people.v1.GetEnrollmentBoardResponse.sections:type_name -> joseph.academic.v1.Section
-	5,  // 25: joseph.people.v1.GetEnrollmentBoardResponse.occupancy:type_name -> joseph.people.v1.SectionOccupancy
-	3,  // 26: joseph.people.v1.GetEnrollmentBoardResponse.enrollments:type_name -> joseph.people.v1.Enrollment
-	74, // 27: joseph.people.v1.GetEnrollmentBoardResponse.units:type_name -> joseph.academic.v1.Subject
-	3,  // 28: joseph.people.v1.EnrollResponse.enrollment:type_name -> joseph.people.v1.Enrollment
-	3,  // 29: joseph.people.v1.UpdateEnrollmentResponse.enrollment:type_name -> joseph.people.v1.Enrollment
-	3,  // 30: joseph.people.v1.EndEnrollmentResponse.enrollment:type_name -> joseph.people.v1.Enrollment
-	4,  // 31: joseph.people.v1.ListPlacementsResponse.placements:type_name -> joseph.people.v1.Placement
-	4,  // 32: joseph.people.v1.CreatePlacementResponse.placement:type_name -> joseph.people.v1.Placement
-	52, // 33: joseph.people.v1.GetEnrollmentFileResponse.file:type_name -> joseph.people.v1.EnrollmentFile
-	52, // 34: joseph.people.v1.SaveEnrollmentFileRequest.file:type_name -> joseph.people.v1.EnrollmentFile
-	52, // 35: joseph.people.v1.SaveEnrollmentFileResponse.file:type_name -> joseph.people.v1.EnrollmentFile
-	60, // 36: joseph.people.v1.ListRollRequest.filter:type_name -> joseph.people.v1.RollFilter
-	59, // 37: joseph.people.v1.ListRollResponse.rows:type_name -> joseph.people.v1.RollRow
-	65, // 38: joseph.people.v1.ImportRollRequest.rows:type_name -> joseph.people.v1.ImportRow
-	66, // 39: joseph.people.v1.ImportRollResponse.rows:type_name -> joseph.people.v1.ImportResult
-	67, // 40: joseph.people.v1.ImportRollResponse.sections:type_name -> joseph.people.v1.ImportSection
-	10, // 41: joseph.people.v1.PeopleService.GetPeopleContext:input_type -> joseph.people.v1.GetPeopleContextRequest
-	12, // 42: joseph.people.v1.PeopleService.ListStudents:input_type -> joseph.people.v1.ListStudentsRequest
-	14, // 43: joseph.people.v1.PeopleService.GetStudent:input_type -> joseph.people.v1.GetStudentRequest
-	16, // 44: joseph.people.v1.PeopleService.CreateStudent:input_type -> joseph.people.v1.CreateStudentRequest
-	18, // 45: joseph.people.v1.PeopleService.UpdateStudent:input_type -> joseph.people.v1.UpdateStudentRequest
-	20, // 46: joseph.people.v1.PeopleService.DeleteStudent:input_type -> joseph.people.v1.DeleteStudentRequest
-	22, // 47: joseph.people.v1.PeopleService.FindGuardian:input_type -> joseph.people.v1.FindGuardianRequest
-	24, // 48: joseph.people.v1.PeopleService.AddGuardian:input_type -> joseph.people.v1.AddGuardianRequest
-	26, // 49: joseph.people.v1.PeopleService.UpdateGuardian:input_type -> joseph.people.v1.UpdateGuardianRequest
-	28, // 50: joseph.people.v1.PeopleService.RemoveGuardian:input_type -> joseph.people.v1.RemoveGuardianRequest
-	30, // 51: joseph.people.v1.PeopleService.GrantAccess:input_type -> joseph.people.v1.GrantAccessRequest
-	32, // 52: joseph.people.v1.PeopleService.GetEnrollmentBoard:input_type -> joseph.people.v1.GetEnrollmentBoardRequest
-	34, // 53: joseph.people.v1.PeopleService.Enroll:input_type -> joseph.people.v1.EnrollRequest
-	36, // 54: joseph.people.v1.PeopleService.UpdateEnrollment:input_type -> joseph.people.v1.UpdateEnrollmentRequest
-	38, // 55: joseph.people.v1.PeopleService.EndEnrollment:input_type -> joseph.people.v1.EndEnrollmentRequest
-	40, // 56: joseph.people.v1.PeopleService.DeleteEnrollment:input_type -> joseph.people.v1.DeleteEnrollmentRequest
-	42, // 57: joseph.people.v1.PeopleService.RatifyEnrollments:input_type -> joseph.people.v1.RatifyEnrollmentsRequest
-	44, // 58: joseph.people.v1.PeopleService.ListPlacements:input_type -> joseph.people.v1.ListPlacementsRequest
-	46, // 59: joseph.people.v1.PeopleService.CreatePlacement:input_type -> joseph.people.v1.CreatePlacementRequest
-	48, // 60: joseph.people.v1.PeopleService.DeletePlacement:input_type -> joseph.people.v1.DeletePlacementRequest
-	50, // 61: joseph.people.v1.PeopleService.ProposePlacement:input_type -> joseph.people.v1.ProposePlacementRequest
-	53, // 62: joseph.people.v1.PeopleService.GetEnrollmentFile:input_type -> joseph.people.v1.GetEnrollmentFileRequest
-	55, // 63: joseph.people.v1.PeopleService.SaveEnrollmentFile:input_type -> joseph.people.v1.SaveEnrollmentFileRequest
-	57, // 64: joseph.people.v1.PeopleService.SetReligionExemption:input_type -> joseph.people.v1.SetReligionExemptionRequest
-	61, // 65: joseph.people.v1.PeopleService.ListRoll:input_type -> joseph.people.v1.ListRollRequest
-	63, // 66: joseph.people.v1.PeopleService.SetSiagieStatus:input_type -> joseph.people.v1.SetSiagieStatusRequest
-	68, // 67: joseph.people.v1.PeopleService.ImportRoll:input_type -> joseph.people.v1.ImportRollRequest
-	11, // 68: joseph.people.v1.PeopleService.GetPeopleContext:output_type -> joseph.people.v1.GetPeopleContextResponse
-	13, // 69: joseph.people.v1.PeopleService.ListStudents:output_type -> joseph.people.v1.ListStudentsResponse
-	15, // 70: joseph.people.v1.PeopleService.GetStudent:output_type -> joseph.people.v1.GetStudentResponse
-	17, // 71: joseph.people.v1.PeopleService.CreateStudent:output_type -> joseph.people.v1.CreateStudentResponse
-	19, // 72: joseph.people.v1.PeopleService.UpdateStudent:output_type -> joseph.people.v1.UpdateStudentResponse
-	21, // 73: joseph.people.v1.PeopleService.DeleteStudent:output_type -> joseph.people.v1.DeleteStudentResponse
-	23, // 74: joseph.people.v1.PeopleService.FindGuardian:output_type -> joseph.people.v1.FindGuardianResponse
-	25, // 75: joseph.people.v1.PeopleService.AddGuardian:output_type -> joseph.people.v1.AddGuardianResponse
-	27, // 76: joseph.people.v1.PeopleService.UpdateGuardian:output_type -> joseph.people.v1.UpdateGuardianResponse
-	29, // 77: joseph.people.v1.PeopleService.RemoveGuardian:output_type -> joseph.people.v1.RemoveGuardianResponse
-	31, // 78: joseph.people.v1.PeopleService.GrantAccess:output_type -> joseph.people.v1.GrantAccessResponse
-	33, // 79: joseph.people.v1.PeopleService.GetEnrollmentBoard:output_type -> joseph.people.v1.GetEnrollmentBoardResponse
-	35, // 80: joseph.people.v1.PeopleService.Enroll:output_type -> joseph.people.v1.EnrollResponse
-	37, // 81: joseph.people.v1.PeopleService.UpdateEnrollment:output_type -> joseph.people.v1.UpdateEnrollmentResponse
-	39, // 82: joseph.people.v1.PeopleService.EndEnrollment:output_type -> joseph.people.v1.EndEnrollmentResponse
-	41, // 83: joseph.people.v1.PeopleService.DeleteEnrollment:output_type -> joseph.people.v1.DeleteEnrollmentResponse
-	43, // 84: joseph.people.v1.PeopleService.RatifyEnrollments:output_type -> joseph.people.v1.RatifyEnrollmentsResponse
-	45, // 85: joseph.people.v1.PeopleService.ListPlacements:output_type -> joseph.people.v1.ListPlacementsResponse
-	47, // 86: joseph.people.v1.PeopleService.CreatePlacement:output_type -> joseph.people.v1.CreatePlacementResponse
-	49, // 87: joseph.people.v1.PeopleService.DeletePlacement:output_type -> joseph.people.v1.DeletePlacementResponse
-	51, // 88: joseph.people.v1.PeopleService.ProposePlacement:output_type -> joseph.people.v1.ProposePlacementResponse
-	54, // 89: joseph.people.v1.PeopleService.GetEnrollmentFile:output_type -> joseph.people.v1.GetEnrollmentFileResponse
-	56, // 90: joseph.people.v1.PeopleService.SaveEnrollmentFile:output_type -> joseph.people.v1.SaveEnrollmentFileResponse
-	58, // 91: joseph.people.v1.PeopleService.SetReligionExemption:output_type -> joseph.people.v1.SetReligionExemptionResponse
-	62, // 92: joseph.people.v1.PeopleService.ListRoll:output_type -> joseph.people.v1.ListRollResponse
-	64, // 93: joseph.people.v1.PeopleService.SetSiagieStatus:output_type -> joseph.people.v1.SetSiagieStatusResponse
-	69, // 94: joseph.people.v1.PeopleService.ImportRoll:output_type -> joseph.people.v1.ImportRollResponse
+var file_ltedu_people_v1_people_proto_depIdxs = []int32{
+	0,  // 0: ltedu.people.v1.Student.enrollment:type_name -> ltedu.people.v1.EnrollmentSummary
+	1,  // 1: ltedu.people.v1.StudentDetail.student:type_name -> ltedu.people.v1.Student
+	2,  // 2: ltedu.people.v1.StudentDetail.guardians:type_name -> ltedu.people.v1.Guardian
+	3,  // 3: ltedu.people.v1.StudentDetail.enrollments:type_name -> ltedu.people.v1.Enrollment
+	4,  // 4: ltedu.people.v1.StudentDetail.placements:type_name -> ltedu.people.v1.Placement
+	70, // 5: ltedu.people.v1.GetPeopleContextResponse.context:type_name -> ltedu.academic.v1.AcademicContext
+	71, // 6: ltedu.people.v1.GetPeopleContextResponse.levels:type_name -> ltedu.academic.v1.Level
+	72, // 7: ltedu.people.v1.GetPeopleContextResponse.periods:type_name -> ltedu.academic.v1.Period
+	1,  // 8: ltedu.people.v1.ListStudentsResponse.students:type_name -> ltedu.people.v1.Student
+	9,  // 9: ltedu.people.v1.GetStudentResponse.detail:type_name -> ltedu.people.v1.StudentDetail
+	6,  // 10: ltedu.people.v1.CreateStudentRequest.student:type_name -> ltedu.people.v1.StudentInput
+	1,  // 11: ltedu.people.v1.CreateStudentResponse.student:type_name -> ltedu.people.v1.Student
+	6,  // 12: ltedu.people.v1.UpdateStudentRequest.student:type_name -> ltedu.people.v1.StudentInput
+	1,  // 13: ltedu.people.v1.UpdateStudentResponse.student:type_name -> ltedu.people.v1.Student
+	2,  // 14: ltedu.people.v1.FindGuardianResponse.guardian:type_name -> ltedu.people.v1.Guardian
+	7,  // 15: ltedu.people.v1.AddGuardianRequest.guardian:type_name -> ltedu.people.v1.GuardianInput
+	8,  // 16: ltedu.people.v1.AddGuardianRequest.link:type_name -> ltedu.people.v1.GuardianLink
+	9,  // 17: ltedu.people.v1.AddGuardianResponse.detail:type_name -> ltedu.people.v1.StudentDetail
+	7,  // 18: ltedu.people.v1.UpdateGuardianRequest.guardian:type_name -> ltedu.people.v1.GuardianInput
+	8,  // 19: ltedu.people.v1.UpdateGuardianRequest.link:type_name -> ltedu.people.v1.GuardianLink
+	9,  // 20: ltedu.people.v1.UpdateGuardianResponse.detail:type_name -> ltedu.people.v1.StudentDetail
+	9,  // 21: ltedu.people.v1.RemoveGuardianResponse.detail:type_name -> ltedu.people.v1.StudentDetail
+	9,  // 22: ltedu.people.v1.GrantAccessResponse.detail:type_name -> ltedu.people.v1.StudentDetail
+	72, // 23: ltedu.people.v1.GetEnrollmentBoardResponse.period:type_name -> ltedu.academic.v1.Period
+	73, // 24: ltedu.people.v1.GetEnrollmentBoardResponse.sections:type_name -> ltedu.academic.v1.Section
+	5,  // 25: ltedu.people.v1.GetEnrollmentBoardResponse.occupancy:type_name -> ltedu.people.v1.SectionOccupancy
+	3,  // 26: ltedu.people.v1.GetEnrollmentBoardResponse.enrollments:type_name -> ltedu.people.v1.Enrollment
+	74, // 27: ltedu.people.v1.GetEnrollmentBoardResponse.units:type_name -> ltedu.academic.v1.Subject
+	3,  // 28: ltedu.people.v1.EnrollResponse.enrollment:type_name -> ltedu.people.v1.Enrollment
+	3,  // 29: ltedu.people.v1.UpdateEnrollmentResponse.enrollment:type_name -> ltedu.people.v1.Enrollment
+	3,  // 30: ltedu.people.v1.EndEnrollmentResponse.enrollment:type_name -> ltedu.people.v1.Enrollment
+	4,  // 31: ltedu.people.v1.ListPlacementsResponse.placements:type_name -> ltedu.people.v1.Placement
+	4,  // 32: ltedu.people.v1.CreatePlacementResponse.placement:type_name -> ltedu.people.v1.Placement
+	52, // 33: ltedu.people.v1.GetEnrollmentFileResponse.file:type_name -> ltedu.people.v1.EnrollmentFile
+	52, // 34: ltedu.people.v1.SaveEnrollmentFileRequest.file:type_name -> ltedu.people.v1.EnrollmentFile
+	52, // 35: ltedu.people.v1.SaveEnrollmentFileResponse.file:type_name -> ltedu.people.v1.EnrollmentFile
+	60, // 36: ltedu.people.v1.ListRollRequest.filter:type_name -> ltedu.people.v1.RollFilter
+	59, // 37: ltedu.people.v1.ListRollResponse.rows:type_name -> ltedu.people.v1.RollRow
+	65, // 38: ltedu.people.v1.ImportRollRequest.rows:type_name -> ltedu.people.v1.ImportRow
+	66, // 39: ltedu.people.v1.ImportRollResponse.rows:type_name -> ltedu.people.v1.ImportResult
+	67, // 40: ltedu.people.v1.ImportRollResponse.sections:type_name -> ltedu.people.v1.ImportSection
+	10, // 41: ltedu.people.v1.PeopleService.GetPeopleContext:input_type -> ltedu.people.v1.GetPeopleContextRequest
+	12, // 42: ltedu.people.v1.PeopleService.ListStudents:input_type -> ltedu.people.v1.ListStudentsRequest
+	14, // 43: ltedu.people.v1.PeopleService.GetStudent:input_type -> ltedu.people.v1.GetStudentRequest
+	16, // 44: ltedu.people.v1.PeopleService.CreateStudent:input_type -> ltedu.people.v1.CreateStudentRequest
+	18, // 45: ltedu.people.v1.PeopleService.UpdateStudent:input_type -> ltedu.people.v1.UpdateStudentRequest
+	20, // 46: ltedu.people.v1.PeopleService.DeleteStudent:input_type -> ltedu.people.v1.DeleteStudentRequest
+	22, // 47: ltedu.people.v1.PeopleService.FindGuardian:input_type -> ltedu.people.v1.FindGuardianRequest
+	24, // 48: ltedu.people.v1.PeopleService.AddGuardian:input_type -> ltedu.people.v1.AddGuardianRequest
+	26, // 49: ltedu.people.v1.PeopleService.UpdateGuardian:input_type -> ltedu.people.v1.UpdateGuardianRequest
+	28, // 50: ltedu.people.v1.PeopleService.RemoveGuardian:input_type -> ltedu.people.v1.RemoveGuardianRequest
+	30, // 51: ltedu.people.v1.PeopleService.GrantAccess:input_type -> ltedu.people.v1.GrantAccessRequest
+	32, // 52: ltedu.people.v1.PeopleService.GetEnrollmentBoard:input_type -> ltedu.people.v1.GetEnrollmentBoardRequest
+	34, // 53: ltedu.people.v1.PeopleService.Enroll:input_type -> ltedu.people.v1.EnrollRequest
+	36, // 54: ltedu.people.v1.PeopleService.UpdateEnrollment:input_type -> ltedu.people.v1.UpdateEnrollmentRequest
+	38, // 55: ltedu.people.v1.PeopleService.EndEnrollment:input_type -> ltedu.people.v1.EndEnrollmentRequest
+	40, // 56: ltedu.people.v1.PeopleService.DeleteEnrollment:input_type -> ltedu.people.v1.DeleteEnrollmentRequest
+	42, // 57: ltedu.people.v1.PeopleService.RatifyEnrollments:input_type -> ltedu.people.v1.RatifyEnrollmentsRequest
+	44, // 58: ltedu.people.v1.PeopleService.ListPlacements:input_type -> ltedu.people.v1.ListPlacementsRequest
+	46, // 59: ltedu.people.v1.PeopleService.CreatePlacement:input_type -> ltedu.people.v1.CreatePlacementRequest
+	48, // 60: ltedu.people.v1.PeopleService.DeletePlacement:input_type -> ltedu.people.v1.DeletePlacementRequest
+	50, // 61: ltedu.people.v1.PeopleService.ProposePlacement:input_type -> ltedu.people.v1.ProposePlacementRequest
+	53, // 62: ltedu.people.v1.PeopleService.GetEnrollmentFile:input_type -> ltedu.people.v1.GetEnrollmentFileRequest
+	55, // 63: ltedu.people.v1.PeopleService.SaveEnrollmentFile:input_type -> ltedu.people.v1.SaveEnrollmentFileRequest
+	57, // 64: ltedu.people.v1.PeopleService.SetReligionExemption:input_type -> ltedu.people.v1.SetReligionExemptionRequest
+	61, // 65: ltedu.people.v1.PeopleService.ListRoll:input_type -> ltedu.people.v1.ListRollRequest
+	63, // 66: ltedu.people.v1.PeopleService.SetSiagieStatus:input_type -> ltedu.people.v1.SetSiagieStatusRequest
+	68, // 67: ltedu.people.v1.PeopleService.ImportRoll:input_type -> ltedu.people.v1.ImportRollRequest
+	11, // 68: ltedu.people.v1.PeopleService.GetPeopleContext:output_type -> ltedu.people.v1.GetPeopleContextResponse
+	13, // 69: ltedu.people.v1.PeopleService.ListStudents:output_type -> ltedu.people.v1.ListStudentsResponse
+	15, // 70: ltedu.people.v1.PeopleService.GetStudent:output_type -> ltedu.people.v1.GetStudentResponse
+	17, // 71: ltedu.people.v1.PeopleService.CreateStudent:output_type -> ltedu.people.v1.CreateStudentResponse
+	19, // 72: ltedu.people.v1.PeopleService.UpdateStudent:output_type -> ltedu.people.v1.UpdateStudentResponse
+	21, // 73: ltedu.people.v1.PeopleService.DeleteStudent:output_type -> ltedu.people.v1.DeleteStudentResponse
+	23, // 74: ltedu.people.v1.PeopleService.FindGuardian:output_type -> ltedu.people.v1.FindGuardianResponse
+	25, // 75: ltedu.people.v1.PeopleService.AddGuardian:output_type -> ltedu.people.v1.AddGuardianResponse
+	27, // 76: ltedu.people.v1.PeopleService.UpdateGuardian:output_type -> ltedu.people.v1.UpdateGuardianResponse
+	29, // 77: ltedu.people.v1.PeopleService.RemoveGuardian:output_type -> ltedu.people.v1.RemoveGuardianResponse
+	31, // 78: ltedu.people.v1.PeopleService.GrantAccess:output_type -> ltedu.people.v1.GrantAccessResponse
+	33, // 79: ltedu.people.v1.PeopleService.GetEnrollmentBoard:output_type -> ltedu.people.v1.GetEnrollmentBoardResponse
+	35, // 80: ltedu.people.v1.PeopleService.Enroll:output_type -> ltedu.people.v1.EnrollResponse
+	37, // 81: ltedu.people.v1.PeopleService.UpdateEnrollment:output_type -> ltedu.people.v1.UpdateEnrollmentResponse
+	39, // 82: ltedu.people.v1.PeopleService.EndEnrollment:output_type -> ltedu.people.v1.EndEnrollmentResponse
+	41, // 83: ltedu.people.v1.PeopleService.DeleteEnrollment:output_type -> ltedu.people.v1.DeleteEnrollmentResponse
+	43, // 84: ltedu.people.v1.PeopleService.RatifyEnrollments:output_type -> ltedu.people.v1.RatifyEnrollmentsResponse
+	45, // 85: ltedu.people.v1.PeopleService.ListPlacements:output_type -> ltedu.people.v1.ListPlacementsResponse
+	47, // 86: ltedu.people.v1.PeopleService.CreatePlacement:output_type -> ltedu.people.v1.CreatePlacementResponse
+	49, // 87: ltedu.people.v1.PeopleService.DeletePlacement:output_type -> ltedu.people.v1.DeletePlacementResponse
+	51, // 88: ltedu.people.v1.PeopleService.ProposePlacement:output_type -> ltedu.people.v1.ProposePlacementResponse
+	54, // 89: ltedu.people.v1.PeopleService.GetEnrollmentFile:output_type -> ltedu.people.v1.GetEnrollmentFileResponse
+	56, // 90: ltedu.people.v1.PeopleService.SaveEnrollmentFile:output_type -> ltedu.people.v1.SaveEnrollmentFileResponse
+	58, // 91: ltedu.people.v1.PeopleService.SetReligionExemption:output_type -> ltedu.people.v1.SetReligionExemptionResponse
+	62, // 92: ltedu.people.v1.PeopleService.ListRoll:output_type -> ltedu.people.v1.ListRollResponse
+	64, // 93: ltedu.people.v1.PeopleService.SetSiagieStatus:output_type -> ltedu.people.v1.SetSiagieStatusResponse
+	69, // 94: ltedu.people.v1.PeopleService.ImportRoll:output_type -> ltedu.people.v1.ImportRollResponse
 	68, // [68:95] is the sub-list for method output_type
 	41, // [41:68] is the sub-list for method input_type
 	41, // [41:41] is the sub-list for extension type_name
@@ -6225,26 +6225,26 @@ var file_joseph_people_v1_people_proto_depIdxs = []int32{
 	0,  // [0:41] is the sub-list for field type_name
 }
 
-func init() { file_joseph_people_v1_people_proto_init() }
-func file_joseph_people_v1_people_proto_init() {
-	if File_joseph_people_v1_people_proto != nil {
+func init() { file_ltedu_people_v1_people_proto_init() }
+func file_ltedu_people_v1_people_proto_init() {
+	if File_ltedu_people_v1_people_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_people_v1_people_proto_rawDesc), len(file_joseph_people_v1_people_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_people_v1_people_proto_rawDesc), len(file_ltedu_people_v1_people_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   70,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_people_v1_people_proto_goTypes,
-		DependencyIndexes: file_joseph_people_v1_people_proto_depIdxs,
-		MessageInfos:      file_joseph_people_v1_people_proto_msgTypes,
+		GoTypes:           file_ltedu_people_v1_people_proto_goTypes,
+		DependencyIndexes: file_ltedu_people_v1_people_proto_depIdxs,
+		MessageInfos:      file_ltedu_people_v1_people_proto_msgTypes,
 	}.Build()
-	File_joseph_people_v1_people_proto = out.File
-	file_joseph_people_v1_people_proto_goTypes = nil
-	file_joseph_people_v1_people_proto_depIdxs = nil
+	File_ltedu_people_v1_people_proto = out.File
+	file_ltedu_people_v1_people_proto_goTypes = nil
+	file_ltedu_people_v1_people_proto_depIdxs = nil
 }

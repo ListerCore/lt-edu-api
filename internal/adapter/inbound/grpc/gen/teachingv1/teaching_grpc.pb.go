@@ -2,10 +2,10 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/teaching/v1/teaching.proto
+// source: ltedu/teaching/v1/teaching.proto
 
 // Staff, teaching load and timetables (phase 4 of docs/plan-academico.md). Same metadata and institution scoping
-// as joseph.academic.v1. Times travel as HH:MM and dates as YYYY-MM-DD; weekdays are 1 = Monday … 7 = Sunday
+// as ltedu.academic.v1. Times travel as HH:MM and dates as YYYY-MM-DD; weekdays are 1 = Monday … 7 = Sunday
 
 package teachingv1
 
@@ -22,12 +22,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	StaffService_ListStaff_FullMethodName   = "/joseph.teaching.v1.StaffService/ListStaff"
-	StaffService_GetStaff_FullMethodName    = "/joseph.teaching.v1.StaffService/GetStaff"
-	StaffService_CreateStaff_FullMethodName = "/joseph.teaching.v1.StaffService/CreateStaff"
-	StaffService_UpdateStaff_FullMethodName = "/joseph.teaching.v1.StaffService/UpdateStaff"
-	StaffService_DeleteStaff_FullMethodName = "/joseph.teaching.v1.StaffService/DeleteStaff"
-	StaffService_GrantRole_FullMethodName   = "/joseph.teaching.v1.StaffService/GrantRole"
+	StaffService_ListStaff_FullMethodName   = "/ltedu.teaching.v1.StaffService/ListStaff"
+	StaffService_GetStaff_FullMethodName    = "/ltedu.teaching.v1.StaffService/GetStaff"
+	StaffService_CreateStaff_FullMethodName = "/ltedu.teaching.v1.StaffService/CreateStaff"
+	StaffService_UpdateStaff_FullMethodName = "/ltedu.teaching.v1.StaffService/UpdateStaff"
+	StaffService_DeleteStaff_FullMethodName = "/ltedu.teaching.v1.StaffService/DeleteStaff"
+	StaffService_GrantRole_FullMethodName   = "/ltedu.teaching.v1.StaffService/GrantRole"
 )
 
 // StaffServiceClient is the client API for StaffService service.
@@ -289,7 +289,7 @@ func _StaffService_GrantRole_Handler(srv interface{}, ctx context.Context, dec f
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var StaffService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.teaching.v1.StaffService",
+	ServiceName: "ltedu.teaching.v1.StaffService",
 	HandlerType: (*StaffServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -318,21 +318,21 @@ var StaffService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/teaching/v1/teaching.proto",
+	Metadata: "ltedu/teaching/v1/teaching.proto",
 }
 
 const (
-	TeachingService_GetPlanner_FullMethodName       = "/joseph.teaching.v1.TeachingService/GetPlanner"
-	TeachingService_PrepareLoad_FullMethodName      = "/joseph.teaching.v1.TeachingService/PrepareLoad"
-	TeachingService_UpdateAssignment_FullMethodName = "/joseph.teaching.v1.TeachingService/UpdateAssignment"
-	TeachingService_DeleteAssignment_FullMethodName = "/joseph.teaching.v1.TeachingService/DeleteAssignment"
-	TeachingService_SetTutor_FullMethodName         = "/joseph.teaching.v1.TeachingService/SetTutor"
-	TeachingService_SetTimeBlocks_FullMethodName    = "/joseph.teaching.v1.TeachingService/SetTimeBlocks"
-	TeachingService_PlaceClass_FullMethodName       = "/joseph.teaching.v1.TeachingService/PlaceClass"
-	TeachingService_RemoveClass_FullMethodName      = "/joseph.teaching.v1.TeachingService/RemoveClass"
-	TeachingService_ClearSection_FullMethodName     = "/joseph.teaching.v1.TeachingService/ClearSection"
-	TeachingService_AutoFill_FullMethodName         = "/joseph.teaching.v1.TeachingService/AutoFill"
-	TeachingService_MySchedule_FullMethodName       = "/joseph.teaching.v1.TeachingService/MySchedule"
+	TeachingService_GetPlanner_FullMethodName       = "/ltedu.teaching.v1.TeachingService/GetPlanner"
+	TeachingService_PrepareLoad_FullMethodName      = "/ltedu.teaching.v1.TeachingService/PrepareLoad"
+	TeachingService_UpdateAssignment_FullMethodName = "/ltedu.teaching.v1.TeachingService/UpdateAssignment"
+	TeachingService_DeleteAssignment_FullMethodName = "/ltedu.teaching.v1.TeachingService/DeleteAssignment"
+	TeachingService_SetTutor_FullMethodName         = "/ltedu.teaching.v1.TeachingService/SetTutor"
+	TeachingService_SetTimeBlocks_FullMethodName    = "/ltedu.teaching.v1.TeachingService/SetTimeBlocks"
+	TeachingService_PlaceClass_FullMethodName       = "/ltedu.teaching.v1.TeachingService/PlaceClass"
+	TeachingService_RemoveClass_FullMethodName      = "/ltedu.teaching.v1.TeachingService/RemoveClass"
+	TeachingService_ClearSection_FullMethodName     = "/ltedu.teaching.v1.TeachingService/ClearSection"
+	TeachingService_AutoFill_FullMethodName         = "/ltedu.teaching.v1.TeachingService/AutoFill"
+	TeachingService_MySchedule_FullMethodName       = "/ltedu.teaching.v1.TeachingService/MySchedule"
 )
 
 // TeachingServiceClient is the client API for TeachingService service.
@@ -759,7 +759,7 @@ func _TeachingService_MySchedule_Handler(srv interface{}, ctx context.Context, d
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var TeachingService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.teaching.v1.TeachingService",
+	ServiceName: "ltedu.teaching.v1.TeachingService",
 	HandlerType: (*TeachingServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -808,5 +808,5 @@ var TeachingService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/teaching/v1/teaching.proto",
+	Metadata: "ltedu/teaching/v1/teaching.proto",
 }

@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/system/v1/system.proto
+// source: ltedu/system/v1/system.proto
 
-// Service state, called by joseph-app's server over the internal network. Mirrors GET /api/v1/health
+// Service state, called by lt-edu-app's server over the internal network. Mirrors GET /api/v1/health
 
 package systemv1
 
@@ -21,7 +21,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	SystemService_GetHealth_FullMethodName = "/joseph.system.v1.SystemService/GetHealth"
+	SystemService_GetHealth_FullMethodName = "/ltedu.system.v1.SystemService/GetHealth"
 )
 
 // SystemServiceClient is the client API for SystemService service.
@@ -33,7 +33,7 @@ const (
 //	x-forwarded-for: <visitor IP>        (honoured only from trusted proxies, like the HTTP API)
 //	x-user-agent: <visitor user agent>   (logs and rate limits)
 //
-// Failed calls return a gRPC status whose details hold one joseph.common.v1.ErrorDetail
+// Failed calls return a gRPC status whose details hold one ltedu.common.v1.ErrorDetail
 type SystemServiceClient interface {
 	// Overall state plus, when asked, the database and Redis
 	GetHealth(ctx context.Context, in *GetHealthRequest, opts ...grpc.CallOption) (*GetHealthResponse, error)
@@ -66,7 +66,7 @@ func (c *systemServiceClient) GetHealth(ctx context.Context, in *GetHealthReques
 //	x-forwarded-for: <visitor IP>        (honoured only from trusted proxies, like the HTTP API)
 //	x-user-agent: <visitor user agent>   (logs and rate limits)
 //
-// Failed calls return a gRPC status whose details hold one joseph.common.v1.ErrorDetail
+// Failed calls return a gRPC status whose details hold one ltedu.common.v1.ErrorDetail
 type SystemServiceServer interface {
 	// Overall state plus, when asked, the database and Redis
 	GetHealth(context.Context, *GetHealthRequest) (*GetHealthResponse, error)
@@ -126,7 +126,7 @@ func _SystemService_GetHealth_Handler(srv interface{}, ctx context.Context, dec 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var SystemService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.system.v1.SystemService",
+	ServiceName: "ltedu.system.v1.SystemService",
 	HandlerType: (*SystemServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -135,5 +135,5 @@ var SystemService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/system/v1/system.proto",
+	Metadata: "ltedu/system/v1/system.proto",
 }

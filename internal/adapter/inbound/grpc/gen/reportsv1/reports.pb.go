@@ -2,11 +2,11 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/reports/v1/reports.proto
+// source: ltedu/reports/v1/reports.proto
 
 // Reports (phase 12 of docs/plan-academico.md): the direction board with enrollment, attendance, performance by
 // competency or course, collection, and the comparison between terms and periods. Only aggregates. Same metadata
-// and institution scoping as joseph.academic.v1. Dates are "YYYY-MM-DD"; amounts are céntimos
+// and institution scoping as ltedu.academic.v1. Dates are "YYYY-MM-DD"; amounts are céntimos
 
 package reportsv1
 
@@ -44,7 +44,7 @@ type GetBoardRequest struct {
 
 func (x *GetBoardRequest) Reset() {
 	*x = GetBoardRequest{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[0]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -56,7 +56,7 @@ func (x *GetBoardRequest) String() string {
 func (*GetBoardRequest) ProtoMessage() {}
 
 func (x *GetBoardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[0]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -69,7 +69,7 @@ func (x *GetBoardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBoardRequest.ProtoReflect.Descriptor instead.
 func (*GetBoardRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *GetBoardRequest) GetInstitutionSlug() string {
@@ -124,7 +124,7 @@ type Option struct {
 
 func (x *Option) Reset() {
 	*x = Option{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[1]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -136,7 +136,7 @@ func (x *Option) String() string {
 func (*Option) ProtoMessage() {}
 
 func (x *Option) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[1]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -149,7 +149,7 @@ func (x *Option) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Option.ProtoReflect.Descriptor instead.
 func (*Option) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Option) GetId() string {
@@ -178,7 +178,7 @@ type StatusCount struct {
 
 func (x *StatusCount) Reset() {
 	*x = StatusCount{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[2]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -190,7 +190,7 @@ func (x *StatusCount) String() string {
 func (*StatusCount) ProtoMessage() {}
 
 func (x *StatusCount) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[2]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -203,7 +203,7 @@ func (x *StatusCount) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatusCount.ProtoReflect.Descriptor instead.
 func (*StatusCount) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *StatusCount) GetPresent() int32 {
@@ -244,7 +244,7 @@ type AttendanceDay struct {
 
 func (x *AttendanceDay) Reset() {
 	*x = AttendanceDay{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[3]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -256,7 +256,7 @@ func (x *AttendanceDay) String() string {
 func (*AttendanceDay) ProtoMessage() {}
 
 func (x *AttendanceDay) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[3]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -269,7 +269,7 @@ func (x *AttendanceDay) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttendanceDay.ProtoReflect.Descriptor instead.
 func (*AttendanceDay) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *AttendanceDay) GetDay() string {
@@ -296,7 +296,7 @@ type GroupAttendance struct {
 
 func (x *GroupAttendance) Reset() {
 	*x = GroupAttendance{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[4]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -308,7 +308,7 @@ func (x *GroupAttendance) String() string {
 func (*GroupAttendance) ProtoMessage() {}
 
 func (x *GroupAttendance) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[4]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -321,7 +321,7 @@ func (x *GroupAttendance) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GroupAttendance.ProtoReflect.Descriptor instead.
 func (*GroupAttendance) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GroupAttendance) GetLabel() string {
@@ -358,7 +358,7 @@ type ResultMix struct {
 
 func (x *ResultMix) Reset() {
 	*x = ResultMix{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[5]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -370,7 +370,7 @@ func (x *ResultMix) String() string {
 func (*ResultMix) ProtoMessage() {}
 
 func (x *ResultMix) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[5]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -383,7 +383,7 @@ func (x *ResultMix) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResultMix.ProtoReflect.Descriptor instead.
 func (*ResultMix) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ResultMix) GetLabel() string {
@@ -467,7 +467,7 @@ type GroupEnrollment struct {
 
 func (x *GroupEnrollment) Reset() {
 	*x = GroupEnrollment{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[6]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -479,7 +479,7 @@ func (x *GroupEnrollment) String() string {
 func (*GroupEnrollment) ProtoMessage() {}
 
 func (x *GroupEnrollment) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[6]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -492,7 +492,7 @@ func (x *GroupEnrollment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GroupEnrollment.ProtoReflect.Descriptor instead.
 func (*GroupEnrollment) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GroupEnrollment) GetLabel() string {
@@ -534,7 +534,7 @@ type Enrollment struct {
 
 func (x *Enrollment) Reset() {
 	*x = Enrollment{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[7]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -546,7 +546,7 @@ func (x *Enrollment) String() string {
 func (*Enrollment) ProtoMessage() {}
 
 func (x *Enrollment) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[7]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -559,7 +559,7 @@ func (x *Enrollment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Enrollment.ProtoReflect.Descriptor instead.
 func (*Enrollment) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Enrollment) GetActive() int32 {
@@ -646,7 +646,7 @@ type FinanceTotals struct {
 
 func (x *FinanceTotals) Reset() {
 	*x = FinanceTotals{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[8]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -658,7 +658,7 @@ func (x *FinanceTotals) String() string {
 func (*FinanceTotals) ProtoMessage() {}
 
 func (x *FinanceTotals) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[8]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -671,7 +671,7 @@ func (x *FinanceTotals) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FinanceTotals.ProtoReflect.Descriptor instead.
 func (*FinanceTotals) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *FinanceTotals) GetExpected() int64 {
@@ -729,7 +729,7 @@ type MoneyFlow struct {
 
 func (x *MoneyFlow) Reset() {
 	*x = MoneyFlow{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[9]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -741,7 +741,7 @@ func (x *MoneyFlow) String() string {
 func (*MoneyFlow) ProtoMessage() {}
 
 func (x *MoneyFlow) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[9]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -754,7 +754,7 @@ func (x *MoneyFlow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MoneyFlow.ProtoReflect.Descriptor instead.
 func (*MoneyFlow) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *MoneyFlow) GetMonth() string {
@@ -796,7 +796,7 @@ type MethodTotal struct {
 
 func (x *MethodTotal) Reset() {
 	*x = MethodTotal{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[10]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -808,7 +808,7 @@ func (x *MethodTotal) String() string {
 func (*MethodTotal) ProtoMessage() {}
 
 func (x *MethodTotal) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[10]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -821,7 +821,7 @@ func (x *MethodTotal) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MethodTotal.ProtoReflect.Descriptor instead.
 func (*MethodTotal) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *MethodTotal) GetMethod() string {
@@ -856,7 +856,7 @@ type AgingBucket struct {
 
 func (x *AgingBucket) Reset() {
 	*x = AgingBucket{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[11]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -868,7 +868,7 @@ func (x *AgingBucket) String() string {
 func (*AgingBucket) ProtoMessage() {}
 
 func (x *AgingBucket) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[11]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -881,7 +881,7 @@ func (x *AgingBucket) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgingBucket.ProtoReflect.Descriptor instead.
 func (*AgingBucket) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AgingBucket) GetLabel() string {
@@ -918,7 +918,7 @@ type GroupDebt struct {
 
 func (x *GroupDebt) Reset() {
 	*x = GroupDebt{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[12]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -930,7 +930,7 @@ func (x *GroupDebt) String() string {
 func (*GroupDebt) ProtoMessage() {}
 
 func (x *GroupDebt) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[12]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -943,7 +943,7 @@ func (x *GroupDebt) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GroupDebt.ProtoReflect.Descriptor instead.
 func (*GroupDebt) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GroupDebt) GetLabel() string {
@@ -998,7 +998,7 @@ type PeriodKpi struct {
 
 func (x *PeriodKpi) Reset() {
 	*x = PeriodKpi{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[13]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1010,7 +1010,7 @@ func (x *PeriodKpi) String() string {
 func (*PeriodKpi) ProtoMessage() {}
 
 func (x *PeriodKpi) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[13]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1023,7 +1023,7 @@ func (x *PeriodKpi) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PeriodKpi.ProtoReflect.Descriptor instead.
 func (*PeriodKpi) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *PeriodKpi) GetPeriodId() string {
@@ -1114,7 +1114,7 @@ type GetBoardResponse struct {
 
 func (x *GetBoardResponse) Reset() {
 	*x = GetBoardResponse{}
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[14]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1126,7 +1126,7 @@ func (x *GetBoardResponse) String() string {
 func (*GetBoardResponse) ProtoMessage() {}
 
 func (x *GetBoardResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_reports_v1_reports_proto_msgTypes[14]
+	mi := &file_ltedu_reports_v1_reports_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1139,7 +1139,7 @@ func (x *GetBoardResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBoardResponse.ProtoReflect.Descriptor instead.
 func (*GetBoardResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_reports_v1_reports_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_reports_v1_reports_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetBoardResponse) GetPeriods() []*academicv1.Period {
@@ -1317,11 +1317,11 @@ func (x *GetBoardResponse) GetCompare() []*PeriodKpi {
 	return nil
 }
 
-var File_joseph_reports_v1_reports_proto protoreflect.FileDescriptor
+var File_ltedu_reports_v1_reports_proto protoreflect.FileDescriptor
 
-const file_joseph_reports_v1_reports_proto_rawDesc = "" +
+const file_ltedu_reports_v1_reports_proto_rawDesc = "" +
 	"\n" +
-	"\x1fjoseph/reports/v1/reports.proto\x12\x11joseph.reports.v1\x1a!joseph/academic/v1/academic.proto\"\xb2\x01\n" +
+	"\x1eltedu/reports/v1/reports.proto\x12\x10ltedu.reports.v1\x1a ltedu/academic/v1/academic.proto\"\xb2\x01\n" +
 	"\x0fGetBoardRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
 	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12\x19\n" +
@@ -1336,13 +1336,13 @@ const file_joseph_reports_v1_reports_proto_rawDesc = "" +
 	"\apresent\x18\x01 \x01(\x05R\apresent\x12\x12\n" +
 	"\x04late\x18\x02 \x01(\x05R\x04late\x12\x16\n" +
 	"\x06absent\x18\x03 \x01(\x05R\x06absent\x12\x1c\n" +
-	"\tjustified\x18\x04 \x01(\x05R\tjustified\"Y\n" +
+	"\tjustified\x18\x04 \x01(\x05R\tjustified\"X\n" +
 	"\rAttendanceDay\x12\x10\n" +
-	"\x03day\x18\x01 \x01(\tR\x03day\x126\n" +
-	"\x06counts\x18\x02 \x01(\v2\x1e.joseph.reports.v1.StatusCountR\x06counts\"_\n" +
+	"\x03day\x18\x01 \x01(\tR\x03day\x125\n" +
+	"\x06counts\x18\x02 \x01(\v2\x1d.ltedu.reports.v1.StatusCountR\x06counts\"^\n" +
 	"\x0fGroupAttendance\x12\x14\n" +
-	"\x05label\x18\x01 \x01(\tR\x05label\x126\n" +
-	"\x06counts\x18\x02 \x01(\v2\x1e.joseph.reports.v1.StatusCountR\x06counts\"\xd1\x01\n" +
+	"\x05label\x18\x01 \x01(\tR\x05label\x125\n" +
+	"\x06counts\x18\x02 \x01(\v2\x1d.ltedu.reports.v1.StatusCountR\x06counts\"\xd1\x01\n" +
 	"\tResultMix\x12\x14\n" +
 	"\x05label\x18\x01 \x01(\tR\x05label\x12\x0e\n" +
 	"\x02ad\x18\x02 \x01(\x05R\x02ad\x12\f\n" +
@@ -1358,7 +1358,7 @@ const file_joseph_reports_v1_reports_proto_rawDesc = "" +
 	"\x0fGroupEnrollment\x12\x14\n" +
 	"\x05label\x18\x01 \x01(\tR\x05label\x12\x16\n" +
 	"\x06active\x18\x02 \x01(\x05R\x06active\x12\x1a\n" +
-	"\bcapacity\x18\x03 \x01(\x05R\bcapacity\"\xc8\x02\n" +
+	"\bcapacity\x18\x03 \x01(\x05R\bcapacity\"\xc7\x02\n" +
 	"\n" +
 	"Enrollment\x12\x16\n" +
 	"\x06active\x18\x01 \x01(\x05R\x06active\x12\x1c\n" +
@@ -1372,9 +1372,9 @@ const file_joseph_reports_v1_reports_proto_rawDesc = "" +
 	"\vtransfer_in\x18\a \x01(\x05R\n" +
 	"transferIn\x12\x19\n" +
 	"\bre_entry\x18\b \x01(\x05R\areEntry\x12\x1a\n" +
-	"\bcapacity\x18\t \x01(\x05R\bcapacity\x12:\n" +
+	"\bcapacity\x18\t \x01(\x05R\bcapacity\x129\n" +
 	"\x06groups\x18\n" +
-	" \x03(\v2\".joseph.reports.v1.GroupEnrollmentR\x06groups\"\xb7\x01\n" +
+	" \x03(\v2!.ltedu.reports.v1.GroupEnrollmentR\x06groups\"\xb7\x01\n" +
 	"\rFinanceTotals\x12\x1a\n" +
 	"\bexpected\x18\x01 \x01(\x03R\bexpected\x12\x1c\n" +
 	"\tdiscounts\x18\x02 \x01(\x03R\tdiscounts\x12\x1c\n" +
@@ -1412,12 +1412,11 @@ const file_joseph_reports_v1_reports_proto_rawDesc = "" +
 	"\vachievement\x18\x06 \x01(\x01R\vachievement\x12\x1e\n" +
 	"\n" +
 	"collection\x18\a \x01(\x01R\n" +
-	"collection\"\x87\n" +
-	"\n" +
-	"\x10GetBoardResponse\x124\n" +
-	"\aperiods\x18\x01 \x03(\v2\x1a.joseph.academic.v1.PeriodR\aperiods\x122\n" +
-	"\x06period\x18\x02 \x01(\v2\x1a.joseph.academic.v1.PeriodR\x06period\x121\n" +
-	"\x06levels\x18\x03 \x03(\v2\x19.joseph.reports.v1.OptionR\x06levels\x12\x19\n" +
+	"collection\"\xf6\t\n" +
+	"\x10GetBoardResponse\x123\n" +
+	"\aperiods\x18\x01 \x03(\v2\x19.ltedu.academic.v1.PeriodR\aperiods\x121\n" +
+	"\x06period\x18\x02 \x01(\v2\x19.ltedu.academic.v1.PeriodR\x06period\x120\n" +
+	"\x06levels\x18\x03 \x03(\v2\x18.ltedu.reports.v1.OptionR\x06levels\x12\x19\n" +
 	"\blevel_id\x18\x04 \x01(\tR\alevelId\x12\x18\n" +
 	"\asubject\x18\x05 \x01(\tR\asubject\x12\x14\n" +
 	"\x05scale\x18\x06 \x01(\tR\x05scale\x12\x18\n" +
@@ -1426,80 +1425,80 @@ const file_joseph_reports_v1_reports_proto_rawDesc = "" +
 	"\x02to\x18\t \x01(\tR\x02to\x12\x14\n" +
 	"\x05today\x18\n" +
 	" \x01(\tR\x05today\x12\x1a\n" +
-	"\bacademic\x18\v \x01(\bR\bacademic\x12=\n" +
+	"\bacademic\x18\v \x01(\bR\bacademic\x12<\n" +
 	"\n" +
-	"enrollment\x18\f \x01(\v2\x1d.joseph.reports.v1.EnrollmentR\n" +
-	"enrollment\x12I\n" +
-	"\x0fattendance_days\x18\r \x03(\v2 .joseph.reports.v1.AttendanceDayR\x0eattendanceDays\x12O\n" +
-	"\x11attendance_groups\x18\x0e \x03(\v2\".joseph.reports.v1.GroupAttendanceR\x10attendanceGroups\x12S\n" +
-	"\x13attendance_timeline\x18\x0f \x03(\v2\".joseph.reports.v1.GroupAttendanceR\x12attendanceTimeline\x12?\n" +
-	"\fresult_terms\x18\x10 \x03(\v2\x1c.joseph.reports.v1.ResultMixR\vresultTerms\x12E\n" +
-	"\x0fresult_subjects\x18\x11 \x03(\v2\x1c.joseph.reports.v1.ResultMixR\x0eresultSubjects\x12A\n" +
-	"\rresult_groups\x18\x12 \x03(\v2\x1c.joseph.reports.v1.ResultMixR\fresultGroups\x12A\n" +
-	"\rconduct_terms\x18\x13 \x03(\v2\x1c.joseph.reports.v1.ResultMixR\fconductTerms\x12:\n" +
-	"\afinance\x18\x14 \x01(\v2 .joseph.reports.v1.FinanceTotalsR\afinance\x124\n" +
-	"\x06months\x18\x15 \x03(\v2\x1c.joseph.reports.v1.MoneyFlowR\x06months\x128\n" +
-	"\amethods\x18\x16 \x03(\v2\x1e.joseph.reports.v1.MethodTotalR\amethods\x124\n" +
-	"\x05aging\x18\x17 \x03(\v2\x1e.joseph.reports.v1.AgingBucketR\x05aging\x12C\n" +
-	"\x0efinance_groups\x18\x18 \x03(\v2\x1c.joseph.reports.v1.GroupDebtR\rfinanceGroups\x126\n" +
-	"\acompare\x18\x19 \x03(\v2\x1c.joseph.reports.v1.PeriodKpiR\acompare2e\n" +
-	"\x0eReportsService\x12S\n" +
-	"\bGetBoard\x12\".joseph.reports.v1.GetBoardRequest\x1a#.joseph.reports.v1.GetBoardResponseB;Z9api/internal/adapter/inbound/grpc/gen/reportsv1;reportsv1b\x06proto3"
+	"enrollment\x18\f \x01(\v2\x1c.ltedu.reports.v1.EnrollmentR\n" +
+	"enrollment\x12H\n" +
+	"\x0fattendance_days\x18\r \x03(\v2\x1f.ltedu.reports.v1.AttendanceDayR\x0eattendanceDays\x12N\n" +
+	"\x11attendance_groups\x18\x0e \x03(\v2!.ltedu.reports.v1.GroupAttendanceR\x10attendanceGroups\x12R\n" +
+	"\x13attendance_timeline\x18\x0f \x03(\v2!.ltedu.reports.v1.GroupAttendanceR\x12attendanceTimeline\x12>\n" +
+	"\fresult_terms\x18\x10 \x03(\v2\x1b.ltedu.reports.v1.ResultMixR\vresultTerms\x12D\n" +
+	"\x0fresult_subjects\x18\x11 \x03(\v2\x1b.ltedu.reports.v1.ResultMixR\x0eresultSubjects\x12@\n" +
+	"\rresult_groups\x18\x12 \x03(\v2\x1b.ltedu.reports.v1.ResultMixR\fresultGroups\x12@\n" +
+	"\rconduct_terms\x18\x13 \x03(\v2\x1b.ltedu.reports.v1.ResultMixR\fconductTerms\x129\n" +
+	"\afinance\x18\x14 \x01(\v2\x1f.ltedu.reports.v1.FinanceTotalsR\afinance\x123\n" +
+	"\x06months\x18\x15 \x03(\v2\x1b.ltedu.reports.v1.MoneyFlowR\x06months\x127\n" +
+	"\amethods\x18\x16 \x03(\v2\x1d.ltedu.reports.v1.MethodTotalR\amethods\x123\n" +
+	"\x05aging\x18\x17 \x03(\v2\x1d.ltedu.reports.v1.AgingBucketR\x05aging\x12B\n" +
+	"\x0efinance_groups\x18\x18 \x03(\v2\x1b.ltedu.reports.v1.GroupDebtR\rfinanceGroups\x125\n" +
+	"\acompare\x18\x19 \x03(\v2\x1b.ltedu.reports.v1.PeriodKpiR\acompare2c\n" +
+	"\x0eReportsService\x12Q\n" +
+	"\bGetBoard\x12!.ltedu.reports.v1.GetBoardRequest\x1a\".ltedu.reports.v1.GetBoardResponseB;Z9api/internal/adapter/inbound/grpc/gen/reportsv1;reportsv1b\x06proto3"
 
 var (
-	file_joseph_reports_v1_reports_proto_rawDescOnce sync.Once
-	file_joseph_reports_v1_reports_proto_rawDescData []byte
+	file_ltedu_reports_v1_reports_proto_rawDescOnce sync.Once
+	file_ltedu_reports_v1_reports_proto_rawDescData []byte
 )
 
-func file_joseph_reports_v1_reports_proto_rawDescGZIP() []byte {
-	file_joseph_reports_v1_reports_proto_rawDescOnce.Do(func() {
-		file_joseph_reports_v1_reports_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_reports_v1_reports_proto_rawDesc), len(file_joseph_reports_v1_reports_proto_rawDesc)))
+func file_ltedu_reports_v1_reports_proto_rawDescGZIP() []byte {
+	file_ltedu_reports_v1_reports_proto_rawDescOnce.Do(func() {
+		file_ltedu_reports_v1_reports_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_reports_v1_reports_proto_rawDesc), len(file_ltedu_reports_v1_reports_proto_rawDesc)))
 	})
-	return file_joseph_reports_v1_reports_proto_rawDescData
+	return file_ltedu_reports_v1_reports_proto_rawDescData
 }
 
-var file_joseph_reports_v1_reports_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
-var file_joseph_reports_v1_reports_proto_goTypes = []any{
-	(*GetBoardRequest)(nil),   // 0: joseph.reports.v1.GetBoardRequest
-	(*Option)(nil),            // 1: joseph.reports.v1.Option
-	(*StatusCount)(nil),       // 2: joseph.reports.v1.StatusCount
-	(*AttendanceDay)(nil),     // 3: joseph.reports.v1.AttendanceDay
-	(*GroupAttendance)(nil),   // 4: joseph.reports.v1.GroupAttendance
-	(*ResultMix)(nil),         // 5: joseph.reports.v1.ResultMix
-	(*GroupEnrollment)(nil),   // 6: joseph.reports.v1.GroupEnrollment
-	(*Enrollment)(nil),        // 7: joseph.reports.v1.Enrollment
-	(*FinanceTotals)(nil),     // 8: joseph.reports.v1.FinanceTotals
-	(*MoneyFlow)(nil),         // 9: joseph.reports.v1.MoneyFlow
-	(*MethodTotal)(nil),       // 10: joseph.reports.v1.MethodTotal
-	(*AgingBucket)(nil),       // 11: joseph.reports.v1.AgingBucket
-	(*GroupDebt)(nil),         // 12: joseph.reports.v1.GroupDebt
-	(*PeriodKpi)(nil),         // 13: joseph.reports.v1.PeriodKpi
-	(*GetBoardResponse)(nil),  // 14: joseph.reports.v1.GetBoardResponse
-	(*academicv1.Period)(nil), // 15: joseph.academic.v1.Period
+var file_ltedu_reports_v1_reports_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_ltedu_reports_v1_reports_proto_goTypes = []any{
+	(*GetBoardRequest)(nil),   // 0: ltedu.reports.v1.GetBoardRequest
+	(*Option)(nil),            // 1: ltedu.reports.v1.Option
+	(*StatusCount)(nil),       // 2: ltedu.reports.v1.StatusCount
+	(*AttendanceDay)(nil),     // 3: ltedu.reports.v1.AttendanceDay
+	(*GroupAttendance)(nil),   // 4: ltedu.reports.v1.GroupAttendance
+	(*ResultMix)(nil),         // 5: ltedu.reports.v1.ResultMix
+	(*GroupEnrollment)(nil),   // 6: ltedu.reports.v1.GroupEnrollment
+	(*Enrollment)(nil),        // 7: ltedu.reports.v1.Enrollment
+	(*FinanceTotals)(nil),     // 8: ltedu.reports.v1.FinanceTotals
+	(*MoneyFlow)(nil),         // 9: ltedu.reports.v1.MoneyFlow
+	(*MethodTotal)(nil),       // 10: ltedu.reports.v1.MethodTotal
+	(*AgingBucket)(nil),       // 11: ltedu.reports.v1.AgingBucket
+	(*GroupDebt)(nil),         // 12: ltedu.reports.v1.GroupDebt
+	(*PeriodKpi)(nil),         // 13: ltedu.reports.v1.PeriodKpi
+	(*GetBoardResponse)(nil),  // 14: ltedu.reports.v1.GetBoardResponse
+	(*academicv1.Period)(nil), // 15: ltedu.academic.v1.Period
 }
-var file_joseph_reports_v1_reports_proto_depIdxs = []int32{
-	2,  // 0: joseph.reports.v1.AttendanceDay.counts:type_name -> joseph.reports.v1.StatusCount
-	2,  // 1: joseph.reports.v1.GroupAttendance.counts:type_name -> joseph.reports.v1.StatusCount
-	6,  // 2: joseph.reports.v1.Enrollment.groups:type_name -> joseph.reports.v1.GroupEnrollment
-	15, // 3: joseph.reports.v1.GetBoardResponse.periods:type_name -> joseph.academic.v1.Period
-	15, // 4: joseph.reports.v1.GetBoardResponse.period:type_name -> joseph.academic.v1.Period
-	1,  // 5: joseph.reports.v1.GetBoardResponse.levels:type_name -> joseph.reports.v1.Option
-	7,  // 6: joseph.reports.v1.GetBoardResponse.enrollment:type_name -> joseph.reports.v1.Enrollment
-	3,  // 7: joseph.reports.v1.GetBoardResponse.attendance_days:type_name -> joseph.reports.v1.AttendanceDay
-	4,  // 8: joseph.reports.v1.GetBoardResponse.attendance_groups:type_name -> joseph.reports.v1.GroupAttendance
-	4,  // 9: joseph.reports.v1.GetBoardResponse.attendance_timeline:type_name -> joseph.reports.v1.GroupAttendance
-	5,  // 10: joseph.reports.v1.GetBoardResponse.result_terms:type_name -> joseph.reports.v1.ResultMix
-	5,  // 11: joseph.reports.v1.GetBoardResponse.result_subjects:type_name -> joseph.reports.v1.ResultMix
-	5,  // 12: joseph.reports.v1.GetBoardResponse.result_groups:type_name -> joseph.reports.v1.ResultMix
-	5,  // 13: joseph.reports.v1.GetBoardResponse.conduct_terms:type_name -> joseph.reports.v1.ResultMix
-	8,  // 14: joseph.reports.v1.GetBoardResponse.finance:type_name -> joseph.reports.v1.FinanceTotals
-	9,  // 15: joseph.reports.v1.GetBoardResponse.months:type_name -> joseph.reports.v1.MoneyFlow
-	10, // 16: joseph.reports.v1.GetBoardResponse.methods:type_name -> joseph.reports.v1.MethodTotal
-	11, // 17: joseph.reports.v1.GetBoardResponse.aging:type_name -> joseph.reports.v1.AgingBucket
-	12, // 18: joseph.reports.v1.GetBoardResponse.finance_groups:type_name -> joseph.reports.v1.GroupDebt
-	13, // 19: joseph.reports.v1.GetBoardResponse.compare:type_name -> joseph.reports.v1.PeriodKpi
-	0,  // 20: joseph.reports.v1.ReportsService.GetBoard:input_type -> joseph.reports.v1.GetBoardRequest
-	14, // 21: joseph.reports.v1.ReportsService.GetBoard:output_type -> joseph.reports.v1.GetBoardResponse
+var file_ltedu_reports_v1_reports_proto_depIdxs = []int32{
+	2,  // 0: ltedu.reports.v1.AttendanceDay.counts:type_name -> ltedu.reports.v1.StatusCount
+	2,  // 1: ltedu.reports.v1.GroupAttendance.counts:type_name -> ltedu.reports.v1.StatusCount
+	6,  // 2: ltedu.reports.v1.Enrollment.groups:type_name -> ltedu.reports.v1.GroupEnrollment
+	15, // 3: ltedu.reports.v1.GetBoardResponse.periods:type_name -> ltedu.academic.v1.Period
+	15, // 4: ltedu.reports.v1.GetBoardResponse.period:type_name -> ltedu.academic.v1.Period
+	1,  // 5: ltedu.reports.v1.GetBoardResponse.levels:type_name -> ltedu.reports.v1.Option
+	7,  // 6: ltedu.reports.v1.GetBoardResponse.enrollment:type_name -> ltedu.reports.v1.Enrollment
+	3,  // 7: ltedu.reports.v1.GetBoardResponse.attendance_days:type_name -> ltedu.reports.v1.AttendanceDay
+	4,  // 8: ltedu.reports.v1.GetBoardResponse.attendance_groups:type_name -> ltedu.reports.v1.GroupAttendance
+	4,  // 9: ltedu.reports.v1.GetBoardResponse.attendance_timeline:type_name -> ltedu.reports.v1.GroupAttendance
+	5,  // 10: ltedu.reports.v1.GetBoardResponse.result_terms:type_name -> ltedu.reports.v1.ResultMix
+	5,  // 11: ltedu.reports.v1.GetBoardResponse.result_subjects:type_name -> ltedu.reports.v1.ResultMix
+	5,  // 12: ltedu.reports.v1.GetBoardResponse.result_groups:type_name -> ltedu.reports.v1.ResultMix
+	5,  // 13: ltedu.reports.v1.GetBoardResponse.conduct_terms:type_name -> ltedu.reports.v1.ResultMix
+	8,  // 14: ltedu.reports.v1.GetBoardResponse.finance:type_name -> ltedu.reports.v1.FinanceTotals
+	9,  // 15: ltedu.reports.v1.GetBoardResponse.months:type_name -> ltedu.reports.v1.MoneyFlow
+	10, // 16: ltedu.reports.v1.GetBoardResponse.methods:type_name -> ltedu.reports.v1.MethodTotal
+	11, // 17: ltedu.reports.v1.GetBoardResponse.aging:type_name -> ltedu.reports.v1.AgingBucket
+	12, // 18: ltedu.reports.v1.GetBoardResponse.finance_groups:type_name -> ltedu.reports.v1.GroupDebt
+	13, // 19: ltedu.reports.v1.GetBoardResponse.compare:type_name -> ltedu.reports.v1.PeriodKpi
+	0,  // 20: ltedu.reports.v1.ReportsService.GetBoard:input_type -> ltedu.reports.v1.GetBoardRequest
+	14, // 21: ltedu.reports.v1.ReportsService.GetBoard:output_type -> ltedu.reports.v1.GetBoardResponse
 	21, // [21:22] is the sub-list for method output_type
 	20, // [20:21] is the sub-list for method input_type
 	20, // [20:20] is the sub-list for extension type_name
@@ -1507,26 +1506,26 @@ var file_joseph_reports_v1_reports_proto_depIdxs = []int32{
 	0,  // [0:20] is the sub-list for field type_name
 }
 
-func init() { file_joseph_reports_v1_reports_proto_init() }
-func file_joseph_reports_v1_reports_proto_init() {
-	if File_joseph_reports_v1_reports_proto != nil {
+func init() { file_ltedu_reports_v1_reports_proto_init() }
+func file_ltedu_reports_v1_reports_proto_init() {
+	if File_ltedu_reports_v1_reports_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_reports_v1_reports_proto_rawDesc), len(file_joseph_reports_v1_reports_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_reports_v1_reports_proto_rawDesc), len(file_ltedu_reports_v1_reports_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_reports_v1_reports_proto_goTypes,
-		DependencyIndexes: file_joseph_reports_v1_reports_proto_depIdxs,
-		MessageInfos:      file_joseph_reports_v1_reports_proto_msgTypes,
+		GoTypes:           file_ltedu_reports_v1_reports_proto_goTypes,
+		DependencyIndexes: file_ltedu_reports_v1_reports_proto_depIdxs,
+		MessageInfos:      file_ltedu_reports_v1_reports_proto_msgTypes,
 	}.Build()
-	File_joseph_reports_v1_reports_proto = out.File
-	file_joseph_reports_v1_reports_proto_goTypes = nil
-	file_joseph_reports_v1_reports_proto_depIdxs = nil
+	File_ltedu_reports_v1_reports_proto = out.File
+	file_ltedu_reports_v1_reports_proto_goTypes = nil
+	file_ltedu_reports_v1_reports_proto_depIdxs = nil
 }

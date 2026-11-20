@@ -2,13 +2,13 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/participation/v1/participation.proto
+// source: ltedu/participation/v1/participation.proto
 
 // Participation and permanence (docs/ceba/PLAN.md, phase E5). The platform records each action of a student as an
 // activity event (sign-in, material opened, live session, attempt, task handed in, forum post, tutoring); these
 // calls read it: the permanence of the distance sections with the institution's rule (the tutor adjusts a week with
 // a reason) and the participation of each student in a classroom room. Same metadata and institution scoping as
-// joseph.academic.v1
+// ltedu.academic.v1
 
 package participationv1
 
@@ -25,11 +25,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ParticipationService_GetPermanenceBoard_FullMethodName   = "/joseph.participation.v1.ParticipationService/GetPermanenceBoard"
-	ParticipationService_SavePermanenceRule_FullMethodName   = "/joseph.participation.v1.ParticipationService/SavePermanenceRule"
-	ParticipationService_GetSectionPermanence_FullMethodName = "/joseph.participation.v1.ParticipationService/GetSectionPermanence"
-	ParticipationService_AdjustPermanence_FullMethodName     = "/joseph.participation.v1.ParticipationService/AdjustPermanence"
-	ParticipationService_GetRoomParticipation_FullMethodName = "/joseph.participation.v1.ParticipationService/GetRoomParticipation"
+	ParticipationService_GetPermanenceBoard_FullMethodName   = "/ltedu.participation.v1.ParticipationService/GetPermanenceBoard"
+	ParticipationService_SavePermanenceRule_FullMethodName   = "/ltedu.participation.v1.ParticipationService/SavePermanenceRule"
+	ParticipationService_GetSectionPermanence_FullMethodName = "/ltedu.participation.v1.ParticipationService/GetSectionPermanence"
+	ParticipationService_AdjustPermanence_FullMethodName     = "/ltedu.participation.v1.ParticipationService/AdjustPermanence"
+	ParticipationService_GetRoomParticipation_FullMethodName = "/ltedu.participation.v1.ParticipationService/GetRoomParticipation"
 )
 
 // ParticipationServiceClient is the client API for ParticipationService service.
@@ -254,7 +254,7 @@ func _ParticipationService_GetRoomParticipation_Handler(srv interface{}, ctx con
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ParticipationService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.participation.v1.ParticipationService",
+	ServiceName: "ltedu.participation.v1.ParticipationService",
 	HandlerType: (*ParticipationServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -279,5 +279,5 @@ var ParticipationService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/participation/v1/participation.proto",
+	Metadata: "ltedu/participation/v1/participation.proto",
 }

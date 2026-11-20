@@ -2,10 +2,10 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/programs/v1/programs.proto
+// source: ltedu/programs/v1/programs.proto
 
 // Institutes (phase 9 of docs/plan-academico.md): study programs by module, work placements (EFSRT), modular
-// certificates and the degree. Same metadata and institution scoping as joseph.academic.v1
+// certificates and the degree. Same metadata and institution scoping as ltedu.academic.v1
 
 package programsv1
 
@@ -22,24 +22,24 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ProgramsService_GetPrograms_FullMethodName        = "/joseph.programs.v1.ProgramsService/GetPrograms"
-	ProgramsService_SetCoordinator_FullMethodName     = "/joseph.programs.v1.ProgramsService/SetCoordinator"
-	ProgramsService_ListStudents_FullMethodName       = "/joseph.programs.v1.ProgramsService/ListStudents"
-	ProgramsService_GetRecord_FullMethodName          = "/joseph.programs.v1.ProgramsService/GetRecord"
-	ProgramsService_MyRecords_FullMethodName          = "/joseph.programs.v1.ProgramsService/MyRecords"
-	ProgramsService_ListInternships_FullMethodName    = "/joseph.programs.v1.ProgramsService/ListInternships"
-	ProgramsService_GetInternship_FullMethodName      = "/joseph.programs.v1.ProgramsService/GetInternship"
-	ProgramsService_SaveInternship_FullMethodName     = "/joseph.programs.v1.ProgramsService/SaveInternship"
-	ProgramsService_DeleteInternship_FullMethodName   = "/joseph.programs.v1.ProgramsService/DeleteInternship"
-	ProgramsService_AddLog_FullMethodName             = "/joseph.programs.v1.ProgramsService/AddLog"
-	ProgramsService_DeleteLog_FullMethodName          = "/joseph.programs.v1.ProgramsService/DeleteLog"
-	ProgramsService_EvaluateInternship_FullMethodName = "/joseph.programs.v1.ProgramsService/EvaluateInternship"
-	ProgramsService_IssueModular_FullMethodName       = "/joseph.programs.v1.ProgramsService/IssueModular"
-	ProgramsService_IssueDegree_FullMethodName        = "/joseph.programs.v1.ProgramsService/IssueDegree"
-	ProgramsService_SetRequirement_FullMethodName     = "/joseph.programs.v1.ProgramsService/SetRequirement"
-	ProgramsService_ListCertificates_FullMethodName   = "/joseph.programs.v1.ProgramsService/ListCertificates"
-	ProgramsService_GetCertificate_FullMethodName     = "/joseph.programs.v1.ProgramsService/GetCertificate"
-	ProgramsService_AnnulCertificate_FullMethodName   = "/joseph.programs.v1.ProgramsService/AnnulCertificate"
+	ProgramsService_GetPrograms_FullMethodName        = "/ltedu.programs.v1.ProgramsService/GetPrograms"
+	ProgramsService_SetCoordinator_FullMethodName     = "/ltedu.programs.v1.ProgramsService/SetCoordinator"
+	ProgramsService_ListStudents_FullMethodName       = "/ltedu.programs.v1.ProgramsService/ListStudents"
+	ProgramsService_GetRecord_FullMethodName          = "/ltedu.programs.v1.ProgramsService/GetRecord"
+	ProgramsService_MyRecords_FullMethodName          = "/ltedu.programs.v1.ProgramsService/MyRecords"
+	ProgramsService_ListInternships_FullMethodName    = "/ltedu.programs.v1.ProgramsService/ListInternships"
+	ProgramsService_GetInternship_FullMethodName      = "/ltedu.programs.v1.ProgramsService/GetInternship"
+	ProgramsService_SaveInternship_FullMethodName     = "/ltedu.programs.v1.ProgramsService/SaveInternship"
+	ProgramsService_DeleteInternship_FullMethodName   = "/ltedu.programs.v1.ProgramsService/DeleteInternship"
+	ProgramsService_AddLog_FullMethodName             = "/ltedu.programs.v1.ProgramsService/AddLog"
+	ProgramsService_DeleteLog_FullMethodName          = "/ltedu.programs.v1.ProgramsService/DeleteLog"
+	ProgramsService_EvaluateInternship_FullMethodName = "/ltedu.programs.v1.ProgramsService/EvaluateInternship"
+	ProgramsService_IssueModular_FullMethodName       = "/ltedu.programs.v1.ProgramsService/IssueModular"
+	ProgramsService_IssueDegree_FullMethodName        = "/ltedu.programs.v1.ProgramsService/IssueDegree"
+	ProgramsService_SetRequirement_FullMethodName     = "/ltedu.programs.v1.ProgramsService/SetRequirement"
+	ProgramsService_ListCertificates_FullMethodName   = "/ltedu.programs.v1.ProgramsService/ListCertificates"
+	ProgramsService_GetCertificate_FullMethodName     = "/ltedu.programs.v1.ProgramsService/GetCertificate"
+	ProgramsService_AnnulCertificate_FullMethodName   = "/ltedu.programs.v1.ProgramsService/AnnulCertificate"
 )
 
 // ProgramsServiceClient is the client API for ProgramsService service.
@@ -695,7 +695,7 @@ func _ProgramsService_AnnulCertificate_Handler(srv interface{}, ctx context.Cont
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ProgramsService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.programs.v1.ProgramsService",
+	ServiceName: "ltedu.programs.v1.ProgramsService",
 	HandlerType: (*ProgramsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -772,5 +772,5 @@ var ProgramsService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/programs/v1/programs.proto",
+	Metadata: "ltedu/programs/v1/programs.proto",
 }

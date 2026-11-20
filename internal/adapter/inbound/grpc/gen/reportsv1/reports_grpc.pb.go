@@ -2,11 +2,11 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/reports/v1/reports.proto
+// source: ltedu/reports/v1/reports.proto
 
 // Reports (phase 12 of docs/plan-academico.md): the direction board with enrollment, attendance, performance by
 // competency or course, collection, and the comparison between terms and periods. Only aggregates. Same metadata
-// and institution scoping as joseph.academic.v1. Dates are "YYYY-MM-DD"; amounts are céntimos
+// and institution scoping as ltedu.academic.v1. Dates are "YYYY-MM-DD"; amounts are céntimos
 
 package reportsv1
 
@@ -23,7 +23,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ReportsService_GetBoard_FullMethodName = "/joseph.reports.v1.ReportsService/GetBoard"
+	ReportsService_GetBoard_FullMethodName = "/ltedu.reports.v1.ReportsService/GetBoard"
 )
 
 // ReportsServiceClient is the client API for ReportsService service.
@@ -112,7 +112,7 @@ func _ReportsService_GetBoard_Handler(srv interface{}, ctx context.Context, dec 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ReportsService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.reports.v1.ReportsService",
+	ServiceName: "ltedu.reports.v1.ReportsService",
 	HandlerType: (*ReportsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -121,5 +121,5 @@ var ReportsService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/reports/v1/reports.proto",
+	Metadata: "ltedu/reports/v1/reports.proto",
 }

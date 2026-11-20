@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/academic/v1/curriculum.proto
+// source: ltedu/academic/v1/curriculum.proto
 
 // Study plans (phase 2 of docs/plan-academico.md): versions per level, at most one in force, with their areas and
 // CNEB competencies (Educación Básica), courses and topics (CEPRE), or formative modules, didactic units with
@@ -23,24 +23,24 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CurriculumService_ListCurricula_FullMethodName       = "/joseph.academic.v1.CurriculumService/ListCurricula"
-	CurriculumService_GetCurriculum_FullMethodName       = "/joseph.academic.v1.CurriculumService/GetCurriculum"
-	CurriculumService_CreateCurriculum_FullMethodName    = "/joseph.academic.v1.CurriculumService/CreateCurriculum"
-	CurriculumService_DuplicateCurriculum_FullMethodName = "/joseph.academic.v1.CurriculumService/DuplicateCurriculum"
-	CurriculumService_UpdateCurriculum_FullMethodName    = "/joseph.academic.v1.CurriculumService/UpdateCurriculum"
-	CurriculumService_SetCurriculumStatus_FullMethodName = "/joseph.academic.v1.CurriculumService/SetCurriculumStatus"
-	CurriculumService_DeleteCurriculum_FullMethodName    = "/joseph.academic.v1.CurriculumService/DeleteCurriculum"
-	CurriculumService_CreateModule_FullMethodName        = "/joseph.academic.v1.CurriculumService/CreateModule"
-	CurriculumService_UpdateModule_FullMethodName        = "/joseph.academic.v1.CurriculumService/UpdateModule"
-	CurriculumService_DeleteModule_FullMethodName        = "/joseph.academic.v1.CurriculumService/DeleteModule"
-	CurriculumService_CreateSubject_FullMethodName       = "/joseph.academic.v1.CurriculumService/CreateSubject"
-	CurriculumService_UpdateSubject_FullMethodName       = "/joseph.academic.v1.CurriculumService/UpdateSubject"
-	CurriculumService_DeleteSubject_FullMethodName       = "/joseph.academic.v1.CurriculumService/DeleteSubject"
-	CurriculumService_ReorderSubjects_FullMethodName     = "/joseph.academic.v1.CurriculumService/ReorderSubjects"
-	CurriculumService_CreateCompetency_FullMethodName    = "/joseph.academic.v1.CurriculumService/CreateCompetency"
-	CurriculumService_UpdateCompetency_FullMethodName    = "/joseph.academic.v1.CurriculumService/UpdateCompetency"
-	CurriculumService_DeleteCompetency_FullMethodName    = "/joseph.academic.v1.CurriculumService/DeleteCompetency"
-	CurriculumService_ReorderCompetencies_FullMethodName = "/joseph.academic.v1.CurriculumService/ReorderCompetencies"
+	CurriculumService_ListCurricula_FullMethodName       = "/ltedu.academic.v1.CurriculumService/ListCurricula"
+	CurriculumService_GetCurriculum_FullMethodName       = "/ltedu.academic.v1.CurriculumService/GetCurriculum"
+	CurriculumService_CreateCurriculum_FullMethodName    = "/ltedu.academic.v1.CurriculumService/CreateCurriculum"
+	CurriculumService_DuplicateCurriculum_FullMethodName = "/ltedu.academic.v1.CurriculumService/DuplicateCurriculum"
+	CurriculumService_UpdateCurriculum_FullMethodName    = "/ltedu.academic.v1.CurriculumService/UpdateCurriculum"
+	CurriculumService_SetCurriculumStatus_FullMethodName = "/ltedu.academic.v1.CurriculumService/SetCurriculumStatus"
+	CurriculumService_DeleteCurriculum_FullMethodName    = "/ltedu.academic.v1.CurriculumService/DeleteCurriculum"
+	CurriculumService_CreateModule_FullMethodName        = "/ltedu.academic.v1.CurriculumService/CreateModule"
+	CurriculumService_UpdateModule_FullMethodName        = "/ltedu.academic.v1.CurriculumService/UpdateModule"
+	CurriculumService_DeleteModule_FullMethodName        = "/ltedu.academic.v1.CurriculumService/DeleteModule"
+	CurriculumService_CreateSubject_FullMethodName       = "/ltedu.academic.v1.CurriculumService/CreateSubject"
+	CurriculumService_UpdateSubject_FullMethodName       = "/ltedu.academic.v1.CurriculumService/UpdateSubject"
+	CurriculumService_DeleteSubject_FullMethodName       = "/ltedu.academic.v1.CurriculumService/DeleteSubject"
+	CurriculumService_ReorderSubjects_FullMethodName     = "/ltedu.academic.v1.CurriculumService/ReorderSubjects"
+	CurriculumService_CreateCompetency_FullMethodName    = "/ltedu.academic.v1.CurriculumService/CreateCompetency"
+	CurriculumService_UpdateCompetency_FullMethodName    = "/ltedu.academic.v1.CurriculumService/UpdateCompetency"
+	CurriculumService_DeleteCompetency_FullMethodName    = "/ltedu.academic.v1.CurriculumService/DeleteCompetency"
+	CurriculumService_ReorderCompetencies_FullMethodName = "/ltedu.academic.v1.CurriculumService/ReorderCompetencies"
 )
 
 // CurriculumServiceClient is the client API for CurriculumService service.
@@ -700,7 +700,7 @@ func _CurriculumService_ReorderCompetencies_Handler(srv interface{}, ctx context
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CurriculumService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.academic.v1.CurriculumService",
+	ServiceName: "ltedu.academic.v1.CurriculumService",
 	HandlerType: (*CurriculumServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -777,5 +777,5 @@ var CurriculumService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/academic/v1/curriculum.proto",
+	Metadata: "ltedu/academic/v1/curriculum.proto",
 }

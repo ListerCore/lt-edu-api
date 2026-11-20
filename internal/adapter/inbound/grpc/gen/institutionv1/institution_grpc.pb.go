@@ -2,12 +2,12 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/institution/v1/institution.proto
+// source: ltedu/institution/v1/institution.proto
 
 // Institution file (Configuración › Institución): the resolutions that authorize the institution (creation, each
 // form of attention per cycle in a CEBA, expansions) and the technical sheet of its e-learning platform, which a
 // CEBA presents to the DRE (RSG N.° 613-2014-MINEDU, numeral 6.2.1). Same metadata and institution scoping as
-// joseph.academic.v1
+// ltedu.academic.v1
 
 package institutionv1
 
@@ -24,14 +24,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	InstitutionService_GetInstitutionFile_FullMethodName  = "/joseph.institution.v1.InstitutionService/GetInstitutionFile"
-	InstitutionService_SaveAuthorization_FullMethodName   = "/joseph.institution.v1.InstitutionService/SaveAuthorization"
-	InstitutionService_DeleteAuthorization_FullMethodName = "/joseph.institution.v1.InstitutionService/DeleteAuthorization"
-	InstitutionService_SavePlatformSheet_FullMethodName   = "/joseph.institution.v1.InstitutionService/SavePlatformSheet"
-	InstitutionService_ListAuditEvents_FullMethodName     = "/joseph.institution.v1.InstitutionService/ListAuditEvents"
-	InstitutionService_ListMembers_FullMethodName         = "/joseph.institution.v1.InstitutionService/ListMembers"
-	InstitutionService_GrantMember_FullMethodName         = "/joseph.institution.v1.InstitutionService/GrantMember"
-	InstitutionService_RevokeMember_FullMethodName        = "/joseph.institution.v1.InstitutionService/RevokeMember"
+	InstitutionService_GetInstitutionFile_FullMethodName  = "/ltedu.institution.v1.InstitutionService/GetInstitutionFile"
+	InstitutionService_SaveAuthorization_FullMethodName   = "/ltedu.institution.v1.InstitutionService/SaveAuthorization"
+	InstitutionService_DeleteAuthorization_FullMethodName = "/ltedu.institution.v1.InstitutionService/DeleteAuthorization"
+	InstitutionService_SavePlatformSheet_FullMethodName   = "/ltedu.institution.v1.InstitutionService/SavePlatformSheet"
+	InstitutionService_ListAuditEvents_FullMethodName     = "/ltedu.institution.v1.InstitutionService/ListAuditEvents"
+	InstitutionService_ListMembers_FullMethodName         = "/ltedu.institution.v1.InstitutionService/ListMembers"
+	InstitutionService_GrantMember_FullMethodName         = "/ltedu.institution.v1.InstitutionService/GrantMember"
+	InstitutionService_RevokeMember_FullMethodName        = "/ltedu.institution.v1.InstitutionService/RevokeMember"
 )
 
 // InstitutionServiceClient is the client API for InstitutionService service.
@@ -365,7 +365,7 @@ func _InstitutionService_RevokeMember_Handler(srv interface{}, ctx context.Conte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var InstitutionService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.institution.v1.InstitutionService",
+	ServiceName: "ltedu.institution.v1.InstitutionService",
 	HandlerType: (*InstitutionServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -402,5 +402,5 @@ var InstitutionService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/institution/v1/institution.proto",
+	Metadata: "ltedu/institution/v1/institution.proto",
 }

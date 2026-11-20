@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/wellbeing/v1/tutoring.proto
+// source: ltedu/wellbeing/v1/tutoring.proto
 
 // Virtual tutoring (phase E6 of docs/ceba/PLAN.md). The tutor in force of a student is the one assigned to them,
 // or else their section's. Session kinds: individual | group; modes: virtual | in_person | phone; statuses:
@@ -24,20 +24,20 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	TutoringService_GetTutorBoard_FullMethodName            = "/joseph.wellbeing.v1.TutoringService/GetTutorBoard"
-	TutoringService_GetTutorAssignments_FullMethodName      = "/joseph.wellbeing.v1.TutoringService/GetTutorAssignments"
-	TutoringService_AssignTutor_FullMethodName              = "/joseph.wellbeing.v1.TutoringService/AssignTutor"
-	TutoringService_ListTutoringSessions_FullMethodName     = "/joseph.wellbeing.v1.TutoringService/ListTutoringSessions"
-	TutoringService_SaveTutoringSession_FullMethodName      = "/joseph.wellbeing.v1.TutoringService/SaveTutoringSession"
-	TutoringService_HoldTutoringSession_FullMethodName      = "/joseph.wellbeing.v1.TutoringService/HoldTutoringSession"
-	TutoringService_SetTutoringSessionStatus_FullMethodName = "/joseph.wellbeing.v1.TutoringService/SetTutoringSessionStatus"
-	TutoringService_ListThreads_FullMethodName              = "/joseph.wellbeing.v1.TutoringService/ListThreads"
-	TutoringService_OpenThread_FullMethodName               = "/joseph.wellbeing.v1.TutoringService/OpenThread"
-	TutoringService_GetThread_FullMethodName                = "/joseph.wellbeing.v1.TutoringService/GetThread"
-	TutoringService_SendMessage_FullMethodName              = "/joseph.wellbeing.v1.TutoringService/SendMessage"
-	TutoringService_GetMyTutoring_FullMethodName            = "/joseph.wellbeing.v1.TutoringService/GetMyTutoring"
-	TutoringService_ReferSaanee_FullMethodName              = "/joseph.wellbeing.v1.TutoringService/ReferSaanee"
-	TutoringService_UpdateSaanee_FullMethodName             = "/joseph.wellbeing.v1.TutoringService/UpdateSaanee"
+	TutoringService_GetTutorBoard_FullMethodName            = "/ltedu.wellbeing.v1.TutoringService/GetTutorBoard"
+	TutoringService_GetTutorAssignments_FullMethodName      = "/ltedu.wellbeing.v1.TutoringService/GetTutorAssignments"
+	TutoringService_AssignTutor_FullMethodName              = "/ltedu.wellbeing.v1.TutoringService/AssignTutor"
+	TutoringService_ListTutoringSessions_FullMethodName     = "/ltedu.wellbeing.v1.TutoringService/ListTutoringSessions"
+	TutoringService_SaveTutoringSession_FullMethodName      = "/ltedu.wellbeing.v1.TutoringService/SaveTutoringSession"
+	TutoringService_HoldTutoringSession_FullMethodName      = "/ltedu.wellbeing.v1.TutoringService/HoldTutoringSession"
+	TutoringService_SetTutoringSessionStatus_FullMethodName = "/ltedu.wellbeing.v1.TutoringService/SetTutoringSessionStatus"
+	TutoringService_ListThreads_FullMethodName              = "/ltedu.wellbeing.v1.TutoringService/ListThreads"
+	TutoringService_OpenThread_FullMethodName               = "/ltedu.wellbeing.v1.TutoringService/OpenThread"
+	TutoringService_GetThread_FullMethodName                = "/ltedu.wellbeing.v1.TutoringService/GetThread"
+	TutoringService_SendMessage_FullMethodName              = "/ltedu.wellbeing.v1.TutoringService/SendMessage"
+	TutoringService_GetMyTutoring_FullMethodName            = "/ltedu.wellbeing.v1.TutoringService/GetMyTutoring"
+	TutoringService_ReferSaanee_FullMethodName              = "/ltedu.wellbeing.v1.TutoringService/ReferSaanee"
+	TutoringService_UpdateSaanee_FullMethodName             = "/ltedu.wellbeing.v1.TutoringService/UpdateSaanee"
 )
 
 // TutoringServiceClient is the client API for TutoringService service.
@@ -569,7 +569,7 @@ func _TutoringService_UpdateSaanee_Handler(srv interface{}, ctx context.Context,
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var TutoringService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.wellbeing.v1.TutoringService",
+	ServiceName: "ltedu.wellbeing.v1.TutoringService",
 	HandlerType: (*TutoringServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -630,5 +630,5 @@ var TutoringService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/wellbeing/v1/tutoring.proto",
+	Metadata: "ltedu/wellbeing/v1/tutoring.proto",
 }

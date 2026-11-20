@@ -2,11 +2,11 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/documents/v1/documents.proto
+// source: ltedu/documents/v1/documents.proto
 
 // Printable documents generated on the server as PDF: report cards, published timetables, issued actas and payment
 // receipts. Each one checks the same permissions as the screen it comes from. Same metadata and institution
-// scoping as joseph.academic.v1.
+// scoping as ltedu.academic.v1.
 //
 // Timetables are published as versioned documents: dirección or coordinación generate a version (frozen content,
 // verification code, the signatures it needs), the signers sign it and with the last signature it is published.
@@ -27,33 +27,33 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	DocumentsService_ReportCardsPdf_FullMethodName         = "/joseph.documents.v1.DocumentsService/ReportCardsPdf"
-	DocumentsService_SchedulesPdf_FullMethodName           = "/joseph.documents.v1.DocumentsService/SchedulesPdf"
-	DocumentsService_RecordPdf_FullMethodName              = "/joseph.documents.v1.DocumentsService/RecordPdf"
-	DocumentsService_ReceiptPdf_FullMethodName             = "/joseph.documents.v1.DocumentsService/ReceiptPdf"
-	DocumentsService_EnrollmentFormPdf_FullMethodName      = "/joseph.documents.v1.DocumentsService/EnrollmentFormPdf"
-	DocumentsService_RollPdf_FullMethodName                = "/joseph.documents.v1.DocumentsService/RollPdf"
-	DocumentsService_RollXlsx_FullMethodName               = "/joseph.documents.v1.DocumentsService/RollXlsx"
-	DocumentsService_SiagieXlsx_FullMethodName             = "/joseph.documents.v1.DocumentsService/SiagieXlsx"
-	DocumentsService_GeneratePlacementAct_FullMethodName   = "/joseph.documents.v1.DocumentsService/GeneratePlacementAct"
-	DocumentsService_PlacementActPdf_FullMethodName        = "/joseph.documents.v1.DocumentsService/PlacementActPdf"
-	DocumentsService_PermanencePdf_FullMethodName          = "/joseph.documents.v1.DocumentsService/PermanencePdf"
-	DocumentsService_PermanenceXlsx_FullMethodName         = "/joseph.documents.v1.DocumentsService/PermanenceXlsx"
-	DocumentsService_GenerateRecordAct_FullMethodName      = "/joseph.documents.v1.DocumentsService/GenerateRecordAct"
-	DocumentsService_RecordActPdf_FullMethodName           = "/joseph.documents.v1.DocumentsService/RecordActPdf"
-	DocumentsService_SiagieGradesXlsx_FullMethodName       = "/joseph.documents.v1.DocumentsService/SiagieGradesXlsx"
-	DocumentsService_GetStudentCertificates_FullMethodName = "/joseph.documents.v1.DocumentsService/GetStudentCertificates"
-	DocumentsService_GenerateCertificate_FullMethodName    = "/joseph.documents.v1.DocumentsService/GenerateCertificate"
-	DocumentsService_CertificatePdf_FullMethodName         = "/joseph.documents.v1.DocumentsService/CertificatePdf"
-	DocumentsService_SchedulesXlsx_FullMethodName          = "/joseph.documents.v1.DocumentsService/SchedulesXlsx"
-	DocumentsService_GetScheduleSigners_FullMethodName     = "/joseph.documents.v1.DocumentsService/GetScheduleSigners"
-	DocumentsService_SetScheduleSigners_FullMethodName     = "/joseph.documents.v1.DocumentsService/SetScheduleSigners"
-	DocumentsService_ListScheduleIssues_FullMethodName     = "/joseph.documents.v1.DocumentsService/ListScheduleIssues"
-	DocumentsService_GenerateSchedules_FullMethodName      = "/joseph.documents.v1.DocumentsService/GenerateSchedules"
-	DocumentsService_SignVersion_FullMethodName            = "/joseph.documents.v1.DocumentsService/SignVersion"
-	DocumentsService_VersionPdf_FullMethodName             = "/joseph.documents.v1.DocumentsService/VersionPdf"
-	DocumentsService_TrackDocument_FullMethodName          = "/joseph.documents.v1.DocumentsService/TrackDocument"
-	DocumentsService_TrackPdf_FullMethodName               = "/joseph.documents.v1.DocumentsService/TrackPdf"
+	DocumentsService_ReportCardsPdf_FullMethodName         = "/ltedu.documents.v1.DocumentsService/ReportCardsPdf"
+	DocumentsService_SchedulesPdf_FullMethodName           = "/ltedu.documents.v1.DocumentsService/SchedulesPdf"
+	DocumentsService_RecordPdf_FullMethodName              = "/ltedu.documents.v1.DocumentsService/RecordPdf"
+	DocumentsService_ReceiptPdf_FullMethodName             = "/ltedu.documents.v1.DocumentsService/ReceiptPdf"
+	DocumentsService_EnrollmentFormPdf_FullMethodName      = "/ltedu.documents.v1.DocumentsService/EnrollmentFormPdf"
+	DocumentsService_RollPdf_FullMethodName                = "/ltedu.documents.v1.DocumentsService/RollPdf"
+	DocumentsService_RollXlsx_FullMethodName               = "/ltedu.documents.v1.DocumentsService/RollXlsx"
+	DocumentsService_SiagieXlsx_FullMethodName             = "/ltedu.documents.v1.DocumentsService/SiagieXlsx"
+	DocumentsService_GeneratePlacementAct_FullMethodName   = "/ltedu.documents.v1.DocumentsService/GeneratePlacementAct"
+	DocumentsService_PlacementActPdf_FullMethodName        = "/ltedu.documents.v1.DocumentsService/PlacementActPdf"
+	DocumentsService_PermanencePdf_FullMethodName          = "/ltedu.documents.v1.DocumentsService/PermanencePdf"
+	DocumentsService_PermanenceXlsx_FullMethodName         = "/ltedu.documents.v1.DocumentsService/PermanenceXlsx"
+	DocumentsService_GenerateRecordAct_FullMethodName      = "/ltedu.documents.v1.DocumentsService/GenerateRecordAct"
+	DocumentsService_RecordActPdf_FullMethodName           = "/ltedu.documents.v1.DocumentsService/RecordActPdf"
+	DocumentsService_SiagieGradesXlsx_FullMethodName       = "/ltedu.documents.v1.DocumentsService/SiagieGradesXlsx"
+	DocumentsService_GetStudentCertificates_FullMethodName = "/ltedu.documents.v1.DocumentsService/GetStudentCertificates"
+	DocumentsService_GenerateCertificate_FullMethodName    = "/ltedu.documents.v1.DocumentsService/GenerateCertificate"
+	DocumentsService_CertificatePdf_FullMethodName         = "/ltedu.documents.v1.DocumentsService/CertificatePdf"
+	DocumentsService_SchedulesXlsx_FullMethodName          = "/ltedu.documents.v1.DocumentsService/SchedulesXlsx"
+	DocumentsService_GetScheduleSigners_FullMethodName     = "/ltedu.documents.v1.DocumentsService/GetScheduleSigners"
+	DocumentsService_SetScheduleSigners_FullMethodName     = "/ltedu.documents.v1.DocumentsService/SetScheduleSigners"
+	DocumentsService_ListScheduleIssues_FullMethodName     = "/ltedu.documents.v1.DocumentsService/ListScheduleIssues"
+	DocumentsService_GenerateSchedules_FullMethodName      = "/ltedu.documents.v1.DocumentsService/GenerateSchedules"
+	DocumentsService_SignVersion_FullMethodName            = "/ltedu.documents.v1.DocumentsService/SignVersion"
+	DocumentsService_VersionPdf_FullMethodName             = "/ltedu.documents.v1.DocumentsService/VersionPdf"
+	DocumentsService_TrackDocument_FullMethodName          = "/ltedu.documents.v1.DocumentsService/TrackDocument"
+	DocumentsService_TrackPdf_FullMethodName               = "/ltedu.documents.v1.DocumentsService/TrackPdf"
 )
 
 // DocumentsServiceClient is the client API for DocumentsService service.
@@ -1024,7 +1024,7 @@ func _DocumentsService_TrackPdf_Handler(srv interface{}, ctx context.Context, de
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var DocumentsService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.documents.v1.DocumentsService",
+	ServiceName: "ltedu.documents.v1.DocumentsService",
 	HandlerType: (*DocumentsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -1137,5 +1137,5 @@ var DocumentsService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/documents/v1/documents.proto",
+	Metadata: "ltedu/documents/v1/documents.proto",
 }

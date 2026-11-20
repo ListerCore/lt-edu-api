@@ -2,10 +2,10 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/exams/v1/exams.proto
+// source: ltedu/exams/v1/exams.proto
 
 // Academies (phase 8 of docs/plan-academico.md): question bank, mock admission exams, answer sheets, rankings and
-// admissions. Same metadata and institution scoping as joseph.academic.v1. Courses are identified by the code they
+// admissions. Same metadata and institution scoping as ltedu.academic.v1. Courses are identified by the code they
 // share across the areas' plans. Answers: one character per question, A–E or '-' blank
 
 package examsv1
@@ -40,7 +40,7 @@ type Course struct {
 
 func (x *Course) Reset() {
 	*x = Course{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[0]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -52,7 +52,7 @@ func (x *Course) String() string {
 func (*Course) ProtoMessage() {}
 
 func (x *Course) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[0]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -65,7 +65,7 @@ func (x *Course) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Course.ProtoReflect.Descriptor instead.
 func (*Course) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Course) GetCode() string {
@@ -114,7 +114,7 @@ type Level struct {
 
 func (x *Level) Reset() {
 	*x = Level{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[1]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -126,7 +126,7 @@ func (x *Level) String() string {
 func (*Level) ProtoMessage() {}
 
 func (x *Level) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[1]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -139,7 +139,7 @@ func (x *Level) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Level.ProtoReflect.Descriptor instead.
 func (*Level) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Level) GetId() string {
@@ -183,7 +183,7 @@ type Question struct {
 
 func (x *Question) Reset() {
 	*x = Question{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[2]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -195,7 +195,7 @@ func (x *Question) String() string {
 func (*Question) ProtoMessage() {}
 
 func (x *Question) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[2]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -208,7 +208,7 @@ func (x *Question) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Question.ProtoReflect.Descriptor instead.
 func (*Question) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Question) GetId() string {
@@ -299,7 +299,7 @@ type MockCourse struct {
 
 func (x *MockCourse) Reset() {
 	*x = MockCourse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[3]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -311,7 +311,7 @@ func (x *MockCourse) String() string {
 func (*MockCourse) ProtoMessage() {}
 
 func (x *MockCourse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[3]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -324,7 +324,7 @@ func (x *MockCourse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MockCourse.ProtoReflect.Descriptor instead.
 func (*MockCourse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *MockCourse) GetCode() string {
@@ -359,7 +359,7 @@ type MockWeight struct {
 
 func (x *MockWeight) Reset() {
 	*x = MockWeight{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[4]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -371,7 +371,7 @@ func (x *MockWeight) String() string {
 func (*MockWeight) ProtoMessage() {}
 
 func (x *MockWeight) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[4]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -384,7 +384,7 @@ func (x *MockWeight) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MockWeight.ProtoReflect.Descriptor instead.
 func (*MockWeight) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *MockWeight) GetLevelId() string {
@@ -420,7 +420,7 @@ type KeyItem struct {
 
 func (x *KeyItem) Reset() {
 	*x = KeyItem{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[5]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -432,7 +432,7 @@ func (x *KeyItem) String() string {
 func (*KeyItem) ProtoMessage() {}
 
 func (x *KeyItem) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[5]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -445,7 +445,7 @@ func (x *KeyItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KeyItem.ProtoReflect.Descriptor instead.
 func (*KeyItem) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *KeyItem) GetNumber() int32 {
@@ -500,7 +500,7 @@ type MockExam struct {
 
 func (x *MockExam) Reset() {
 	*x = MockExam{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[6]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -512,7 +512,7 @@ func (x *MockExam) String() string {
 func (*MockExam) ProtoMessage() {}
 
 func (x *MockExam) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[6]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -525,7 +525,7 @@ func (x *MockExam) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MockExam.ProtoReflect.Descriptor instead.
 func (*MockExam) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *MockExam) GetId() string {
@@ -643,7 +643,7 @@ type GetOverviewRequest struct {
 
 func (x *GetOverviewRequest) Reset() {
 	*x = GetOverviewRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[7]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -655,7 +655,7 @@ func (x *GetOverviewRequest) String() string {
 func (*GetOverviewRequest) ProtoMessage() {}
 
 func (x *GetOverviewRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[7]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -668,7 +668,7 @@ func (x *GetOverviewRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOverviewRequest.ProtoReflect.Descriptor instead.
 func (*GetOverviewRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetOverviewRequest) GetInstitutionSlug() string {
@@ -701,7 +701,7 @@ type GetOverviewResponse struct {
 
 func (x *GetOverviewResponse) Reset() {
 	*x = GetOverviewResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[8]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -713,7 +713,7 @@ func (x *GetOverviewResponse) String() string {
 func (*GetOverviewResponse) ProtoMessage() {}
 
 func (x *GetOverviewResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[8]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -726,7 +726,7 @@ func (x *GetOverviewResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOverviewResponse.ProtoReflect.Descriptor instead.
 func (*GetOverviewResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetOverviewResponse) GetPeriods() []*academicv1.Period {
@@ -800,7 +800,7 @@ type ListQuestionsRequest struct {
 
 func (x *ListQuestionsRequest) Reset() {
 	*x = ListQuestionsRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[9]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -812,7 +812,7 @@ func (x *ListQuestionsRequest) String() string {
 func (*ListQuestionsRequest) ProtoMessage() {}
 
 func (x *ListQuestionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[9]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -825,7 +825,7 @@ func (x *ListQuestionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListQuestionsRequest.ProtoReflect.Descriptor instead.
 func (*ListQuestionsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ListQuestionsRequest) GetInstitutionSlug() string {
@@ -887,7 +887,7 @@ type ListQuestionsResponse struct {
 
 func (x *ListQuestionsResponse) Reset() {
 	*x = ListQuestionsResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[10]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -899,7 +899,7 @@ func (x *ListQuestionsResponse) String() string {
 func (*ListQuestionsResponse) ProtoMessage() {}
 
 func (x *ListQuestionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[10]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -912,7 +912,7 @@ func (x *ListQuestionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListQuestionsResponse.ProtoReflect.Descriptor instead.
 func (*ListQuestionsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ListQuestionsResponse) GetQuestions() []*Question {
@@ -939,7 +939,7 @@ type SaveQuestionRequest struct {
 
 func (x *SaveQuestionRequest) Reset() {
 	*x = SaveQuestionRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[11]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -951,7 +951,7 @@ func (x *SaveQuestionRequest) String() string {
 func (*SaveQuestionRequest) ProtoMessage() {}
 
 func (x *SaveQuestionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[11]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -964,7 +964,7 @@ func (x *SaveQuestionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveQuestionRequest.ProtoReflect.Descriptor instead.
 func (*SaveQuestionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *SaveQuestionRequest) GetInstitutionSlug() string {
@@ -990,7 +990,7 @@ type SaveQuestionResponse struct {
 
 func (x *SaveQuestionResponse) Reset() {
 	*x = SaveQuestionResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[12]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1002,7 +1002,7 @@ func (x *SaveQuestionResponse) String() string {
 func (*SaveQuestionResponse) ProtoMessage() {}
 
 func (x *SaveQuestionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[12]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1015,7 +1015,7 @@ func (x *SaveQuestionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveQuestionResponse.ProtoReflect.Descriptor instead.
 func (*SaveQuestionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *SaveQuestionResponse) GetQuestion() *Question {
@@ -1035,7 +1035,7 @@ type DeleteQuestionRequest struct {
 
 func (x *DeleteQuestionRequest) Reset() {
 	*x = DeleteQuestionRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[13]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1047,7 +1047,7 @@ func (x *DeleteQuestionRequest) String() string {
 func (*DeleteQuestionRequest) ProtoMessage() {}
 
 func (x *DeleteQuestionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[13]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1060,7 +1060,7 @@ func (x *DeleteQuestionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteQuestionRequest.ProtoReflect.Descriptor instead.
 func (*DeleteQuestionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *DeleteQuestionRequest) GetInstitutionSlug() string {
@@ -1085,7 +1085,7 @@ type DeleteQuestionResponse struct {
 
 func (x *DeleteQuestionResponse) Reset() {
 	*x = DeleteQuestionResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[14]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1097,7 +1097,7 @@ func (x *DeleteQuestionResponse) String() string {
 func (*DeleteQuestionResponse) ProtoMessage() {}
 
 func (x *DeleteQuestionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[14]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1110,7 +1110,7 @@ func (x *DeleteQuestionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteQuestionResponse.ProtoReflect.Descriptor instead.
 func (*DeleteQuestionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{14}
 }
 
 type GetMockRequest struct {
@@ -1123,7 +1123,7 @@ type GetMockRequest struct {
 
 func (x *GetMockRequest) Reset() {
 	*x = GetMockRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[15]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1135,7 +1135,7 @@ func (x *GetMockRequest) String() string {
 func (*GetMockRequest) ProtoMessage() {}
 
 func (x *GetMockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[15]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1148,7 +1148,7 @@ func (x *GetMockRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMockRequest.ProtoReflect.Descriptor instead.
 func (*GetMockRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetMockRequest) GetInstitutionSlug() string {
@@ -1178,7 +1178,7 @@ type GetMockResponse struct {
 
 func (x *GetMockResponse) Reset() {
 	*x = GetMockResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[16]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1190,7 +1190,7 @@ func (x *GetMockResponse) String() string {
 func (*GetMockResponse) ProtoMessage() {}
 
 func (x *GetMockResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[16]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1203,7 +1203,7 @@ func (x *GetMockResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMockResponse.ProtoReflect.Descriptor instead.
 func (*GetMockResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetMockResponse) GetMock() *MockExam {
@@ -1244,7 +1244,7 @@ type SaveMockRequest struct {
 
 func (x *SaveMockRequest) Reset() {
 	*x = SaveMockRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[17]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1256,7 +1256,7 @@ func (x *SaveMockRequest) String() string {
 func (*SaveMockRequest) ProtoMessage() {}
 
 func (x *SaveMockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[17]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1269,7 +1269,7 @@ func (x *SaveMockRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveMockRequest.ProtoReflect.Descriptor instead.
 func (*SaveMockRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *SaveMockRequest) GetInstitutionSlug() string {
@@ -1295,7 +1295,7 @@ type SaveMockResponse struct {
 
 func (x *SaveMockResponse) Reset() {
 	*x = SaveMockResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[18]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1307,7 +1307,7 @@ func (x *SaveMockResponse) String() string {
 func (*SaveMockResponse) ProtoMessage() {}
 
 func (x *SaveMockResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[18]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1320,7 +1320,7 @@ func (x *SaveMockResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveMockResponse.ProtoReflect.Descriptor instead.
 func (*SaveMockResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *SaveMockResponse) GetMock() *MockExam {
@@ -1340,7 +1340,7 @@ type DeleteMockRequest struct {
 
 func (x *DeleteMockRequest) Reset() {
 	*x = DeleteMockRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[19]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1352,7 +1352,7 @@ func (x *DeleteMockRequest) String() string {
 func (*DeleteMockRequest) ProtoMessage() {}
 
 func (x *DeleteMockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[19]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1365,7 +1365,7 @@ func (x *DeleteMockRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMockRequest.ProtoReflect.Descriptor instead.
 func (*DeleteMockRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *DeleteMockRequest) GetInstitutionSlug() string {
@@ -1390,7 +1390,7 @@ type DeleteMockResponse struct {
 
 func (x *DeleteMockResponse) Reset() {
 	*x = DeleteMockResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[20]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1402,7 +1402,7 @@ func (x *DeleteMockResponse) String() string {
 func (*DeleteMockResponse) ProtoMessage() {}
 
 func (x *DeleteMockResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[20]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1415,7 +1415,7 @@ func (x *DeleteMockResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMockResponse.ProtoReflect.Descriptor instead.
 func (*DeleteMockResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{20}
 }
 
 type SuggestStructureRequest struct {
@@ -1429,7 +1429,7 @@ type SuggestStructureRequest struct {
 
 func (x *SuggestStructureRequest) Reset() {
 	*x = SuggestStructureRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[21]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1441,7 +1441,7 @@ func (x *SuggestStructureRequest) String() string {
 func (*SuggestStructureRequest) ProtoMessage() {}
 
 func (x *SuggestStructureRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[21]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1454,7 +1454,7 @@ func (x *SuggestStructureRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SuggestStructureRequest.ProtoReflect.Descriptor instead.
 func (*SuggestStructureRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *SuggestStructureRequest) GetInstitutionSlug() string {
@@ -1488,7 +1488,7 @@ type SuggestStructureResponse struct {
 
 func (x *SuggestStructureResponse) Reset() {
 	*x = SuggestStructureResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[22]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1500,7 +1500,7 @@ func (x *SuggestStructureResponse) String() string {
 func (*SuggestStructureResponse) ProtoMessage() {}
 
 func (x *SuggestStructureResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[22]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1513,7 +1513,7 @@ func (x *SuggestStructureResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SuggestStructureResponse.ProtoReflect.Descriptor instead.
 func (*SuggestStructureResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *SuggestStructureResponse) GetCourses() []*MockCourse {
@@ -1542,7 +1542,7 @@ type SetStructureRequest struct {
 
 func (x *SetStructureRequest) Reset() {
 	*x = SetStructureRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[23]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1554,7 +1554,7 @@ func (x *SetStructureRequest) String() string {
 func (*SetStructureRequest) ProtoMessage() {}
 
 func (x *SetStructureRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[23]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1567,7 +1567,7 @@ func (x *SetStructureRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetStructureRequest.ProtoReflect.Descriptor instead.
 func (*SetStructureRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{23}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *SetStructureRequest) GetInstitutionSlug() string {
@@ -1607,7 +1607,7 @@ type SetStructureResponse struct {
 
 func (x *SetStructureResponse) Reset() {
 	*x = SetStructureResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[24]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1619,7 +1619,7 @@ func (x *SetStructureResponse) String() string {
 func (*SetStructureResponse) ProtoMessage() {}
 
 func (x *SetStructureResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[24]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1632,7 +1632,7 @@ func (x *SetStructureResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetStructureResponse.ProtoReflect.Descriptor instead.
 func (*SetStructureResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{24}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *SetStructureResponse) GetMock() *GetMockResponse {
@@ -1652,7 +1652,7 @@ type FillFromBankRequest struct {
 
 func (x *FillFromBankRequest) Reset() {
 	*x = FillFromBankRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[25]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1664,7 +1664,7 @@ func (x *FillFromBankRequest) String() string {
 func (*FillFromBankRequest) ProtoMessage() {}
 
 func (x *FillFromBankRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[25]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1677,7 +1677,7 @@ func (x *FillFromBankRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FillFromBankRequest.ProtoReflect.Descriptor instead.
 func (*FillFromBankRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{25}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *FillFromBankRequest) GetInstitutionSlug() string {
@@ -1704,7 +1704,7 @@ type FillFromBankResponse struct {
 
 func (x *FillFromBankResponse) Reset() {
 	*x = FillFromBankResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[26]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1716,7 +1716,7 @@ func (x *FillFromBankResponse) String() string {
 func (*FillFromBankResponse) ProtoMessage() {}
 
 func (x *FillFromBankResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[26]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1729,7 +1729,7 @@ func (x *FillFromBankResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FillFromBankResponse.ProtoReflect.Descriptor instead.
 func (*FillFromBankResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{26}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *FillFromBankResponse) GetMock() *GetMockResponse {
@@ -1757,7 +1757,7 @@ type SaveKeyRequest struct {
 
 func (x *SaveKeyRequest) Reset() {
 	*x = SaveKeyRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[27]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1769,7 +1769,7 @@ func (x *SaveKeyRequest) String() string {
 func (*SaveKeyRequest) ProtoMessage() {}
 
 func (x *SaveKeyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[27]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1782,7 +1782,7 @@ func (x *SaveKeyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveKeyRequest.ProtoReflect.Descriptor instead.
 func (*SaveKeyRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{27}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *SaveKeyRequest) GetInstitutionSlug() string {
@@ -1815,7 +1815,7 @@ type SaveKeyResponse struct {
 
 func (x *SaveKeyResponse) Reset() {
 	*x = SaveKeyResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[28]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1827,7 +1827,7 @@ func (x *SaveKeyResponse) String() string {
 func (*SaveKeyResponse) ProtoMessage() {}
 
 func (x *SaveKeyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[28]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1840,7 +1840,7 @@ func (x *SaveKeyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveKeyResponse.ProtoReflect.Descriptor instead.
 func (*SaveKeyResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{28}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *SaveKeyResponse) GetMock() *GetMockResponse {
@@ -1861,7 +1861,7 @@ type PublishMockRequest struct {
 
 func (x *PublishMockRequest) Reset() {
 	*x = PublishMockRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[29]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1873,7 +1873,7 @@ func (x *PublishMockRequest) String() string {
 func (*PublishMockRequest) ProtoMessage() {}
 
 func (x *PublishMockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[29]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1886,7 +1886,7 @@ func (x *PublishMockRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PublishMockRequest.ProtoReflect.Descriptor instead.
 func (*PublishMockRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{29}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *PublishMockRequest) GetInstitutionSlug() string {
@@ -1919,7 +1919,7 @@ type PublishMockResponse struct {
 
 func (x *PublishMockResponse) Reset() {
 	*x = PublishMockResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[30]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1931,7 +1931,7 @@ func (x *PublishMockResponse) String() string {
 func (*PublishMockResponse) ProtoMessage() {}
 
 func (x *PublishMockResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[30]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1944,7 +1944,7 @@ func (x *PublishMockResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PublishMockResponse.ProtoReflect.Descriptor instead.
 func (*PublishMockResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{30}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *PublishMockResponse) GetMock() *GetMockResponse {
@@ -1964,7 +1964,7 @@ type GetBookletRequest struct {
 
 func (x *GetBookletRequest) Reset() {
 	*x = GetBookletRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[31]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1976,7 +1976,7 @@ func (x *GetBookletRequest) String() string {
 func (*GetBookletRequest) ProtoMessage() {}
 
 func (x *GetBookletRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[31]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1989,7 +1989,7 @@ func (x *GetBookletRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBookletRequest.ProtoReflect.Descriptor instead.
 func (*GetBookletRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{31}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *GetBookletRequest) GetInstitutionSlug() string {
@@ -2019,7 +2019,7 @@ type BookletItem struct {
 
 func (x *BookletItem) Reset() {
 	*x = BookletItem{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[32]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2031,7 +2031,7 @@ func (x *BookletItem) String() string {
 func (*BookletItem) ProtoMessage() {}
 
 func (x *BookletItem) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[32]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2044,7 +2044,7 @@ func (x *BookletItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookletItem.ProtoReflect.Descriptor instead.
 func (*BookletItem) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{32}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *BookletItem) GetNumber() int32 {
@@ -2085,7 +2085,7 @@ type GetBookletResponse struct {
 
 func (x *GetBookletResponse) Reset() {
 	*x = GetBookletResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[33]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2097,7 +2097,7 @@ func (x *GetBookletResponse) String() string {
 func (*GetBookletResponse) ProtoMessage() {}
 
 func (x *GetBookletResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[33]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2110,7 +2110,7 @@ func (x *GetBookletResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBookletResponse.ProtoReflect.Descriptor instead.
 func (*GetBookletResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{33}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *GetBookletResponse) GetMock() *MockExam {
@@ -2138,7 +2138,7 @@ type SheetEntry struct {
 
 func (x *SheetEntry) Reset() {
 	*x = SheetEntry{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[34]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2150,7 +2150,7 @@ func (x *SheetEntry) String() string {
 func (*SheetEntry) ProtoMessage() {}
 
 func (x *SheetEntry) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[34]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2163,7 +2163,7 @@ func (x *SheetEntry) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SheetEntry.ProtoReflect.Descriptor instead.
 func (*SheetEntry) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{34}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *SheetEntry) GetStudentId() string {
@@ -2198,7 +2198,7 @@ type LoadReport struct {
 
 func (x *LoadReport) Reset() {
 	*x = LoadReport{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[35]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2210,7 +2210,7 @@ func (x *LoadReport) String() string {
 func (*LoadReport) ProtoMessage() {}
 
 func (x *LoadReport) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[35]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2223,7 +2223,7 @@ func (x *LoadReport) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoadReport.ProtoReflect.Descriptor instead.
 func (*LoadReport) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{35}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *LoadReport) GetSaved() int32 {
@@ -2258,7 +2258,7 @@ type LoadSheetsRequest struct {
 
 func (x *LoadSheetsRequest) Reset() {
 	*x = LoadSheetsRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[36]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2270,7 +2270,7 @@ func (x *LoadSheetsRequest) String() string {
 func (*LoadSheetsRequest) ProtoMessage() {}
 
 func (x *LoadSheetsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[36]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2283,7 +2283,7 @@ func (x *LoadSheetsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoadSheetsRequest.ProtoReflect.Descriptor instead.
 func (*LoadSheetsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{36}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *LoadSheetsRequest) GetInstitutionSlug() string {
@@ -2316,7 +2316,7 @@ type LoadSheetsResponse struct {
 
 func (x *LoadSheetsResponse) Reset() {
 	*x = LoadSheetsResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[37]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2328,7 +2328,7 @@ func (x *LoadSheetsResponse) String() string {
 func (*LoadSheetsResponse) ProtoMessage() {}
 
 func (x *LoadSheetsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[37]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2341,7 +2341,7 @@ func (x *LoadSheetsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoadSheetsResponse.ProtoReflect.Descriptor instead.
 func (*LoadSheetsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{37}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *LoadSheetsResponse) GetReport() *LoadReport {
@@ -2362,7 +2362,7 @@ type LoadReaderFileRequest struct {
 
 func (x *LoadReaderFileRequest) Reset() {
 	*x = LoadReaderFileRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[38]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2374,7 +2374,7 @@ func (x *LoadReaderFileRequest) String() string {
 func (*LoadReaderFileRequest) ProtoMessage() {}
 
 func (x *LoadReaderFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[38]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2387,7 +2387,7 @@ func (x *LoadReaderFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoadReaderFileRequest.ProtoReflect.Descriptor instead.
 func (*LoadReaderFileRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{38}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *LoadReaderFileRequest) GetInstitutionSlug() string {
@@ -2420,7 +2420,7 @@ type LoadReaderFileResponse struct {
 
 func (x *LoadReaderFileResponse) Reset() {
 	*x = LoadReaderFileResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[39]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2432,7 +2432,7 @@ func (x *LoadReaderFileResponse) String() string {
 func (*LoadReaderFileResponse) ProtoMessage() {}
 
 func (x *LoadReaderFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[39]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2445,7 +2445,7 @@ func (x *LoadReaderFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoadReaderFileResponse.ProtoReflect.Descriptor instead.
 func (*LoadReaderFileResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{39}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *LoadReaderFileResponse) GetReport() *LoadReport {
@@ -2466,7 +2466,7 @@ type DeleteSheetRequest struct {
 
 func (x *DeleteSheetRequest) Reset() {
 	*x = DeleteSheetRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[40]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2478,7 +2478,7 @@ func (x *DeleteSheetRequest) String() string {
 func (*DeleteSheetRequest) ProtoMessage() {}
 
 func (x *DeleteSheetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[40]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2491,7 +2491,7 @@ func (x *DeleteSheetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSheetRequest.ProtoReflect.Descriptor instead.
 func (*DeleteSheetRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{40}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *DeleteSheetRequest) GetInstitutionSlug() string {
@@ -2523,7 +2523,7 @@ type DeleteSheetResponse struct {
 
 func (x *DeleteSheetResponse) Reset() {
 	*x = DeleteSheetResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[41]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2535,7 +2535,7 @@ func (x *DeleteSheetResponse) String() string {
 func (*DeleteSheetResponse) ProtoMessage() {}
 
 func (x *DeleteSheetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[41]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2548,7 +2548,7 @@ func (x *DeleteSheetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSheetResponse.ProtoReflect.Descriptor instead.
 func (*DeleteSheetResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{41}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{41}
 }
 
 type CourseScore struct {
@@ -2563,7 +2563,7 @@ type CourseScore struct {
 
 func (x *CourseScore) Reset() {
 	*x = CourseScore{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[42]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2575,7 +2575,7 @@ func (x *CourseScore) String() string {
 func (*CourseScore) ProtoMessage() {}
 
 func (x *CourseScore) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[42]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2588,7 +2588,7 @@ func (x *CourseScore) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CourseScore.ProtoReflect.Descriptor instead.
 func (*CourseScore) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{42}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *CourseScore) GetRight() int32 {
@@ -2644,7 +2644,7 @@ type AnswerSheet struct {
 
 func (x *AnswerSheet) Reset() {
 	*x = AnswerSheet{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[43]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2656,7 +2656,7 @@ func (x *AnswerSheet) String() string {
 func (*AnswerSheet) ProtoMessage() {}
 
 func (x *AnswerSheet) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[43]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2669,7 +2669,7 @@ func (x *AnswerSheet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AnswerSheet.ProtoReflect.Descriptor instead.
 func (*AnswerSheet) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{43}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *AnswerSheet) GetStudentId() string {
@@ -2803,7 +2803,7 @@ type CourseStat struct {
 
 func (x *CourseStat) Reset() {
 	*x = CourseStat{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[44]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2815,7 +2815,7 @@ func (x *CourseStat) String() string {
 func (*CourseStat) ProtoMessage() {}
 
 func (x *CourseStat) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[44]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2828,7 +2828,7 @@ func (x *CourseStat) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CourseStat.ProtoReflect.Descriptor instead.
 func (*CourseStat) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{44}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *CourseStat) GetCode() string {
@@ -2872,7 +2872,7 @@ type ExamStudent struct {
 
 func (x *ExamStudent) Reset() {
 	*x = ExamStudent{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[45]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2884,7 +2884,7 @@ func (x *ExamStudent) String() string {
 func (*ExamStudent) ProtoMessage() {}
 
 func (x *ExamStudent) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[45]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2897,7 +2897,7 @@ func (x *ExamStudent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExamStudent.ProtoReflect.Descriptor instead.
 func (*ExamStudent) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{45}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *ExamStudent) GetId() string {
@@ -2945,7 +2945,7 @@ type GetResultsRequest struct {
 
 func (x *GetResultsRequest) Reset() {
 	*x = GetResultsRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[46]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2957,7 +2957,7 @@ func (x *GetResultsRequest) String() string {
 func (*GetResultsRequest) ProtoMessage() {}
 
 func (x *GetResultsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[46]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2970,7 +2970,7 @@ func (x *GetResultsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetResultsRequest.ProtoReflect.Descriptor instead.
 func (*GetResultsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{46}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *GetResultsRequest) GetInstitutionSlug() string {
@@ -3001,7 +3001,7 @@ type GetResultsResponse struct {
 
 func (x *GetResultsResponse) Reset() {
 	*x = GetResultsResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[47]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3013,7 +3013,7 @@ func (x *GetResultsResponse) String() string {
 func (*GetResultsResponse) ProtoMessage() {}
 
 func (x *GetResultsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[47]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3026,7 +3026,7 @@ func (x *GetResultsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetResultsResponse.ProtoReflect.Descriptor instead.
 func (*GetResultsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{47}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *GetResultsResponse) GetMock() *MockExam {
@@ -3083,7 +3083,7 @@ type StudentMock struct {
 
 func (x *StudentMock) Reset() {
 	*x = StudentMock{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[48]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3095,7 +3095,7 @@ func (x *StudentMock) String() string {
 func (*StudentMock) ProtoMessage() {}
 
 func (x *StudentMock) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[48]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3108,7 +3108,7 @@ func (x *StudentMock) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StudentMock.ProtoReflect.Descriptor instead.
 func (*StudentMock) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{48}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *StudentMock) GetMock() *MockExam {
@@ -3157,7 +3157,7 @@ type Admission struct {
 
 func (x *Admission) Reset() {
 	*x = Admission{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[49]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3169,7 +3169,7 @@ func (x *Admission) String() string {
 func (*Admission) ProtoMessage() {}
 
 func (x *Admission) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[49]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3182,7 +3182,7 @@ func (x *Admission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Admission.ProtoReflect.Descriptor instead.
 func (*Admission) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{49}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *Admission) GetId() string {
@@ -3267,7 +3267,7 @@ type StudentExams struct {
 
 func (x *StudentExams) Reset() {
 	*x = StudentExams{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[50]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3279,7 +3279,7 @@ func (x *StudentExams) String() string {
 func (*StudentExams) ProtoMessage() {}
 
 func (x *StudentExams) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[50]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3292,7 +3292,7 @@ func (x *StudentExams) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StudentExams.ProtoReflect.Descriptor instead.
 func (*StudentExams) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{50}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *StudentExams) GetStudentId() string {
@@ -3333,7 +3333,7 @@ type GetStudentExamsRequest struct {
 
 func (x *GetStudentExamsRequest) Reset() {
 	*x = GetStudentExamsRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[51]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3345,7 +3345,7 @@ func (x *GetStudentExamsRequest) String() string {
 func (*GetStudentExamsRequest) ProtoMessage() {}
 
 func (x *GetStudentExamsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[51]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3358,7 +3358,7 @@ func (x *GetStudentExamsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentExamsRequest.ProtoReflect.Descriptor instead.
 func (*GetStudentExamsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{51}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *GetStudentExamsRequest) GetInstitutionSlug() string {
@@ -3384,7 +3384,7 @@ type GetStudentExamsResponse struct {
 
 func (x *GetStudentExamsResponse) Reset() {
 	*x = GetStudentExamsResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[52]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3396,7 +3396,7 @@ func (x *GetStudentExamsResponse) String() string {
 func (*GetStudentExamsResponse) ProtoMessage() {}
 
 func (x *GetStudentExamsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[52]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3409,7 +3409,7 @@ func (x *GetStudentExamsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentExamsResponse.ProtoReflect.Descriptor instead.
 func (*GetStudentExamsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{52}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *GetStudentExamsResponse) GetExams() *StudentExams {
@@ -3428,7 +3428,7 @@ type MyExamsRequest struct {
 
 func (x *MyExamsRequest) Reset() {
 	*x = MyExamsRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[53]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3440,7 +3440,7 @@ func (x *MyExamsRequest) String() string {
 func (*MyExamsRequest) ProtoMessage() {}
 
 func (x *MyExamsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[53]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3453,7 +3453,7 @@ func (x *MyExamsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MyExamsRequest.ProtoReflect.Descriptor instead.
 func (*MyExamsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{53}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *MyExamsRequest) GetInstitutionSlug() string {
@@ -3472,7 +3472,7 @@ type MyExamsResponse struct {
 
 func (x *MyExamsResponse) Reset() {
 	*x = MyExamsResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[54]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3484,7 +3484,7 @@ func (x *MyExamsResponse) String() string {
 func (*MyExamsResponse) ProtoMessage() {}
 
 func (x *MyExamsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[54]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3497,7 +3497,7 @@ func (x *MyExamsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MyExamsResponse.ProtoReflect.Descriptor instead.
 func (*MyExamsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{54}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *MyExamsResponse) GetStudents() []*StudentExams {
@@ -3516,7 +3516,7 @@ type ListAdmissionsRequest struct {
 
 func (x *ListAdmissionsRequest) Reset() {
 	*x = ListAdmissionsRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[55]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3528,7 +3528,7 @@ func (x *ListAdmissionsRequest) String() string {
 func (*ListAdmissionsRequest) ProtoMessage() {}
 
 func (x *ListAdmissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[55]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3541,7 +3541,7 @@ func (x *ListAdmissionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAdmissionsRequest.ProtoReflect.Descriptor instead.
 func (*ListAdmissionsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{55}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *ListAdmissionsRequest) GetInstitutionSlug() string {
@@ -3561,7 +3561,7 @@ type ListAdmissionsResponse struct {
 
 func (x *ListAdmissionsResponse) Reset() {
 	*x = ListAdmissionsResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[56]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3573,7 +3573,7 @@ func (x *ListAdmissionsResponse) String() string {
 func (*ListAdmissionsResponse) ProtoMessage() {}
 
 func (x *ListAdmissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[56]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3586,7 +3586,7 @@ func (x *ListAdmissionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAdmissionsResponse.ProtoReflect.Descriptor instead.
 func (*ListAdmissionsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{56}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *ListAdmissionsResponse) GetAdmissions() []*Admission {
@@ -3613,7 +3613,7 @@ type SaveAdmissionRequest struct {
 
 func (x *SaveAdmissionRequest) Reset() {
 	*x = SaveAdmissionRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[57]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3625,7 +3625,7 @@ func (x *SaveAdmissionRequest) String() string {
 func (*SaveAdmissionRequest) ProtoMessage() {}
 
 func (x *SaveAdmissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[57]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3638,7 +3638,7 @@ func (x *SaveAdmissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveAdmissionRequest.ProtoReflect.Descriptor instead.
 func (*SaveAdmissionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{57}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *SaveAdmissionRequest) GetInstitutionSlug() string {
@@ -3664,7 +3664,7 @@ type SaveAdmissionResponse struct {
 
 func (x *SaveAdmissionResponse) Reset() {
 	*x = SaveAdmissionResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[58]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3676,7 +3676,7 @@ func (x *SaveAdmissionResponse) String() string {
 func (*SaveAdmissionResponse) ProtoMessage() {}
 
 func (x *SaveAdmissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[58]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3689,7 +3689,7 @@ func (x *SaveAdmissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveAdmissionResponse.ProtoReflect.Descriptor instead.
 func (*SaveAdmissionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{58}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *SaveAdmissionResponse) GetAdmission() *Admission {
@@ -3709,7 +3709,7 @@ type DeleteAdmissionRequest struct {
 
 func (x *DeleteAdmissionRequest) Reset() {
 	*x = DeleteAdmissionRequest{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[59]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3721,7 +3721,7 @@ func (x *DeleteAdmissionRequest) String() string {
 func (*DeleteAdmissionRequest) ProtoMessage() {}
 
 func (x *DeleteAdmissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[59]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3734,7 +3734,7 @@ func (x *DeleteAdmissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAdmissionRequest.ProtoReflect.Descriptor instead.
 func (*DeleteAdmissionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{59}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *DeleteAdmissionRequest) GetInstitutionSlug() string {
@@ -3759,7 +3759,7 @@ type DeleteAdmissionResponse struct {
 
 func (x *DeleteAdmissionResponse) Reset() {
 	*x = DeleteAdmissionResponse{}
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[60]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3771,7 +3771,7 @@ func (x *DeleteAdmissionResponse) String() string {
 func (*DeleteAdmissionResponse) ProtoMessage() {}
 
 func (x *DeleteAdmissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_exams_v1_exams_proto_msgTypes[60]
+	mi := &file_ltedu_exams_v1_exams_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3784,19 +3784,19 @@ func (x *DeleteAdmissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAdmissionResponse.ProtoReflect.Descriptor instead.
 func (*DeleteAdmissionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_exams_v1_exams_proto_rawDescGZIP(), []int{60}
+	return file_ltedu_exams_v1_exams_proto_rawDescGZIP(), []int{60}
 }
 
-var File_joseph_exams_v1_exams_proto protoreflect.FileDescriptor
+var File_ltedu_exams_v1_exams_proto protoreflect.FileDescriptor
 
-const file_joseph_exams_v1_exams_proto_rawDesc = "" +
+const file_ltedu_exams_v1_exams_proto_rawDesc = "" +
 	"\n" +
-	"\x1bjoseph/exams/v1/exams.proto\x12\x0fjoseph.exams.v1\x1a!joseph/academic/v1/academic.proto\"\xd0\x01\n" +
+	"\x1altedu/exams/v1/exams.proto\x12\x0eltedu.exams.v1\x1a ltedu/academic/v1/academic.proto\"\xcf\x01\n" +
 	"\x06Course\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\tR\x04code\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
-	"\x06topics\x18\x03 \x03(\tR\x06topics\x128\n" +
-	"\x05hours\x18\x04 \x03(\v2\".joseph.exams.v1.Course.HoursEntryR\x05hours\x12\x12\n" +
+	"\x06topics\x18\x03 \x03(\tR\x06topics\x127\n" +
+	"\x05hours\x18\x04 \x03(\v2!.ltedu.exams.v1.Course.HoursEntryR\x05hours\x12\x12\n" +
 	"\x04bank\x18\x05 \x01(\x05R\x04bank\x1a8\n" +
 	"\n" +
 	"HoursEntry\x12\x10\n" +
@@ -3840,7 +3840,7 @@ const file_joseph_exams_v1_exams_proto_rawDesc = "" +
 	"courseCode\x12\x1f\n" +
 	"\vquestion_id\x18\x03 \x01(\tR\n" +
 	"questionId\x12\x16\n" +
-	"\x06answer\x18\x04 \x01(\tR\x06answer\"\xde\x03\n" +
+	"\x06answer\x18\x04 \x01(\tR\x06answer\"\xdc\x03\n" +
 	"\bMockExam\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12\x1f\n" +
@@ -3853,21 +3853,21 @@ const file_joseph_exams_v1_exams_proto_rawDesc = "" +
 	"\fpoints_wrong\x18\b \x01(\x01R\vpointsWrong\x12\x16\n" +
 	"\x06status\x18\t \x01(\tR\x06status\x12\x14\n" +
 	"\x05notes\x18\n" +
-	" \x01(\tR\x05notes\x125\n" +
-	"\acourses\x18\v \x03(\v2\x1b.joseph.exams.v1.MockCourseR\acourses\x125\n" +
-	"\aweights\x18\f \x03(\v2\x1b.joseph.exams.v1.MockWeightR\aweights\x12\x1c\n" +
+	" \x01(\tR\x05notes\x124\n" +
+	"\acourses\x18\v \x03(\v2\x1a.ltedu.exams.v1.MockCourseR\acourses\x124\n" +
+	"\aweights\x18\f \x03(\v2\x1a.ltedu.exams.v1.MockWeightR\aweights\x12\x1c\n" +
 	"\tquestions\x18\r \x01(\x05R\tquestions\x12\x14\n" +
 	"\x05keyed\x18\x0e \x01(\x05R\x05keyed\x12\x16\n" +
 	"\x06sheets\x18\x0f \x01(\x05R\x06sheets\"\\\n" +
 	"\x12GetOverviewRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
-	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xf3\x02\n" +
-	"\x13GetOverviewResponse\x124\n" +
-	"\aperiods\x18\x01 \x03(\v2\x1a.joseph.academic.v1.PeriodR\aperiods\x122\n" +
-	"\x06period\x18\x02 \x01(\v2\x1a.joseph.academic.v1.PeriodR\x06period\x12.\n" +
-	"\x06levels\x18\x03 \x03(\v2\x16.joseph.exams.v1.LevelR\x06levels\x121\n" +
-	"\acourses\x18\x04 \x03(\v2\x17.joseph.exams.v1.CourseR\acourses\x12/\n" +
-	"\x05mocks\x18\x05 \x03(\v2\x19.joseph.exams.v1.MockExamR\x05mocks\x12\x1d\n" +
+	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xee\x02\n" +
+	"\x13GetOverviewResponse\x123\n" +
+	"\aperiods\x18\x01 \x03(\v2\x19.ltedu.academic.v1.PeriodR\aperiods\x121\n" +
+	"\x06period\x18\x02 \x01(\v2\x19.ltedu.academic.v1.PeriodR\x06period\x12-\n" +
+	"\x06levels\x18\x03 \x03(\v2\x15.ltedu.exams.v1.LevelR\x06levels\x120\n" +
+	"\acourses\x18\x04 \x03(\v2\x16.ltedu.exams.v1.CourseR\acourses\x12.\n" +
+	"\x05mocks\x18\x05 \x03(\v2\x18.ltedu.exams.v1.MockExamR\x05mocks\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\x06 \x01(\bR\tcanManage\x12$\n" +
 	"\x0ecan_write_bank\x18\a \x01(\bR\fcanWriteBank\x12\x19\n" +
@@ -3882,32 +3882,32 @@ const file_joseph_exams_v1_exams_proto_rawDesc = "" +
 	"difficulty\x12\x14\n" +
 	"\x05query\x18\x05 \x01(\tR\x05query\x12\x14\n" +
 	"\x05limit\x18\x06 \x01(\x05R\x05limit\x12\x16\n" +
-	"\x06offset\x18\a \x01(\x05R\x06offset\"f\n" +
-	"\x15ListQuestionsResponse\x127\n" +
-	"\tquestions\x18\x01 \x03(\v2\x19.joseph.exams.v1.QuestionR\tquestions\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total\"w\n" +
+	"\x06offset\x18\a \x01(\x05R\x06offset\"e\n" +
+	"\x15ListQuestionsResponse\x126\n" +
+	"\tquestions\x18\x01 \x03(\v2\x18.ltedu.exams.v1.QuestionR\tquestions\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x05R\x05total\"v\n" +
 	"\x13SaveQuestionRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x125\n" +
-	"\bquestion\x18\x02 \x01(\v2\x19.joseph.exams.v1.QuestionR\bquestion\"M\n" +
-	"\x14SaveQuestionResponse\x125\n" +
-	"\bquestion\x18\x01 \x01(\v2\x19.joseph.exams.v1.QuestionR\bquestion\"R\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x124\n" +
+	"\bquestion\x18\x02 \x01(\v2\x18.ltedu.exams.v1.QuestionR\bquestion\"L\n" +
+	"\x14SaveQuestionResponse\x124\n" +
+	"\bquestion\x18\x01 \x01(\v2\x18.ltedu.exams.v1.QuestionR\bquestion\"R\n" +
 	"\x15DeleteQuestionRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x18\n" +
 	"\x16DeleteQuestionResponse\"K\n" +
 	"\x0eGetMockRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"\xa3\x01\n" +
-	"\x0fGetMockResponse\x12-\n" +
-	"\x04mock\x18\x01 \x01(\v2\x19.joseph.exams.v1.MockExamR\x04mock\x12*\n" +
-	"\x03key\x18\x02 \x03(\v2\x18.joseph.exams.v1.KeyItemR\x03key\x12\x19\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"\xa1\x01\n" +
+	"\x0fGetMockResponse\x12,\n" +
+	"\x04mock\x18\x01 \x01(\v2\x18.ltedu.exams.v1.MockExamR\x04mock\x12)\n" +
+	"\x03key\x18\x02 \x03(\v2\x17.ltedu.exams.v1.KeyItemR\x03key\x12\x19\n" +
 	"\bcan_edit\x18\x03 \x01(\bR\acanEdit\x12\x1a\n" +
-	"\bstudents\x18\x04 \x01(\x05R\bstudents\"k\n" +
+	"\bstudents\x18\x04 \x01(\x05R\bstudents\"j\n" +
 	"\x0fSaveMockRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12-\n" +
-	"\x04mock\x18\x02 \x01(\v2\x19.joseph.exams.v1.MockExamR\x04mock\"A\n" +
-	"\x10SaveMockResponse\x12-\n" +
-	"\x04mock\x18\x01 \x01(\v2\x19.joseph.exams.v1.MockExamR\x04mock\"N\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12,\n" +
+	"\x04mock\x18\x02 \x01(\v2\x18.ltedu.exams.v1.MockExamR\x04mock\"@\n" +
+	"\x10SaveMockResponse\x12,\n" +
+	"\x04mock\x18\x01 \x01(\v2\x18.ltedu.exams.v1.MockExamR\x04mock\"N\n" +
 	"\x11DeleteMockRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x14\n" +
@@ -3915,46 +3915,46 @@ const file_joseph_exams_v1_exams_proto_rawDesc = "" +
 	"\x17SuggestStructureRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
 	"\tlevel_ids\x18\x02 \x03(\tR\blevelIds\x12'\n" +
-	"\x0ftotal_questions\x18\x03 \x01(\x05R\x0etotalQuestions\"\x88\x01\n" +
-	"\x18SuggestStructureResponse\x125\n" +
-	"\acourses\x18\x01 \x03(\v2\x1b.joseph.exams.v1.MockCourseR\acourses\x125\n" +
-	"\aweights\x18\x02 \x03(\v2\x1b.joseph.exams.v1.MockWeightR\aweights\"\xbe\x01\n" +
+	"\x0ftotal_questions\x18\x03 \x01(\x05R\x0etotalQuestions\"\x86\x01\n" +
+	"\x18SuggestStructureResponse\x124\n" +
+	"\acourses\x18\x01 \x03(\v2\x1a.ltedu.exams.v1.MockCourseR\acourses\x124\n" +
+	"\aweights\x18\x02 \x03(\v2\x1a.ltedu.exams.v1.MockWeightR\aweights\"\xbc\x01\n" +
 	"\x13SetStructureRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\x125\n" +
-	"\acourses\x18\x03 \x03(\v2\x1b.joseph.exams.v1.MockCourseR\acourses\x125\n" +
-	"\aweights\x18\x04 \x03(\v2\x1b.joseph.exams.v1.MockWeightR\aweights\"L\n" +
-	"\x14SetStructureResponse\x124\n" +
-	"\x04mock\x18\x01 \x01(\v2 .joseph.exams.v1.GetMockResponseR\x04mock\"P\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\x124\n" +
+	"\acourses\x18\x03 \x03(\v2\x1a.ltedu.exams.v1.MockCourseR\acourses\x124\n" +
+	"\aweights\x18\x04 \x03(\v2\x1a.ltedu.exams.v1.MockWeightR\aweights\"K\n" +
+	"\x14SetStructureResponse\x123\n" +
+	"\x04mock\x18\x01 \x01(\v2\x1f.ltedu.exams.v1.GetMockResponseR\x04mock\"P\n" +
 	"\x13FillFromBankRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"d\n" +
-	"\x14FillFromBankResponse\x124\n" +
-	"\x04mock\x18\x01 \x01(\v2 .joseph.exams.v1.GetMockResponseR\x04mock\x12\x16\n" +
-	"\x06filled\x18\x02 \x01(\x05R\x06filled\"{\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"c\n" +
+	"\x14FillFromBankResponse\x123\n" +
+	"\x04mock\x18\x01 \x01(\v2\x1f.ltedu.exams.v1.GetMockResponseR\x04mock\x12\x16\n" +
+	"\x06filled\x18\x02 \x01(\x05R\x06filled\"z\n" +
 	"\x0eSaveKeyRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\x12.\n" +
-	"\x05items\x18\x03 \x03(\v2\x18.joseph.exams.v1.KeyItemR\x05items\"G\n" +
-	"\x0fSaveKeyResponse\x124\n" +
-	"\x04mock\x18\x01 \x01(\v2 .joseph.exams.v1.GetMockResponseR\x04mock\"m\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\x12-\n" +
+	"\x05items\x18\x03 \x03(\v2\x17.ltedu.exams.v1.KeyItemR\x05items\"F\n" +
+	"\x0fSaveKeyResponse\x123\n" +
+	"\x04mock\x18\x01 \x01(\v2\x1f.ltedu.exams.v1.GetMockResponseR\x04mock\"m\n" +
 	"\x12PublishMockRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x1c\n" +
-	"\tpublished\x18\x03 \x01(\bR\tpublished\"K\n" +
-	"\x13PublishMockResponse\x124\n" +
-	"\x04mock\x18\x01 \x01(\v2 .joseph.exams.v1.GetMockResponseR\x04mock\"N\n" +
+	"\tpublished\x18\x03 \x01(\bR\tpublished\"J\n" +
+	"\x13PublishMockResponse\x123\n" +
+	"\x04mock\x18\x01 \x01(\v2\x1f.ltedu.exams.v1.GetMockResponseR\x04mock\"N\n" +
 	"\x11GetBookletRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"\x8c\x01\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"\x8b\x01\n" +
 	"\vBookletItem\x12\x16\n" +
 	"\x06number\x18\x01 \x01(\x05R\x06number\x12\x16\n" +
-	"\x06course\x18\x02 \x01(\tR\x06course\x125\n" +
-	"\bquestion\x18\x03 \x01(\v2\x19.joseph.exams.v1.QuestionR\bquestion\x12\x16\n" +
-	"\x06answer\x18\x04 \x01(\tR\x06answer\"w\n" +
-	"\x12GetBookletResponse\x12-\n" +
-	"\x04mock\x18\x01 \x01(\v2\x19.joseph.exams.v1.MockExamR\x04mock\x122\n" +
-	"\x05items\x18\x02 \x03(\v2\x1c.joseph.exams.v1.BookletItemR\x05items\"Y\n" +
+	"\x06course\x18\x02 \x01(\tR\x06course\x124\n" +
+	"\bquestion\x18\x03 \x01(\v2\x18.ltedu.exams.v1.QuestionR\bquestion\x12\x16\n" +
+	"\x06answer\x18\x04 \x01(\tR\x06answer\"u\n" +
+	"\x12GetBookletResponse\x12,\n" +
+	"\x04mock\x18\x01 \x01(\v2\x18.ltedu.exams.v1.MockExamR\x04mock\x121\n" +
+	"\x05items\x18\x02 \x03(\v2\x1b.ltedu.exams.v1.BookletItemR\x05items\"Y\n" +
 	"\n" +
 	"SheetEntry\x12\x1d\n" +
 	"\n" +
@@ -3966,19 +3966,19 @@ const file_joseph_exams_v1_exams_proto_rawDesc = "" +
 	"\x05saved\x18\x01 \x01(\x05R\x05saved\x12\x18\n" +
 	"\aunknown\x18\x02 \x03(\tR\aunknown\x12\x1d\n" +
 	"\n" +
-	"other_area\x18\x03 \x03(\tR\totherArea\"\x85\x01\n" +
+	"other_area\x18\x03 \x03(\tR\totherArea\"\x84\x01\n" +
 	"\x11LoadSheetsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\x125\n" +
-	"\aentries\x18\x03 \x03(\v2\x1b.joseph.exams.v1.SheetEntryR\aentries\"I\n" +
-	"\x12LoadSheetsResponse\x123\n" +
-	"\x06report\x18\x01 \x01(\v2\x1b.joseph.exams.v1.LoadReportR\x06report\"f\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\x124\n" +
+	"\aentries\x18\x03 \x03(\v2\x1a.ltedu.exams.v1.SheetEntryR\aentries\"H\n" +
+	"\x12LoadSheetsResponse\x122\n" +
+	"\x06report\x18\x01 \x01(\v2\x1a.ltedu.exams.v1.LoadReportR\x06report\"f\n" +
 	"\x15LoadReaderFileRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x12\n" +
-	"\x04text\x18\x03 \x01(\tR\x04text\"M\n" +
-	"\x16LoadReaderFileResponse\x123\n" +
-	"\x06report\x18\x01 \x01(\v2\x1b.joseph.exams.v1.LoadReportR\x06report\"n\n" +
+	"\x04text\x18\x03 \x01(\tR\x04text\"L\n" +
+	"\x16LoadReaderFileResponse\x122\n" +
+	"\x06report\x18\x01 \x01(\v2\x1a.ltedu.exams.v1.LoadReportR\x06report\"n\n" +
 	"\x12DeleteSheetRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x1d\n" +
@@ -3989,7 +3989,7 @@ const file_joseph_exams_v1_exams_proto_rawDesc = "" +
 	"\x05right\x18\x01 \x01(\x05R\x05right\x12\x14\n" +
 	"\x05wrong\x18\x02 \x01(\x05R\x05wrong\x12\x14\n" +
 	"\x05blank\x18\x03 \x01(\x05R\x05blank\x12\x14\n" +
-	"\x05score\x18\x04 \x01(\x01R\x05score\"\xfb\x04\n" +
+	"\x05score\x18\x04 \x01(\x01R\x05score\"\xf9\x04\n" +
 	"\vAnswerSheet\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12!\n" +
@@ -4007,15 +4007,15 @@ const file_joseph_exams_v1_exams_proto_rawDesc = "" +
 	" \x01(\x01R\x05score\x12\x14\n" +
 	"\x05right\x18\v \x01(\x05R\x05right\x12\x14\n" +
 	"\x05wrong\x18\f \x01(\x05R\x05wrong\x12\x14\n" +
-	"\x05blank\x18\r \x01(\x05R\x05blank\x12G\n" +
-	"\tby_course\x18\x0e \x03(\v2*.joseph.exams.v1.AnswerSheet.ByCourseEntryR\bbyCourse\x12!\n" +
+	"\x05blank\x18\r \x01(\x05R\x05blank\x12F\n" +
+	"\tby_course\x18\x0e \x03(\v2).ltedu.exams.v1.AnswerSheet.ByCourseEntryR\bbyCourse\x12!\n" +
 	"\frank_section\x18\x0f \x01(\x05R\vrankSection\x12\x1d\n" +
 	"\n" +
 	"rank_level\x18\x10 \x01(\x05R\trankLevel\x12\x19\n" +
-	"\brank_all\x18\x11 \x01(\x05R\arankAll\x1aY\n" +
+	"\brank_all\x18\x11 \x01(\x05R\arankAll\x1aX\n" +
 	"\rByCourseEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x122\n" +
-	"\x05value\x18\x02 \x01(\v2\x1c.joseph.exams.v1.CourseScoreR\x05value:\x028\x01\"d\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x121\n" +
+	"\x05value\x18\x02 \x01(\v2\x1b.ltedu.exams.v1.CourseScoreR\x05value:\x028\x01\"d\n" +
 	"\n" +
 	"CourseStat\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\tR\x04code\x12\x12\n" +
@@ -4031,17 +4031,17 @@ const file_joseph_exams_v1_exams_proto_rawDesc = "" +
 	"level_name\x18\x05 \x01(\tR\tlevelName\"N\n" +
 	"\x11GetResultsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"\x96\x02\n" +
-	"\x12GetResultsResponse\x12-\n" +
-	"\x04mock\x18\x01 \x01(\v2\x19.joseph.exams.v1.MockExamR\x04mock\x124\n" +
-	"\x06sheets\x18\x02 \x03(\v2\x1c.joseph.exams.v1.AnswerSheetR\x06sheets\x125\n" +
-	"\acourses\x18\x03 \x03(\v2\x1b.joseph.exams.v1.CourseStatR\acourses\x126\n" +
-	"\amissing\x18\x04 \x03(\v2\x1c.joseph.exams.v1.ExamStudentR\amissing\x12\x18\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"\x92\x02\n" +
+	"\x12GetResultsResponse\x12,\n" +
+	"\x04mock\x18\x01 \x01(\v2\x18.ltedu.exams.v1.MockExamR\x04mock\x123\n" +
+	"\x06sheets\x18\x02 \x03(\v2\x1b.ltedu.exams.v1.AnswerSheetR\x06sheets\x124\n" +
+	"\acourses\x18\x03 \x03(\v2\x1a.ltedu.exams.v1.CourseStatR\acourses\x125\n" +
+	"\amissing\x18\x04 \x03(\v2\x1b.ltedu.exams.v1.ExamStudentR\amissing\x12\x18\n" +
 	"\aaverage\x18\x05 \x01(\x01R\aaverage\x12\x12\n" +
-	"\x04best\x18\x06 \x01(\x01R\x04best\"\xa3\x01\n" +
-	"\vStudentMock\x12-\n" +
-	"\x04mock\x18\x01 \x01(\v2\x19.joseph.exams.v1.MockExamR\x04mock\x122\n" +
-	"\x05sheet\x18\x02 \x01(\v2\x1c.joseph.exams.v1.AnswerSheetR\x05sheet\x12\x16\n" +
+	"\x04best\x18\x06 \x01(\x01R\x04best\"\xa1\x01\n" +
+	"\vStudentMock\x12,\n" +
+	"\x04mock\x18\x01 \x01(\v2\x18.ltedu.exams.v1.MockExamR\x04mock\x121\n" +
+	"\x05sheet\x18\x02 \x01(\v2\x1b.ltedu.exams.v1.AnswerSheetR\x05sheet\x12\x16\n" +
 	"\x06takers\x18\x03 \x01(\x05R\x06takers\x12\x19\n" +
 	"\bin_level\x18\x04 \x01(\x05R\ainLevel\"\xb7\x02\n" +
 	"\tAdmission\x12\x0e\n" +
@@ -4061,239 +4061,239 @@ const file_joseph_exams_v1_exams_proto_rawDesc = "" +
 	"\x05score\x18\n" +
 	" \x01(\x01H\x01R\x05score\x88\x01\x01B\b\n" +
 	"\x06_placeB\b\n" +
-	"\x06_score\"\xc0\x01\n" +
+	"\x06_score\"\xbe\x01\n" +
 	"\fStudentExams\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12!\n" +
-	"\fstudent_name\x18\x02 \x01(\tR\vstudentName\x122\n" +
-	"\x05mocks\x18\x03 \x03(\v2\x1c.joseph.exams.v1.StudentMockR\x05mocks\x12:\n" +
+	"\fstudent_name\x18\x02 \x01(\tR\vstudentName\x121\n" +
+	"\x05mocks\x18\x03 \x03(\v2\x1b.ltedu.exams.v1.StudentMockR\x05mocks\x129\n" +
 	"\n" +
-	"admissions\x18\x04 \x03(\v2\x1a.joseph.exams.v1.AdmissionR\n" +
+	"admissions\x18\x04 \x03(\v2\x19.ltedu.exams.v1.AdmissionR\n" +
 	"admissions\"b\n" +
 	"\x16GetStudentExamsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x02 \x01(\tR\tstudentId\"N\n" +
-	"\x17GetStudentExamsResponse\x123\n" +
-	"\x05exams\x18\x01 \x01(\v2\x1d.joseph.exams.v1.StudentExamsR\x05exams\";\n" +
+	"student_id\x18\x02 \x01(\tR\tstudentId\"M\n" +
+	"\x17GetStudentExamsResponse\x122\n" +
+	"\x05exams\x18\x01 \x01(\v2\x1c.ltedu.exams.v1.StudentExamsR\x05exams\";\n" +
 	"\x0eMyExamsRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"L\n" +
-	"\x0fMyExamsResponse\x129\n" +
-	"\bstudents\x18\x01 \x03(\v2\x1d.joseph.exams.v1.StudentExamsR\bstudents\"B\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"K\n" +
+	"\x0fMyExamsResponse\x128\n" +
+	"\bstudents\x18\x01 \x03(\v2\x1c.ltedu.exams.v1.StudentExamsR\bstudents\"B\n" +
 	"\x15ListAdmissionsRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"s\n" +
-	"\x16ListAdmissionsResponse\x12:\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"r\n" +
+	"\x16ListAdmissionsResponse\x129\n" +
 	"\n" +
-	"admissions\x18\x01 \x03(\v2\x1a.joseph.exams.v1.AdmissionR\n" +
+	"admissions\x18\x01 \x03(\v2\x19.ltedu.exams.v1.AdmissionR\n" +
 	"admissions\x12\x1d\n" +
 	"\n" +
-	"can_manage\x18\x02 \x01(\bR\tcanManage\"{\n" +
+	"can_manage\x18\x02 \x01(\bR\tcanManage\"z\n" +
 	"\x14SaveAdmissionRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x128\n" +
-	"\tadmission\x18\x02 \x01(\v2\x1a.joseph.exams.v1.AdmissionR\tadmission\"Q\n" +
-	"\x15SaveAdmissionResponse\x128\n" +
-	"\tadmission\x18\x01 \x01(\v2\x1a.joseph.exams.v1.AdmissionR\tadmission\"S\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x127\n" +
+	"\tadmission\x18\x02 \x01(\v2\x19.ltedu.exams.v1.AdmissionR\tadmission\"P\n" +
+	"\x15SaveAdmissionResponse\x127\n" +
+	"\tadmission\x18\x01 \x01(\v2\x19.ltedu.exams.v1.AdmissionR\tadmission\"S\n" +
 	"\x16DeleteAdmissionRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x19\n" +
-	"\x17DeleteAdmissionResponse2\xe8\x0f\n" +
-	"\fExamsService\x12X\n" +
-	"\vGetOverview\x12#.joseph.exams.v1.GetOverviewRequest\x1a$.joseph.exams.v1.GetOverviewResponse\x12^\n" +
-	"\rListQuestions\x12%.joseph.exams.v1.ListQuestionsRequest\x1a&.joseph.exams.v1.ListQuestionsResponse\x12[\n" +
-	"\fSaveQuestion\x12$.joseph.exams.v1.SaveQuestionRequest\x1a%.joseph.exams.v1.SaveQuestionResponse\x12a\n" +
-	"\x0eDeleteQuestion\x12&.joseph.exams.v1.DeleteQuestionRequest\x1a'.joseph.exams.v1.DeleteQuestionResponse\x12L\n" +
-	"\aGetMock\x12\x1f.joseph.exams.v1.GetMockRequest\x1a .joseph.exams.v1.GetMockResponse\x12O\n" +
-	"\bSaveMock\x12 .joseph.exams.v1.SaveMockRequest\x1a!.joseph.exams.v1.SaveMockResponse\x12U\n" +
+	"\x17DeleteAdmissionResponse2\xbc\x0f\n" +
+	"\fExamsService\x12V\n" +
+	"\vGetOverview\x12\".ltedu.exams.v1.GetOverviewRequest\x1a#.ltedu.exams.v1.GetOverviewResponse\x12\\\n" +
+	"\rListQuestions\x12$.ltedu.exams.v1.ListQuestionsRequest\x1a%.ltedu.exams.v1.ListQuestionsResponse\x12Y\n" +
+	"\fSaveQuestion\x12#.ltedu.exams.v1.SaveQuestionRequest\x1a$.ltedu.exams.v1.SaveQuestionResponse\x12_\n" +
+	"\x0eDeleteQuestion\x12%.ltedu.exams.v1.DeleteQuestionRequest\x1a&.ltedu.exams.v1.DeleteQuestionResponse\x12J\n" +
+	"\aGetMock\x12\x1e.ltedu.exams.v1.GetMockRequest\x1a\x1f.ltedu.exams.v1.GetMockResponse\x12M\n" +
+	"\bSaveMock\x12\x1f.ltedu.exams.v1.SaveMockRequest\x1a .ltedu.exams.v1.SaveMockResponse\x12S\n" +
 	"\n" +
-	"DeleteMock\x12\".joseph.exams.v1.DeleteMockRequest\x1a#.joseph.exams.v1.DeleteMockResponse\x12g\n" +
-	"\x10SuggestStructure\x12(.joseph.exams.v1.SuggestStructureRequest\x1a).joseph.exams.v1.SuggestStructureResponse\x12[\n" +
-	"\fSetStructure\x12$.joseph.exams.v1.SetStructureRequest\x1a%.joseph.exams.v1.SetStructureResponse\x12[\n" +
-	"\fFillFromBank\x12$.joseph.exams.v1.FillFromBankRequest\x1a%.joseph.exams.v1.FillFromBankResponse\x12L\n" +
-	"\aSaveKey\x12\x1f.joseph.exams.v1.SaveKeyRequest\x1a .joseph.exams.v1.SaveKeyResponse\x12X\n" +
-	"\vPublishMock\x12#.joseph.exams.v1.PublishMockRequest\x1a$.joseph.exams.v1.PublishMockResponse\x12U\n" +
+	"DeleteMock\x12!.ltedu.exams.v1.DeleteMockRequest\x1a\".ltedu.exams.v1.DeleteMockResponse\x12e\n" +
+	"\x10SuggestStructure\x12'.ltedu.exams.v1.SuggestStructureRequest\x1a(.ltedu.exams.v1.SuggestStructureResponse\x12Y\n" +
+	"\fSetStructure\x12#.ltedu.exams.v1.SetStructureRequest\x1a$.ltedu.exams.v1.SetStructureResponse\x12Y\n" +
+	"\fFillFromBank\x12#.ltedu.exams.v1.FillFromBankRequest\x1a$.ltedu.exams.v1.FillFromBankResponse\x12J\n" +
+	"\aSaveKey\x12\x1e.ltedu.exams.v1.SaveKeyRequest\x1a\x1f.ltedu.exams.v1.SaveKeyResponse\x12V\n" +
+	"\vPublishMock\x12\".ltedu.exams.v1.PublishMockRequest\x1a#.ltedu.exams.v1.PublishMockResponse\x12S\n" +
 	"\n" +
-	"GetBooklet\x12\".joseph.exams.v1.GetBookletRequest\x1a#.joseph.exams.v1.GetBookletResponse\x12U\n" +
+	"GetBooklet\x12!.ltedu.exams.v1.GetBookletRequest\x1a\".ltedu.exams.v1.GetBookletResponse\x12S\n" +
 	"\n" +
-	"LoadSheets\x12\".joseph.exams.v1.LoadSheetsRequest\x1a#.joseph.exams.v1.LoadSheetsResponse\x12a\n" +
-	"\x0eLoadReaderFile\x12&.joseph.exams.v1.LoadReaderFileRequest\x1a'.joseph.exams.v1.LoadReaderFileResponse\x12X\n" +
-	"\vDeleteSheet\x12#.joseph.exams.v1.DeleteSheetRequest\x1a$.joseph.exams.v1.DeleteSheetResponse\x12U\n" +
+	"LoadSheets\x12!.ltedu.exams.v1.LoadSheetsRequest\x1a\".ltedu.exams.v1.LoadSheetsResponse\x12_\n" +
+	"\x0eLoadReaderFile\x12%.ltedu.exams.v1.LoadReaderFileRequest\x1a&.ltedu.exams.v1.LoadReaderFileResponse\x12V\n" +
+	"\vDeleteSheet\x12\".ltedu.exams.v1.DeleteSheetRequest\x1a#.ltedu.exams.v1.DeleteSheetResponse\x12S\n" +
 	"\n" +
-	"GetResults\x12\".joseph.exams.v1.GetResultsRequest\x1a#.joseph.exams.v1.GetResultsResponse\x12d\n" +
-	"\x0fGetStudentExams\x12'.joseph.exams.v1.GetStudentExamsRequest\x1a(.joseph.exams.v1.GetStudentExamsResponse\x12L\n" +
-	"\aMyExams\x12\x1f.joseph.exams.v1.MyExamsRequest\x1a .joseph.exams.v1.MyExamsResponse\x12a\n" +
-	"\x0eListAdmissions\x12&.joseph.exams.v1.ListAdmissionsRequest\x1a'.joseph.exams.v1.ListAdmissionsResponse\x12^\n" +
-	"\rSaveAdmission\x12%.joseph.exams.v1.SaveAdmissionRequest\x1a&.joseph.exams.v1.SaveAdmissionResponse\x12d\n" +
-	"\x0fDeleteAdmission\x12'.joseph.exams.v1.DeleteAdmissionRequest\x1a(.joseph.exams.v1.DeleteAdmissionResponseB7Z5api/internal/adapter/inbound/grpc/gen/examsv1;examsv1b\x06proto3"
+	"GetResults\x12!.ltedu.exams.v1.GetResultsRequest\x1a\".ltedu.exams.v1.GetResultsResponse\x12b\n" +
+	"\x0fGetStudentExams\x12&.ltedu.exams.v1.GetStudentExamsRequest\x1a'.ltedu.exams.v1.GetStudentExamsResponse\x12J\n" +
+	"\aMyExams\x12\x1e.ltedu.exams.v1.MyExamsRequest\x1a\x1f.ltedu.exams.v1.MyExamsResponse\x12_\n" +
+	"\x0eListAdmissions\x12%.ltedu.exams.v1.ListAdmissionsRequest\x1a&.ltedu.exams.v1.ListAdmissionsResponse\x12\\\n" +
+	"\rSaveAdmission\x12$.ltedu.exams.v1.SaveAdmissionRequest\x1a%.ltedu.exams.v1.SaveAdmissionResponse\x12b\n" +
+	"\x0fDeleteAdmission\x12&.ltedu.exams.v1.DeleteAdmissionRequest\x1a'.ltedu.exams.v1.DeleteAdmissionResponseB7Z5api/internal/adapter/inbound/grpc/gen/examsv1;examsv1b\x06proto3"
 
 var (
-	file_joseph_exams_v1_exams_proto_rawDescOnce sync.Once
-	file_joseph_exams_v1_exams_proto_rawDescData []byte
+	file_ltedu_exams_v1_exams_proto_rawDescOnce sync.Once
+	file_ltedu_exams_v1_exams_proto_rawDescData []byte
 )
 
-func file_joseph_exams_v1_exams_proto_rawDescGZIP() []byte {
-	file_joseph_exams_v1_exams_proto_rawDescOnce.Do(func() {
-		file_joseph_exams_v1_exams_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_exams_v1_exams_proto_rawDesc), len(file_joseph_exams_v1_exams_proto_rawDesc)))
+func file_ltedu_exams_v1_exams_proto_rawDescGZIP() []byte {
+	file_ltedu_exams_v1_exams_proto_rawDescOnce.Do(func() {
+		file_ltedu_exams_v1_exams_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_exams_v1_exams_proto_rawDesc), len(file_ltedu_exams_v1_exams_proto_rawDesc)))
 	})
-	return file_joseph_exams_v1_exams_proto_rawDescData
+	return file_ltedu_exams_v1_exams_proto_rawDescData
 }
 
-var file_joseph_exams_v1_exams_proto_msgTypes = make([]protoimpl.MessageInfo, 63)
-var file_joseph_exams_v1_exams_proto_goTypes = []any{
-	(*Course)(nil),                   // 0: joseph.exams.v1.Course
-	(*Level)(nil),                    // 1: joseph.exams.v1.Level
-	(*Question)(nil),                 // 2: joseph.exams.v1.Question
-	(*MockCourse)(nil),               // 3: joseph.exams.v1.MockCourse
-	(*MockWeight)(nil),               // 4: joseph.exams.v1.MockWeight
-	(*KeyItem)(nil),                  // 5: joseph.exams.v1.KeyItem
-	(*MockExam)(nil),                 // 6: joseph.exams.v1.MockExam
-	(*GetOverviewRequest)(nil),       // 7: joseph.exams.v1.GetOverviewRequest
-	(*GetOverviewResponse)(nil),      // 8: joseph.exams.v1.GetOverviewResponse
-	(*ListQuestionsRequest)(nil),     // 9: joseph.exams.v1.ListQuestionsRequest
-	(*ListQuestionsResponse)(nil),    // 10: joseph.exams.v1.ListQuestionsResponse
-	(*SaveQuestionRequest)(nil),      // 11: joseph.exams.v1.SaveQuestionRequest
-	(*SaveQuestionResponse)(nil),     // 12: joseph.exams.v1.SaveQuestionResponse
-	(*DeleteQuestionRequest)(nil),    // 13: joseph.exams.v1.DeleteQuestionRequest
-	(*DeleteQuestionResponse)(nil),   // 14: joseph.exams.v1.DeleteQuestionResponse
-	(*GetMockRequest)(nil),           // 15: joseph.exams.v1.GetMockRequest
-	(*GetMockResponse)(nil),          // 16: joseph.exams.v1.GetMockResponse
-	(*SaveMockRequest)(nil),          // 17: joseph.exams.v1.SaveMockRequest
-	(*SaveMockResponse)(nil),         // 18: joseph.exams.v1.SaveMockResponse
-	(*DeleteMockRequest)(nil),        // 19: joseph.exams.v1.DeleteMockRequest
-	(*DeleteMockResponse)(nil),       // 20: joseph.exams.v1.DeleteMockResponse
-	(*SuggestStructureRequest)(nil),  // 21: joseph.exams.v1.SuggestStructureRequest
-	(*SuggestStructureResponse)(nil), // 22: joseph.exams.v1.SuggestStructureResponse
-	(*SetStructureRequest)(nil),      // 23: joseph.exams.v1.SetStructureRequest
-	(*SetStructureResponse)(nil),     // 24: joseph.exams.v1.SetStructureResponse
-	(*FillFromBankRequest)(nil),      // 25: joseph.exams.v1.FillFromBankRequest
-	(*FillFromBankResponse)(nil),     // 26: joseph.exams.v1.FillFromBankResponse
-	(*SaveKeyRequest)(nil),           // 27: joseph.exams.v1.SaveKeyRequest
-	(*SaveKeyResponse)(nil),          // 28: joseph.exams.v1.SaveKeyResponse
-	(*PublishMockRequest)(nil),       // 29: joseph.exams.v1.PublishMockRequest
-	(*PublishMockResponse)(nil),      // 30: joseph.exams.v1.PublishMockResponse
-	(*GetBookletRequest)(nil),        // 31: joseph.exams.v1.GetBookletRequest
-	(*BookletItem)(nil),              // 32: joseph.exams.v1.BookletItem
-	(*GetBookletResponse)(nil),       // 33: joseph.exams.v1.GetBookletResponse
-	(*SheetEntry)(nil),               // 34: joseph.exams.v1.SheetEntry
-	(*LoadReport)(nil),               // 35: joseph.exams.v1.LoadReport
-	(*LoadSheetsRequest)(nil),        // 36: joseph.exams.v1.LoadSheetsRequest
-	(*LoadSheetsResponse)(nil),       // 37: joseph.exams.v1.LoadSheetsResponse
-	(*LoadReaderFileRequest)(nil),    // 38: joseph.exams.v1.LoadReaderFileRequest
-	(*LoadReaderFileResponse)(nil),   // 39: joseph.exams.v1.LoadReaderFileResponse
-	(*DeleteSheetRequest)(nil),       // 40: joseph.exams.v1.DeleteSheetRequest
-	(*DeleteSheetResponse)(nil),      // 41: joseph.exams.v1.DeleteSheetResponse
-	(*CourseScore)(nil),              // 42: joseph.exams.v1.CourseScore
-	(*AnswerSheet)(nil),              // 43: joseph.exams.v1.AnswerSheet
-	(*CourseStat)(nil),               // 44: joseph.exams.v1.CourseStat
-	(*ExamStudent)(nil),              // 45: joseph.exams.v1.ExamStudent
-	(*GetResultsRequest)(nil),        // 46: joseph.exams.v1.GetResultsRequest
-	(*GetResultsResponse)(nil),       // 47: joseph.exams.v1.GetResultsResponse
-	(*StudentMock)(nil),              // 48: joseph.exams.v1.StudentMock
-	(*Admission)(nil),                // 49: joseph.exams.v1.Admission
-	(*StudentExams)(nil),             // 50: joseph.exams.v1.StudentExams
-	(*GetStudentExamsRequest)(nil),   // 51: joseph.exams.v1.GetStudentExamsRequest
-	(*GetStudentExamsResponse)(nil),  // 52: joseph.exams.v1.GetStudentExamsResponse
-	(*MyExamsRequest)(nil),           // 53: joseph.exams.v1.MyExamsRequest
-	(*MyExamsResponse)(nil),          // 54: joseph.exams.v1.MyExamsResponse
-	(*ListAdmissionsRequest)(nil),    // 55: joseph.exams.v1.ListAdmissionsRequest
-	(*ListAdmissionsResponse)(nil),   // 56: joseph.exams.v1.ListAdmissionsResponse
-	(*SaveAdmissionRequest)(nil),     // 57: joseph.exams.v1.SaveAdmissionRequest
-	(*SaveAdmissionResponse)(nil),    // 58: joseph.exams.v1.SaveAdmissionResponse
-	(*DeleteAdmissionRequest)(nil),   // 59: joseph.exams.v1.DeleteAdmissionRequest
-	(*DeleteAdmissionResponse)(nil),  // 60: joseph.exams.v1.DeleteAdmissionResponse
-	nil,                              // 61: joseph.exams.v1.Course.HoursEntry
-	nil,                              // 62: joseph.exams.v1.AnswerSheet.ByCourseEntry
-	(*academicv1.Period)(nil),        // 63: joseph.academic.v1.Period
+var file_ltedu_exams_v1_exams_proto_msgTypes = make([]protoimpl.MessageInfo, 63)
+var file_ltedu_exams_v1_exams_proto_goTypes = []any{
+	(*Course)(nil),                   // 0: ltedu.exams.v1.Course
+	(*Level)(nil),                    // 1: ltedu.exams.v1.Level
+	(*Question)(nil),                 // 2: ltedu.exams.v1.Question
+	(*MockCourse)(nil),               // 3: ltedu.exams.v1.MockCourse
+	(*MockWeight)(nil),               // 4: ltedu.exams.v1.MockWeight
+	(*KeyItem)(nil),                  // 5: ltedu.exams.v1.KeyItem
+	(*MockExam)(nil),                 // 6: ltedu.exams.v1.MockExam
+	(*GetOverviewRequest)(nil),       // 7: ltedu.exams.v1.GetOverviewRequest
+	(*GetOverviewResponse)(nil),      // 8: ltedu.exams.v1.GetOverviewResponse
+	(*ListQuestionsRequest)(nil),     // 9: ltedu.exams.v1.ListQuestionsRequest
+	(*ListQuestionsResponse)(nil),    // 10: ltedu.exams.v1.ListQuestionsResponse
+	(*SaveQuestionRequest)(nil),      // 11: ltedu.exams.v1.SaveQuestionRequest
+	(*SaveQuestionResponse)(nil),     // 12: ltedu.exams.v1.SaveQuestionResponse
+	(*DeleteQuestionRequest)(nil),    // 13: ltedu.exams.v1.DeleteQuestionRequest
+	(*DeleteQuestionResponse)(nil),   // 14: ltedu.exams.v1.DeleteQuestionResponse
+	(*GetMockRequest)(nil),           // 15: ltedu.exams.v1.GetMockRequest
+	(*GetMockResponse)(nil),          // 16: ltedu.exams.v1.GetMockResponse
+	(*SaveMockRequest)(nil),          // 17: ltedu.exams.v1.SaveMockRequest
+	(*SaveMockResponse)(nil),         // 18: ltedu.exams.v1.SaveMockResponse
+	(*DeleteMockRequest)(nil),        // 19: ltedu.exams.v1.DeleteMockRequest
+	(*DeleteMockResponse)(nil),       // 20: ltedu.exams.v1.DeleteMockResponse
+	(*SuggestStructureRequest)(nil),  // 21: ltedu.exams.v1.SuggestStructureRequest
+	(*SuggestStructureResponse)(nil), // 22: ltedu.exams.v1.SuggestStructureResponse
+	(*SetStructureRequest)(nil),      // 23: ltedu.exams.v1.SetStructureRequest
+	(*SetStructureResponse)(nil),     // 24: ltedu.exams.v1.SetStructureResponse
+	(*FillFromBankRequest)(nil),      // 25: ltedu.exams.v1.FillFromBankRequest
+	(*FillFromBankResponse)(nil),     // 26: ltedu.exams.v1.FillFromBankResponse
+	(*SaveKeyRequest)(nil),           // 27: ltedu.exams.v1.SaveKeyRequest
+	(*SaveKeyResponse)(nil),          // 28: ltedu.exams.v1.SaveKeyResponse
+	(*PublishMockRequest)(nil),       // 29: ltedu.exams.v1.PublishMockRequest
+	(*PublishMockResponse)(nil),      // 30: ltedu.exams.v1.PublishMockResponse
+	(*GetBookletRequest)(nil),        // 31: ltedu.exams.v1.GetBookletRequest
+	(*BookletItem)(nil),              // 32: ltedu.exams.v1.BookletItem
+	(*GetBookletResponse)(nil),       // 33: ltedu.exams.v1.GetBookletResponse
+	(*SheetEntry)(nil),               // 34: ltedu.exams.v1.SheetEntry
+	(*LoadReport)(nil),               // 35: ltedu.exams.v1.LoadReport
+	(*LoadSheetsRequest)(nil),        // 36: ltedu.exams.v1.LoadSheetsRequest
+	(*LoadSheetsResponse)(nil),       // 37: ltedu.exams.v1.LoadSheetsResponse
+	(*LoadReaderFileRequest)(nil),    // 38: ltedu.exams.v1.LoadReaderFileRequest
+	(*LoadReaderFileResponse)(nil),   // 39: ltedu.exams.v1.LoadReaderFileResponse
+	(*DeleteSheetRequest)(nil),       // 40: ltedu.exams.v1.DeleteSheetRequest
+	(*DeleteSheetResponse)(nil),      // 41: ltedu.exams.v1.DeleteSheetResponse
+	(*CourseScore)(nil),              // 42: ltedu.exams.v1.CourseScore
+	(*AnswerSheet)(nil),              // 43: ltedu.exams.v1.AnswerSheet
+	(*CourseStat)(nil),               // 44: ltedu.exams.v1.CourseStat
+	(*ExamStudent)(nil),              // 45: ltedu.exams.v1.ExamStudent
+	(*GetResultsRequest)(nil),        // 46: ltedu.exams.v1.GetResultsRequest
+	(*GetResultsResponse)(nil),       // 47: ltedu.exams.v1.GetResultsResponse
+	(*StudentMock)(nil),              // 48: ltedu.exams.v1.StudentMock
+	(*Admission)(nil),                // 49: ltedu.exams.v1.Admission
+	(*StudentExams)(nil),             // 50: ltedu.exams.v1.StudentExams
+	(*GetStudentExamsRequest)(nil),   // 51: ltedu.exams.v1.GetStudentExamsRequest
+	(*GetStudentExamsResponse)(nil),  // 52: ltedu.exams.v1.GetStudentExamsResponse
+	(*MyExamsRequest)(nil),           // 53: ltedu.exams.v1.MyExamsRequest
+	(*MyExamsResponse)(nil),          // 54: ltedu.exams.v1.MyExamsResponse
+	(*ListAdmissionsRequest)(nil),    // 55: ltedu.exams.v1.ListAdmissionsRequest
+	(*ListAdmissionsResponse)(nil),   // 56: ltedu.exams.v1.ListAdmissionsResponse
+	(*SaveAdmissionRequest)(nil),     // 57: ltedu.exams.v1.SaveAdmissionRequest
+	(*SaveAdmissionResponse)(nil),    // 58: ltedu.exams.v1.SaveAdmissionResponse
+	(*DeleteAdmissionRequest)(nil),   // 59: ltedu.exams.v1.DeleteAdmissionRequest
+	(*DeleteAdmissionResponse)(nil),  // 60: ltedu.exams.v1.DeleteAdmissionResponse
+	nil,                              // 61: ltedu.exams.v1.Course.HoursEntry
+	nil,                              // 62: ltedu.exams.v1.AnswerSheet.ByCourseEntry
+	(*academicv1.Period)(nil),        // 63: ltedu.academic.v1.Period
 }
-var file_joseph_exams_v1_exams_proto_depIdxs = []int32{
-	61, // 0: joseph.exams.v1.Course.hours:type_name -> joseph.exams.v1.Course.HoursEntry
-	3,  // 1: joseph.exams.v1.MockExam.courses:type_name -> joseph.exams.v1.MockCourse
-	4,  // 2: joseph.exams.v1.MockExam.weights:type_name -> joseph.exams.v1.MockWeight
-	63, // 3: joseph.exams.v1.GetOverviewResponse.periods:type_name -> joseph.academic.v1.Period
-	63, // 4: joseph.exams.v1.GetOverviewResponse.period:type_name -> joseph.academic.v1.Period
-	1,  // 5: joseph.exams.v1.GetOverviewResponse.levels:type_name -> joseph.exams.v1.Level
-	0,  // 6: joseph.exams.v1.GetOverviewResponse.courses:type_name -> joseph.exams.v1.Course
-	6,  // 7: joseph.exams.v1.GetOverviewResponse.mocks:type_name -> joseph.exams.v1.MockExam
-	2,  // 8: joseph.exams.v1.ListQuestionsResponse.questions:type_name -> joseph.exams.v1.Question
-	2,  // 9: joseph.exams.v1.SaveQuestionRequest.question:type_name -> joseph.exams.v1.Question
-	2,  // 10: joseph.exams.v1.SaveQuestionResponse.question:type_name -> joseph.exams.v1.Question
-	6,  // 11: joseph.exams.v1.GetMockResponse.mock:type_name -> joseph.exams.v1.MockExam
-	5,  // 12: joseph.exams.v1.GetMockResponse.key:type_name -> joseph.exams.v1.KeyItem
-	6,  // 13: joseph.exams.v1.SaveMockRequest.mock:type_name -> joseph.exams.v1.MockExam
-	6,  // 14: joseph.exams.v1.SaveMockResponse.mock:type_name -> joseph.exams.v1.MockExam
-	3,  // 15: joseph.exams.v1.SuggestStructureResponse.courses:type_name -> joseph.exams.v1.MockCourse
-	4,  // 16: joseph.exams.v1.SuggestStructureResponse.weights:type_name -> joseph.exams.v1.MockWeight
-	3,  // 17: joseph.exams.v1.SetStructureRequest.courses:type_name -> joseph.exams.v1.MockCourse
-	4,  // 18: joseph.exams.v1.SetStructureRequest.weights:type_name -> joseph.exams.v1.MockWeight
-	16, // 19: joseph.exams.v1.SetStructureResponse.mock:type_name -> joseph.exams.v1.GetMockResponse
-	16, // 20: joseph.exams.v1.FillFromBankResponse.mock:type_name -> joseph.exams.v1.GetMockResponse
-	5,  // 21: joseph.exams.v1.SaveKeyRequest.items:type_name -> joseph.exams.v1.KeyItem
-	16, // 22: joseph.exams.v1.SaveKeyResponse.mock:type_name -> joseph.exams.v1.GetMockResponse
-	16, // 23: joseph.exams.v1.PublishMockResponse.mock:type_name -> joseph.exams.v1.GetMockResponse
-	2,  // 24: joseph.exams.v1.BookletItem.question:type_name -> joseph.exams.v1.Question
-	6,  // 25: joseph.exams.v1.GetBookletResponse.mock:type_name -> joseph.exams.v1.MockExam
-	32, // 26: joseph.exams.v1.GetBookletResponse.items:type_name -> joseph.exams.v1.BookletItem
-	34, // 27: joseph.exams.v1.LoadSheetsRequest.entries:type_name -> joseph.exams.v1.SheetEntry
-	35, // 28: joseph.exams.v1.LoadSheetsResponse.report:type_name -> joseph.exams.v1.LoadReport
-	35, // 29: joseph.exams.v1.LoadReaderFileResponse.report:type_name -> joseph.exams.v1.LoadReport
-	62, // 30: joseph.exams.v1.AnswerSheet.by_course:type_name -> joseph.exams.v1.AnswerSheet.ByCourseEntry
-	6,  // 31: joseph.exams.v1.GetResultsResponse.mock:type_name -> joseph.exams.v1.MockExam
-	43, // 32: joseph.exams.v1.GetResultsResponse.sheets:type_name -> joseph.exams.v1.AnswerSheet
-	44, // 33: joseph.exams.v1.GetResultsResponse.courses:type_name -> joseph.exams.v1.CourseStat
-	45, // 34: joseph.exams.v1.GetResultsResponse.missing:type_name -> joseph.exams.v1.ExamStudent
-	6,  // 35: joseph.exams.v1.StudentMock.mock:type_name -> joseph.exams.v1.MockExam
-	43, // 36: joseph.exams.v1.StudentMock.sheet:type_name -> joseph.exams.v1.AnswerSheet
-	48, // 37: joseph.exams.v1.StudentExams.mocks:type_name -> joseph.exams.v1.StudentMock
-	49, // 38: joseph.exams.v1.StudentExams.admissions:type_name -> joseph.exams.v1.Admission
-	50, // 39: joseph.exams.v1.GetStudentExamsResponse.exams:type_name -> joseph.exams.v1.StudentExams
-	50, // 40: joseph.exams.v1.MyExamsResponse.students:type_name -> joseph.exams.v1.StudentExams
-	49, // 41: joseph.exams.v1.ListAdmissionsResponse.admissions:type_name -> joseph.exams.v1.Admission
-	49, // 42: joseph.exams.v1.SaveAdmissionRequest.admission:type_name -> joseph.exams.v1.Admission
-	49, // 43: joseph.exams.v1.SaveAdmissionResponse.admission:type_name -> joseph.exams.v1.Admission
-	42, // 44: joseph.exams.v1.AnswerSheet.ByCourseEntry.value:type_name -> joseph.exams.v1.CourseScore
-	7,  // 45: joseph.exams.v1.ExamsService.GetOverview:input_type -> joseph.exams.v1.GetOverviewRequest
-	9,  // 46: joseph.exams.v1.ExamsService.ListQuestions:input_type -> joseph.exams.v1.ListQuestionsRequest
-	11, // 47: joseph.exams.v1.ExamsService.SaveQuestion:input_type -> joseph.exams.v1.SaveQuestionRequest
-	13, // 48: joseph.exams.v1.ExamsService.DeleteQuestion:input_type -> joseph.exams.v1.DeleteQuestionRequest
-	15, // 49: joseph.exams.v1.ExamsService.GetMock:input_type -> joseph.exams.v1.GetMockRequest
-	17, // 50: joseph.exams.v1.ExamsService.SaveMock:input_type -> joseph.exams.v1.SaveMockRequest
-	19, // 51: joseph.exams.v1.ExamsService.DeleteMock:input_type -> joseph.exams.v1.DeleteMockRequest
-	21, // 52: joseph.exams.v1.ExamsService.SuggestStructure:input_type -> joseph.exams.v1.SuggestStructureRequest
-	23, // 53: joseph.exams.v1.ExamsService.SetStructure:input_type -> joseph.exams.v1.SetStructureRequest
-	25, // 54: joseph.exams.v1.ExamsService.FillFromBank:input_type -> joseph.exams.v1.FillFromBankRequest
-	27, // 55: joseph.exams.v1.ExamsService.SaveKey:input_type -> joseph.exams.v1.SaveKeyRequest
-	29, // 56: joseph.exams.v1.ExamsService.PublishMock:input_type -> joseph.exams.v1.PublishMockRequest
-	31, // 57: joseph.exams.v1.ExamsService.GetBooklet:input_type -> joseph.exams.v1.GetBookletRequest
-	36, // 58: joseph.exams.v1.ExamsService.LoadSheets:input_type -> joseph.exams.v1.LoadSheetsRequest
-	38, // 59: joseph.exams.v1.ExamsService.LoadReaderFile:input_type -> joseph.exams.v1.LoadReaderFileRequest
-	40, // 60: joseph.exams.v1.ExamsService.DeleteSheet:input_type -> joseph.exams.v1.DeleteSheetRequest
-	46, // 61: joseph.exams.v1.ExamsService.GetResults:input_type -> joseph.exams.v1.GetResultsRequest
-	51, // 62: joseph.exams.v1.ExamsService.GetStudentExams:input_type -> joseph.exams.v1.GetStudentExamsRequest
-	53, // 63: joseph.exams.v1.ExamsService.MyExams:input_type -> joseph.exams.v1.MyExamsRequest
-	55, // 64: joseph.exams.v1.ExamsService.ListAdmissions:input_type -> joseph.exams.v1.ListAdmissionsRequest
-	57, // 65: joseph.exams.v1.ExamsService.SaveAdmission:input_type -> joseph.exams.v1.SaveAdmissionRequest
-	59, // 66: joseph.exams.v1.ExamsService.DeleteAdmission:input_type -> joseph.exams.v1.DeleteAdmissionRequest
-	8,  // 67: joseph.exams.v1.ExamsService.GetOverview:output_type -> joseph.exams.v1.GetOverviewResponse
-	10, // 68: joseph.exams.v1.ExamsService.ListQuestions:output_type -> joseph.exams.v1.ListQuestionsResponse
-	12, // 69: joseph.exams.v1.ExamsService.SaveQuestion:output_type -> joseph.exams.v1.SaveQuestionResponse
-	14, // 70: joseph.exams.v1.ExamsService.DeleteQuestion:output_type -> joseph.exams.v1.DeleteQuestionResponse
-	16, // 71: joseph.exams.v1.ExamsService.GetMock:output_type -> joseph.exams.v1.GetMockResponse
-	18, // 72: joseph.exams.v1.ExamsService.SaveMock:output_type -> joseph.exams.v1.SaveMockResponse
-	20, // 73: joseph.exams.v1.ExamsService.DeleteMock:output_type -> joseph.exams.v1.DeleteMockResponse
-	22, // 74: joseph.exams.v1.ExamsService.SuggestStructure:output_type -> joseph.exams.v1.SuggestStructureResponse
-	24, // 75: joseph.exams.v1.ExamsService.SetStructure:output_type -> joseph.exams.v1.SetStructureResponse
-	26, // 76: joseph.exams.v1.ExamsService.FillFromBank:output_type -> joseph.exams.v1.FillFromBankResponse
-	28, // 77: joseph.exams.v1.ExamsService.SaveKey:output_type -> joseph.exams.v1.SaveKeyResponse
-	30, // 78: joseph.exams.v1.ExamsService.PublishMock:output_type -> joseph.exams.v1.PublishMockResponse
-	33, // 79: joseph.exams.v1.ExamsService.GetBooklet:output_type -> joseph.exams.v1.GetBookletResponse
-	37, // 80: joseph.exams.v1.ExamsService.LoadSheets:output_type -> joseph.exams.v1.LoadSheetsResponse
-	39, // 81: joseph.exams.v1.ExamsService.LoadReaderFile:output_type -> joseph.exams.v1.LoadReaderFileResponse
-	41, // 82: joseph.exams.v1.ExamsService.DeleteSheet:output_type -> joseph.exams.v1.DeleteSheetResponse
-	47, // 83: joseph.exams.v1.ExamsService.GetResults:output_type -> joseph.exams.v1.GetResultsResponse
-	52, // 84: joseph.exams.v1.ExamsService.GetStudentExams:output_type -> joseph.exams.v1.GetStudentExamsResponse
-	54, // 85: joseph.exams.v1.ExamsService.MyExams:output_type -> joseph.exams.v1.MyExamsResponse
-	56, // 86: joseph.exams.v1.ExamsService.ListAdmissions:output_type -> joseph.exams.v1.ListAdmissionsResponse
-	58, // 87: joseph.exams.v1.ExamsService.SaveAdmission:output_type -> joseph.exams.v1.SaveAdmissionResponse
-	60, // 88: joseph.exams.v1.ExamsService.DeleteAdmission:output_type -> joseph.exams.v1.DeleteAdmissionResponse
+var file_ltedu_exams_v1_exams_proto_depIdxs = []int32{
+	61, // 0: ltedu.exams.v1.Course.hours:type_name -> ltedu.exams.v1.Course.HoursEntry
+	3,  // 1: ltedu.exams.v1.MockExam.courses:type_name -> ltedu.exams.v1.MockCourse
+	4,  // 2: ltedu.exams.v1.MockExam.weights:type_name -> ltedu.exams.v1.MockWeight
+	63, // 3: ltedu.exams.v1.GetOverviewResponse.periods:type_name -> ltedu.academic.v1.Period
+	63, // 4: ltedu.exams.v1.GetOverviewResponse.period:type_name -> ltedu.academic.v1.Period
+	1,  // 5: ltedu.exams.v1.GetOverviewResponse.levels:type_name -> ltedu.exams.v1.Level
+	0,  // 6: ltedu.exams.v1.GetOverviewResponse.courses:type_name -> ltedu.exams.v1.Course
+	6,  // 7: ltedu.exams.v1.GetOverviewResponse.mocks:type_name -> ltedu.exams.v1.MockExam
+	2,  // 8: ltedu.exams.v1.ListQuestionsResponse.questions:type_name -> ltedu.exams.v1.Question
+	2,  // 9: ltedu.exams.v1.SaveQuestionRequest.question:type_name -> ltedu.exams.v1.Question
+	2,  // 10: ltedu.exams.v1.SaveQuestionResponse.question:type_name -> ltedu.exams.v1.Question
+	6,  // 11: ltedu.exams.v1.GetMockResponse.mock:type_name -> ltedu.exams.v1.MockExam
+	5,  // 12: ltedu.exams.v1.GetMockResponse.key:type_name -> ltedu.exams.v1.KeyItem
+	6,  // 13: ltedu.exams.v1.SaveMockRequest.mock:type_name -> ltedu.exams.v1.MockExam
+	6,  // 14: ltedu.exams.v1.SaveMockResponse.mock:type_name -> ltedu.exams.v1.MockExam
+	3,  // 15: ltedu.exams.v1.SuggestStructureResponse.courses:type_name -> ltedu.exams.v1.MockCourse
+	4,  // 16: ltedu.exams.v1.SuggestStructureResponse.weights:type_name -> ltedu.exams.v1.MockWeight
+	3,  // 17: ltedu.exams.v1.SetStructureRequest.courses:type_name -> ltedu.exams.v1.MockCourse
+	4,  // 18: ltedu.exams.v1.SetStructureRequest.weights:type_name -> ltedu.exams.v1.MockWeight
+	16, // 19: ltedu.exams.v1.SetStructureResponse.mock:type_name -> ltedu.exams.v1.GetMockResponse
+	16, // 20: ltedu.exams.v1.FillFromBankResponse.mock:type_name -> ltedu.exams.v1.GetMockResponse
+	5,  // 21: ltedu.exams.v1.SaveKeyRequest.items:type_name -> ltedu.exams.v1.KeyItem
+	16, // 22: ltedu.exams.v1.SaveKeyResponse.mock:type_name -> ltedu.exams.v1.GetMockResponse
+	16, // 23: ltedu.exams.v1.PublishMockResponse.mock:type_name -> ltedu.exams.v1.GetMockResponse
+	2,  // 24: ltedu.exams.v1.BookletItem.question:type_name -> ltedu.exams.v1.Question
+	6,  // 25: ltedu.exams.v1.GetBookletResponse.mock:type_name -> ltedu.exams.v1.MockExam
+	32, // 26: ltedu.exams.v1.GetBookletResponse.items:type_name -> ltedu.exams.v1.BookletItem
+	34, // 27: ltedu.exams.v1.LoadSheetsRequest.entries:type_name -> ltedu.exams.v1.SheetEntry
+	35, // 28: ltedu.exams.v1.LoadSheetsResponse.report:type_name -> ltedu.exams.v1.LoadReport
+	35, // 29: ltedu.exams.v1.LoadReaderFileResponse.report:type_name -> ltedu.exams.v1.LoadReport
+	62, // 30: ltedu.exams.v1.AnswerSheet.by_course:type_name -> ltedu.exams.v1.AnswerSheet.ByCourseEntry
+	6,  // 31: ltedu.exams.v1.GetResultsResponse.mock:type_name -> ltedu.exams.v1.MockExam
+	43, // 32: ltedu.exams.v1.GetResultsResponse.sheets:type_name -> ltedu.exams.v1.AnswerSheet
+	44, // 33: ltedu.exams.v1.GetResultsResponse.courses:type_name -> ltedu.exams.v1.CourseStat
+	45, // 34: ltedu.exams.v1.GetResultsResponse.missing:type_name -> ltedu.exams.v1.ExamStudent
+	6,  // 35: ltedu.exams.v1.StudentMock.mock:type_name -> ltedu.exams.v1.MockExam
+	43, // 36: ltedu.exams.v1.StudentMock.sheet:type_name -> ltedu.exams.v1.AnswerSheet
+	48, // 37: ltedu.exams.v1.StudentExams.mocks:type_name -> ltedu.exams.v1.StudentMock
+	49, // 38: ltedu.exams.v1.StudentExams.admissions:type_name -> ltedu.exams.v1.Admission
+	50, // 39: ltedu.exams.v1.GetStudentExamsResponse.exams:type_name -> ltedu.exams.v1.StudentExams
+	50, // 40: ltedu.exams.v1.MyExamsResponse.students:type_name -> ltedu.exams.v1.StudentExams
+	49, // 41: ltedu.exams.v1.ListAdmissionsResponse.admissions:type_name -> ltedu.exams.v1.Admission
+	49, // 42: ltedu.exams.v1.SaveAdmissionRequest.admission:type_name -> ltedu.exams.v1.Admission
+	49, // 43: ltedu.exams.v1.SaveAdmissionResponse.admission:type_name -> ltedu.exams.v1.Admission
+	42, // 44: ltedu.exams.v1.AnswerSheet.ByCourseEntry.value:type_name -> ltedu.exams.v1.CourseScore
+	7,  // 45: ltedu.exams.v1.ExamsService.GetOverview:input_type -> ltedu.exams.v1.GetOverviewRequest
+	9,  // 46: ltedu.exams.v1.ExamsService.ListQuestions:input_type -> ltedu.exams.v1.ListQuestionsRequest
+	11, // 47: ltedu.exams.v1.ExamsService.SaveQuestion:input_type -> ltedu.exams.v1.SaveQuestionRequest
+	13, // 48: ltedu.exams.v1.ExamsService.DeleteQuestion:input_type -> ltedu.exams.v1.DeleteQuestionRequest
+	15, // 49: ltedu.exams.v1.ExamsService.GetMock:input_type -> ltedu.exams.v1.GetMockRequest
+	17, // 50: ltedu.exams.v1.ExamsService.SaveMock:input_type -> ltedu.exams.v1.SaveMockRequest
+	19, // 51: ltedu.exams.v1.ExamsService.DeleteMock:input_type -> ltedu.exams.v1.DeleteMockRequest
+	21, // 52: ltedu.exams.v1.ExamsService.SuggestStructure:input_type -> ltedu.exams.v1.SuggestStructureRequest
+	23, // 53: ltedu.exams.v1.ExamsService.SetStructure:input_type -> ltedu.exams.v1.SetStructureRequest
+	25, // 54: ltedu.exams.v1.ExamsService.FillFromBank:input_type -> ltedu.exams.v1.FillFromBankRequest
+	27, // 55: ltedu.exams.v1.ExamsService.SaveKey:input_type -> ltedu.exams.v1.SaveKeyRequest
+	29, // 56: ltedu.exams.v1.ExamsService.PublishMock:input_type -> ltedu.exams.v1.PublishMockRequest
+	31, // 57: ltedu.exams.v1.ExamsService.GetBooklet:input_type -> ltedu.exams.v1.GetBookletRequest
+	36, // 58: ltedu.exams.v1.ExamsService.LoadSheets:input_type -> ltedu.exams.v1.LoadSheetsRequest
+	38, // 59: ltedu.exams.v1.ExamsService.LoadReaderFile:input_type -> ltedu.exams.v1.LoadReaderFileRequest
+	40, // 60: ltedu.exams.v1.ExamsService.DeleteSheet:input_type -> ltedu.exams.v1.DeleteSheetRequest
+	46, // 61: ltedu.exams.v1.ExamsService.GetResults:input_type -> ltedu.exams.v1.GetResultsRequest
+	51, // 62: ltedu.exams.v1.ExamsService.GetStudentExams:input_type -> ltedu.exams.v1.GetStudentExamsRequest
+	53, // 63: ltedu.exams.v1.ExamsService.MyExams:input_type -> ltedu.exams.v1.MyExamsRequest
+	55, // 64: ltedu.exams.v1.ExamsService.ListAdmissions:input_type -> ltedu.exams.v1.ListAdmissionsRequest
+	57, // 65: ltedu.exams.v1.ExamsService.SaveAdmission:input_type -> ltedu.exams.v1.SaveAdmissionRequest
+	59, // 66: ltedu.exams.v1.ExamsService.DeleteAdmission:input_type -> ltedu.exams.v1.DeleteAdmissionRequest
+	8,  // 67: ltedu.exams.v1.ExamsService.GetOverview:output_type -> ltedu.exams.v1.GetOverviewResponse
+	10, // 68: ltedu.exams.v1.ExamsService.ListQuestions:output_type -> ltedu.exams.v1.ListQuestionsResponse
+	12, // 69: ltedu.exams.v1.ExamsService.SaveQuestion:output_type -> ltedu.exams.v1.SaveQuestionResponse
+	14, // 70: ltedu.exams.v1.ExamsService.DeleteQuestion:output_type -> ltedu.exams.v1.DeleteQuestionResponse
+	16, // 71: ltedu.exams.v1.ExamsService.GetMock:output_type -> ltedu.exams.v1.GetMockResponse
+	18, // 72: ltedu.exams.v1.ExamsService.SaveMock:output_type -> ltedu.exams.v1.SaveMockResponse
+	20, // 73: ltedu.exams.v1.ExamsService.DeleteMock:output_type -> ltedu.exams.v1.DeleteMockResponse
+	22, // 74: ltedu.exams.v1.ExamsService.SuggestStructure:output_type -> ltedu.exams.v1.SuggestStructureResponse
+	24, // 75: ltedu.exams.v1.ExamsService.SetStructure:output_type -> ltedu.exams.v1.SetStructureResponse
+	26, // 76: ltedu.exams.v1.ExamsService.FillFromBank:output_type -> ltedu.exams.v1.FillFromBankResponse
+	28, // 77: ltedu.exams.v1.ExamsService.SaveKey:output_type -> ltedu.exams.v1.SaveKeyResponse
+	30, // 78: ltedu.exams.v1.ExamsService.PublishMock:output_type -> ltedu.exams.v1.PublishMockResponse
+	33, // 79: ltedu.exams.v1.ExamsService.GetBooklet:output_type -> ltedu.exams.v1.GetBookletResponse
+	37, // 80: ltedu.exams.v1.ExamsService.LoadSheets:output_type -> ltedu.exams.v1.LoadSheetsResponse
+	39, // 81: ltedu.exams.v1.ExamsService.LoadReaderFile:output_type -> ltedu.exams.v1.LoadReaderFileResponse
+	41, // 82: ltedu.exams.v1.ExamsService.DeleteSheet:output_type -> ltedu.exams.v1.DeleteSheetResponse
+	47, // 83: ltedu.exams.v1.ExamsService.GetResults:output_type -> ltedu.exams.v1.GetResultsResponse
+	52, // 84: ltedu.exams.v1.ExamsService.GetStudentExams:output_type -> ltedu.exams.v1.GetStudentExamsResponse
+	54, // 85: ltedu.exams.v1.ExamsService.MyExams:output_type -> ltedu.exams.v1.MyExamsResponse
+	56, // 86: ltedu.exams.v1.ExamsService.ListAdmissions:output_type -> ltedu.exams.v1.ListAdmissionsResponse
+	58, // 87: ltedu.exams.v1.ExamsService.SaveAdmission:output_type -> ltedu.exams.v1.SaveAdmissionResponse
+	60, // 88: ltedu.exams.v1.ExamsService.DeleteAdmission:output_type -> ltedu.exams.v1.DeleteAdmissionResponse
 	67, // [67:89] is the sub-list for method output_type
 	45, // [45:67] is the sub-list for method input_type
 	45, // [45:45] is the sub-list for extension type_name
@@ -4301,27 +4301,27 @@ var file_joseph_exams_v1_exams_proto_depIdxs = []int32{
 	0,  // [0:45] is the sub-list for field type_name
 }
 
-func init() { file_joseph_exams_v1_exams_proto_init() }
-func file_joseph_exams_v1_exams_proto_init() {
-	if File_joseph_exams_v1_exams_proto != nil {
+func init() { file_ltedu_exams_v1_exams_proto_init() }
+func file_ltedu_exams_v1_exams_proto_init() {
+	if File_ltedu_exams_v1_exams_proto != nil {
 		return
 	}
-	file_joseph_exams_v1_exams_proto_msgTypes[49].OneofWrappers = []any{}
+	file_ltedu_exams_v1_exams_proto_msgTypes[49].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_exams_v1_exams_proto_rawDesc), len(file_joseph_exams_v1_exams_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_exams_v1_exams_proto_rawDesc), len(file_ltedu_exams_v1_exams_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   63,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_exams_v1_exams_proto_goTypes,
-		DependencyIndexes: file_joseph_exams_v1_exams_proto_depIdxs,
-		MessageInfos:      file_joseph_exams_v1_exams_proto_msgTypes,
+		GoTypes:           file_ltedu_exams_v1_exams_proto_goTypes,
+		DependencyIndexes: file_ltedu_exams_v1_exams_proto_depIdxs,
+		MessageInfos:      file_ltedu_exams_v1_exams_proto_msgTypes,
 	}.Build()
-	File_joseph_exams_v1_exams_proto = out.File
-	file_joseph_exams_v1_exams_proto_goTypes = nil
-	file_joseph_exams_v1_exams_proto_depIdxs = nil
+	File_ltedu_exams_v1_exams_proto = out.File
+	file_ltedu_exams_v1_exams_proto_goTypes = nil
+	file_ltedu_exams_v1_exams_proto_depIdxs = nil
 }

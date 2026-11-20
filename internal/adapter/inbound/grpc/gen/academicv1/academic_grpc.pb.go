@@ -2,11 +2,11 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/academic/v1/academic.proto
+// source: ltedu/academic/v1/academic.proto
 
 // Academic structure of each institution (phase 1 of docs/plan-academico.md): its profile, levels / cycles / areas /
 // programs with their grades, periods (school year, promotional period, cycle, semester) with their terms, and the
-// sections of every period. Read and changed by joseph-app's server on behalf of the signed-in person
+// sections of every period. Read and changed by lt-edu-app's server on behalf of the signed-in person
 
 package academicv1
 
@@ -23,30 +23,30 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AcademicService_GetContext_FullMethodName      = "/joseph.academic.v1.AcademicService/GetContext"
-	AcademicService_UpdateSettings_FullMethodName  = "/joseph.academic.v1.AcademicService/UpdateSettings"
-	AcademicService_GetManagement_FullMethodName   = "/joseph.academic.v1.AcademicService/GetManagement"
-	AcademicService_GetStructure_FullMethodName    = "/joseph.academic.v1.AcademicService/GetStructure"
-	AcademicService_CreateLevel_FullMethodName     = "/joseph.academic.v1.AcademicService/CreateLevel"
-	AcademicService_UpdateLevel_FullMethodName     = "/joseph.academic.v1.AcademicService/UpdateLevel"
-	AcademicService_DeleteLevel_FullMethodName     = "/joseph.academic.v1.AcademicService/DeleteLevel"
-	AcademicService_ReorderLevels_FullMethodName   = "/joseph.academic.v1.AcademicService/ReorderLevels"
-	AcademicService_CreateGrade_FullMethodName     = "/joseph.academic.v1.AcademicService/CreateGrade"
-	AcademicService_UpdateGrade_FullMethodName     = "/joseph.academic.v1.AcademicService/UpdateGrade"
-	AcademicService_DeleteGrade_FullMethodName     = "/joseph.academic.v1.AcademicService/DeleteGrade"
-	AcademicService_ReorderGrades_FullMethodName   = "/joseph.academic.v1.AcademicService/ReorderGrades"
-	AcademicService_ApplyTemplate_FullMethodName   = "/joseph.academic.v1.AcademicService/ApplyTemplate"
-	AcademicService_ListPeriods_FullMethodName     = "/joseph.academic.v1.AcademicService/ListPeriods"
-	AcademicService_GetPeriod_FullMethodName       = "/joseph.academic.v1.AcademicService/GetPeriod"
-	AcademicService_CreatePeriod_FullMethodName    = "/joseph.academic.v1.AcademicService/CreatePeriod"
-	AcademicService_UpdatePeriod_FullMethodName    = "/joseph.academic.v1.AcademicService/UpdatePeriod"
-	AcademicService_SetPeriodStatus_FullMethodName = "/joseph.academic.v1.AcademicService/SetPeriodStatus"
-	AcademicService_DeletePeriod_FullMethodName    = "/joseph.academic.v1.AcademicService/DeletePeriod"
-	AcademicService_UpdateTerm_FullMethodName      = "/joseph.academic.v1.AcademicService/UpdateTerm"
-	AcademicService_CreateSections_FullMethodName  = "/joseph.academic.v1.AcademicService/CreateSections"
-	AcademicService_UpdateSection_FullMethodName   = "/joseph.academic.v1.AcademicService/UpdateSection"
-	AcademicService_DeleteSection_FullMethodName   = "/joseph.academic.v1.AcademicService/DeleteSection"
-	AcademicService_CopySections_FullMethodName    = "/joseph.academic.v1.AcademicService/CopySections"
+	AcademicService_GetContext_FullMethodName      = "/ltedu.academic.v1.AcademicService/GetContext"
+	AcademicService_UpdateSettings_FullMethodName  = "/ltedu.academic.v1.AcademicService/UpdateSettings"
+	AcademicService_GetManagement_FullMethodName   = "/ltedu.academic.v1.AcademicService/GetManagement"
+	AcademicService_GetStructure_FullMethodName    = "/ltedu.academic.v1.AcademicService/GetStructure"
+	AcademicService_CreateLevel_FullMethodName     = "/ltedu.academic.v1.AcademicService/CreateLevel"
+	AcademicService_UpdateLevel_FullMethodName     = "/ltedu.academic.v1.AcademicService/UpdateLevel"
+	AcademicService_DeleteLevel_FullMethodName     = "/ltedu.academic.v1.AcademicService/DeleteLevel"
+	AcademicService_ReorderLevels_FullMethodName   = "/ltedu.academic.v1.AcademicService/ReorderLevels"
+	AcademicService_CreateGrade_FullMethodName     = "/ltedu.academic.v1.AcademicService/CreateGrade"
+	AcademicService_UpdateGrade_FullMethodName     = "/ltedu.academic.v1.AcademicService/UpdateGrade"
+	AcademicService_DeleteGrade_FullMethodName     = "/ltedu.academic.v1.AcademicService/DeleteGrade"
+	AcademicService_ReorderGrades_FullMethodName   = "/ltedu.academic.v1.AcademicService/ReorderGrades"
+	AcademicService_ApplyTemplate_FullMethodName   = "/ltedu.academic.v1.AcademicService/ApplyTemplate"
+	AcademicService_ListPeriods_FullMethodName     = "/ltedu.academic.v1.AcademicService/ListPeriods"
+	AcademicService_GetPeriod_FullMethodName       = "/ltedu.academic.v1.AcademicService/GetPeriod"
+	AcademicService_CreatePeriod_FullMethodName    = "/ltedu.academic.v1.AcademicService/CreatePeriod"
+	AcademicService_UpdatePeriod_FullMethodName    = "/ltedu.academic.v1.AcademicService/UpdatePeriod"
+	AcademicService_SetPeriodStatus_FullMethodName = "/ltedu.academic.v1.AcademicService/SetPeriodStatus"
+	AcademicService_DeletePeriod_FullMethodName    = "/ltedu.academic.v1.AcademicService/DeletePeriod"
+	AcademicService_UpdateTerm_FullMethodName      = "/ltedu.academic.v1.AcademicService/UpdateTerm"
+	AcademicService_CreateSections_FullMethodName  = "/ltedu.academic.v1.AcademicService/CreateSections"
+	AcademicService_UpdateSection_FullMethodName   = "/ltedu.academic.v1.AcademicService/UpdateSection"
+	AcademicService_DeleteSection_FullMethodName   = "/ltedu.academic.v1.AcademicService/DeleteSection"
+	AcademicService_CopySections_FullMethodName    = "/ltedu.academic.v1.AcademicService/CopySections"
 )
 
 // AcademicServiceClient is the client API for AcademicService service.
@@ -56,11 +56,11 @@ const (
 // Metadata:
 //
 //	authorization: Bearer <session token>   (every method)
-//	x-forwarded-for, x-user-agent           (as every joseph-api service)
+//	x-forwarded-for, x-user-agent           (as every lt-edu-api service)
 //
 // Every request carries institution_slug: institution roles work on their own institution whatever it says; the
 // platform superadmin opens the one named. Staff roles read; director, academic coordinator and superadmin change.
-// Dates travel as YYYY-MM-DD. Failed calls return a gRPC status whose details hold one joseph.common.v1.ErrorDetail
+// Dates travel as YYYY-MM-DD. Failed calls return a gRPC status whose details hold one ltedu.common.v1.ErrorDetail
 type AcademicServiceClient interface {
 	// Institution profile: names, rules of its kind and settings
 	GetContext(ctx context.Context, in *GetContextRequest, opts ...grpc.CallOption) (*GetContextResponse, error)
@@ -349,11 +349,11 @@ func (c *academicServiceClient) CopySections(ctx context.Context, in *CopySectio
 // Metadata:
 //
 //	authorization: Bearer <session token>   (every method)
-//	x-forwarded-for, x-user-agent           (as every joseph-api service)
+//	x-forwarded-for, x-user-agent           (as every lt-edu-api service)
 //
 // Every request carries institution_slug: institution roles work on their own institution whatever it says; the
 // platform superadmin opens the one named. Staff roles read; director, academic coordinator and superadmin change.
-// Dates travel as YYYY-MM-DD. Failed calls return a gRPC status whose details hold one joseph.common.v1.ErrorDetail
+// Dates travel as YYYY-MM-DD. Failed calls return a gRPC status whose details hold one ltedu.common.v1.ErrorDetail
 type AcademicServiceServer interface {
 	// Institution profile: names, rules of its kind and settings
 	GetContext(context.Context, *GetContextRequest) (*GetContextResponse, error)
@@ -924,7 +924,7 @@ func _AcademicService_CopySections_Handler(srv interface{}, ctx context.Context,
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AcademicService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.academic.v1.AcademicService",
+	ServiceName: "ltedu.academic.v1.AcademicService",
 	HandlerType: (*AcademicServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -1025,5 +1025,5 @@ var AcademicService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/academic/v1/academic.proto",
+	Metadata: "ltedu/academic/v1/academic.proto",
 }

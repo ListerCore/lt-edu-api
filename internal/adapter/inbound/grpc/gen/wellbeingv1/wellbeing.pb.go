@@ -2,11 +2,11 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/wellbeing/v1/wellbeing.proto
+// source: ltedu/wellbeing/v1/wellbeing.proto
 
 // Wellbeing (phase 11 of docs/plan-academico.md): tutoring, psychology (confidential), school discipline
 // (DS 021-2026-MINEDU) and, in special education, the individual plan (POI) and therapies. Same metadata and
-// institution scoping as joseph.academic.v1. Dates are "YYYY-MM-DD"
+// institution scoping as ltedu.academic.v1. Dates are "YYYY-MM-DD"
 
 package wellbeingv1
 
@@ -44,7 +44,7 @@ type WellStudent struct {
 
 func (x *WellStudent) Reset() {
 	*x = WellStudent{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[0]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -56,7 +56,7 @@ func (x *WellStudent) String() string {
 func (*WellStudent) ProtoMessage() {}
 
 func (x *WellStudent) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[0]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -69,7 +69,7 @@ func (x *WellStudent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WellStudent.ProtoReflect.Descriptor instead.
 func (*WellStudent) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *WellStudent) GetId() string {
@@ -168,7 +168,7 @@ type Interview struct {
 
 func (x *Interview) Reset() {
 	*x = Interview{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[1]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -180,7 +180,7 @@ func (x *Interview) String() string {
 func (*Interview) ProtoMessage() {}
 
 func (x *Interview) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[1]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -193,7 +193,7 @@ func (x *Interview) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Interview.ProtoReflect.Descriptor instead.
 func (*Interview) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Interview) GetId() string {
@@ -280,7 +280,7 @@ type Commitment struct {
 
 func (x *Commitment) Reset() {
 	*x = Commitment{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[2]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -292,7 +292,7 @@ func (x *Commitment) String() string {
 func (*Commitment) ProtoMessage() {}
 
 func (x *Commitment) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[2]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -305,7 +305,7 @@ func (x *Commitment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Commitment.ProtoReflect.Descriptor instead.
 func (*Commitment) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Commitment) GetId() string {
@@ -411,7 +411,7 @@ type PsychCase struct {
 
 func (x *PsychCase) Reset() {
 	*x = PsychCase{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[3]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -423,7 +423,7 @@ func (x *PsychCase) String() string {
 func (*PsychCase) ProtoMessage() {}
 
 func (x *PsychCase) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[3]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -436,7 +436,7 @@ func (x *PsychCase) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PsychCase.ProtoReflect.Descriptor instead.
 func (*PsychCase) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *PsychCase) GetId() string {
@@ -560,7 +560,7 @@ type PsychSession struct {
 
 func (x *PsychSession) Reset() {
 	*x = PsychSession{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[4]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -572,7 +572,7 @@ func (x *PsychSession) String() string {
 func (*PsychSession) ProtoMessage() {}
 
 func (x *PsychSession) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[4]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -585,7 +585,7 @@ func (x *PsychSession) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PsychSession.ProtoReflect.Descriptor instead.
 func (*PsychSession) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *PsychSession) GetId() string {
@@ -670,7 +670,7 @@ type Measure struct {
 
 func (x *Measure) Reset() {
 	*x = Measure{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[5]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -682,7 +682,7 @@ func (x *Measure) String() string {
 func (*Measure) ProtoMessage() {}
 
 func (x *Measure) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[5]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -695,7 +695,7 @@ func (x *Measure) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Measure.ProtoReflect.Descriptor instead.
 func (*Measure) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Measure) GetId() string {
@@ -861,7 +861,7 @@ type Incident struct {
 
 func (x *Incident) Reset() {
 	*x = Incident{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[6]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -873,7 +873,7 @@ func (x *Incident) String() string {
 func (*Incident) ProtoMessage() {}
 
 func (x *Incident) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[6]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -886,7 +886,7 @@ func (x *Incident) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Incident.ProtoReflect.Descriptor instead.
 func (*Incident) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Incident) GetId() string {
@@ -993,7 +993,7 @@ type IncidentCategory struct {
 
 func (x *IncidentCategory) Reset() {
 	*x = IncidentCategory{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[7]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1005,7 +1005,7 @@ func (x *IncidentCategory) String() string {
 func (*IncidentCategory) ProtoMessage() {}
 
 func (x *IncidentCategory) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[7]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1018,7 +1018,7 @@ func (x *IncidentCategory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IncidentCategory.ProtoReflect.Descriptor instead.
 func (*IncidentCategory) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *IncidentCategory) GetCode() string {
@@ -1067,7 +1067,7 @@ type TermConduct struct {
 
 func (x *TermConduct) Reset() {
 	*x = TermConduct{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[8]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1079,7 +1079,7 @@ func (x *TermConduct) String() string {
 func (*TermConduct) ProtoMessage() {}
 
 func (x *TermConduct) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[8]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1092,7 +1092,7 @@ func (x *TermConduct) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TermConduct.ProtoReflect.Descriptor instead.
 func (*TermConduct) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *TermConduct) GetTermName() string {
@@ -1146,7 +1146,7 @@ type IndividualPlan struct {
 
 func (x *IndividualPlan) Reset() {
 	*x = IndividualPlan{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[9]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1158,7 +1158,7 @@ func (x *IndividualPlan) String() string {
 func (*IndividualPlan) ProtoMessage() {}
 
 func (x *IndividualPlan) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[9]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1171,7 +1171,7 @@ func (x *IndividualPlan) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IndividualPlan.ProtoReflect.Descriptor instead.
 func (*IndividualPlan) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *IndividualPlan) GetId() string {
@@ -1343,7 +1343,7 @@ type TherapySession struct {
 
 func (x *TherapySession) Reset() {
 	*x = TherapySession{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[10]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1355,7 +1355,7 @@ func (x *TherapySession) String() string {
 func (*TherapySession) ProtoMessage() {}
 
 func (x *TherapySession) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[10]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1368,7 +1368,7 @@ func (x *TherapySession) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TherapySession.ProtoReflect.Descriptor instead.
 func (*TherapySession) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *TherapySession) GetId() string {
@@ -1475,7 +1475,7 @@ type WellAlert struct {
 
 func (x *WellAlert) Reset() {
 	*x = WellAlert{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[11]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1487,7 +1487,7 @@ func (x *WellAlert) String() string {
 func (*WellAlert) ProtoMessage() {}
 
 func (x *WellAlert) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[11]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1500,7 +1500,7 @@ func (x *WellAlert) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WellAlert.ProtoReflect.Descriptor instead.
 func (*WellAlert) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *WellAlert) GetKind() string {
@@ -1577,7 +1577,7 @@ type StaffRef struct {
 
 func (x *StaffRef) Reset() {
 	*x = StaffRef{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[12]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1589,7 +1589,7 @@ func (x *StaffRef) String() string {
 func (*StaffRef) ProtoMessage() {}
 
 func (x *StaffRef) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[12]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1602,7 +1602,7 @@ func (x *StaffRef) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StaffRef.ProtoReflect.Descriptor instead.
 func (*StaffRef) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *StaffRef) GetId() string {
@@ -1637,7 +1637,7 @@ type ListStudentsRequest struct {
 
 func (x *ListStudentsRequest) Reset() {
 	*x = ListStudentsRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[13]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1649,7 +1649,7 @@ func (x *ListStudentsRequest) String() string {
 func (*ListStudentsRequest) ProtoMessage() {}
 
 func (x *ListStudentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[13]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1662,7 +1662,7 @@ func (x *ListStudentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStudentsRequest.ProtoReflect.Descriptor instead.
 func (*ListStudentsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListStudentsRequest) GetInstitutionSlug() string {
@@ -1701,7 +1701,7 @@ type ListStudentsResponse struct {
 
 func (x *ListStudentsResponse) Reset() {
 	*x = ListStudentsResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[14]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1713,7 +1713,7 @@ func (x *ListStudentsResponse) String() string {
 func (*ListStudentsResponse) ProtoMessage() {}
 
 func (x *ListStudentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[14]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1726,7 +1726,7 @@ func (x *ListStudentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStudentsResponse.ProtoReflect.Descriptor instead.
 func (*ListStudentsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ListStudentsResponse) GetStudents() []*WellStudent {
@@ -1788,7 +1788,7 @@ type GetStudentFileRequest struct {
 
 func (x *GetStudentFileRequest) Reset() {
 	*x = GetStudentFileRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[15]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1800,7 +1800,7 @@ func (x *GetStudentFileRequest) String() string {
 func (*GetStudentFileRequest) ProtoMessage() {}
 
 func (x *GetStudentFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[15]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1813,7 +1813,7 @@ func (x *GetStudentFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentFileRequest.ProtoReflect.Descriptor instead.
 func (*GetStudentFileRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetStudentFileRequest) GetInstitutionSlug() string {
@@ -1859,7 +1859,7 @@ type GetStudentFileResponse struct {
 
 func (x *GetStudentFileResponse) Reset() {
 	*x = GetStudentFileResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[16]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1871,7 +1871,7 @@ func (x *GetStudentFileResponse) String() string {
 func (*GetStudentFileResponse) ProtoMessage() {}
 
 func (x *GetStudentFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[16]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1884,7 +1884,7 @@ func (x *GetStudentFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentFileResponse.ProtoReflect.Descriptor instead.
 func (*GetStudentFileResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetStudentFileResponse) GetStudent() *WellStudent {
@@ -2029,7 +2029,7 @@ type GetAlertsRequest struct {
 
 func (x *GetAlertsRequest) Reset() {
 	*x = GetAlertsRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[17]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2041,7 +2041,7 @@ func (x *GetAlertsRequest) String() string {
 func (*GetAlertsRequest) ProtoMessage() {}
 
 func (x *GetAlertsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[17]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2054,7 +2054,7 @@ func (x *GetAlertsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAlertsRequest.ProtoReflect.Descriptor instead.
 func (*GetAlertsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetAlertsRequest) GetInstitutionSlug() string {
@@ -2075,7 +2075,7 @@ type GetAlertsResponse struct {
 
 func (x *GetAlertsResponse) Reset() {
 	*x = GetAlertsResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[18]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2087,7 +2087,7 @@ func (x *GetAlertsResponse) String() string {
 func (*GetAlertsResponse) ProtoMessage() {}
 
 func (x *GetAlertsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[18]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2100,7 +2100,7 @@ func (x *GetAlertsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAlertsResponse.ProtoReflect.Descriptor instead.
 func (*GetAlertsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetAlertsResponse) GetAlerts() []*WellAlert {
@@ -2133,7 +2133,7 @@ type GetTutoringRequest struct {
 
 func (x *GetTutoringRequest) Reset() {
 	*x = GetTutoringRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[19]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2145,7 +2145,7 @@ func (x *GetTutoringRequest) String() string {
 func (*GetTutoringRequest) ProtoMessage() {}
 
 func (x *GetTutoringRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[19]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2158,7 +2158,7 @@ func (x *GetTutoringRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutoringRequest.ProtoReflect.Descriptor instead.
 func (*GetTutoringRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetTutoringRequest) GetInstitutionSlug() string {
@@ -2182,7 +2182,7 @@ type GetTutoringResponse struct {
 
 func (x *GetTutoringResponse) Reset() {
 	*x = GetTutoringResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[20]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2194,7 +2194,7 @@ func (x *GetTutoringResponse) String() string {
 func (*GetTutoringResponse) ProtoMessage() {}
 
 func (x *GetTutoringResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[20]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2207,7 +2207,7 @@ func (x *GetTutoringResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTutoringResponse.ProtoReflect.Descriptor instead.
 func (*GetTutoringResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetTutoringResponse) GetStudents() []*WellStudent {
@@ -2262,7 +2262,7 @@ type SaveInterviewRequest struct {
 
 func (x *SaveInterviewRequest) Reset() {
 	*x = SaveInterviewRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[21]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2274,7 +2274,7 @@ func (x *SaveInterviewRequest) String() string {
 func (*SaveInterviewRequest) ProtoMessage() {}
 
 func (x *SaveInterviewRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[21]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2287,7 +2287,7 @@ func (x *SaveInterviewRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveInterviewRequest.ProtoReflect.Descriptor instead.
 func (*SaveInterviewRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *SaveInterviewRequest) GetInstitutionSlug() string {
@@ -2313,7 +2313,7 @@ type SaveInterviewResponse struct {
 
 func (x *SaveInterviewResponse) Reset() {
 	*x = SaveInterviewResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[22]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2325,7 +2325,7 @@ func (x *SaveInterviewResponse) String() string {
 func (*SaveInterviewResponse) ProtoMessage() {}
 
 func (x *SaveInterviewResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[22]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2338,7 +2338,7 @@ func (x *SaveInterviewResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveInterviewResponse.ProtoReflect.Descriptor instead.
 func (*SaveInterviewResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *SaveInterviewResponse) GetInterview() *Interview {
@@ -2358,7 +2358,7 @@ type DeleteInterviewRequest struct {
 
 func (x *DeleteInterviewRequest) Reset() {
 	*x = DeleteInterviewRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[23]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2370,7 +2370,7 @@ func (x *DeleteInterviewRequest) String() string {
 func (*DeleteInterviewRequest) ProtoMessage() {}
 
 func (x *DeleteInterviewRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[23]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2383,7 +2383,7 @@ func (x *DeleteInterviewRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteInterviewRequest.ProtoReflect.Descriptor instead.
 func (*DeleteInterviewRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{23}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *DeleteInterviewRequest) GetInstitutionSlug() string {
@@ -2408,7 +2408,7 @@ type DeleteInterviewResponse struct {
 
 func (x *DeleteInterviewResponse) Reset() {
 	*x = DeleteInterviewResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[24]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2420,7 +2420,7 @@ func (x *DeleteInterviewResponse) String() string {
 func (*DeleteInterviewResponse) ProtoMessage() {}
 
 func (x *DeleteInterviewResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[24]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2433,7 +2433,7 @@ func (x *DeleteInterviewResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteInterviewResponse.ProtoReflect.Descriptor instead.
 func (*DeleteInterviewResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{24}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{24}
 }
 
 type SaveCommitmentRequest struct {
@@ -2446,7 +2446,7 @@ type SaveCommitmentRequest struct {
 
 func (x *SaveCommitmentRequest) Reset() {
 	*x = SaveCommitmentRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[25]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2458,7 +2458,7 @@ func (x *SaveCommitmentRequest) String() string {
 func (*SaveCommitmentRequest) ProtoMessage() {}
 
 func (x *SaveCommitmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[25]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2471,7 +2471,7 @@ func (x *SaveCommitmentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveCommitmentRequest.ProtoReflect.Descriptor instead.
 func (*SaveCommitmentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{25}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *SaveCommitmentRequest) GetInstitutionSlug() string {
@@ -2497,7 +2497,7 @@ type SaveCommitmentResponse struct {
 
 func (x *SaveCommitmentResponse) Reset() {
 	*x = SaveCommitmentResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[26]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2509,7 +2509,7 @@ func (x *SaveCommitmentResponse) String() string {
 func (*SaveCommitmentResponse) ProtoMessage() {}
 
 func (x *SaveCommitmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[26]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2522,7 +2522,7 @@ func (x *SaveCommitmentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveCommitmentResponse.ProtoReflect.Descriptor instead.
 func (*SaveCommitmentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{26}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *SaveCommitmentResponse) GetCommitment() *Commitment {
@@ -2544,7 +2544,7 @@ type CheckCommitmentRequest struct {
 
 func (x *CheckCommitmentRequest) Reset() {
 	*x = CheckCommitmentRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[27]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2556,7 +2556,7 @@ func (x *CheckCommitmentRequest) String() string {
 func (*CheckCommitmentRequest) ProtoMessage() {}
 
 func (x *CheckCommitmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[27]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2569,7 +2569,7 @@ func (x *CheckCommitmentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckCommitmentRequest.ProtoReflect.Descriptor instead.
 func (*CheckCommitmentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{27}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *CheckCommitmentRequest) GetInstitutionSlug() string {
@@ -2601,7 +2601,7 @@ type CheckCommitmentResponse struct {
 
 func (x *CheckCommitmentResponse) Reset() {
 	*x = CheckCommitmentResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[28]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2613,7 +2613,7 @@ func (x *CheckCommitmentResponse) String() string {
 func (*CheckCommitmentResponse) ProtoMessage() {}
 
 func (x *CheckCommitmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[28]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2626,7 +2626,7 @@ func (x *CheckCommitmentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckCommitmentResponse.ProtoReflect.Descriptor instead.
 func (*CheckCommitmentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{28}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{28}
 }
 
 type DeleteCommitmentRequest struct {
@@ -2639,7 +2639,7 @@ type DeleteCommitmentRequest struct {
 
 func (x *DeleteCommitmentRequest) Reset() {
 	*x = DeleteCommitmentRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[29]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2651,7 +2651,7 @@ func (x *DeleteCommitmentRequest) String() string {
 func (*DeleteCommitmentRequest) ProtoMessage() {}
 
 func (x *DeleteCommitmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[29]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2664,7 +2664,7 @@ func (x *DeleteCommitmentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCommitmentRequest.ProtoReflect.Descriptor instead.
 func (*DeleteCommitmentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{29}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *DeleteCommitmentRequest) GetInstitutionSlug() string {
@@ -2689,7 +2689,7 @@ type DeleteCommitmentResponse struct {
 
 func (x *DeleteCommitmentResponse) Reset() {
 	*x = DeleteCommitmentResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[30]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2701,7 +2701,7 @@ func (x *DeleteCommitmentResponse) String() string {
 func (*DeleteCommitmentResponse) ProtoMessage() {}
 
 func (x *DeleteCommitmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[30]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2714,7 +2714,7 @@ func (x *DeleteCommitmentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCommitmentResponse.ProtoReflect.Descriptor instead.
 func (*DeleteCommitmentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{30}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{30}
 }
 
 type ReferRequest struct {
@@ -2729,7 +2729,7 @@ type ReferRequest struct {
 
 func (x *ReferRequest) Reset() {
 	*x = ReferRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[31]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2741,7 +2741,7 @@ func (x *ReferRequest) String() string {
 func (*ReferRequest) ProtoMessage() {}
 
 func (x *ReferRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[31]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2754,7 +2754,7 @@ func (x *ReferRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReferRequest.ProtoReflect.Descriptor instead.
 func (*ReferRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{31}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ReferRequest) GetInstitutionSlug() string {
@@ -2794,7 +2794,7 @@ type ReferResponse struct {
 
 func (x *ReferResponse) Reset() {
 	*x = ReferResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[32]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2806,7 +2806,7 @@ func (x *ReferResponse) String() string {
 func (*ReferResponse) ProtoMessage() {}
 
 func (x *ReferResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[32]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2819,7 +2819,7 @@ func (x *ReferResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReferResponse.ProtoReflect.Descriptor instead.
 func (*ReferResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{32}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *ReferResponse) GetCase() *PsychCase {
@@ -2840,7 +2840,7 @@ type GetPsychologyRequest struct {
 
 func (x *GetPsychologyRequest) Reset() {
 	*x = GetPsychologyRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[33]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2852,7 +2852,7 @@ func (x *GetPsychologyRequest) String() string {
 func (*GetPsychologyRequest) ProtoMessage() {}
 
 func (x *GetPsychologyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[33]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2865,7 +2865,7 @@ func (x *GetPsychologyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPsychologyRequest.ProtoReflect.Descriptor instead.
 func (*GetPsychologyRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{33}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *GetPsychologyRequest) GetInstitutionSlug() string {
@@ -2896,7 +2896,7 @@ type GetPsychologyResponse struct {
 
 func (x *GetPsychologyResponse) Reset() {
 	*x = GetPsychologyResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[34]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2908,7 +2908,7 @@ func (x *GetPsychologyResponse) String() string {
 func (*GetPsychologyResponse) ProtoMessage() {}
 
 func (x *GetPsychologyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[34]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2921,7 +2921,7 @@ func (x *GetPsychologyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPsychologyResponse.ProtoReflect.Descriptor instead.
 func (*GetPsychologyResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{34}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *GetPsychologyResponse) GetCases() []*PsychCase {
@@ -2969,7 +2969,7 @@ type GetCaseRequest struct {
 
 func (x *GetCaseRequest) Reset() {
 	*x = GetCaseRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[35]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2981,7 +2981,7 @@ func (x *GetCaseRequest) String() string {
 func (*GetCaseRequest) ProtoMessage() {}
 
 func (x *GetCaseRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[35]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2994,7 +2994,7 @@ func (x *GetCaseRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCaseRequest.ProtoReflect.Descriptor instead.
 func (*GetCaseRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{35}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *GetCaseRequest) GetInstitutionSlug() string {
@@ -3021,7 +3021,7 @@ type GetCaseResponse struct {
 
 func (x *GetCaseResponse) Reset() {
 	*x = GetCaseResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[36]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3033,7 +3033,7 @@ func (x *GetCaseResponse) String() string {
 func (*GetCaseResponse) ProtoMessage() {}
 
 func (x *GetCaseResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[36]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3046,7 +3046,7 @@ func (x *GetCaseResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCaseResponse.ProtoReflect.Descriptor instead.
 func (*GetCaseResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{36}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *GetCaseResponse) GetCase() *PsychCase {
@@ -3077,7 +3077,7 @@ type UpdateCaseRequest struct {
 
 func (x *UpdateCaseRequest) Reset() {
 	*x = UpdateCaseRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[37]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3089,7 +3089,7 @@ func (x *UpdateCaseRequest) String() string {
 func (*UpdateCaseRequest) ProtoMessage() {}
 
 func (x *UpdateCaseRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[37]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3102,7 +3102,7 @@ func (x *UpdateCaseRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCaseRequest.ProtoReflect.Descriptor instead.
 func (*UpdateCaseRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{37}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *UpdateCaseRequest) GetInstitutionSlug() string {
@@ -3156,7 +3156,7 @@ type UpdateCaseResponse struct {
 
 func (x *UpdateCaseResponse) Reset() {
 	*x = UpdateCaseResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[38]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3168,7 +3168,7 @@ func (x *UpdateCaseResponse) String() string {
 func (*UpdateCaseResponse) ProtoMessage() {}
 
 func (x *UpdateCaseResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[38]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3181,7 +3181,7 @@ func (x *UpdateCaseResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCaseResponse.ProtoReflect.Descriptor instead.
 func (*UpdateCaseResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{38}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *UpdateCaseResponse) GetCase() *PsychCase {
@@ -3201,7 +3201,7 @@ type AddSessionRequest struct {
 
 func (x *AddSessionRequest) Reset() {
 	*x = AddSessionRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[39]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3213,7 +3213,7 @@ func (x *AddSessionRequest) String() string {
 func (*AddSessionRequest) ProtoMessage() {}
 
 func (x *AddSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[39]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3226,7 +3226,7 @@ func (x *AddSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddSessionRequest.ProtoReflect.Descriptor instead.
 func (*AddSessionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{39}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *AddSessionRequest) GetInstitutionSlug() string {
@@ -3252,7 +3252,7 @@ type AddSessionResponse struct {
 
 func (x *AddSessionResponse) Reset() {
 	*x = AddSessionResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[40]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3264,7 +3264,7 @@ func (x *AddSessionResponse) String() string {
 func (*AddSessionResponse) ProtoMessage() {}
 
 func (x *AddSessionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[40]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3277,7 +3277,7 @@ func (x *AddSessionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddSessionResponse.ProtoReflect.Descriptor instead.
 func (*AddSessionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{40}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *AddSessionResponse) GetSession() *PsychSession {
@@ -3298,7 +3298,7 @@ type DeleteSessionRequest struct {
 
 func (x *DeleteSessionRequest) Reset() {
 	*x = DeleteSessionRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[41]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3310,7 +3310,7 @@ func (x *DeleteSessionRequest) String() string {
 func (*DeleteSessionRequest) ProtoMessage() {}
 
 func (x *DeleteSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[41]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3323,7 +3323,7 @@ func (x *DeleteSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSessionRequest.ProtoReflect.Descriptor instead.
 func (*DeleteSessionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{41}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *DeleteSessionRequest) GetInstitutionSlug() string {
@@ -3355,7 +3355,7 @@ type DeleteSessionResponse struct {
 
 func (x *DeleteSessionResponse) Reset() {
 	*x = DeleteSessionResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[42]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3367,7 +3367,7 @@ func (x *DeleteSessionResponse) String() string {
 func (*DeleteSessionResponse) ProtoMessage() {}
 
 func (x *DeleteSessionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[42]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3380,7 +3380,7 @@ func (x *DeleteSessionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSessionResponse.ProtoReflect.Descriptor instead.
 func (*DeleteSessionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{42}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{42}
 }
 
 type GetDisciplineRequest struct {
@@ -3396,7 +3396,7 @@ type GetDisciplineRequest struct {
 
 func (x *GetDisciplineRequest) Reset() {
 	*x = GetDisciplineRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[43]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3408,7 +3408,7 @@ func (x *GetDisciplineRequest) String() string {
 func (*GetDisciplineRequest) ProtoMessage() {}
 
 func (x *GetDisciplineRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[43]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3421,7 +3421,7 @@ func (x *GetDisciplineRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDisciplineRequest.ProtoReflect.Descriptor instead.
 func (*GetDisciplineRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{43}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *GetDisciplineRequest) GetInstitutionSlug() string {
@@ -3476,7 +3476,7 @@ type GetDisciplineResponse struct {
 
 func (x *GetDisciplineResponse) Reset() {
 	*x = GetDisciplineResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[44]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3488,7 +3488,7 @@ func (x *GetDisciplineResponse) String() string {
 func (*GetDisciplineResponse) ProtoMessage() {}
 
 func (x *GetDisciplineResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[44]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3501,7 +3501,7 @@ func (x *GetDisciplineResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDisciplineResponse.ProtoReflect.Descriptor instead.
 func (*GetDisciplineResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{44}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *GetDisciplineResponse) GetIncidents() []*Incident {
@@ -3570,7 +3570,7 @@ type SaveIncidentRequest struct {
 
 func (x *SaveIncidentRequest) Reset() {
 	*x = SaveIncidentRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[45]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3582,7 +3582,7 @@ func (x *SaveIncidentRequest) String() string {
 func (*SaveIncidentRequest) ProtoMessage() {}
 
 func (x *SaveIncidentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[45]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3595,7 +3595,7 @@ func (x *SaveIncidentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveIncidentRequest.ProtoReflect.Descriptor instead.
 func (*SaveIncidentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{45}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *SaveIncidentRequest) GetInstitutionSlug() string {
@@ -3621,7 +3621,7 @@ type SaveIncidentResponse struct {
 
 func (x *SaveIncidentResponse) Reset() {
 	*x = SaveIncidentResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[46]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3633,7 +3633,7 @@ func (x *SaveIncidentResponse) String() string {
 func (*SaveIncidentResponse) ProtoMessage() {}
 
 func (x *SaveIncidentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[46]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3646,7 +3646,7 @@ func (x *SaveIncidentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveIncidentResponse.ProtoReflect.Descriptor instead.
 func (*SaveIncidentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{46}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *SaveIncidentResponse) GetIncident() *Incident {
@@ -3666,7 +3666,7 @@ type DeleteIncidentRequest struct {
 
 func (x *DeleteIncidentRequest) Reset() {
 	*x = DeleteIncidentRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[47]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3678,7 +3678,7 @@ func (x *DeleteIncidentRequest) String() string {
 func (*DeleteIncidentRequest) ProtoMessage() {}
 
 func (x *DeleteIncidentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[47]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3691,7 +3691,7 @@ func (x *DeleteIncidentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteIncidentRequest.ProtoReflect.Descriptor instead.
 func (*DeleteIncidentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{47}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *DeleteIncidentRequest) GetInstitutionSlug() string {
@@ -3716,7 +3716,7 @@ type DeleteIncidentResponse struct {
 
 func (x *DeleteIncidentResponse) Reset() {
 	*x = DeleteIncidentResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[48]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3728,7 +3728,7 @@ func (x *DeleteIncidentResponse) String() string {
 func (*DeleteIncidentResponse) ProtoMessage() {}
 
 func (x *DeleteIncidentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[48]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3741,7 +3741,7 @@ func (x *DeleteIncidentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteIncidentResponse.ProtoReflect.Descriptor instead.
 func (*DeleteIncidentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{48}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{48}
 }
 
 type SetIncidentStatusRequest struct {
@@ -3755,7 +3755,7 @@ type SetIncidentStatusRequest struct {
 
 func (x *SetIncidentStatusRequest) Reset() {
 	*x = SetIncidentStatusRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[49]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3767,7 +3767,7 @@ func (x *SetIncidentStatusRequest) String() string {
 func (*SetIncidentStatusRequest) ProtoMessage() {}
 
 func (x *SetIncidentStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[49]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3780,7 +3780,7 @@ func (x *SetIncidentStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetIncidentStatusRequest.ProtoReflect.Descriptor instead.
 func (*SetIncidentStatusRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{49}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *SetIncidentStatusRequest) GetInstitutionSlug() string {
@@ -3812,7 +3812,7 @@ type SetIncidentStatusResponse struct {
 
 func (x *SetIncidentStatusResponse) Reset() {
 	*x = SetIncidentStatusResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[50]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3824,7 +3824,7 @@ func (x *SetIncidentStatusResponse) String() string {
 func (*SetIncidentStatusResponse) ProtoMessage() {}
 
 func (x *SetIncidentStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[50]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3837,7 +3837,7 @@ func (x *SetIncidentStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetIncidentStatusResponse.ProtoReflect.Descriptor instead.
 func (*SetIncidentStatusResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{50}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{50}
 }
 
 type GetMeasureContextRequest struct {
@@ -3851,7 +3851,7 @@ type GetMeasureContextRequest struct {
 
 func (x *GetMeasureContextRequest) Reset() {
 	*x = GetMeasureContextRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[51]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3863,7 +3863,7 @@ func (x *GetMeasureContextRequest) String() string {
 func (*GetMeasureContextRequest) ProtoMessage() {}
 
 func (x *GetMeasureContextRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[51]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3876,7 +3876,7 @@ func (x *GetMeasureContextRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMeasureContextRequest.ProtoReflect.Descriptor instead.
 func (*GetMeasureContextRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{51}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *GetMeasureContextRequest) GetInstitutionSlug() string {
@@ -3916,7 +3916,7 @@ type GetMeasureContextResponse struct {
 
 func (x *GetMeasureContextResponse) Reset() {
 	*x = GetMeasureContextResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[52]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3928,7 +3928,7 @@ func (x *GetMeasureContextResponse) String() string {
 func (*GetMeasureContextResponse) ProtoMessage() {}
 
 func (x *GetMeasureContextResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[52]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3941,7 +3941,7 @@ func (x *GetMeasureContextResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMeasureContextResponse.ProtoReflect.Descriptor instead.
 func (*GetMeasureContextResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{52}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *GetMeasureContextResponse) GetMinorInTerm() int32 {
@@ -4003,7 +4003,7 @@ type AddMeasureRequest struct {
 
 func (x *AddMeasureRequest) Reset() {
 	*x = AddMeasureRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[53]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4015,7 +4015,7 @@ func (x *AddMeasureRequest) String() string {
 func (*AddMeasureRequest) ProtoMessage() {}
 
 func (x *AddMeasureRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[53]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4028,7 +4028,7 @@ func (x *AddMeasureRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddMeasureRequest.ProtoReflect.Descriptor instead.
 func (*AddMeasureRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{53}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *AddMeasureRequest) GetInstitutionSlug() string {
@@ -4054,7 +4054,7 @@ type AddMeasureResponse struct {
 
 func (x *AddMeasureResponse) Reset() {
 	*x = AddMeasureResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[54]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4066,7 +4066,7 @@ func (x *AddMeasureResponse) String() string {
 func (*AddMeasureResponse) ProtoMessage() {}
 
 func (x *AddMeasureResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[54]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4079,7 +4079,7 @@ func (x *AddMeasureResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddMeasureResponse.ProtoReflect.Descriptor instead.
 func (*AddMeasureResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{54}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *AddMeasureResponse) GetMeasure() *Measure {
@@ -4100,7 +4100,7 @@ type NotifyMeasureRequest struct {
 
 func (x *NotifyMeasureRequest) Reset() {
 	*x = NotifyMeasureRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[55]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4112,7 +4112,7 @@ func (x *NotifyMeasureRequest) String() string {
 func (*NotifyMeasureRequest) ProtoMessage() {}
 
 func (x *NotifyMeasureRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[55]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4125,7 +4125,7 @@ func (x *NotifyMeasureRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotifyMeasureRequest.ProtoReflect.Descriptor instead.
 func (*NotifyMeasureRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{55}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *NotifyMeasureRequest) GetInstitutionSlug() string {
@@ -4157,7 +4157,7 @@ type NotifyMeasureResponse struct {
 
 func (x *NotifyMeasureResponse) Reset() {
 	*x = NotifyMeasureResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[56]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4169,7 +4169,7 @@ func (x *NotifyMeasureResponse) String() string {
 func (*NotifyMeasureResponse) ProtoMessage() {}
 
 func (x *NotifyMeasureResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[56]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4182,7 +4182,7 @@ func (x *NotifyMeasureResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotifyMeasureResponse.ProtoReflect.Descriptor instead.
 func (*NotifyMeasureResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{56}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{56}
 }
 
 type RequestReconsiderationRequest struct {
@@ -4196,7 +4196,7 @@ type RequestReconsiderationRequest struct {
 
 func (x *RequestReconsiderationRequest) Reset() {
 	*x = RequestReconsiderationRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[57]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4208,7 +4208,7 @@ func (x *RequestReconsiderationRequest) String() string {
 func (*RequestReconsiderationRequest) ProtoMessage() {}
 
 func (x *RequestReconsiderationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[57]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4221,7 +4221,7 @@ func (x *RequestReconsiderationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RequestReconsiderationRequest.ProtoReflect.Descriptor instead.
 func (*RequestReconsiderationRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{57}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *RequestReconsiderationRequest) GetInstitutionSlug() string {
@@ -4253,7 +4253,7 @@ type RequestReconsiderationResponse struct {
 
 func (x *RequestReconsiderationResponse) Reset() {
 	*x = RequestReconsiderationResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[58]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4265,7 +4265,7 @@ func (x *RequestReconsiderationResponse) String() string {
 func (*RequestReconsiderationResponse) ProtoMessage() {}
 
 func (x *RequestReconsiderationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[58]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4278,7 +4278,7 @@ func (x *RequestReconsiderationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RequestReconsiderationResponse.ProtoReflect.Descriptor instead.
 func (*RequestReconsiderationResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{58}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{58}
 }
 
 type ResolveReconsiderationRequest struct {
@@ -4294,7 +4294,7 @@ type ResolveReconsiderationRequest struct {
 
 func (x *ResolveReconsiderationRequest) Reset() {
 	*x = ResolveReconsiderationRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[59]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4306,7 +4306,7 @@ func (x *ResolveReconsiderationRequest) String() string {
 func (*ResolveReconsiderationRequest) ProtoMessage() {}
 
 func (x *ResolveReconsiderationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[59]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4319,7 +4319,7 @@ func (x *ResolveReconsiderationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveReconsiderationRequest.ProtoReflect.Descriptor instead.
 func (*ResolveReconsiderationRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{59}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *ResolveReconsiderationRequest) GetInstitutionSlug() string {
@@ -4358,7 +4358,7 @@ type ResolveReconsiderationResponse struct {
 
 func (x *ResolveReconsiderationResponse) Reset() {
 	*x = ResolveReconsiderationResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[60]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4370,7 +4370,7 @@ func (x *ResolveReconsiderationResponse) String() string {
 func (*ResolveReconsiderationResponse) ProtoMessage() {}
 
 func (x *ResolveReconsiderationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[60]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4383,7 +4383,7 @@ func (x *ResolveReconsiderationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveReconsiderationResponse.ProtoReflect.Descriptor instead.
 func (*ResolveReconsiderationResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{60}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{60}
 }
 
 type DeleteMeasureRequest struct {
@@ -4396,7 +4396,7 @@ type DeleteMeasureRequest struct {
 
 func (x *DeleteMeasureRequest) Reset() {
 	*x = DeleteMeasureRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[61]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4408,7 +4408,7 @@ func (x *DeleteMeasureRequest) String() string {
 func (*DeleteMeasureRequest) ProtoMessage() {}
 
 func (x *DeleteMeasureRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[61]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4421,7 +4421,7 @@ func (x *DeleteMeasureRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMeasureRequest.ProtoReflect.Descriptor instead.
 func (*DeleteMeasureRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{61}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *DeleteMeasureRequest) GetInstitutionSlug() string {
@@ -4446,7 +4446,7 @@ type DeleteMeasureResponse struct {
 
 func (x *DeleteMeasureResponse) Reset() {
 	*x = DeleteMeasureResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[62]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4458,7 +4458,7 @@ func (x *DeleteMeasureResponse) String() string {
 func (*DeleteMeasureResponse) ProtoMessage() {}
 
 func (x *DeleteMeasureResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[62]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4471,7 +4471,7 @@ func (x *DeleteMeasureResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMeasureResponse.ProtoReflect.Descriptor instead.
 func (*DeleteMeasureResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{62}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{62}
 }
 
 type ListPlansRequest struct {
@@ -4484,7 +4484,7 @@ type ListPlansRequest struct {
 
 func (x *ListPlansRequest) Reset() {
 	*x = ListPlansRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[63]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4496,7 +4496,7 @@ func (x *ListPlansRequest) String() string {
 func (*ListPlansRequest) ProtoMessage() {}
 
 func (x *ListPlansRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[63]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4509,7 +4509,7 @@ func (x *ListPlansRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPlansRequest.ProtoReflect.Descriptor instead.
 func (*ListPlansRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{63}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *ListPlansRequest) GetInstitutionSlug() string {
@@ -4542,7 +4542,7 @@ type ListPlansResponse struct {
 
 func (x *ListPlansResponse) Reset() {
 	*x = ListPlansResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[64]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4554,7 +4554,7 @@ func (x *ListPlansResponse) String() string {
 func (*ListPlansResponse) ProtoMessage() {}
 
 func (x *ListPlansResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[64]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4567,7 +4567,7 @@ func (x *ListPlansResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPlansResponse.ProtoReflect.Descriptor instead.
 func (*ListPlansResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{64}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *ListPlansResponse) GetPlans() []*IndividualPlan {
@@ -4629,7 +4629,7 @@ type GetPlanRequest struct {
 
 func (x *GetPlanRequest) Reset() {
 	*x = GetPlanRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[65]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4641,7 +4641,7 @@ func (x *GetPlanRequest) String() string {
 func (*GetPlanRequest) ProtoMessage() {}
 
 func (x *GetPlanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[65]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4654,7 +4654,7 @@ func (x *GetPlanRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPlanRequest.ProtoReflect.Descriptor instead.
 func (*GetPlanRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{65}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *GetPlanRequest) GetInstitutionSlug() string {
@@ -4681,7 +4681,7 @@ type GetPlanResponse struct {
 
 func (x *GetPlanResponse) Reset() {
 	*x = GetPlanResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[66]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4693,7 +4693,7 @@ func (x *GetPlanResponse) String() string {
 func (*GetPlanResponse) ProtoMessage() {}
 
 func (x *GetPlanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[66]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4706,7 +4706,7 @@ func (x *GetPlanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPlanResponse.ProtoReflect.Descriptor instead.
 func (*GetPlanResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{66}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *GetPlanResponse) GetPlan() *IndividualPlan {
@@ -4733,7 +4733,7 @@ type SavePlanRequest struct {
 
 func (x *SavePlanRequest) Reset() {
 	*x = SavePlanRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[67]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4745,7 +4745,7 @@ func (x *SavePlanRequest) String() string {
 func (*SavePlanRequest) ProtoMessage() {}
 
 func (x *SavePlanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[67]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4758,7 +4758,7 @@ func (x *SavePlanRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SavePlanRequest.ProtoReflect.Descriptor instead.
 func (*SavePlanRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{67}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *SavePlanRequest) GetInstitutionSlug() string {
@@ -4784,7 +4784,7 @@ type SavePlanResponse struct {
 
 func (x *SavePlanResponse) Reset() {
 	*x = SavePlanResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[68]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4796,7 +4796,7 @@ func (x *SavePlanResponse) String() string {
 func (*SavePlanResponse) ProtoMessage() {}
 
 func (x *SavePlanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[68]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4809,7 +4809,7 @@ func (x *SavePlanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SavePlanResponse.ProtoReflect.Descriptor instead.
 func (*SavePlanResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{68}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *SavePlanResponse) GetPlan() *IndividualPlan {
@@ -4831,7 +4831,7 @@ type SetPlanStatusRequest struct {
 
 func (x *SetPlanStatusRequest) Reset() {
 	*x = SetPlanStatusRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[69]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4843,7 +4843,7 @@ func (x *SetPlanStatusRequest) String() string {
 func (*SetPlanStatusRequest) ProtoMessage() {}
 
 func (x *SetPlanStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[69]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4856,7 +4856,7 @@ func (x *SetPlanStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetPlanStatusRequest.ProtoReflect.Descriptor instead.
 func (*SetPlanStatusRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{69}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *SetPlanStatusRequest) GetInstitutionSlug() string {
@@ -4889,7 +4889,7 @@ type SetPlanStatusResponse struct {
 
 func (x *SetPlanStatusResponse) Reset() {
 	*x = SetPlanStatusResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[70]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[70]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4901,7 +4901,7 @@ func (x *SetPlanStatusResponse) String() string {
 func (*SetPlanStatusResponse) ProtoMessage() {}
 
 func (x *SetPlanStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[70]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[70]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4914,7 +4914,7 @@ func (x *SetPlanStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetPlanStatusResponse.ProtoReflect.Descriptor instead.
 func (*SetPlanStatusResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{70}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *SetPlanStatusResponse) GetPlan() *IndividualPlan {
@@ -4934,7 +4934,7 @@ type DeletePlanRequest struct {
 
 func (x *DeletePlanRequest) Reset() {
 	*x = DeletePlanRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[71]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[71]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4946,7 +4946,7 @@ func (x *DeletePlanRequest) String() string {
 func (*DeletePlanRequest) ProtoMessage() {}
 
 func (x *DeletePlanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[71]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[71]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4959,7 +4959,7 @@ func (x *DeletePlanRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePlanRequest.ProtoReflect.Descriptor instead.
 func (*DeletePlanRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{71}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{71}
 }
 
 func (x *DeletePlanRequest) GetInstitutionSlug() string {
@@ -4984,7 +4984,7 @@ type DeletePlanResponse struct {
 
 func (x *DeletePlanResponse) Reset() {
 	*x = DeletePlanResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[72]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[72]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4996,7 +4996,7 @@ func (x *DeletePlanResponse) String() string {
 func (*DeletePlanResponse) ProtoMessage() {}
 
 func (x *DeletePlanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[72]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[72]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5009,7 +5009,7 @@ func (x *DeletePlanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePlanResponse.ProtoReflect.Descriptor instead.
 func (*DeletePlanResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{72}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{72}
 }
 
 type ListTherapiesRequest struct {
@@ -5024,7 +5024,7 @@ type ListTherapiesRequest struct {
 
 func (x *ListTherapiesRequest) Reset() {
 	*x = ListTherapiesRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[73]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[73]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5036,7 +5036,7 @@ func (x *ListTherapiesRequest) String() string {
 func (*ListTherapiesRequest) ProtoMessage() {}
 
 func (x *ListTherapiesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[73]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[73]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5049,7 +5049,7 @@ func (x *ListTherapiesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTherapiesRequest.ProtoReflect.Descriptor instead.
 func (*ListTherapiesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{73}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{73}
 }
 
 func (x *ListTherapiesRequest) GetInstitutionSlug() string {
@@ -5092,7 +5092,7 @@ type ListTherapiesResponse struct {
 
 func (x *ListTherapiesResponse) Reset() {
 	*x = ListTherapiesResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[74]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[74]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5104,7 +5104,7 @@ func (x *ListTherapiesResponse) String() string {
 func (*ListTherapiesResponse) ProtoMessage() {}
 
 func (x *ListTherapiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[74]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[74]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5117,7 +5117,7 @@ func (x *ListTherapiesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTherapiesResponse.ProtoReflect.Descriptor instead.
 func (*ListTherapiesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{74}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{74}
 }
 
 func (x *ListTherapiesResponse) GetSessions() []*TherapySession {
@@ -5158,7 +5158,7 @@ type SaveTherapyRequest struct {
 
 func (x *SaveTherapyRequest) Reset() {
 	*x = SaveTherapyRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[75]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[75]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5170,7 +5170,7 @@ func (x *SaveTherapyRequest) String() string {
 func (*SaveTherapyRequest) ProtoMessage() {}
 
 func (x *SaveTherapyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[75]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[75]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5183,7 +5183,7 @@ func (x *SaveTherapyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveTherapyRequest.ProtoReflect.Descriptor instead.
 func (*SaveTherapyRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{75}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{75}
 }
 
 func (x *SaveTherapyRequest) GetInstitutionSlug() string {
@@ -5209,7 +5209,7 @@ type SaveTherapyResponse struct {
 
 func (x *SaveTherapyResponse) Reset() {
 	*x = SaveTherapyResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[76]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[76]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5221,7 +5221,7 @@ func (x *SaveTherapyResponse) String() string {
 func (*SaveTherapyResponse) ProtoMessage() {}
 
 func (x *SaveTherapyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[76]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[76]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5234,7 +5234,7 @@ func (x *SaveTherapyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveTherapyResponse.ProtoReflect.Descriptor instead.
 func (*SaveTherapyResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{76}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{76}
 }
 
 func (x *SaveTherapyResponse) GetSession() *TherapySession {
@@ -5254,7 +5254,7 @@ type DeleteTherapyRequest struct {
 
 func (x *DeleteTherapyRequest) Reset() {
 	*x = DeleteTherapyRequest{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[77]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[77]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5266,7 +5266,7 @@ func (x *DeleteTherapyRequest) String() string {
 func (*DeleteTherapyRequest) ProtoMessage() {}
 
 func (x *DeleteTherapyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[77]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[77]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5279,7 +5279,7 @@ func (x *DeleteTherapyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTherapyRequest.ProtoReflect.Descriptor instead.
 func (*DeleteTherapyRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{77}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{77}
 }
 
 func (x *DeleteTherapyRequest) GetInstitutionSlug() string {
@@ -5304,7 +5304,7 @@ type DeleteTherapyResponse struct {
 
 func (x *DeleteTherapyResponse) Reset() {
 	*x = DeleteTherapyResponse{}
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[78]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[78]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5316,7 +5316,7 @@ func (x *DeleteTherapyResponse) String() string {
 func (*DeleteTherapyResponse) ProtoMessage() {}
 
 func (x *DeleteTherapyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_wellbeing_v1_wellbeing_proto_msgTypes[78]
+	mi := &file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes[78]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5329,14 +5329,14 @@ func (x *DeleteTherapyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTherapyResponse.ProtoReflect.Descriptor instead.
 func (*DeleteTherapyResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{78}
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP(), []int{78}
 }
 
-var File_joseph_wellbeing_v1_wellbeing_proto protoreflect.FileDescriptor
+var File_ltedu_wellbeing_v1_wellbeing_proto protoreflect.FileDescriptor
 
-const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
+const file_ltedu_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\n" +
-	"#joseph/wellbeing/v1/wellbeing.proto\x12\x13joseph.wellbeing.v1\x1a\"joseph/wellbeing/v1/tutoring.proto\"\xe2\x02\n" +
+	"\"ltedu/wellbeing/v1/wellbeing.proto\x12\x12ltedu.wellbeing.v1\x1a!ltedu/wellbeing/v1/tutoring.proto\"\xe2\x02\n" +
 	"\vWellStudent\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
@@ -5439,7 +5439,7 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\x10reconsider_until\x18\x11 \x01(\tR\x0freconsiderUntil\x12#\n" +
 	"\rresolve_until\x18\x12 \x01(\tR\fresolveUntil\x12!\n" +
 	"\fstudent_name\x18\x13 \x01(\tR\vstudentName\x12\x1c\n" +
-	"\tplacement\x18\x14 \x01(\tR\tplacement\"\xae\x03\n" +
+	"\tplacement\x18\x14 \x01(\tR\tplacement\"\xad\x03\n" +
 	"\bIncident\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
@@ -5454,8 +5454,8 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\rreported_name\x18\t \x01(\tR\freportedName\x12,\n" +
 	"\x12family_notified_on\x18\n" +
 	" \x01(\tR\x10familyNotifiedOn\x12\x16\n" +
-	"\x06status\x18\v \x01(\tR\x06status\x128\n" +
-	"\bmeasures\x18\f \x03(\v2\x1c.joseph.wellbeing.v1.MeasureR\bmeasures\x12\x12\n" +
+	"\x06status\x18\v \x01(\tR\x06status\x127\n" +
+	"\bmeasures\x18\f \x03(\v2\x1b.ltedu.wellbeing.v1.MeasureR\bmeasures\x12\x12\n" +
 	"\x04mine\x18\r \x01(\bR\x04mine\"\x8a\x01\n" +
 	"\x10IncidentCategory\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\tR\x04code\x12\x14\n" +
@@ -5528,9 +5528,9 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\x13ListStudentsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x14\n" +
 	"\x05query\x18\x02 \x01(\tR\x05query\x12#\n" +
-	"\rspecial_needs\x18\x03 \x01(\bR\fspecialNeeds\"\xf4\x01\n" +
-	"\x14ListStudentsResponse\x12<\n" +
-	"\bstudents\x18\x01 \x03(\v2 .joseph.wellbeing.v1.WellStudentR\bstudents\x12\x1b\n" +
+	"\rspecial_needs\x18\x03 \x01(\bR\fspecialNeeds\"\xf3\x01\n" +
+	"\x14ListStudentsResponse\x12;\n" +
+	"\bstudents\x18\x01 \x03(\v2\x1f.ltedu.wellbeing.v1.WellStudentR\bstudents\x12\x1b\n" +
 	"\tcan_tutor\x18\x02 \x01(\bR\bcanTutor\x12\x1d\n" +
 	"\n" +
 	"can_report\x18\x03 \x01(\bR\tcanReport\x12\x1d\n" +
@@ -5542,19 +5542,19 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\x15GetStudentFileRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x02 \x01(\tR\tstudentId\"\xbf\a\n" +
-	"\x16GetStudentFileResponse\x12:\n" +
-	"\astudent\x18\x01 \x01(\v2 .joseph.wellbeing.v1.WellStudentR\astudent\x12>\n" +
+	"student_id\x18\x02 \x01(\tR\tstudentId\"\xb3\a\n" +
+	"\x16GetStudentFileResponse\x129\n" +
+	"\astudent\x18\x01 \x01(\v2\x1f.ltedu.wellbeing.v1.WellStudentR\astudent\x12=\n" +
 	"\n" +
-	"interviews\x18\x02 \x03(\v2\x1e.joseph.wellbeing.v1.InterviewR\n" +
-	"interviews\x12A\n" +
-	"\vcommitments\x18\x03 \x03(\v2\x1f.joseph.wellbeing.v1.CommitmentR\vcommitments\x12;\n" +
-	"\tincidents\x18\x04 \x03(\v2\x1d.joseph.wellbeing.v1.IncidentR\tincidents\x128\n" +
-	"\bmeasures\x18\x05 \x03(\v2\x1c.joseph.wellbeing.v1.MeasureR\bmeasures\x12:\n" +
-	"\aconduct\x18\x06 \x03(\v2 .joseph.wellbeing.v1.TermConductR\aconduct\x124\n" +
-	"\x05cases\x18\a \x03(\v2\x1e.joseph.wellbeing.v1.PsychCaseR\x05cases\x129\n" +
-	"\x05plans\x18\b \x03(\v2#.joseph.wellbeing.v1.IndividualPlanR\x05plans\x12A\n" +
-	"\ttherapies\x18\t \x03(\v2#.joseph.wellbeing.v1.TherapySessionR\ttherapies\x12\x1b\n" +
+	"interviews\x18\x02 \x03(\v2\x1d.ltedu.wellbeing.v1.InterviewR\n" +
+	"interviews\x12@\n" +
+	"\vcommitments\x18\x03 \x03(\v2\x1e.ltedu.wellbeing.v1.CommitmentR\vcommitments\x12:\n" +
+	"\tincidents\x18\x04 \x03(\v2\x1c.ltedu.wellbeing.v1.IncidentR\tincidents\x127\n" +
+	"\bmeasures\x18\x05 \x03(\v2\x1b.ltedu.wellbeing.v1.MeasureR\bmeasures\x129\n" +
+	"\aconduct\x18\x06 \x03(\v2\x1f.ltedu.wellbeing.v1.TermConductR\aconduct\x123\n" +
+	"\x05cases\x18\a \x03(\v2\x1d.ltedu.wellbeing.v1.PsychCaseR\x05cases\x128\n" +
+	"\x05plans\x18\b \x03(\v2\".ltedu.wellbeing.v1.IndividualPlanR\x05plans\x12@\n" +
+	"\ttherapies\x18\t \x03(\v2\".ltedu.wellbeing.v1.TherapySessionR\ttherapies\x12\x1b\n" +
 	"\tcan_tutor\x18\n" +
 	" \x01(\bR\bcanTutor\x12\x1b\n" +
 	"\tcan_refer\x18\v \x01(\bR\bcanRefer\x12\x1d\n" +
@@ -5564,47 +5564,47 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"can_decide\x18\r \x01(\bR\tcanDecide\x12\x19\n" +
 	"\bcan_plan\x18\x0e \x01(\bR\acanPlan\x12\x16\n" +
 	"\x06family\x18\x0f \x01(\bR\x06family\x12\x14\n" +
-	"\x05today\x18\x10 \x01(\tR\x05today\x12?\n" +
-	"\acatalog\x18\x11 \x03(\v2%.joseph.wellbeing.v1.IncidentCategoryR\acatalog\x12@\n" +
-	"\bsessions\x18\x12 \x03(\v2$.joseph.wellbeing.v1.TutoringSessionR\bsessions\x12;\n" +
-	"\x06saanee\x18\x13 \x03(\v2#.joseph.wellbeing.v1.SaaneeReferralR\x06saanee\"=\n" +
+	"\x05today\x18\x10 \x01(\tR\x05today\x12>\n" +
+	"\acatalog\x18\x11 \x03(\v2$.ltedu.wellbeing.v1.IncidentCategoryR\acatalog\x12?\n" +
+	"\bsessions\x18\x12 \x03(\v2#.ltedu.wellbeing.v1.TutoringSessionR\bsessions\x12:\n" +
+	"\x06saanee\x18\x13 \x03(\v2\".ltedu.wellbeing.v1.SaaneeReferralR\x06saanee\"=\n" +
 	"\x10GetAlertsRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xe8\x01\n" +
-	"\x11GetAlertsResponse\x126\n" +
-	"\x06alerts\x18\x01 \x03(\v2\x1e.joseph.wellbeing.v1.WellAlertR\x06alerts\x12J\n" +
-	"\x06counts\x18\x02 \x03(\v22.joseph.wellbeing.v1.GetAlertsResponse.CountsEntryR\x06counts\x12\x14\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xe6\x01\n" +
+	"\x11GetAlertsResponse\x125\n" +
+	"\x06alerts\x18\x01 \x03(\v2\x1d.ltedu.wellbeing.v1.WellAlertR\x06alerts\x12I\n" +
+	"\x06counts\x18\x02 \x03(\v21.ltedu.wellbeing.v1.GetAlertsResponse.CountsEntryR\x06counts\x12\x14\n" +
 	"\x05today\x18\x03 \x01(\tR\x05today\x1a9\n" +
 	"\vCountsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"?\n" +
 	"\x12GetTutoringRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x91\x02\n" +
-	"\x13GetTutoringResponse\x12<\n" +
-	"\bstudents\x18\x01 \x03(\v2 .joseph.wellbeing.v1.WellStudentR\bstudents\x121\n" +
-	"\x03due\x18\x02 \x03(\v2\x1f.joseph.wellbeing.v1.CommitmentR\x03due\x12>\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x8e\x02\n" +
+	"\x13GetTutoringResponse\x12;\n" +
+	"\bstudents\x18\x01 \x03(\v2\x1f.ltedu.wellbeing.v1.WellStudentR\bstudents\x120\n" +
+	"\x03due\x18\x02 \x03(\v2\x1e.ltedu.wellbeing.v1.CommitmentR\x03due\x12=\n" +
 	"\n" +
-	"interviews\x18\x03 \x03(\v2\x1e.joseph.wellbeing.v1.InterviewR\n" +
+	"interviews\x18\x03 \x03(\v2\x1d.ltedu.wellbeing.v1.InterviewR\n" +
 	"interviews\x12\x1b\n" +
 	"\tcan_tutor\x18\x04 \x01(\bR\bcanTutor\x12\x16\n" +
 	"\x06family\x18\x05 \x01(\bR\x06family\x12\x14\n" +
-	"\x05today\x18\x06 \x01(\tR\x05today\"\x7f\n" +
+	"\x05today\x18\x06 \x01(\tR\x05today\"~\n" +
 	"\x14SaveInterviewRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12<\n" +
-	"\tinterview\x18\x02 \x01(\v2\x1e.joseph.wellbeing.v1.InterviewR\tinterview\"U\n" +
-	"\x15SaveInterviewResponse\x12<\n" +
-	"\tinterview\x18\x01 \x01(\v2\x1e.joseph.wellbeing.v1.InterviewR\tinterview\"S\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12;\n" +
+	"\tinterview\x18\x02 \x01(\v2\x1d.ltedu.wellbeing.v1.InterviewR\tinterview\"T\n" +
+	"\x15SaveInterviewResponse\x12;\n" +
+	"\tinterview\x18\x01 \x01(\v2\x1d.ltedu.wellbeing.v1.InterviewR\tinterview\"S\n" +
 	"\x16DeleteInterviewRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x19\n" +
-	"\x17DeleteInterviewResponse\"\x83\x01\n" +
+	"\x17DeleteInterviewResponse\"\x82\x01\n" +
 	"\x15SaveCommitmentRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12?\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12>\n" +
 	"\n" +
-	"commitment\x18\x02 \x01(\v2\x1f.joseph.wellbeing.v1.CommitmentR\n" +
-	"commitment\"Y\n" +
-	"\x16SaveCommitmentResponse\x12?\n" +
+	"commitment\x18\x02 \x01(\v2\x1e.ltedu.wellbeing.v1.CommitmentR\n" +
+	"commitment\"X\n" +
+	"\x16SaveCommitmentResponse\x12>\n" +
 	"\n" +
-	"commitment\x18\x01 \x01(\v2\x1f.joseph.wellbeing.v1.CommitmentR\n" +
+	"commitment\x18\x01 \x01(\v2\x1e.ltedu.wellbeing.v1.CommitmentR\n" +
 	"commitment\"k\n" +
 	"\x16CheckCommitmentRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
@@ -5620,15 +5620,15 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\n" +
 	"student_id\x18\x02 \x01(\tR\tstudentId\x12\x16\n" +
 	"\x06reason\x18\x03 \x01(\tR\x06reason\x12\x1a\n" +
-	"\bpriority\x18\x04 \x01(\tR\bpriority\"C\n" +
-	"\rReferResponse\x122\n" +
-	"\x04case\x18\x01 \x01(\v2\x1e.joseph.wellbeing.v1.PsychCaseR\x04case\"Y\n" +
+	"\bpriority\x18\x04 \x01(\tR\bpriority\"B\n" +
+	"\rReferResponse\x121\n" +
+	"\x04case\x18\x01 \x01(\v2\x1d.ltedu.wellbeing.v1.PsychCaseR\x04case\"Y\n" +
 	"\x14GetPsychologyRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x16\n" +
-	"\x06status\x18\x02 \x01(\tR\x06status\"\xbc\x02\n" +
-	"\x15GetPsychologyResponse\x124\n" +
-	"\x05cases\x18\x01 \x03(\v2\x1e.joseph.wellbeing.v1.PsychCaseR\x05cases\x12U\n" +
-	"\tby_status\x18\x02 \x03(\v28.joseph.wellbeing.v1.GetPsychologyResponse.ByStatusEntryR\bbyStatus\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\tR\x06status\"\xba\x02\n" +
+	"\x15GetPsychologyResponse\x123\n" +
+	"\x05cases\x18\x01 \x03(\v2\x1d.ltedu.wellbeing.v1.PsychCaseR\x05cases\x12T\n" +
+	"\tby_status\x18\x02 \x03(\v27.ltedu.wellbeing.v1.GetPsychologyResponse.ByStatusEntryR\bbyStatus\x12\x16\n" +
 	"\x06urgent\x18\x03 \x01(\x05R\x06urgent\x12\"\n" +
 	"\fconfidential\x18\x04 \x01(\bR\fconfidential\x12\x1d\n" +
 	"\n" +
@@ -5638,10 +5638,10 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"K\n" +
 	"\x0eGetCaseRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"\x84\x01\n" +
-	"\x0fGetCaseResponse\x122\n" +
-	"\x04case\x18\x01 \x01(\v2\x1e.joseph.wellbeing.v1.PsychCaseR\x04case\x12=\n" +
-	"\bsessions\x18\x02 \x03(\v2!.joseph.wellbeing.v1.PsychSessionR\bsessions\"\xbb\x01\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"\x82\x01\n" +
+	"\x0fGetCaseResponse\x121\n" +
+	"\x04case\x18\x01 \x01(\v2\x1d.ltedu.wellbeing.v1.PsychCaseR\x04case\x12<\n" +
+	"\bsessions\x18\x02 \x03(\v2 .ltedu.wellbeing.v1.PsychSessionR\bsessions\"\xbb\x01\n" +
 	"\x11UpdateCaseRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x16\n" +
@@ -5649,14 +5649,14 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\bpriority\x18\x04 \x01(\tR\bpriority\x12\x16\n" +
 	"\x06reason\x18\x05 \x01(\tR\x06reason\x12\x1f\n" +
 	"\vshared_note\x18\x06 \x01(\tR\n" +
-	"sharedNote\"H\n" +
-	"\x12UpdateCaseResponse\x122\n" +
-	"\x04case\x18\x01 \x01(\v2\x1e.joseph.wellbeing.v1.PsychCaseR\x04case\"{\n" +
+	"sharedNote\"G\n" +
+	"\x12UpdateCaseResponse\x121\n" +
+	"\x04case\x18\x01 \x01(\v2\x1d.ltedu.wellbeing.v1.PsychCaseR\x04case\"z\n" +
 	"\x11AddSessionRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12;\n" +
-	"\asession\x18\x02 \x01(\v2!.joseph.wellbeing.v1.PsychSessionR\asession\"Q\n" +
-	"\x12AddSessionResponse\x12;\n" +
-	"\asession\x18\x01 \x01(\v2!.joseph.wellbeing.v1.PsychSessionR\asession\"j\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12:\n" +
+	"\asession\x18\x02 \x01(\v2 .ltedu.wellbeing.v1.PsychSessionR\asession\"P\n" +
+	"\x12AddSessionResponse\x12:\n" +
+	"\asession\x18\x01 \x01(\v2 .ltedu.wellbeing.v1.PsychSessionR\asession\"j\n" +
 	"\x14DeleteSessionRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
 	"\acase_id\x18\x02 \x01(\tR\x06caseId\x12\x0e\n" +
@@ -5667,23 +5667,23 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\x04from\x18\x02 \x01(\tR\x04from\x12\x0e\n" +
 	"\x02to\x18\x03 \x01(\tR\x02to\x12\x1a\n" +
 	"\bseverity\x18\x04 \x01(\tR\bseverity\x12\x16\n" +
-	"\x06status\x18\x05 \x01(\tR\x06status\"\xd5\x02\n" +
-	"\x15GetDisciplineResponse\x12;\n" +
-	"\tincidents\x18\x01 \x03(\v2\x1d.joseph.wellbeing.v1.IncidentR\tincidents\x12?\n" +
-	"\acatalog\x18\x02 \x03(\v2%.joseph.wellbeing.v1.IncidentCategoryR\acatalog\x12\x18\n" +
+	"\x06status\x18\x05 \x01(\tR\x06status\"\xd2\x02\n" +
+	"\x15GetDisciplineResponse\x12:\n" +
+	"\tincidents\x18\x01 \x03(\v2\x1c.ltedu.wellbeing.v1.IncidentR\tincidents\x12>\n" +
+	"\acatalog\x18\x02 \x03(\v2$.ltedu.wellbeing.v1.IncidentCategoryR\acatalog\x12\x18\n" +
 	"\apending\x18\x03 \x01(\x05R\apending\x12\x1d\n" +
 	"\n" +
 	"can_report\x18\x04 \x01(\bR\tcanReport\x12\x1d\n" +
 	"\n" +
 	"can_decide\x18\x05 \x01(\bR\tcanDecide\x12\x16\n" +
 	"\x06family\x18\x06 \x01(\bR\x06family\x12\x14\n" +
-	"\x05today\x18\a \x01(\tR\x05today\x128\n" +
-	"\bmeasures\x18\b \x03(\v2\x1c.joseph.wellbeing.v1.MeasureR\bmeasures\"{\n" +
+	"\x05today\x18\a \x01(\tR\x05today\x127\n" +
+	"\bmeasures\x18\b \x03(\v2\x1b.ltedu.wellbeing.v1.MeasureR\bmeasures\"z\n" +
 	"\x13SaveIncidentRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x129\n" +
-	"\bincident\x18\x02 \x01(\v2\x1d.joseph.wellbeing.v1.IncidentR\bincident\"Q\n" +
-	"\x14SaveIncidentResponse\x129\n" +
-	"\bincident\x18\x01 \x01(\v2\x1d.joseph.wellbeing.v1.IncidentR\bincident\"R\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x128\n" +
+	"\bincident\x18\x02 \x01(\v2\x1c.ltedu.wellbeing.v1.IncidentR\bincident\"P\n" +
+	"\x14SaveIncidentResponse\x128\n" +
+	"\bincident\x18\x01 \x01(\v2\x1c.ltedu.wellbeing.v1.IncidentR\bincident\"R\n" +
 	"\x15DeleteIncidentRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x18\n" +
@@ -5706,12 +5706,12 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\vconditional\x18\x04 \x01(\bR\vconditional\x12\x1a\n" +
 	"\bexpelled\x18\x05 \x01(\bR\bexpelled\x12'\n" +
 	"\x0fconduct_average\x18\x06 \x01(\x01R\x0econductAverage\x12,\n" +
-	"\x12very_serious_fault\x18\a \x01(\bR\x10verySeriousFault\"v\n" +
+	"\x12very_serious_fault\x18\a \x01(\bR\x10verySeriousFault\"u\n" +
 	"\x11AddMeasureRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x126\n" +
-	"\ameasure\x18\x02 \x01(\v2\x1c.joseph.wellbeing.v1.MeasureR\ameasure\"L\n" +
-	"\x12AddMeasureResponse\x126\n" +
-	"\ameasure\x18\x01 \x01(\v2\x1c.joseph.wellbeing.v1.MeasureR\ameasure\"r\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x125\n" +
+	"\ameasure\x18\x02 \x01(\v2\x1b.ltedu.wellbeing.v1.MeasureR\ameasure\"K\n" +
+	"\x12AddMeasureResponse\x125\n" +
+	"\ameasure\x18\x01 \x01(\v2\x1b.ltedu.wellbeing.v1.MeasureR\ameasure\"r\n" +
 	"\x14NotifyMeasureRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x1f\n" +
@@ -5737,11 +5737,11 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\x15DeleteMeasureResponse\"Z\n" +
 	"\x10ListPlansRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
-	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xc7\x02\n" +
-	"\x11ListPlansResponse\x129\n" +
-	"\x05plans\x18\x01 \x03(\v2#.joseph.wellbeing.v1.IndividualPlanR\x05plans\x12<\n" +
-	"\bstudents\x18\x02 \x03(\v2 .joseph.wellbeing.v1.WellStudentR\bstudents\x12?\n" +
-	"\vspecialists\x18\x03 \x03(\v2\x1d.joseph.wellbeing.v1.StaffRefR\vspecialists\x12\x1b\n" +
+	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xc4\x02\n" +
+	"\x11ListPlansResponse\x128\n" +
+	"\x05plans\x18\x01 \x03(\v2\".ltedu.wellbeing.v1.IndividualPlanR\x05plans\x12;\n" +
+	"\bstudents\x18\x02 \x03(\v2\x1f.ltedu.wellbeing.v1.WellStudentR\bstudents\x12>\n" +
+	"\vspecialists\x18\x03 \x03(\v2\x1c.ltedu.wellbeing.v1.StaffRefR\vspecialists\x12\x1b\n" +
 	"\tperiod_id\x18\x04 \x01(\tR\bperiodId\x12\x1f\n" +
 	"\vperiod_name\x18\x05 \x01(\tR\n" +
 	"periodName\x12\x1d\n" +
@@ -5750,21 +5750,21 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\tcan_write\x18\a \x01(\bR\bcanWrite\"K\n" +
 	"\x0eGetPlanRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"l\n" +
-	"\x0fGetPlanResponse\x127\n" +
-	"\x04plan\x18\x01 \x01(\v2#.joseph.wellbeing.v1.IndividualPlanR\x04plan\x12 \n" +
-	"\vinstitution\x18\x02 \x01(\tR\vinstitution\"u\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"k\n" +
+	"\x0fGetPlanResponse\x126\n" +
+	"\x04plan\x18\x01 \x01(\v2\".ltedu.wellbeing.v1.IndividualPlanR\x04plan\x12 \n" +
+	"\vinstitution\x18\x02 \x01(\tR\vinstitution\"t\n" +
 	"\x0fSavePlanRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x127\n" +
-	"\x04plan\x18\x02 \x01(\v2#.joseph.wellbeing.v1.IndividualPlanR\x04plan\"K\n" +
-	"\x10SavePlanResponse\x127\n" +
-	"\x04plan\x18\x01 \x01(\v2#.joseph.wellbeing.v1.IndividualPlanR\x04plan\"i\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x126\n" +
+	"\x04plan\x18\x02 \x01(\v2\".ltedu.wellbeing.v1.IndividualPlanR\x04plan\"J\n" +
+	"\x10SavePlanResponse\x126\n" +
+	"\x04plan\x18\x01 \x01(\v2\".ltedu.wellbeing.v1.IndividualPlanR\x04plan\"i\n" +
 	"\x14SetPlanStatusRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\tR\x06status\"P\n" +
-	"\x15SetPlanStatusResponse\x127\n" +
-	"\x04plan\x18\x01 \x01(\v2#.joseph.wellbeing.v1.IndividualPlanR\x04plan\"N\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\"O\n" +
+	"\x15SetPlanStatusResponse\x126\n" +
+	"\x04plan\x18\x01 \x01(\v2\".ltedu.wellbeing.v1.IndividualPlanR\x04plan\"N\n" +
 	"\x11DeletePlanRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x14\n" +
@@ -5774,274 +5774,274 @@ const file_joseph_wellbeing_v1_wellbeing_proto_rawDesc = "" +
 	"\x04from\x18\x02 \x01(\tR\x04from\x12\x0e\n" +
 	"\x02to\x18\x03 \x01(\tR\x02to\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x04 \x01(\tR\tstudentId\"\xcb\x01\n" +
-	"\x15ListTherapiesResponse\x12?\n" +
-	"\bsessions\x18\x01 \x03(\v2#.joseph.wellbeing.v1.TherapySessionR\bsessions\x12<\n" +
-	"\bstudents\x18\x02 \x03(\v2 .joseph.wellbeing.v1.WellStudentR\bstudents\x12\x1b\n" +
+	"student_id\x18\x04 \x01(\tR\tstudentId\"\xc9\x01\n" +
+	"\x15ListTherapiesResponse\x12>\n" +
+	"\bsessions\x18\x01 \x03(\v2\".ltedu.wellbeing.v1.TherapySessionR\bsessions\x12;\n" +
+	"\bstudents\x18\x02 \x03(\v2\x1f.ltedu.wellbeing.v1.WellStudentR\bstudents\x12\x1b\n" +
 	"\tcan_write\x18\x03 \x01(\bR\bcanWrite\x12\x16\n" +
-	"\x06family\x18\x04 \x01(\bR\x06family\"~\n" +
+	"\x06family\x18\x04 \x01(\bR\x06family\"}\n" +
 	"\x12SaveTherapyRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12=\n" +
-	"\asession\x18\x02 \x01(\v2#.joseph.wellbeing.v1.TherapySessionR\asession\"T\n" +
-	"\x13SaveTherapyResponse\x12=\n" +
-	"\asession\x18\x01 \x01(\v2#.joseph.wellbeing.v1.TherapySessionR\asession\"Q\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12<\n" +
+	"\asession\x18\x02 \x01(\v2\".ltedu.wellbeing.v1.TherapySessionR\asession\"S\n" +
+	"\x13SaveTherapyResponse\x12<\n" +
+	"\asession\x18\x01 \x01(\v2\".ltedu.wellbeing.v1.TherapySessionR\asession\"Q\n" +
 	"\x14DeleteTherapyRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x17\n" +
-	"\x15DeleteTherapyResponse2\xcf\x1a\n" +
-	"\x10WellbeingService\x12c\n" +
-	"\fListStudents\x12(.joseph.wellbeing.v1.ListStudentsRequest\x1a).joseph.wellbeing.v1.ListStudentsResponse\x12i\n" +
-	"\x0eGetStudentFile\x12*.joseph.wellbeing.v1.GetStudentFileRequest\x1a+.joseph.wellbeing.v1.GetStudentFileResponse\x12Z\n" +
-	"\tGetAlerts\x12%.joseph.wellbeing.v1.GetAlertsRequest\x1a&.joseph.wellbeing.v1.GetAlertsResponse\x12`\n" +
-	"\vGetTutoring\x12'.joseph.wellbeing.v1.GetTutoringRequest\x1a(.joseph.wellbeing.v1.GetTutoringResponse\x12f\n" +
-	"\rSaveInterview\x12).joseph.wellbeing.v1.SaveInterviewRequest\x1a*.joseph.wellbeing.v1.SaveInterviewResponse\x12l\n" +
-	"\x0fDeleteInterview\x12+.joseph.wellbeing.v1.DeleteInterviewRequest\x1a,.joseph.wellbeing.v1.DeleteInterviewResponse\x12i\n" +
-	"\x0eSaveCommitment\x12*.joseph.wellbeing.v1.SaveCommitmentRequest\x1a+.joseph.wellbeing.v1.SaveCommitmentResponse\x12l\n" +
-	"\x0fCheckCommitment\x12+.joseph.wellbeing.v1.CheckCommitmentRequest\x1a,.joseph.wellbeing.v1.CheckCommitmentResponse\x12o\n" +
-	"\x10DeleteCommitment\x12,.joseph.wellbeing.v1.DeleteCommitmentRequest\x1a-.joseph.wellbeing.v1.DeleteCommitmentResponse\x12N\n" +
-	"\x05Refer\x12!.joseph.wellbeing.v1.ReferRequest\x1a\".joseph.wellbeing.v1.ReferResponse\x12f\n" +
-	"\rGetPsychology\x12).joseph.wellbeing.v1.GetPsychologyRequest\x1a*.joseph.wellbeing.v1.GetPsychologyResponse\x12T\n" +
-	"\aGetCase\x12#.joseph.wellbeing.v1.GetCaseRequest\x1a$.joseph.wellbeing.v1.GetCaseResponse\x12]\n" +
+	"\x15DeleteTherapyResponse2\x8b\x1a\n" +
+	"\x10WellbeingService\x12a\n" +
+	"\fListStudents\x12'.ltedu.wellbeing.v1.ListStudentsRequest\x1a(.ltedu.wellbeing.v1.ListStudentsResponse\x12g\n" +
+	"\x0eGetStudentFile\x12).ltedu.wellbeing.v1.GetStudentFileRequest\x1a*.ltedu.wellbeing.v1.GetStudentFileResponse\x12X\n" +
+	"\tGetAlerts\x12$.ltedu.wellbeing.v1.GetAlertsRequest\x1a%.ltedu.wellbeing.v1.GetAlertsResponse\x12^\n" +
+	"\vGetTutoring\x12&.ltedu.wellbeing.v1.GetTutoringRequest\x1a'.ltedu.wellbeing.v1.GetTutoringResponse\x12d\n" +
+	"\rSaveInterview\x12(.ltedu.wellbeing.v1.SaveInterviewRequest\x1a).ltedu.wellbeing.v1.SaveInterviewResponse\x12j\n" +
+	"\x0fDeleteInterview\x12*.ltedu.wellbeing.v1.DeleteInterviewRequest\x1a+.ltedu.wellbeing.v1.DeleteInterviewResponse\x12g\n" +
+	"\x0eSaveCommitment\x12).ltedu.wellbeing.v1.SaveCommitmentRequest\x1a*.ltedu.wellbeing.v1.SaveCommitmentResponse\x12j\n" +
+	"\x0fCheckCommitment\x12*.ltedu.wellbeing.v1.CheckCommitmentRequest\x1a+.ltedu.wellbeing.v1.CheckCommitmentResponse\x12m\n" +
+	"\x10DeleteCommitment\x12+.ltedu.wellbeing.v1.DeleteCommitmentRequest\x1a,.ltedu.wellbeing.v1.DeleteCommitmentResponse\x12L\n" +
+	"\x05Refer\x12 .ltedu.wellbeing.v1.ReferRequest\x1a!.ltedu.wellbeing.v1.ReferResponse\x12d\n" +
+	"\rGetPsychology\x12(.ltedu.wellbeing.v1.GetPsychologyRequest\x1a).ltedu.wellbeing.v1.GetPsychologyResponse\x12R\n" +
+	"\aGetCase\x12\".ltedu.wellbeing.v1.GetCaseRequest\x1a#.ltedu.wellbeing.v1.GetCaseResponse\x12[\n" +
 	"\n" +
-	"UpdateCase\x12&.joseph.wellbeing.v1.UpdateCaseRequest\x1a'.joseph.wellbeing.v1.UpdateCaseResponse\x12]\n" +
+	"UpdateCase\x12%.ltedu.wellbeing.v1.UpdateCaseRequest\x1a&.ltedu.wellbeing.v1.UpdateCaseResponse\x12[\n" +
 	"\n" +
-	"AddSession\x12&.joseph.wellbeing.v1.AddSessionRequest\x1a'.joseph.wellbeing.v1.AddSessionResponse\x12f\n" +
-	"\rDeleteSession\x12).joseph.wellbeing.v1.DeleteSessionRequest\x1a*.joseph.wellbeing.v1.DeleteSessionResponse\x12f\n" +
-	"\rGetDiscipline\x12).joseph.wellbeing.v1.GetDisciplineRequest\x1a*.joseph.wellbeing.v1.GetDisciplineResponse\x12c\n" +
-	"\fSaveIncident\x12(.joseph.wellbeing.v1.SaveIncidentRequest\x1a).joseph.wellbeing.v1.SaveIncidentResponse\x12i\n" +
-	"\x0eDeleteIncident\x12*.joseph.wellbeing.v1.DeleteIncidentRequest\x1a+.joseph.wellbeing.v1.DeleteIncidentResponse\x12r\n" +
-	"\x11SetIncidentStatus\x12-.joseph.wellbeing.v1.SetIncidentStatusRequest\x1a..joseph.wellbeing.v1.SetIncidentStatusResponse\x12r\n" +
-	"\x11GetMeasureContext\x12-.joseph.wellbeing.v1.GetMeasureContextRequest\x1a..joseph.wellbeing.v1.GetMeasureContextResponse\x12]\n" +
+	"AddSession\x12%.ltedu.wellbeing.v1.AddSessionRequest\x1a&.ltedu.wellbeing.v1.AddSessionResponse\x12d\n" +
+	"\rDeleteSession\x12(.ltedu.wellbeing.v1.DeleteSessionRequest\x1a).ltedu.wellbeing.v1.DeleteSessionResponse\x12d\n" +
+	"\rGetDiscipline\x12(.ltedu.wellbeing.v1.GetDisciplineRequest\x1a).ltedu.wellbeing.v1.GetDisciplineResponse\x12a\n" +
+	"\fSaveIncident\x12'.ltedu.wellbeing.v1.SaveIncidentRequest\x1a(.ltedu.wellbeing.v1.SaveIncidentResponse\x12g\n" +
+	"\x0eDeleteIncident\x12).ltedu.wellbeing.v1.DeleteIncidentRequest\x1a*.ltedu.wellbeing.v1.DeleteIncidentResponse\x12p\n" +
+	"\x11SetIncidentStatus\x12,.ltedu.wellbeing.v1.SetIncidentStatusRequest\x1a-.ltedu.wellbeing.v1.SetIncidentStatusResponse\x12p\n" +
+	"\x11GetMeasureContext\x12,.ltedu.wellbeing.v1.GetMeasureContextRequest\x1a-.ltedu.wellbeing.v1.GetMeasureContextResponse\x12[\n" +
 	"\n" +
-	"AddMeasure\x12&.joseph.wellbeing.v1.AddMeasureRequest\x1a'.joseph.wellbeing.v1.AddMeasureResponse\x12f\n" +
-	"\rNotifyMeasure\x12).joseph.wellbeing.v1.NotifyMeasureRequest\x1a*.joseph.wellbeing.v1.NotifyMeasureResponse\x12\x81\x01\n" +
-	"\x16RequestReconsideration\x122.joseph.wellbeing.v1.RequestReconsiderationRequest\x1a3.joseph.wellbeing.v1.RequestReconsiderationResponse\x12\x81\x01\n" +
-	"\x16ResolveReconsideration\x122.joseph.wellbeing.v1.ResolveReconsiderationRequest\x1a3.joseph.wellbeing.v1.ResolveReconsiderationResponse\x12f\n" +
-	"\rDeleteMeasure\x12).joseph.wellbeing.v1.DeleteMeasureRequest\x1a*.joseph.wellbeing.v1.DeleteMeasureResponse\x12Z\n" +
-	"\tListPlans\x12%.joseph.wellbeing.v1.ListPlansRequest\x1a&.joseph.wellbeing.v1.ListPlansResponse\x12T\n" +
-	"\aGetPlan\x12#.joseph.wellbeing.v1.GetPlanRequest\x1a$.joseph.wellbeing.v1.GetPlanResponse\x12W\n" +
-	"\bSavePlan\x12$.joseph.wellbeing.v1.SavePlanRequest\x1a%.joseph.wellbeing.v1.SavePlanResponse\x12f\n" +
-	"\rSetPlanStatus\x12).joseph.wellbeing.v1.SetPlanStatusRequest\x1a*.joseph.wellbeing.v1.SetPlanStatusResponse\x12]\n" +
+	"AddMeasure\x12%.ltedu.wellbeing.v1.AddMeasureRequest\x1a&.ltedu.wellbeing.v1.AddMeasureResponse\x12d\n" +
+	"\rNotifyMeasure\x12(.ltedu.wellbeing.v1.NotifyMeasureRequest\x1a).ltedu.wellbeing.v1.NotifyMeasureResponse\x12\x7f\n" +
+	"\x16RequestReconsideration\x121.ltedu.wellbeing.v1.RequestReconsiderationRequest\x1a2.ltedu.wellbeing.v1.RequestReconsiderationResponse\x12\x7f\n" +
+	"\x16ResolveReconsideration\x121.ltedu.wellbeing.v1.ResolveReconsiderationRequest\x1a2.ltedu.wellbeing.v1.ResolveReconsiderationResponse\x12d\n" +
+	"\rDeleteMeasure\x12(.ltedu.wellbeing.v1.DeleteMeasureRequest\x1a).ltedu.wellbeing.v1.DeleteMeasureResponse\x12X\n" +
+	"\tListPlans\x12$.ltedu.wellbeing.v1.ListPlansRequest\x1a%.ltedu.wellbeing.v1.ListPlansResponse\x12R\n" +
+	"\aGetPlan\x12\".ltedu.wellbeing.v1.GetPlanRequest\x1a#.ltedu.wellbeing.v1.GetPlanResponse\x12U\n" +
+	"\bSavePlan\x12#.ltedu.wellbeing.v1.SavePlanRequest\x1a$.ltedu.wellbeing.v1.SavePlanResponse\x12d\n" +
+	"\rSetPlanStatus\x12(.ltedu.wellbeing.v1.SetPlanStatusRequest\x1a).ltedu.wellbeing.v1.SetPlanStatusResponse\x12[\n" +
 	"\n" +
-	"DeletePlan\x12&.joseph.wellbeing.v1.DeletePlanRequest\x1a'.joseph.wellbeing.v1.DeletePlanResponse\x12f\n" +
-	"\rListTherapies\x12).joseph.wellbeing.v1.ListTherapiesRequest\x1a*.joseph.wellbeing.v1.ListTherapiesResponse\x12`\n" +
-	"\vSaveTherapy\x12'.joseph.wellbeing.v1.SaveTherapyRequest\x1a(.joseph.wellbeing.v1.SaveTherapyResponse\x12f\n" +
-	"\rDeleteTherapy\x12).joseph.wellbeing.v1.DeleteTherapyRequest\x1a*.joseph.wellbeing.v1.DeleteTherapyResponseB?Z=api/internal/adapter/inbound/grpc/gen/wellbeingv1;wellbeingv1b\x06proto3"
+	"DeletePlan\x12%.ltedu.wellbeing.v1.DeletePlanRequest\x1a&.ltedu.wellbeing.v1.DeletePlanResponse\x12d\n" +
+	"\rListTherapies\x12(.ltedu.wellbeing.v1.ListTherapiesRequest\x1a).ltedu.wellbeing.v1.ListTherapiesResponse\x12^\n" +
+	"\vSaveTherapy\x12&.ltedu.wellbeing.v1.SaveTherapyRequest\x1a'.ltedu.wellbeing.v1.SaveTherapyResponse\x12d\n" +
+	"\rDeleteTherapy\x12(.ltedu.wellbeing.v1.DeleteTherapyRequest\x1a).ltedu.wellbeing.v1.DeleteTherapyResponseB?Z=api/internal/adapter/inbound/grpc/gen/wellbeingv1;wellbeingv1b\x06proto3"
 
 var (
-	file_joseph_wellbeing_v1_wellbeing_proto_rawDescOnce sync.Once
-	file_joseph_wellbeing_v1_wellbeing_proto_rawDescData []byte
+	file_ltedu_wellbeing_v1_wellbeing_proto_rawDescOnce sync.Once
+	file_ltedu_wellbeing_v1_wellbeing_proto_rawDescData []byte
 )
 
-func file_joseph_wellbeing_v1_wellbeing_proto_rawDescGZIP() []byte {
-	file_joseph_wellbeing_v1_wellbeing_proto_rawDescOnce.Do(func() {
-		file_joseph_wellbeing_v1_wellbeing_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_wellbeing_v1_wellbeing_proto_rawDesc), len(file_joseph_wellbeing_v1_wellbeing_proto_rawDesc)))
+func file_ltedu_wellbeing_v1_wellbeing_proto_rawDescGZIP() []byte {
+	file_ltedu_wellbeing_v1_wellbeing_proto_rawDescOnce.Do(func() {
+		file_ltedu_wellbeing_v1_wellbeing_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_wellbeing_v1_wellbeing_proto_rawDesc), len(file_ltedu_wellbeing_v1_wellbeing_proto_rawDesc)))
 	})
-	return file_joseph_wellbeing_v1_wellbeing_proto_rawDescData
+	return file_ltedu_wellbeing_v1_wellbeing_proto_rawDescData
 }
 
-var file_joseph_wellbeing_v1_wellbeing_proto_msgTypes = make([]protoimpl.MessageInfo, 81)
-var file_joseph_wellbeing_v1_wellbeing_proto_goTypes = []any{
-	(*WellStudent)(nil),                    // 0: joseph.wellbeing.v1.WellStudent
-	(*Interview)(nil),                      // 1: joseph.wellbeing.v1.Interview
-	(*Commitment)(nil),                     // 2: joseph.wellbeing.v1.Commitment
-	(*PsychCase)(nil),                      // 3: joseph.wellbeing.v1.PsychCase
-	(*PsychSession)(nil),                   // 4: joseph.wellbeing.v1.PsychSession
-	(*Measure)(nil),                        // 5: joseph.wellbeing.v1.Measure
-	(*Incident)(nil),                       // 6: joseph.wellbeing.v1.Incident
-	(*IncidentCategory)(nil),               // 7: joseph.wellbeing.v1.IncidentCategory
-	(*TermConduct)(nil),                    // 8: joseph.wellbeing.v1.TermConduct
-	(*IndividualPlan)(nil),                 // 9: joseph.wellbeing.v1.IndividualPlan
-	(*TherapySession)(nil),                 // 10: joseph.wellbeing.v1.TherapySession
-	(*WellAlert)(nil),                      // 11: joseph.wellbeing.v1.WellAlert
-	(*StaffRef)(nil),                       // 12: joseph.wellbeing.v1.StaffRef
-	(*ListStudentsRequest)(nil),            // 13: joseph.wellbeing.v1.ListStudentsRequest
-	(*ListStudentsResponse)(nil),           // 14: joseph.wellbeing.v1.ListStudentsResponse
-	(*GetStudentFileRequest)(nil),          // 15: joseph.wellbeing.v1.GetStudentFileRequest
-	(*GetStudentFileResponse)(nil),         // 16: joseph.wellbeing.v1.GetStudentFileResponse
-	(*GetAlertsRequest)(nil),               // 17: joseph.wellbeing.v1.GetAlertsRequest
-	(*GetAlertsResponse)(nil),              // 18: joseph.wellbeing.v1.GetAlertsResponse
-	(*GetTutoringRequest)(nil),             // 19: joseph.wellbeing.v1.GetTutoringRequest
-	(*GetTutoringResponse)(nil),            // 20: joseph.wellbeing.v1.GetTutoringResponse
-	(*SaveInterviewRequest)(nil),           // 21: joseph.wellbeing.v1.SaveInterviewRequest
-	(*SaveInterviewResponse)(nil),          // 22: joseph.wellbeing.v1.SaveInterviewResponse
-	(*DeleteInterviewRequest)(nil),         // 23: joseph.wellbeing.v1.DeleteInterviewRequest
-	(*DeleteInterviewResponse)(nil),        // 24: joseph.wellbeing.v1.DeleteInterviewResponse
-	(*SaveCommitmentRequest)(nil),          // 25: joseph.wellbeing.v1.SaveCommitmentRequest
-	(*SaveCommitmentResponse)(nil),         // 26: joseph.wellbeing.v1.SaveCommitmentResponse
-	(*CheckCommitmentRequest)(nil),         // 27: joseph.wellbeing.v1.CheckCommitmentRequest
-	(*CheckCommitmentResponse)(nil),        // 28: joseph.wellbeing.v1.CheckCommitmentResponse
-	(*DeleteCommitmentRequest)(nil),        // 29: joseph.wellbeing.v1.DeleteCommitmentRequest
-	(*DeleteCommitmentResponse)(nil),       // 30: joseph.wellbeing.v1.DeleteCommitmentResponse
-	(*ReferRequest)(nil),                   // 31: joseph.wellbeing.v1.ReferRequest
-	(*ReferResponse)(nil),                  // 32: joseph.wellbeing.v1.ReferResponse
-	(*GetPsychologyRequest)(nil),           // 33: joseph.wellbeing.v1.GetPsychologyRequest
-	(*GetPsychologyResponse)(nil),          // 34: joseph.wellbeing.v1.GetPsychologyResponse
-	(*GetCaseRequest)(nil),                 // 35: joseph.wellbeing.v1.GetCaseRequest
-	(*GetCaseResponse)(nil),                // 36: joseph.wellbeing.v1.GetCaseResponse
-	(*UpdateCaseRequest)(nil),              // 37: joseph.wellbeing.v1.UpdateCaseRequest
-	(*UpdateCaseResponse)(nil),             // 38: joseph.wellbeing.v1.UpdateCaseResponse
-	(*AddSessionRequest)(nil),              // 39: joseph.wellbeing.v1.AddSessionRequest
-	(*AddSessionResponse)(nil),             // 40: joseph.wellbeing.v1.AddSessionResponse
-	(*DeleteSessionRequest)(nil),           // 41: joseph.wellbeing.v1.DeleteSessionRequest
-	(*DeleteSessionResponse)(nil),          // 42: joseph.wellbeing.v1.DeleteSessionResponse
-	(*GetDisciplineRequest)(nil),           // 43: joseph.wellbeing.v1.GetDisciplineRequest
-	(*GetDisciplineResponse)(nil),          // 44: joseph.wellbeing.v1.GetDisciplineResponse
-	(*SaveIncidentRequest)(nil),            // 45: joseph.wellbeing.v1.SaveIncidentRequest
-	(*SaveIncidentResponse)(nil),           // 46: joseph.wellbeing.v1.SaveIncidentResponse
-	(*DeleteIncidentRequest)(nil),          // 47: joseph.wellbeing.v1.DeleteIncidentRequest
-	(*DeleteIncidentResponse)(nil),         // 48: joseph.wellbeing.v1.DeleteIncidentResponse
-	(*SetIncidentStatusRequest)(nil),       // 49: joseph.wellbeing.v1.SetIncidentStatusRequest
-	(*SetIncidentStatusResponse)(nil),      // 50: joseph.wellbeing.v1.SetIncidentStatusResponse
-	(*GetMeasureContextRequest)(nil),       // 51: joseph.wellbeing.v1.GetMeasureContextRequest
-	(*GetMeasureContextResponse)(nil),      // 52: joseph.wellbeing.v1.GetMeasureContextResponse
-	(*AddMeasureRequest)(nil),              // 53: joseph.wellbeing.v1.AddMeasureRequest
-	(*AddMeasureResponse)(nil),             // 54: joseph.wellbeing.v1.AddMeasureResponse
-	(*NotifyMeasureRequest)(nil),           // 55: joseph.wellbeing.v1.NotifyMeasureRequest
-	(*NotifyMeasureResponse)(nil),          // 56: joseph.wellbeing.v1.NotifyMeasureResponse
-	(*RequestReconsiderationRequest)(nil),  // 57: joseph.wellbeing.v1.RequestReconsiderationRequest
-	(*RequestReconsiderationResponse)(nil), // 58: joseph.wellbeing.v1.RequestReconsiderationResponse
-	(*ResolveReconsiderationRequest)(nil),  // 59: joseph.wellbeing.v1.ResolveReconsiderationRequest
-	(*ResolveReconsiderationResponse)(nil), // 60: joseph.wellbeing.v1.ResolveReconsiderationResponse
-	(*DeleteMeasureRequest)(nil),           // 61: joseph.wellbeing.v1.DeleteMeasureRequest
-	(*DeleteMeasureResponse)(nil),          // 62: joseph.wellbeing.v1.DeleteMeasureResponse
-	(*ListPlansRequest)(nil),               // 63: joseph.wellbeing.v1.ListPlansRequest
-	(*ListPlansResponse)(nil),              // 64: joseph.wellbeing.v1.ListPlansResponse
-	(*GetPlanRequest)(nil),                 // 65: joseph.wellbeing.v1.GetPlanRequest
-	(*GetPlanResponse)(nil),                // 66: joseph.wellbeing.v1.GetPlanResponse
-	(*SavePlanRequest)(nil),                // 67: joseph.wellbeing.v1.SavePlanRequest
-	(*SavePlanResponse)(nil),               // 68: joseph.wellbeing.v1.SavePlanResponse
-	(*SetPlanStatusRequest)(nil),           // 69: joseph.wellbeing.v1.SetPlanStatusRequest
-	(*SetPlanStatusResponse)(nil),          // 70: joseph.wellbeing.v1.SetPlanStatusResponse
-	(*DeletePlanRequest)(nil),              // 71: joseph.wellbeing.v1.DeletePlanRequest
-	(*DeletePlanResponse)(nil),             // 72: joseph.wellbeing.v1.DeletePlanResponse
-	(*ListTherapiesRequest)(nil),           // 73: joseph.wellbeing.v1.ListTherapiesRequest
-	(*ListTherapiesResponse)(nil),          // 74: joseph.wellbeing.v1.ListTherapiesResponse
-	(*SaveTherapyRequest)(nil),             // 75: joseph.wellbeing.v1.SaveTherapyRequest
-	(*SaveTherapyResponse)(nil),            // 76: joseph.wellbeing.v1.SaveTherapyResponse
-	(*DeleteTherapyRequest)(nil),           // 77: joseph.wellbeing.v1.DeleteTherapyRequest
-	(*DeleteTherapyResponse)(nil),          // 78: joseph.wellbeing.v1.DeleteTherapyResponse
-	nil,                                    // 79: joseph.wellbeing.v1.GetAlertsResponse.CountsEntry
-	nil,                                    // 80: joseph.wellbeing.v1.GetPsychologyResponse.ByStatusEntry
-	(*TutoringSession)(nil),                // 81: joseph.wellbeing.v1.TutoringSession
-	(*SaaneeReferral)(nil),                 // 82: joseph.wellbeing.v1.SaaneeReferral
+var file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes = make([]protoimpl.MessageInfo, 81)
+var file_ltedu_wellbeing_v1_wellbeing_proto_goTypes = []any{
+	(*WellStudent)(nil),                    // 0: ltedu.wellbeing.v1.WellStudent
+	(*Interview)(nil),                      // 1: ltedu.wellbeing.v1.Interview
+	(*Commitment)(nil),                     // 2: ltedu.wellbeing.v1.Commitment
+	(*PsychCase)(nil),                      // 3: ltedu.wellbeing.v1.PsychCase
+	(*PsychSession)(nil),                   // 4: ltedu.wellbeing.v1.PsychSession
+	(*Measure)(nil),                        // 5: ltedu.wellbeing.v1.Measure
+	(*Incident)(nil),                       // 6: ltedu.wellbeing.v1.Incident
+	(*IncidentCategory)(nil),               // 7: ltedu.wellbeing.v1.IncidentCategory
+	(*TermConduct)(nil),                    // 8: ltedu.wellbeing.v1.TermConduct
+	(*IndividualPlan)(nil),                 // 9: ltedu.wellbeing.v1.IndividualPlan
+	(*TherapySession)(nil),                 // 10: ltedu.wellbeing.v1.TherapySession
+	(*WellAlert)(nil),                      // 11: ltedu.wellbeing.v1.WellAlert
+	(*StaffRef)(nil),                       // 12: ltedu.wellbeing.v1.StaffRef
+	(*ListStudentsRequest)(nil),            // 13: ltedu.wellbeing.v1.ListStudentsRequest
+	(*ListStudentsResponse)(nil),           // 14: ltedu.wellbeing.v1.ListStudentsResponse
+	(*GetStudentFileRequest)(nil),          // 15: ltedu.wellbeing.v1.GetStudentFileRequest
+	(*GetStudentFileResponse)(nil),         // 16: ltedu.wellbeing.v1.GetStudentFileResponse
+	(*GetAlertsRequest)(nil),               // 17: ltedu.wellbeing.v1.GetAlertsRequest
+	(*GetAlertsResponse)(nil),              // 18: ltedu.wellbeing.v1.GetAlertsResponse
+	(*GetTutoringRequest)(nil),             // 19: ltedu.wellbeing.v1.GetTutoringRequest
+	(*GetTutoringResponse)(nil),            // 20: ltedu.wellbeing.v1.GetTutoringResponse
+	(*SaveInterviewRequest)(nil),           // 21: ltedu.wellbeing.v1.SaveInterviewRequest
+	(*SaveInterviewResponse)(nil),          // 22: ltedu.wellbeing.v1.SaveInterviewResponse
+	(*DeleteInterviewRequest)(nil),         // 23: ltedu.wellbeing.v1.DeleteInterviewRequest
+	(*DeleteInterviewResponse)(nil),        // 24: ltedu.wellbeing.v1.DeleteInterviewResponse
+	(*SaveCommitmentRequest)(nil),          // 25: ltedu.wellbeing.v1.SaveCommitmentRequest
+	(*SaveCommitmentResponse)(nil),         // 26: ltedu.wellbeing.v1.SaveCommitmentResponse
+	(*CheckCommitmentRequest)(nil),         // 27: ltedu.wellbeing.v1.CheckCommitmentRequest
+	(*CheckCommitmentResponse)(nil),        // 28: ltedu.wellbeing.v1.CheckCommitmentResponse
+	(*DeleteCommitmentRequest)(nil),        // 29: ltedu.wellbeing.v1.DeleteCommitmentRequest
+	(*DeleteCommitmentResponse)(nil),       // 30: ltedu.wellbeing.v1.DeleteCommitmentResponse
+	(*ReferRequest)(nil),                   // 31: ltedu.wellbeing.v1.ReferRequest
+	(*ReferResponse)(nil),                  // 32: ltedu.wellbeing.v1.ReferResponse
+	(*GetPsychologyRequest)(nil),           // 33: ltedu.wellbeing.v1.GetPsychologyRequest
+	(*GetPsychologyResponse)(nil),          // 34: ltedu.wellbeing.v1.GetPsychologyResponse
+	(*GetCaseRequest)(nil),                 // 35: ltedu.wellbeing.v1.GetCaseRequest
+	(*GetCaseResponse)(nil),                // 36: ltedu.wellbeing.v1.GetCaseResponse
+	(*UpdateCaseRequest)(nil),              // 37: ltedu.wellbeing.v1.UpdateCaseRequest
+	(*UpdateCaseResponse)(nil),             // 38: ltedu.wellbeing.v1.UpdateCaseResponse
+	(*AddSessionRequest)(nil),              // 39: ltedu.wellbeing.v1.AddSessionRequest
+	(*AddSessionResponse)(nil),             // 40: ltedu.wellbeing.v1.AddSessionResponse
+	(*DeleteSessionRequest)(nil),           // 41: ltedu.wellbeing.v1.DeleteSessionRequest
+	(*DeleteSessionResponse)(nil),          // 42: ltedu.wellbeing.v1.DeleteSessionResponse
+	(*GetDisciplineRequest)(nil),           // 43: ltedu.wellbeing.v1.GetDisciplineRequest
+	(*GetDisciplineResponse)(nil),          // 44: ltedu.wellbeing.v1.GetDisciplineResponse
+	(*SaveIncidentRequest)(nil),            // 45: ltedu.wellbeing.v1.SaveIncidentRequest
+	(*SaveIncidentResponse)(nil),           // 46: ltedu.wellbeing.v1.SaveIncidentResponse
+	(*DeleteIncidentRequest)(nil),          // 47: ltedu.wellbeing.v1.DeleteIncidentRequest
+	(*DeleteIncidentResponse)(nil),         // 48: ltedu.wellbeing.v1.DeleteIncidentResponse
+	(*SetIncidentStatusRequest)(nil),       // 49: ltedu.wellbeing.v1.SetIncidentStatusRequest
+	(*SetIncidentStatusResponse)(nil),      // 50: ltedu.wellbeing.v1.SetIncidentStatusResponse
+	(*GetMeasureContextRequest)(nil),       // 51: ltedu.wellbeing.v1.GetMeasureContextRequest
+	(*GetMeasureContextResponse)(nil),      // 52: ltedu.wellbeing.v1.GetMeasureContextResponse
+	(*AddMeasureRequest)(nil),              // 53: ltedu.wellbeing.v1.AddMeasureRequest
+	(*AddMeasureResponse)(nil),             // 54: ltedu.wellbeing.v1.AddMeasureResponse
+	(*NotifyMeasureRequest)(nil),           // 55: ltedu.wellbeing.v1.NotifyMeasureRequest
+	(*NotifyMeasureResponse)(nil),          // 56: ltedu.wellbeing.v1.NotifyMeasureResponse
+	(*RequestReconsiderationRequest)(nil),  // 57: ltedu.wellbeing.v1.RequestReconsiderationRequest
+	(*RequestReconsiderationResponse)(nil), // 58: ltedu.wellbeing.v1.RequestReconsiderationResponse
+	(*ResolveReconsiderationRequest)(nil),  // 59: ltedu.wellbeing.v1.ResolveReconsiderationRequest
+	(*ResolveReconsiderationResponse)(nil), // 60: ltedu.wellbeing.v1.ResolveReconsiderationResponse
+	(*DeleteMeasureRequest)(nil),           // 61: ltedu.wellbeing.v1.DeleteMeasureRequest
+	(*DeleteMeasureResponse)(nil),          // 62: ltedu.wellbeing.v1.DeleteMeasureResponse
+	(*ListPlansRequest)(nil),               // 63: ltedu.wellbeing.v1.ListPlansRequest
+	(*ListPlansResponse)(nil),              // 64: ltedu.wellbeing.v1.ListPlansResponse
+	(*GetPlanRequest)(nil),                 // 65: ltedu.wellbeing.v1.GetPlanRequest
+	(*GetPlanResponse)(nil),                // 66: ltedu.wellbeing.v1.GetPlanResponse
+	(*SavePlanRequest)(nil),                // 67: ltedu.wellbeing.v1.SavePlanRequest
+	(*SavePlanResponse)(nil),               // 68: ltedu.wellbeing.v1.SavePlanResponse
+	(*SetPlanStatusRequest)(nil),           // 69: ltedu.wellbeing.v1.SetPlanStatusRequest
+	(*SetPlanStatusResponse)(nil),          // 70: ltedu.wellbeing.v1.SetPlanStatusResponse
+	(*DeletePlanRequest)(nil),              // 71: ltedu.wellbeing.v1.DeletePlanRequest
+	(*DeletePlanResponse)(nil),             // 72: ltedu.wellbeing.v1.DeletePlanResponse
+	(*ListTherapiesRequest)(nil),           // 73: ltedu.wellbeing.v1.ListTherapiesRequest
+	(*ListTherapiesResponse)(nil),          // 74: ltedu.wellbeing.v1.ListTherapiesResponse
+	(*SaveTherapyRequest)(nil),             // 75: ltedu.wellbeing.v1.SaveTherapyRequest
+	(*SaveTherapyResponse)(nil),            // 76: ltedu.wellbeing.v1.SaveTherapyResponse
+	(*DeleteTherapyRequest)(nil),           // 77: ltedu.wellbeing.v1.DeleteTherapyRequest
+	(*DeleteTherapyResponse)(nil),          // 78: ltedu.wellbeing.v1.DeleteTherapyResponse
+	nil,                                    // 79: ltedu.wellbeing.v1.GetAlertsResponse.CountsEntry
+	nil,                                    // 80: ltedu.wellbeing.v1.GetPsychologyResponse.ByStatusEntry
+	(*TutoringSession)(nil),                // 81: ltedu.wellbeing.v1.TutoringSession
+	(*SaaneeReferral)(nil),                 // 82: ltedu.wellbeing.v1.SaaneeReferral
 }
-var file_joseph_wellbeing_v1_wellbeing_proto_depIdxs = []int32{
-	5,  // 0: joseph.wellbeing.v1.Incident.measures:type_name -> joseph.wellbeing.v1.Measure
-	0,  // 1: joseph.wellbeing.v1.ListStudentsResponse.students:type_name -> joseph.wellbeing.v1.WellStudent
-	0,  // 2: joseph.wellbeing.v1.GetStudentFileResponse.student:type_name -> joseph.wellbeing.v1.WellStudent
-	1,  // 3: joseph.wellbeing.v1.GetStudentFileResponse.interviews:type_name -> joseph.wellbeing.v1.Interview
-	2,  // 4: joseph.wellbeing.v1.GetStudentFileResponse.commitments:type_name -> joseph.wellbeing.v1.Commitment
-	6,  // 5: joseph.wellbeing.v1.GetStudentFileResponse.incidents:type_name -> joseph.wellbeing.v1.Incident
-	5,  // 6: joseph.wellbeing.v1.GetStudentFileResponse.measures:type_name -> joseph.wellbeing.v1.Measure
-	8,  // 7: joseph.wellbeing.v1.GetStudentFileResponse.conduct:type_name -> joseph.wellbeing.v1.TermConduct
-	3,  // 8: joseph.wellbeing.v1.GetStudentFileResponse.cases:type_name -> joseph.wellbeing.v1.PsychCase
-	9,  // 9: joseph.wellbeing.v1.GetStudentFileResponse.plans:type_name -> joseph.wellbeing.v1.IndividualPlan
-	10, // 10: joseph.wellbeing.v1.GetStudentFileResponse.therapies:type_name -> joseph.wellbeing.v1.TherapySession
-	7,  // 11: joseph.wellbeing.v1.GetStudentFileResponse.catalog:type_name -> joseph.wellbeing.v1.IncidentCategory
-	81, // 12: joseph.wellbeing.v1.GetStudentFileResponse.sessions:type_name -> joseph.wellbeing.v1.TutoringSession
-	82, // 13: joseph.wellbeing.v1.GetStudentFileResponse.saanee:type_name -> joseph.wellbeing.v1.SaaneeReferral
-	11, // 14: joseph.wellbeing.v1.GetAlertsResponse.alerts:type_name -> joseph.wellbeing.v1.WellAlert
-	79, // 15: joseph.wellbeing.v1.GetAlertsResponse.counts:type_name -> joseph.wellbeing.v1.GetAlertsResponse.CountsEntry
-	0,  // 16: joseph.wellbeing.v1.GetTutoringResponse.students:type_name -> joseph.wellbeing.v1.WellStudent
-	2,  // 17: joseph.wellbeing.v1.GetTutoringResponse.due:type_name -> joseph.wellbeing.v1.Commitment
-	1,  // 18: joseph.wellbeing.v1.GetTutoringResponse.interviews:type_name -> joseph.wellbeing.v1.Interview
-	1,  // 19: joseph.wellbeing.v1.SaveInterviewRequest.interview:type_name -> joseph.wellbeing.v1.Interview
-	1,  // 20: joseph.wellbeing.v1.SaveInterviewResponse.interview:type_name -> joseph.wellbeing.v1.Interview
-	2,  // 21: joseph.wellbeing.v1.SaveCommitmentRequest.commitment:type_name -> joseph.wellbeing.v1.Commitment
-	2,  // 22: joseph.wellbeing.v1.SaveCommitmentResponse.commitment:type_name -> joseph.wellbeing.v1.Commitment
-	3,  // 23: joseph.wellbeing.v1.ReferResponse.case:type_name -> joseph.wellbeing.v1.PsychCase
-	3,  // 24: joseph.wellbeing.v1.GetPsychologyResponse.cases:type_name -> joseph.wellbeing.v1.PsychCase
-	80, // 25: joseph.wellbeing.v1.GetPsychologyResponse.by_status:type_name -> joseph.wellbeing.v1.GetPsychologyResponse.ByStatusEntry
-	3,  // 26: joseph.wellbeing.v1.GetCaseResponse.case:type_name -> joseph.wellbeing.v1.PsychCase
-	4,  // 27: joseph.wellbeing.v1.GetCaseResponse.sessions:type_name -> joseph.wellbeing.v1.PsychSession
-	3,  // 28: joseph.wellbeing.v1.UpdateCaseResponse.case:type_name -> joseph.wellbeing.v1.PsychCase
-	4,  // 29: joseph.wellbeing.v1.AddSessionRequest.session:type_name -> joseph.wellbeing.v1.PsychSession
-	4,  // 30: joseph.wellbeing.v1.AddSessionResponse.session:type_name -> joseph.wellbeing.v1.PsychSession
-	6,  // 31: joseph.wellbeing.v1.GetDisciplineResponse.incidents:type_name -> joseph.wellbeing.v1.Incident
-	7,  // 32: joseph.wellbeing.v1.GetDisciplineResponse.catalog:type_name -> joseph.wellbeing.v1.IncidentCategory
-	5,  // 33: joseph.wellbeing.v1.GetDisciplineResponse.measures:type_name -> joseph.wellbeing.v1.Measure
-	6,  // 34: joseph.wellbeing.v1.SaveIncidentRequest.incident:type_name -> joseph.wellbeing.v1.Incident
-	6,  // 35: joseph.wellbeing.v1.SaveIncidentResponse.incident:type_name -> joseph.wellbeing.v1.Incident
-	5,  // 36: joseph.wellbeing.v1.AddMeasureRequest.measure:type_name -> joseph.wellbeing.v1.Measure
-	5,  // 37: joseph.wellbeing.v1.AddMeasureResponse.measure:type_name -> joseph.wellbeing.v1.Measure
-	9,  // 38: joseph.wellbeing.v1.ListPlansResponse.plans:type_name -> joseph.wellbeing.v1.IndividualPlan
-	0,  // 39: joseph.wellbeing.v1.ListPlansResponse.students:type_name -> joseph.wellbeing.v1.WellStudent
-	12, // 40: joseph.wellbeing.v1.ListPlansResponse.specialists:type_name -> joseph.wellbeing.v1.StaffRef
-	9,  // 41: joseph.wellbeing.v1.GetPlanResponse.plan:type_name -> joseph.wellbeing.v1.IndividualPlan
-	9,  // 42: joseph.wellbeing.v1.SavePlanRequest.plan:type_name -> joseph.wellbeing.v1.IndividualPlan
-	9,  // 43: joseph.wellbeing.v1.SavePlanResponse.plan:type_name -> joseph.wellbeing.v1.IndividualPlan
-	9,  // 44: joseph.wellbeing.v1.SetPlanStatusResponse.plan:type_name -> joseph.wellbeing.v1.IndividualPlan
-	10, // 45: joseph.wellbeing.v1.ListTherapiesResponse.sessions:type_name -> joseph.wellbeing.v1.TherapySession
-	0,  // 46: joseph.wellbeing.v1.ListTherapiesResponse.students:type_name -> joseph.wellbeing.v1.WellStudent
-	10, // 47: joseph.wellbeing.v1.SaveTherapyRequest.session:type_name -> joseph.wellbeing.v1.TherapySession
-	10, // 48: joseph.wellbeing.v1.SaveTherapyResponse.session:type_name -> joseph.wellbeing.v1.TherapySession
-	13, // 49: joseph.wellbeing.v1.WellbeingService.ListStudents:input_type -> joseph.wellbeing.v1.ListStudentsRequest
-	15, // 50: joseph.wellbeing.v1.WellbeingService.GetStudentFile:input_type -> joseph.wellbeing.v1.GetStudentFileRequest
-	17, // 51: joseph.wellbeing.v1.WellbeingService.GetAlerts:input_type -> joseph.wellbeing.v1.GetAlertsRequest
-	19, // 52: joseph.wellbeing.v1.WellbeingService.GetTutoring:input_type -> joseph.wellbeing.v1.GetTutoringRequest
-	21, // 53: joseph.wellbeing.v1.WellbeingService.SaveInterview:input_type -> joseph.wellbeing.v1.SaveInterviewRequest
-	23, // 54: joseph.wellbeing.v1.WellbeingService.DeleteInterview:input_type -> joseph.wellbeing.v1.DeleteInterviewRequest
-	25, // 55: joseph.wellbeing.v1.WellbeingService.SaveCommitment:input_type -> joseph.wellbeing.v1.SaveCommitmentRequest
-	27, // 56: joseph.wellbeing.v1.WellbeingService.CheckCommitment:input_type -> joseph.wellbeing.v1.CheckCommitmentRequest
-	29, // 57: joseph.wellbeing.v1.WellbeingService.DeleteCommitment:input_type -> joseph.wellbeing.v1.DeleteCommitmentRequest
-	31, // 58: joseph.wellbeing.v1.WellbeingService.Refer:input_type -> joseph.wellbeing.v1.ReferRequest
-	33, // 59: joseph.wellbeing.v1.WellbeingService.GetPsychology:input_type -> joseph.wellbeing.v1.GetPsychologyRequest
-	35, // 60: joseph.wellbeing.v1.WellbeingService.GetCase:input_type -> joseph.wellbeing.v1.GetCaseRequest
-	37, // 61: joseph.wellbeing.v1.WellbeingService.UpdateCase:input_type -> joseph.wellbeing.v1.UpdateCaseRequest
-	39, // 62: joseph.wellbeing.v1.WellbeingService.AddSession:input_type -> joseph.wellbeing.v1.AddSessionRequest
-	41, // 63: joseph.wellbeing.v1.WellbeingService.DeleteSession:input_type -> joseph.wellbeing.v1.DeleteSessionRequest
-	43, // 64: joseph.wellbeing.v1.WellbeingService.GetDiscipline:input_type -> joseph.wellbeing.v1.GetDisciplineRequest
-	45, // 65: joseph.wellbeing.v1.WellbeingService.SaveIncident:input_type -> joseph.wellbeing.v1.SaveIncidentRequest
-	47, // 66: joseph.wellbeing.v1.WellbeingService.DeleteIncident:input_type -> joseph.wellbeing.v1.DeleteIncidentRequest
-	49, // 67: joseph.wellbeing.v1.WellbeingService.SetIncidentStatus:input_type -> joseph.wellbeing.v1.SetIncidentStatusRequest
-	51, // 68: joseph.wellbeing.v1.WellbeingService.GetMeasureContext:input_type -> joseph.wellbeing.v1.GetMeasureContextRequest
-	53, // 69: joseph.wellbeing.v1.WellbeingService.AddMeasure:input_type -> joseph.wellbeing.v1.AddMeasureRequest
-	55, // 70: joseph.wellbeing.v1.WellbeingService.NotifyMeasure:input_type -> joseph.wellbeing.v1.NotifyMeasureRequest
-	57, // 71: joseph.wellbeing.v1.WellbeingService.RequestReconsideration:input_type -> joseph.wellbeing.v1.RequestReconsiderationRequest
-	59, // 72: joseph.wellbeing.v1.WellbeingService.ResolveReconsideration:input_type -> joseph.wellbeing.v1.ResolveReconsiderationRequest
-	61, // 73: joseph.wellbeing.v1.WellbeingService.DeleteMeasure:input_type -> joseph.wellbeing.v1.DeleteMeasureRequest
-	63, // 74: joseph.wellbeing.v1.WellbeingService.ListPlans:input_type -> joseph.wellbeing.v1.ListPlansRequest
-	65, // 75: joseph.wellbeing.v1.WellbeingService.GetPlan:input_type -> joseph.wellbeing.v1.GetPlanRequest
-	67, // 76: joseph.wellbeing.v1.WellbeingService.SavePlan:input_type -> joseph.wellbeing.v1.SavePlanRequest
-	69, // 77: joseph.wellbeing.v1.WellbeingService.SetPlanStatus:input_type -> joseph.wellbeing.v1.SetPlanStatusRequest
-	71, // 78: joseph.wellbeing.v1.WellbeingService.DeletePlan:input_type -> joseph.wellbeing.v1.DeletePlanRequest
-	73, // 79: joseph.wellbeing.v1.WellbeingService.ListTherapies:input_type -> joseph.wellbeing.v1.ListTherapiesRequest
-	75, // 80: joseph.wellbeing.v1.WellbeingService.SaveTherapy:input_type -> joseph.wellbeing.v1.SaveTherapyRequest
-	77, // 81: joseph.wellbeing.v1.WellbeingService.DeleteTherapy:input_type -> joseph.wellbeing.v1.DeleteTherapyRequest
-	14, // 82: joseph.wellbeing.v1.WellbeingService.ListStudents:output_type -> joseph.wellbeing.v1.ListStudentsResponse
-	16, // 83: joseph.wellbeing.v1.WellbeingService.GetStudentFile:output_type -> joseph.wellbeing.v1.GetStudentFileResponse
-	18, // 84: joseph.wellbeing.v1.WellbeingService.GetAlerts:output_type -> joseph.wellbeing.v1.GetAlertsResponse
-	20, // 85: joseph.wellbeing.v1.WellbeingService.GetTutoring:output_type -> joseph.wellbeing.v1.GetTutoringResponse
-	22, // 86: joseph.wellbeing.v1.WellbeingService.SaveInterview:output_type -> joseph.wellbeing.v1.SaveInterviewResponse
-	24, // 87: joseph.wellbeing.v1.WellbeingService.DeleteInterview:output_type -> joseph.wellbeing.v1.DeleteInterviewResponse
-	26, // 88: joseph.wellbeing.v1.WellbeingService.SaveCommitment:output_type -> joseph.wellbeing.v1.SaveCommitmentResponse
-	28, // 89: joseph.wellbeing.v1.WellbeingService.CheckCommitment:output_type -> joseph.wellbeing.v1.CheckCommitmentResponse
-	30, // 90: joseph.wellbeing.v1.WellbeingService.DeleteCommitment:output_type -> joseph.wellbeing.v1.DeleteCommitmentResponse
-	32, // 91: joseph.wellbeing.v1.WellbeingService.Refer:output_type -> joseph.wellbeing.v1.ReferResponse
-	34, // 92: joseph.wellbeing.v1.WellbeingService.GetPsychology:output_type -> joseph.wellbeing.v1.GetPsychologyResponse
-	36, // 93: joseph.wellbeing.v1.WellbeingService.GetCase:output_type -> joseph.wellbeing.v1.GetCaseResponse
-	38, // 94: joseph.wellbeing.v1.WellbeingService.UpdateCase:output_type -> joseph.wellbeing.v1.UpdateCaseResponse
-	40, // 95: joseph.wellbeing.v1.WellbeingService.AddSession:output_type -> joseph.wellbeing.v1.AddSessionResponse
-	42, // 96: joseph.wellbeing.v1.WellbeingService.DeleteSession:output_type -> joseph.wellbeing.v1.DeleteSessionResponse
-	44, // 97: joseph.wellbeing.v1.WellbeingService.GetDiscipline:output_type -> joseph.wellbeing.v1.GetDisciplineResponse
-	46, // 98: joseph.wellbeing.v1.WellbeingService.SaveIncident:output_type -> joseph.wellbeing.v1.SaveIncidentResponse
-	48, // 99: joseph.wellbeing.v1.WellbeingService.DeleteIncident:output_type -> joseph.wellbeing.v1.DeleteIncidentResponse
-	50, // 100: joseph.wellbeing.v1.WellbeingService.SetIncidentStatus:output_type -> joseph.wellbeing.v1.SetIncidentStatusResponse
-	52, // 101: joseph.wellbeing.v1.WellbeingService.GetMeasureContext:output_type -> joseph.wellbeing.v1.GetMeasureContextResponse
-	54, // 102: joseph.wellbeing.v1.WellbeingService.AddMeasure:output_type -> joseph.wellbeing.v1.AddMeasureResponse
-	56, // 103: joseph.wellbeing.v1.WellbeingService.NotifyMeasure:output_type -> joseph.wellbeing.v1.NotifyMeasureResponse
-	58, // 104: joseph.wellbeing.v1.WellbeingService.RequestReconsideration:output_type -> joseph.wellbeing.v1.RequestReconsiderationResponse
-	60, // 105: joseph.wellbeing.v1.WellbeingService.ResolveReconsideration:output_type -> joseph.wellbeing.v1.ResolveReconsiderationResponse
-	62, // 106: joseph.wellbeing.v1.WellbeingService.DeleteMeasure:output_type -> joseph.wellbeing.v1.DeleteMeasureResponse
-	64, // 107: joseph.wellbeing.v1.WellbeingService.ListPlans:output_type -> joseph.wellbeing.v1.ListPlansResponse
-	66, // 108: joseph.wellbeing.v1.WellbeingService.GetPlan:output_type -> joseph.wellbeing.v1.GetPlanResponse
-	68, // 109: joseph.wellbeing.v1.WellbeingService.SavePlan:output_type -> joseph.wellbeing.v1.SavePlanResponse
-	70, // 110: joseph.wellbeing.v1.WellbeingService.SetPlanStatus:output_type -> joseph.wellbeing.v1.SetPlanStatusResponse
-	72, // 111: joseph.wellbeing.v1.WellbeingService.DeletePlan:output_type -> joseph.wellbeing.v1.DeletePlanResponse
-	74, // 112: joseph.wellbeing.v1.WellbeingService.ListTherapies:output_type -> joseph.wellbeing.v1.ListTherapiesResponse
-	76, // 113: joseph.wellbeing.v1.WellbeingService.SaveTherapy:output_type -> joseph.wellbeing.v1.SaveTherapyResponse
-	78, // 114: joseph.wellbeing.v1.WellbeingService.DeleteTherapy:output_type -> joseph.wellbeing.v1.DeleteTherapyResponse
+var file_ltedu_wellbeing_v1_wellbeing_proto_depIdxs = []int32{
+	5,  // 0: ltedu.wellbeing.v1.Incident.measures:type_name -> ltedu.wellbeing.v1.Measure
+	0,  // 1: ltedu.wellbeing.v1.ListStudentsResponse.students:type_name -> ltedu.wellbeing.v1.WellStudent
+	0,  // 2: ltedu.wellbeing.v1.GetStudentFileResponse.student:type_name -> ltedu.wellbeing.v1.WellStudent
+	1,  // 3: ltedu.wellbeing.v1.GetStudentFileResponse.interviews:type_name -> ltedu.wellbeing.v1.Interview
+	2,  // 4: ltedu.wellbeing.v1.GetStudentFileResponse.commitments:type_name -> ltedu.wellbeing.v1.Commitment
+	6,  // 5: ltedu.wellbeing.v1.GetStudentFileResponse.incidents:type_name -> ltedu.wellbeing.v1.Incident
+	5,  // 6: ltedu.wellbeing.v1.GetStudentFileResponse.measures:type_name -> ltedu.wellbeing.v1.Measure
+	8,  // 7: ltedu.wellbeing.v1.GetStudentFileResponse.conduct:type_name -> ltedu.wellbeing.v1.TermConduct
+	3,  // 8: ltedu.wellbeing.v1.GetStudentFileResponse.cases:type_name -> ltedu.wellbeing.v1.PsychCase
+	9,  // 9: ltedu.wellbeing.v1.GetStudentFileResponse.plans:type_name -> ltedu.wellbeing.v1.IndividualPlan
+	10, // 10: ltedu.wellbeing.v1.GetStudentFileResponse.therapies:type_name -> ltedu.wellbeing.v1.TherapySession
+	7,  // 11: ltedu.wellbeing.v1.GetStudentFileResponse.catalog:type_name -> ltedu.wellbeing.v1.IncidentCategory
+	81, // 12: ltedu.wellbeing.v1.GetStudentFileResponse.sessions:type_name -> ltedu.wellbeing.v1.TutoringSession
+	82, // 13: ltedu.wellbeing.v1.GetStudentFileResponse.saanee:type_name -> ltedu.wellbeing.v1.SaaneeReferral
+	11, // 14: ltedu.wellbeing.v1.GetAlertsResponse.alerts:type_name -> ltedu.wellbeing.v1.WellAlert
+	79, // 15: ltedu.wellbeing.v1.GetAlertsResponse.counts:type_name -> ltedu.wellbeing.v1.GetAlertsResponse.CountsEntry
+	0,  // 16: ltedu.wellbeing.v1.GetTutoringResponse.students:type_name -> ltedu.wellbeing.v1.WellStudent
+	2,  // 17: ltedu.wellbeing.v1.GetTutoringResponse.due:type_name -> ltedu.wellbeing.v1.Commitment
+	1,  // 18: ltedu.wellbeing.v1.GetTutoringResponse.interviews:type_name -> ltedu.wellbeing.v1.Interview
+	1,  // 19: ltedu.wellbeing.v1.SaveInterviewRequest.interview:type_name -> ltedu.wellbeing.v1.Interview
+	1,  // 20: ltedu.wellbeing.v1.SaveInterviewResponse.interview:type_name -> ltedu.wellbeing.v1.Interview
+	2,  // 21: ltedu.wellbeing.v1.SaveCommitmentRequest.commitment:type_name -> ltedu.wellbeing.v1.Commitment
+	2,  // 22: ltedu.wellbeing.v1.SaveCommitmentResponse.commitment:type_name -> ltedu.wellbeing.v1.Commitment
+	3,  // 23: ltedu.wellbeing.v1.ReferResponse.case:type_name -> ltedu.wellbeing.v1.PsychCase
+	3,  // 24: ltedu.wellbeing.v1.GetPsychologyResponse.cases:type_name -> ltedu.wellbeing.v1.PsychCase
+	80, // 25: ltedu.wellbeing.v1.GetPsychologyResponse.by_status:type_name -> ltedu.wellbeing.v1.GetPsychologyResponse.ByStatusEntry
+	3,  // 26: ltedu.wellbeing.v1.GetCaseResponse.case:type_name -> ltedu.wellbeing.v1.PsychCase
+	4,  // 27: ltedu.wellbeing.v1.GetCaseResponse.sessions:type_name -> ltedu.wellbeing.v1.PsychSession
+	3,  // 28: ltedu.wellbeing.v1.UpdateCaseResponse.case:type_name -> ltedu.wellbeing.v1.PsychCase
+	4,  // 29: ltedu.wellbeing.v1.AddSessionRequest.session:type_name -> ltedu.wellbeing.v1.PsychSession
+	4,  // 30: ltedu.wellbeing.v1.AddSessionResponse.session:type_name -> ltedu.wellbeing.v1.PsychSession
+	6,  // 31: ltedu.wellbeing.v1.GetDisciplineResponse.incidents:type_name -> ltedu.wellbeing.v1.Incident
+	7,  // 32: ltedu.wellbeing.v1.GetDisciplineResponse.catalog:type_name -> ltedu.wellbeing.v1.IncidentCategory
+	5,  // 33: ltedu.wellbeing.v1.GetDisciplineResponse.measures:type_name -> ltedu.wellbeing.v1.Measure
+	6,  // 34: ltedu.wellbeing.v1.SaveIncidentRequest.incident:type_name -> ltedu.wellbeing.v1.Incident
+	6,  // 35: ltedu.wellbeing.v1.SaveIncidentResponse.incident:type_name -> ltedu.wellbeing.v1.Incident
+	5,  // 36: ltedu.wellbeing.v1.AddMeasureRequest.measure:type_name -> ltedu.wellbeing.v1.Measure
+	5,  // 37: ltedu.wellbeing.v1.AddMeasureResponse.measure:type_name -> ltedu.wellbeing.v1.Measure
+	9,  // 38: ltedu.wellbeing.v1.ListPlansResponse.plans:type_name -> ltedu.wellbeing.v1.IndividualPlan
+	0,  // 39: ltedu.wellbeing.v1.ListPlansResponse.students:type_name -> ltedu.wellbeing.v1.WellStudent
+	12, // 40: ltedu.wellbeing.v1.ListPlansResponse.specialists:type_name -> ltedu.wellbeing.v1.StaffRef
+	9,  // 41: ltedu.wellbeing.v1.GetPlanResponse.plan:type_name -> ltedu.wellbeing.v1.IndividualPlan
+	9,  // 42: ltedu.wellbeing.v1.SavePlanRequest.plan:type_name -> ltedu.wellbeing.v1.IndividualPlan
+	9,  // 43: ltedu.wellbeing.v1.SavePlanResponse.plan:type_name -> ltedu.wellbeing.v1.IndividualPlan
+	9,  // 44: ltedu.wellbeing.v1.SetPlanStatusResponse.plan:type_name -> ltedu.wellbeing.v1.IndividualPlan
+	10, // 45: ltedu.wellbeing.v1.ListTherapiesResponse.sessions:type_name -> ltedu.wellbeing.v1.TherapySession
+	0,  // 46: ltedu.wellbeing.v1.ListTherapiesResponse.students:type_name -> ltedu.wellbeing.v1.WellStudent
+	10, // 47: ltedu.wellbeing.v1.SaveTherapyRequest.session:type_name -> ltedu.wellbeing.v1.TherapySession
+	10, // 48: ltedu.wellbeing.v1.SaveTherapyResponse.session:type_name -> ltedu.wellbeing.v1.TherapySession
+	13, // 49: ltedu.wellbeing.v1.WellbeingService.ListStudents:input_type -> ltedu.wellbeing.v1.ListStudentsRequest
+	15, // 50: ltedu.wellbeing.v1.WellbeingService.GetStudentFile:input_type -> ltedu.wellbeing.v1.GetStudentFileRequest
+	17, // 51: ltedu.wellbeing.v1.WellbeingService.GetAlerts:input_type -> ltedu.wellbeing.v1.GetAlertsRequest
+	19, // 52: ltedu.wellbeing.v1.WellbeingService.GetTutoring:input_type -> ltedu.wellbeing.v1.GetTutoringRequest
+	21, // 53: ltedu.wellbeing.v1.WellbeingService.SaveInterview:input_type -> ltedu.wellbeing.v1.SaveInterviewRequest
+	23, // 54: ltedu.wellbeing.v1.WellbeingService.DeleteInterview:input_type -> ltedu.wellbeing.v1.DeleteInterviewRequest
+	25, // 55: ltedu.wellbeing.v1.WellbeingService.SaveCommitment:input_type -> ltedu.wellbeing.v1.SaveCommitmentRequest
+	27, // 56: ltedu.wellbeing.v1.WellbeingService.CheckCommitment:input_type -> ltedu.wellbeing.v1.CheckCommitmentRequest
+	29, // 57: ltedu.wellbeing.v1.WellbeingService.DeleteCommitment:input_type -> ltedu.wellbeing.v1.DeleteCommitmentRequest
+	31, // 58: ltedu.wellbeing.v1.WellbeingService.Refer:input_type -> ltedu.wellbeing.v1.ReferRequest
+	33, // 59: ltedu.wellbeing.v1.WellbeingService.GetPsychology:input_type -> ltedu.wellbeing.v1.GetPsychologyRequest
+	35, // 60: ltedu.wellbeing.v1.WellbeingService.GetCase:input_type -> ltedu.wellbeing.v1.GetCaseRequest
+	37, // 61: ltedu.wellbeing.v1.WellbeingService.UpdateCase:input_type -> ltedu.wellbeing.v1.UpdateCaseRequest
+	39, // 62: ltedu.wellbeing.v1.WellbeingService.AddSession:input_type -> ltedu.wellbeing.v1.AddSessionRequest
+	41, // 63: ltedu.wellbeing.v1.WellbeingService.DeleteSession:input_type -> ltedu.wellbeing.v1.DeleteSessionRequest
+	43, // 64: ltedu.wellbeing.v1.WellbeingService.GetDiscipline:input_type -> ltedu.wellbeing.v1.GetDisciplineRequest
+	45, // 65: ltedu.wellbeing.v1.WellbeingService.SaveIncident:input_type -> ltedu.wellbeing.v1.SaveIncidentRequest
+	47, // 66: ltedu.wellbeing.v1.WellbeingService.DeleteIncident:input_type -> ltedu.wellbeing.v1.DeleteIncidentRequest
+	49, // 67: ltedu.wellbeing.v1.WellbeingService.SetIncidentStatus:input_type -> ltedu.wellbeing.v1.SetIncidentStatusRequest
+	51, // 68: ltedu.wellbeing.v1.WellbeingService.GetMeasureContext:input_type -> ltedu.wellbeing.v1.GetMeasureContextRequest
+	53, // 69: ltedu.wellbeing.v1.WellbeingService.AddMeasure:input_type -> ltedu.wellbeing.v1.AddMeasureRequest
+	55, // 70: ltedu.wellbeing.v1.WellbeingService.NotifyMeasure:input_type -> ltedu.wellbeing.v1.NotifyMeasureRequest
+	57, // 71: ltedu.wellbeing.v1.WellbeingService.RequestReconsideration:input_type -> ltedu.wellbeing.v1.RequestReconsiderationRequest
+	59, // 72: ltedu.wellbeing.v1.WellbeingService.ResolveReconsideration:input_type -> ltedu.wellbeing.v1.ResolveReconsiderationRequest
+	61, // 73: ltedu.wellbeing.v1.WellbeingService.DeleteMeasure:input_type -> ltedu.wellbeing.v1.DeleteMeasureRequest
+	63, // 74: ltedu.wellbeing.v1.WellbeingService.ListPlans:input_type -> ltedu.wellbeing.v1.ListPlansRequest
+	65, // 75: ltedu.wellbeing.v1.WellbeingService.GetPlan:input_type -> ltedu.wellbeing.v1.GetPlanRequest
+	67, // 76: ltedu.wellbeing.v1.WellbeingService.SavePlan:input_type -> ltedu.wellbeing.v1.SavePlanRequest
+	69, // 77: ltedu.wellbeing.v1.WellbeingService.SetPlanStatus:input_type -> ltedu.wellbeing.v1.SetPlanStatusRequest
+	71, // 78: ltedu.wellbeing.v1.WellbeingService.DeletePlan:input_type -> ltedu.wellbeing.v1.DeletePlanRequest
+	73, // 79: ltedu.wellbeing.v1.WellbeingService.ListTherapies:input_type -> ltedu.wellbeing.v1.ListTherapiesRequest
+	75, // 80: ltedu.wellbeing.v1.WellbeingService.SaveTherapy:input_type -> ltedu.wellbeing.v1.SaveTherapyRequest
+	77, // 81: ltedu.wellbeing.v1.WellbeingService.DeleteTherapy:input_type -> ltedu.wellbeing.v1.DeleteTherapyRequest
+	14, // 82: ltedu.wellbeing.v1.WellbeingService.ListStudents:output_type -> ltedu.wellbeing.v1.ListStudentsResponse
+	16, // 83: ltedu.wellbeing.v1.WellbeingService.GetStudentFile:output_type -> ltedu.wellbeing.v1.GetStudentFileResponse
+	18, // 84: ltedu.wellbeing.v1.WellbeingService.GetAlerts:output_type -> ltedu.wellbeing.v1.GetAlertsResponse
+	20, // 85: ltedu.wellbeing.v1.WellbeingService.GetTutoring:output_type -> ltedu.wellbeing.v1.GetTutoringResponse
+	22, // 86: ltedu.wellbeing.v1.WellbeingService.SaveInterview:output_type -> ltedu.wellbeing.v1.SaveInterviewResponse
+	24, // 87: ltedu.wellbeing.v1.WellbeingService.DeleteInterview:output_type -> ltedu.wellbeing.v1.DeleteInterviewResponse
+	26, // 88: ltedu.wellbeing.v1.WellbeingService.SaveCommitment:output_type -> ltedu.wellbeing.v1.SaveCommitmentResponse
+	28, // 89: ltedu.wellbeing.v1.WellbeingService.CheckCommitment:output_type -> ltedu.wellbeing.v1.CheckCommitmentResponse
+	30, // 90: ltedu.wellbeing.v1.WellbeingService.DeleteCommitment:output_type -> ltedu.wellbeing.v1.DeleteCommitmentResponse
+	32, // 91: ltedu.wellbeing.v1.WellbeingService.Refer:output_type -> ltedu.wellbeing.v1.ReferResponse
+	34, // 92: ltedu.wellbeing.v1.WellbeingService.GetPsychology:output_type -> ltedu.wellbeing.v1.GetPsychologyResponse
+	36, // 93: ltedu.wellbeing.v1.WellbeingService.GetCase:output_type -> ltedu.wellbeing.v1.GetCaseResponse
+	38, // 94: ltedu.wellbeing.v1.WellbeingService.UpdateCase:output_type -> ltedu.wellbeing.v1.UpdateCaseResponse
+	40, // 95: ltedu.wellbeing.v1.WellbeingService.AddSession:output_type -> ltedu.wellbeing.v1.AddSessionResponse
+	42, // 96: ltedu.wellbeing.v1.WellbeingService.DeleteSession:output_type -> ltedu.wellbeing.v1.DeleteSessionResponse
+	44, // 97: ltedu.wellbeing.v1.WellbeingService.GetDiscipline:output_type -> ltedu.wellbeing.v1.GetDisciplineResponse
+	46, // 98: ltedu.wellbeing.v1.WellbeingService.SaveIncident:output_type -> ltedu.wellbeing.v1.SaveIncidentResponse
+	48, // 99: ltedu.wellbeing.v1.WellbeingService.DeleteIncident:output_type -> ltedu.wellbeing.v1.DeleteIncidentResponse
+	50, // 100: ltedu.wellbeing.v1.WellbeingService.SetIncidentStatus:output_type -> ltedu.wellbeing.v1.SetIncidentStatusResponse
+	52, // 101: ltedu.wellbeing.v1.WellbeingService.GetMeasureContext:output_type -> ltedu.wellbeing.v1.GetMeasureContextResponse
+	54, // 102: ltedu.wellbeing.v1.WellbeingService.AddMeasure:output_type -> ltedu.wellbeing.v1.AddMeasureResponse
+	56, // 103: ltedu.wellbeing.v1.WellbeingService.NotifyMeasure:output_type -> ltedu.wellbeing.v1.NotifyMeasureResponse
+	58, // 104: ltedu.wellbeing.v1.WellbeingService.RequestReconsideration:output_type -> ltedu.wellbeing.v1.RequestReconsiderationResponse
+	60, // 105: ltedu.wellbeing.v1.WellbeingService.ResolveReconsideration:output_type -> ltedu.wellbeing.v1.ResolveReconsiderationResponse
+	62, // 106: ltedu.wellbeing.v1.WellbeingService.DeleteMeasure:output_type -> ltedu.wellbeing.v1.DeleteMeasureResponse
+	64, // 107: ltedu.wellbeing.v1.WellbeingService.ListPlans:output_type -> ltedu.wellbeing.v1.ListPlansResponse
+	66, // 108: ltedu.wellbeing.v1.WellbeingService.GetPlan:output_type -> ltedu.wellbeing.v1.GetPlanResponse
+	68, // 109: ltedu.wellbeing.v1.WellbeingService.SavePlan:output_type -> ltedu.wellbeing.v1.SavePlanResponse
+	70, // 110: ltedu.wellbeing.v1.WellbeingService.SetPlanStatus:output_type -> ltedu.wellbeing.v1.SetPlanStatusResponse
+	72, // 111: ltedu.wellbeing.v1.WellbeingService.DeletePlan:output_type -> ltedu.wellbeing.v1.DeletePlanResponse
+	74, // 112: ltedu.wellbeing.v1.WellbeingService.ListTherapies:output_type -> ltedu.wellbeing.v1.ListTherapiesResponse
+	76, // 113: ltedu.wellbeing.v1.WellbeingService.SaveTherapy:output_type -> ltedu.wellbeing.v1.SaveTherapyResponse
+	78, // 114: ltedu.wellbeing.v1.WellbeingService.DeleteTherapy:output_type -> ltedu.wellbeing.v1.DeleteTherapyResponse
 	82, // [82:115] is the sub-list for method output_type
 	49, // [49:82] is the sub-list for method input_type
 	49, // [49:49] is the sub-list for extension type_name
@@ -6049,27 +6049,27 @@ var file_joseph_wellbeing_v1_wellbeing_proto_depIdxs = []int32{
 	0,  // [0:49] is the sub-list for field type_name
 }
 
-func init() { file_joseph_wellbeing_v1_wellbeing_proto_init() }
-func file_joseph_wellbeing_v1_wellbeing_proto_init() {
-	if File_joseph_wellbeing_v1_wellbeing_proto != nil {
+func init() { file_ltedu_wellbeing_v1_wellbeing_proto_init() }
+func file_ltedu_wellbeing_v1_wellbeing_proto_init() {
+	if File_ltedu_wellbeing_v1_wellbeing_proto != nil {
 		return
 	}
-	file_joseph_wellbeing_v1_tutoring_proto_init()
+	file_ltedu_wellbeing_v1_tutoring_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_wellbeing_v1_wellbeing_proto_rawDesc), len(file_joseph_wellbeing_v1_wellbeing_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_wellbeing_v1_wellbeing_proto_rawDesc), len(file_ltedu_wellbeing_v1_wellbeing_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   81,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_wellbeing_v1_wellbeing_proto_goTypes,
-		DependencyIndexes: file_joseph_wellbeing_v1_wellbeing_proto_depIdxs,
-		MessageInfos:      file_joseph_wellbeing_v1_wellbeing_proto_msgTypes,
+		GoTypes:           file_ltedu_wellbeing_v1_wellbeing_proto_goTypes,
+		DependencyIndexes: file_ltedu_wellbeing_v1_wellbeing_proto_depIdxs,
+		MessageInfos:      file_ltedu_wellbeing_v1_wellbeing_proto_msgTypes,
 	}.Build()
-	File_joseph_wellbeing_v1_wellbeing_proto = out.File
-	file_joseph_wellbeing_v1_wellbeing_proto_goTypes = nil
-	file_joseph_wellbeing_v1_wellbeing_proto_depIdxs = nil
+	File_ltedu_wellbeing_v1_wellbeing_proto = out.File
+	file_ltedu_wellbeing_v1_wellbeing_proto_goTypes = nil
+	file_ltedu_wellbeing_v1_wellbeing_proto_depIdxs = nil
 }

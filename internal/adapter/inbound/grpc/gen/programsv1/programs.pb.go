@@ -2,10 +2,10 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/programs/v1/programs.proto
+// source: ltedu/programs/v1/programs.proto
 
 // Institutes (phase 9 of docs/plan-academico.md): study programs by module, work placements (EFSRT), modular
-// certificates and the degree. Same metadata and institution scoping as joseph.academic.v1
+// certificates and the degree. Same metadata and institution scoping as ltedu.academic.v1
 
 package programsv1
 
@@ -46,7 +46,7 @@ type Program struct {
 
 func (x *Program) Reset() {
 	*x = Program{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[0]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -58,7 +58,7 @@ func (x *Program) String() string {
 func (*Program) ProtoMessage() {}
 
 func (x *Program) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[0]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -71,7 +71,7 @@ func (x *Program) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Program.ProtoReflect.Descriptor instead.
 func (*Program) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Program) GetLevelId() string {
@@ -174,7 +174,7 @@ type GetProgramsRequest struct {
 
 func (x *GetProgramsRequest) Reset() {
 	*x = GetProgramsRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[1]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -186,7 +186,7 @@ func (x *GetProgramsRequest) String() string {
 func (*GetProgramsRequest) ProtoMessage() {}
 
 func (x *GetProgramsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[1]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -199,7 +199,7 @@ func (x *GetProgramsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetProgramsRequest.ProtoReflect.Descriptor instead.
 func (*GetProgramsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetProgramsRequest) GetInstitutionSlug() string {
@@ -220,7 +220,7 @@ type GetProgramsResponse struct {
 
 func (x *GetProgramsResponse) Reset() {
 	*x = GetProgramsResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[2]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -232,7 +232,7 @@ func (x *GetProgramsResponse) String() string {
 func (*GetProgramsResponse) ProtoMessage() {}
 
 func (x *GetProgramsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[2]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -245,7 +245,7 @@ func (x *GetProgramsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetProgramsResponse.ProtoReflect.Descriptor instead.
 func (*GetProgramsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetProgramsResponse) GetPrograms() []*Program {
@@ -281,7 +281,7 @@ type SetCoordinatorRequest struct {
 
 func (x *SetCoordinatorRequest) Reset() {
 	*x = SetCoordinatorRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[3]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -293,7 +293,7 @@ func (x *SetCoordinatorRequest) String() string {
 func (*SetCoordinatorRequest) ProtoMessage() {}
 
 func (x *SetCoordinatorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[3]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -306,7 +306,7 @@ func (x *SetCoordinatorRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetCoordinatorRequest.ProtoReflect.Descriptor instead.
 func (*SetCoordinatorRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *SetCoordinatorRequest) GetInstitutionSlug() string {
@@ -338,7 +338,7 @@ type SetCoordinatorResponse struct {
 
 func (x *SetCoordinatorResponse) Reset() {
 	*x = SetCoordinatorResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[4]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -350,7 +350,7 @@ func (x *SetCoordinatorResponse) String() string {
 func (*SetCoordinatorResponse) ProtoMessage() {}
 
 func (x *SetCoordinatorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[4]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -363,7 +363,7 @@ func (x *SetCoordinatorResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetCoordinatorResponse.ProtoReflect.Descriptor instead.
 func (*SetCoordinatorResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{4}
 }
 
 type StudentProgress struct {
@@ -387,7 +387,7 @@ type StudentProgress struct {
 
 func (x *StudentProgress) Reset() {
 	*x = StudentProgress{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[5]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -399,7 +399,7 @@ func (x *StudentProgress) String() string {
 func (*StudentProgress) ProtoMessage() {}
 
 func (x *StudentProgress) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[5]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -412,7 +412,7 @@ func (x *StudentProgress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StudentProgress.ProtoReflect.Descriptor instead.
 func (*StudentProgress) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *StudentProgress) GetId() string {
@@ -517,7 +517,7 @@ type ListStudentsRequest struct {
 
 func (x *ListStudentsRequest) Reset() {
 	*x = ListStudentsRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[6]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -529,7 +529,7 @@ func (x *ListStudentsRequest) String() string {
 func (*ListStudentsRequest) ProtoMessage() {}
 
 func (x *ListStudentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[6]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -542,7 +542,7 @@ func (x *ListStudentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStudentsRequest.ProtoReflect.Descriptor instead.
 func (*ListStudentsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ListStudentsRequest) GetInstitutionSlug() string {
@@ -575,7 +575,7 @@ type ListStudentsResponse struct {
 
 func (x *ListStudentsResponse) Reset() {
 	*x = ListStudentsResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[7]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -587,7 +587,7 @@ func (x *ListStudentsResponse) String() string {
 func (*ListStudentsResponse) ProtoMessage() {}
 
 func (x *ListStudentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[7]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -600,7 +600,7 @@ func (x *ListStudentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStudentsResponse.ProtoReflect.Descriptor instead.
 func (*ListStudentsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ListStudentsResponse) GetStudents() []*StudentProgress {
@@ -624,7 +624,7 @@ type Standing struct {
 
 func (x *Standing) Reset() {
 	*x = Standing{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[8]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -636,7 +636,7 @@ func (x *Standing) String() string {
 func (*Standing) ProtoMessage() {}
 
 func (x *Standing) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[8]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -649,7 +649,7 @@ func (x *Standing) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Standing.ProtoReflect.Descriptor instead.
 func (*Standing) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Standing) GetStatus() string {
@@ -712,7 +712,7 @@ type Internship struct {
 
 func (x *Internship) Reset() {
 	*x = Internship{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[9]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -724,7 +724,7 @@ func (x *Internship) String() string {
 func (*Internship) ProtoMessage() {}
 
 func (x *Internship) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[9]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -737,7 +737,7 @@ func (x *Internship) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Internship.ProtoReflect.Descriptor instead.
 func (*Internship) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *Internship) GetId() string {
@@ -918,7 +918,7 @@ type RecordUnit struct {
 
 func (x *RecordUnit) Reset() {
 	*x = RecordUnit{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[10]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -930,7 +930,7 @@ func (x *RecordUnit) String() string {
 func (*RecordUnit) ProtoMessage() {}
 
 func (x *RecordUnit) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[10]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -943,7 +943,7 @@ func (x *RecordUnit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordUnit.ProtoReflect.Descriptor instead.
 func (*RecordUnit) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *RecordUnit) GetSubjectId() string {
@@ -1026,7 +1026,7 @@ type Certificate struct {
 
 func (x *Certificate) Reset() {
 	*x = Certificate{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[11]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1038,7 +1038,7 @@ func (x *Certificate) String() string {
 func (*Certificate) ProtoMessage() {}
 
 func (x *Certificate) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[11]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1051,7 +1051,7 @@ func (x *Certificate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Certificate.ProtoReflect.Descriptor instead.
 func (*Certificate) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *Certificate) GetId() string {
@@ -1167,7 +1167,7 @@ type RecordModule struct {
 
 func (x *RecordModule) Reset() {
 	*x = RecordModule{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[12]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1179,7 +1179,7 @@ func (x *RecordModule) String() string {
 func (*RecordModule) ProtoMessage() {}
 
 func (x *RecordModule) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[12]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1192,7 +1192,7 @@ func (x *RecordModule) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordModule.ProtoReflect.Descriptor instead.
 func (*RecordModule) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *RecordModule) GetId() string {
@@ -1259,7 +1259,7 @@ type Requirement struct {
 
 func (x *Requirement) Reset() {
 	*x = Requirement{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[13]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1271,7 +1271,7 @@ func (x *Requirement) String() string {
 func (*Requirement) ProtoMessage() {}
 
 func (x *Requirement) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[13]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1284,7 +1284,7 @@ func (x *Requirement) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Requirement.ProtoReflect.Descriptor instead.
 func (*Requirement) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *Requirement) GetCode() string {
@@ -1357,7 +1357,7 @@ type StudentRecord struct {
 
 func (x *StudentRecord) Reset() {
 	*x = StudentRecord{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[14]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1369,7 +1369,7 @@ func (x *StudentRecord) String() string {
 func (*StudentRecord) ProtoMessage() {}
 
 func (x *StudentRecord) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[14]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1382,7 +1382,7 @@ func (x *StudentRecord) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StudentRecord.ProtoReflect.Descriptor instead.
 func (*StudentRecord) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *StudentRecord) GetStudent() *StudentProgress {
@@ -1486,7 +1486,7 @@ type GetRecordRequest struct {
 
 func (x *GetRecordRequest) Reset() {
 	*x = GetRecordRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[15]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1498,7 +1498,7 @@ func (x *GetRecordRequest) String() string {
 func (*GetRecordRequest) ProtoMessage() {}
 
 func (x *GetRecordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[15]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1511,7 +1511,7 @@ func (x *GetRecordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRecordRequest.ProtoReflect.Descriptor instead.
 func (*GetRecordRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetRecordRequest) GetInstitutionSlug() string {
@@ -1537,7 +1537,7 @@ type GetRecordResponse struct {
 
 func (x *GetRecordResponse) Reset() {
 	*x = GetRecordResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[16]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1549,7 +1549,7 @@ func (x *GetRecordResponse) String() string {
 func (*GetRecordResponse) ProtoMessage() {}
 
 func (x *GetRecordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[16]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1562,7 +1562,7 @@ func (x *GetRecordResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRecordResponse.ProtoReflect.Descriptor instead.
 func (*GetRecordResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetRecordResponse) GetRecord() *StudentRecord {
@@ -1581,7 +1581,7 @@ type MyRecordsRequest struct {
 
 func (x *MyRecordsRequest) Reset() {
 	*x = MyRecordsRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[17]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1593,7 +1593,7 @@ func (x *MyRecordsRequest) String() string {
 func (*MyRecordsRequest) ProtoMessage() {}
 
 func (x *MyRecordsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[17]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1606,7 +1606,7 @@ func (x *MyRecordsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MyRecordsRequest.ProtoReflect.Descriptor instead.
 func (*MyRecordsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *MyRecordsRequest) GetInstitutionSlug() string {
@@ -1625,7 +1625,7 @@ type MyRecordsResponse struct {
 
 func (x *MyRecordsResponse) Reset() {
 	*x = MyRecordsResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[18]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1637,7 +1637,7 @@ func (x *MyRecordsResponse) String() string {
 func (*MyRecordsResponse) ProtoMessage() {}
 
 func (x *MyRecordsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[18]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1650,7 +1650,7 @@ func (x *MyRecordsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MyRecordsResponse.ProtoReflect.Descriptor instead.
 func (*MyRecordsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *MyRecordsResponse) GetRecords() []*StudentRecord {
@@ -1671,7 +1671,7 @@ type ListInternshipsRequest struct {
 
 func (x *ListInternshipsRequest) Reset() {
 	*x = ListInternshipsRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[19]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1683,7 +1683,7 @@ func (x *ListInternshipsRequest) String() string {
 func (*ListInternshipsRequest) ProtoMessage() {}
 
 func (x *ListInternshipsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[19]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1696,7 +1696,7 @@ func (x *ListInternshipsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListInternshipsRequest.ProtoReflect.Descriptor instead.
 func (*ListInternshipsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ListInternshipsRequest) GetInstitutionSlug() string {
@@ -1730,7 +1730,7 @@ type ListInternshipsResponse struct {
 
 func (x *ListInternshipsResponse) Reset() {
 	*x = ListInternshipsResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[20]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1742,7 +1742,7 @@ func (x *ListInternshipsResponse) String() string {
 func (*ListInternshipsResponse) ProtoMessage() {}
 
 func (x *ListInternshipsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[20]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1755,7 +1755,7 @@ func (x *ListInternshipsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListInternshipsResponse.ProtoReflect.Descriptor instead.
 func (*ListInternshipsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ListInternshipsResponse) GetInternships() []*Internship {
@@ -1784,7 +1784,7 @@ type InternshipLog struct {
 
 func (x *InternshipLog) Reset() {
 	*x = InternshipLog{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[21]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1796,7 +1796,7 @@ func (x *InternshipLog) String() string {
 func (*InternshipLog) ProtoMessage() {}
 
 func (x *InternshipLog) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[21]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1809,7 +1809,7 @@ func (x *InternshipLog) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InternshipLog.ProtoReflect.Descriptor instead.
 func (*InternshipLog) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *InternshipLog) GetId() string {
@@ -1850,7 +1850,7 @@ type GetInternshipRequest struct {
 
 func (x *GetInternshipRequest) Reset() {
 	*x = GetInternshipRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[22]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1862,7 +1862,7 @@ func (x *GetInternshipRequest) String() string {
 func (*GetInternshipRequest) ProtoMessage() {}
 
 func (x *GetInternshipRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[22]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1875,7 +1875,7 @@ func (x *GetInternshipRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetInternshipRequest.ProtoReflect.Descriptor instead.
 func (*GetInternshipRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *GetInternshipRequest) GetInstitutionSlug() string {
@@ -1904,7 +1904,7 @@ type GetInternshipResponse struct {
 
 func (x *GetInternshipResponse) Reset() {
 	*x = GetInternshipResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[23]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1916,7 +1916,7 @@ func (x *GetInternshipResponse) String() string {
 func (*GetInternshipResponse) ProtoMessage() {}
 
 func (x *GetInternshipResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[23]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1929,7 +1929,7 @@ func (x *GetInternshipResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetInternshipResponse.ProtoReflect.Descriptor instead.
 func (*GetInternshipResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{23}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetInternshipResponse) GetInternship() *Internship {
@@ -1970,7 +1970,7 @@ type SaveInternshipRequest struct {
 
 func (x *SaveInternshipRequest) Reset() {
 	*x = SaveInternshipRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[24]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1982,7 +1982,7 @@ func (x *SaveInternshipRequest) String() string {
 func (*SaveInternshipRequest) ProtoMessage() {}
 
 func (x *SaveInternshipRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[24]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1995,7 +1995,7 @@ func (x *SaveInternshipRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveInternshipRequest.ProtoReflect.Descriptor instead.
 func (*SaveInternshipRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{24}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *SaveInternshipRequest) GetInstitutionSlug() string {
@@ -2021,7 +2021,7 @@ type SaveInternshipResponse struct {
 
 func (x *SaveInternshipResponse) Reset() {
 	*x = SaveInternshipResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[25]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2033,7 +2033,7 @@ func (x *SaveInternshipResponse) String() string {
 func (*SaveInternshipResponse) ProtoMessage() {}
 
 func (x *SaveInternshipResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[25]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2046,7 +2046,7 @@ func (x *SaveInternshipResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveInternshipResponse.ProtoReflect.Descriptor instead.
 func (*SaveInternshipResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{25}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *SaveInternshipResponse) GetInternship() *Internship {
@@ -2066,7 +2066,7 @@ type DeleteInternshipRequest struct {
 
 func (x *DeleteInternshipRequest) Reset() {
 	*x = DeleteInternshipRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[26]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2078,7 +2078,7 @@ func (x *DeleteInternshipRequest) String() string {
 func (*DeleteInternshipRequest) ProtoMessage() {}
 
 func (x *DeleteInternshipRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[26]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2091,7 +2091,7 @@ func (x *DeleteInternshipRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteInternshipRequest.ProtoReflect.Descriptor instead.
 func (*DeleteInternshipRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{26}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *DeleteInternshipRequest) GetInstitutionSlug() string {
@@ -2116,7 +2116,7 @@ type DeleteInternshipResponse struct {
 
 func (x *DeleteInternshipResponse) Reset() {
 	*x = DeleteInternshipResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[27]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2128,7 +2128,7 @@ func (x *DeleteInternshipResponse) String() string {
 func (*DeleteInternshipResponse) ProtoMessage() {}
 
 func (x *DeleteInternshipResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[27]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2141,7 +2141,7 @@ func (x *DeleteInternshipResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteInternshipResponse.ProtoReflect.Descriptor instead.
 func (*DeleteInternshipResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{27}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{27}
 }
 
 type AddLogRequest struct {
@@ -2155,7 +2155,7 @@ type AddLogRequest struct {
 
 func (x *AddLogRequest) Reset() {
 	*x = AddLogRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[28]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2167,7 +2167,7 @@ func (x *AddLogRequest) String() string {
 func (*AddLogRequest) ProtoMessage() {}
 
 func (x *AddLogRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[28]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2180,7 +2180,7 @@ func (x *AddLogRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddLogRequest.ProtoReflect.Descriptor instead.
 func (*AddLogRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{28}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *AddLogRequest) GetInstitutionSlug() string {
@@ -2213,7 +2213,7 @@ type AddLogResponse struct {
 
 func (x *AddLogResponse) Reset() {
 	*x = AddLogResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[29]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2225,7 +2225,7 @@ func (x *AddLogResponse) String() string {
 func (*AddLogResponse) ProtoMessage() {}
 
 func (x *AddLogResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[29]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2238,7 +2238,7 @@ func (x *AddLogResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddLogResponse.ProtoReflect.Descriptor instead.
 func (*AddLogResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{29}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *AddLogResponse) GetInternship() *GetInternshipResponse {
@@ -2259,7 +2259,7 @@ type DeleteLogRequest struct {
 
 func (x *DeleteLogRequest) Reset() {
 	*x = DeleteLogRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[30]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2271,7 +2271,7 @@ func (x *DeleteLogRequest) String() string {
 func (*DeleteLogRequest) ProtoMessage() {}
 
 func (x *DeleteLogRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[30]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2284,7 +2284,7 @@ func (x *DeleteLogRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteLogRequest.ProtoReflect.Descriptor instead.
 func (*DeleteLogRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{30}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *DeleteLogRequest) GetInstitutionSlug() string {
@@ -2317,7 +2317,7 @@ type DeleteLogResponse struct {
 
 func (x *DeleteLogResponse) Reset() {
 	*x = DeleteLogResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[31]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2329,7 +2329,7 @@ func (x *DeleteLogResponse) String() string {
 func (*DeleteLogResponse) ProtoMessage() {}
 
 func (x *DeleteLogResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[31]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2342,7 +2342,7 @@ func (x *DeleteLogResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteLogResponse.ProtoReflect.Descriptor instead.
 func (*DeleteLogResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{31}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *DeleteLogResponse) GetInternship() *GetInternshipResponse {
@@ -2364,7 +2364,7 @@ type EvaluateInternshipRequest struct {
 
 func (x *EvaluateInternshipRequest) Reset() {
 	*x = EvaluateInternshipRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[32]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2376,7 +2376,7 @@ func (x *EvaluateInternshipRequest) String() string {
 func (*EvaluateInternshipRequest) ProtoMessage() {}
 
 func (x *EvaluateInternshipRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[32]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2389,7 +2389,7 @@ func (x *EvaluateInternshipRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EvaluateInternshipRequest.ProtoReflect.Descriptor instead.
 func (*EvaluateInternshipRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{32}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *EvaluateInternshipRequest) GetInstitutionSlug() string {
@@ -2429,7 +2429,7 @@ type EvaluateInternshipResponse struct {
 
 func (x *EvaluateInternshipResponse) Reset() {
 	*x = EvaluateInternshipResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[33]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2441,7 +2441,7 @@ func (x *EvaluateInternshipResponse) String() string {
 func (*EvaluateInternshipResponse) ProtoMessage() {}
 
 func (x *EvaluateInternshipResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[33]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2454,7 +2454,7 @@ func (x *EvaluateInternshipResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EvaluateInternshipResponse.ProtoReflect.Descriptor instead.
 func (*EvaluateInternshipResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{33}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *EvaluateInternshipResponse) GetInternship() *GetInternshipResponse {
@@ -2475,7 +2475,7 @@ type IssueModularRequest struct {
 
 func (x *IssueModularRequest) Reset() {
 	*x = IssueModularRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[34]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2487,7 +2487,7 @@ func (x *IssueModularRequest) String() string {
 func (*IssueModularRequest) ProtoMessage() {}
 
 func (x *IssueModularRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[34]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2500,7 +2500,7 @@ func (x *IssueModularRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IssueModularRequest.ProtoReflect.Descriptor instead.
 func (*IssueModularRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{34}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *IssueModularRequest) GetInstitutionSlug() string {
@@ -2533,7 +2533,7 @@ type IssueModularResponse struct {
 
 func (x *IssueModularResponse) Reset() {
 	*x = IssueModularResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[35]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2545,7 +2545,7 @@ func (x *IssueModularResponse) String() string {
 func (*IssueModularResponse) ProtoMessage() {}
 
 func (x *IssueModularResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[35]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2558,7 +2558,7 @@ func (x *IssueModularResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IssueModularResponse.ProtoReflect.Descriptor instead.
 func (*IssueModularResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{35}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *IssueModularResponse) GetCertificate() *Certificate {
@@ -2578,7 +2578,7 @@ type IssueDegreeRequest struct {
 
 func (x *IssueDegreeRequest) Reset() {
 	*x = IssueDegreeRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[36]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2590,7 +2590,7 @@ func (x *IssueDegreeRequest) String() string {
 func (*IssueDegreeRequest) ProtoMessage() {}
 
 func (x *IssueDegreeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[36]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2603,7 +2603,7 @@ func (x *IssueDegreeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IssueDegreeRequest.ProtoReflect.Descriptor instead.
 func (*IssueDegreeRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{36}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *IssueDegreeRequest) GetInstitutionSlug() string {
@@ -2629,7 +2629,7 @@ type IssueDegreeResponse struct {
 
 func (x *IssueDegreeResponse) Reset() {
 	*x = IssueDegreeResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[37]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2641,7 +2641,7 @@ func (x *IssueDegreeResponse) String() string {
 func (*IssueDegreeResponse) ProtoMessage() {}
 
 func (x *IssueDegreeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[37]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2654,7 +2654,7 @@ func (x *IssueDegreeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IssueDegreeResponse.ProtoReflect.Descriptor instead.
 func (*IssueDegreeResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{37}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *IssueDegreeResponse) GetCertificate() *Certificate {
@@ -2677,7 +2677,7 @@ type SetRequirementRequest struct {
 
 func (x *SetRequirementRequest) Reset() {
 	*x = SetRequirementRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[38]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2689,7 +2689,7 @@ func (x *SetRequirementRequest) String() string {
 func (*SetRequirementRequest) ProtoMessage() {}
 
 func (x *SetRequirementRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[38]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2702,7 +2702,7 @@ func (x *SetRequirementRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetRequirementRequest.ProtoReflect.Descriptor instead.
 func (*SetRequirementRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{38}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *SetRequirementRequest) GetInstitutionSlug() string {
@@ -2749,7 +2749,7 @@ type SetRequirementResponse struct {
 
 func (x *SetRequirementResponse) Reset() {
 	*x = SetRequirementResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[39]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2761,7 +2761,7 @@ func (x *SetRequirementResponse) String() string {
 func (*SetRequirementResponse) ProtoMessage() {}
 
 func (x *SetRequirementResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[39]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2774,7 +2774,7 @@ func (x *SetRequirementResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetRequirementResponse.ProtoReflect.Descriptor instead.
 func (*SetRequirementResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{39}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *SetRequirementResponse) GetRecord() *StudentRecord {
@@ -2795,7 +2795,7 @@ type ListCertificatesRequest struct {
 
 func (x *ListCertificatesRequest) Reset() {
 	*x = ListCertificatesRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[40]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2807,7 +2807,7 @@ func (x *ListCertificatesRequest) String() string {
 func (*ListCertificatesRequest) ProtoMessage() {}
 
 func (x *ListCertificatesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[40]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2820,7 +2820,7 @@ func (x *ListCertificatesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCertificatesRequest.ProtoReflect.Descriptor instead.
 func (*ListCertificatesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{40}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *ListCertificatesRequest) GetInstitutionSlug() string {
@@ -2854,7 +2854,7 @@ type ListCertificatesResponse struct {
 
 func (x *ListCertificatesResponse) Reset() {
 	*x = ListCertificatesResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[41]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2866,7 +2866,7 @@ func (x *ListCertificatesResponse) String() string {
 func (*ListCertificatesResponse) ProtoMessage() {}
 
 func (x *ListCertificatesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[41]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2879,7 +2879,7 @@ func (x *ListCertificatesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCertificatesResponse.ProtoReflect.Descriptor instead.
 func (*ListCertificatesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{41}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *ListCertificatesResponse) GetCertificates() []*Certificate {
@@ -2906,7 +2906,7 @@ type GetCertificateRequest struct {
 
 func (x *GetCertificateRequest) Reset() {
 	*x = GetCertificateRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[42]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2918,7 +2918,7 @@ func (x *GetCertificateRequest) String() string {
 func (*GetCertificateRequest) ProtoMessage() {}
 
 func (x *GetCertificateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[42]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2931,7 +2931,7 @@ func (x *GetCertificateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCertificateRequest.ProtoReflect.Descriptor instead.
 func (*GetCertificateRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{42}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *GetCertificateRequest) GetInstitutionSlug() string {
@@ -2959,7 +2959,7 @@ type GetCertificateResponse struct {
 
 func (x *GetCertificateResponse) Reset() {
 	*x = GetCertificateResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[43]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2971,7 +2971,7 @@ func (x *GetCertificateResponse) String() string {
 func (*GetCertificateResponse) ProtoMessage() {}
 
 func (x *GetCertificateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[43]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2984,7 +2984,7 @@ func (x *GetCertificateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCertificateResponse.ProtoReflect.Descriptor instead.
 func (*GetCertificateResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{43}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *GetCertificateResponse) GetCertificate() *Certificate {
@@ -3012,7 +3012,7 @@ type AnnulCertificateRequest struct {
 
 func (x *AnnulCertificateRequest) Reset() {
 	*x = AnnulCertificateRequest{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[44]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3024,7 +3024,7 @@ func (x *AnnulCertificateRequest) String() string {
 func (*AnnulCertificateRequest) ProtoMessage() {}
 
 func (x *AnnulCertificateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[44]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3037,7 +3037,7 @@ func (x *AnnulCertificateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AnnulCertificateRequest.ProtoReflect.Descriptor instead.
 func (*AnnulCertificateRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{44}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *AnnulCertificateRequest) GetInstitutionSlug() string {
@@ -3069,7 +3069,7 @@ type AnnulCertificateResponse struct {
 
 func (x *AnnulCertificateResponse) Reset() {
 	*x = AnnulCertificateResponse{}
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[45]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3081,7 +3081,7 @@ func (x *AnnulCertificateResponse) String() string {
 func (*AnnulCertificateResponse) ProtoMessage() {}
 
 func (x *AnnulCertificateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_programs_v1_programs_proto_msgTypes[45]
+	mi := &file_ltedu_programs_v1_programs_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3094,14 +3094,14 @@ func (x *AnnulCertificateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AnnulCertificateResponse.ProtoReflect.Descriptor instead.
 func (*AnnulCertificateResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_programs_v1_programs_proto_rawDescGZIP(), []int{45}
+	return file_ltedu_programs_v1_programs_proto_rawDescGZIP(), []int{45}
 }
 
-var File_joseph_programs_v1_programs_proto protoreflect.FileDescriptor
+var File_ltedu_programs_v1_programs_proto protoreflect.FileDescriptor
 
-const file_joseph_programs_v1_programs_proto_rawDesc = "" +
+const file_ltedu_programs_v1_programs_proto_rawDesc = "" +
 	"\n" +
-	"!joseph/programs/v1/programs.proto\x12\x12joseph.programs.v1\x1a!joseph/teaching/v1/teaching.proto\"\x89\x03\n" +
+	" ltedu/programs/v1/programs.proto\x12\x11ltedu.programs.v1\x1a ltedu/teaching/v1/teaching.proto\"\x89\x03\n" +
 	"\aProgram\x12\x19\n" +
 	"\blevel_id\x18\x01 \x01(\tR\alevelId\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
@@ -3120,12 +3120,12 @@ const file_joseph_programs_v1_programs_proto_rawDesc = "" +
 	"\amodules\x18\f \x01(\x05R\amodules\x12#\n" +
 	"\rtotal_credits\x18\r \x01(\x05R\ftotalCredits\"?\n" +
 	"\x12GetProgramsRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x9e\x01\n" +
-	"\x13GetProgramsResponse\x127\n" +
-	"\bprograms\x18\x01 \x03(\v2\x1b.joseph.programs.v1.ProgramR\bprograms\x12\x1d\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x9c\x01\n" +
+	"\x13GetProgramsResponse\x126\n" +
+	"\bprograms\x18\x01 \x03(\v2\x1a.ltedu.programs.v1.ProgramR\bprograms\x12\x1d\n" +
 	"\n" +
-	"can_assign\x18\x02 \x01(\bR\tcanAssign\x12/\n" +
-	"\x05staff\x18\x03 \x03(\v2\x19.joseph.teaching.v1.StaffR\x05staff\"x\n" +
+	"can_assign\x18\x02 \x01(\bR\tcanAssign\x12.\n" +
+	"\x05staff\x18\x03 \x03(\v2\x18.ltedu.teaching.v1.StaffR\x05staff\"x\n" +
 	"\x15SetCoordinatorRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x19\n" +
 	"\blevel_id\x18\x02 \x01(\tR\alevelId\x12\x19\n" +
@@ -3151,9 +3151,9 @@ const file_joseph_programs_v1_programs_proto_rawDesc = "" +
 	"\x13ListStudentsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x19\n" +
 	"\blevel_id\x18\x02 \x01(\tR\alevelId\x12\x14\n" +
-	"\x05query\x18\x03 \x01(\tR\x05query\"W\n" +
-	"\x14ListStudentsResponse\x12?\n" +
-	"\bstudents\x18\x01 \x03(\v2#.joseph.programs.v1.StudentProgressR\bstudents\"\x80\x01\n" +
+	"\x05query\x18\x03 \x01(\tR\x05query\"V\n" +
+	"\x14ListStudentsResponse\x12>\n" +
+	"\bstudents\x18\x01 \x03(\v2\".ltedu.programs.v1.StudentProgressR\bstudents\"\x80\x01\n" +
 	"\bStanding\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12\x19\n" +
 	"\x05grade\x18\x02 \x01(\x05H\x00R\x05grade\x88\x01\x01\x12\x1f\n" +
@@ -3195,7 +3195,7 @@ const file_joseph_programs_v1_programs_proto_rawDesc = "" +
 	"evaluation\x12%\n" +
 	"\x0eevaluated_name\x18\x16 \x01(\tR\revaluatedName\x12!\n" +
 	"\fevaluated_at\x18\x17 \x01(\tR\vevaluatedAtB\b\n" +
-	"\x06_score\"\x9b\x02\n" +
+	"\x06_score\"\x99\x02\n" +
 	"\n" +
 	"RecordUnit\x12\x1d\n" +
 	"\n" +
@@ -3203,9 +3203,9 @@ const file_joseph_programs_v1_programs_proto_rawDesc = "" +
 	"\x04kind\x18\x02 \x01(\tR\x04kind\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x18\n" +
 	"\acredits\x18\x04 \x01(\x05R\acredits\x12\x1a\n" +
-	"\bsemester\x18\x05 \x01(\tR\bsemester\x128\n" +
-	"\bstanding\x18\x06 \x01(\v2\x1c.joseph.programs.v1.StandingR\bstanding\x12@\n" +
-	"\vinternships\x18\a \x03(\v2\x1e.joseph.programs.v1.InternshipR\vinternships\x12\x14\n" +
+	"\bsemester\x18\x05 \x01(\tR\bsemester\x127\n" +
+	"\bstanding\x18\x06 \x01(\v2\x1b.ltedu.programs.v1.StandingR\bstanding\x12?\n" +
+	"\vinternships\x18\a \x03(\v2\x1d.ltedu.programs.v1.InternshipR\vinternships\x12\x14\n" +
 	"\x05hours\x18\b \x01(\x05R\x05hours\"\x9f\x03\n" +
 	"\vCertificate\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
@@ -3225,13 +3225,13 @@ const file_joseph_programs_v1_programs_proto_rawDesc = "" +
 	"\tissued_on\x18\f \x01(\tR\bissuedOn\x12\x1f\n" +
 	"\vissued_name\x18\r \x01(\tR\n" +
 	"issuedName\x12!\n" +
-	"\fannul_reason\x18\x0e \x01(\tR\vannulReason\"\xfd\x01\n" +
+	"\fannul_reason\x18\x0e \x01(\tR\vannulReason\"\xfb\x01\n" +
 	"\fRecordModule\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x124\n" +
-	"\x05units\x18\x03 \x03(\v2\x1e.joseph.programs.v1.RecordUnitR\x05units\x12\x1a\n" +
-	"\bcomplete\x18\x04 \x01(\bR\bcomplete\x12A\n" +
-	"\vcertificate\x18\x05 \x01(\v2\x1f.joseph.programs.v1.CertificateR\vcertificate\x12\x18\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x123\n" +
+	"\x05units\x18\x03 \x03(\v2\x1d.ltedu.programs.v1.RecordUnitR\x05units\x12\x1a\n" +
+	"\bcomplete\x18\x04 \x01(\bR\bcomplete\x12@\n" +
+	"\vcertificate\x18\x05 \x01(\v2\x1e.ltedu.programs.v1.CertificateR\vcertificate\x12\x18\n" +
 	"\acredits\x18\x06 \x01(\x05R\acredits\x12\x1a\n" +
 	"\bapproved\x18\a \x01(\x05R\bapproved\"\xb3\x01\n" +
 	"\vRequirement\x12\x12\n" +
@@ -3242,14 +3242,14 @@ const file_joseph_programs_v1_programs_proto_rawDesc = "" +
 	"\x04note\x18\x05 \x01(\tR\x04note\x12!\n" +
 	"\fchecked_name\x18\x06 \x01(\tR\vcheckedName\x12\x1d\n" +
 	"\n" +
-	"checked_at\x18\a \x01(\tR\tcheckedAt\"\xba\x04\n" +
-	"\rStudentRecord\x12=\n" +
-	"\astudent\x18\x01 \x01(\v2#.joseph.programs.v1.StudentProgressR\astudent\x12!\n" +
+	"checked_at\x18\a \x01(\tR\tcheckedAt\"\xb5\x04\n" +
+	"\rStudentRecord\x12<\n" +
+	"\astudent\x18\x01 \x01(\v2\".ltedu.programs.v1.StudentProgressR\astudent\x12!\n" +
 	"\fprogram_name\x18\x02 \x01(\tR\vprogramName\x12\x19\n" +
-	"\blevel_id\x18\x03 \x01(\tR\alevelId\x12:\n" +
-	"\amodules\x18\x04 \x03(\v2 .joseph.programs.v1.RecordModuleR\amodules\x12C\n" +
-	"\frequirements\x18\x05 \x03(\v2\x1f.joseph.programs.v1.RequirementR\frequirements\x127\n" +
-	"\x06degree\x18\x06 \x01(\v2\x1f.joseph.programs.v1.CertificateR\x06degree\x12\x1a\n" +
+	"\blevel_id\x18\x03 \x01(\tR\alevelId\x129\n" +
+	"\amodules\x18\x04 \x03(\v2\x1f.ltedu.programs.v1.RecordModuleR\amodules\x12B\n" +
+	"\frequirements\x18\x05 \x03(\v2\x1e.ltedu.programs.v1.RequirementR\frequirements\x126\n" +
+	"\x06degree\x18\x06 \x01(\v2\x1e.ltedu.programs.v1.CertificateR\x06degree\x12\x1a\n" +
 	"\beligible\x18\a \x01(\bR\beligible\x12\x1a\n" +
 	"\bapproved\x18\b \x01(\x05R\bapproved\x12\x14\n" +
 	"\x05total\x18\t \x01(\x05R\x05total\x12\x1d\n" +
@@ -3257,24 +3257,24 @@ const file_joseph_programs_v1_programs_proto_rawDesc = "" +
 	"can_manage\x18\n" +
 	" \x01(\bR\tcanManage\x12\x1b\n" +
 	"\tcan_issue\x18\v \x01(\bR\bcanIssue\x12#\n" +
-	"\rpassing_grade\x18\f \x01(\x05R\fpassingGrade\x12C\n" +
-	"\fcertificates\x18\r \x03(\v2\x1f.joseph.programs.v1.CertificateR\fcertificates\"\\\n" +
+	"\rpassing_grade\x18\f \x01(\x05R\fpassingGrade\x12B\n" +
+	"\fcertificates\x18\r \x03(\v2\x1e.ltedu.programs.v1.CertificateR\fcertificates\"\\\n" +
 	"\x10GetRecordRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x02 \x01(\tR\tstudentId\"N\n" +
-	"\x11GetRecordResponse\x129\n" +
-	"\x06record\x18\x01 \x01(\v2!.joseph.programs.v1.StudentRecordR\x06record\"=\n" +
+	"student_id\x18\x02 \x01(\tR\tstudentId\"M\n" +
+	"\x11GetRecordResponse\x128\n" +
+	"\x06record\x18\x01 \x01(\v2 .ltedu.programs.v1.StudentRecordR\x06record\"=\n" +
 	"\x10MyRecordsRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"P\n" +
-	"\x11MyRecordsResponse\x12;\n" +
-	"\arecords\x18\x01 \x03(\v2!.joseph.programs.v1.StudentRecordR\arecords\"v\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"O\n" +
+	"\x11MyRecordsResponse\x12:\n" +
+	"\arecords\x18\x01 \x03(\v2 .ltedu.programs.v1.StudentRecordR\arecords\"v\n" +
 	"\x16ListInternshipsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x19\n" +
 	"\blevel_id\x18\x02 \x01(\tR\alevelId\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\tR\x06status\"z\n" +
-	"\x17ListInternshipsResponse\x12@\n" +
-	"\vinternships\x18\x01 \x03(\v2\x1e.joseph.programs.v1.InternshipR\vinternships\x12\x1d\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\"y\n" +
+	"\x17ListInternshipsResponse\x12?\n" +
+	"\vinternships\x18\x01 \x03(\v2\x1d.ltedu.programs.v1.InternshipR\vinternships\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\x02 \x01(\bR\tcanManage\"c\n" +
 	"\rInternshipLog\x12\x0e\n" +
@@ -3284,42 +3284,42 @@ const file_joseph_programs_v1_programs_proto_rawDesc = "" +
 	"\bactivity\x18\x04 \x01(\tR\bactivity\"Q\n" +
 	"\x14GetInternshipRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"\xce\x01\n" +
-	"\x15GetInternshipResponse\x12>\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"\xcc\x01\n" +
+	"\x15GetInternshipResponse\x12=\n" +
 	"\n" +
-	"internship\x18\x01 \x01(\v2\x1e.joseph.programs.v1.InternshipR\n" +
-	"internship\x125\n" +
-	"\x04logs\x18\x02 \x03(\v2!.joseph.programs.v1.InternshipLogR\x04logs\x12\x19\n" +
+	"internship\x18\x01 \x01(\v2\x1d.ltedu.programs.v1.InternshipR\n" +
+	"internship\x124\n" +
+	"\x04logs\x18\x02 \x03(\v2 .ltedu.programs.v1.InternshipLogR\x04logs\x12\x19\n" +
 	"\bcan_edit\x18\x03 \x01(\bR\acanEdit\x12#\n" +
-	"\rpassing_grade\x18\x04 \x01(\x05R\fpassingGrade\"\x82\x01\n" +
+	"\rpassing_grade\x18\x04 \x01(\x05R\fpassingGrade\"\x81\x01\n" +
 	"\x15SaveInternshipRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12>\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12=\n" +
 	"\n" +
-	"internship\x18\x02 \x01(\v2\x1e.joseph.programs.v1.InternshipR\n" +
-	"internship\"X\n" +
-	"\x16SaveInternshipResponse\x12>\n" +
+	"internship\x18\x02 \x01(\v2\x1d.ltedu.programs.v1.InternshipR\n" +
+	"internship\"W\n" +
+	"\x16SaveInternshipResponse\x12=\n" +
 	"\n" +
-	"internship\x18\x01 \x01(\v2\x1e.joseph.programs.v1.InternshipR\n" +
+	"internship\x18\x01 \x01(\v2\x1d.ltedu.programs.v1.InternshipR\n" +
 	"internship\"T\n" +
 	"\x17DeleteInternshipRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x1a\n" +
-	"\x18DeleteInternshipResponse\"\x7f\n" +
+	"\x18DeleteInternshipResponse\"~\n" +
 	"\rAddLogRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\x123\n" +
-	"\x03log\x18\x03 \x01(\v2!.joseph.programs.v1.InternshipLogR\x03log\"[\n" +
-	"\x0eAddLogResponse\x12I\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\x122\n" +
+	"\x03log\x18\x03 \x01(\v2 .ltedu.programs.v1.InternshipLogR\x03log\"Z\n" +
+	"\x0eAddLogResponse\x12H\n" +
 	"\n" +
-	"internship\x18\x01 \x01(\v2).joseph.programs.v1.GetInternshipResponseR\n" +
+	"internship\x18\x01 \x01(\v2(.ltedu.programs.v1.GetInternshipResponseR\n" +
 	"internship\"d\n" +
 	"\x10DeleteLogRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x15\n" +
-	"\x06log_id\x18\x03 \x01(\tR\x05logId\"^\n" +
-	"\x11DeleteLogResponse\x12I\n" +
+	"\x06log_id\x18\x03 \x01(\tR\x05logId\"]\n" +
+	"\x11DeleteLogResponse\x12H\n" +
 	"\n" +
-	"internship\x18\x01 \x01(\v2).joseph.programs.v1.GetInternshipResponseR\n" +
+	"internship\x18\x01 \x01(\v2(.ltedu.programs.v1.GetInternshipResponseR\n" +
 	"internship\"\x8c\x01\n" +
 	"\x19EvaluateInternshipRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
@@ -3327,198 +3327,198 @@ const file_joseph_programs_v1_programs_proto_rawDesc = "" +
 	"\x05score\x18\x03 \x01(\x05R\x05score\x12\x1e\n" +
 	"\n" +
 	"evaluation\x18\x04 \x01(\tR\n" +
-	"evaluation\"g\n" +
-	"\x1aEvaluateInternshipResponse\x12I\n" +
+	"evaluation\"f\n" +
+	"\x1aEvaluateInternshipResponse\x12H\n" +
 	"\n" +
-	"internship\x18\x01 \x01(\v2).joseph.programs.v1.GetInternshipResponseR\n" +
+	"internship\x18\x01 \x01(\v2(.ltedu.programs.v1.GetInternshipResponseR\n" +
 	"internship\"|\n" +
 	"\x13IssueModularRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x02 \x01(\tR\tstudentId\x12\x1b\n" +
-	"\tmodule_id\x18\x03 \x01(\tR\bmoduleId\"Y\n" +
-	"\x14IssueModularResponse\x12A\n" +
-	"\vcertificate\x18\x01 \x01(\v2\x1f.joseph.programs.v1.CertificateR\vcertificate\"^\n" +
+	"\tmodule_id\x18\x03 \x01(\tR\bmoduleId\"X\n" +
+	"\x14IssueModularResponse\x12@\n" +
+	"\vcertificate\x18\x01 \x01(\v2\x1e.ltedu.programs.v1.CertificateR\vcertificate\"^\n" +
 	"\x12IssueDegreeRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x02 \x01(\tR\tstudentId\"X\n" +
-	"\x13IssueDegreeResponse\x12A\n" +
-	"\vcertificate\x18\x01 \x01(\v2\x1f.joseph.programs.v1.CertificateR\vcertificate\"\x9d\x01\n" +
+	"student_id\x18\x02 \x01(\tR\tstudentId\"W\n" +
+	"\x13IssueDegreeResponse\x12@\n" +
+	"\vcertificate\x18\x01 \x01(\v2\x1e.ltedu.programs.v1.CertificateR\vcertificate\"\x9d\x01\n" +
 	"\x15SetRequirementRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x02 \x01(\tR\tstudentId\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x12\x12\n" +
 	"\x04done\x18\x04 \x01(\bR\x04done\x12\x12\n" +
-	"\x04note\x18\x05 \x01(\tR\x04note\"S\n" +
-	"\x16SetRequirementResponse\x129\n" +
-	"\x06record\x18\x01 \x01(\v2!.joseph.programs.v1.StudentRecordR\x06record\"s\n" +
+	"\x04note\x18\x05 \x01(\tR\x04note\"R\n" +
+	"\x16SetRequirementResponse\x128\n" +
+	"\x06record\x18\x01 \x01(\v2 .ltedu.programs.v1.StudentRecordR\x06record\"s\n" +
 	"\x17ListCertificatesRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x19\n" +
 	"\blevel_id\x18\x02 \x01(\tR\alevelId\x12\x12\n" +
-	"\x04kind\x18\x03 \x01(\tR\x04kind\"|\n" +
-	"\x18ListCertificatesResponse\x12C\n" +
-	"\fcertificates\x18\x01 \x03(\v2\x1f.joseph.programs.v1.CertificateR\fcertificates\x12\x1b\n" +
+	"\x04kind\x18\x03 \x01(\tR\x04kind\"{\n" +
+	"\x18ListCertificatesResponse\x12B\n" +
+	"\fcertificates\x18\x01 \x03(\v2\x1e.ltedu.programs.v1.CertificateR\fcertificates\x12\x1b\n" +
 	"\tcan_annul\x18\x02 \x01(\bR\bcanAnnul\"R\n" +
 	"\x15GetCertificateRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"u\n" +
-	"\x16GetCertificateResponse\x12A\n" +
-	"\vcertificate\x18\x01 \x01(\v2\x1f.joseph.programs.v1.CertificateR\vcertificate\x12\x18\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"t\n" +
+	"\x16GetCertificateResponse\x12@\n" +
+	"\vcertificate\x18\x01 \x01(\v2\x1e.ltedu.programs.v1.CertificateR\vcertificate\x12\x18\n" +
 	"\acontent\x18\x02 \x01(\tR\acontent\"l\n" +
 	"\x17AnnulCertificateRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x16\n" +
 	"\x06reason\x18\x03 \x01(\tR\x06reason\"\x1a\n" +
-	"\x18AnnulCertificateResponse2\xae\x0e\n" +
-	"\x0fProgramsService\x12^\n" +
-	"\vGetPrograms\x12&.joseph.programs.v1.GetProgramsRequest\x1a'.joseph.programs.v1.GetProgramsResponse\x12g\n" +
-	"\x0eSetCoordinator\x12).joseph.programs.v1.SetCoordinatorRequest\x1a*.joseph.programs.v1.SetCoordinatorResponse\x12a\n" +
-	"\fListStudents\x12'.joseph.programs.v1.ListStudentsRequest\x1a(.joseph.programs.v1.ListStudentsResponse\x12X\n" +
-	"\tGetRecord\x12$.joseph.programs.v1.GetRecordRequest\x1a%.joseph.programs.v1.GetRecordResponse\x12X\n" +
-	"\tMyRecords\x12$.joseph.programs.v1.MyRecordsRequest\x1a%.joseph.programs.v1.MyRecordsResponse\x12j\n" +
-	"\x0fListInternships\x12*.joseph.programs.v1.ListInternshipsRequest\x1a+.joseph.programs.v1.ListInternshipsResponse\x12d\n" +
-	"\rGetInternship\x12(.joseph.programs.v1.GetInternshipRequest\x1a).joseph.programs.v1.GetInternshipResponse\x12g\n" +
-	"\x0eSaveInternship\x12).joseph.programs.v1.SaveInternshipRequest\x1a*.joseph.programs.v1.SaveInternshipResponse\x12m\n" +
-	"\x10DeleteInternship\x12+.joseph.programs.v1.DeleteInternshipRequest\x1a,.joseph.programs.v1.DeleteInternshipResponse\x12O\n" +
-	"\x06AddLog\x12!.joseph.programs.v1.AddLogRequest\x1a\".joseph.programs.v1.AddLogResponse\x12X\n" +
-	"\tDeleteLog\x12$.joseph.programs.v1.DeleteLogRequest\x1a%.joseph.programs.v1.DeleteLogResponse\x12s\n" +
-	"\x12EvaluateInternship\x12-.joseph.programs.v1.EvaluateInternshipRequest\x1a..joseph.programs.v1.EvaluateInternshipResponse\x12a\n" +
-	"\fIssueModular\x12'.joseph.programs.v1.IssueModularRequest\x1a(.joseph.programs.v1.IssueModularResponse\x12^\n" +
-	"\vIssueDegree\x12&.joseph.programs.v1.IssueDegreeRequest\x1a'.joseph.programs.v1.IssueDegreeResponse\x12g\n" +
-	"\x0eSetRequirement\x12).joseph.programs.v1.SetRequirementRequest\x1a*.joseph.programs.v1.SetRequirementResponse\x12m\n" +
-	"\x10ListCertificates\x12+.joseph.programs.v1.ListCertificatesRequest\x1a,.joseph.programs.v1.ListCertificatesResponse\x12g\n" +
-	"\x0eGetCertificate\x12).joseph.programs.v1.GetCertificateRequest\x1a*.joseph.programs.v1.GetCertificateResponse\x12m\n" +
-	"\x10AnnulCertificate\x12+.joseph.programs.v1.AnnulCertificateRequest\x1a,.joseph.programs.v1.AnnulCertificateResponseB=Z;api/internal/adapter/inbound/grpc/gen/programsv1;programsv1b\x06proto3"
+	"\x18AnnulCertificateResponse2\x8a\x0e\n" +
+	"\x0fProgramsService\x12\\\n" +
+	"\vGetPrograms\x12%.ltedu.programs.v1.GetProgramsRequest\x1a&.ltedu.programs.v1.GetProgramsResponse\x12e\n" +
+	"\x0eSetCoordinator\x12(.ltedu.programs.v1.SetCoordinatorRequest\x1a).ltedu.programs.v1.SetCoordinatorResponse\x12_\n" +
+	"\fListStudents\x12&.ltedu.programs.v1.ListStudentsRequest\x1a'.ltedu.programs.v1.ListStudentsResponse\x12V\n" +
+	"\tGetRecord\x12#.ltedu.programs.v1.GetRecordRequest\x1a$.ltedu.programs.v1.GetRecordResponse\x12V\n" +
+	"\tMyRecords\x12#.ltedu.programs.v1.MyRecordsRequest\x1a$.ltedu.programs.v1.MyRecordsResponse\x12h\n" +
+	"\x0fListInternships\x12).ltedu.programs.v1.ListInternshipsRequest\x1a*.ltedu.programs.v1.ListInternshipsResponse\x12b\n" +
+	"\rGetInternship\x12'.ltedu.programs.v1.GetInternshipRequest\x1a(.ltedu.programs.v1.GetInternshipResponse\x12e\n" +
+	"\x0eSaveInternship\x12(.ltedu.programs.v1.SaveInternshipRequest\x1a).ltedu.programs.v1.SaveInternshipResponse\x12k\n" +
+	"\x10DeleteInternship\x12*.ltedu.programs.v1.DeleteInternshipRequest\x1a+.ltedu.programs.v1.DeleteInternshipResponse\x12M\n" +
+	"\x06AddLog\x12 .ltedu.programs.v1.AddLogRequest\x1a!.ltedu.programs.v1.AddLogResponse\x12V\n" +
+	"\tDeleteLog\x12#.ltedu.programs.v1.DeleteLogRequest\x1a$.ltedu.programs.v1.DeleteLogResponse\x12q\n" +
+	"\x12EvaluateInternship\x12,.ltedu.programs.v1.EvaluateInternshipRequest\x1a-.ltedu.programs.v1.EvaluateInternshipResponse\x12_\n" +
+	"\fIssueModular\x12&.ltedu.programs.v1.IssueModularRequest\x1a'.ltedu.programs.v1.IssueModularResponse\x12\\\n" +
+	"\vIssueDegree\x12%.ltedu.programs.v1.IssueDegreeRequest\x1a&.ltedu.programs.v1.IssueDegreeResponse\x12e\n" +
+	"\x0eSetRequirement\x12(.ltedu.programs.v1.SetRequirementRequest\x1a).ltedu.programs.v1.SetRequirementResponse\x12k\n" +
+	"\x10ListCertificates\x12*.ltedu.programs.v1.ListCertificatesRequest\x1a+.ltedu.programs.v1.ListCertificatesResponse\x12e\n" +
+	"\x0eGetCertificate\x12(.ltedu.programs.v1.GetCertificateRequest\x1a).ltedu.programs.v1.GetCertificateResponse\x12k\n" +
+	"\x10AnnulCertificate\x12*.ltedu.programs.v1.AnnulCertificateRequest\x1a+.ltedu.programs.v1.AnnulCertificateResponseB=Z;api/internal/adapter/inbound/grpc/gen/programsv1;programsv1b\x06proto3"
 
 var (
-	file_joseph_programs_v1_programs_proto_rawDescOnce sync.Once
-	file_joseph_programs_v1_programs_proto_rawDescData []byte
+	file_ltedu_programs_v1_programs_proto_rawDescOnce sync.Once
+	file_ltedu_programs_v1_programs_proto_rawDescData []byte
 )
 
-func file_joseph_programs_v1_programs_proto_rawDescGZIP() []byte {
-	file_joseph_programs_v1_programs_proto_rawDescOnce.Do(func() {
-		file_joseph_programs_v1_programs_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_programs_v1_programs_proto_rawDesc), len(file_joseph_programs_v1_programs_proto_rawDesc)))
+func file_ltedu_programs_v1_programs_proto_rawDescGZIP() []byte {
+	file_ltedu_programs_v1_programs_proto_rawDescOnce.Do(func() {
+		file_ltedu_programs_v1_programs_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_programs_v1_programs_proto_rawDesc), len(file_ltedu_programs_v1_programs_proto_rawDesc)))
 	})
-	return file_joseph_programs_v1_programs_proto_rawDescData
+	return file_ltedu_programs_v1_programs_proto_rawDescData
 }
 
-var file_joseph_programs_v1_programs_proto_msgTypes = make([]protoimpl.MessageInfo, 46)
-var file_joseph_programs_v1_programs_proto_goTypes = []any{
-	(*Program)(nil),                    // 0: joseph.programs.v1.Program
-	(*GetProgramsRequest)(nil),         // 1: joseph.programs.v1.GetProgramsRequest
-	(*GetProgramsResponse)(nil),        // 2: joseph.programs.v1.GetProgramsResponse
-	(*SetCoordinatorRequest)(nil),      // 3: joseph.programs.v1.SetCoordinatorRequest
-	(*SetCoordinatorResponse)(nil),     // 4: joseph.programs.v1.SetCoordinatorResponse
-	(*StudentProgress)(nil),            // 5: joseph.programs.v1.StudentProgress
-	(*ListStudentsRequest)(nil),        // 6: joseph.programs.v1.ListStudentsRequest
-	(*ListStudentsResponse)(nil),       // 7: joseph.programs.v1.ListStudentsResponse
-	(*Standing)(nil),                   // 8: joseph.programs.v1.Standing
-	(*Internship)(nil),                 // 9: joseph.programs.v1.Internship
-	(*RecordUnit)(nil),                 // 10: joseph.programs.v1.RecordUnit
-	(*Certificate)(nil),                // 11: joseph.programs.v1.Certificate
-	(*RecordModule)(nil),               // 12: joseph.programs.v1.RecordModule
-	(*Requirement)(nil),                // 13: joseph.programs.v1.Requirement
-	(*StudentRecord)(nil),              // 14: joseph.programs.v1.StudentRecord
-	(*GetRecordRequest)(nil),           // 15: joseph.programs.v1.GetRecordRequest
-	(*GetRecordResponse)(nil),          // 16: joseph.programs.v1.GetRecordResponse
-	(*MyRecordsRequest)(nil),           // 17: joseph.programs.v1.MyRecordsRequest
-	(*MyRecordsResponse)(nil),          // 18: joseph.programs.v1.MyRecordsResponse
-	(*ListInternshipsRequest)(nil),     // 19: joseph.programs.v1.ListInternshipsRequest
-	(*ListInternshipsResponse)(nil),    // 20: joseph.programs.v1.ListInternshipsResponse
-	(*InternshipLog)(nil),              // 21: joseph.programs.v1.InternshipLog
-	(*GetInternshipRequest)(nil),       // 22: joseph.programs.v1.GetInternshipRequest
-	(*GetInternshipResponse)(nil),      // 23: joseph.programs.v1.GetInternshipResponse
-	(*SaveInternshipRequest)(nil),      // 24: joseph.programs.v1.SaveInternshipRequest
-	(*SaveInternshipResponse)(nil),     // 25: joseph.programs.v1.SaveInternshipResponse
-	(*DeleteInternshipRequest)(nil),    // 26: joseph.programs.v1.DeleteInternshipRequest
-	(*DeleteInternshipResponse)(nil),   // 27: joseph.programs.v1.DeleteInternshipResponse
-	(*AddLogRequest)(nil),              // 28: joseph.programs.v1.AddLogRequest
-	(*AddLogResponse)(nil),             // 29: joseph.programs.v1.AddLogResponse
-	(*DeleteLogRequest)(nil),           // 30: joseph.programs.v1.DeleteLogRequest
-	(*DeleteLogResponse)(nil),          // 31: joseph.programs.v1.DeleteLogResponse
-	(*EvaluateInternshipRequest)(nil),  // 32: joseph.programs.v1.EvaluateInternshipRequest
-	(*EvaluateInternshipResponse)(nil), // 33: joseph.programs.v1.EvaluateInternshipResponse
-	(*IssueModularRequest)(nil),        // 34: joseph.programs.v1.IssueModularRequest
-	(*IssueModularResponse)(nil),       // 35: joseph.programs.v1.IssueModularResponse
-	(*IssueDegreeRequest)(nil),         // 36: joseph.programs.v1.IssueDegreeRequest
-	(*IssueDegreeResponse)(nil),        // 37: joseph.programs.v1.IssueDegreeResponse
-	(*SetRequirementRequest)(nil),      // 38: joseph.programs.v1.SetRequirementRequest
-	(*SetRequirementResponse)(nil),     // 39: joseph.programs.v1.SetRequirementResponse
-	(*ListCertificatesRequest)(nil),    // 40: joseph.programs.v1.ListCertificatesRequest
-	(*ListCertificatesResponse)(nil),   // 41: joseph.programs.v1.ListCertificatesResponse
-	(*GetCertificateRequest)(nil),      // 42: joseph.programs.v1.GetCertificateRequest
-	(*GetCertificateResponse)(nil),     // 43: joseph.programs.v1.GetCertificateResponse
-	(*AnnulCertificateRequest)(nil),    // 44: joseph.programs.v1.AnnulCertificateRequest
-	(*AnnulCertificateResponse)(nil),   // 45: joseph.programs.v1.AnnulCertificateResponse
-	(*teachingv1.Staff)(nil),           // 46: joseph.teaching.v1.Staff
+var file_ltedu_programs_v1_programs_proto_msgTypes = make([]protoimpl.MessageInfo, 46)
+var file_ltedu_programs_v1_programs_proto_goTypes = []any{
+	(*Program)(nil),                    // 0: ltedu.programs.v1.Program
+	(*GetProgramsRequest)(nil),         // 1: ltedu.programs.v1.GetProgramsRequest
+	(*GetProgramsResponse)(nil),        // 2: ltedu.programs.v1.GetProgramsResponse
+	(*SetCoordinatorRequest)(nil),      // 3: ltedu.programs.v1.SetCoordinatorRequest
+	(*SetCoordinatorResponse)(nil),     // 4: ltedu.programs.v1.SetCoordinatorResponse
+	(*StudentProgress)(nil),            // 5: ltedu.programs.v1.StudentProgress
+	(*ListStudentsRequest)(nil),        // 6: ltedu.programs.v1.ListStudentsRequest
+	(*ListStudentsResponse)(nil),       // 7: ltedu.programs.v1.ListStudentsResponse
+	(*Standing)(nil),                   // 8: ltedu.programs.v1.Standing
+	(*Internship)(nil),                 // 9: ltedu.programs.v1.Internship
+	(*RecordUnit)(nil),                 // 10: ltedu.programs.v1.RecordUnit
+	(*Certificate)(nil),                // 11: ltedu.programs.v1.Certificate
+	(*RecordModule)(nil),               // 12: ltedu.programs.v1.RecordModule
+	(*Requirement)(nil),                // 13: ltedu.programs.v1.Requirement
+	(*StudentRecord)(nil),              // 14: ltedu.programs.v1.StudentRecord
+	(*GetRecordRequest)(nil),           // 15: ltedu.programs.v1.GetRecordRequest
+	(*GetRecordResponse)(nil),          // 16: ltedu.programs.v1.GetRecordResponse
+	(*MyRecordsRequest)(nil),           // 17: ltedu.programs.v1.MyRecordsRequest
+	(*MyRecordsResponse)(nil),          // 18: ltedu.programs.v1.MyRecordsResponse
+	(*ListInternshipsRequest)(nil),     // 19: ltedu.programs.v1.ListInternshipsRequest
+	(*ListInternshipsResponse)(nil),    // 20: ltedu.programs.v1.ListInternshipsResponse
+	(*InternshipLog)(nil),              // 21: ltedu.programs.v1.InternshipLog
+	(*GetInternshipRequest)(nil),       // 22: ltedu.programs.v1.GetInternshipRequest
+	(*GetInternshipResponse)(nil),      // 23: ltedu.programs.v1.GetInternshipResponse
+	(*SaveInternshipRequest)(nil),      // 24: ltedu.programs.v1.SaveInternshipRequest
+	(*SaveInternshipResponse)(nil),     // 25: ltedu.programs.v1.SaveInternshipResponse
+	(*DeleteInternshipRequest)(nil),    // 26: ltedu.programs.v1.DeleteInternshipRequest
+	(*DeleteInternshipResponse)(nil),   // 27: ltedu.programs.v1.DeleteInternshipResponse
+	(*AddLogRequest)(nil),              // 28: ltedu.programs.v1.AddLogRequest
+	(*AddLogResponse)(nil),             // 29: ltedu.programs.v1.AddLogResponse
+	(*DeleteLogRequest)(nil),           // 30: ltedu.programs.v1.DeleteLogRequest
+	(*DeleteLogResponse)(nil),          // 31: ltedu.programs.v1.DeleteLogResponse
+	(*EvaluateInternshipRequest)(nil),  // 32: ltedu.programs.v1.EvaluateInternshipRequest
+	(*EvaluateInternshipResponse)(nil), // 33: ltedu.programs.v1.EvaluateInternshipResponse
+	(*IssueModularRequest)(nil),        // 34: ltedu.programs.v1.IssueModularRequest
+	(*IssueModularResponse)(nil),       // 35: ltedu.programs.v1.IssueModularResponse
+	(*IssueDegreeRequest)(nil),         // 36: ltedu.programs.v1.IssueDegreeRequest
+	(*IssueDegreeResponse)(nil),        // 37: ltedu.programs.v1.IssueDegreeResponse
+	(*SetRequirementRequest)(nil),      // 38: ltedu.programs.v1.SetRequirementRequest
+	(*SetRequirementResponse)(nil),     // 39: ltedu.programs.v1.SetRequirementResponse
+	(*ListCertificatesRequest)(nil),    // 40: ltedu.programs.v1.ListCertificatesRequest
+	(*ListCertificatesResponse)(nil),   // 41: ltedu.programs.v1.ListCertificatesResponse
+	(*GetCertificateRequest)(nil),      // 42: ltedu.programs.v1.GetCertificateRequest
+	(*GetCertificateResponse)(nil),     // 43: ltedu.programs.v1.GetCertificateResponse
+	(*AnnulCertificateRequest)(nil),    // 44: ltedu.programs.v1.AnnulCertificateRequest
+	(*AnnulCertificateResponse)(nil),   // 45: ltedu.programs.v1.AnnulCertificateResponse
+	(*teachingv1.Staff)(nil),           // 46: ltedu.teaching.v1.Staff
 }
-var file_joseph_programs_v1_programs_proto_depIdxs = []int32{
-	0,  // 0: joseph.programs.v1.GetProgramsResponse.programs:type_name -> joseph.programs.v1.Program
-	46, // 1: joseph.programs.v1.GetProgramsResponse.staff:type_name -> joseph.teaching.v1.Staff
-	5,  // 2: joseph.programs.v1.ListStudentsResponse.students:type_name -> joseph.programs.v1.StudentProgress
-	8,  // 3: joseph.programs.v1.RecordUnit.standing:type_name -> joseph.programs.v1.Standing
-	9,  // 4: joseph.programs.v1.RecordUnit.internships:type_name -> joseph.programs.v1.Internship
-	10, // 5: joseph.programs.v1.RecordModule.units:type_name -> joseph.programs.v1.RecordUnit
-	11, // 6: joseph.programs.v1.RecordModule.certificate:type_name -> joseph.programs.v1.Certificate
-	5,  // 7: joseph.programs.v1.StudentRecord.student:type_name -> joseph.programs.v1.StudentProgress
-	12, // 8: joseph.programs.v1.StudentRecord.modules:type_name -> joseph.programs.v1.RecordModule
-	13, // 9: joseph.programs.v1.StudentRecord.requirements:type_name -> joseph.programs.v1.Requirement
-	11, // 10: joseph.programs.v1.StudentRecord.degree:type_name -> joseph.programs.v1.Certificate
-	11, // 11: joseph.programs.v1.StudentRecord.certificates:type_name -> joseph.programs.v1.Certificate
-	14, // 12: joseph.programs.v1.GetRecordResponse.record:type_name -> joseph.programs.v1.StudentRecord
-	14, // 13: joseph.programs.v1.MyRecordsResponse.records:type_name -> joseph.programs.v1.StudentRecord
-	9,  // 14: joseph.programs.v1.ListInternshipsResponse.internships:type_name -> joseph.programs.v1.Internship
-	9,  // 15: joseph.programs.v1.GetInternshipResponse.internship:type_name -> joseph.programs.v1.Internship
-	21, // 16: joseph.programs.v1.GetInternshipResponse.logs:type_name -> joseph.programs.v1.InternshipLog
-	9,  // 17: joseph.programs.v1.SaveInternshipRequest.internship:type_name -> joseph.programs.v1.Internship
-	9,  // 18: joseph.programs.v1.SaveInternshipResponse.internship:type_name -> joseph.programs.v1.Internship
-	21, // 19: joseph.programs.v1.AddLogRequest.log:type_name -> joseph.programs.v1.InternshipLog
-	23, // 20: joseph.programs.v1.AddLogResponse.internship:type_name -> joseph.programs.v1.GetInternshipResponse
-	23, // 21: joseph.programs.v1.DeleteLogResponse.internship:type_name -> joseph.programs.v1.GetInternshipResponse
-	23, // 22: joseph.programs.v1.EvaluateInternshipResponse.internship:type_name -> joseph.programs.v1.GetInternshipResponse
-	11, // 23: joseph.programs.v1.IssueModularResponse.certificate:type_name -> joseph.programs.v1.Certificate
-	11, // 24: joseph.programs.v1.IssueDegreeResponse.certificate:type_name -> joseph.programs.v1.Certificate
-	14, // 25: joseph.programs.v1.SetRequirementResponse.record:type_name -> joseph.programs.v1.StudentRecord
-	11, // 26: joseph.programs.v1.ListCertificatesResponse.certificates:type_name -> joseph.programs.v1.Certificate
-	11, // 27: joseph.programs.v1.GetCertificateResponse.certificate:type_name -> joseph.programs.v1.Certificate
-	1,  // 28: joseph.programs.v1.ProgramsService.GetPrograms:input_type -> joseph.programs.v1.GetProgramsRequest
-	3,  // 29: joseph.programs.v1.ProgramsService.SetCoordinator:input_type -> joseph.programs.v1.SetCoordinatorRequest
-	6,  // 30: joseph.programs.v1.ProgramsService.ListStudents:input_type -> joseph.programs.v1.ListStudentsRequest
-	15, // 31: joseph.programs.v1.ProgramsService.GetRecord:input_type -> joseph.programs.v1.GetRecordRequest
-	17, // 32: joseph.programs.v1.ProgramsService.MyRecords:input_type -> joseph.programs.v1.MyRecordsRequest
-	19, // 33: joseph.programs.v1.ProgramsService.ListInternships:input_type -> joseph.programs.v1.ListInternshipsRequest
-	22, // 34: joseph.programs.v1.ProgramsService.GetInternship:input_type -> joseph.programs.v1.GetInternshipRequest
-	24, // 35: joseph.programs.v1.ProgramsService.SaveInternship:input_type -> joseph.programs.v1.SaveInternshipRequest
-	26, // 36: joseph.programs.v1.ProgramsService.DeleteInternship:input_type -> joseph.programs.v1.DeleteInternshipRequest
-	28, // 37: joseph.programs.v1.ProgramsService.AddLog:input_type -> joseph.programs.v1.AddLogRequest
-	30, // 38: joseph.programs.v1.ProgramsService.DeleteLog:input_type -> joseph.programs.v1.DeleteLogRequest
-	32, // 39: joseph.programs.v1.ProgramsService.EvaluateInternship:input_type -> joseph.programs.v1.EvaluateInternshipRequest
-	34, // 40: joseph.programs.v1.ProgramsService.IssueModular:input_type -> joseph.programs.v1.IssueModularRequest
-	36, // 41: joseph.programs.v1.ProgramsService.IssueDegree:input_type -> joseph.programs.v1.IssueDegreeRequest
-	38, // 42: joseph.programs.v1.ProgramsService.SetRequirement:input_type -> joseph.programs.v1.SetRequirementRequest
-	40, // 43: joseph.programs.v1.ProgramsService.ListCertificates:input_type -> joseph.programs.v1.ListCertificatesRequest
-	42, // 44: joseph.programs.v1.ProgramsService.GetCertificate:input_type -> joseph.programs.v1.GetCertificateRequest
-	44, // 45: joseph.programs.v1.ProgramsService.AnnulCertificate:input_type -> joseph.programs.v1.AnnulCertificateRequest
-	2,  // 46: joseph.programs.v1.ProgramsService.GetPrograms:output_type -> joseph.programs.v1.GetProgramsResponse
-	4,  // 47: joseph.programs.v1.ProgramsService.SetCoordinator:output_type -> joseph.programs.v1.SetCoordinatorResponse
-	7,  // 48: joseph.programs.v1.ProgramsService.ListStudents:output_type -> joseph.programs.v1.ListStudentsResponse
-	16, // 49: joseph.programs.v1.ProgramsService.GetRecord:output_type -> joseph.programs.v1.GetRecordResponse
-	18, // 50: joseph.programs.v1.ProgramsService.MyRecords:output_type -> joseph.programs.v1.MyRecordsResponse
-	20, // 51: joseph.programs.v1.ProgramsService.ListInternships:output_type -> joseph.programs.v1.ListInternshipsResponse
-	23, // 52: joseph.programs.v1.ProgramsService.GetInternship:output_type -> joseph.programs.v1.GetInternshipResponse
-	25, // 53: joseph.programs.v1.ProgramsService.SaveInternship:output_type -> joseph.programs.v1.SaveInternshipResponse
-	27, // 54: joseph.programs.v1.ProgramsService.DeleteInternship:output_type -> joseph.programs.v1.DeleteInternshipResponse
-	29, // 55: joseph.programs.v1.ProgramsService.AddLog:output_type -> joseph.programs.v1.AddLogResponse
-	31, // 56: joseph.programs.v1.ProgramsService.DeleteLog:output_type -> joseph.programs.v1.DeleteLogResponse
-	33, // 57: joseph.programs.v1.ProgramsService.EvaluateInternship:output_type -> joseph.programs.v1.EvaluateInternshipResponse
-	35, // 58: joseph.programs.v1.ProgramsService.IssueModular:output_type -> joseph.programs.v1.IssueModularResponse
-	37, // 59: joseph.programs.v1.ProgramsService.IssueDegree:output_type -> joseph.programs.v1.IssueDegreeResponse
-	39, // 60: joseph.programs.v1.ProgramsService.SetRequirement:output_type -> joseph.programs.v1.SetRequirementResponse
-	41, // 61: joseph.programs.v1.ProgramsService.ListCertificates:output_type -> joseph.programs.v1.ListCertificatesResponse
-	43, // 62: joseph.programs.v1.ProgramsService.GetCertificate:output_type -> joseph.programs.v1.GetCertificateResponse
-	45, // 63: joseph.programs.v1.ProgramsService.AnnulCertificate:output_type -> joseph.programs.v1.AnnulCertificateResponse
+var file_ltedu_programs_v1_programs_proto_depIdxs = []int32{
+	0,  // 0: ltedu.programs.v1.GetProgramsResponse.programs:type_name -> ltedu.programs.v1.Program
+	46, // 1: ltedu.programs.v1.GetProgramsResponse.staff:type_name -> ltedu.teaching.v1.Staff
+	5,  // 2: ltedu.programs.v1.ListStudentsResponse.students:type_name -> ltedu.programs.v1.StudentProgress
+	8,  // 3: ltedu.programs.v1.RecordUnit.standing:type_name -> ltedu.programs.v1.Standing
+	9,  // 4: ltedu.programs.v1.RecordUnit.internships:type_name -> ltedu.programs.v1.Internship
+	10, // 5: ltedu.programs.v1.RecordModule.units:type_name -> ltedu.programs.v1.RecordUnit
+	11, // 6: ltedu.programs.v1.RecordModule.certificate:type_name -> ltedu.programs.v1.Certificate
+	5,  // 7: ltedu.programs.v1.StudentRecord.student:type_name -> ltedu.programs.v1.StudentProgress
+	12, // 8: ltedu.programs.v1.StudentRecord.modules:type_name -> ltedu.programs.v1.RecordModule
+	13, // 9: ltedu.programs.v1.StudentRecord.requirements:type_name -> ltedu.programs.v1.Requirement
+	11, // 10: ltedu.programs.v1.StudentRecord.degree:type_name -> ltedu.programs.v1.Certificate
+	11, // 11: ltedu.programs.v1.StudentRecord.certificates:type_name -> ltedu.programs.v1.Certificate
+	14, // 12: ltedu.programs.v1.GetRecordResponse.record:type_name -> ltedu.programs.v1.StudentRecord
+	14, // 13: ltedu.programs.v1.MyRecordsResponse.records:type_name -> ltedu.programs.v1.StudentRecord
+	9,  // 14: ltedu.programs.v1.ListInternshipsResponse.internships:type_name -> ltedu.programs.v1.Internship
+	9,  // 15: ltedu.programs.v1.GetInternshipResponse.internship:type_name -> ltedu.programs.v1.Internship
+	21, // 16: ltedu.programs.v1.GetInternshipResponse.logs:type_name -> ltedu.programs.v1.InternshipLog
+	9,  // 17: ltedu.programs.v1.SaveInternshipRequest.internship:type_name -> ltedu.programs.v1.Internship
+	9,  // 18: ltedu.programs.v1.SaveInternshipResponse.internship:type_name -> ltedu.programs.v1.Internship
+	21, // 19: ltedu.programs.v1.AddLogRequest.log:type_name -> ltedu.programs.v1.InternshipLog
+	23, // 20: ltedu.programs.v1.AddLogResponse.internship:type_name -> ltedu.programs.v1.GetInternshipResponse
+	23, // 21: ltedu.programs.v1.DeleteLogResponse.internship:type_name -> ltedu.programs.v1.GetInternshipResponse
+	23, // 22: ltedu.programs.v1.EvaluateInternshipResponse.internship:type_name -> ltedu.programs.v1.GetInternshipResponse
+	11, // 23: ltedu.programs.v1.IssueModularResponse.certificate:type_name -> ltedu.programs.v1.Certificate
+	11, // 24: ltedu.programs.v1.IssueDegreeResponse.certificate:type_name -> ltedu.programs.v1.Certificate
+	14, // 25: ltedu.programs.v1.SetRequirementResponse.record:type_name -> ltedu.programs.v1.StudentRecord
+	11, // 26: ltedu.programs.v1.ListCertificatesResponse.certificates:type_name -> ltedu.programs.v1.Certificate
+	11, // 27: ltedu.programs.v1.GetCertificateResponse.certificate:type_name -> ltedu.programs.v1.Certificate
+	1,  // 28: ltedu.programs.v1.ProgramsService.GetPrograms:input_type -> ltedu.programs.v1.GetProgramsRequest
+	3,  // 29: ltedu.programs.v1.ProgramsService.SetCoordinator:input_type -> ltedu.programs.v1.SetCoordinatorRequest
+	6,  // 30: ltedu.programs.v1.ProgramsService.ListStudents:input_type -> ltedu.programs.v1.ListStudentsRequest
+	15, // 31: ltedu.programs.v1.ProgramsService.GetRecord:input_type -> ltedu.programs.v1.GetRecordRequest
+	17, // 32: ltedu.programs.v1.ProgramsService.MyRecords:input_type -> ltedu.programs.v1.MyRecordsRequest
+	19, // 33: ltedu.programs.v1.ProgramsService.ListInternships:input_type -> ltedu.programs.v1.ListInternshipsRequest
+	22, // 34: ltedu.programs.v1.ProgramsService.GetInternship:input_type -> ltedu.programs.v1.GetInternshipRequest
+	24, // 35: ltedu.programs.v1.ProgramsService.SaveInternship:input_type -> ltedu.programs.v1.SaveInternshipRequest
+	26, // 36: ltedu.programs.v1.ProgramsService.DeleteInternship:input_type -> ltedu.programs.v1.DeleteInternshipRequest
+	28, // 37: ltedu.programs.v1.ProgramsService.AddLog:input_type -> ltedu.programs.v1.AddLogRequest
+	30, // 38: ltedu.programs.v1.ProgramsService.DeleteLog:input_type -> ltedu.programs.v1.DeleteLogRequest
+	32, // 39: ltedu.programs.v1.ProgramsService.EvaluateInternship:input_type -> ltedu.programs.v1.EvaluateInternshipRequest
+	34, // 40: ltedu.programs.v1.ProgramsService.IssueModular:input_type -> ltedu.programs.v1.IssueModularRequest
+	36, // 41: ltedu.programs.v1.ProgramsService.IssueDegree:input_type -> ltedu.programs.v1.IssueDegreeRequest
+	38, // 42: ltedu.programs.v1.ProgramsService.SetRequirement:input_type -> ltedu.programs.v1.SetRequirementRequest
+	40, // 43: ltedu.programs.v1.ProgramsService.ListCertificates:input_type -> ltedu.programs.v1.ListCertificatesRequest
+	42, // 44: ltedu.programs.v1.ProgramsService.GetCertificate:input_type -> ltedu.programs.v1.GetCertificateRequest
+	44, // 45: ltedu.programs.v1.ProgramsService.AnnulCertificate:input_type -> ltedu.programs.v1.AnnulCertificateRequest
+	2,  // 46: ltedu.programs.v1.ProgramsService.GetPrograms:output_type -> ltedu.programs.v1.GetProgramsResponse
+	4,  // 47: ltedu.programs.v1.ProgramsService.SetCoordinator:output_type -> ltedu.programs.v1.SetCoordinatorResponse
+	7,  // 48: ltedu.programs.v1.ProgramsService.ListStudents:output_type -> ltedu.programs.v1.ListStudentsResponse
+	16, // 49: ltedu.programs.v1.ProgramsService.GetRecord:output_type -> ltedu.programs.v1.GetRecordResponse
+	18, // 50: ltedu.programs.v1.ProgramsService.MyRecords:output_type -> ltedu.programs.v1.MyRecordsResponse
+	20, // 51: ltedu.programs.v1.ProgramsService.ListInternships:output_type -> ltedu.programs.v1.ListInternshipsResponse
+	23, // 52: ltedu.programs.v1.ProgramsService.GetInternship:output_type -> ltedu.programs.v1.GetInternshipResponse
+	25, // 53: ltedu.programs.v1.ProgramsService.SaveInternship:output_type -> ltedu.programs.v1.SaveInternshipResponse
+	27, // 54: ltedu.programs.v1.ProgramsService.DeleteInternship:output_type -> ltedu.programs.v1.DeleteInternshipResponse
+	29, // 55: ltedu.programs.v1.ProgramsService.AddLog:output_type -> ltedu.programs.v1.AddLogResponse
+	31, // 56: ltedu.programs.v1.ProgramsService.DeleteLog:output_type -> ltedu.programs.v1.DeleteLogResponse
+	33, // 57: ltedu.programs.v1.ProgramsService.EvaluateInternship:output_type -> ltedu.programs.v1.EvaluateInternshipResponse
+	35, // 58: ltedu.programs.v1.ProgramsService.IssueModular:output_type -> ltedu.programs.v1.IssueModularResponse
+	37, // 59: ltedu.programs.v1.ProgramsService.IssueDegree:output_type -> ltedu.programs.v1.IssueDegreeResponse
+	39, // 60: ltedu.programs.v1.ProgramsService.SetRequirement:output_type -> ltedu.programs.v1.SetRequirementResponse
+	41, // 61: ltedu.programs.v1.ProgramsService.ListCertificates:output_type -> ltedu.programs.v1.ListCertificatesResponse
+	43, // 62: ltedu.programs.v1.ProgramsService.GetCertificate:output_type -> ltedu.programs.v1.GetCertificateResponse
+	45, // 63: ltedu.programs.v1.ProgramsService.AnnulCertificate:output_type -> ltedu.programs.v1.AnnulCertificateResponse
 	46, // [46:64] is the sub-list for method output_type
 	28, // [28:46] is the sub-list for method input_type
 	28, // [28:28] is the sub-list for extension type_name
@@ -3526,28 +3526,28 @@ var file_joseph_programs_v1_programs_proto_depIdxs = []int32{
 	0,  // [0:28] is the sub-list for field type_name
 }
 
-func init() { file_joseph_programs_v1_programs_proto_init() }
-func file_joseph_programs_v1_programs_proto_init() {
-	if File_joseph_programs_v1_programs_proto != nil {
+func init() { file_ltedu_programs_v1_programs_proto_init() }
+func file_ltedu_programs_v1_programs_proto_init() {
+	if File_ltedu_programs_v1_programs_proto != nil {
 		return
 	}
-	file_joseph_programs_v1_programs_proto_msgTypes[8].OneofWrappers = []any{}
-	file_joseph_programs_v1_programs_proto_msgTypes[9].OneofWrappers = []any{}
+	file_ltedu_programs_v1_programs_proto_msgTypes[8].OneofWrappers = []any{}
+	file_ltedu_programs_v1_programs_proto_msgTypes[9].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_programs_v1_programs_proto_rawDesc), len(file_joseph_programs_v1_programs_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_programs_v1_programs_proto_rawDesc), len(file_ltedu_programs_v1_programs_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   46,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_programs_v1_programs_proto_goTypes,
-		DependencyIndexes: file_joseph_programs_v1_programs_proto_depIdxs,
-		MessageInfos:      file_joseph_programs_v1_programs_proto_msgTypes,
+		GoTypes:           file_ltedu_programs_v1_programs_proto_goTypes,
+		DependencyIndexes: file_ltedu_programs_v1_programs_proto_depIdxs,
+		MessageInfos:      file_ltedu_programs_v1_programs_proto_msgTypes,
 	}.Build()
-	File_joseph_programs_v1_programs_proto = out.File
-	file_joseph_programs_v1_programs_proto_goTypes = nil
-	file_joseph_programs_v1_programs_proto_depIdxs = nil
+	File_ltedu_programs_v1_programs_proto = out.File
+	file_ltedu_programs_v1_programs_proto_goTypes = nil
+	file_ltedu_programs_v1_programs_proto_depIdxs = nil
 }

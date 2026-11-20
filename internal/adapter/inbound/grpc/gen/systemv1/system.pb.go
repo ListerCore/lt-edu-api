@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/system/v1/system.proto
+// source: ltedu/system/v1/system.proto
 
-// Service state, called by joseph-app's server over the internal network. Mirrors GET /api/v1/health
+// Service state, called by lt-edu-app's server over the internal network. Mirrors GET /api/v1/health
 
 package systemv1
 
@@ -34,7 +34,7 @@ type GetHealthRequest struct {
 
 func (x *GetHealthRequest) Reset() {
 	*x = GetHealthRequest{}
-	mi := &file_joseph_system_v1_system_proto_msgTypes[0]
+	mi := &file_ltedu_system_v1_system_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -46,7 +46,7 @@ func (x *GetHealthRequest) String() string {
 func (*GetHealthRequest) ProtoMessage() {}
 
 func (x *GetHealthRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_system_v1_system_proto_msgTypes[0]
+	mi := &file_ltedu_system_v1_system_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -59,7 +59,7 @@ func (x *GetHealthRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetHealthRequest.ProtoReflect.Descriptor instead.
 func (*GetHealthRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_system_v1_system_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_system_v1_system_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *GetHealthRequest) GetIncludeDb() bool {
@@ -88,7 +88,7 @@ type ComponentStatus struct {
 
 func (x *ComponentStatus) Reset() {
 	*x = ComponentStatus{}
-	mi := &file_joseph_system_v1_system_proto_msgTypes[1]
+	mi := &file_ltedu_system_v1_system_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -100,7 +100,7 @@ func (x *ComponentStatus) String() string {
 func (*ComponentStatus) ProtoMessage() {}
 
 func (x *ComponentStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_system_v1_system_proto_msgTypes[1]
+	mi := &file_ltedu_system_v1_system_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -113,7 +113,7 @@ func (x *ComponentStatus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ComponentStatus.ProtoReflect.Descriptor instead.
 func (*ComponentStatus) Descriptor() ([]byte, []int) {
-	return file_joseph_system_v1_system_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_system_v1_system_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ComponentStatus) GetStatus() string {
@@ -145,7 +145,7 @@ type GetHealthResponse struct {
 
 func (x *GetHealthResponse) Reset() {
 	*x = GetHealthResponse{}
-	mi := &file_joseph_system_v1_system_proto_msgTypes[2]
+	mi := &file_ltedu_system_v1_system_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -157,7 +157,7 @@ func (x *GetHealthResponse) String() string {
 func (*GetHealthResponse) ProtoMessage() {}
 
 func (x *GetHealthResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_system_v1_system_proto_msgTypes[2]
+	mi := &file_ltedu_system_v1_system_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -170,7 +170,7 @@ func (x *GetHealthResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetHealthResponse.ProtoReflect.Descriptor instead.
 func (*GetHealthResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_system_v1_system_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_system_v1_system_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetHealthResponse) GetStatus() string {
@@ -208,54 +208,54 @@ func (x *GetHealthResponse) GetRedis() *ComponentStatus {
 	return nil
 }
 
-var File_joseph_system_v1_system_proto protoreflect.FileDescriptor
+var File_ltedu_system_v1_system_proto protoreflect.FileDescriptor
 
-const file_joseph_system_v1_system_proto_rawDesc = "" +
+const file_ltedu_system_v1_system_proto_rawDesc = "" +
 	"\n" +
-	"\x1djoseph/system/v1/system.proto\x12\x10joseph.system.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"V\n" +
+	"\x1cltedu/system/v1/system.proto\x12\x0fltedu.system.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"V\n" +
 	"\x10GetHealthRequest\x12\x1d\n" +
 	"\n" +
 	"include_db\x18\x01 \x01(\bR\tincludeDb\x12#\n" +
 	"\rinclude_redis\x18\x02 \x01(\bR\fincludeRedis\"C\n" +
 	"\x0fComponentStatus\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12\x18\n" +
-	"\alatency\x18\x02 \x01(\tR\alatency\"\x86\x02\n" +
+	"\alatency\x18\x02 \x01(\tR\alatency\"\x84\x02\n" +
 	"\x11GetHealthResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12\x18\n" +
 	"\aservice\x18\x02 \x01(\tR\aservice\x128\n" +
-	"\ttimestamp\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x126\n" +
-	"\x02db\x18\x04 \x01(\v2!.joseph.system.v1.ComponentStatusH\x00R\x02db\x88\x01\x01\x12<\n" +
-	"\x05redis\x18\x05 \x01(\v2!.joseph.system.v1.ComponentStatusH\x01R\x05redis\x88\x01\x01B\x05\n" +
+	"\ttimestamp\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x125\n" +
+	"\x02db\x18\x04 \x01(\v2 .ltedu.system.v1.ComponentStatusH\x00R\x02db\x88\x01\x01\x12;\n" +
+	"\x05redis\x18\x05 \x01(\v2 .ltedu.system.v1.ComponentStatusH\x01R\x05redis\x88\x01\x01B\x05\n" +
 	"\x03_dbB\b\n" +
-	"\x06_redis2e\n" +
-	"\rSystemService\x12T\n" +
-	"\tGetHealth\x12\".joseph.system.v1.GetHealthRequest\x1a#.joseph.system.v1.GetHealthResponseB9Z7api/internal/adapter/inbound/grpc/gen/systemv1;systemv1b\x06proto3"
+	"\x06_redis2c\n" +
+	"\rSystemService\x12R\n" +
+	"\tGetHealth\x12!.ltedu.system.v1.GetHealthRequest\x1a\".ltedu.system.v1.GetHealthResponseB9Z7api/internal/adapter/inbound/grpc/gen/systemv1;systemv1b\x06proto3"
 
 var (
-	file_joseph_system_v1_system_proto_rawDescOnce sync.Once
-	file_joseph_system_v1_system_proto_rawDescData []byte
+	file_ltedu_system_v1_system_proto_rawDescOnce sync.Once
+	file_ltedu_system_v1_system_proto_rawDescData []byte
 )
 
-func file_joseph_system_v1_system_proto_rawDescGZIP() []byte {
-	file_joseph_system_v1_system_proto_rawDescOnce.Do(func() {
-		file_joseph_system_v1_system_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_system_v1_system_proto_rawDesc), len(file_joseph_system_v1_system_proto_rawDesc)))
+func file_ltedu_system_v1_system_proto_rawDescGZIP() []byte {
+	file_ltedu_system_v1_system_proto_rawDescOnce.Do(func() {
+		file_ltedu_system_v1_system_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_system_v1_system_proto_rawDesc), len(file_ltedu_system_v1_system_proto_rawDesc)))
 	})
-	return file_joseph_system_v1_system_proto_rawDescData
+	return file_ltedu_system_v1_system_proto_rawDescData
 }
 
-var file_joseph_system_v1_system_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_joseph_system_v1_system_proto_goTypes = []any{
-	(*GetHealthRequest)(nil),      // 0: joseph.system.v1.GetHealthRequest
-	(*ComponentStatus)(nil),       // 1: joseph.system.v1.ComponentStatus
-	(*GetHealthResponse)(nil),     // 2: joseph.system.v1.GetHealthResponse
+var file_ltedu_system_v1_system_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_ltedu_system_v1_system_proto_goTypes = []any{
+	(*GetHealthRequest)(nil),      // 0: ltedu.system.v1.GetHealthRequest
+	(*ComponentStatus)(nil),       // 1: ltedu.system.v1.ComponentStatus
+	(*GetHealthResponse)(nil),     // 2: ltedu.system.v1.GetHealthResponse
 	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
 }
-var file_joseph_system_v1_system_proto_depIdxs = []int32{
-	3, // 0: joseph.system.v1.GetHealthResponse.timestamp:type_name -> google.protobuf.Timestamp
-	1, // 1: joseph.system.v1.GetHealthResponse.db:type_name -> joseph.system.v1.ComponentStatus
-	1, // 2: joseph.system.v1.GetHealthResponse.redis:type_name -> joseph.system.v1.ComponentStatus
-	0, // 3: joseph.system.v1.SystemService.GetHealth:input_type -> joseph.system.v1.GetHealthRequest
-	2, // 4: joseph.system.v1.SystemService.GetHealth:output_type -> joseph.system.v1.GetHealthResponse
+var file_ltedu_system_v1_system_proto_depIdxs = []int32{
+	3, // 0: ltedu.system.v1.GetHealthResponse.timestamp:type_name -> google.protobuf.Timestamp
+	1, // 1: ltedu.system.v1.GetHealthResponse.db:type_name -> ltedu.system.v1.ComponentStatus
+	1, // 2: ltedu.system.v1.GetHealthResponse.redis:type_name -> ltedu.system.v1.ComponentStatus
+	0, // 3: ltedu.system.v1.SystemService.GetHealth:input_type -> ltedu.system.v1.GetHealthRequest
+	2, // 4: ltedu.system.v1.SystemService.GetHealth:output_type -> ltedu.system.v1.GetHealthResponse
 	4, // [4:5] is the sub-list for method output_type
 	3, // [3:4] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -263,27 +263,27 @@ var file_joseph_system_v1_system_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_joseph_system_v1_system_proto_init() }
-func file_joseph_system_v1_system_proto_init() {
-	if File_joseph_system_v1_system_proto != nil {
+func init() { file_ltedu_system_v1_system_proto_init() }
+func file_ltedu_system_v1_system_proto_init() {
+	if File_ltedu_system_v1_system_proto != nil {
 		return
 	}
-	file_joseph_system_v1_system_proto_msgTypes[2].OneofWrappers = []any{}
+	file_ltedu_system_v1_system_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_system_v1_system_proto_rawDesc), len(file_joseph_system_v1_system_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_system_v1_system_proto_rawDesc), len(file_ltedu_system_v1_system_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_system_v1_system_proto_goTypes,
-		DependencyIndexes: file_joseph_system_v1_system_proto_depIdxs,
-		MessageInfos:      file_joseph_system_v1_system_proto_msgTypes,
+		GoTypes:           file_ltedu_system_v1_system_proto_goTypes,
+		DependencyIndexes: file_ltedu_system_v1_system_proto_depIdxs,
+		MessageInfos:      file_ltedu_system_v1_system_proto_msgTypes,
 	}.Build()
-	File_joseph_system_v1_system_proto = out.File
-	file_joseph_system_v1_system_proto_goTypes = nil
-	file_joseph_system_v1_system_proto_depIdxs = nil
+	File_ltedu_system_v1_system_proto = out.File
+	file_ltedu_system_v1_system_proto_goTypes = nil
+	file_ltedu_system_v1_system_proto_depIdxs = nil
 }

@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/announcements/v1/announcements.proto
+// source: ltedu/announcements/v1/announcements.proto
 
-// Announcements, notices and alerts of each institution, read by joseph-app's server: the public site (/news) and
+// Announcements, notices and alerts of each institution, read by lt-edu-app's server: the public site (/news) and
 // the panel feed. Publishing (multipart with images and PDFs) and the files themselves go over HTTP
 
 package announcementsv1
@@ -22,11 +22,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AnnouncementService_ListPublicAnnouncements_FullMethodName   = "/joseph.announcements.v1.AnnouncementService/ListPublicAnnouncements"
-	AnnouncementService_GetPublicAnnouncement_FullMethodName     = "/joseph.announcements.v1.AnnouncementService/GetPublicAnnouncement"
-	AnnouncementService_ListAnnouncements_FullMethodName         = "/joseph.announcements.v1.AnnouncementService/ListAnnouncements"
-	AnnouncementService_GetAnnouncement_FullMethodName           = "/joseph.announcements.v1.AnnouncementService/GetAnnouncement"
-	AnnouncementService_ListFeaturedAnnouncements_FullMethodName = "/joseph.announcements.v1.AnnouncementService/ListFeaturedAnnouncements"
+	AnnouncementService_ListPublicAnnouncements_FullMethodName   = "/ltedu.announcements.v1.AnnouncementService/ListPublicAnnouncements"
+	AnnouncementService_GetPublicAnnouncement_FullMethodName     = "/ltedu.announcements.v1.AnnouncementService/GetPublicAnnouncement"
+	AnnouncementService_ListAnnouncements_FullMethodName         = "/ltedu.announcements.v1.AnnouncementService/ListAnnouncements"
+	AnnouncementService_GetAnnouncement_FullMethodName           = "/ltedu.announcements.v1.AnnouncementService/GetAnnouncement"
+	AnnouncementService_ListFeaturedAnnouncements_FullMethodName = "/ltedu.announcements.v1.AnnouncementService/ListFeaturedAnnouncements"
 )
 
 // AnnouncementServiceClient is the client API for AnnouncementService service.
@@ -36,9 +36,9 @@ const (
 // Metadata:
 //
 //	authorization: Bearer <session token>   (ListAnnouncements)
-//	x-forwarded-for, x-user-agent           (as every joseph-api service)
+//	x-forwarded-for, x-user-agent           (as every lt-edu-api service)
 //
-// Failed calls return a gRPC status whose details hold one joseph.common.v1.ErrorDetail
+// Failed calls return a gRPC status whose details hold one ltedu.common.v1.ErrorDetail
 type AnnouncementServiceClient interface {
 	// Public announcements of an institution, pinned first and newest first
 	ListPublicAnnouncements(ctx context.Context, in *ListPublicAnnouncementsRequest, opts ...grpc.CallOption) (*ListPublicAnnouncementsResponse, error)
@@ -117,9 +117,9 @@ func (c *announcementServiceClient) ListFeaturedAnnouncements(ctx context.Contex
 // Metadata:
 //
 //	authorization: Bearer <session token>   (ListAnnouncements)
-//	x-forwarded-for, x-user-agent           (as every joseph-api service)
+//	x-forwarded-for, x-user-agent           (as every lt-edu-api service)
 //
-// Failed calls return a gRPC status whose details hold one joseph.common.v1.ErrorDetail
+// Failed calls return a gRPC status whose details hold one ltedu.common.v1.ErrorDetail
 type AnnouncementServiceServer interface {
 	// Public announcements of an institution, pinned first and newest first
 	ListPublicAnnouncements(context.Context, *ListPublicAnnouncementsRequest) (*ListPublicAnnouncementsResponse, error)
@@ -271,7 +271,7 @@ func _AnnouncementService_ListFeaturedAnnouncements_Handler(srv interface{}, ctx
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AnnouncementService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.announcements.v1.AnnouncementService",
+	ServiceName: "ltedu.announcements.v1.AnnouncementService",
 	HandlerType: (*AnnouncementServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -296,5 +296,5 @@ var AnnouncementService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/announcements/v1/announcements.proto",
+	Metadata: "ltedu/announcements/v1/announcements.proto",
 }

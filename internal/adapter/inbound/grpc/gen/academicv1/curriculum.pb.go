@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/academic/v1/curriculum.proto
+// source: ltedu/academic/v1/curriculum.proto
 
 // Study plans (phase 2 of docs/plan-academico.md): versions per level, at most one in force, with their areas and
 // CNEB competencies (Educación Básica), courses and topics (CEPRE), or formative modules, didactic units with
@@ -41,7 +41,7 @@ type Competency struct {
 
 func (x *Competency) Reset() {
 	*x = Competency{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[0]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -53,7 +53,7 @@ func (x *Competency) String() string {
 func (*Competency) ProtoMessage() {}
 
 func (x *Competency) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[0]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -66,7 +66,7 @@ func (x *Competency) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Competency.ProtoReflect.Descriptor instead.
 func (*Competency) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Competency) GetId() string {
@@ -134,7 +134,7 @@ type Subject struct {
 
 func (x *Subject) Reset() {
 	*x = Subject{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[1]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -146,7 +146,7 @@ func (x *Subject) String() string {
 func (*Subject) ProtoMessage() {}
 
 func (x *Subject) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[1]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -159,7 +159,7 @@ func (x *Subject) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Subject.ProtoReflect.Descriptor instead.
 func (*Subject) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Subject) GetId() string {
@@ -266,7 +266,7 @@ type Module struct {
 
 func (x *Module) Reset() {
 	*x = Module{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[2]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -278,7 +278,7 @@ func (x *Module) String() string {
 func (*Module) ProtoMessage() {}
 
 func (x *Module) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[2]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -291,7 +291,7 @@ func (x *Module) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Module.ProtoReflect.Descriptor instead.
 func (*Module) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Module) GetId() string {
@@ -353,7 +353,7 @@ type Curriculum struct {
 
 func (x *Curriculum) Reset() {
 	*x = Curriculum{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[3]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -365,7 +365,7 @@ func (x *Curriculum) String() string {
 func (*Curriculum) ProtoMessage() {}
 
 func (x *Curriculum) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[3]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -378,7 +378,7 @@ func (x *Curriculum) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Curriculum.ProtoReflect.Descriptor instead.
 func (*Curriculum) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Curriculum) GetId() string {
@@ -490,7 +490,7 @@ type SubjectInput struct {
 
 func (x *SubjectInput) Reset() {
 	*x = SubjectInput{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[4]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -502,7 +502,7 @@ func (x *SubjectInput) String() string {
 func (*SubjectInput) ProtoMessage() {}
 
 func (x *SubjectInput) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[4]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -515,7 +515,7 @@ func (x *SubjectInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubjectInput.ProtoReflect.Descriptor instead.
 func (*SubjectInput) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SubjectInput) GetModuleId() string {
@@ -597,7 +597,7 @@ type ListCurriculaRequest struct {
 
 func (x *ListCurriculaRequest) Reset() {
 	*x = ListCurriculaRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[5]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -609,7 +609,7 @@ func (x *ListCurriculaRequest) String() string {
 func (*ListCurriculaRequest) ProtoMessage() {}
 
 func (x *ListCurriculaRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[5]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -622,7 +622,7 @@ func (x *ListCurriculaRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCurriculaRequest.ProtoReflect.Descriptor instead.
 func (*ListCurriculaRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListCurriculaRequest) GetInstitutionSlug() string {
@@ -645,7 +645,7 @@ type ListCurriculaResponse struct {
 
 func (x *ListCurriculaResponse) Reset() {
 	*x = ListCurriculaResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[6]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -657,7 +657,7 @@ func (x *ListCurriculaResponse) String() string {
 func (*ListCurriculaResponse) ProtoMessage() {}
 
 func (x *ListCurriculaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[6]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -670,7 +670,7 @@ func (x *ListCurriculaResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCurriculaResponse.ProtoReflect.Descriptor instead.
 func (*ListCurriculaResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ListCurriculaResponse) GetContext() *AcademicContext {
@@ -711,7 +711,7 @@ type GetCurriculumRequest struct {
 
 func (x *GetCurriculumRequest) Reset() {
 	*x = GetCurriculumRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[7]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -723,7 +723,7 @@ func (x *GetCurriculumRequest) String() string {
 func (*GetCurriculumRequest) ProtoMessage() {}
 
 func (x *GetCurriculumRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[7]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -736,7 +736,7 @@ func (x *GetCurriculumRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCurriculumRequest.ProtoReflect.Descriptor instead.
 func (*GetCurriculumRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetCurriculumRequest) GetInstitutionSlug() string {
@@ -765,7 +765,7 @@ type GetCurriculumResponse struct {
 
 func (x *GetCurriculumResponse) Reset() {
 	*x = GetCurriculumResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[8]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -777,7 +777,7 @@ func (x *GetCurriculumResponse) String() string {
 func (*GetCurriculumResponse) ProtoMessage() {}
 
 func (x *GetCurriculumResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[8]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -790,7 +790,7 @@ func (x *GetCurriculumResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCurriculumResponse.ProtoReflect.Descriptor instead.
 func (*GetCurriculumResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetCurriculumResponse) GetContext() *AcademicContext {
@@ -827,7 +827,7 @@ type CreateCurriculumRequest struct {
 
 func (x *CreateCurriculumRequest) Reset() {
 	*x = CreateCurriculumRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[9]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -839,7 +839,7 @@ func (x *CreateCurriculumRequest) String() string {
 func (*CreateCurriculumRequest) ProtoMessage() {}
 
 func (x *CreateCurriculumRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[9]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -852,7 +852,7 @@ func (x *CreateCurriculumRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCurriculumRequest.ProtoReflect.Descriptor instead.
 func (*CreateCurriculumRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *CreateCurriculumRequest) GetInstitutionSlug() string {
@@ -892,7 +892,7 @@ type CreateCurriculumResponse struct {
 
 func (x *CreateCurriculumResponse) Reset() {
 	*x = CreateCurriculumResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[10]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -904,7 +904,7 @@ func (x *CreateCurriculumResponse) String() string {
 func (*CreateCurriculumResponse) ProtoMessage() {}
 
 func (x *CreateCurriculumResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[10]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -917,7 +917,7 @@ func (x *CreateCurriculumResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCurriculumResponse.ProtoReflect.Descriptor instead.
 func (*CreateCurriculumResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CreateCurriculumResponse) GetCurriculum() *Curriculum {
@@ -938,7 +938,7 @@ type DuplicateCurriculumRequest struct {
 
 func (x *DuplicateCurriculumRequest) Reset() {
 	*x = DuplicateCurriculumRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[11]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -950,7 +950,7 @@ func (x *DuplicateCurriculumRequest) String() string {
 func (*DuplicateCurriculumRequest) ProtoMessage() {}
 
 func (x *DuplicateCurriculumRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[11]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -963,7 +963,7 @@ func (x *DuplicateCurriculumRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DuplicateCurriculumRequest.ProtoReflect.Descriptor instead.
 func (*DuplicateCurriculumRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DuplicateCurriculumRequest) GetInstitutionSlug() string {
@@ -996,7 +996,7 @@ type DuplicateCurriculumResponse struct {
 
 func (x *DuplicateCurriculumResponse) Reset() {
 	*x = DuplicateCurriculumResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[12]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1008,7 +1008,7 @@ func (x *DuplicateCurriculumResponse) String() string {
 func (*DuplicateCurriculumResponse) ProtoMessage() {}
 
 func (x *DuplicateCurriculumResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[12]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1021,7 +1021,7 @@ func (x *DuplicateCurriculumResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DuplicateCurriculumResponse.ProtoReflect.Descriptor instead.
 func (*DuplicateCurriculumResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DuplicateCurriculumResponse) GetCurriculum() *Curriculum {
@@ -1043,7 +1043,7 @@ type UpdateCurriculumRequest struct {
 
 func (x *UpdateCurriculumRequest) Reset() {
 	*x = UpdateCurriculumRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[13]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1055,7 +1055,7 @@ func (x *UpdateCurriculumRequest) String() string {
 func (*UpdateCurriculumRequest) ProtoMessage() {}
 
 func (x *UpdateCurriculumRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[13]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1068,7 +1068,7 @@ func (x *UpdateCurriculumRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCurriculumRequest.ProtoReflect.Descriptor instead.
 func (*UpdateCurriculumRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *UpdateCurriculumRequest) GetInstitutionSlug() string {
@@ -1108,7 +1108,7 @@ type UpdateCurriculumResponse struct {
 
 func (x *UpdateCurriculumResponse) Reset() {
 	*x = UpdateCurriculumResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[14]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1120,7 +1120,7 @@ func (x *UpdateCurriculumResponse) String() string {
 func (*UpdateCurriculumResponse) ProtoMessage() {}
 
 func (x *UpdateCurriculumResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[14]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1133,7 +1133,7 @@ func (x *UpdateCurriculumResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCurriculumResponse.ProtoReflect.Descriptor instead.
 func (*UpdateCurriculumResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *UpdateCurriculumResponse) GetCurriculum() *Curriculum {
@@ -1154,7 +1154,7 @@ type SetCurriculumStatusRequest struct {
 
 func (x *SetCurriculumStatusRequest) Reset() {
 	*x = SetCurriculumStatusRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[15]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1166,7 +1166,7 @@ func (x *SetCurriculumStatusRequest) String() string {
 func (*SetCurriculumStatusRequest) ProtoMessage() {}
 
 func (x *SetCurriculumStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[15]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1179,7 +1179,7 @@ func (x *SetCurriculumStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetCurriculumStatusRequest.ProtoReflect.Descriptor instead.
 func (*SetCurriculumStatusRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SetCurriculumStatusRequest) GetInstitutionSlug() string {
@@ -1212,7 +1212,7 @@ type SetCurriculumStatusResponse struct {
 
 func (x *SetCurriculumStatusResponse) Reset() {
 	*x = SetCurriculumStatusResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[16]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1224,7 +1224,7 @@ func (x *SetCurriculumStatusResponse) String() string {
 func (*SetCurriculumStatusResponse) ProtoMessage() {}
 
 func (x *SetCurriculumStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[16]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1237,7 +1237,7 @@ func (x *SetCurriculumStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetCurriculumStatusResponse.ProtoReflect.Descriptor instead.
 func (*SetCurriculumStatusResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *SetCurriculumStatusResponse) GetCurriculum() *Curriculum {
@@ -1257,7 +1257,7 @@ type DeleteCurriculumRequest struct {
 
 func (x *DeleteCurriculumRequest) Reset() {
 	*x = DeleteCurriculumRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[17]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1269,7 +1269,7 @@ func (x *DeleteCurriculumRequest) String() string {
 func (*DeleteCurriculumRequest) ProtoMessage() {}
 
 func (x *DeleteCurriculumRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[17]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1282,7 +1282,7 @@ func (x *DeleteCurriculumRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCurriculumRequest.ProtoReflect.Descriptor instead.
 func (*DeleteCurriculumRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *DeleteCurriculumRequest) GetInstitutionSlug() string {
@@ -1307,7 +1307,7 @@ type DeleteCurriculumResponse struct {
 
 func (x *DeleteCurriculumResponse) Reset() {
 	*x = DeleteCurriculumResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[18]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1319,7 +1319,7 @@ func (x *DeleteCurriculumResponse) String() string {
 func (*DeleteCurriculumResponse) ProtoMessage() {}
 
 func (x *DeleteCurriculumResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[18]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1332,7 +1332,7 @@ func (x *DeleteCurriculumResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCurriculumResponse.ProtoReflect.Descriptor instead.
 func (*DeleteCurriculumResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{18}
 }
 
 type CreateModuleRequest struct {
@@ -1348,7 +1348,7 @@ type CreateModuleRequest struct {
 
 func (x *CreateModuleRequest) Reset() {
 	*x = CreateModuleRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[19]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1360,7 +1360,7 @@ func (x *CreateModuleRequest) String() string {
 func (*CreateModuleRequest) ProtoMessage() {}
 
 func (x *CreateModuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[19]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1373,7 +1373,7 @@ func (x *CreateModuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateModuleRequest.ProtoReflect.Descriptor instead.
 func (*CreateModuleRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *CreateModuleRequest) GetInstitutionSlug() string {
@@ -1420,7 +1420,7 @@ type CreateModuleResponse struct {
 
 func (x *CreateModuleResponse) Reset() {
 	*x = CreateModuleResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[20]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1432,7 +1432,7 @@ func (x *CreateModuleResponse) String() string {
 func (*CreateModuleResponse) ProtoMessage() {}
 
 func (x *CreateModuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[20]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1445,7 +1445,7 @@ func (x *CreateModuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateModuleResponse.ProtoReflect.Descriptor instead.
 func (*CreateModuleResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *CreateModuleResponse) GetModule() *Module {
@@ -1468,7 +1468,7 @@ type UpdateModuleRequest struct {
 
 func (x *UpdateModuleRequest) Reset() {
 	*x = UpdateModuleRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[21]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1480,7 +1480,7 @@ func (x *UpdateModuleRequest) String() string {
 func (*UpdateModuleRequest) ProtoMessage() {}
 
 func (x *UpdateModuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[21]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1493,7 +1493,7 @@ func (x *UpdateModuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateModuleRequest.ProtoReflect.Descriptor instead.
 func (*UpdateModuleRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *UpdateModuleRequest) GetInstitutionSlug() string {
@@ -1540,7 +1540,7 @@ type UpdateModuleResponse struct {
 
 func (x *UpdateModuleResponse) Reset() {
 	*x = UpdateModuleResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[22]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1552,7 +1552,7 @@ func (x *UpdateModuleResponse) String() string {
 func (*UpdateModuleResponse) ProtoMessage() {}
 
 func (x *UpdateModuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[22]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1565,7 +1565,7 @@ func (x *UpdateModuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateModuleResponse.ProtoReflect.Descriptor instead.
 func (*UpdateModuleResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *UpdateModuleResponse) GetModule() *Module {
@@ -1585,7 +1585,7 @@ type DeleteModuleRequest struct {
 
 func (x *DeleteModuleRequest) Reset() {
 	*x = DeleteModuleRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[23]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1597,7 +1597,7 @@ func (x *DeleteModuleRequest) String() string {
 func (*DeleteModuleRequest) ProtoMessage() {}
 
 func (x *DeleteModuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[23]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1610,7 +1610,7 @@ func (x *DeleteModuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteModuleRequest.ProtoReflect.Descriptor instead.
 func (*DeleteModuleRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{23}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *DeleteModuleRequest) GetInstitutionSlug() string {
@@ -1635,7 +1635,7 @@ type DeleteModuleResponse struct {
 
 func (x *DeleteModuleResponse) Reset() {
 	*x = DeleteModuleResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[24]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1647,7 +1647,7 @@ func (x *DeleteModuleResponse) String() string {
 func (*DeleteModuleResponse) ProtoMessage() {}
 
 func (x *DeleteModuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[24]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1660,7 +1660,7 @@ func (x *DeleteModuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteModuleResponse.ProtoReflect.Descriptor instead.
 func (*DeleteModuleResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{24}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{24}
 }
 
 type CreateSubjectRequest struct {
@@ -1674,7 +1674,7 @@ type CreateSubjectRequest struct {
 
 func (x *CreateSubjectRequest) Reset() {
 	*x = CreateSubjectRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[25]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1686,7 +1686,7 @@ func (x *CreateSubjectRequest) String() string {
 func (*CreateSubjectRequest) ProtoMessage() {}
 
 func (x *CreateSubjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[25]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1699,7 +1699,7 @@ func (x *CreateSubjectRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSubjectRequest.ProtoReflect.Descriptor instead.
 func (*CreateSubjectRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{25}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *CreateSubjectRequest) GetInstitutionSlug() string {
@@ -1732,7 +1732,7 @@ type CreateSubjectResponse struct {
 
 func (x *CreateSubjectResponse) Reset() {
 	*x = CreateSubjectResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[26]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1744,7 +1744,7 @@ func (x *CreateSubjectResponse) String() string {
 func (*CreateSubjectResponse) ProtoMessage() {}
 
 func (x *CreateSubjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[26]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1757,7 +1757,7 @@ func (x *CreateSubjectResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSubjectResponse.ProtoReflect.Descriptor instead.
 func (*CreateSubjectResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{26}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *CreateSubjectResponse) GetSubject() *Subject {
@@ -1778,7 +1778,7 @@ type UpdateSubjectRequest struct {
 
 func (x *UpdateSubjectRequest) Reset() {
 	*x = UpdateSubjectRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[27]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1790,7 +1790,7 @@ func (x *UpdateSubjectRequest) String() string {
 func (*UpdateSubjectRequest) ProtoMessage() {}
 
 func (x *UpdateSubjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[27]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1803,7 +1803,7 @@ func (x *UpdateSubjectRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateSubjectRequest.ProtoReflect.Descriptor instead.
 func (*UpdateSubjectRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{27}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *UpdateSubjectRequest) GetInstitutionSlug() string {
@@ -1836,7 +1836,7 @@ type UpdateSubjectResponse struct {
 
 func (x *UpdateSubjectResponse) Reset() {
 	*x = UpdateSubjectResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[28]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1848,7 +1848,7 @@ func (x *UpdateSubjectResponse) String() string {
 func (*UpdateSubjectResponse) ProtoMessage() {}
 
 func (x *UpdateSubjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[28]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1861,7 +1861,7 @@ func (x *UpdateSubjectResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateSubjectResponse.ProtoReflect.Descriptor instead.
 func (*UpdateSubjectResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{28}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *UpdateSubjectResponse) GetSubject() *Subject {
@@ -1881,7 +1881,7 @@ type DeleteSubjectRequest struct {
 
 func (x *DeleteSubjectRequest) Reset() {
 	*x = DeleteSubjectRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[29]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1893,7 +1893,7 @@ func (x *DeleteSubjectRequest) String() string {
 func (*DeleteSubjectRequest) ProtoMessage() {}
 
 func (x *DeleteSubjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[29]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1906,7 +1906,7 @@ func (x *DeleteSubjectRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSubjectRequest.ProtoReflect.Descriptor instead.
 func (*DeleteSubjectRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{29}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *DeleteSubjectRequest) GetInstitutionSlug() string {
@@ -1931,7 +1931,7 @@ type DeleteSubjectResponse struct {
 
 func (x *DeleteSubjectResponse) Reset() {
 	*x = DeleteSubjectResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[30]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1943,7 +1943,7 @@ func (x *DeleteSubjectResponse) String() string {
 func (*DeleteSubjectResponse) ProtoMessage() {}
 
 func (x *DeleteSubjectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[30]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1956,7 +1956,7 @@ func (x *DeleteSubjectResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSubjectResponse.ProtoReflect.Descriptor instead.
 func (*DeleteSubjectResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{30}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{30}
 }
 
 type ReorderSubjectsRequest struct {
@@ -1970,7 +1970,7 @@ type ReorderSubjectsRequest struct {
 
 func (x *ReorderSubjectsRequest) Reset() {
 	*x = ReorderSubjectsRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[31]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1982,7 +1982,7 @@ func (x *ReorderSubjectsRequest) String() string {
 func (*ReorderSubjectsRequest) ProtoMessage() {}
 
 func (x *ReorderSubjectsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[31]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1995,7 +1995,7 @@ func (x *ReorderSubjectsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReorderSubjectsRequest.ProtoReflect.Descriptor instead.
 func (*ReorderSubjectsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{31}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ReorderSubjectsRequest) GetInstitutionSlug() string {
@@ -2027,7 +2027,7 @@ type ReorderSubjectsResponse struct {
 
 func (x *ReorderSubjectsResponse) Reset() {
 	*x = ReorderSubjectsResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[32]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2039,7 +2039,7 @@ func (x *ReorderSubjectsResponse) String() string {
 func (*ReorderSubjectsResponse) ProtoMessage() {}
 
 func (x *ReorderSubjectsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[32]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2052,7 +2052,7 @@ func (x *ReorderSubjectsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReorderSubjectsResponse.ProtoReflect.Descriptor instead.
 func (*ReorderSubjectsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{32}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{32}
 }
 
 type CreateCompetencyRequest struct {
@@ -2069,7 +2069,7 @@ type CreateCompetencyRequest struct {
 
 func (x *CreateCompetencyRequest) Reset() {
 	*x = CreateCompetencyRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[33]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2081,7 +2081,7 @@ func (x *CreateCompetencyRequest) String() string {
 func (*CreateCompetencyRequest) ProtoMessage() {}
 
 func (x *CreateCompetencyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[33]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2094,7 +2094,7 @@ func (x *CreateCompetencyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCompetencyRequest.ProtoReflect.Descriptor instead.
 func (*CreateCompetencyRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{33}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *CreateCompetencyRequest) GetInstitutionSlug() string {
@@ -2141,7 +2141,7 @@ type CreateCompetencyResponse struct {
 
 func (x *CreateCompetencyResponse) Reset() {
 	*x = CreateCompetencyResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[34]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2153,7 +2153,7 @@ func (x *CreateCompetencyResponse) String() string {
 func (*CreateCompetencyResponse) ProtoMessage() {}
 
 func (x *CreateCompetencyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[34]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2166,7 +2166,7 @@ func (x *CreateCompetencyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateCompetencyResponse.ProtoReflect.Descriptor instead.
 func (*CreateCompetencyResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{34}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *CreateCompetencyResponse) GetCompetency() *Competency {
@@ -2188,7 +2188,7 @@ type UpdateCompetencyRequest struct {
 
 func (x *UpdateCompetencyRequest) Reset() {
 	*x = UpdateCompetencyRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[35]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2200,7 +2200,7 @@ func (x *UpdateCompetencyRequest) String() string {
 func (*UpdateCompetencyRequest) ProtoMessage() {}
 
 func (x *UpdateCompetencyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[35]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2213,7 +2213,7 @@ func (x *UpdateCompetencyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCompetencyRequest.ProtoReflect.Descriptor instead.
 func (*UpdateCompetencyRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{35}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *UpdateCompetencyRequest) GetInstitutionSlug() string {
@@ -2253,7 +2253,7 @@ type UpdateCompetencyResponse struct {
 
 func (x *UpdateCompetencyResponse) Reset() {
 	*x = UpdateCompetencyResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[36]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2265,7 +2265,7 @@ func (x *UpdateCompetencyResponse) String() string {
 func (*UpdateCompetencyResponse) ProtoMessage() {}
 
 func (x *UpdateCompetencyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[36]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2278,7 +2278,7 @@ func (x *UpdateCompetencyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateCompetencyResponse.ProtoReflect.Descriptor instead.
 func (*UpdateCompetencyResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{36}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *UpdateCompetencyResponse) GetCompetency() *Competency {
@@ -2298,7 +2298,7 @@ type DeleteCompetencyRequest struct {
 
 func (x *DeleteCompetencyRequest) Reset() {
 	*x = DeleteCompetencyRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[37]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2310,7 +2310,7 @@ func (x *DeleteCompetencyRequest) String() string {
 func (*DeleteCompetencyRequest) ProtoMessage() {}
 
 func (x *DeleteCompetencyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[37]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2323,7 +2323,7 @@ func (x *DeleteCompetencyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCompetencyRequest.ProtoReflect.Descriptor instead.
 func (*DeleteCompetencyRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{37}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *DeleteCompetencyRequest) GetInstitutionSlug() string {
@@ -2348,7 +2348,7 @@ type DeleteCompetencyResponse struct {
 
 func (x *DeleteCompetencyResponse) Reset() {
 	*x = DeleteCompetencyResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[38]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2360,7 +2360,7 @@ func (x *DeleteCompetencyResponse) String() string {
 func (*DeleteCompetencyResponse) ProtoMessage() {}
 
 func (x *DeleteCompetencyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[38]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2373,7 +2373,7 @@ func (x *DeleteCompetencyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCompetencyResponse.ProtoReflect.Descriptor instead.
 func (*DeleteCompetencyResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{38}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{38}
 }
 
 type ReorderCompetenciesRequest struct {
@@ -2389,7 +2389,7 @@ type ReorderCompetenciesRequest struct {
 
 func (x *ReorderCompetenciesRequest) Reset() {
 	*x = ReorderCompetenciesRequest{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[39]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2401,7 +2401,7 @@ func (x *ReorderCompetenciesRequest) String() string {
 func (*ReorderCompetenciesRequest) ProtoMessage() {}
 
 func (x *ReorderCompetenciesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[39]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2414,7 +2414,7 @@ func (x *ReorderCompetenciesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReorderCompetenciesRequest.ProtoReflect.Descriptor instead.
 func (*ReorderCompetenciesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{39}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *ReorderCompetenciesRequest) GetInstitutionSlug() string {
@@ -2453,7 +2453,7 @@ type ReorderCompetenciesResponse struct {
 
 func (x *ReorderCompetenciesResponse) Reset() {
 	*x = ReorderCompetenciesResponse{}
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[40]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2465,7 +2465,7 @@ func (x *ReorderCompetenciesResponse) String() string {
 func (*ReorderCompetenciesResponse) ProtoMessage() {}
 
 func (x *ReorderCompetenciesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_academic_v1_curriculum_proto_msgTypes[40]
+	mi := &file_ltedu_academic_v1_curriculum_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2478,14 +2478,14 @@ func (x *ReorderCompetenciesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReorderCompetenciesResponse.ProtoReflect.Descriptor instead.
 func (*ReorderCompetenciesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_academic_v1_curriculum_proto_rawDescGZIP(), []int{40}
+	return file_ltedu_academic_v1_curriculum_proto_rawDescGZIP(), []int{40}
 }
 
-var File_joseph_academic_v1_curriculum_proto protoreflect.FileDescriptor
+var File_ltedu_academic_v1_curriculum_proto protoreflect.FileDescriptor
 
-const file_joseph_academic_v1_curriculum_proto_rawDesc = "" +
+const file_ltedu_academic_v1_curriculum_proto_rawDesc = "" +
 	"\n" +
-	"#joseph/academic/v1/curriculum.proto\x12\x12joseph.academic.v1\x1a!joseph/academic/v1/academic.proto\"\x93\x01\n" +
+	"\"ltedu/academic/v1/curriculum.proto\x12\x11ltedu.academic.v1\x1a ltedu/academic/v1/academic.proto\"\x93\x01\n" +
 	"\n" +
 	"Competency\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
@@ -2494,7 +2494,7 @@ const file_joseph_academic_v1_curriculum_proto_rawDesc = "" +
 	"\x04kind\x18\x03 \x01(\tR\x04kind\x12\x12\n" +
 	"\x04code\x18\x04 \x01(\tR\x04code\x12\x12\n" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12\x1a\n" +
-	"\bposition\x18\x06 \x01(\x05R\bposition\"\xec\x03\n" +
+	"\bposition\x18\x06 \x01(\x05R\bposition\"\xeb\x03\n" +
 	"\aSubject\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\tmodule_id\x18\x02 \x01(\tR\bmoduleId\x12\x12\n" +
@@ -2508,8 +2508,8 @@ const file_joseph_academic_v1_curriculum_proto_rawDesc = "" +
 	"\x10practice_credits\x18\n" +
 	" \x01(\x05H\x02R\x0fpracticeCredits\x88\x01\x01\x12\x1a\n" +
 	"\bposition\x18\v \x01(\x05R\bposition\x12\x1b\n" +
-	"\tgrade_ids\x18\f \x03(\tR\bgradeIds\x12B\n" +
-	"\fcompetencies\x18\r \x03(\v2\x1e.joseph.academic.v1.CompetencyR\fcompetenciesB\x0f\n" +
+	"\tgrade_ids\x18\f \x03(\tR\bgradeIds\x12A\n" +
+	"\fcompetencies\x18\r \x03(\v2\x1d.ltedu.academic.v1.CompetencyR\fcompetenciesB\x0f\n" +
 	"\r_weekly_hoursB\x11\n" +
 	"\x0f_theory_creditsB\x13\n" +
 	"\x11_practice_credits\"~\n" +
@@ -2518,7 +2518,7 @@ const file_joseph_academic_v1_curriculum_proto_rawDesc = "" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x1a\n" +
-	"\bposition\x18\x05 \x01(\x05R\bposition\"\xd5\x03\n" +
+	"\bposition\x18\x05 \x01(\x05R\bposition\"\xd2\x03\n" +
 	"\n" +
 	"Curriculum\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x19\n" +
@@ -2533,10 +2533,10 @@ const file_joseph_academic_v1_curriculum_proto_rawDesc = "" +
 	"updated_at\x18\b \x01(\tR\tupdatedAt\x12#\n" +
 	"\rsubject_count\x18\t \x01(\x05R\fsubjectCount\x12#\n" +
 	"\rtotal_credits\x18\n" +
-	" \x01(\x05R\ftotalCredits\x124\n" +
-	"\amodules\x18\v \x03(\v2\x1a.joseph.academic.v1.ModuleR\amodules\x127\n" +
-	"\bsubjects\x18\f \x03(\v2\x1b.joseph.academic.v1.SubjectR\bsubjects\x12@\n" +
-	"\vtransversal\x18\r \x03(\v2\x1e.joseph.academic.v1.CompetencyR\vtransversal\"\x81\x03\n" +
+	" \x01(\x05R\ftotalCredits\x123\n" +
+	"\amodules\x18\v \x03(\v2\x19.ltedu.academic.v1.ModuleR\amodules\x126\n" +
+	"\bsubjects\x18\f \x03(\v2\x1a.ltedu.academic.v1.SubjectR\bsubjects\x12?\n" +
+	"\vtransversal\x18\r \x03(\v2\x1d.ltedu.academic.v1.CompetencyR\vtransversal\"\x81\x03\n" +
 	"\fSubjectInput\x12\x1b\n" +
 	"\tmodule_id\x18\x01 \x01(\tR\bmoduleId\x12\x12\n" +
 	"\x04kind\x18\x02 \x01(\tR\x04kind\x12\x1c\n" +
@@ -2553,54 +2553,54 @@ const file_joseph_academic_v1_curriculum_proto_rawDesc = "" +
 	"\x0f_theory_creditsB\x13\n" +
 	"\x11_practice_credits\"A\n" +
 	"\x14ListCurriculaRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xf5\x01\n" +
-	"\x15ListCurriculaResponse\x12=\n" +
-	"\acontext\x18\x01 \x01(\v2#.joseph.academic.v1.AcademicContextR\acontext\x121\n" +
-	"\x06levels\x18\x02 \x03(\v2\x19.joseph.academic.v1.LevelR\x06levels\x12<\n" +
-	"\tcurricula\x18\x03 \x03(\v2\x1e.joseph.academic.v1.CurriculumR\tcurricula\x12,\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xf2\x01\n" +
+	"\x15ListCurriculaResponse\x12<\n" +
+	"\acontext\x18\x01 \x01(\v2\".ltedu.academic.v1.AcademicContextR\acontext\x120\n" +
+	"\x06levels\x18\x02 \x03(\v2\x18.ltedu.academic.v1.LevelR\x06levels\x12;\n" +
+	"\tcurricula\x18\x03 \x03(\v2\x1d.ltedu.academic.v1.CurriculumR\tcurricula\x12,\n" +
 	"\x12template_level_ids\x18\x04 \x03(\tR\x10templateLevelIds\"Q\n" +
 	"\x14GetCurriculumRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"\xc7\x01\n" +
-	"\x15GetCurriculumResponse\x12=\n" +
-	"\acontext\x18\x01 \x01(\v2#.joseph.academic.v1.AcademicContextR\acontext\x12>\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"\xc4\x01\n" +
+	"\x15GetCurriculumResponse\x12<\n" +
+	"\acontext\x18\x01 \x01(\v2\".ltedu.academic.v1.AcademicContextR\acontext\x12=\n" +
 	"\n" +
-	"curriculum\x18\x02 \x01(\v2\x1e.joseph.academic.v1.CurriculumR\n" +
-	"curriculum\x12/\n" +
-	"\x05level\x18\x03 \x01(\v2\x19.joseph.academic.v1.LevelR\x05level\"\x98\x01\n" +
+	"curriculum\x18\x02 \x01(\v2\x1d.ltedu.academic.v1.CurriculumR\n" +
+	"curriculum\x12.\n" +
+	"\x05level\x18\x03 \x01(\v2\x18.ltedu.academic.v1.LevelR\x05level\"\x98\x01\n" +
 	"\x17CreateCurriculumRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x19\n" +
 	"\blevel_id\x18\x02 \x01(\tR\alevelId\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12#\n" +
-	"\rfrom_template\x18\x04 \x01(\bR\ffromTemplate\"Z\n" +
-	"\x18CreateCurriculumResponse\x12>\n" +
+	"\rfrom_template\x18\x04 \x01(\bR\ffromTemplate\"Y\n" +
+	"\x18CreateCurriculumResponse\x12=\n" +
 	"\n" +
-	"curriculum\x18\x01 \x01(\v2\x1e.joseph.academic.v1.CurriculumR\n" +
+	"curriculum\x18\x01 \x01(\v2\x1d.ltedu.academic.v1.CurriculumR\n" +
 	"curriculum\"k\n" +
 	"\x1aDuplicateCurriculumRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\"]\n" +
-	"\x1bDuplicateCurriculumResponse\x12>\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"\\\n" +
+	"\x1bDuplicateCurriculumResponse\x12=\n" +
 	"\n" +
-	"curriculum\x18\x01 \x01(\v2\x1e.joseph.academic.v1.CurriculumR\n" +
+	"curriculum\x18\x01 \x01(\v2\x1d.ltedu.academic.v1.CurriculumR\n" +
 	"curriculum\"~\n" +
 	"\x17UpdateCurriculumRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x14\n" +
-	"\x05notes\x18\x04 \x01(\tR\x05notes\"Z\n" +
-	"\x18UpdateCurriculumResponse\x12>\n" +
+	"\x05notes\x18\x04 \x01(\tR\x05notes\"Y\n" +
+	"\x18UpdateCurriculumResponse\x12=\n" +
 	"\n" +
-	"curriculum\x18\x01 \x01(\v2\x1e.joseph.academic.v1.CurriculumR\n" +
+	"curriculum\x18\x01 \x01(\v2\x1d.ltedu.academic.v1.CurriculumR\n" +
 	"curriculum\"o\n" +
 	"\x1aSetCurriculumStatusRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\tR\x06status\"]\n" +
-	"\x1bSetCurriculumStatusResponse\x12>\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\"\\\n" +
+	"\x1bSetCurriculumStatusResponse\x12=\n" +
 	"\n" +
-	"curriculum\x18\x01 \x01(\v2\x1e.joseph.academic.v1.CurriculumR\n" +
+	"curriculum\x18\x01 \x01(\v2\x1d.ltedu.academic.v1.CurriculumR\n" +
 	"curriculum\"T\n" +
 	"\x17DeleteCurriculumRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
@@ -2611,33 +2611,33 @@ const file_joseph_academic_v1_curriculum_proto_rawDesc = "" +
 	"\rcurriculum_id\x18\x02 \x01(\tR\fcurriculumId\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x05 \x01(\tR\vdescription\"J\n" +
-	"\x14CreateModuleResponse\x122\n" +
-	"\x06module\x18\x01 \x01(\v2\x1a.joseph.academic.v1.ModuleR\x06module\"\x9a\x01\n" +
+	"\vdescription\x18\x05 \x01(\tR\vdescription\"I\n" +
+	"\x14CreateModuleResponse\x121\n" +
+	"\x06module\x18\x01 \x01(\v2\x19.ltedu.academic.v1.ModuleR\x06module\"\x9a\x01\n" +
 	"\x13UpdateModuleRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x05 \x01(\tR\vdescription\"J\n" +
-	"\x14UpdateModuleResponse\x122\n" +
-	"\x06module\x18\x01 \x01(\v2\x1a.joseph.academic.v1.ModuleR\x06module\"P\n" +
+	"\vdescription\x18\x05 \x01(\tR\vdescription\"I\n" +
+	"\x14UpdateModuleResponse\x121\n" +
+	"\x06module\x18\x01 \x01(\v2\x19.ltedu.academic.v1.ModuleR\x06module\"P\n" +
 	"\x13DeleteModuleRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x16\n" +
-	"\x14DeleteModuleResponse\"\xa2\x01\n" +
+	"\x14DeleteModuleResponse\"\xa1\x01\n" +
 	"\x14CreateSubjectRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
-	"\rcurriculum_id\x18\x02 \x01(\tR\fcurriculumId\x12:\n" +
-	"\asubject\x18\x03 \x01(\v2 .joseph.academic.v1.SubjectInputR\asubject\"N\n" +
-	"\x15CreateSubjectResponse\x125\n" +
-	"\asubject\x18\x01 \x01(\v2\x1b.joseph.academic.v1.SubjectR\asubject\"\x8d\x01\n" +
+	"\rcurriculum_id\x18\x02 \x01(\tR\fcurriculumId\x129\n" +
+	"\asubject\x18\x03 \x01(\v2\x1f.ltedu.academic.v1.SubjectInputR\asubject\"M\n" +
+	"\x15CreateSubjectResponse\x124\n" +
+	"\asubject\x18\x01 \x01(\v2\x1a.ltedu.academic.v1.SubjectR\asubject\"\x8c\x01\n" +
 	"\x14UpdateSubjectRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\x12:\n" +
-	"\asubject\x18\x03 \x01(\v2 .joseph.academic.v1.SubjectInputR\asubject\"N\n" +
-	"\x15UpdateSubjectResponse\x125\n" +
-	"\asubject\x18\x01 \x01(\v2\x1b.joseph.academic.v1.SubjectR\asubject\"Q\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\x129\n" +
+	"\asubject\x18\x03 \x01(\v2\x1f.ltedu.academic.v1.SubjectInputR\asubject\"M\n" +
+	"\x15UpdateSubjectResponse\x124\n" +
+	"\asubject\x18\x01 \x01(\v2\x1a.ltedu.academic.v1.SubjectR\asubject\"Q\n" +
 	"\x14DeleteSubjectRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x17\n" +
@@ -2653,19 +2653,19 @@ const file_joseph_academic_v1_curriculum_proto_rawDesc = "" +
 	"\n" +
 	"subject_id\x18\x03 \x01(\tR\tsubjectId\x12\x12\n" +
 	"\x04code\x18\x04 \x01(\tR\x04code\x12\x12\n" +
-	"\x04name\x18\x05 \x01(\tR\x04name\"Z\n" +
-	"\x18CreateCompetencyResponse\x12>\n" +
+	"\x04name\x18\x05 \x01(\tR\x04name\"Y\n" +
+	"\x18CreateCompetencyResponse\x12=\n" +
 	"\n" +
-	"competency\x18\x01 \x01(\v2\x1e.joseph.academic.v1.CompetencyR\n" +
+	"competency\x18\x01 \x01(\v2\x1d.ltedu.academic.v1.CompetencyR\n" +
 	"competency\"|\n" +
 	"\x17UpdateCompetencyRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x12\x12\n" +
-	"\x04name\x18\x04 \x01(\tR\x04name\"Z\n" +
-	"\x18UpdateCompetencyResponse\x12>\n" +
+	"\x04name\x18\x04 \x01(\tR\x04name\"Y\n" +
+	"\x18UpdateCompetencyResponse\x12=\n" +
 	"\n" +
-	"competency\x18\x01 \x01(\v2\x1e.joseph.academic.v1.CompetencyR\n" +
+	"competency\x18\x01 \x01(\v2\x1d.ltedu.academic.v1.CompetencyR\n" +
 	"competency\"T\n" +
 	"\x17DeleteCompetencyRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
@@ -2677,144 +2677,144 @@ const file_joseph_academic_v1_curriculum_proto_rawDesc = "" +
 	"\n" +
 	"subject_id\x18\x03 \x01(\tR\tsubjectId\x12\x10\n" +
 	"\x03ids\x18\x04 \x03(\tR\x03ids\"\x1d\n" +
-	"\x1bReorderCompetenciesResponse2\xa8\x0f\n" +
-	"\x11CurriculumService\x12d\n" +
-	"\rListCurricula\x12(.joseph.academic.v1.ListCurriculaRequest\x1a).joseph.academic.v1.ListCurriculaResponse\x12d\n" +
-	"\rGetCurriculum\x12(.joseph.academic.v1.GetCurriculumRequest\x1a).joseph.academic.v1.GetCurriculumResponse\x12m\n" +
-	"\x10CreateCurriculum\x12+.joseph.academic.v1.CreateCurriculumRequest\x1a,.joseph.academic.v1.CreateCurriculumResponse\x12v\n" +
-	"\x13DuplicateCurriculum\x12..joseph.academic.v1.DuplicateCurriculumRequest\x1a/.joseph.academic.v1.DuplicateCurriculumResponse\x12m\n" +
-	"\x10UpdateCurriculum\x12+.joseph.academic.v1.UpdateCurriculumRequest\x1a,.joseph.academic.v1.UpdateCurriculumResponse\x12v\n" +
-	"\x13SetCurriculumStatus\x12..joseph.academic.v1.SetCurriculumStatusRequest\x1a/.joseph.academic.v1.SetCurriculumStatusResponse\x12m\n" +
-	"\x10DeleteCurriculum\x12+.joseph.academic.v1.DeleteCurriculumRequest\x1a,.joseph.academic.v1.DeleteCurriculumResponse\x12a\n" +
-	"\fCreateModule\x12'.joseph.academic.v1.CreateModuleRequest\x1a(.joseph.academic.v1.CreateModuleResponse\x12a\n" +
-	"\fUpdateModule\x12'.joseph.academic.v1.UpdateModuleRequest\x1a(.joseph.academic.v1.UpdateModuleResponse\x12a\n" +
-	"\fDeleteModule\x12'.joseph.academic.v1.DeleteModuleRequest\x1a(.joseph.academic.v1.DeleteModuleResponse\x12d\n" +
-	"\rCreateSubject\x12(.joseph.academic.v1.CreateSubjectRequest\x1a).joseph.academic.v1.CreateSubjectResponse\x12d\n" +
-	"\rUpdateSubject\x12(.joseph.academic.v1.UpdateSubjectRequest\x1a).joseph.academic.v1.UpdateSubjectResponse\x12d\n" +
-	"\rDeleteSubject\x12(.joseph.academic.v1.DeleteSubjectRequest\x1a).joseph.academic.v1.DeleteSubjectResponse\x12j\n" +
-	"\x0fReorderSubjects\x12*.joseph.academic.v1.ReorderSubjectsRequest\x1a+.joseph.academic.v1.ReorderSubjectsResponse\x12m\n" +
-	"\x10CreateCompetency\x12+.joseph.academic.v1.CreateCompetencyRequest\x1a,.joseph.academic.v1.CreateCompetencyResponse\x12m\n" +
-	"\x10UpdateCompetency\x12+.joseph.academic.v1.UpdateCompetencyRequest\x1a,.joseph.academic.v1.UpdateCompetencyResponse\x12m\n" +
-	"\x10DeleteCompetency\x12+.joseph.academic.v1.DeleteCompetencyRequest\x1a,.joseph.academic.v1.DeleteCompetencyResponse\x12v\n" +
-	"\x13ReorderCompetencies\x12..joseph.academic.v1.ReorderCompetenciesRequest\x1a/.joseph.academic.v1.ReorderCompetenciesResponseB=Z;api/internal/adapter/inbound/grpc/gen/academicv1;academicv1b\x06proto3"
+	"\x1bReorderCompetenciesResponse2\x84\x0f\n" +
+	"\x11CurriculumService\x12b\n" +
+	"\rListCurricula\x12'.ltedu.academic.v1.ListCurriculaRequest\x1a(.ltedu.academic.v1.ListCurriculaResponse\x12b\n" +
+	"\rGetCurriculum\x12'.ltedu.academic.v1.GetCurriculumRequest\x1a(.ltedu.academic.v1.GetCurriculumResponse\x12k\n" +
+	"\x10CreateCurriculum\x12*.ltedu.academic.v1.CreateCurriculumRequest\x1a+.ltedu.academic.v1.CreateCurriculumResponse\x12t\n" +
+	"\x13DuplicateCurriculum\x12-.ltedu.academic.v1.DuplicateCurriculumRequest\x1a..ltedu.academic.v1.DuplicateCurriculumResponse\x12k\n" +
+	"\x10UpdateCurriculum\x12*.ltedu.academic.v1.UpdateCurriculumRequest\x1a+.ltedu.academic.v1.UpdateCurriculumResponse\x12t\n" +
+	"\x13SetCurriculumStatus\x12-.ltedu.academic.v1.SetCurriculumStatusRequest\x1a..ltedu.academic.v1.SetCurriculumStatusResponse\x12k\n" +
+	"\x10DeleteCurriculum\x12*.ltedu.academic.v1.DeleteCurriculumRequest\x1a+.ltedu.academic.v1.DeleteCurriculumResponse\x12_\n" +
+	"\fCreateModule\x12&.ltedu.academic.v1.CreateModuleRequest\x1a'.ltedu.academic.v1.CreateModuleResponse\x12_\n" +
+	"\fUpdateModule\x12&.ltedu.academic.v1.UpdateModuleRequest\x1a'.ltedu.academic.v1.UpdateModuleResponse\x12_\n" +
+	"\fDeleteModule\x12&.ltedu.academic.v1.DeleteModuleRequest\x1a'.ltedu.academic.v1.DeleteModuleResponse\x12b\n" +
+	"\rCreateSubject\x12'.ltedu.academic.v1.CreateSubjectRequest\x1a(.ltedu.academic.v1.CreateSubjectResponse\x12b\n" +
+	"\rUpdateSubject\x12'.ltedu.academic.v1.UpdateSubjectRequest\x1a(.ltedu.academic.v1.UpdateSubjectResponse\x12b\n" +
+	"\rDeleteSubject\x12'.ltedu.academic.v1.DeleteSubjectRequest\x1a(.ltedu.academic.v1.DeleteSubjectResponse\x12h\n" +
+	"\x0fReorderSubjects\x12).ltedu.academic.v1.ReorderSubjectsRequest\x1a*.ltedu.academic.v1.ReorderSubjectsResponse\x12k\n" +
+	"\x10CreateCompetency\x12*.ltedu.academic.v1.CreateCompetencyRequest\x1a+.ltedu.academic.v1.CreateCompetencyResponse\x12k\n" +
+	"\x10UpdateCompetency\x12*.ltedu.academic.v1.UpdateCompetencyRequest\x1a+.ltedu.academic.v1.UpdateCompetencyResponse\x12k\n" +
+	"\x10DeleteCompetency\x12*.ltedu.academic.v1.DeleteCompetencyRequest\x1a+.ltedu.academic.v1.DeleteCompetencyResponse\x12t\n" +
+	"\x13ReorderCompetencies\x12-.ltedu.academic.v1.ReorderCompetenciesRequest\x1a..ltedu.academic.v1.ReorderCompetenciesResponseB=Z;api/internal/adapter/inbound/grpc/gen/academicv1;academicv1b\x06proto3"
 
 var (
-	file_joseph_academic_v1_curriculum_proto_rawDescOnce sync.Once
-	file_joseph_academic_v1_curriculum_proto_rawDescData []byte
+	file_ltedu_academic_v1_curriculum_proto_rawDescOnce sync.Once
+	file_ltedu_academic_v1_curriculum_proto_rawDescData []byte
 )
 
-func file_joseph_academic_v1_curriculum_proto_rawDescGZIP() []byte {
-	file_joseph_academic_v1_curriculum_proto_rawDescOnce.Do(func() {
-		file_joseph_academic_v1_curriculum_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_academic_v1_curriculum_proto_rawDesc), len(file_joseph_academic_v1_curriculum_proto_rawDesc)))
+func file_ltedu_academic_v1_curriculum_proto_rawDescGZIP() []byte {
+	file_ltedu_academic_v1_curriculum_proto_rawDescOnce.Do(func() {
+		file_ltedu_academic_v1_curriculum_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_academic_v1_curriculum_proto_rawDesc), len(file_ltedu_academic_v1_curriculum_proto_rawDesc)))
 	})
-	return file_joseph_academic_v1_curriculum_proto_rawDescData
+	return file_ltedu_academic_v1_curriculum_proto_rawDescData
 }
 
-var file_joseph_academic_v1_curriculum_proto_msgTypes = make([]protoimpl.MessageInfo, 41)
-var file_joseph_academic_v1_curriculum_proto_goTypes = []any{
-	(*Competency)(nil),                  // 0: joseph.academic.v1.Competency
-	(*Subject)(nil),                     // 1: joseph.academic.v1.Subject
-	(*Module)(nil),                      // 2: joseph.academic.v1.Module
-	(*Curriculum)(nil),                  // 3: joseph.academic.v1.Curriculum
-	(*SubjectInput)(nil),                // 4: joseph.academic.v1.SubjectInput
-	(*ListCurriculaRequest)(nil),        // 5: joseph.academic.v1.ListCurriculaRequest
-	(*ListCurriculaResponse)(nil),       // 6: joseph.academic.v1.ListCurriculaResponse
-	(*GetCurriculumRequest)(nil),        // 7: joseph.academic.v1.GetCurriculumRequest
-	(*GetCurriculumResponse)(nil),       // 8: joseph.academic.v1.GetCurriculumResponse
-	(*CreateCurriculumRequest)(nil),     // 9: joseph.academic.v1.CreateCurriculumRequest
-	(*CreateCurriculumResponse)(nil),    // 10: joseph.academic.v1.CreateCurriculumResponse
-	(*DuplicateCurriculumRequest)(nil),  // 11: joseph.academic.v1.DuplicateCurriculumRequest
-	(*DuplicateCurriculumResponse)(nil), // 12: joseph.academic.v1.DuplicateCurriculumResponse
-	(*UpdateCurriculumRequest)(nil),     // 13: joseph.academic.v1.UpdateCurriculumRequest
-	(*UpdateCurriculumResponse)(nil),    // 14: joseph.academic.v1.UpdateCurriculumResponse
-	(*SetCurriculumStatusRequest)(nil),  // 15: joseph.academic.v1.SetCurriculumStatusRequest
-	(*SetCurriculumStatusResponse)(nil), // 16: joseph.academic.v1.SetCurriculumStatusResponse
-	(*DeleteCurriculumRequest)(nil),     // 17: joseph.academic.v1.DeleteCurriculumRequest
-	(*DeleteCurriculumResponse)(nil),    // 18: joseph.academic.v1.DeleteCurriculumResponse
-	(*CreateModuleRequest)(nil),         // 19: joseph.academic.v1.CreateModuleRequest
-	(*CreateModuleResponse)(nil),        // 20: joseph.academic.v1.CreateModuleResponse
-	(*UpdateModuleRequest)(nil),         // 21: joseph.academic.v1.UpdateModuleRequest
-	(*UpdateModuleResponse)(nil),        // 22: joseph.academic.v1.UpdateModuleResponse
-	(*DeleteModuleRequest)(nil),         // 23: joseph.academic.v1.DeleteModuleRequest
-	(*DeleteModuleResponse)(nil),        // 24: joseph.academic.v1.DeleteModuleResponse
-	(*CreateSubjectRequest)(nil),        // 25: joseph.academic.v1.CreateSubjectRequest
-	(*CreateSubjectResponse)(nil),       // 26: joseph.academic.v1.CreateSubjectResponse
-	(*UpdateSubjectRequest)(nil),        // 27: joseph.academic.v1.UpdateSubjectRequest
-	(*UpdateSubjectResponse)(nil),       // 28: joseph.academic.v1.UpdateSubjectResponse
-	(*DeleteSubjectRequest)(nil),        // 29: joseph.academic.v1.DeleteSubjectRequest
-	(*DeleteSubjectResponse)(nil),       // 30: joseph.academic.v1.DeleteSubjectResponse
-	(*ReorderSubjectsRequest)(nil),      // 31: joseph.academic.v1.ReorderSubjectsRequest
-	(*ReorderSubjectsResponse)(nil),     // 32: joseph.academic.v1.ReorderSubjectsResponse
-	(*CreateCompetencyRequest)(nil),     // 33: joseph.academic.v1.CreateCompetencyRequest
-	(*CreateCompetencyResponse)(nil),    // 34: joseph.academic.v1.CreateCompetencyResponse
-	(*UpdateCompetencyRequest)(nil),     // 35: joseph.academic.v1.UpdateCompetencyRequest
-	(*UpdateCompetencyResponse)(nil),    // 36: joseph.academic.v1.UpdateCompetencyResponse
-	(*DeleteCompetencyRequest)(nil),     // 37: joseph.academic.v1.DeleteCompetencyRequest
-	(*DeleteCompetencyResponse)(nil),    // 38: joseph.academic.v1.DeleteCompetencyResponse
-	(*ReorderCompetenciesRequest)(nil),  // 39: joseph.academic.v1.ReorderCompetenciesRequest
-	(*ReorderCompetenciesResponse)(nil), // 40: joseph.academic.v1.ReorderCompetenciesResponse
-	(*AcademicContext)(nil),             // 41: joseph.academic.v1.AcademicContext
-	(*Level)(nil),                       // 42: joseph.academic.v1.Level
+var file_ltedu_academic_v1_curriculum_proto_msgTypes = make([]protoimpl.MessageInfo, 41)
+var file_ltedu_academic_v1_curriculum_proto_goTypes = []any{
+	(*Competency)(nil),                  // 0: ltedu.academic.v1.Competency
+	(*Subject)(nil),                     // 1: ltedu.academic.v1.Subject
+	(*Module)(nil),                      // 2: ltedu.academic.v1.Module
+	(*Curriculum)(nil),                  // 3: ltedu.academic.v1.Curriculum
+	(*SubjectInput)(nil),                // 4: ltedu.academic.v1.SubjectInput
+	(*ListCurriculaRequest)(nil),        // 5: ltedu.academic.v1.ListCurriculaRequest
+	(*ListCurriculaResponse)(nil),       // 6: ltedu.academic.v1.ListCurriculaResponse
+	(*GetCurriculumRequest)(nil),        // 7: ltedu.academic.v1.GetCurriculumRequest
+	(*GetCurriculumResponse)(nil),       // 8: ltedu.academic.v1.GetCurriculumResponse
+	(*CreateCurriculumRequest)(nil),     // 9: ltedu.academic.v1.CreateCurriculumRequest
+	(*CreateCurriculumResponse)(nil),    // 10: ltedu.academic.v1.CreateCurriculumResponse
+	(*DuplicateCurriculumRequest)(nil),  // 11: ltedu.academic.v1.DuplicateCurriculumRequest
+	(*DuplicateCurriculumResponse)(nil), // 12: ltedu.academic.v1.DuplicateCurriculumResponse
+	(*UpdateCurriculumRequest)(nil),     // 13: ltedu.academic.v1.UpdateCurriculumRequest
+	(*UpdateCurriculumResponse)(nil),    // 14: ltedu.academic.v1.UpdateCurriculumResponse
+	(*SetCurriculumStatusRequest)(nil),  // 15: ltedu.academic.v1.SetCurriculumStatusRequest
+	(*SetCurriculumStatusResponse)(nil), // 16: ltedu.academic.v1.SetCurriculumStatusResponse
+	(*DeleteCurriculumRequest)(nil),     // 17: ltedu.academic.v1.DeleteCurriculumRequest
+	(*DeleteCurriculumResponse)(nil),    // 18: ltedu.academic.v1.DeleteCurriculumResponse
+	(*CreateModuleRequest)(nil),         // 19: ltedu.academic.v1.CreateModuleRequest
+	(*CreateModuleResponse)(nil),        // 20: ltedu.academic.v1.CreateModuleResponse
+	(*UpdateModuleRequest)(nil),         // 21: ltedu.academic.v1.UpdateModuleRequest
+	(*UpdateModuleResponse)(nil),        // 22: ltedu.academic.v1.UpdateModuleResponse
+	(*DeleteModuleRequest)(nil),         // 23: ltedu.academic.v1.DeleteModuleRequest
+	(*DeleteModuleResponse)(nil),        // 24: ltedu.academic.v1.DeleteModuleResponse
+	(*CreateSubjectRequest)(nil),        // 25: ltedu.academic.v1.CreateSubjectRequest
+	(*CreateSubjectResponse)(nil),       // 26: ltedu.academic.v1.CreateSubjectResponse
+	(*UpdateSubjectRequest)(nil),        // 27: ltedu.academic.v1.UpdateSubjectRequest
+	(*UpdateSubjectResponse)(nil),       // 28: ltedu.academic.v1.UpdateSubjectResponse
+	(*DeleteSubjectRequest)(nil),        // 29: ltedu.academic.v1.DeleteSubjectRequest
+	(*DeleteSubjectResponse)(nil),       // 30: ltedu.academic.v1.DeleteSubjectResponse
+	(*ReorderSubjectsRequest)(nil),      // 31: ltedu.academic.v1.ReorderSubjectsRequest
+	(*ReorderSubjectsResponse)(nil),     // 32: ltedu.academic.v1.ReorderSubjectsResponse
+	(*CreateCompetencyRequest)(nil),     // 33: ltedu.academic.v1.CreateCompetencyRequest
+	(*CreateCompetencyResponse)(nil),    // 34: ltedu.academic.v1.CreateCompetencyResponse
+	(*UpdateCompetencyRequest)(nil),     // 35: ltedu.academic.v1.UpdateCompetencyRequest
+	(*UpdateCompetencyResponse)(nil),    // 36: ltedu.academic.v1.UpdateCompetencyResponse
+	(*DeleteCompetencyRequest)(nil),     // 37: ltedu.academic.v1.DeleteCompetencyRequest
+	(*DeleteCompetencyResponse)(nil),    // 38: ltedu.academic.v1.DeleteCompetencyResponse
+	(*ReorderCompetenciesRequest)(nil),  // 39: ltedu.academic.v1.ReorderCompetenciesRequest
+	(*ReorderCompetenciesResponse)(nil), // 40: ltedu.academic.v1.ReorderCompetenciesResponse
+	(*AcademicContext)(nil),             // 41: ltedu.academic.v1.AcademicContext
+	(*Level)(nil),                       // 42: ltedu.academic.v1.Level
 }
-var file_joseph_academic_v1_curriculum_proto_depIdxs = []int32{
-	0,  // 0: joseph.academic.v1.Subject.competencies:type_name -> joseph.academic.v1.Competency
-	2,  // 1: joseph.academic.v1.Curriculum.modules:type_name -> joseph.academic.v1.Module
-	1,  // 2: joseph.academic.v1.Curriculum.subjects:type_name -> joseph.academic.v1.Subject
-	0,  // 3: joseph.academic.v1.Curriculum.transversal:type_name -> joseph.academic.v1.Competency
-	41, // 4: joseph.academic.v1.ListCurriculaResponse.context:type_name -> joseph.academic.v1.AcademicContext
-	42, // 5: joseph.academic.v1.ListCurriculaResponse.levels:type_name -> joseph.academic.v1.Level
-	3,  // 6: joseph.academic.v1.ListCurriculaResponse.curricula:type_name -> joseph.academic.v1.Curriculum
-	41, // 7: joseph.academic.v1.GetCurriculumResponse.context:type_name -> joseph.academic.v1.AcademicContext
-	3,  // 8: joseph.academic.v1.GetCurriculumResponse.curriculum:type_name -> joseph.academic.v1.Curriculum
-	42, // 9: joseph.academic.v1.GetCurriculumResponse.level:type_name -> joseph.academic.v1.Level
-	3,  // 10: joseph.academic.v1.CreateCurriculumResponse.curriculum:type_name -> joseph.academic.v1.Curriculum
-	3,  // 11: joseph.academic.v1.DuplicateCurriculumResponse.curriculum:type_name -> joseph.academic.v1.Curriculum
-	3,  // 12: joseph.academic.v1.UpdateCurriculumResponse.curriculum:type_name -> joseph.academic.v1.Curriculum
-	3,  // 13: joseph.academic.v1.SetCurriculumStatusResponse.curriculum:type_name -> joseph.academic.v1.Curriculum
-	2,  // 14: joseph.academic.v1.CreateModuleResponse.module:type_name -> joseph.academic.v1.Module
-	2,  // 15: joseph.academic.v1.UpdateModuleResponse.module:type_name -> joseph.academic.v1.Module
-	4,  // 16: joseph.academic.v1.CreateSubjectRequest.subject:type_name -> joseph.academic.v1.SubjectInput
-	1,  // 17: joseph.academic.v1.CreateSubjectResponse.subject:type_name -> joseph.academic.v1.Subject
-	4,  // 18: joseph.academic.v1.UpdateSubjectRequest.subject:type_name -> joseph.academic.v1.SubjectInput
-	1,  // 19: joseph.academic.v1.UpdateSubjectResponse.subject:type_name -> joseph.academic.v1.Subject
-	0,  // 20: joseph.academic.v1.CreateCompetencyResponse.competency:type_name -> joseph.academic.v1.Competency
-	0,  // 21: joseph.academic.v1.UpdateCompetencyResponse.competency:type_name -> joseph.academic.v1.Competency
-	5,  // 22: joseph.academic.v1.CurriculumService.ListCurricula:input_type -> joseph.academic.v1.ListCurriculaRequest
-	7,  // 23: joseph.academic.v1.CurriculumService.GetCurriculum:input_type -> joseph.academic.v1.GetCurriculumRequest
-	9,  // 24: joseph.academic.v1.CurriculumService.CreateCurriculum:input_type -> joseph.academic.v1.CreateCurriculumRequest
-	11, // 25: joseph.academic.v1.CurriculumService.DuplicateCurriculum:input_type -> joseph.academic.v1.DuplicateCurriculumRequest
-	13, // 26: joseph.academic.v1.CurriculumService.UpdateCurriculum:input_type -> joseph.academic.v1.UpdateCurriculumRequest
-	15, // 27: joseph.academic.v1.CurriculumService.SetCurriculumStatus:input_type -> joseph.academic.v1.SetCurriculumStatusRequest
-	17, // 28: joseph.academic.v1.CurriculumService.DeleteCurriculum:input_type -> joseph.academic.v1.DeleteCurriculumRequest
-	19, // 29: joseph.academic.v1.CurriculumService.CreateModule:input_type -> joseph.academic.v1.CreateModuleRequest
-	21, // 30: joseph.academic.v1.CurriculumService.UpdateModule:input_type -> joseph.academic.v1.UpdateModuleRequest
-	23, // 31: joseph.academic.v1.CurriculumService.DeleteModule:input_type -> joseph.academic.v1.DeleteModuleRequest
-	25, // 32: joseph.academic.v1.CurriculumService.CreateSubject:input_type -> joseph.academic.v1.CreateSubjectRequest
-	27, // 33: joseph.academic.v1.CurriculumService.UpdateSubject:input_type -> joseph.academic.v1.UpdateSubjectRequest
-	29, // 34: joseph.academic.v1.CurriculumService.DeleteSubject:input_type -> joseph.academic.v1.DeleteSubjectRequest
-	31, // 35: joseph.academic.v1.CurriculumService.ReorderSubjects:input_type -> joseph.academic.v1.ReorderSubjectsRequest
-	33, // 36: joseph.academic.v1.CurriculumService.CreateCompetency:input_type -> joseph.academic.v1.CreateCompetencyRequest
-	35, // 37: joseph.academic.v1.CurriculumService.UpdateCompetency:input_type -> joseph.academic.v1.UpdateCompetencyRequest
-	37, // 38: joseph.academic.v1.CurriculumService.DeleteCompetency:input_type -> joseph.academic.v1.DeleteCompetencyRequest
-	39, // 39: joseph.academic.v1.CurriculumService.ReorderCompetencies:input_type -> joseph.academic.v1.ReorderCompetenciesRequest
-	6,  // 40: joseph.academic.v1.CurriculumService.ListCurricula:output_type -> joseph.academic.v1.ListCurriculaResponse
-	8,  // 41: joseph.academic.v1.CurriculumService.GetCurriculum:output_type -> joseph.academic.v1.GetCurriculumResponse
-	10, // 42: joseph.academic.v1.CurriculumService.CreateCurriculum:output_type -> joseph.academic.v1.CreateCurriculumResponse
-	12, // 43: joseph.academic.v1.CurriculumService.DuplicateCurriculum:output_type -> joseph.academic.v1.DuplicateCurriculumResponse
-	14, // 44: joseph.academic.v1.CurriculumService.UpdateCurriculum:output_type -> joseph.academic.v1.UpdateCurriculumResponse
-	16, // 45: joseph.academic.v1.CurriculumService.SetCurriculumStatus:output_type -> joseph.academic.v1.SetCurriculumStatusResponse
-	18, // 46: joseph.academic.v1.CurriculumService.DeleteCurriculum:output_type -> joseph.academic.v1.DeleteCurriculumResponse
-	20, // 47: joseph.academic.v1.CurriculumService.CreateModule:output_type -> joseph.academic.v1.CreateModuleResponse
-	22, // 48: joseph.academic.v1.CurriculumService.UpdateModule:output_type -> joseph.academic.v1.UpdateModuleResponse
-	24, // 49: joseph.academic.v1.CurriculumService.DeleteModule:output_type -> joseph.academic.v1.DeleteModuleResponse
-	26, // 50: joseph.academic.v1.CurriculumService.CreateSubject:output_type -> joseph.academic.v1.CreateSubjectResponse
-	28, // 51: joseph.academic.v1.CurriculumService.UpdateSubject:output_type -> joseph.academic.v1.UpdateSubjectResponse
-	30, // 52: joseph.academic.v1.CurriculumService.DeleteSubject:output_type -> joseph.academic.v1.DeleteSubjectResponse
-	32, // 53: joseph.academic.v1.CurriculumService.ReorderSubjects:output_type -> joseph.academic.v1.ReorderSubjectsResponse
-	34, // 54: joseph.academic.v1.CurriculumService.CreateCompetency:output_type -> joseph.academic.v1.CreateCompetencyResponse
-	36, // 55: joseph.academic.v1.CurriculumService.UpdateCompetency:output_type -> joseph.academic.v1.UpdateCompetencyResponse
-	38, // 56: joseph.academic.v1.CurriculumService.DeleteCompetency:output_type -> joseph.academic.v1.DeleteCompetencyResponse
-	40, // 57: joseph.academic.v1.CurriculumService.ReorderCompetencies:output_type -> joseph.academic.v1.ReorderCompetenciesResponse
+var file_ltedu_academic_v1_curriculum_proto_depIdxs = []int32{
+	0,  // 0: ltedu.academic.v1.Subject.competencies:type_name -> ltedu.academic.v1.Competency
+	2,  // 1: ltedu.academic.v1.Curriculum.modules:type_name -> ltedu.academic.v1.Module
+	1,  // 2: ltedu.academic.v1.Curriculum.subjects:type_name -> ltedu.academic.v1.Subject
+	0,  // 3: ltedu.academic.v1.Curriculum.transversal:type_name -> ltedu.academic.v1.Competency
+	41, // 4: ltedu.academic.v1.ListCurriculaResponse.context:type_name -> ltedu.academic.v1.AcademicContext
+	42, // 5: ltedu.academic.v1.ListCurriculaResponse.levels:type_name -> ltedu.academic.v1.Level
+	3,  // 6: ltedu.academic.v1.ListCurriculaResponse.curricula:type_name -> ltedu.academic.v1.Curriculum
+	41, // 7: ltedu.academic.v1.GetCurriculumResponse.context:type_name -> ltedu.academic.v1.AcademicContext
+	3,  // 8: ltedu.academic.v1.GetCurriculumResponse.curriculum:type_name -> ltedu.academic.v1.Curriculum
+	42, // 9: ltedu.academic.v1.GetCurriculumResponse.level:type_name -> ltedu.academic.v1.Level
+	3,  // 10: ltedu.academic.v1.CreateCurriculumResponse.curriculum:type_name -> ltedu.academic.v1.Curriculum
+	3,  // 11: ltedu.academic.v1.DuplicateCurriculumResponse.curriculum:type_name -> ltedu.academic.v1.Curriculum
+	3,  // 12: ltedu.academic.v1.UpdateCurriculumResponse.curriculum:type_name -> ltedu.academic.v1.Curriculum
+	3,  // 13: ltedu.academic.v1.SetCurriculumStatusResponse.curriculum:type_name -> ltedu.academic.v1.Curriculum
+	2,  // 14: ltedu.academic.v1.CreateModuleResponse.module:type_name -> ltedu.academic.v1.Module
+	2,  // 15: ltedu.academic.v1.UpdateModuleResponse.module:type_name -> ltedu.academic.v1.Module
+	4,  // 16: ltedu.academic.v1.CreateSubjectRequest.subject:type_name -> ltedu.academic.v1.SubjectInput
+	1,  // 17: ltedu.academic.v1.CreateSubjectResponse.subject:type_name -> ltedu.academic.v1.Subject
+	4,  // 18: ltedu.academic.v1.UpdateSubjectRequest.subject:type_name -> ltedu.academic.v1.SubjectInput
+	1,  // 19: ltedu.academic.v1.UpdateSubjectResponse.subject:type_name -> ltedu.academic.v1.Subject
+	0,  // 20: ltedu.academic.v1.CreateCompetencyResponse.competency:type_name -> ltedu.academic.v1.Competency
+	0,  // 21: ltedu.academic.v1.UpdateCompetencyResponse.competency:type_name -> ltedu.academic.v1.Competency
+	5,  // 22: ltedu.academic.v1.CurriculumService.ListCurricula:input_type -> ltedu.academic.v1.ListCurriculaRequest
+	7,  // 23: ltedu.academic.v1.CurriculumService.GetCurriculum:input_type -> ltedu.academic.v1.GetCurriculumRequest
+	9,  // 24: ltedu.academic.v1.CurriculumService.CreateCurriculum:input_type -> ltedu.academic.v1.CreateCurriculumRequest
+	11, // 25: ltedu.academic.v1.CurriculumService.DuplicateCurriculum:input_type -> ltedu.academic.v1.DuplicateCurriculumRequest
+	13, // 26: ltedu.academic.v1.CurriculumService.UpdateCurriculum:input_type -> ltedu.academic.v1.UpdateCurriculumRequest
+	15, // 27: ltedu.academic.v1.CurriculumService.SetCurriculumStatus:input_type -> ltedu.academic.v1.SetCurriculumStatusRequest
+	17, // 28: ltedu.academic.v1.CurriculumService.DeleteCurriculum:input_type -> ltedu.academic.v1.DeleteCurriculumRequest
+	19, // 29: ltedu.academic.v1.CurriculumService.CreateModule:input_type -> ltedu.academic.v1.CreateModuleRequest
+	21, // 30: ltedu.academic.v1.CurriculumService.UpdateModule:input_type -> ltedu.academic.v1.UpdateModuleRequest
+	23, // 31: ltedu.academic.v1.CurriculumService.DeleteModule:input_type -> ltedu.academic.v1.DeleteModuleRequest
+	25, // 32: ltedu.academic.v1.CurriculumService.CreateSubject:input_type -> ltedu.academic.v1.CreateSubjectRequest
+	27, // 33: ltedu.academic.v1.CurriculumService.UpdateSubject:input_type -> ltedu.academic.v1.UpdateSubjectRequest
+	29, // 34: ltedu.academic.v1.CurriculumService.DeleteSubject:input_type -> ltedu.academic.v1.DeleteSubjectRequest
+	31, // 35: ltedu.academic.v1.CurriculumService.ReorderSubjects:input_type -> ltedu.academic.v1.ReorderSubjectsRequest
+	33, // 36: ltedu.academic.v1.CurriculumService.CreateCompetency:input_type -> ltedu.academic.v1.CreateCompetencyRequest
+	35, // 37: ltedu.academic.v1.CurriculumService.UpdateCompetency:input_type -> ltedu.academic.v1.UpdateCompetencyRequest
+	37, // 38: ltedu.academic.v1.CurriculumService.DeleteCompetency:input_type -> ltedu.academic.v1.DeleteCompetencyRequest
+	39, // 39: ltedu.academic.v1.CurriculumService.ReorderCompetencies:input_type -> ltedu.academic.v1.ReorderCompetenciesRequest
+	6,  // 40: ltedu.academic.v1.CurriculumService.ListCurricula:output_type -> ltedu.academic.v1.ListCurriculaResponse
+	8,  // 41: ltedu.academic.v1.CurriculumService.GetCurriculum:output_type -> ltedu.academic.v1.GetCurriculumResponse
+	10, // 42: ltedu.academic.v1.CurriculumService.CreateCurriculum:output_type -> ltedu.academic.v1.CreateCurriculumResponse
+	12, // 43: ltedu.academic.v1.CurriculumService.DuplicateCurriculum:output_type -> ltedu.academic.v1.DuplicateCurriculumResponse
+	14, // 44: ltedu.academic.v1.CurriculumService.UpdateCurriculum:output_type -> ltedu.academic.v1.UpdateCurriculumResponse
+	16, // 45: ltedu.academic.v1.CurriculumService.SetCurriculumStatus:output_type -> ltedu.academic.v1.SetCurriculumStatusResponse
+	18, // 46: ltedu.academic.v1.CurriculumService.DeleteCurriculum:output_type -> ltedu.academic.v1.DeleteCurriculumResponse
+	20, // 47: ltedu.academic.v1.CurriculumService.CreateModule:output_type -> ltedu.academic.v1.CreateModuleResponse
+	22, // 48: ltedu.academic.v1.CurriculumService.UpdateModule:output_type -> ltedu.academic.v1.UpdateModuleResponse
+	24, // 49: ltedu.academic.v1.CurriculumService.DeleteModule:output_type -> ltedu.academic.v1.DeleteModuleResponse
+	26, // 50: ltedu.academic.v1.CurriculumService.CreateSubject:output_type -> ltedu.academic.v1.CreateSubjectResponse
+	28, // 51: ltedu.academic.v1.CurriculumService.UpdateSubject:output_type -> ltedu.academic.v1.UpdateSubjectResponse
+	30, // 52: ltedu.academic.v1.CurriculumService.DeleteSubject:output_type -> ltedu.academic.v1.DeleteSubjectResponse
+	32, // 53: ltedu.academic.v1.CurriculumService.ReorderSubjects:output_type -> ltedu.academic.v1.ReorderSubjectsResponse
+	34, // 54: ltedu.academic.v1.CurriculumService.CreateCompetency:output_type -> ltedu.academic.v1.CreateCompetencyResponse
+	36, // 55: ltedu.academic.v1.CurriculumService.UpdateCompetency:output_type -> ltedu.academic.v1.UpdateCompetencyResponse
+	38, // 56: ltedu.academic.v1.CurriculumService.DeleteCompetency:output_type -> ltedu.academic.v1.DeleteCompetencyResponse
+	40, // 57: ltedu.academic.v1.CurriculumService.ReorderCompetencies:output_type -> ltedu.academic.v1.ReorderCompetenciesResponse
 	40, // [40:58] is the sub-list for method output_type
 	22, // [22:40] is the sub-list for method input_type
 	22, // [22:22] is the sub-list for extension type_name
@@ -2822,29 +2822,29 @@ var file_joseph_academic_v1_curriculum_proto_depIdxs = []int32{
 	0,  // [0:22] is the sub-list for field type_name
 }
 
-func init() { file_joseph_academic_v1_curriculum_proto_init() }
-func file_joseph_academic_v1_curriculum_proto_init() {
-	if File_joseph_academic_v1_curriculum_proto != nil {
+func init() { file_ltedu_academic_v1_curriculum_proto_init() }
+func file_ltedu_academic_v1_curriculum_proto_init() {
+	if File_ltedu_academic_v1_curriculum_proto != nil {
 		return
 	}
-	file_joseph_academic_v1_academic_proto_init()
-	file_joseph_academic_v1_curriculum_proto_msgTypes[1].OneofWrappers = []any{}
-	file_joseph_academic_v1_curriculum_proto_msgTypes[4].OneofWrappers = []any{}
+	file_ltedu_academic_v1_academic_proto_init()
+	file_ltedu_academic_v1_curriculum_proto_msgTypes[1].OneofWrappers = []any{}
+	file_ltedu_academic_v1_curriculum_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_academic_v1_curriculum_proto_rawDesc), len(file_joseph_academic_v1_curriculum_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_academic_v1_curriculum_proto_rawDesc), len(file_ltedu_academic_v1_curriculum_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   41,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_academic_v1_curriculum_proto_goTypes,
-		DependencyIndexes: file_joseph_academic_v1_curriculum_proto_depIdxs,
-		MessageInfos:      file_joseph_academic_v1_curriculum_proto_msgTypes,
+		GoTypes:           file_ltedu_academic_v1_curriculum_proto_goTypes,
+		DependencyIndexes: file_ltedu_academic_v1_curriculum_proto_depIdxs,
+		MessageInfos:      file_ltedu_academic_v1_curriculum_proto_msgTypes,
 	}.Build()
-	File_joseph_academic_v1_curriculum_proto = out.File
-	file_joseph_academic_v1_curriculum_proto_goTypes = nil
-	file_joseph_academic_v1_curriculum_proto_depIdxs = nil
+	File_ltedu_academic_v1_curriculum_proto = out.File
+	file_ltedu_academic_v1_curriculum_proto_goTypes = nil
+	file_ltedu_academic_v1_curriculum_proto_depIdxs = nil
 }

@@ -2,11 +2,11 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/classroom/v1/classroom.proto
+// source: ltedu/classroom/v1/classroom.proto
 
 // Virtual classroom (sección de aula virtual, Anexo 2 of RSG N.° 613-2014-MINEDU): one room per subject × grade of
 // each period, its units and material, the institution's library and the itinerant deliveries. Same metadata and
-// institution scoping as joseph.academic.v1. Files go through the attachments API (owner_kind classroom_item and
+// institution scoping as ltedu.academic.v1. Files go through the attachments API (owner_kind classroom_item and
 // library_item)
 
 package classroomv1
@@ -37,7 +37,7 @@ type Period struct {
 
 func (x *Period) Reset() {
 	*x = Period{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[0]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -49,7 +49,7 @@ func (x *Period) String() string {
 func (*Period) ProtoMessage() {}
 
 func (x *Period) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[0]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -62,7 +62,7 @@ func (x *Period) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Period.ProtoReflect.Descriptor instead.
 func (*Period) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Period) GetId() string {
@@ -114,7 +114,7 @@ type Room struct {
 
 func (x *Room) Reset() {
 	*x = Room{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[1]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -126,7 +126,7 @@ func (x *Room) String() string {
 func (*Room) ProtoMessage() {}
 
 func (x *Room) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[1]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -139,7 +139,7 @@ func (x *Room) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Room.ProtoReflect.Descriptor instead.
 func (*Room) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Room) GetId() string {
@@ -294,15 +294,17 @@ type Item struct {
 	Published     bool   `protobuf:"varint,12,opt,name=published,proto3" json:"published,omitempty"`
 	Files         int32  `protobuf:"varint,13,opt,name=files,proto3" json:"files,omitempty"`
 	// For a student: whether they opened it. For staff: how many students did
-	Viewed        bool  `protobuf:"varint,14,opt,name=viewed,proto3" json:"viewed,omitempty"`
-	Views         int32 `protobuf:"varint,15,opt,name=views,proto3" json:"views,omitempty"`
+	Viewed bool  `protobuf:"varint,14,opt,name=viewed,proto3" json:"viewed,omitempty"`
+	Views  int32 `protobuf:"varint,15,opt,name=views,proto3" json:"views,omitempty"`
+	// live only: platform (video inside ListerCore Edu) | meet (url is the external link). Empty: meet
+	Provider      string `protobuf:"bytes,16,opt,name=provider,proto3" json:"provider,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Item) Reset() {
 	*x = Item{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[2]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -314,7 +316,7 @@ func (x *Item) String() string {
 func (*Item) ProtoMessage() {}
 
 func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[2]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -327,7 +329,7 @@ func (x *Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Item.ProtoReflect.Descriptor instead.
 func (*Item) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Item) GetId() string {
@@ -435,6 +437,13 @@ func (x *Item) GetViews() int32 {
 	return 0
 }
 
+func (x *Item) GetProvider() string {
+	if x != nil {
+		return x.Provider
+	}
+	return ""
+}
+
 type Unit struct {
 	state   protoimpl.MessageState `protogen:"open.v1"`
 	Id      string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -450,7 +459,7 @@ type Unit struct {
 
 func (x *Unit) Reset() {
 	*x = Unit{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[3]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -462,7 +471,7 @@ func (x *Unit) String() string {
 func (*Unit) ProtoMessage() {}
 
 func (x *Unit) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[3]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -475,7 +484,7 @@ func (x *Unit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Unit.ProtoReflect.Descriptor instead.
 func (*Unit) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Unit) GetId() string {
@@ -540,7 +549,7 @@ type LibraryItem struct {
 
 func (x *LibraryItem) Reset() {
 	*x = LibraryItem{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[4]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -552,7 +561,7 @@ func (x *LibraryItem) String() string {
 func (*LibraryItem) ProtoMessage() {}
 
 func (x *LibraryItem) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[4]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -565,7 +574,7 @@ func (x *LibraryItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LibraryItem.ProtoReflect.Descriptor instead.
 func (*LibraryItem) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *LibraryItem) GetId() string {
@@ -662,7 +671,7 @@ type Delivery struct {
 
 func (x *Delivery) Reset() {
 	*x = Delivery{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[5]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -674,7 +683,7 @@ func (x *Delivery) String() string {
 func (*Delivery) ProtoMessage() {}
 
 func (x *Delivery) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[5]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -687,7 +696,7 @@ func (x *Delivery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Delivery.ProtoReflect.Descriptor instead.
 func (*Delivery) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Delivery) GetUnitId() string {
@@ -757,7 +766,7 @@ type ListRoomsRequest struct {
 
 func (x *ListRoomsRequest) Reset() {
 	*x = ListRoomsRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[6]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -769,7 +778,7 @@ func (x *ListRoomsRequest) String() string {
 func (*ListRoomsRequest) ProtoMessage() {}
 
 func (x *ListRoomsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[6]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -782,7 +791,7 @@ func (x *ListRoomsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoomsRequest.ProtoReflect.Descriptor instead.
 func (*ListRoomsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ListRoomsRequest) GetInstitutionSlug() string {
@@ -813,7 +822,7 @@ type ListRoomsResponse struct {
 
 func (x *ListRoomsResponse) Reset() {
 	*x = ListRoomsResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[7]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -825,7 +834,7 @@ func (x *ListRoomsResponse) String() string {
 func (*ListRoomsResponse) ProtoMessage() {}
 
 func (x *ListRoomsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[7]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -838,7 +847,7 @@ func (x *ListRoomsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoomsResponse.ProtoReflect.Descriptor instead.
 func (*ListRoomsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ListRoomsResponse) GetPeriods() []*Period {
@@ -886,7 +895,7 @@ type GenerateRoomsRequest struct {
 
 func (x *GenerateRoomsRequest) Reset() {
 	*x = GenerateRoomsRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[8]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -898,7 +907,7 @@ func (x *GenerateRoomsRequest) String() string {
 func (*GenerateRoomsRequest) ProtoMessage() {}
 
 func (x *GenerateRoomsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[8]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -911,7 +920,7 @@ func (x *GenerateRoomsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateRoomsRequest.ProtoReflect.Descriptor instead.
 func (*GenerateRoomsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GenerateRoomsRequest) GetInstitutionSlug() string {
@@ -937,7 +946,7 @@ type GenerateRoomsResponse struct {
 
 func (x *GenerateRoomsResponse) Reset() {
 	*x = GenerateRoomsResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[9]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -949,7 +958,7 @@ func (x *GenerateRoomsResponse) String() string {
 func (*GenerateRoomsResponse) ProtoMessage() {}
 
 func (x *GenerateRoomsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[9]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -962,7 +971,7 @@ func (x *GenerateRoomsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateRoomsResponse.ProtoReflect.Descriptor instead.
 func (*GenerateRoomsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GenerateRoomsResponse) GetCreated() int32 {
@@ -982,7 +991,7 @@ type GetRoomRequest struct {
 
 func (x *GetRoomRequest) Reset() {
 	*x = GetRoomRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[10]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -994,7 +1003,7 @@ func (x *GetRoomRequest) String() string {
 func (*GetRoomRequest) ProtoMessage() {}
 
 func (x *GetRoomRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[10]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1007,7 +1016,7 @@ func (x *GetRoomRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoomRequest.ProtoReflect.Descriptor instead.
 func (*GetRoomRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetRoomRequest) GetInstitutionSlug() string {
@@ -1036,7 +1045,7 @@ type GetRoomResponse struct {
 
 func (x *GetRoomResponse) Reset() {
 	*x = GetRoomResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[11]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1048,7 +1057,7 @@ func (x *GetRoomResponse) String() string {
 func (*GetRoomResponse) ProtoMessage() {}
 
 func (x *GetRoomResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[11]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1061,7 +1070,7 @@ func (x *GetRoomResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoomResponse.ProtoReflect.Descriptor instead.
 func (*GetRoomResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetRoomResponse) GetRoom() *Room {
@@ -1106,7 +1115,7 @@ type UpdateRoomRequest struct {
 
 func (x *UpdateRoomRequest) Reset() {
 	*x = UpdateRoomRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[12]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1118,7 +1127,7 @@ func (x *UpdateRoomRequest) String() string {
 func (*UpdateRoomRequest) ProtoMessage() {}
 
 func (x *UpdateRoomRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[12]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1131,7 +1140,7 @@ func (x *UpdateRoomRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRoomRequest.ProtoReflect.Descriptor instead.
 func (*UpdateRoomRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *UpdateRoomRequest) GetInstitutionSlug() string {
@@ -1178,7 +1187,7 @@ type UpdateRoomResponse struct {
 
 func (x *UpdateRoomResponse) Reset() {
 	*x = UpdateRoomResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[13]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1190,7 +1199,7 @@ func (x *UpdateRoomResponse) String() string {
 func (*UpdateRoomResponse) ProtoMessage() {}
 
 func (x *UpdateRoomResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[13]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1203,7 +1212,7 @@ func (x *UpdateRoomResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRoomResponse.ProtoReflect.Descriptor instead.
 func (*UpdateRoomResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *UpdateRoomResponse) GetRoom() *Room {
@@ -1224,7 +1233,7 @@ type CopyRoomRequest struct {
 
 func (x *CopyRoomRequest) Reset() {
 	*x = CopyRoomRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[14]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1236,7 +1245,7 @@ func (x *CopyRoomRequest) String() string {
 func (*CopyRoomRequest) ProtoMessage() {}
 
 func (x *CopyRoomRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[14]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1249,7 +1258,7 @@ func (x *CopyRoomRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CopyRoomRequest.ProtoReflect.Descriptor instead.
 func (*CopyRoomRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *CopyRoomRequest) GetInstitutionSlug() string {
@@ -1282,7 +1291,7 @@ type CopyRoomResponse struct {
 
 func (x *CopyRoomResponse) Reset() {
 	*x = CopyRoomResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[15]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1294,7 +1303,7 @@ func (x *CopyRoomResponse) String() string {
 func (*CopyRoomResponse) ProtoMessage() {}
 
 func (x *CopyRoomResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[15]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1307,7 +1316,7 @@ func (x *CopyRoomResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CopyRoomResponse.ProtoReflect.Descriptor instead.
 func (*CopyRoomResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *CopyRoomResponse) GetUnits() int32 {
@@ -1333,7 +1342,7 @@ type SaveUnitRequest struct {
 
 func (x *SaveUnitRequest) Reset() {
 	*x = SaveUnitRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[16]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1345,7 +1354,7 @@ func (x *SaveUnitRequest) String() string {
 func (*SaveUnitRequest) ProtoMessage() {}
 
 func (x *SaveUnitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[16]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1358,7 +1367,7 @@ func (x *SaveUnitRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveUnitRequest.ProtoReflect.Descriptor instead.
 func (*SaveUnitRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *SaveUnitRequest) GetInstitutionSlug() string {
@@ -1419,7 +1428,7 @@ type SaveUnitResponse struct {
 
 func (x *SaveUnitResponse) Reset() {
 	*x = SaveUnitResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[17]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1431,7 +1440,7 @@ func (x *SaveUnitResponse) String() string {
 func (*SaveUnitResponse) ProtoMessage() {}
 
 func (x *SaveUnitResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[17]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1444,7 +1453,7 @@ func (x *SaveUnitResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveUnitResponse.ProtoReflect.Descriptor instead.
 func (*SaveUnitResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *SaveUnitResponse) GetUnit() *Unit {
@@ -1464,7 +1473,7 @@ type DeleteUnitRequest struct {
 
 func (x *DeleteUnitRequest) Reset() {
 	*x = DeleteUnitRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[18]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1476,7 +1485,7 @@ func (x *DeleteUnitRequest) String() string {
 func (*DeleteUnitRequest) ProtoMessage() {}
 
 func (x *DeleteUnitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[18]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1489,7 +1498,7 @@ func (x *DeleteUnitRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUnitRequest.ProtoReflect.Descriptor instead.
 func (*DeleteUnitRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *DeleteUnitRequest) GetInstitutionSlug() string {
@@ -1514,7 +1523,7 @@ type DeleteUnitResponse struct {
 
 func (x *DeleteUnitResponse) Reset() {
 	*x = DeleteUnitResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[19]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1526,7 +1535,7 @@ func (x *DeleteUnitResponse) String() string {
 func (*DeleteUnitResponse) ProtoMessage() {}
 
 func (x *DeleteUnitResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[19]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1539,7 +1548,7 @@ func (x *DeleteUnitResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUnitResponse.ProtoReflect.Descriptor instead.
 func (*DeleteUnitResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{19}
 }
 
 type ReorderUnitsRequest struct {
@@ -1553,7 +1562,7 @@ type ReorderUnitsRequest struct {
 
 func (x *ReorderUnitsRequest) Reset() {
 	*x = ReorderUnitsRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[20]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1565,7 +1574,7 @@ func (x *ReorderUnitsRequest) String() string {
 func (*ReorderUnitsRequest) ProtoMessage() {}
 
 func (x *ReorderUnitsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[20]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1578,7 +1587,7 @@ func (x *ReorderUnitsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReorderUnitsRequest.ProtoReflect.Descriptor instead.
 func (*ReorderUnitsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ReorderUnitsRequest) GetInstitutionSlug() string {
@@ -1610,7 +1619,7 @@ type ReorderUnitsResponse struct {
 
 func (x *ReorderUnitsResponse) Reset() {
 	*x = ReorderUnitsResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[21]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1622,7 +1631,7 @@ func (x *ReorderUnitsResponse) String() string {
 func (*ReorderUnitsResponse) ProtoMessage() {}
 
 func (x *ReorderUnitsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[21]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1635,7 +1644,7 @@ func (x *ReorderUnitsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReorderUnitsResponse.ProtoReflect.Descriptor instead.
 func (*ReorderUnitsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{21}
 }
 
 type SaveItemRequest struct {
@@ -1649,7 +1658,7 @@ type SaveItemRequest struct {
 
 func (x *SaveItemRequest) Reset() {
 	*x = SaveItemRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[22]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1661,7 +1670,7 @@ func (x *SaveItemRequest) String() string {
 func (*SaveItemRequest) ProtoMessage() {}
 
 func (x *SaveItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[22]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1674,7 +1683,7 @@ func (x *SaveItemRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveItemRequest.ProtoReflect.Descriptor instead.
 func (*SaveItemRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *SaveItemRequest) GetInstitutionSlug() string {
@@ -1700,7 +1709,7 @@ type SaveItemResponse struct {
 
 func (x *SaveItemResponse) Reset() {
 	*x = SaveItemResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[23]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1712,7 +1721,7 @@ func (x *SaveItemResponse) String() string {
 func (*SaveItemResponse) ProtoMessage() {}
 
 func (x *SaveItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[23]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1725,7 +1734,7 @@ func (x *SaveItemResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveItemResponse.ProtoReflect.Descriptor instead.
 func (*SaveItemResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{23}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *SaveItemResponse) GetItem() *Item {
@@ -1745,7 +1754,7 @@ type DeleteItemRequest struct {
 
 func (x *DeleteItemRequest) Reset() {
 	*x = DeleteItemRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[24]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1757,7 +1766,7 @@ func (x *DeleteItemRequest) String() string {
 func (*DeleteItemRequest) ProtoMessage() {}
 
 func (x *DeleteItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[24]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1770,7 +1779,7 @@ func (x *DeleteItemRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteItemRequest.ProtoReflect.Descriptor instead.
 func (*DeleteItemRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{24}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *DeleteItemRequest) GetInstitutionSlug() string {
@@ -1795,7 +1804,7 @@ type DeleteItemResponse struct {
 
 func (x *DeleteItemResponse) Reset() {
 	*x = DeleteItemResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[25]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1807,7 +1816,7 @@ func (x *DeleteItemResponse) String() string {
 func (*DeleteItemResponse) ProtoMessage() {}
 
 func (x *DeleteItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[25]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1820,7 +1829,7 @@ func (x *DeleteItemResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteItemResponse.ProtoReflect.Descriptor instead.
 func (*DeleteItemResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{25}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{25}
 }
 
 type ReorderItemsRequest struct {
@@ -1834,7 +1843,7 @@ type ReorderItemsRequest struct {
 
 func (x *ReorderItemsRequest) Reset() {
 	*x = ReorderItemsRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[26]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1846,7 +1855,7 @@ func (x *ReorderItemsRequest) String() string {
 func (*ReorderItemsRequest) ProtoMessage() {}
 
 func (x *ReorderItemsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[26]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1859,7 +1868,7 @@ func (x *ReorderItemsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReorderItemsRequest.ProtoReflect.Descriptor instead.
 func (*ReorderItemsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{26}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ReorderItemsRequest) GetInstitutionSlug() string {
@@ -1891,7 +1900,7 @@ type ReorderItemsResponse struct {
 
 func (x *ReorderItemsResponse) Reset() {
 	*x = ReorderItemsResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[27]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1903,7 +1912,7 @@ func (x *ReorderItemsResponse) String() string {
 func (*ReorderItemsResponse) ProtoMessage() {}
 
 func (x *ReorderItemsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[27]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1916,7 +1925,7 @@ func (x *ReorderItemsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReorderItemsResponse.ProtoReflect.Descriptor instead.
 func (*ReorderItemsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{27}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{27}
 }
 
 type RecordViewRequest struct {
@@ -1929,7 +1938,7 @@ type RecordViewRequest struct {
 
 func (x *RecordViewRequest) Reset() {
 	*x = RecordViewRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[28]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1941,7 +1950,7 @@ func (x *RecordViewRequest) String() string {
 func (*RecordViewRequest) ProtoMessage() {}
 
 func (x *RecordViewRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[28]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1954,7 +1963,7 @@ func (x *RecordViewRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordViewRequest.ProtoReflect.Descriptor instead.
 func (*RecordViewRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{28}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *RecordViewRequest) GetInstitutionSlug() string {
@@ -1979,7 +1988,7 @@ type RecordViewResponse struct {
 
 func (x *RecordViewResponse) Reset() {
 	*x = RecordViewResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[29]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1991,7 +2000,7 @@ func (x *RecordViewResponse) String() string {
 func (*RecordViewResponse) ProtoMessage() {}
 
 func (x *RecordViewResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[29]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2004,7 +2013,7 @@ func (x *RecordViewResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordViewResponse.ProtoReflect.Descriptor instead.
 func (*RecordViewResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{29}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{29}
 }
 
 type ListLibraryRequest struct {
@@ -2016,7 +2025,7 @@ type ListLibraryRequest struct {
 
 func (x *ListLibraryRequest) Reset() {
 	*x = ListLibraryRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[30]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2028,7 +2037,7 @@ func (x *ListLibraryRequest) String() string {
 func (*ListLibraryRequest) ProtoMessage() {}
 
 func (x *ListLibraryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[30]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2041,7 +2050,7 @@ func (x *ListLibraryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListLibraryRequest.ProtoReflect.Descriptor instead.
 func (*ListLibraryRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{30}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *ListLibraryRequest) GetInstitutionSlug() string {
@@ -2061,7 +2070,7 @@ type ListLibraryResponse struct {
 
 func (x *ListLibraryResponse) Reset() {
 	*x = ListLibraryResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[31]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2073,7 +2082,7 @@ func (x *ListLibraryResponse) String() string {
 func (*ListLibraryResponse) ProtoMessage() {}
 
 func (x *ListLibraryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[31]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2086,7 +2095,7 @@ func (x *ListLibraryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListLibraryResponse.ProtoReflect.Descriptor instead.
 func (*ListLibraryResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{31}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ListLibraryResponse) GetItems() []*LibraryItem {
@@ -2113,7 +2122,7 @@ type SaveLibraryItemRequest struct {
 
 func (x *SaveLibraryItemRequest) Reset() {
 	*x = SaveLibraryItemRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[32]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2125,7 +2134,7 @@ func (x *SaveLibraryItemRequest) String() string {
 func (*SaveLibraryItemRequest) ProtoMessage() {}
 
 func (x *SaveLibraryItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[32]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2138,7 +2147,7 @@ func (x *SaveLibraryItemRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveLibraryItemRequest.ProtoReflect.Descriptor instead.
 func (*SaveLibraryItemRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{32}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *SaveLibraryItemRequest) GetInstitutionSlug() string {
@@ -2164,7 +2173,7 @@ type SaveLibraryItemResponse struct {
 
 func (x *SaveLibraryItemResponse) Reset() {
 	*x = SaveLibraryItemResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[33]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2176,7 +2185,7 @@ func (x *SaveLibraryItemResponse) String() string {
 func (*SaveLibraryItemResponse) ProtoMessage() {}
 
 func (x *SaveLibraryItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[33]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2189,7 +2198,7 @@ func (x *SaveLibraryItemResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveLibraryItemResponse.ProtoReflect.Descriptor instead.
 func (*SaveLibraryItemResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{33}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *SaveLibraryItemResponse) GetItem() *LibraryItem {
@@ -2209,7 +2218,7 @@ type DeleteLibraryItemRequest struct {
 
 func (x *DeleteLibraryItemRequest) Reset() {
 	*x = DeleteLibraryItemRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[34]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2221,7 +2230,7 @@ func (x *DeleteLibraryItemRequest) String() string {
 func (*DeleteLibraryItemRequest) ProtoMessage() {}
 
 func (x *DeleteLibraryItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[34]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2234,7 +2243,7 @@ func (x *DeleteLibraryItemRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteLibraryItemRequest.ProtoReflect.Descriptor instead.
 func (*DeleteLibraryItemRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{34}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *DeleteLibraryItemRequest) GetInstitutionSlug() string {
@@ -2259,7 +2268,7 @@ type DeleteLibraryItemResponse struct {
 
 func (x *DeleteLibraryItemResponse) Reset() {
 	*x = DeleteLibraryItemResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[35]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2271,7 +2280,7 @@ func (x *DeleteLibraryItemResponse) String() string {
 func (*DeleteLibraryItemResponse) ProtoMessage() {}
 
 func (x *DeleteLibraryItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[35]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2284,7 +2293,7 @@ func (x *DeleteLibraryItemResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteLibraryItemResponse.ProtoReflect.Descriptor instead.
 func (*DeleteLibraryItemResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{35}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{35}
 }
 
 type ListDeliveriesRequest struct {
@@ -2297,7 +2306,7 @@ type ListDeliveriesRequest struct {
 
 func (x *ListDeliveriesRequest) Reset() {
 	*x = ListDeliveriesRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[36]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2309,7 +2318,7 @@ func (x *ListDeliveriesRequest) String() string {
 func (*ListDeliveriesRequest) ProtoMessage() {}
 
 func (x *ListDeliveriesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[36]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2322,7 +2331,7 @@ func (x *ListDeliveriesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDeliveriesRequest.ProtoReflect.Descriptor instead.
 func (*ListDeliveriesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{36}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ListDeliveriesRequest) GetInstitutionSlug() string {
@@ -2348,7 +2357,7 @@ type ListDeliveriesResponse struct {
 
 func (x *ListDeliveriesResponse) Reset() {
 	*x = ListDeliveriesResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[37]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2360,7 +2369,7 @@ func (x *ListDeliveriesResponse) String() string {
 func (*ListDeliveriesResponse) ProtoMessage() {}
 
 func (x *ListDeliveriesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[37]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2373,7 +2382,7 @@ func (x *ListDeliveriesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDeliveriesResponse.ProtoReflect.Descriptor instead.
 func (*ListDeliveriesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{37}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *ListDeliveriesResponse) GetDeliveries() []*Delivery {
@@ -2394,7 +2403,7 @@ type SaveDeliveryRequest struct {
 
 func (x *SaveDeliveryRequest) Reset() {
 	*x = SaveDeliveryRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[38]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2406,7 +2415,7 @@ func (x *SaveDeliveryRequest) String() string {
 func (*SaveDeliveryRequest) ProtoMessage() {}
 
 func (x *SaveDeliveryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[38]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2419,7 +2428,7 @@ func (x *SaveDeliveryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveDeliveryRequest.ProtoReflect.Descriptor instead.
 func (*SaveDeliveryRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{38}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *SaveDeliveryRequest) GetInstitutionSlug() string {
@@ -2444,7 +2453,7 @@ type SaveDeliveryResponse struct {
 
 func (x *SaveDeliveryResponse) Reset() {
 	*x = SaveDeliveryResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[39]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2456,7 +2465,7 @@ func (x *SaveDeliveryResponse) String() string {
 func (*SaveDeliveryResponse) ProtoMessage() {}
 
 func (x *SaveDeliveryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[39]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2469,7 +2478,7 @@ func (x *SaveDeliveryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveDeliveryResponse.ProtoReflect.Descriptor instead.
 func (*SaveDeliveryResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{39}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{39}
 }
 
 type Question struct {
@@ -2489,7 +2498,7 @@ type Question struct {
 
 func (x *Question) Reset() {
 	*x = Question{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[40]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2501,7 +2510,7 @@ func (x *Question) String() string {
 func (*Question) ProtoMessage() {}
 
 func (x *Question) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[40]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2514,7 +2523,7 @@ func (x *Question) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Question.ProtoReflect.Descriptor instead.
 func (*Question) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{40}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *Question) GetId() string {
@@ -2589,7 +2598,7 @@ type Assessment struct {
 
 func (x *Assessment) Reset() {
 	*x = Assessment{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[41]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2601,7 +2610,7 @@ func (x *Assessment) String() string {
 func (*Assessment) ProtoMessage() {}
 
 func (x *Assessment) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[41]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2614,7 +2623,7 @@ func (x *Assessment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Assessment.ProtoReflect.Descriptor instead.
 func (*Assessment) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{41}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *Assessment) GetItemId() string {
@@ -2718,7 +2727,7 @@ type Competency struct {
 
 func (x *Competency) Reset() {
 	*x = Competency{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[42]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2730,7 +2739,7 @@ func (x *Competency) String() string {
 func (*Competency) ProtoMessage() {}
 
 func (x *Competency) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[42]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2743,7 +2752,7 @@ func (x *Competency) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Competency.ProtoReflect.Descriptor instead.
 func (*Competency) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{42}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *Competency) GetId() string {
@@ -2770,7 +2779,7 @@ type Answer struct {
 
 func (x *Answer) Reset() {
 	*x = Answer{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[43]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2782,7 +2791,7 @@ func (x *Answer) String() string {
 func (*Answer) ProtoMessage() {}
 
 func (x *Answer) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[43]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2795,7 +2804,7 @@ func (x *Answer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Answer.ProtoReflect.Descriptor instead.
 func (*Answer) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{43}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *Answer) GetChoices() []int32 {
@@ -2844,7 +2853,7 @@ type Submission struct {
 
 func (x *Submission) Reset() {
 	*x = Submission{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[44]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2856,7 +2865,7 @@ func (x *Submission) String() string {
 func (*Submission) ProtoMessage() {}
 
 func (x *Submission) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[44]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2869,7 +2878,7 @@ func (x *Submission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Submission.ProtoReflect.Descriptor instead.
 func (*Submission) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{44}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *Submission) GetId() string {
@@ -3034,7 +3043,7 @@ type RosterRow struct {
 
 func (x *RosterRow) Reset() {
 	*x = RosterRow{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[45]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3046,7 +3055,7 @@ func (x *RosterRow) String() string {
 func (*RosterRow) ProtoMessage() {}
 
 func (x *RosterRow) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[45]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3059,7 +3068,7 @@ func (x *RosterRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RosterRow.ProtoReflect.Descriptor instead.
 func (*RosterRow) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{45}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *RosterRow) GetStudentId() string {
@@ -3114,7 +3123,7 @@ type GetAssessmentRequest struct {
 
 func (x *GetAssessmentRequest) Reset() {
 	*x = GetAssessmentRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[46]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3126,7 +3135,7 @@ func (x *GetAssessmentRequest) String() string {
 func (*GetAssessmentRequest) ProtoMessage() {}
 
 func (x *GetAssessmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[46]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3139,7 +3148,7 @@ func (x *GetAssessmentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAssessmentRequest.ProtoReflect.Descriptor instead.
 func (*GetAssessmentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{46}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *GetAssessmentRequest) GetInstitutionSlug() string {
@@ -3174,7 +3183,7 @@ type GetAssessmentResponse struct {
 
 func (x *GetAssessmentResponse) Reset() {
 	*x = GetAssessmentResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[47]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3186,7 +3195,7 @@ func (x *GetAssessmentResponse) String() string {
 func (*GetAssessmentResponse) ProtoMessage() {}
 
 func (x *GetAssessmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[47]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3199,7 +3208,7 @@ func (x *GetAssessmentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAssessmentResponse.ProtoReflect.Descriptor instead.
 func (*GetAssessmentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{47}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *GetAssessmentResponse) GetAssessment() *Assessment {
@@ -3290,7 +3299,7 @@ type SaveAssessmentRequest struct {
 
 func (x *SaveAssessmentRequest) Reset() {
 	*x = SaveAssessmentRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[48]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3302,7 +3311,7 @@ func (x *SaveAssessmentRequest) String() string {
 func (*SaveAssessmentRequest) ProtoMessage() {}
 
 func (x *SaveAssessmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[48]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3315,7 +3324,7 @@ func (x *SaveAssessmentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveAssessmentRequest.ProtoReflect.Descriptor instead.
 func (*SaveAssessmentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{48}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *SaveAssessmentRequest) GetInstitutionSlug() string {
@@ -3390,7 +3399,7 @@ type SaveAssessmentResponse struct {
 
 func (x *SaveAssessmentResponse) Reset() {
 	*x = SaveAssessmentResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[49]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3402,7 +3411,7 @@ func (x *SaveAssessmentResponse) String() string {
 func (*SaveAssessmentResponse) ProtoMessage() {}
 
 func (x *SaveAssessmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[49]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3415,7 +3424,7 @@ func (x *SaveAssessmentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveAssessmentResponse.ProtoReflect.Descriptor instead.
 func (*SaveAssessmentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{49}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *SaveAssessmentResponse) GetAssessment() *Assessment {
@@ -3435,7 +3444,7 @@ type StartAttemptRequest struct {
 
 func (x *StartAttemptRequest) Reset() {
 	*x = StartAttemptRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[50]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3447,7 +3456,7 @@ func (x *StartAttemptRequest) String() string {
 func (*StartAttemptRequest) ProtoMessage() {}
 
 func (x *StartAttemptRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[50]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3460,7 +3469,7 @@ func (x *StartAttemptRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartAttemptRequest.ProtoReflect.Descriptor instead.
 func (*StartAttemptRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{50}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *StartAttemptRequest) GetInstitutionSlug() string {
@@ -3486,7 +3495,7 @@ type StartAttemptResponse struct {
 
 func (x *StartAttemptResponse) Reset() {
 	*x = StartAttemptResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[51]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3498,7 +3507,7 @@ func (x *StartAttemptResponse) String() string {
 func (*StartAttemptResponse) ProtoMessage() {}
 
 func (x *StartAttemptResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[51]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3511,7 +3520,7 @@ func (x *StartAttemptResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartAttemptResponse.ProtoReflect.Descriptor instead.
 func (*StartAttemptResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{51}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *StartAttemptResponse) GetSubmission() *Submission {
@@ -3532,7 +3541,7 @@ type SaveAnswersRequest struct {
 
 func (x *SaveAnswersRequest) Reset() {
 	*x = SaveAnswersRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[52]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3544,7 +3553,7 @@ func (x *SaveAnswersRequest) String() string {
 func (*SaveAnswersRequest) ProtoMessage() {}
 
 func (x *SaveAnswersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[52]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3557,7 +3566,7 @@ func (x *SaveAnswersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveAnswersRequest.ProtoReflect.Descriptor instead.
 func (*SaveAnswersRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{52}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *SaveAnswersRequest) GetInstitutionSlug() string {
@@ -3589,7 +3598,7 @@ type SaveAnswersResponse struct {
 
 func (x *SaveAnswersResponse) Reset() {
 	*x = SaveAnswersResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[53]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3601,7 +3610,7 @@ func (x *SaveAnswersResponse) String() string {
 func (*SaveAnswersResponse) ProtoMessage() {}
 
 func (x *SaveAnswersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[53]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3614,7 +3623,7 @@ func (x *SaveAnswersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveAnswersResponse.ProtoReflect.Descriptor instead.
 func (*SaveAnswersResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{53}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{53}
 }
 
 type HandInRequest struct {
@@ -3629,7 +3638,7 @@ type HandInRequest struct {
 
 func (x *HandInRequest) Reset() {
 	*x = HandInRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[54]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3641,7 +3650,7 @@ func (x *HandInRequest) String() string {
 func (*HandInRequest) ProtoMessage() {}
 
 func (x *HandInRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[54]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3654,7 +3663,7 @@ func (x *HandInRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HandInRequest.ProtoReflect.Descriptor instead.
 func (*HandInRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{54}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *HandInRequest) GetInstitutionSlug() string {
@@ -3687,7 +3696,7 @@ type HandInResponse struct {
 
 func (x *HandInResponse) Reset() {
 	*x = HandInResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[55]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3699,7 +3708,7 @@ func (x *HandInResponse) String() string {
 func (*HandInResponse) ProtoMessage() {}
 
 func (x *HandInResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[55]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3712,7 +3721,7 @@ func (x *HandInResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HandInResponse.ProtoReflect.Descriptor instead.
 func (*HandInResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{55}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *HandInResponse) GetSubmission() *Submission {
@@ -3735,7 +3744,7 @@ type GradeSubmissionRequest struct {
 
 func (x *GradeSubmissionRequest) Reset() {
 	*x = GradeSubmissionRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[56]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3747,7 +3756,7 @@ func (x *GradeSubmissionRequest) String() string {
 func (*GradeSubmissionRequest) ProtoMessage() {}
 
 func (x *GradeSubmissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[56]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3760,7 +3769,7 @@ func (x *GradeSubmissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GradeSubmissionRequest.ProtoReflect.Descriptor instead.
 func (*GradeSubmissionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{56}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *GradeSubmissionRequest) GetInstitutionSlug() string {
@@ -3807,7 +3816,7 @@ type GradeSubmissionResponse struct {
 
 func (x *GradeSubmissionResponse) Reset() {
 	*x = GradeSubmissionResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[57]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3819,7 +3828,7 @@ func (x *GradeSubmissionResponse) String() string {
 func (*GradeSubmissionResponse) ProtoMessage() {}
 
 func (x *GradeSubmissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[57]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3832,7 +3841,7 @@ func (x *GradeSubmissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GradeSubmissionResponse.ProtoReflect.Descriptor instead.
 func (*GradeSubmissionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{57}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *GradeSubmissionResponse) GetSubmission() *Submission {
@@ -3856,7 +3865,7 @@ type SetExtensionRequest struct {
 
 func (x *SetExtensionRequest) Reset() {
 	*x = SetExtensionRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[58]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3868,7 +3877,7 @@ func (x *SetExtensionRequest) String() string {
 func (*SetExtensionRequest) ProtoMessage() {}
 
 func (x *SetExtensionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[58]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3881,7 +3890,7 @@ func (x *SetExtensionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetExtensionRequest.ProtoReflect.Descriptor instead.
 func (*SetExtensionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{58}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *SetExtensionRequest) GetInstitutionSlug() string {
@@ -3927,7 +3936,7 @@ type SetExtensionResponse struct {
 
 func (x *SetExtensionResponse) Reset() {
 	*x = SetExtensionResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[59]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3939,7 +3948,7 @@ func (x *SetExtensionResponse) String() string {
 func (*SetExtensionResponse) ProtoMessage() {}
 
 func (x *SetExtensionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[59]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3952,7 +3961,7 @@ func (x *SetExtensionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetExtensionResponse.ProtoReflect.Descriptor instead.
 func (*SetExtensionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{59}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{59}
 }
 
 type RecordLevelsRequest struct {
@@ -3965,7 +3974,7 @@ type RecordLevelsRequest struct {
 
 func (x *RecordLevelsRequest) Reset() {
 	*x = RecordLevelsRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[60]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3977,7 +3986,7 @@ func (x *RecordLevelsRequest) String() string {
 func (*RecordLevelsRequest) ProtoMessage() {}
 
 func (x *RecordLevelsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[60]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3990,7 +3999,7 @@ func (x *RecordLevelsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordLevelsRequest.ProtoReflect.Descriptor instead.
 func (*RecordLevelsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{60}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *RecordLevelsRequest) GetInstitutionSlug() string {
@@ -4018,7 +4027,7 @@ type RecordLevelsResponse struct {
 
 func (x *RecordLevelsResponse) Reset() {
 	*x = RecordLevelsResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[61]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4030,7 +4039,7 @@ func (x *RecordLevelsResponse) String() string {
 func (*RecordLevelsResponse) ProtoMessage() {}
 
 func (x *RecordLevelsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[61]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4043,7 +4052,7 @@ func (x *RecordLevelsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordLevelsResponse.ProtoReflect.Descriptor instead.
 func (*RecordLevelsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{61}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *RecordLevelsResponse) GetRecorded() int32 {
@@ -4077,7 +4086,7 @@ type Forum struct {
 
 func (x *Forum) Reset() {
 	*x = Forum{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[62]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4089,7 +4098,7 @@ func (x *Forum) String() string {
 func (*Forum) ProtoMessage() {}
 
 func (x *Forum) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[62]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4102,7 +4111,7 @@ func (x *Forum) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Forum.ProtoReflect.Descriptor instead.
 func (*Forum) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{62}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *Forum) GetItemId() string {
@@ -4178,7 +4187,7 @@ type Post struct {
 
 func (x *Post) Reset() {
 	*x = Post{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[63]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4190,7 +4199,7 @@ func (x *Post) String() string {
 func (*Post) ProtoMessage() {}
 
 func (x *Post) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[63]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4203,7 +4212,7 @@ func (x *Post) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Post.ProtoReflect.Descriptor instead.
 func (*Post) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{63}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *Post) GetId() string {
@@ -4307,7 +4316,7 @@ type Thread struct {
 
 func (x *Thread) Reset() {
 	*x = Thread{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[64]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4319,7 +4328,7 @@ func (x *Thread) String() string {
 func (*Thread) ProtoMessage() {}
 
 func (x *Thread) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[64]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4332,7 +4341,7 @@ func (x *Thread) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Thread.ProtoReflect.Descriptor instead.
 func (*Thread) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{64}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *Thread) GetPost() *Post {
@@ -4363,7 +4372,7 @@ type Participation struct {
 
 func (x *Participation) Reset() {
 	*x = Participation{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[65]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4375,7 +4384,7 @@ func (x *Participation) String() string {
 func (*Participation) ProtoMessage() {}
 
 func (x *Participation) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[65]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4388,7 +4397,7 @@ func (x *Participation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Participation.ProtoReflect.Descriptor instead.
 func (*Participation) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{65}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *Participation) GetStudentId() string {
@@ -4443,7 +4452,7 @@ type GetForumRequest struct {
 
 func (x *GetForumRequest) Reset() {
 	*x = GetForumRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[66]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4455,7 +4464,7 @@ func (x *GetForumRequest) String() string {
 func (*GetForumRequest) ProtoMessage() {}
 
 func (x *GetForumRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[66]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4468,7 +4477,7 @@ func (x *GetForumRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetForumRequest.ProtoReflect.Descriptor instead.
 func (*GetForumRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{66}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *GetForumRequest) GetInstitutionSlug() string {
@@ -4501,7 +4510,7 @@ type GetForumResponse struct {
 
 func (x *GetForumResponse) Reset() {
 	*x = GetForumResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[67]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4513,7 +4522,7 @@ func (x *GetForumResponse) String() string {
 func (*GetForumResponse) ProtoMessage() {}
 
 func (x *GetForumResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[67]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4526,7 +4535,7 @@ func (x *GetForumResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetForumResponse.ProtoReflect.Descriptor instead.
 func (*GetForumResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{67}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *GetForumResponse) GetForum() *Forum {
@@ -4590,7 +4599,7 @@ type SaveForumRequest struct {
 
 func (x *SaveForumRequest) Reset() {
 	*x = SaveForumRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[68]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4602,7 +4611,7 @@ func (x *SaveForumRequest) String() string {
 func (*SaveForumRequest) ProtoMessage() {}
 
 func (x *SaveForumRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[68]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4615,7 +4624,7 @@ func (x *SaveForumRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveForumRequest.ProtoReflect.Descriptor instead.
 func (*SaveForumRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{68}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *SaveForumRequest) GetInstitutionSlug() string {
@@ -4654,7 +4663,7 @@ type SaveForumResponse struct {
 
 func (x *SaveForumResponse) Reset() {
 	*x = SaveForumResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[69]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4666,7 +4675,7 @@ func (x *SaveForumResponse) String() string {
 func (*SaveForumResponse) ProtoMessage() {}
 
 func (x *SaveForumResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[69]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4679,7 +4688,7 @@ func (x *SaveForumResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveForumResponse.ProtoReflect.Descriptor instead.
 func (*SaveForumResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{69}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{69}
 }
 
 type CreatePostRequest struct {
@@ -4695,7 +4704,7 @@ type CreatePostRequest struct {
 
 func (x *CreatePostRequest) Reset() {
 	*x = CreatePostRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[70]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[70]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4707,7 +4716,7 @@ func (x *CreatePostRequest) String() string {
 func (*CreatePostRequest) ProtoMessage() {}
 
 func (x *CreatePostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[70]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[70]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4720,7 +4729,7 @@ func (x *CreatePostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePostRequest.ProtoReflect.Descriptor instead.
 func (*CreatePostRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{70}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *CreatePostRequest) GetInstitutionSlug() string {
@@ -4760,7 +4769,7 @@ type CreatePostResponse struct {
 
 func (x *CreatePostResponse) Reset() {
 	*x = CreatePostResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[71]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[71]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4772,7 +4781,7 @@ func (x *CreatePostResponse) String() string {
 func (*CreatePostResponse) ProtoMessage() {}
 
 func (x *CreatePostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[71]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[71]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4785,7 +4794,7 @@ func (x *CreatePostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePostResponse.ProtoReflect.Descriptor instead.
 func (*CreatePostResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{71}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{71}
 }
 
 func (x *CreatePostResponse) GetPost() *Post {
@@ -4806,7 +4815,7 @@ type EditPostRequest struct {
 
 func (x *EditPostRequest) Reset() {
 	*x = EditPostRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[72]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[72]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4818,7 +4827,7 @@ func (x *EditPostRequest) String() string {
 func (*EditPostRequest) ProtoMessage() {}
 
 func (x *EditPostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[72]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[72]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4831,7 +4840,7 @@ func (x *EditPostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EditPostRequest.ProtoReflect.Descriptor instead.
 func (*EditPostRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{72}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{72}
 }
 
 func (x *EditPostRequest) GetInstitutionSlug() string {
@@ -4863,7 +4872,7 @@ type EditPostResponse struct {
 
 func (x *EditPostResponse) Reset() {
 	*x = EditPostResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[73]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[73]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4875,7 +4884,7 @@ func (x *EditPostResponse) String() string {
 func (*EditPostResponse) ProtoMessage() {}
 
 func (x *EditPostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[73]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[73]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4888,7 +4897,7 @@ func (x *EditPostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EditPostResponse.ProtoReflect.Descriptor instead.
 func (*EditPostResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{73}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{73}
 }
 
 type DeletePostRequest struct {
@@ -4901,7 +4910,7 @@ type DeletePostRequest struct {
 
 func (x *DeletePostRequest) Reset() {
 	*x = DeletePostRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[74]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[74]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4913,7 +4922,7 @@ func (x *DeletePostRequest) String() string {
 func (*DeletePostRequest) ProtoMessage() {}
 
 func (x *DeletePostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[74]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[74]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4926,7 +4935,7 @@ func (x *DeletePostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePostRequest.ProtoReflect.Descriptor instead.
 func (*DeletePostRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{74}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{74}
 }
 
 func (x *DeletePostRequest) GetInstitutionSlug() string {
@@ -4951,7 +4960,7 @@ type DeletePostResponse struct {
 
 func (x *DeletePostResponse) Reset() {
 	*x = DeletePostResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[75]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[75]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4963,7 +4972,7 @@ func (x *DeletePostResponse) String() string {
 func (*DeletePostResponse) ProtoMessage() {}
 
 func (x *DeletePostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[75]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[75]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4976,7 +4985,7 @@ func (x *DeletePostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePostResponse.ProtoReflect.Descriptor instead.
 func (*DeletePostResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{75}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{75}
 }
 
 type ModeratePostRequest struct {
@@ -4992,7 +5001,7 @@ type ModeratePostRequest struct {
 
 func (x *ModeratePostRequest) Reset() {
 	*x = ModeratePostRequest{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[76]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[76]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5004,7 +5013,7 @@ func (x *ModeratePostRequest) String() string {
 func (*ModeratePostRequest) ProtoMessage() {}
 
 func (x *ModeratePostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[76]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[76]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5017,7 +5026,7 @@ func (x *ModeratePostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModeratePostRequest.ProtoReflect.Descriptor instead.
 func (*ModeratePostRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{76}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{76}
 }
 
 func (x *ModeratePostRequest) GetInstitutionSlug() string {
@@ -5063,7 +5072,7 @@ type ModeratePostResponse struct {
 
 func (x *ModeratePostResponse) Reset() {
 	*x = ModeratePostResponse{}
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[77]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[77]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5075,7 +5084,7 @@ func (x *ModeratePostResponse) String() string {
 func (*ModeratePostResponse) ProtoMessage() {}
 
 func (x *ModeratePostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_classroom_v1_classroom_proto_msgTypes[77]
+	mi := &file_ltedu_classroom_v1_classroom_proto_msgTypes[77]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5088,14 +5097,14 @@ func (x *ModeratePostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModeratePostResponse.ProtoReflect.Descriptor instead.
 func (*ModeratePostResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_classroom_v1_classroom_proto_rawDescGZIP(), []int{77}
+	return file_ltedu_classroom_v1_classroom_proto_rawDescGZIP(), []int{77}
 }
 
-var File_joseph_classroom_v1_classroom_proto protoreflect.FileDescriptor
+var File_ltedu_classroom_v1_classroom_proto protoreflect.FileDescriptor
 
-const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
+const file_ltedu_classroom_v1_classroom_proto_rawDesc = "" +
 	"\n" +
-	"#joseph/classroom/v1/classroom.proto\x12\x13joseph.classroom.v1\"D\n" +
+	"\"ltedu/classroom/v1/classroom.proto\x12\x12ltedu.classroom.v1\"D\n" +
 	"\x06Period\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
@@ -5127,7 +5136,7 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\x05items\x18\x11 \x01(\x05R\x05items\x12\x1a\n" +
 	"\bstudents\x18\x12 \x01(\x05R\bstudents\x12\x1d\n" +
 	"\n" +
-	"updated_at\x18\x13 \x01(\tR\tupdatedAt\"\xb6\x03\n" +
+	"updated_at\x18\x13 \x01(\tR\tupdatedAt\"\xd2\x03\n" +
 	"\x04Item\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\aunit_id\x18\x02 \x01(\tR\x06unitId\x12\x12\n" +
@@ -5144,15 +5153,16 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\tpublished\x18\f \x01(\bR\tpublished\x12\x14\n" +
 	"\x05files\x18\r \x01(\x05R\x05files\x12\x16\n" +
 	"\x06viewed\x18\x0e \x01(\bR\x06viewed\x12\x14\n" +
-	"\x05views\x18\x0f \x01(\x05R\x05viewsB\x13\n" +
-	"\x11_duration_minutes\"\xb0\x01\n" +
+	"\x05views\x18\x0f \x01(\x05R\x05views\x12\x1a\n" +
+	"\bprovider\x18\x10 \x01(\tR\bproviderB\x13\n" +
+	"\x11_duration_minutes\"\xaf\x01\n" +
 	"\x04Unit\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
 	"\asummary\x18\x03 \x01(\tR\asummary\x12\x19\n" +
 	"\bopens_on\x18\x04 \x01(\tR\aopensOn\x12\x1c\n" +
-	"\tpublished\x18\x05 \x01(\bR\tpublished\x12/\n" +
-	"\x05items\x18\x06 \x03(\v2\x19.joseph.classroom.v1.ItemR\x05items\"\x91\x02\n" +
+	"\tpublished\x18\x05 \x01(\bR\tpublished\x12.\n" +
+	"\x05items\x18\x06 \x03(\v2\x18.ltedu.classroom.v1.ItemR\x05items\"\x91\x02\n" +
 	"\vLibraryItem\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04kind\x18\x02 \x01(\tR\x04kind\x12\x14\n" +
@@ -5180,11 +5190,11 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\x10recorded_by_name\x18\b \x01(\tR\x0erecordedByName\"Z\n" +
 	"\x10ListRoomsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
-	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xcb\x01\n" +
-	"\x11ListRoomsResponse\x125\n" +
-	"\aperiods\x18\x01 \x03(\v2\x1b.joseph.classroom.v1.PeriodR\aperiods\x12\x1b\n" +
-	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12/\n" +
-	"\x05rooms\x18\x03 \x03(\v2\x19.joseph.classroom.v1.RoomR\x05rooms\x12\x1d\n" +
+	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xc9\x01\n" +
+	"\x11ListRoomsResponse\x124\n" +
+	"\aperiods\x18\x01 \x03(\v2\x1a.ltedu.classroom.v1.PeriodR\aperiods\x12\x1b\n" +
+	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\x12.\n" +
+	"\x05rooms\x18\x03 \x03(\v2\x18.ltedu.classroom.v1.RoomR\x05rooms\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\x04 \x01(\bR\tcanManage\x12\x12\n" +
 	"\x04mode\x18\x05 \x01(\tR\x04mode\"^\n" +
@@ -5195,10 +5205,10 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\acreated\x18\x01 \x01(\x05R\acreated\"K\n" +
 	"\x0eGetRoomRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"\xa4\x01\n" +
-	"\x0fGetRoomResponse\x12-\n" +
-	"\x04room\x18\x01 \x01(\v2\x19.joseph.classroom.v1.RoomR\x04room\x12/\n" +
-	"\x05units\x18\x02 \x03(\v2\x19.joseph.classroom.v1.UnitR\x05units\x12\x19\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"\xa2\x01\n" +
+	"\x0fGetRoomResponse\x12,\n" +
+	"\x04room\x18\x01 \x01(\v2\x18.ltedu.classroom.v1.RoomR\x04room\x12.\n" +
+	"\x05units\x18\x02 \x03(\v2\x18.ltedu.classroom.v1.UnitR\x05units\x12\x19\n" +
 	"\bcan_edit\x18\x03 \x01(\bR\acanEdit\x12\x16\n" +
 	"\x06family\x18\x04 \x01(\bR\x06family\"\xa3\x01\n" +
 	"\x11UpdateRoomRequest\x12)\n" +
@@ -5206,9 +5216,9 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x16\n" +
 	"\x06status\x18\x04 \x01(\tR\x06status\x12\x19\n" +
-	"\bstaff_id\x18\x05 \x01(\tR\astaffId\"C\n" +
-	"\x12UpdateRoomResponse\x12-\n" +
-	"\x04room\x18\x01 \x01(\v2\x19.joseph.classroom.v1.RoomR\x04room\"n\n" +
+	"\bstaff_id\x18\x05 \x01(\tR\astaffId\"B\n" +
+	"\x12UpdateRoomResponse\x12,\n" +
+	"\x04room\x18\x01 \x01(\v2\x18.ltedu.classroom.v1.RoomR\x04room\"n\n" +
 	"\x0fCopyRoomRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12 \n" +
@@ -5223,9 +5233,9 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\x05title\x18\x04 \x01(\tR\x05title\x12\x18\n" +
 	"\asummary\x18\x05 \x01(\tR\asummary\x12\x19\n" +
 	"\bopens_on\x18\x06 \x01(\tR\aopensOn\x12\x1c\n" +
-	"\tpublished\x18\a \x01(\bR\tpublished\"A\n" +
-	"\x10SaveUnitResponse\x12-\n" +
-	"\x04unit\x18\x01 \x01(\v2\x19.joseph.classroom.v1.UnitR\x04unit\"N\n" +
+	"\tpublished\x18\a \x01(\bR\tpublished\"@\n" +
+	"\x10SaveUnitResponse\x12,\n" +
+	"\x04unit\x18\x01 \x01(\v2\x18.ltedu.classroom.v1.UnitR\x04unit\"N\n" +
 	"\x11DeleteUnitRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x14\n" +
@@ -5234,12 +5244,12 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
 	"\aroom_id\x18\x02 \x01(\tR\x06roomId\x12\x10\n" +
 	"\x03ids\x18\x03 \x03(\tR\x03ids\"\x16\n" +
-	"\x14ReorderUnitsResponse\"k\n" +
+	"\x14ReorderUnitsResponse\"j\n" +
 	"\x0fSaveItemRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12-\n" +
-	"\x04item\x18\x02 \x01(\v2\x19.joseph.classroom.v1.ItemR\x04item\"A\n" +
-	"\x10SaveItemResponse\x12-\n" +
-	"\x04item\x18\x01 \x01(\v2\x19.joseph.classroom.v1.ItemR\x04item\"N\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12,\n" +
+	"\x04item\x18\x02 \x01(\v2\x18.ltedu.classroom.v1.ItemR\x04item\"@\n" +
+	"\x10SaveItemResponse\x12,\n" +
+	"\x04item\x18\x01 \x01(\v2\x18.ltedu.classroom.v1.ItemR\x04item\"N\n" +
 	"\x11DeleteItemRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x14\n" +
@@ -5254,29 +5264,29 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\aitem_id\x18\x02 \x01(\tR\x06itemId\"\x14\n" +
 	"\x12RecordViewResponse\"?\n" +
 	"\x12ListLibraryRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"h\n" +
-	"\x13ListLibraryResponse\x126\n" +
-	"\x05items\x18\x01 \x03(\v2 .joseph.classroom.v1.LibraryItemR\x05items\x12\x19\n" +
-	"\bcan_edit\x18\x02 \x01(\bR\acanEdit\"y\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"g\n" +
+	"\x13ListLibraryResponse\x125\n" +
+	"\x05items\x18\x01 \x03(\v2\x1f.ltedu.classroom.v1.LibraryItemR\x05items\x12\x19\n" +
+	"\bcan_edit\x18\x02 \x01(\bR\acanEdit\"x\n" +
 	"\x16SaveLibraryItemRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x124\n" +
-	"\x04item\x18\x02 \x01(\v2 .joseph.classroom.v1.LibraryItemR\x04item\"O\n" +
-	"\x17SaveLibraryItemResponse\x124\n" +
-	"\x04item\x18\x01 \x01(\v2 .joseph.classroom.v1.LibraryItemR\x04item\"U\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x123\n" +
+	"\x04item\x18\x02 \x01(\v2\x1f.ltedu.classroom.v1.LibraryItemR\x04item\"N\n" +
+	"\x17SaveLibraryItemResponse\x123\n" +
+	"\x04item\x18\x01 \x01(\v2\x1f.ltedu.classroom.v1.LibraryItemR\x04item\"U\n" +
 	"\x18DeleteLibraryItemRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x1b\n" +
 	"\x19DeleteLibraryItemResponse\"[\n" +
 	"\x15ListDeliveriesRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
-	"\aunit_id\x18\x02 \x01(\tR\x06unitId\"W\n" +
-	"\x16ListDeliveriesResponse\x12=\n" +
+	"\aunit_id\x18\x02 \x01(\tR\x06unitId\"V\n" +
+	"\x16ListDeliveriesResponse\x12<\n" +
 	"\n" +
-	"deliveries\x18\x01 \x03(\v2\x1d.joseph.classroom.v1.DeliveryR\n" +
-	"deliveries\"{\n" +
+	"deliveries\x18\x01 \x03(\v2\x1c.ltedu.classroom.v1.DeliveryR\n" +
+	"deliveries\"z\n" +
 	"\x13SaveDeliveryRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x129\n" +
-	"\bdelivery\x18\x02 \x01(\v2\x1d.joseph.classroom.v1.DeliveryR\bdelivery\"\x16\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x128\n" +
+	"\bdelivery\x18\x02 \x01(\v2\x1c.ltedu.classroom.v1.DeliveryR\bdelivery\"\x16\n" +
 	"\x14SaveDeliveryResponse\"\xae\x01\n" +
 	"\bQuestion\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
@@ -5285,7 +5295,7 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\aoptions\x18\x04 \x03(\tR\aoptions\x12\x18\n" +
 	"\acorrect\x18\x05 \x03(\x05R\acorrect\x12\x1a\n" +
 	"\baccepted\x18\x06 \x03(\tR\baccepted\x12\x16\n" +
-	"\x06points\x18\a \x01(\x05R\x06points\"\xa5\x03\n" +
+	"\x06points\x18\a \x01(\x05R\x06points\"\xa4\x03\n" +
 	"\n" +
 	"Assessment\x12\x17\n" +
 	"\aitem_id\x18\x01 \x01(\tR\x06itemId\x12\x17\n" +
@@ -5300,15 +5310,15 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\fmax_attempts\x18\n" +
 	" \x01(\x05R\vmaxAttempts\x12%\n" +
 	"\x0ecompetency_ids\x18\v \x03(\tR\rcompetencyIds\x12!\n" +
-	"\fshow_answers\x18\f \x01(\bR\vshowAnswers\x12;\n" +
-	"\tquestions\x18\r \x03(\v2\x1d.joseph.classroom.v1.QuestionR\tquestions\"0\n" +
+	"\fshow_answers\x18\f \x01(\bR\vshowAnswers\x12:\n" +
+	"\tquestions\x18\r \x03(\v2\x1c.ltedu.classroom.v1.QuestionR\tquestions\"0\n" +
 	"\n" +
 	"Competency\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\"6\n" +
 	"\x06Answer\x12\x18\n" +
 	"\achoices\x18\x01 \x03(\x05R\achoices\x12\x12\n" +
-	"\x04text\x18\x02 \x01(\tR\x04text\"\xce\a\n" +
+	"\x04text\x18\x02 \x01(\tR\x04text\"\xca\a\n" +
 	"\n" +
 	"Submission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
@@ -5318,16 +5328,16 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\fstudent_name\x18\x04 \x01(\tR\vstudentName\x12!\n" +
 	"\fstudent_code\x18\x05 \x01(\tR\vstudentCode\x12\x18\n" +
 	"\aattempt\x18\x06 \x01(\x05R\aattempt\x12\x16\n" +
-	"\x06status\x18\a \x01(\tR\x06status\x12F\n" +
-	"\aanswers\x18\b \x03(\v2,.joseph.classroom.v1.Submission.AnswersEntryR\aanswers\x12\x1f\n" +
+	"\x06status\x18\a \x01(\tR\x06status\x12E\n" +
+	"\aanswers\x18\b \x03(\v2+.ltedu.classroom.v1.Submission.AnswersEntryR\aanswers\x12\x1f\n" +
 	"\vauto_points\x18\t \x01(\x05R\n" +
 	"autoPoints\x12\x1d\n" +
 	"\n" +
 	"auto_total\x18\n" +
-	" \x01(\x05R\tautoTotal\x12P\n" +
-	"\vopen_points\x18\v \x03(\v2/.joseph.classroom.v1.Submission.OpenPointsEntryR\n" +
-	"openPoints\x12C\n" +
-	"\x06levels\x18\f \x03(\v2+.joseph.classroom.v1.Submission.LevelsEntryR\x06levels\x12\x1a\n" +
+	" \x01(\x05R\tautoTotal\x12O\n" +
+	"\vopen_points\x18\v \x03(\v2..ltedu.classroom.v1.Submission.OpenPointsEntryR\n" +
+	"openPoints\x12B\n" +
+	"\x06levels\x18\f \x03(\v2*.ltedu.classroom.v1.Submission.LevelsEntryR\x06levels\x12\x1a\n" +
 	"\bfeedback\x18\r \x01(\tR\bfeedback\x12\x1d\n" +
 	"\n" +
 	"started_at\x18\x0e \x01(\tR\tstartedAt\x12!\n" +
@@ -5339,41 +5349,41 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\vrecorded_at\x18\x13 \x01(\tR\n" +
 	"recordedAt\x12\x14\n" +
 	"\x05files\x18\x14 \x01(\x05R\x05files\x12'\n" +
-	"\x0fsuggested_level\x18\x15 \x01(\tR\x0esuggestedLevel\x1aW\n" +
+	"\x0fsuggested_level\x18\x15 \x01(\tR\x0esuggestedLevel\x1aV\n" +
 	"\fAnswersEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x121\n" +
-	"\x05value\x18\x02 \x01(\v2\x1b.joseph.classroom.v1.AnswerR\x05value:\x028\x01\x1a=\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x120\n" +
+	"\x05value\x18\x02 \x01(\v2\x1a.ltedu.classroom.v1.AnswerR\x05value:\x028\x01\x1a=\n" +
 	"\x0fOpenPointsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\x1a9\n" +
 	"\vLevelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe3\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe2\x01\n" +
 	"\tRosterRow\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12!\n" +
 	"\fstudent_name\x18\x02 \x01(\tR\vstudentName\x12!\n" +
-	"\fstudent_code\x18\x03 \x01(\tR\vstudentCode\x127\n" +
-	"\x06latest\x18\x04 \x01(\v2\x1f.joseph.classroom.v1.SubmissionR\x06latest\x12\x1a\n" +
+	"\fstudent_code\x18\x03 \x01(\tR\vstudentCode\x126\n" +
+	"\x06latest\x18\x04 \x01(\v2\x1e.ltedu.classroom.v1.SubmissionR\x06latest\x12\x1a\n" +
 	"\battempts\x18\x05 \x01(\x05R\battempts\x12\x1c\n" +
 	"\textension\x18\x06 \x01(\tR\textension\"Z\n" +
 	"\x14GetAssessmentRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
-	"\aitem_id\x18\x02 \x01(\tR\x06itemId\"\xc6\x03\n" +
-	"\x15GetAssessmentResponse\x12?\n" +
+	"\aitem_id\x18\x02 \x01(\tR\x06itemId\"\xc2\x03\n" +
+	"\x15GetAssessmentResponse\x12>\n" +
 	"\n" +
-	"assessment\x18\x01 \x01(\v2\x1f.joseph.classroom.v1.AssessmentR\n" +
+	"assessment\x18\x01 \x01(\v2\x1e.ltedu.classroom.v1.AssessmentR\n" +
 	"assessment\x12\x19\n" +
 	"\bcan_edit\x18\x02 \x01(\bR\acanEdit\x12\x16\n" +
-	"\x06family\x18\x03 \x01(\bR\x06family\x12C\n" +
-	"\fcompetencies\x18\x04 \x03(\v2\x1f.joseph.classroom.v1.CompetencyR\fcompetencies\x126\n" +
-	"\x06roster\x18\x05 \x03(\v2\x1e.joseph.classroom.v1.RosterRowR\x06roster\x12)\n" +
-	"\x10questions_locked\x18\x06 \x01(\bR\x0fquestionsLocked\x12;\n" +
-	"\battempts\x18\a \x03(\v2\x1f.joseph.classroom.v1.SubmissionR\battempts\x12\x1c\n" +
+	"\x06family\x18\x03 \x01(\bR\x06family\x12B\n" +
+	"\fcompetencies\x18\x04 \x03(\v2\x1e.ltedu.classroom.v1.CompetencyR\fcompetencies\x125\n" +
+	"\x06roster\x18\x05 \x03(\v2\x1d.ltedu.classroom.v1.RosterRowR\x06roster\x12)\n" +
+	"\x10questions_locked\x18\x06 \x01(\bR\x0fquestionsLocked\x12:\n" +
+	"\battempts\x18\a \x03(\v2\x1e.ltedu.classroom.v1.SubmissionR\battempts\x12\x1c\n" +
 	"\textension\x18\b \x01(\tR\textension\x12\x19\n" +
 	"\bopen_now\x18\t \x01(\bR\aopenNow\x12\x1b\n" +
 	"\tcan_start\x18\n" +
-	" \x01(\bR\bcanStart\"\xea\x02\n" +
+	" \x01(\bR\bcanStart\"\xe9\x02\n" +
 	"\x15SaveAssessmentRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
 	"\aitem_id\x18\x02 \x01(\tR\x06itemId\x12\x19\n" +
@@ -5382,43 +5392,43 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\fmax_attempts\x18\x05 \x01(\x05R\vmaxAttempts\x12%\n" +
 	"\x0ecompetency_ids\x18\x06 \x03(\tR\rcompetencyIds\x12!\n" +
 	"\fshow_answers\x18\a \x01(\bR\vshowAnswers\x12+\n" +
-	"\x11replace_questions\x18\b \x01(\bR\x10replaceQuestions\x12;\n" +
-	"\tquestions\x18\t \x03(\v2\x1d.joseph.classroom.v1.QuestionR\tquestions\"Y\n" +
-	"\x16SaveAssessmentResponse\x12?\n" +
+	"\x11replace_questions\x18\b \x01(\bR\x10replaceQuestions\x12:\n" +
+	"\tquestions\x18\t \x03(\v2\x1c.ltedu.classroom.v1.QuestionR\tquestions\"X\n" +
+	"\x16SaveAssessmentResponse\x12>\n" +
 	"\n" +
-	"assessment\x18\x01 \x01(\v2\x1f.joseph.classroom.v1.AssessmentR\n" +
+	"assessment\x18\x01 \x01(\v2\x1e.ltedu.classroom.v1.AssessmentR\n" +
 	"assessment\"Y\n" +
 	"\x13StartAttemptRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
-	"\aitem_id\x18\x02 \x01(\tR\x06itemId\"W\n" +
-	"\x14StartAttemptResponse\x12?\n" +
+	"\aitem_id\x18\x02 \x01(\tR\x06itemId\"V\n" +
+	"\x14StartAttemptResponse\x12>\n" +
 	"\n" +
-	"submission\x18\x01 \x01(\v2\x1f.joseph.classroom.v1.SubmissionR\n" +
-	"submission\"\x8d\x02\n" +
+	"submission\x18\x01 \x01(\v2\x1e.ltedu.classroom.v1.SubmissionR\n" +
+	"submission\"\x8b\x02\n" +
 	"\x12SaveAnswersRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
-	"\rsubmission_id\x18\x02 \x01(\tR\fsubmissionId\x12N\n" +
-	"\aanswers\x18\x03 \x03(\v24.joseph.classroom.v1.SaveAnswersRequest.AnswersEntryR\aanswers\x1aW\n" +
+	"\rsubmission_id\x18\x02 \x01(\tR\fsubmissionId\x12M\n" +
+	"\aanswers\x18\x03 \x03(\v23.ltedu.classroom.v1.SaveAnswersRequest.AnswersEntryR\aanswers\x1aV\n" +
 	"\fAnswersEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x121\n" +
-	"\x05value\x18\x02 \x01(\v2\x1b.joseph.classroom.v1.AnswerR\x05value:\x028\x01\"\x15\n" +
-	"\x13SaveAnswersResponse\"\x83\x02\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x120\n" +
+	"\x05value\x18\x02 \x01(\v2\x1a.ltedu.classroom.v1.AnswerR\x05value:\x028\x01\"\x15\n" +
+	"\x13SaveAnswersResponse\"\x81\x02\n" +
 	"\rHandInRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
-	"\rsubmission_id\x18\x02 \x01(\tR\fsubmissionId\x12I\n" +
-	"\aanswers\x18\x03 \x03(\v2/.joseph.classroom.v1.HandInRequest.AnswersEntryR\aanswers\x1aW\n" +
+	"\rsubmission_id\x18\x02 \x01(\tR\fsubmissionId\x12H\n" +
+	"\aanswers\x18\x03 \x03(\v2..ltedu.classroom.v1.HandInRequest.AnswersEntryR\aanswers\x1aV\n" +
 	"\fAnswersEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x121\n" +
-	"\x05value\x18\x02 \x01(\v2\x1b.joseph.classroom.v1.AnswerR\x05value:\x028\x01\"Q\n" +
-	"\x0eHandInResponse\x12?\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x120\n" +
+	"\x05value\x18\x02 \x01(\v2\x1a.ltedu.classroom.v1.AnswerR\x05value:\x028\x01\"P\n" +
+	"\x0eHandInResponse\x12>\n" +
 	"\n" +
-	"submission\x18\x01 \x01(\v2\x1f.joseph.classroom.v1.SubmissionR\n" +
-	"submission\"\xad\x03\n" +
+	"submission\x18\x01 \x01(\v2\x1e.ltedu.classroom.v1.SubmissionR\n" +
+	"submission\"\xab\x03\n" +
 	"\x16GradeSubmissionRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
-	"\rsubmission_id\x18\x02 \x01(\tR\fsubmissionId\x12O\n" +
-	"\x06levels\x18\x03 \x03(\v27.joseph.classroom.v1.GradeSubmissionRequest.LevelsEntryR\x06levels\x12\\\n" +
-	"\vopen_points\x18\x04 \x03(\v2;.joseph.classroom.v1.GradeSubmissionRequest.OpenPointsEntryR\n" +
+	"\rsubmission_id\x18\x02 \x01(\tR\fsubmissionId\x12N\n" +
+	"\x06levels\x18\x03 \x03(\v26.ltedu.classroom.v1.GradeSubmissionRequest.LevelsEntryR\x06levels\x12[\n" +
+	"\vopen_points\x18\x04 \x03(\v2:.ltedu.classroom.v1.GradeSubmissionRequest.OpenPointsEntryR\n" +
 	"openPoints\x12\x1a\n" +
 	"\bfeedback\x18\x05 \x01(\tR\bfeedback\x1a9\n" +
 	"\vLevelsEntry\x12\x10\n" +
@@ -5426,10 +5436,10 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a=\n" +
 	"\x0fOpenPointsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"Z\n" +
-	"\x17GradeSubmissionResponse\x12?\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"Y\n" +
+	"\x17GradeSubmissionResponse\x12>\n" +
 	"\n" +
-	"submission\x18\x01 \x01(\v2\x1f.joseph.classroom.v1.SubmissionR\n" +
+	"submission\x18\x01 \x01(\v2\x1e.ltedu.classroom.v1.SubmissionR\n" +
 	"submission\"\xad\x01\n" +
 	"\x13SetExtensionRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
@@ -5470,10 +5480,10 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\v \x01(\tR\tcreatedAt\x12\x1b\n" +
 	"\tedited_at\x18\f \x01(\tR\beditedAt\x12\x15\n" +
-	"\x06is_new\x18\r \x01(\bR\x05isNew\"l\n" +
-	"\x06Thread\x12-\n" +
-	"\x04post\x18\x01 \x01(\v2\x19.joseph.classroom.v1.PostR\x04post\x123\n" +
-	"\areplies\x18\x02 \x03(\v2\x19.joseph.classroom.v1.PostR\areplies\"\xc1\x01\n" +
+	"\x06is_new\x18\r \x01(\bR\x05isNew\"j\n" +
+	"\x06Thread\x12,\n" +
+	"\x04post\x18\x01 \x01(\v2\x18.ltedu.classroom.v1.PostR\x04post\x122\n" +
+	"\areplies\x18\x02 \x03(\v2\x18.ltedu.classroom.v1.PostR\areplies\"\xc1\x01\n" +
 	"\rParticipation\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12!\n" +
@@ -5484,16 +5494,16 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\alast_at\x18\x06 \x01(\tR\x06lastAt\"U\n" +
 	"\x0fGetForumRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
-	"\aitem_id\x18\x02 \x01(\tR\x06itemId\"\xbe\x02\n" +
-	"\x10GetForumResponse\x120\n" +
-	"\x05forum\x18\x01 \x01(\v2\x1a.joseph.classroom.v1.ForumR\x05forum\x125\n" +
-	"\athreads\x18\x02 \x03(\v2\x1b.joseph.classroom.v1.ThreadR\athreads\x12\x19\n" +
+	"\aitem_id\x18\x02 \x01(\tR\x06itemId\"\xbb\x02\n" +
+	"\x10GetForumResponse\x12/\n" +
+	"\x05forum\x18\x01 \x01(\v2\x19.ltedu.classroom.v1.ForumR\x05forum\x124\n" +
+	"\athreads\x18\x02 \x03(\v2\x1a.ltedu.classroom.v1.ThreadR\athreads\x12\x19\n" +
 	"\bcan_post\x18\x03 \x01(\bR\acanPost\x12!\n" +
 	"\fcan_moderate\x18\x04 \x01(\bR\vcanModerate\x12\x1c\n" +
 	"\n" +
 	"my_user_id\x18\x05 \x01(\tR\bmyUserId\x12\x1b\n" +
-	"\tnew_posts\x18\x06 \x01(\x05R\bnewPosts\x12H\n" +
-	"\rparticipation\x18\a \x03(\v2\".joseph.classroom.v1.ParticipationR\rparticipation\"\x82\x01\n" +
+	"\tnew_posts\x18\x06 \x01(\x05R\bnewPosts\x12G\n" +
+	"\rparticipation\x18\a \x03(\v2!.ltedu.classroom.v1.ParticipationR\rparticipation\"\x82\x01\n" +
 	"\x10SaveForumRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
 	"\aitem_id\x18\x02 \x01(\tR\x06itemId\x12\x12\n" +
@@ -5504,9 +5514,9 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x17\n" +
 	"\aitem_id\x18\x02 \x01(\tR\x06itemId\x12\x1b\n" +
 	"\tparent_id\x18\x03 \x01(\tR\bparentId\x12\x12\n" +
-	"\x04body\x18\x04 \x01(\tR\x04body\"C\n" +
-	"\x12CreatePostResponse\x12-\n" +
-	"\x04post\x18\x01 \x01(\v2\x19.joseph.classroom.v1.PostR\x04post\"`\n" +
+	"\x04body\x18\x04 \x01(\tR\x04body\"B\n" +
+	"\x12CreatePostResponse\x12,\n" +
+	"\x04post\x18\x01 \x01(\v2\x18.ltedu.classroom.v1.PostR\x04post\"`\n" +
 	"\x0fEditPostRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x12\n" +
@@ -5522,250 +5532,250 @@ const file_joseph_classroom_v1_classroom_proto_rawDesc = "" +
 	"\x06pinned\x18\x03 \x01(\bR\x06pinned\x12\x16\n" +
 	"\x06hidden\x18\x04 \x01(\bR\x06hidden\x12\x16\n" +
 	"\x06reason\x18\x05 \x01(\tR\x06reason\"\x16\n" +
-	"\x14ModeratePostResponse2\xe7\x17\n" +
-	"\x10ClassroomService\x12Z\n" +
-	"\tListRooms\x12%.joseph.classroom.v1.ListRoomsRequest\x1a&.joseph.classroom.v1.ListRoomsResponse\x12f\n" +
-	"\rGenerateRooms\x12).joseph.classroom.v1.GenerateRoomsRequest\x1a*.joseph.classroom.v1.GenerateRoomsResponse\x12T\n" +
-	"\aGetRoom\x12#.joseph.classroom.v1.GetRoomRequest\x1a$.joseph.classroom.v1.GetRoomResponse\x12]\n" +
+	"\x14ModeratePostResponse2\xa9\x17\n" +
+	"\x10ClassroomService\x12X\n" +
+	"\tListRooms\x12$.ltedu.classroom.v1.ListRoomsRequest\x1a%.ltedu.classroom.v1.ListRoomsResponse\x12d\n" +
+	"\rGenerateRooms\x12(.ltedu.classroom.v1.GenerateRoomsRequest\x1a).ltedu.classroom.v1.GenerateRoomsResponse\x12R\n" +
+	"\aGetRoom\x12\".ltedu.classroom.v1.GetRoomRequest\x1a#.ltedu.classroom.v1.GetRoomResponse\x12[\n" +
 	"\n" +
-	"UpdateRoom\x12&.joseph.classroom.v1.UpdateRoomRequest\x1a'.joseph.classroom.v1.UpdateRoomResponse\x12W\n" +
-	"\bCopyRoom\x12$.joseph.classroom.v1.CopyRoomRequest\x1a%.joseph.classroom.v1.CopyRoomResponse\x12W\n" +
-	"\bSaveUnit\x12$.joseph.classroom.v1.SaveUnitRequest\x1a%.joseph.classroom.v1.SaveUnitResponse\x12]\n" +
+	"UpdateRoom\x12%.ltedu.classroom.v1.UpdateRoomRequest\x1a&.ltedu.classroom.v1.UpdateRoomResponse\x12U\n" +
+	"\bCopyRoom\x12#.ltedu.classroom.v1.CopyRoomRequest\x1a$.ltedu.classroom.v1.CopyRoomResponse\x12U\n" +
+	"\bSaveUnit\x12#.ltedu.classroom.v1.SaveUnitRequest\x1a$.ltedu.classroom.v1.SaveUnitResponse\x12[\n" +
 	"\n" +
-	"DeleteUnit\x12&.joseph.classroom.v1.DeleteUnitRequest\x1a'.joseph.classroom.v1.DeleteUnitResponse\x12c\n" +
-	"\fReorderUnits\x12(.joseph.classroom.v1.ReorderUnitsRequest\x1a).joseph.classroom.v1.ReorderUnitsResponse\x12W\n" +
-	"\bSaveItem\x12$.joseph.classroom.v1.SaveItemRequest\x1a%.joseph.classroom.v1.SaveItemResponse\x12]\n" +
+	"DeleteUnit\x12%.ltedu.classroom.v1.DeleteUnitRequest\x1a&.ltedu.classroom.v1.DeleteUnitResponse\x12a\n" +
+	"\fReorderUnits\x12'.ltedu.classroom.v1.ReorderUnitsRequest\x1a(.ltedu.classroom.v1.ReorderUnitsResponse\x12U\n" +
+	"\bSaveItem\x12#.ltedu.classroom.v1.SaveItemRequest\x1a$.ltedu.classroom.v1.SaveItemResponse\x12[\n" +
 	"\n" +
-	"DeleteItem\x12&.joseph.classroom.v1.DeleteItemRequest\x1a'.joseph.classroom.v1.DeleteItemResponse\x12c\n" +
-	"\fReorderItems\x12(.joseph.classroom.v1.ReorderItemsRequest\x1a).joseph.classroom.v1.ReorderItemsResponse\x12]\n" +
+	"DeleteItem\x12%.ltedu.classroom.v1.DeleteItemRequest\x1a&.ltedu.classroom.v1.DeleteItemResponse\x12a\n" +
+	"\fReorderItems\x12'.ltedu.classroom.v1.ReorderItemsRequest\x1a(.ltedu.classroom.v1.ReorderItemsResponse\x12[\n" +
 	"\n" +
-	"RecordView\x12&.joseph.classroom.v1.RecordViewRequest\x1a'.joseph.classroom.v1.RecordViewResponse\x12`\n" +
-	"\vListLibrary\x12'.joseph.classroom.v1.ListLibraryRequest\x1a(.joseph.classroom.v1.ListLibraryResponse\x12l\n" +
-	"\x0fSaveLibraryItem\x12+.joseph.classroom.v1.SaveLibraryItemRequest\x1a,.joseph.classroom.v1.SaveLibraryItemResponse\x12r\n" +
-	"\x11DeleteLibraryItem\x12-.joseph.classroom.v1.DeleteLibraryItemRequest\x1a..joseph.classroom.v1.DeleteLibraryItemResponse\x12i\n" +
-	"\x0eListDeliveries\x12*.joseph.classroom.v1.ListDeliveriesRequest\x1a+.joseph.classroom.v1.ListDeliveriesResponse\x12c\n" +
-	"\fSaveDelivery\x12(.joseph.classroom.v1.SaveDeliveryRequest\x1a).joseph.classroom.v1.SaveDeliveryResponse\x12f\n" +
-	"\rGetAssessment\x12).joseph.classroom.v1.GetAssessmentRequest\x1a*.joseph.classroom.v1.GetAssessmentResponse\x12i\n" +
-	"\x0eSaveAssessment\x12*.joseph.classroom.v1.SaveAssessmentRequest\x1a+.joseph.classroom.v1.SaveAssessmentResponse\x12c\n" +
-	"\fStartAttempt\x12(.joseph.classroom.v1.StartAttemptRequest\x1a).joseph.classroom.v1.StartAttemptResponse\x12`\n" +
-	"\vSaveAnswers\x12'.joseph.classroom.v1.SaveAnswersRequest\x1a(.joseph.classroom.v1.SaveAnswersResponse\x12Q\n" +
-	"\x06HandIn\x12\".joseph.classroom.v1.HandInRequest\x1a#.joseph.classroom.v1.HandInResponse\x12l\n" +
-	"\x0fGradeSubmission\x12+.joseph.classroom.v1.GradeSubmissionRequest\x1a,.joseph.classroom.v1.GradeSubmissionResponse\x12c\n" +
-	"\fSetExtension\x12(.joseph.classroom.v1.SetExtensionRequest\x1a).joseph.classroom.v1.SetExtensionResponse\x12c\n" +
-	"\fRecordLevels\x12(.joseph.classroom.v1.RecordLevelsRequest\x1a).joseph.classroom.v1.RecordLevelsResponse\x12W\n" +
-	"\bGetForum\x12$.joseph.classroom.v1.GetForumRequest\x1a%.joseph.classroom.v1.GetForumResponse\x12Z\n" +
-	"\tSaveForum\x12%.joseph.classroom.v1.SaveForumRequest\x1a&.joseph.classroom.v1.SaveForumResponse\x12]\n" +
+	"RecordView\x12%.ltedu.classroom.v1.RecordViewRequest\x1a&.ltedu.classroom.v1.RecordViewResponse\x12^\n" +
+	"\vListLibrary\x12&.ltedu.classroom.v1.ListLibraryRequest\x1a'.ltedu.classroom.v1.ListLibraryResponse\x12j\n" +
+	"\x0fSaveLibraryItem\x12*.ltedu.classroom.v1.SaveLibraryItemRequest\x1a+.ltedu.classroom.v1.SaveLibraryItemResponse\x12p\n" +
+	"\x11DeleteLibraryItem\x12,.ltedu.classroom.v1.DeleteLibraryItemRequest\x1a-.ltedu.classroom.v1.DeleteLibraryItemResponse\x12g\n" +
+	"\x0eListDeliveries\x12).ltedu.classroom.v1.ListDeliveriesRequest\x1a*.ltedu.classroom.v1.ListDeliveriesResponse\x12a\n" +
+	"\fSaveDelivery\x12'.ltedu.classroom.v1.SaveDeliveryRequest\x1a(.ltedu.classroom.v1.SaveDeliveryResponse\x12d\n" +
+	"\rGetAssessment\x12(.ltedu.classroom.v1.GetAssessmentRequest\x1a).ltedu.classroom.v1.GetAssessmentResponse\x12g\n" +
+	"\x0eSaveAssessment\x12).ltedu.classroom.v1.SaveAssessmentRequest\x1a*.ltedu.classroom.v1.SaveAssessmentResponse\x12a\n" +
+	"\fStartAttempt\x12'.ltedu.classroom.v1.StartAttemptRequest\x1a(.ltedu.classroom.v1.StartAttemptResponse\x12^\n" +
+	"\vSaveAnswers\x12&.ltedu.classroom.v1.SaveAnswersRequest\x1a'.ltedu.classroom.v1.SaveAnswersResponse\x12O\n" +
+	"\x06HandIn\x12!.ltedu.classroom.v1.HandInRequest\x1a\".ltedu.classroom.v1.HandInResponse\x12j\n" +
+	"\x0fGradeSubmission\x12*.ltedu.classroom.v1.GradeSubmissionRequest\x1a+.ltedu.classroom.v1.GradeSubmissionResponse\x12a\n" +
+	"\fSetExtension\x12'.ltedu.classroom.v1.SetExtensionRequest\x1a(.ltedu.classroom.v1.SetExtensionResponse\x12a\n" +
+	"\fRecordLevels\x12'.ltedu.classroom.v1.RecordLevelsRequest\x1a(.ltedu.classroom.v1.RecordLevelsResponse\x12U\n" +
+	"\bGetForum\x12#.ltedu.classroom.v1.GetForumRequest\x1a$.ltedu.classroom.v1.GetForumResponse\x12X\n" +
+	"\tSaveForum\x12$.ltedu.classroom.v1.SaveForumRequest\x1a%.ltedu.classroom.v1.SaveForumResponse\x12[\n" +
 	"\n" +
-	"CreatePost\x12&.joseph.classroom.v1.CreatePostRequest\x1a'.joseph.classroom.v1.CreatePostResponse\x12W\n" +
-	"\bEditPost\x12$.joseph.classroom.v1.EditPostRequest\x1a%.joseph.classroom.v1.EditPostResponse\x12]\n" +
+	"CreatePost\x12%.ltedu.classroom.v1.CreatePostRequest\x1a&.ltedu.classroom.v1.CreatePostResponse\x12U\n" +
+	"\bEditPost\x12#.ltedu.classroom.v1.EditPostRequest\x1a$.ltedu.classroom.v1.EditPostResponse\x12[\n" +
 	"\n" +
-	"DeletePost\x12&.joseph.classroom.v1.DeletePostRequest\x1a'.joseph.classroom.v1.DeletePostResponse\x12c\n" +
-	"\fModeratePost\x12(.joseph.classroom.v1.ModeratePostRequest\x1a).joseph.classroom.v1.ModeratePostResponseB?Z=api/internal/adapter/inbound/grpc/gen/classroomv1;classroomv1b\x06proto3"
+	"DeletePost\x12%.ltedu.classroom.v1.DeletePostRequest\x1a&.ltedu.classroom.v1.DeletePostResponse\x12a\n" +
+	"\fModeratePost\x12'.ltedu.classroom.v1.ModeratePostRequest\x1a(.ltedu.classroom.v1.ModeratePostResponseB?Z=api/internal/adapter/inbound/grpc/gen/classroomv1;classroomv1b\x06proto3"
 
 var (
-	file_joseph_classroom_v1_classroom_proto_rawDescOnce sync.Once
-	file_joseph_classroom_v1_classroom_proto_rawDescData []byte
+	file_ltedu_classroom_v1_classroom_proto_rawDescOnce sync.Once
+	file_ltedu_classroom_v1_classroom_proto_rawDescData []byte
 )
 
-func file_joseph_classroom_v1_classroom_proto_rawDescGZIP() []byte {
-	file_joseph_classroom_v1_classroom_proto_rawDescOnce.Do(func() {
-		file_joseph_classroom_v1_classroom_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_classroom_v1_classroom_proto_rawDesc), len(file_joseph_classroom_v1_classroom_proto_rawDesc)))
+func file_ltedu_classroom_v1_classroom_proto_rawDescGZIP() []byte {
+	file_ltedu_classroom_v1_classroom_proto_rawDescOnce.Do(func() {
+		file_ltedu_classroom_v1_classroom_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_classroom_v1_classroom_proto_rawDesc), len(file_ltedu_classroom_v1_classroom_proto_rawDesc)))
 	})
-	return file_joseph_classroom_v1_classroom_proto_rawDescData
+	return file_ltedu_classroom_v1_classroom_proto_rawDescData
 }
 
-var file_joseph_classroom_v1_classroom_proto_msgTypes = make([]protoimpl.MessageInfo, 85)
-var file_joseph_classroom_v1_classroom_proto_goTypes = []any{
-	(*Period)(nil),                    // 0: joseph.classroom.v1.Period
-	(*Room)(nil),                      // 1: joseph.classroom.v1.Room
-	(*Item)(nil),                      // 2: joseph.classroom.v1.Item
-	(*Unit)(nil),                      // 3: joseph.classroom.v1.Unit
-	(*LibraryItem)(nil),               // 4: joseph.classroom.v1.LibraryItem
-	(*Delivery)(nil),                  // 5: joseph.classroom.v1.Delivery
-	(*ListRoomsRequest)(nil),          // 6: joseph.classroom.v1.ListRoomsRequest
-	(*ListRoomsResponse)(nil),         // 7: joseph.classroom.v1.ListRoomsResponse
-	(*GenerateRoomsRequest)(nil),      // 8: joseph.classroom.v1.GenerateRoomsRequest
-	(*GenerateRoomsResponse)(nil),     // 9: joseph.classroom.v1.GenerateRoomsResponse
-	(*GetRoomRequest)(nil),            // 10: joseph.classroom.v1.GetRoomRequest
-	(*GetRoomResponse)(nil),           // 11: joseph.classroom.v1.GetRoomResponse
-	(*UpdateRoomRequest)(nil),         // 12: joseph.classroom.v1.UpdateRoomRequest
-	(*UpdateRoomResponse)(nil),        // 13: joseph.classroom.v1.UpdateRoomResponse
-	(*CopyRoomRequest)(nil),           // 14: joseph.classroom.v1.CopyRoomRequest
-	(*CopyRoomResponse)(nil),          // 15: joseph.classroom.v1.CopyRoomResponse
-	(*SaveUnitRequest)(nil),           // 16: joseph.classroom.v1.SaveUnitRequest
-	(*SaveUnitResponse)(nil),          // 17: joseph.classroom.v1.SaveUnitResponse
-	(*DeleteUnitRequest)(nil),         // 18: joseph.classroom.v1.DeleteUnitRequest
-	(*DeleteUnitResponse)(nil),        // 19: joseph.classroom.v1.DeleteUnitResponse
-	(*ReorderUnitsRequest)(nil),       // 20: joseph.classroom.v1.ReorderUnitsRequest
-	(*ReorderUnitsResponse)(nil),      // 21: joseph.classroom.v1.ReorderUnitsResponse
-	(*SaveItemRequest)(nil),           // 22: joseph.classroom.v1.SaveItemRequest
-	(*SaveItemResponse)(nil),          // 23: joseph.classroom.v1.SaveItemResponse
-	(*DeleteItemRequest)(nil),         // 24: joseph.classroom.v1.DeleteItemRequest
-	(*DeleteItemResponse)(nil),        // 25: joseph.classroom.v1.DeleteItemResponse
-	(*ReorderItemsRequest)(nil),       // 26: joseph.classroom.v1.ReorderItemsRequest
-	(*ReorderItemsResponse)(nil),      // 27: joseph.classroom.v1.ReorderItemsResponse
-	(*RecordViewRequest)(nil),         // 28: joseph.classroom.v1.RecordViewRequest
-	(*RecordViewResponse)(nil),        // 29: joseph.classroom.v1.RecordViewResponse
-	(*ListLibraryRequest)(nil),        // 30: joseph.classroom.v1.ListLibraryRequest
-	(*ListLibraryResponse)(nil),       // 31: joseph.classroom.v1.ListLibraryResponse
-	(*SaveLibraryItemRequest)(nil),    // 32: joseph.classroom.v1.SaveLibraryItemRequest
-	(*SaveLibraryItemResponse)(nil),   // 33: joseph.classroom.v1.SaveLibraryItemResponse
-	(*DeleteLibraryItemRequest)(nil),  // 34: joseph.classroom.v1.DeleteLibraryItemRequest
-	(*DeleteLibraryItemResponse)(nil), // 35: joseph.classroom.v1.DeleteLibraryItemResponse
-	(*ListDeliveriesRequest)(nil),     // 36: joseph.classroom.v1.ListDeliveriesRequest
-	(*ListDeliveriesResponse)(nil),    // 37: joseph.classroom.v1.ListDeliveriesResponse
-	(*SaveDeliveryRequest)(nil),       // 38: joseph.classroom.v1.SaveDeliveryRequest
-	(*SaveDeliveryResponse)(nil),      // 39: joseph.classroom.v1.SaveDeliveryResponse
-	(*Question)(nil),                  // 40: joseph.classroom.v1.Question
-	(*Assessment)(nil),                // 41: joseph.classroom.v1.Assessment
-	(*Competency)(nil),                // 42: joseph.classroom.v1.Competency
-	(*Answer)(nil),                    // 43: joseph.classroom.v1.Answer
-	(*Submission)(nil),                // 44: joseph.classroom.v1.Submission
-	(*RosterRow)(nil),                 // 45: joseph.classroom.v1.RosterRow
-	(*GetAssessmentRequest)(nil),      // 46: joseph.classroom.v1.GetAssessmentRequest
-	(*GetAssessmentResponse)(nil),     // 47: joseph.classroom.v1.GetAssessmentResponse
-	(*SaveAssessmentRequest)(nil),     // 48: joseph.classroom.v1.SaveAssessmentRequest
-	(*SaveAssessmentResponse)(nil),    // 49: joseph.classroom.v1.SaveAssessmentResponse
-	(*StartAttemptRequest)(nil),       // 50: joseph.classroom.v1.StartAttemptRequest
-	(*StartAttemptResponse)(nil),      // 51: joseph.classroom.v1.StartAttemptResponse
-	(*SaveAnswersRequest)(nil),        // 52: joseph.classroom.v1.SaveAnswersRequest
-	(*SaveAnswersResponse)(nil),       // 53: joseph.classroom.v1.SaveAnswersResponse
-	(*HandInRequest)(nil),             // 54: joseph.classroom.v1.HandInRequest
-	(*HandInResponse)(nil),            // 55: joseph.classroom.v1.HandInResponse
-	(*GradeSubmissionRequest)(nil),    // 56: joseph.classroom.v1.GradeSubmissionRequest
-	(*GradeSubmissionResponse)(nil),   // 57: joseph.classroom.v1.GradeSubmissionResponse
-	(*SetExtensionRequest)(nil),       // 58: joseph.classroom.v1.SetExtensionRequest
-	(*SetExtensionResponse)(nil),      // 59: joseph.classroom.v1.SetExtensionResponse
-	(*RecordLevelsRequest)(nil),       // 60: joseph.classroom.v1.RecordLevelsRequest
-	(*RecordLevelsResponse)(nil),      // 61: joseph.classroom.v1.RecordLevelsResponse
-	(*Forum)(nil),                     // 62: joseph.classroom.v1.Forum
-	(*Post)(nil),                      // 63: joseph.classroom.v1.Post
-	(*Thread)(nil),                    // 64: joseph.classroom.v1.Thread
-	(*Participation)(nil),             // 65: joseph.classroom.v1.Participation
-	(*GetForumRequest)(nil),           // 66: joseph.classroom.v1.GetForumRequest
-	(*GetForumResponse)(nil),          // 67: joseph.classroom.v1.GetForumResponse
-	(*SaveForumRequest)(nil),          // 68: joseph.classroom.v1.SaveForumRequest
-	(*SaveForumResponse)(nil),         // 69: joseph.classroom.v1.SaveForumResponse
-	(*CreatePostRequest)(nil),         // 70: joseph.classroom.v1.CreatePostRequest
-	(*CreatePostResponse)(nil),        // 71: joseph.classroom.v1.CreatePostResponse
-	(*EditPostRequest)(nil),           // 72: joseph.classroom.v1.EditPostRequest
-	(*EditPostResponse)(nil),          // 73: joseph.classroom.v1.EditPostResponse
-	(*DeletePostRequest)(nil),         // 74: joseph.classroom.v1.DeletePostRequest
-	(*DeletePostResponse)(nil),        // 75: joseph.classroom.v1.DeletePostResponse
-	(*ModeratePostRequest)(nil),       // 76: joseph.classroom.v1.ModeratePostRequest
-	(*ModeratePostResponse)(nil),      // 77: joseph.classroom.v1.ModeratePostResponse
-	nil,                               // 78: joseph.classroom.v1.Submission.AnswersEntry
-	nil,                               // 79: joseph.classroom.v1.Submission.OpenPointsEntry
-	nil,                               // 80: joseph.classroom.v1.Submission.LevelsEntry
-	nil,                               // 81: joseph.classroom.v1.SaveAnswersRequest.AnswersEntry
-	nil,                               // 82: joseph.classroom.v1.HandInRequest.AnswersEntry
-	nil,                               // 83: joseph.classroom.v1.GradeSubmissionRequest.LevelsEntry
-	nil,                               // 84: joseph.classroom.v1.GradeSubmissionRequest.OpenPointsEntry
+var file_ltedu_classroom_v1_classroom_proto_msgTypes = make([]protoimpl.MessageInfo, 85)
+var file_ltedu_classroom_v1_classroom_proto_goTypes = []any{
+	(*Period)(nil),                    // 0: ltedu.classroom.v1.Period
+	(*Room)(nil),                      // 1: ltedu.classroom.v1.Room
+	(*Item)(nil),                      // 2: ltedu.classroom.v1.Item
+	(*Unit)(nil),                      // 3: ltedu.classroom.v1.Unit
+	(*LibraryItem)(nil),               // 4: ltedu.classroom.v1.LibraryItem
+	(*Delivery)(nil),                  // 5: ltedu.classroom.v1.Delivery
+	(*ListRoomsRequest)(nil),          // 6: ltedu.classroom.v1.ListRoomsRequest
+	(*ListRoomsResponse)(nil),         // 7: ltedu.classroom.v1.ListRoomsResponse
+	(*GenerateRoomsRequest)(nil),      // 8: ltedu.classroom.v1.GenerateRoomsRequest
+	(*GenerateRoomsResponse)(nil),     // 9: ltedu.classroom.v1.GenerateRoomsResponse
+	(*GetRoomRequest)(nil),            // 10: ltedu.classroom.v1.GetRoomRequest
+	(*GetRoomResponse)(nil),           // 11: ltedu.classroom.v1.GetRoomResponse
+	(*UpdateRoomRequest)(nil),         // 12: ltedu.classroom.v1.UpdateRoomRequest
+	(*UpdateRoomResponse)(nil),        // 13: ltedu.classroom.v1.UpdateRoomResponse
+	(*CopyRoomRequest)(nil),           // 14: ltedu.classroom.v1.CopyRoomRequest
+	(*CopyRoomResponse)(nil),          // 15: ltedu.classroom.v1.CopyRoomResponse
+	(*SaveUnitRequest)(nil),           // 16: ltedu.classroom.v1.SaveUnitRequest
+	(*SaveUnitResponse)(nil),          // 17: ltedu.classroom.v1.SaveUnitResponse
+	(*DeleteUnitRequest)(nil),         // 18: ltedu.classroom.v1.DeleteUnitRequest
+	(*DeleteUnitResponse)(nil),        // 19: ltedu.classroom.v1.DeleteUnitResponse
+	(*ReorderUnitsRequest)(nil),       // 20: ltedu.classroom.v1.ReorderUnitsRequest
+	(*ReorderUnitsResponse)(nil),      // 21: ltedu.classroom.v1.ReorderUnitsResponse
+	(*SaveItemRequest)(nil),           // 22: ltedu.classroom.v1.SaveItemRequest
+	(*SaveItemResponse)(nil),          // 23: ltedu.classroom.v1.SaveItemResponse
+	(*DeleteItemRequest)(nil),         // 24: ltedu.classroom.v1.DeleteItemRequest
+	(*DeleteItemResponse)(nil),        // 25: ltedu.classroom.v1.DeleteItemResponse
+	(*ReorderItemsRequest)(nil),       // 26: ltedu.classroom.v1.ReorderItemsRequest
+	(*ReorderItemsResponse)(nil),      // 27: ltedu.classroom.v1.ReorderItemsResponse
+	(*RecordViewRequest)(nil),         // 28: ltedu.classroom.v1.RecordViewRequest
+	(*RecordViewResponse)(nil),        // 29: ltedu.classroom.v1.RecordViewResponse
+	(*ListLibraryRequest)(nil),        // 30: ltedu.classroom.v1.ListLibraryRequest
+	(*ListLibraryResponse)(nil),       // 31: ltedu.classroom.v1.ListLibraryResponse
+	(*SaveLibraryItemRequest)(nil),    // 32: ltedu.classroom.v1.SaveLibraryItemRequest
+	(*SaveLibraryItemResponse)(nil),   // 33: ltedu.classroom.v1.SaveLibraryItemResponse
+	(*DeleteLibraryItemRequest)(nil),  // 34: ltedu.classroom.v1.DeleteLibraryItemRequest
+	(*DeleteLibraryItemResponse)(nil), // 35: ltedu.classroom.v1.DeleteLibraryItemResponse
+	(*ListDeliveriesRequest)(nil),     // 36: ltedu.classroom.v1.ListDeliveriesRequest
+	(*ListDeliveriesResponse)(nil),    // 37: ltedu.classroom.v1.ListDeliveriesResponse
+	(*SaveDeliveryRequest)(nil),       // 38: ltedu.classroom.v1.SaveDeliveryRequest
+	(*SaveDeliveryResponse)(nil),      // 39: ltedu.classroom.v1.SaveDeliveryResponse
+	(*Question)(nil),                  // 40: ltedu.classroom.v1.Question
+	(*Assessment)(nil),                // 41: ltedu.classroom.v1.Assessment
+	(*Competency)(nil),                // 42: ltedu.classroom.v1.Competency
+	(*Answer)(nil),                    // 43: ltedu.classroom.v1.Answer
+	(*Submission)(nil),                // 44: ltedu.classroom.v1.Submission
+	(*RosterRow)(nil),                 // 45: ltedu.classroom.v1.RosterRow
+	(*GetAssessmentRequest)(nil),      // 46: ltedu.classroom.v1.GetAssessmentRequest
+	(*GetAssessmentResponse)(nil),     // 47: ltedu.classroom.v1.GetAssessmentResponse
+	(*SaveAssessmentRequest)(nil),     // 48: ltedu.classroom.v1.SaveAssessmentRequest
+	(*SaveAssessmentResponse)(nil),    // 49: ltedu.classroom.v1.SaveAssessmentResponse
+	(*StartAttemptRequest)(nil),       // 50: ltedu.classroom.v1.StartAttemptRequest
+	(*StartAttemptResponse)(nil),      // 51: ltedu.classroom.v1.StartAttemptResponse
+	(*SaveAnswersRequest)(nil),        // 52: ltedu.classroom.v1.SaveAnswersRequest
+	(*SaveAnswersResponse)(nil),       // 53: ltedu.classroom.v1.SaveAnswersResponse
+	(*HandInRequest)(nil),             // 54: ltedu.classroom.v1.HandInRequest
+	(*HandInResponse)(nil),            // 55: ltedu.classroom.v1.HandInResponse
+	(*GradeSubmissionRequest)(nil),    // 56: ltedu.classroom.v1.GradeSubmissionRequest
+	(*GradeSubmissionResponse)(nil),   // 57: ltedu.classroom.v1.GradeSubmissionResponse
+	(*SetExtensionRequest)(nil),       // 58: ltedu.classroom.v1.SetExtensionRequest
+	(*SetExtensionResponse)(nil),      // 59: ltedu.classroom.v1.SetExtensionResponse
+	(*RecordLevelsRequest)(nil),       // 60: ltedu.classroom.v1.RecordLevelsRequest
+	(*RecordLevelsResponse)(nil),      // 61: ltedu.classroom.v1.RecordLevelsResponse
+	(*Forum)(nil),                     // 62: ltedu.classroom.v1.Forum
+	(*Post)(nil),                      // 63: ltedu.classroom.v1.Post
+	(*Thread)(nil),                    // 64: ltedu.classroom.v1.Thread
+	(*Participation)(nil),             // 65: ltedu.classroom.v1.Participation
+	(*GetForumRequest)(nil),           // 66: ltedu.classroom.v1.GetForumRequest
+	(*GetForumResponse)(nil),          // 67: ltedu.classroom.v1.GetForumResponse
+	(*SaveForumRequest)(nil),          // 68: ltedu.classroom.v1.SaveForumRequest
+	(*SaveForumResponse)(nil),         // 69: ltedu.classroom.v1.SaveForumResponse
+	(*CreatePostRequest)(nil),         // 70: ltedu.classroom.v1.CreatePostRequest
+	(*CreatePostResponse)(nil),        // 71: ltedu.classroom.v1.CreatePostResponse
+	(*EditPostRequest)(nil),           // 72: ltedu.classroom.v1.EditPostRequest
+	(*EditPostResponse)(nil),          // 73: ltedu.classroom.v1.EditPostResponse
+	(*DeletePostRequest)(nil),         // 74: ltedu.classroom.v1.DeletePostRequest
+	(*DeletePostResponse)(nil),        // 75: ltedu.classroom.v1.DeletePostResponse
+	(*ModeratePostRequest)(nil),       // 76: ltedu.classroom.v1.ModeratePostRequest
+	(*ModeratePostResponse)(nil),      // 77: ltedu.classroom.v1.ModeratePostResponse
+	nil,                               // 78: ltedu.classroom.v1.Submission.AnswersEntry
+	nil,                               // 79: ltedu.classroom.v1.Submission.OpenPointsEntry
+	nil,                               // 80: ltedu.classroom.v1.Submission.LevelsEntry
+	nil,                               // 81: ltedu.classroom.v1.SaveAnswersRequest.AnswersEntry
+	nil,                               // 82: ltedu.classroom.v1.HandInRequest.AnswersEntry
+	nil,                               // 83: ltedu.classroom.v1.GradeSubmissionRequest.LevelsEntry
+	nil,                               // 84: ltedu.classroom.v1.GradeSubmissionRequest.OpenPointsEntry
 }
-var file_joseph_classroom_v1_classroom_proto_depIdxs = []int32{
-	2,  // 0: joseph.classroom.v1.Unit.items:type_name -> joseph.classroom.v1.Item
-	0,  // 1: joseph.classroom.v1.ListRoomsResponse.periods:type_name -> joseph.classroom.v1.Period
-	1,  // 2: joseph.classroom.v1.ListRoomsResponse.rooms:type_name -> joseph.classroom.v1.Room
-	1,  // 3: joseph.classroom.v1.GetRoomResponse.room:type_name -> joseph.classroom.v1.Room
-	3,  // 4: joseph.classroom.v1.GetRoomResponse.units:type_name -> joseph.classroom.v1.Unit
-	1,  // 5: joseph.classroom.v1.UpdateRoomResponse.room:type_name -> joseph.classroom.v1.Room
-	3,  // 6: joseph.classroom.v1.SaveUnitResponse.unit:type_name -> joseph.classroom.v1.Unit
-	2,  // 7: joseph.classroom.v1.SaveItemRequest.item:type_name -> joseph.classroom.v1.Item
-	2,  // 8: joseph.classroom.v1.SaveItemResponse.item:type_name -> joseph.classroom.v1.Item
-	4,  // 9: joseph.classroom.v1.ListLibraryResponse.items:type_name -> joseph.classroom.v1.LibraryItem
-	4,  // 10: joseph.classroom.v1.SaveLibraryItemRequest.item:type_name -> joseph.classroom.v1.LibraryItem
-	4,  // 11: joseph.classroom.v1.SaveLibraryItemResponse.item:type_name -> joseph.classroom.v1.LibraryItem
-	5,  // 12: joseph.classroom.v1.ListDeliveriesResponse.deliveries:type_name -> joseph.classroom.v1.Delivery
-	5,  // 13: joseph.classroom.v1.SaveDeliveryRequest.delivery:type_name -> joseph.classroom.v1.Delivery
-	40, // 14: joseph.classroom.v1.Assessment.questions:type_name -> joseph.classroom.v1.Question
-	78, // 15: joseph.classroom.v1.Submission.answers:type_name -> joseph.classroom.v1.Submission.AnswersEntry
-	79, // 16: joseph.classroom.v1.Submission.open_points:type_name -> joseph.classroom.v1.Submission.OpenPointsEntry
-	80, // 17: joseph.classroom.v1.Submission.levels:type_name -> joseph.classroom.v1.Submission.LevelsEntry
-	44, // 18: joseph.classroom.v1.RosterRow.latest:type_name -> joseph.classroom.v1.Submission
-	41, // 19: joseph.classroom.v1.GetAssessmentResponse.assessment:type_name -> joseph.classroom.v1.Assessment
-	42, // 20: joseph.classroom.v1.GetAssessmentResponse.competencies:type_name -> joseph.classroom.v1.Competency
-	45, // 21: joseph.classroom.v1.GetAssessmentResponse.roster:type_name -> joseph.classroom.v1.RosterRow
-	44, // 22: joseph.classroom.v1.GetAssessmentResponse.attempts:type_name -> joseph.classroom.v1.Submission
-	40, // 23: joseph.classroom.v1.SaveAssessmentRequest.questions:type_name -> joseph.classroom.v1.Question
-	41, // 24: joseph.classroom.v1.SaveAssessmentResponse.assessment:type_name -> joseph.classroom.v1.Assessment
-	44, // 25: joseph.classroom.v1.StartAttemptResponse.submission:type_name -> joseph.classroom.v1.Submission
-	81, // 26: joseph.classroom.v1.SaveAnswersRequest.answers:type_name -> joseph.classroom.v1.SaveAnswersRequest.AnswersEntry
-	82, // 27: joseph.classroom.v1.HandInRequest.answers:type_name -> joseph.classroom.v1.HandInRequest.AnswersEntry
-	44, // 28: joseph.classroom.v1.HandInResponse.submission:type_name -> joseph.classroom.v1.Submission
-	83, // 29: joseph.classroom.v1.GradeSubmissionRequest.levels:type_name -> joseph.classroom.v1.GradeSubmissionRequest.LevelsEntry
-	84, // 30: joseph.classroom.v1.GradeSubmissionRequest.open_points:type_name -> joseph.classroom.v1.GradeSubmissionRequest.OpenPointsEntry
-	44, // 31: joseph.classroom.v1.GradeSubmissionResponse.submission:type_name -> joseph.classroom.v1.Submission
-	63, // 32: joseph.classroom.v1.Thread.post:type_name -> joseph.classroom.v1.Post
-	63, // 33: joseph.classroom.v1.Thread.replies:type_name -> joseph.classroom.v1.Post
-	62, // 34: joseph.classroom.v1.GetForumResponse.forum:type_name -> joseph.classroom.v1.Forum
-	64, // 35: joseph.classroom.v1.GetForumResponse.threads:type_name -> joseph.classroom.v1.Thread
-	65, // 36: joseph.classroom.v1.GetForumResponse.participation:type_name -> joseph.classroom.v1.Participation
-	63, // 37: joseph.classroom.v1.CreatePostResponse.post:type_name -> joseph.classroom.v1.Post
-	43, // 38: joseph.classroom.v1.Submission.AnswersEntry.value:type_name -> joseph.classroom.v1.Answer
-	43, // 39: joseph.classroom.v1.SaveAnswersRequest.AnswersEntry.value:type_name -> joseph.classroom.v1.Answer
-	43, // 40: joseph.classroom.v1.HandInRequest.AnswersEntry.value:type_name -> joseph.classroom.v1.Answer
-	6,  // 41: joseph.classroom.v1.ClassroomService.ListRooms:input_type -> joseph.classroom.v1.ListRoomsRequest
-	8,  // 42: joseph.classroom.v1.ClassroomService.GenerateRooms:input_type -> joseph.classroom.v1.GenerateRoomsRequest
-	10, // 43: joseph.classroom.v1.ClassroomService.GetRoom:input_type -> joseph.classroom.v1.GetRoomRequest
-	12, // 44: joseph.classroom.v1.ClassroomService.UpdateRoom:input_type -> joseph.classroom.v1.UpdateRoomRequest
-	14, // 45: joseph.classroom.v1.ClassroomService.CopyRoom:input_type -> joseph.classroom.v1.CopyRoomRequest
-	16, // 46: joseph.classroom.v1.ClassroomService.SaveUnit:input_type -> joseph.classroom.v1.SaveUnitRequest
-	18, // 47: joseph.classroom.v1.ClassroomService.DeleteUnit:input_type -> joseph.classroom.v1.DeleteUnitRequest
-	20, // 48: joseph.classroom.v1.ClassroomService.ReorderUnits:input_type -> joseph.classroom.v1.ReorderUnitsRequest
-	22, // 49: joseph.classroom.v1.ClassroomService.SaveItem:input_type -> joseph.classroom.v1.SaveItemRequest
-	24, // 50: joseph.classroom.v1.ClassroomService.DeleteItem:input_type -> joseph.classroom.v1.DeleteItemRequest
-	26, // 51: joseph.classroom.v1.ClassroomService.ReorderItems:input_type -> joseph.classroom.v1.ReorderItemsRequest
-	28, // 52: joseph.classroom.v1.ClassroomService.RecordView:input_type -> joseph.classroom.v1.RecordViewRequest
-	30, // 53: joseph.classroom.v1.ClassroomService.ListLibrary:input_type -> joseph.classroom.v1.ListLibraryRequest
-	32, // 54: joseph.classroom.v1.ClassroomService.SaveLibraryItem:input_type -> joseph.classroom.v1.SaveLibraryItemRequest
-	34, // 55: joseph.classroom.v1.ClassroomService.DeleteLibraryItem:input_type -> joseph.classroom.v1.DeleteLibraryItemRequest
-	36, // 56: joseph.classroom.v1.ClassroomService.ListDeliveries:input_type -> joseph.classroom.v1.ListDeliveriesRequest
-	38, // 57: joseph.classroom.v1.ClassroomService.SaveDelivery:input_type -> joseph.classroom.v1.SaveDeliveryRequest
-	46, // 58: joseph.classroom.v1.ClassroomService.GetAssessment:input_type -> joseph.classroom.v1.GetAssessmentRequest
-	48, // 59: joseph.classroom.v1.ClassroomService.SaveAssessment:input_type -> joseph.classroom.v1.SaveAssessmentRequest
-	50, // 60: joseph.classroom.v1.ClassroomService.StartAttempt:input_type -> joseph.classroom.v1.StartAttemptRequest
-	52, // 61: joseph.classroom.v1.ClassroomService.SaveAnswers:input_type -> joseph.classroom.v1.SaveAnswersRequest
-	54, // 62: joseph.classroom.v1.ClassroomService.HandIn:input_type -> joseph.classroom.v1.HandInRequest
-	56, // 63: joseph.classroom.v1.ClassroomService.GradeSubmission:input_type -> joseph.classroom.v1.GradeSubmissionRequest
-	58, // 64: joseph.classroom.v1.ClassroomService.SetExtension:input_type -> joseph.classroom.v1.SetExtensionRequest
-	60, // 65: joseph.classroom.v1.ClassroomService.RecordLevels:input_type -> joseph.classroom.v1.RecordLevelsRequest
-	66, // 66: joseph.classroom.v1.ClassroomService.GetForum:input_type -> joseph.classroom.v1.GetForumRequest
-	68, // 67: joseph.classroom.v1.ClassroomService.SaveForum:input_type -> joseph.classroom.v1.SaveForumRequest
-	70, // 68: joseph.classroom.v1.ClassroomService.CreatePost:input_type -> joseph.classroom.v1.CreatePostRequest
-	72, // 69: joseph.classroom.v1.ClassroomService.EditPost:input_type -> joseph.classroom.v1.EditPostRequest
-	74, // 70: joseph.classroom.v1.ClassroomService.DeletePost:input_type -> joseph.classroom.v1.DeletePostRequest
-	76, // 71: joseph.classroom.v1.ClassroomService.ModeratePost:input_type -> joseph.classroom.v1.ModeratePostRequest
-	7,  // 72: joseph.classroom.v1.ClassroomService.ListRooms:output_type -> joseph.classroom.v1.ListRoomsResponse
-	9,  // 73: joseph.classroom.v1.ClassroomService.GenerateRooms:output_type -> joseph.classroom.v1.GenerateRoomsResponse
-	11, // 74: joseph.classroom.v1.ClassroomService.GetRoom:output_type -> joseph.classroom.v1.GetRoomResponse
-	13, // 75: joseph.classroom.v1.ClassroomService.UpdateRoom:output_type -> joseph.classroom.v1.UpdateRoomResponse
-	15, // 76: joseph.classroom.v1.ClassroomService.CopyRoom:output_type -> joseph.classroom.v1.CopyRoomResponse
-	17, // 77: joseph.classroom.v1.ClassroomService.SaveUnit:output_type -> joseph.classroom.v1.SaveUnitResponse
-	19, // 78: joseph.classroom.v1.ClassroomService.DeleteUnit:output_type -> joseph.classroom.v1.DeleteUnitResponse
-	21, // 79: joseph.classroom.v1.ClassroomService.ReorderUnits:output_type -> joseph.classroom.v1.ReorderUnitsResponse
-	23, // 80: joseph.classroom.v1.ClassroomService.SaveItem:output_type -> joseph.classroom.v1.SaveItemResponse
-	25, // 81: joseph.classroom.v1.ClassroomService.DeleteItem:output_type -> joseph.classroom.v1.DeleteItemResponse
-	27, // 82: joseph.classroom.v1.ClassroomService.ReorderItems:output_type -> joseph.classroom.v1.ReorderItemsResponse
-	29, // 83: joseph.classroom.v1.ClassroomService.RecordView:output_type -> joseph.classroom.v1.RecordViewResponse
-	31, // 84: joseph.classroom.v1.ClassroomService.ListLibrary:output_type -> joseph.classroom.v1.ListLibraryResponse
-	33, // 85: joseph.classroom.v1.ClassroomService.SaveLibraryItem:output_type -> joseph.classroom.v1.SaveLibraryItemResponse
-	35, // 86: joseph.classroom.v1.ClassroomService.DeleteLibraryItem:output_type -> joseph.classroom.v1.DeleteLibraryItemResponse
-	37, // 87: joseph.classroom.v1.ClassroomService.ListDeliveries:output_type -> joseph.classroom.v1.ListDeliveriesResponse
-	39, // 88: joseph.classroom.v1.ClassroomService.SaveDelivery:output_type -> joseph.classroom.v1.SaveDeliveryResponse
-	47, // 89: joseph.classroom.v1.ClassroomService.GetAssessment:output_type -> joseph.classroom.v1.GetAssessmentResponse
-	49, // 90: joseph.classroom.v1.ClassroomService.SaveAssessment:output_type -> joseph.classroom.v1.SaveAssessmentResponse
-	51, // 91: joseph.classroom.v1.ClassroomService.StartAttempt:output_type -> joseph.classroom.v1.StartAttemptResponse
-	53, // 92: joseph.classroom.v1.ClassroomService.SaveAnswers:output_type -> joseph.classroom.v1.SaveAnswersResponse
-	55, // 93: joseph.classroom.v1.ClassroomService.HandIn:output_type -> joseph.classroom.v1.HandInResponse
-	57, // 94: joseph.classroom.v1.ClassroomService.GradeSubmission:output_type -> joseph.classroom.v1.GradeSubmissionResponse
-	59, // 95: joseph.classroom.v1.ClassroomService.SetExtension:output_type -> joseph.classroom.v1.SetExtensionResponse
-	61, // 96: joseph.classroom.v1.ClassroomService.RecordLevels:output_type -> joseph.classroom.v1.RecordLevelsResponse
-	67, // 97: joseph.classroom.v1.ClassroomService.GetForum:output_type -> joseph.classroom.v1.GetForumResponse
-	69, // 98: joseph.classroom.v1.ClassroomService.SaveForum:output_type -> joseph.classroom.v1.SaveForumResponse
-	71, // 99: joseph.classroom.v1.ClassroomService.CreatePost:output_type -> joseph.classroom.v1.CreatePostResponse
-	73, // 100: joseph.classroom.v1.ClassroomService.EditPost:output_type -> joseph.classroom.v1.EditPostResponse
-	75, // 101: joseph.classroom.v1.ClassroomService.DeletePost:output_type -> joseph.classroom.v1.DeletePostResponse
-	77, // 102: joseph.classroom.v1.ClassroomService.ModeratePost:output_type -> joseph.classroom.v1.ModeratePostResponse
+var file_ltedu_classroom_v1_classroom_proto_depIdxs = []int32{
+	2,  // 0: ltedu.classroom.v1.Unit.items:type_name -> ltedu.classroom.v1.Item
+	0,  // 1: ltedu.classroom.v1.ListRoomsResponse.periods:type_name -> ltedu.classroom.v1.Period
+	1,  // 2: ltedu.classroom.v1.ListRoomsResponse.rooms:type_name -> ltedu.classroom.v1.Room
+	1,  // 3: ltedu.classroom.v1.GetRoomResponse.room:type_name -> ltedu.classroom.v1.Room
+	3,  // 4: ltedu.classroom.v1.GetRoomResponse.units:type_name -> ltedu.classroom.v1.Unit
+	1,  // 5: ltedu.classroom.v1.UpdateRoomResponse.room:type_name -> ltedu.classroom.v1.Room
+	3,  // 6: ltedu.classroom.v1.SaveUnitResponse.unit:type_name -> ltedu.classroom.v1.Unit
+	2,  // 7: ltedu.classroom.v1.SaveItemRequest.item:type_name -> ltedu.classroom.v1.Item
+	2,  // 8: ltedu.classroom.v1.SaveItemResponse.item:type_name -> ltedu.classroom.v1.Item
+	4,  // 9: ltedu.classroom.v1.ListLibraryResponse.items:type_name -> ltedu.classroom.v1.LibraryItem
+	4,  // 10: ltedu.classroom.v1.SaveLibraryItemRequest.item:type_name -> ltedu.classroom.v1.LibraryItem
+	4,  // 11: ltedu.classroom.v1.SaveLibraryItemResponse.item:type_name -> ltedu.classroom.v1.LibraryItem
+	5,  // 12: ltedu.classroom.v1.ListDeliveriesResponse.deliveries:type_name -> ltedu.classroom.v1.Delivery
+	5,  // 13: ltedu.classroom.v1.SaveDeliveryRequest.delivery:type_name -> ltedu.classroom.v1.Delivery
+	40, // 14: ltedu.classroom.v1.Assessment.questions:type_name -> ltedu.classroom.v1.Question
+	78, // 15: ltedu.classroom.v1.Submission.answers:type_name -> ltedu.classroom.v1.Submission.AnswersEntry
+	79, // 16: ltedu.classroom.v1.Submission.open_points:type_name -> ltedu.classroom.v1.Submission.OpenPointsEntry
+	80, // 17: ltedu.classroom.v1.Submission.levels:type_name -> ltedu.classroom.v1.Submission.LevelsEntry
+	44, // 18: ltedu.classroom.v1.RosterRow.latest:type_name -> ltedu.classroom.v1.Submission
+	41, // 19: ltedu.classroom.v1.GetAssessmentResponse.assessment:type_name -> ltedu.classroom.v1.Assessment
+	42, // 20: ltedu.classroom.v1.GetAssessmentResponse.competencies:type_name -> ltedu.classroom.v1.Competency
+	45, // 21: ltedu.classroom.v1.GetAssessmentResponse.roster:type_name -> ltedu.classroom.v1.RosterRow
+	44, // 22: ltedu.classroom.v1.GetAssessmentResponse.attempts:type_name -> ltedu.classroom.v1.Submission
+	40, // 23: ltedu.classroom.v1.SaveAssessmentRequest.questions:type_name -> ltedu.classroom.v1.Question
+	41, // 24: ltedu.classroom.v1.SaveAssessmentResponse.assessment:type_name -> ltedu.classroom.v1.Assessment
+	44, // 25: ltedu.classroom.v1.StartAttemptResponse.submission:type_name -> ltedu.classroom.v1.Submission
+	81, // 26: ltedu.classroom.v1.SaveAnswersRequest.answers:type_name -> ltedu.classroom.v1.SaveAnswersRequest.AnswersEntry
+	82, // 27: ltedu.classroom.v1.HandInRequest.answers:type_name -> ltedu.classroom.v1.HandInRequest.AnswersEntry
+	44, // 28: ltedu.classroom.v1.HandInResponse.submission:type_name -> ltedu.classroom.v1.Submission
+	83, // 29: ltedu.classroom.v1.GradeSubmissionRequest.levels:type_name -> ltedu.classroom.v1.GradeSubmissionRequest.LevelsEntry
+	84, // 30: ltedu.classroom.v1.GradeSubmissionRequest.open_points:type_name -> ltedu.classroom.v1.GradeSubmissionRequest.OpenPointsEntry
+	44, // 31: ltedu.classroom.v1.GradeSubmissionResponse.submission:type_name -> ltedu.classroom.v1.Submission
+	63, // 32: ltedu.classroom.v1.Thread.post:type_name -> ltedu.classroom.v1.Post
+	63, // 33: ltedu.classroom.v1.Thread.replies:type_name -> ltedu.classroom.v1.Post
+	62, // 34: ltedu.classroom.v1.GetForumResponse.forum:type_name -> ltedu.classroom.v1.Forum
+	64, // 35: ltedu.classroom.v1.GetForumResponse.threads:type_name -> ltedu.classroom.v1.Thread
+	65, // 36: ltedu.classroom.v1.GetForumResponse.participation:type_name -> ltedu.classroom.v1.Participation
+	63, // 37: ltedu.classroom.v1.CreatePostResponse.post:type_name -> ltedu.classroom.v1.Post
+	43, // 38: ltedu.classroom.v1.Submission.AnswersEntry.value:type_name -> ltedu.classroom.v1.Answer
+	43, // 39: ltedu.classroom.v1.SaveAnswersRequest.AnswersEntry.value:type_name -> ltedu.classroom.v1.Answer
+	43, // 40: ltedu.classroom.v1.HandInRequest.AnswersEntry.value:type_name -> ltedu.classroom.v1.Answer
+	6,  // 41: ltedu.classroom.v1.ClassroomService.ListRooms:input_type -> ltedu.classroom.v1.ListRoomsRequest
+	8,  // 42: ltedu.classroom.v1.ClassroomService.GenerateRooms:input_type -> ltedu.classroom.v1.GenerateRoomsRequest
+	10, // 43: ltedu.classroom.v1.ClassroomService.GetRoom:input_type -> ltedu.classroom.v1.GetRoomRequest
+	12, // 44: ltedu.classroom.v1.ClassroomService.UpdateRoom:input_type -> ltedu.classroom.v1.UpdateRoomRequest
+	14, // 45: ltedu.classroom.v1.ClassroomService.CopyRoom:input_type -> ltedu.classroom.v1.CopyRoomRequest
+	16, // 46: ltedu.classroom.v1.ClassroomService.SaveUnit:input_type -> ltedu.classroom.v1.SaveUnitRequest
+	18, // 47: ltedu.classroom.v1.ClassroomService.DeleteUnit:input_type -> ltedu.classroom.v1.DeleteUnitRequest
+	20, // 48: ltedu.classroom.v1.ClassroomService.ReorderUnits:input_type -> ltedu.classroom.v1.ReorderUnitsRequest
+	22, // 49: ltedu.classroom.v1.ClassroomService.SaveItem:input_type -> ltedu.classroom.v1.SaveItemRequest
+	24, // 50: ltedu.classroom.v1.ClassroomService.DeleteItem:input_type -> ltedu.classroom.v1.DeleteItemRequest
+	26, // 51: ltedu.classroom.v1.ClassroomService.ReorderItems:input_type -> ltedu.classroom.v1.ReorderItemsRequest
+	28, // 52: ltedu.classroom.v1.ClassroomService.RecordView:input_type -> ltedu.classroom.v1.RecordViewRequest
+	30, // 53: ltedu.classroom.v1.ClassroomService.ListLibrary:input_type -> ltedu.classroom.v1.ListLibraryRequest
+	32, // 54: ltedu.classroom.v1.ClassroomService.SaveLibraryItem:input_type -> ltedu.classroom.v1.SaveLibraryItemRequest
+	34, // 55: ltedu.classroom.v1.ClassroomService.DeleteLibraryItem:input_type -> ltedu.classroom.v1.DeleteLibraryItemRequest
+	36, // 56: ltedu.classroom.v1.ClassroomService.ListDeliveries:input_type -> ltedu.classroom.v1.ListDeliveriesRequest
+	38, // 57: ltedu.classroom.v1.ClassroomService.SaveDelivery:input_type -> ltedu.classroom.v1.SaveDeliveryRequest
+	46, // 58: ltedu.classroom.v1.ClassroomService.GetAssessment:input_type -> ltedu.classroom.v1.GetAssessmentRequest
+	48, // 59: ltedu.classroom.v1.ClassroomService.SaveAssessment:input_type -> ltedu.classroom.v1.SaveAssessmentRequest
+	50, // 60: ltedu.classroom.v1.ClassroomService.StartAttempt:input_type -> ltedu.classroom.v1.StartAttemptRequest
+	52, // 61: ltedu.classroom.v1.ClassroomService.SaveAnswers:input_type -> ltedu.classroom.v1.SaveAnswersRequest
+	54, // 62: ltedu.classroom.v1.ClassroomService.HandIn:input_type -> ltedu.classroom.v1.HandInRequest
+	56, // 63: ltedu.classroom.v1.ClassroomService.GradeSubmission:input_type -> ltedu.classroom.v1.GradeSubmissionRequest
+	58, // 64: ltedu.classroom.v1.ClassroomService.SetExtension:input_type -> ltedu.classroom.v1.SetExtensionRequest
+	60, // 65: ltedu.classroom.v1.ClassroomService.RecordLevels:input_type -> ltedu.classroom.v1.RecordLevelsRequest
+	66, // 66: ltedu.classroom.v1.ClassroomService.GetForum:input_type -> ltedu.classroom.v1.GetForumRequest
+	68, // 67: ltedu.classroom.v1.ClassroomService.SaveForum:input_type -> ltedu.classroom.v1.SaveForumRequest
+	70, // 68: ltedu.classroom.v1.ClassroomService.CreatePost:input_type -> ltedu.classroom.v1.CreatePostRequest
+	72, // 69: ltedu.classroom.v1.ClassroomService.EditPost:input_type -> ltedu.classroom.v1.EditPostRequest
+	74, // 70: ltedu.classroom.v1.ClassroomService.DeletePost:input_type -> ltedu.classroom.v1.DeletePostRequest
+	76, // 71: ltedu.classroom.v1.ClassroomService.ModeratePost:input_type -> ltedu.classroom.v1.ModeratePostRequest
+	7,  // 72: ltedu.classroom.v1.ClassroomService.ListRooms:output_type -> ltedu.classroom.v1.ListRoomsResponse
+	9,  // 73: ltedu.classroom.v1.ClassroomService.GenerateRooms:output_type -> ltedu.classroom.v1.GenerateRoomsResponse
+	11, // 74: ltedu.classroom.v1.ClassroomService.GetRoom:output_type -> ltedu.classroom.v1.GetRoomResponse
+	13, // 75: ltedu.classroom.v1.ClassroomService.UpdateRoom:output_type -> ltedu.classroom.v1.UpdateRoomResponse
+	15, // 76: ltedu.classroom.v1.ClassroomService.CopyRoom:output_type -> ltedu.classroom.v1.CopyRoomResponse
+	17, // 77: ltedu.classroom.v1.ClassroomService.SaveUnit:output_type -> ltedu.classroom.v1.SaveUnitResponse
+	19, // 78: ltedu.classroom.v1.ClassroomService.DeleteUnit:output_type -> ltedu.classroom.v1.DeleteUnitResponse
+	21, // 79: ltedu.classroom.v1.ClassroomService.ReorderUnits:output_type -> ltedu.classroom.v1.ReorderUnitsResponse
+	23, // 80: ltedu.classroom.v1.ClassroomService.SaveItem:output_type -> ltedu.classroom.v1.SaveItemResponse
+	25, // 81: ltedu.classroom.v1.ClassroomService.DeleteItem:output_type -> ltedu.classroom.v1.DeleteItemResponse
+	27, // 82: ltedu.classroom.v1.ClassroomService.ReorderItems:output_type -> ltedu.classroom.v1.ReorderItemsResponse
+	29, // 83: ltedu.classroom.v1.ClassroomService.RecordView:output_type -> ltedu.classroom.v1.RecordViewResponse
+	31, // 84: ltedu.classroom.v1.ClassroomService.ListLibrary:output_type -> ltedu.classroom.v1.ListLibraryResponse
+	33, // 85: ltedu.classroom.v1.ClassroomService.SaveLibraryItem:output_type -> ltedu.classroom.v1.SaveLibraryItemResponse
+	35, // 86: ltedu.classroom.v1.ClassroomService.DeleteLibraryItem:output_type -> ltedu.classroom.v1.DeleteLibraryItemResponse
+	37, // 87: ltedu.classroom.v1.ClassroomService.ListDeliveries:output_type -> ltedu.classroom.v1.ListDeliveriesResponse
+	39, // 88: ltedu.classroom.v1.ClassroomService.SaveDelivery:output_type -> ltedu.classroom.v1.SaveDeliveryResponse
+	47, // 89: ltedu.classroom.v1.ClassroomService.GetAssessment:output_type -> ltedu.classroom.v1.GetAssessmentResponse
+	49, // 90: ltedu.classroom.v1.ClassroomService.SaveAssessment:output_type -> ltedu.classroom.v1.SaveAssessmentResponse
+	51, // 91: ltedu.classroom.v1.ClassroomService.StartAttempt:output_type -> ltedu.classroom.v1.StartAttemptResponse
+	53, // 92: ltedu.classroom.v1.ClassroomService.SaveAnswers:output_type -> ltedu.classroom.v1.SaveAnswersResponse
+	55, // 93: ltedu.classroom.v1.ClassroomService.HandIn:output_type -> ltedu.classroom.v1.HandInResponse
+	57, // 94: ltedu.classroom.v1.ClassroomService.GradeSubmission:output_type -> ltedu.classroom.v1.GradeSubmissionResponse
+	59, // 95: ltedu.classroom.v1.ClassroomService.SetExtension:output_type -> ltedu.classroom.v1.SetExtensionResponse
+	61, // 96: ltedu.classroom.v1.ClassroomService.RecordLevels:output_type -> ltedu.classroom.v1.RecordLevelsResponse
+	67, // 97: ltedu.classroom.v1.ClassroomService.GetForum:output_type -> ltedu.classroom.v1.GetForumResponse
+	69, // 98: ltedu.classroom.v1.ClassroomService.SaveForum:output_type -> ltedu.classroom.v1.SaveForumResponse
+	71, // 99: ltedu.classroom.v1.ClassroomService.CreatePost:output_type -> ltedu.classroom.v1.CreatePostResponse
+	73, // 100: ltedu.classroom.v1.ClassroomService.EditPost:output_type -> ltedu.classroom.v1.EditPostResponse
+	75, // 101: ltedu.classroom.v1.ClassroomService.DeletePost:output_type -> ltedu.classroom.v1.DeletePostResponse
+	77, // 102: ltedu.classroom.v1.ClassroomService.ModeratePost:output_type -> ltedu.classroom.v1.ModeratePostResponse
 	72, // [72:103] is the sub-list for method output_type
 	41, // [41:72] is the sub-list for method input_type
 	41, // [41:41] is the sub-list for extension type_name
@@ -5773,27 +5783,27 @@ var file_joseph_classroom_v1_classroom_proto_depIdxs = []int32{
 	0,  // [0:41] is the sub-list for field type_name
 }
 
-func init() { file_joseph_classroom_v1_classroom_proto_init() }
-func file_joseph_classroom_v1_classroom_proto_init() {
-	if File_joseph_classroom_v1_classroom_proto != nil {
+func init() { file_ltedu_classroom_v1_classroom_proto_init() }
+func file_ltedu_classroom_v1_classroom_proto_init() {
+	if File_ltedu_classroom_v1_classroom_proto != nil {
 		return
 	}
-	file_joseph_classroom_v1_classroom_proto_msgTypes[2].OneofWrappers = []any{}
+	file_ltedu_classroom_v1_classroom_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_classroom_v1_classroom_proto_rawDesc), len(file_joseph_classroom_v1_classroom_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_classroom_v1_classroom_proto_rawDesc), len(file_ltedu_classroom_v1_classroom_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   85,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_classroom_v1_classroom_proto_goTypes,
-		DependencyIndexes: file_joseph_classroom_v1_classroom_proto_depIdxs,
-		MessageInfos:      file_joseph_classroom_v1_classroom_proto_msgTypes,
+		GoTypes:           file_ltedu_classroom_v1_classroom_proto_goTypes,
+		DependencyIndexes: file_ltedu_classroom_v1_classroom_proto_depIdxs,
+		MessageInfos:      file_ltedu_classroom_v1_classroom_proto_msgTypes,
 	}.Build()
-	File_joseph_classroom_v1_classroom_proto = out.File
-	file_joseph_classroom_v1_classroom_proto_goTypes = nil
-	file_joseph_classroom_v1_classroom_proto_depIdxs = nil
+	File_ltedu_classroom_v1_classroom_proto = out.File
+	file_ltedu_classroom_v1_classroom_proto_goTypes = nil
+	file_ltedu_classroom_v1_classroom_proto_depIdxs = nil
 }

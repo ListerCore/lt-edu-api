@@ -2,10 +2,10 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/finance/v1/finance.proto
+// source: ltedu/finance/v1/finance.proto
 
 // Fees and payments (phase 10 of docs/plan-academico.md). Same metadata and institution scoping as
-// joseph.academic.v1. Every amount travels in céntimos of sol (int64)
+// ltedu.academic.v1. Every amount travels in céntimos of sol (int64)
 
 package financev1
 
@@ -22,22 +22,22 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	FinanceService_GetSummary_FullMethodName      = "/joseph.finance.v1.FinanceService/GetSummary"
-	FinanceService_ListPlans_FullMethodName       = "/joseph.finance.v1.FinanceService/ListPlans"
-	FinanceService_SavePlan_FullMethodName        = "/joseph.finance.v1.FinanceService/SavePlan"
-	FinanceService_DeletePlan_FullMethodName      = "/joseph.finance.v1.FinanceService/DeletePlan"
-	FinanceService_GenerateCharges_FullMethodName = "/joseph.finance.v1.FinanceService/GenerateCharges"
-	FinanceService_GetStatement_FullMethodName    = "/joseph.finance.v1.FinanceService/GetStatement"
-	FinanceService_MyStatements_FullMethodName    = "/joseph.finance.v1.FinanceService/MyStatements"
-	FinanceService_RegisterPayment_FullMethodName = "/joseph.finance.v1.FinanceService/RegisterPayment"
-	FinanceService_AnnulPayment_FullMethodName    = "/joseph.finance.v1.FinanceService/AnnulPayment"
-	FinanceService_GetPayment_FullMethodName      = "/joseph.finance.v1.FinanceService/GetPayment"
-	FinanceService_GetCash_FullMethodName         = "/joseph.finance.v1.FinanceService/GetCash"
-	FinanceService_SaveDiscount_FullMethodName    = "/joseph.finance.v1.FinanceService/SaveDiscount"
-	FinanceService_DeleteDiscount_FullMethodName  = "/joseph.finance.v1.FinanceService/DeleteDiscount"
-	FinanceService_VoidCharge_FullMethodName      = "/joseph.finance.v1.FinanceService/VoidCharge"
-	FinanceService_AddCharge_FullMethodName       = "/joseph.finance.v1.FinanceService/AddCharge"
-	FinanceService_SendReminders_FullMethodName   = "/joseph.finance.v1.FinanceService/SendReminders"
+	FinanceService_GetSummary_FullMethodName      = "/ltedu.finance.v1.FinanceService/GetSummary"
+	FinanceService_ListPlans_FullMethodName       = "/ltedu.finance.v1.FinanceService/ListPlans"
+	FinanceService_SavePlan_FullMethodName        = "/ltedu.finance.v1.FinanceService/SavePlan"
+	FinanceService_DeletePlan_FullMethodName      = "/ltedu.finance.v1.FinanceService/DeletePlan"
+	FinanceService_GenerateCharges_FullMethodName = "/ltedu.finance.v1.FinanceService/GenerateCharges"
+	FinanceService_GetStatement_FullMethodName    = "/ltedu.finance.v1.FinanceService/GetStatement"
+	FinanceService_MyStatements_FullMethodName    = "/ltedu.finance.v1.FinanceService/MyStatements"
+	FinanceService_RegisterPayment_FullMethodName = "/ltedu.finance.v1.FinanceService/RegisterPayment"
+	FinanceService_AnnulPayment_FullMethodName    = "/ltedu.finance.v1.FinanceService/AnnulPayment"
+	FinanceService_GetPayment_FullMethodName      = "/ltedu.finance.v1.FinanceService/GetPayment"
+	FinanceService_GetCash_FullMethodName         = "/ltedu.finance.v1.FinanceService/GetCash"
+	FinanceService_SaveDiscount_FullMethodName    = "/ltedu.finance.v1.FinanceService/SaveDiscount"
+	FinanceService_DeleteDiscount_FullMethodName  = "/ltedu.finance.v1.FinanceService/DeleteDiscount"
+	FinanceService_VoidCharge_FullMethodName      = "/ltedu.finance.v1.FinanceService/VoidCharge"
+	FinanceService_AddCharge_FullMethodName       = "/ltedu.finance.v1.FinanceService/AddCharge"
+	FinanceService_SendReminders_FullMethodName   = "/ltedu.finance.v1.FinanceService/SendReminders"
 )
 
 // FinanceServiceClient is the client API for FinanceService service.
@@ -629,7 +629,7 @@ func _FinanceService_SendReminders_Handler(srv interface{}, ctx context.Context,
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var FinanceService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.finance.v1.FinanceService",
+	ServiceName: "ltedu.finance.v1.FinanceService",
 	HandlerType: (*FinanceServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -698,5 +698,5 @@ var FinanceService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/finance/v1/finance.proto",
+	Metadata: "ltedu/finance/v1/finance.proto",
 }

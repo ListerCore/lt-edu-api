@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/compliance/v1/compliance.proto
+// source: ltedu/compliance/v1/compliance.proto
 
 // DRE compliance of a CEBA (phase E8 of docs/ceba/PLAN.md, RSG 613-2014-MINEDU 6.2.1, Anexo 2 and 6.3.2 c).
 // Device kinds: desktop | laptop | tablet | network | printer | other; purposes: virtual_tutoring | student_support
@@ -25,19 +25,19 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ComplianceService_GetBoard_FullMethodName           = "/joseph.compliance.v1.ComplianceService/GetBoard"
-	ComplianceService_SaveRoom_FullMethodName           = "/joseph.compliance.v1.ComplianceService/SaveRoom"
-	ComplianceService_DeleteRoom_FullMethodName         = "/joseph.compliance.v1.ComplianceService/DeleteRoom"
-	ComplianceService_SaveDevice_FullMethodName         = "/joseph.compliance.v1.ComplianceService/SaveDevice"
-	ComplianceService_DeleteDevice_FullMethodName       = "/joseph.compliance.v1.ComplianceService/DeleteDevice"
-	ComplianceService_AddCheck_FullMethodName           = "/joseph.compliance.v1.ComplianceService/AddCheck"
-	ComplianceService_DeleteCheck_FullMethodName        = "/joseph.compliance.v1.ComplianceService/DeleteCheck"
-	ComplianceService_SaveItem_FullMethodName           = "/joseph.compliance.v1.ComplianceService/SaveItem"
-	ComplianceService_SetItemStatus_FullMethodName      = "/joseph.compliance.v1.ComplianceService/SetItemStatus"
-	ComplianceService_SaveReport_FullMethodName         = "/joseph.compliance.v1.ComplianceService/SaveReport"
-	ComplianceService_CheckUptime_FullMethodName        = "/joseph.compliance.v1.ComplianceService/CheckUptime"
-	ComplianceService_PlatformReportPdf_FullMethodName  = "/joseph.compliance.v1.ComplianceService/PlatformReportPdf"
-	ComplianceService_EquipmentReportPdf_FullMethodName = "/joseph.compliance.v1.ComplianceService/EquipmentReportPdf"
+	ComplianceService_GetBoard_FullMethodName           = "/ltedu.compliance.v1.ComplianceService/GetBoard"
+	ComplianceService_SaveRoom_FullMethodName           = "/ltedu.compliance.v1.ComplianceService/SaveRoom"
+	ComplianceService_DeleteRoom_FullMethodName         = "/ltedu.compliance.v1.ComplianceService/DeleteRoom"
+	ComplianceService_SaveDevice_FullMethodName         = "/ltedu.compliance.v1.ComplianceService/SaveDevice"
+	ComplianceService_DeleteDevice_FullMethodName       = "/ltedu.compliance.v1.ComplianceService/DeleteDevice"
+	ComplianceService_AddCheck_FullMethodName           = "/ltedu.compliance.v1.ComplianceService/AddCheck"
+	ComplianceService_DeleteCheck_FullMethodName        = "/ltedu.compliance.v1.ComplianceService/DeleteCheck"
+	ComplianceService_SaveItem_FullMethodName           = "/ltedu.compliance.v1.ComplianceService/SaveItem"
+	ComplianceService_SetItemStatus_FullMethodName      = "/ltedu.compliance.v1.ComplianceService/SetItemStatus"
+	ComplianceService_SaveReport_FullMethodName         = "/ltedu.compliance.v1.ComplianceService/SaveReport"
+	ComplianceService_CheckUptime_FullMethodName        = "/ltedu.compliance.v1.ComplianceService/CheckUptime"
+	ComplianceService_PlatformReportPdf_FullMethodName  = "/ltedu.compliance.v1.ComplianceService/PlatformReportPdf"
+	ComplianceService_EquipmentReportPdf_FullMethodName = "/ltedu.compliance.v1.ComplianceService/EquipmentReportPdf"
 )
 
 // ComplianceServiceClient is the client API for ComplianceService service.
@@ -530,7 +530,7 @@ func _ComplianceService_EquipmentReportPdf_Handler(srv interface{}, ctx context.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ComplianceService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.compliance.v1.ComplianceService",
+	ServiceName: "ltedu.compliance.v1.ComplianceService",
 	HandlerType: (*ComplianceServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -587,5 +587,5 @@ var ComplianceService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/compliance/v1/compliance.proto",
+	Metadata: "ltedu/compliance/v1/compliance.proto",
 }

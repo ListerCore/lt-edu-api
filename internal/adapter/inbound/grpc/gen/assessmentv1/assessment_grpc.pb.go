@@ -2,10 +2,10 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/assessment/v1/assessment.proto
+// source: ltedu/assessment/v1/assessment.proto
 
 // Assessment by term (phase 6 of docs/plan-academico.md). Same metadata and institution scoping as
-// joseph.academic.v1. term_id empty means the whole period (IEST semesters and CEPRE cycles have no terms).
+// ltedu.academic.v1. term_id empty means the whole period (IEST semesters and CEPRE cycles have no terms).
 // Levels: AD | A | B | C. Scores: 0–20
 
 package assessmentv1
@@ -23,18 +23,18 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AssessmentService_GetGradebook_FullMethodName     = "/joseph.assessment.v1.AssessmentService/GetGradebook"
-	AssessmentService_GetSheet_FullMethodName         = "/joseph.assessment.v1.AssessmentService/GetSheet"
-	AssessmentService_SaveLevels_FullMethodName       = "/joseph.assessment.v1.AssessmentService/SaveLevels"
-	AssessmentService_SaveEvaluation_FullMethodName   = "/joseph.assessment.v1.AssessmentService/SaveEvaluation"
-	AssessmentService_DeleteEvaluation_FullMethodName = "/joseph.assessment.v1.AssessmentService/DeleteEvaluation"
-	AssessmentService_SaveScores_FullMethodName       = "/joseph.assessment.v1.AssessmentService/SaveScores"
-	AssessmentService_GetTutorSheet_FullMethodName    = "/joseph.assessment.v1.AssessmentService/GetTutorSheet"
-	AssessmentService_SaveTutorSheet_FullMethodName   = "/joseph.assessment.v1.AssessmentService/SaveTutorSheet"
-	AssessmentService_Submit_FullMethodName           = "/joseph.assessment.v1.AssessmentService/Submit"
-	AssessmentService_GetReportCard_FullMethodName    = "/joseph.assessment.v1.AssessmentService/GetReportCard"
-	AssessmentService_GetSectionCards_FullMethodName  = "/joseph.assessment.v1.AssessmentService/GetSectionCards"
-	AssessmentService_MyReportCards_FullMethodName    = "/joseph.assessment.v1.AssessmentService/MyReportCards"
+	AssessmentService_GetGradebook_FullMethodName     = "/ltedu.assessment.v1.AssessmentService/GetGradebook"
+	AssessmentService_GetSheet_FullMethodName         = "/ltedu.assessment.v1.AssessmentService/GetSheet"
+	AssessmentService_SaveLevels_FullMethodName       = "/ltedu.assessment.v1.AssessmentService/SaveLevels"
+	AssessmentService_SaveEvaluation_FullMethodName   = "/ltedu.assessment.v1.AssessmentService/SaveEvaluation"
+	AssessmentService_DeleteEvaluation_FullMethodName = "/ltedu.assessment.v1.AssessmentService/DeleteEvaluation"
+	AssessmentService_SaveScores_FullMethodName       = "/ltedu.assessment.v1.AssessmentService/SaveScores"
+	AssessmentService_GetTutorSheet_FullMethodName    = "/ltedu.assessment.v1.AssessmentService/GetTutorSheet"
+	AssessmentService_SaveTutorSheet_FullMethodName   = "/ltedu.assessment.v1.AssessmentService/SaveTutorSheet"
+	AssessmentService_Submit_FullMethodName           = "/ltedu.assessment.v1.AssessmentService/Submit"
+	AssessmentService_GetReportCard_FullMethodName    = "/ltedu.assessment.v1.AssessmentService/GetReportCard"
+	AssessmentService_GetSectionCards_FullMethodName  = "/ltedu.assessment.v1.AssessmentService/GetSectionCards"
+	AssessmentService_MyReportCards_FullMethodName    = "/ltedu.assessment.v1.AssessmentService/MyReportCards"
 )
 
 // AssessmentServiceClient is the client API for AssessmentService service.
@@ -494,7 +494,7 @@ func _AssessmentService_MyReportCards_Handler(srv interface{}, ctx context.Conte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AssessmentService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.assessment.v1.AssessmentService",
+	ServiceName: "ltedu.assessment.v1.AssessmentService",
 	HandlerType: (*AssessmentServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -547,5 +547,5 @@ var AssessmentService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/assessment/v1/assessment.proto",
+	Metadata: "ltedu/assessment/v1/assessment.proto",
 }

@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/assessment/v1/closing.proto
+// source: ltedu/assessment/v1/closing.proto
 
 // Year and semester closing (phase 7 of docs/plan-academico.md). Situations: PRO (promovido), PER (permanece), RR
 // (recuperación pedagógica), PEN (levels missing). IEST unit statuses: approved | recovery | failed | barred
@@ -47,7 +47,7 @@ type RecordInfo struct {
 
 func (x *RecordInfo) Reset() {
 	*x = RecordInfo{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[0]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -59,7 +59,7 @@ func (x *RecordInfo) String() string {
 func (*RecordInfo) ProtoMessage() {}
 
 func (x *RecordInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[0]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -72,7 +72,7 @@ func (x *RecordInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordInfo.ProtoReflect.Descriptor instead.
 func (*RecordInfo) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *RecordInfo) GetId() string {
@@ -173,7 +173,7 @@ type SectionClosingSummary struct {
 
 func (x *SectionClosingSummary) Reset() {
 	*x = SectionClosingSummary{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[1]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -185,7 +185,7 @@ func (x *SectionClosingSummary) String() string {
 func (*SectionClosingSummary) ProtoMessage() {}
 
 func (x *SectionClosingSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[1]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -198,7 +198,7 @@ func (x *SectionClosingSummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SectionClosingSummary.ProtoReflect.Descriptor instead.
 func (*SectionClosingSummary) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *SectionClosingSummary) GetSectionId() string {
@@ -259,7 +259,7 @@ type UnitClosingSummary struct {
 
 func (x *UnitClosingSummary) Reset() {
 	*x = UnitClosingSummary{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[2]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -271,7 +271,7 @@ func (x *UnitClosingSummary) String() string {
 func (*UnitClosingSummary) ProtoMessage() {}
 
 func (x *UnitClosingSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[2]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -284,7 +284,7 @@ func (x *UnitClosingSummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnitClosingSummary.ProtoReflect.Descriptor instead.
 func (*UnitClosingSummary) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *UnitClosingSummary) GetAssignmentId() string {
@@ -353,7 +353,7 @@ type GetClosingRequest struct {
 
 func (x *GetClosingRequest) Reset() {
 	*x = GetClosingRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[3]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -365,7 +365,7 @@ func (x *GetClosingRequest) String() string {
 func (*GetClosingRequest) ProtoMessage() {}
 
 func (x *GetClosingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[3]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -378,7 +378,7 @@ func (x *GetClosingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetClosingRequest.ProtoReflect.Descriptor instead.
 func (*GetClosingRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetClosingRequest) GetInstitutionSlug() string {
@@ -412,7 +412,7 @@ type GetClosingResponse struct {
 
 func (x *GetClosingResponse) Reset() {
 	*x = GetClosingResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[4]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -424,7 +424,7 @@ func (x *GetClosingResponse) String() string {
 func (*GetClosingResponse) ProtoMessage() {}
 
 func (x *GetClosingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[4]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -437,7 +437,7 @@ func (x *GetClosingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetClosingResponse.ProtoReflect.Descriptor instead.
 func (*GetClosingResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetClosingResponse) GetMode() string {
@@ -508,7 +508,7 @@ type ClosingArea struct {
 
 func (x *ClosingArea) Reset() {
 	*x = ClosingArea{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[5]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -520,7 +520,7 @@ func (x *ClosingArea) String() string {
 func (*ClosingArea) ProtoMessage() {}
 
 func (x *ClosingArea) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[5]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -533,7 +533,7 @@ func (x *ClosingArea) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClosingArea.ProtoReflect.Descriptor instead.
 func (*ClosingArea) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ClosingArea) GetSubjectId() string {
@@ -592,7 +592,7 @@ type ClosingRow struct {
 
 func (x *ClosingRow) Reset() {
 	*x = ClosingRow{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[6]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -604,7 +604,7 @@ func (x *ClosingRow) String() string {
 func (*ClosingRow) ProtoMessage() {}
 
 func (x *ClosingRow) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[6]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -617,7 +617,7 @@ func (x *ClosingRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClosingRow.ProtoReflect.Descriptor instead.
 func (*ClosingRow) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ClosingRow) GetStudent() *StudentRef {
@@ -768,7 +768,7 @@ type SectionClosing struct {
 
 func (x *SectionClosing) Reset() {
 	*x = SectionClosing{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[7]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -780,7 +780,7 @@ func (x *SectionClosing) String() string {
 func (*SectionClosing) ProtoMessage() {}
 
 func (x *SectionClosing) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[7]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -793,7 +793,7 @@ func (x *SectionClosing) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SectionClosing.ProtoReflect.Descriptor instead.
 func (*SectionClosing) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *SectionClosing) GetSectionId() string {
@@ -904,7 +904,7 @@ type GetSectionClosingRequest struct {
 
 func (x *GetSectionClosingRequest) Reset() {
 	*x = GetSectionClosingRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[8]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -916,7 +916,7 @@ func (x *GetSectionClosingRequest) String() string {
 func (*GetSectionClosingRequest) ProtoMessage() {}
 
 func (x *GetSectionClosingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[8]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -929,7 +929,7 @@ func (x *GetSectionClosingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSectionClosingRequest.ProtoReflect.Descriptor instead.
 func (*GetSectionClosingRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetSectionClosingRequest) GetInstitutionSlug() string {
@@ -955,7 +955,7 @@ type GetSectionClosingResponse struct {
 
 func (x *GetSectionClosingResponse) Reset() {
 	*x = GetSectionClosingResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[9]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -967,7 +967,7 @@ func (x *GetSectionClosingResponse) String() string {
 func (*GetSectionClosingResponse) ProtoMessage() {}
 
 func (x *GetSectionClosingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[9]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -980,7 +980,7 @@ func (x *GetSectionClosingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSectionClosingResponse.ProtoReflect.Descriptor instead.
 func (*GetSectionClosingResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GetSectionClosingResponse) GetClosing() *SectionClosing {
@@ -1003,7 +1003,7 @@ type DecideSituationRequest struct {
 
 func (x *DecideSituationRequest) Reset() {
 	*x = DecideSituationRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[10]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1015,7 +1015,7 @@ func (x *DecideSituationRequest) String() string {
 func (*DecideSituationRequest) ProtoMessage() {}
 
 func (x *DecideSituationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[10]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1028,7 +1028,7 @@ func (x *DecideSituationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DecideSituationRequest.ProtoReflect.Descriptor instead.
 func (*DecideSituationRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *DecideSituationRequest) GetInstitutionSlug() string {
@@ -1075,7 +1075,7 @@ type DecideSituationResponse struct {
 
 func (x *DecideSituationResponse) Reset() {
 	*x = DecideSituationResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[11]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1087,7 +1087,7 @@ func (x *DecideSituationResponse) String() string {
 func (*DecideSituationResponse) ProtoMessage() {}
 
 func (x *DecideSituationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[11]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1100,7 +1100,7 @@ func (x *DecideSituationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DecideSituationResponse.ProtoReflect.Descriptor instead.
 func (*DecideSituationResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DecideSituationResponse) GetClosing() *SectionClosing {
@@ -1120,7 +1120,7 @@ type ConfirmSectionRequest struct {
 
 func (x *ConfirmSectionRequest) Reset() {
 	*x = ConfirmSectionRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[12]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1132,7 +1132,7 @@ func (x *ConfirmSectionRequest) String() string {
 func (*ConfirmSectionRequest) ProtoMessage() {}
 
 func (x *ConfirmSectionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[12]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1145,7 +1145,7 @@ func (x *ConfirmSectionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmSectionRequest.ProtoReflect.Descriptor instead.
 func (*ConfirmSectionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ConfirmSectionRequest) GetInstitutionSlug() string {
@@ -1171,7 +1171,7 @@ type ConfirmSectionResponse struct {
 
 func (x *ConfirmSectionResponse) Reset() {
 	*x = ConfirmSectionResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[13]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1183,7 +1183,7 @@ func (x *ConfirmSectionResponse) String() string {
 func (*ConfirmSectionResponse) ProtoMessage() {}
 
 func (x *ConfirmSectionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[13]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1196,7 +1196,7 @@ func (x *ConfirmSectionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmSectionResponse.ProtoReflect.Descriptor instead.
 func (*ConfirmSectionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ConfirmSectionResponse) GetClosing() *SectionClosing {
@@ -1219,7 +1219,7 @@ type SaveRecoveryRequest struct {
 
 func (x *SaveRecoveryRequest) Reset() {
 	*x = SaveRecoveryRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[14]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1231,7 +1231,7 @@ func (x *SaveRecoveryRequest) String() string {
 func (*SaveRecoveryRequest) ProtoMessage() {}
 
 func (x *SaveRecoveryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[14]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1244,7 +1244,7 @@ func (x *SaveRecoveryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveRecoveryRequest.ProtoReflect.Descriptor instead.
 func (*SaveRecoveryRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *SaveRecoveryRequest) GetInstitutionSlug() string {
@@ -1284,7 +1284,7 @@ type SaveRecoveryResponse struct {
 
 func (x *SaveRecoveryResponse) Reset() {
 	*x = SaveRecoveryResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[15]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1296,7 +1296,7 @@ func (x *SaveRecoveryResponse) String() string {
 func (*SaveRecoveryResponse) ProtoMessage() {}
 
 func (x *SaveRecoveryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[15]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1309,7 +1309,7 @@ func (x *SaveRecoveryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveRecoveryResponse.ProtoReflect.Descriptor instead.
 func (*SaveRecoveryResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SaveRecoveryResponse) GetClosing() *SectionClosing {
@@ -1337,7 +1337,7 @@ type UnitRow struct {
 
 func (x *UnitRow) Reset() {
 	*x = UnitRow{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[16]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1349,7 +1349,7 @@ func (x *UnitRow) String() string {
 func (*UnitRow) ProtoMessage() {}
 
 func (x *UnitRow) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[16]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1362,7 +1362,7 @@ func (x *UnitRow) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnitRow.ProtoReflect.Descriptor instead.
 func (*UnitRow) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *UnitRow) GetStudent() *StudentRef {
@@ -1456,7 +1456,7 @@ type UnitClosing struct {
 
 func (x *UnitClosing) Reset() {
 	*x = UnitClosing{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[17]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1468,7 +1468,7 @@ func (x *UnitClosing) String() string {
 func (*UnitClosing) ProtoMessage() {}
 
 func (x *UnitClosing) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[17]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1481,7 +1481,7 @@ func (x *UnitClosing) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnitClosing.ProtoReflect.Descriptor instead.
 func (*UnitClosing) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *UnitClosing) GetAssignmentId() string {
@@ -1585,7 +1585,7 @@ type GetUnitClosingRequest struct {
 
 func (x *GetUnitClosingRequest) Reset() {
 	*x = GetUnitClosingRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[18]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1597,7 +1597,7 @@ func (x *GetUnitClosingRequest) String() string {
 func (*GetUnitClosingRequest) ProtoMessage() {}
 
 func (x *GetUnitClosingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[18]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1610,7 +1610,7 @@ func (x *GetUnitClosingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUnitClosingRequest.ProtoReflect.Descriptor instead.
 func (*GetUnitClosingRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetUnitClosingRequest) GetInstitutionSlug() string {
@@ -1636,7 +1636,7 @@ type GetUnitClosingResponse struct {
 
 func (x *GetUnitClosingResponse) Reset() {
 	*x = GetUnitClosingResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[19]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1648,7 +1648,7 @@ func (x *GetUnitClosingResponse) String() string {
 func (*GetUnitClosingResponse) ProtoMessage() {}
 
 func (x *GetUnitClosingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[19]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1661,7 +1661,7 @@ func (x *GetUnitClosingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUnitClosingResponse.ProtoReflect.Descriptor instead.
 func (*GetUnitClosingResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetUnitClosingResponse) GetClosing() *UnitClosing {
@@ -1681,7 +1681,7 @@ type ConfirmUnitRequest struct {
 
 func (x *ConfirmUnitRequest) Reset() {
 	*x = ConfirmUnitRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[20]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1693,7 +1693,7 @@ func (x *ConfirmUnitRequest) String() string {
 func (*ConfirmUnitRequest) ProtoMessage() {}
 
 func (x *ConfirmUnitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[20]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1706,7 +1706,7 @@ func (x *ConfirmUnitRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmUnitRequest.ProtoReflect.Descriptor instead.
 func (*ConfirmUnitRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ConfirmUnitRequest) GetInstitutionSlug() string {
@@ -1732,7 +1732,7 @@ type ConfirmUnitResponse struct {
 
 func (x *ConfirmUnitResponse) Reset() {
 	*x = ConfirmUnitResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[21]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1744,7 +1744,7 @@ func (x *ConfirmUnitResponse) String() string {
 func (*ConfirmUnitResponse) ProtoMessage() {}
 
 func (x *ConfirmUnitResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[21]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1757,7 +1757,7 @@ func (x *ConfirmUnitResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmUnitResponse.ProtoReflect.Descriptor instead.
 func (*ConfirmUnitResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ConfirmUnitResponse) GetClosing() *UnitClosing {
@@ -1780,7 +1780,7 @@ type SaveUnitRecoveryRequest struct {
 
 func (x *SaveUnitRecoveryRequest) Reset() {
 	*x = SaveUnitRecoveryRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[22]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1792,7 +1792,7 @@ func (x *SaveUnitRecoveryRequest) String() string {
 func (*SaveUnitRecoveryRequest) ProtoMessage() {}
 
 func (x *SaveUnitRecoveryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[22]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1805,7 +1805,7 @@ func (x *SaveUnitRecoveryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveUnitRecoveryRequest.ProtoReflect.Descriptor instead.
 func (*SaveUnitRecoveryRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *SaveUnitRecoveryRequest) GetInstitutionSlug() string {
@@ -1845,7 +1845,7 @@ type SaveUnitRecoveryResponse struct {
 
 func (x *SaveUnitRecoveryResponse) Reset() {
 	*x = SaveUnitRecoveryResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[23]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1857,7 +1857,7 @@ func (x *SaveUnitRecoveryResponse) String() string {
 func (*SaveUnitRecoveryResponse) ProtoMessage() {}
 
 func (x *SaveUnitRecoveryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[23]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1870,7 +1870,7 @@ func (x *SaveUnitRecoveryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveUnitRecoveryResponse.ProtoReflect.Descriptor instead.
 func (*SaveUnitRecoveryResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{23}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *SaveUnitRecoveryResponse) GetClosing() *UnitClosing {
@@ -1892,7 +1892,7 @@ type IssueRecordRequest struct {
 
 func (x *IssueRecordRequest) Reset() {
 	*x = IssueRecordRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[24]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1904,7 +1904,7 @@ func (x *IssueRecordRequest) String() string {
 func (*IssueRecordRequest) ProtoMessage() {}
 
 func (x *IssueRecordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[24]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1917,7 +1917,7 @@ func (x *IssueRecordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IssueRecordRequest.ProtoReflect.Descriptor instead.
 func (*IssueRecordRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{24}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *IssueRecordRequest) GetInstitutionSlug() string {
@@ -1957,7 +1957,7 @@ type IssueRecordResponse struct {
 
 func (x *IssueRecordResponse) Reset() {
 	*x = IssueRecordResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[25]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1969,7 +1969,7 @@ func (x *IssueRecordResponse) String() string {
 func (*IssueRecordResponse) ProtoMessage() {}
 
 func (x *IssueRecordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[25]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1982,7 +1982,7 @@ func (x *IssueRecordResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IssueRecordResponse.ProtoReflect.Descriptor instead.
 func (*IssueRecordResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{25}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *IssueRecordResponse) GetRecord() *RecordInfo {
@@ -2002,7 +2002,7 @@ type GetRecordRequest struct {
 
 func (x *GetRecordRequest) Reset() {
 	*x = GetRecordRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[26]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2014,7 +2014,7 @@ func (x *GetRecordRequest) String() string {
 func (*GetRecordRequest) ProtoMessage() {}
 
 func (x *GetRecordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[26]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2027,7 +2027,7 @@ func (x *GetRecordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRecordRequest.ProtoReflect.Descriptor instead.
 func (*GetRecordRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{26}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *GetRecordRequest) GetInstitutionSlug() string {
@@ -2055,7 +2055,7 @@ type GetRecordResponse struct {
 
 func (x *GetRecordResponse) Reset() {
 	*x = GetRecordResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[27]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2067,7 +2067,7 @@ func (x *GetRecordResponse) String() string {
 func (*GetRecordResponse) ProtoMessage() {}
 
 func (x *GetRecordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[27]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2080,7 +2080,7 @@ func (x *GetRecordResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRecordResponse.ProtoReflect.Descriptor instead.
 func (*GetRecordResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{27}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *GetRecordResponse) GetRecord() *RecordInfo {
@@ -2108,7 +2108,7 @@ type ExportResultsRequest struct {
 
 func (x *ExportResultsRequest) Reset() {
 	*x = ExportResultsRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[28]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2120,7 +2120,7 @@ func (x *ExportResultsRequest) String() string {
 func (*ExportResultsRequest) ProtoMessage() {}
 
 func (x *ExportResultsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[28]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2133,7 +2133,7 @@ func (x *ExportResultsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExportResultsRequest.ProtoReflect.Descriptor instead.
 func (*ExportResultsRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{28}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *ExportResultsRequest) GetInstitutionSlug() string {
@@ -2167,7 +2167,7 @@ type ExportResultsResponse struct {
 
 func (x *ExportResultsResponse) Reset() {
 	*x = ExportResultsResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[29]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2179,7 +2179,7 @@ func (x *ExportResultsResponse) String() string {
 func (*ExportResultsResponse) ProtoMessage() {}
 
 func (x *ExportResultsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[29]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2192,7 +2192,7 @@ func (x *ExportResultsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExportResultsResponse.ProtoReflect.Descriptor instead.
 func (*ExportResultsResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{29}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *ExportResultsResponse) GetFileName() string {
@@ -2230,7 +2230,7 @@ type PromotionRule struct {
 
 func (x *PromotionRule) Reset() {
 	*x = PromotionRule{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[30]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2242,7 +2242,7 @@ func (x *PromotionRule) String() string {
 func (*PromotionRule) ProtoMessage() {}
 
 func (x *PromotionRule) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[30]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2255,7 +2255,7 @@ func (x *PromotionRule) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PromotionRule.ProtoReflect.Descriptor instead.
 func (*PromotionRule) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{30}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *PromotionRule) GetLevelId() string {
@@ -2351,7 +2351,7 @@ type GetPromotionRulesRequest struct {
 
 func (x *GetPromotionRulesRequest) Reset() {
 	*x = GetPromotionRulesRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[31]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2363,7 +2363,7 @@ func (x *GetPromotionRulesRequest) String() string {
 func (*GetPromotionRulesRequest) ProtoMessage() {}
 
 func (x *GetPromotionRulesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[31]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2376,7 +2376,7 @@ func (x *GetPromotionRulesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPromotionRulesRequest.ProtoReflect.Descriptor instead.
 func (*GetPromotionRulesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{31}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *GetPromotionRulesRequest) GetInstitutionSlug() string {
@@ -2396,7 +2396,7 @@ type GetPromotionRulesResponse struct {
 
 func (x *GetPromotionRulesResponse) Reset() {
 	*x = GetPromotionRulesResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[32]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2408,7 +2408,7 @@ func (x *GetPromotionRulesResponse) String() string {
 func (*GetPromotionRulesResponse) ProtoMessage() {}
 
 func (x *GetPromotionRulesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[32]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2421,7 +2421,7 @@ func (x *GetPromotionRulesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPromotionRulesResponse.ProtoReflect.Descriptor instead.
 func (*GetPromotionRulesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{32}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *GetPromotionRulesResponse) GetRules() []*PromotionRule {
@@ -2451,7 +2451,7 @@ type SavePromotionRuleRequest struct {
 
 func (x *SavePromotionRuleRequest) Reset() {
 	*x = SavePromotionRuleRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[33]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2463,7 +2463,7 @@ func (x *SavePromotionRuleRequest) String() string {
 func (*SavePromotionRuleRequest) ProtoMessage() {}
 
 func (x *SavePromotionRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[33]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2476,7 +2476,7 @@ func (x *SavePromotionRuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SavePromotionRuleRequest.ProtoReflect.Descriptor instead.
 func (*SavePromotionRuleRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{33}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *SavePromotionRuleRequest) GetInstitutionSlug() string {
@@ -2524,7 +2524,7 @@ type SavePromotionRuleResponse struct {
 
 func (x *SavePromotionRuleResponse) Reset() {
 	*x = SavePromotionRuleResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[34]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2536,7 +2536,7 @@ func (x *SavePromotionRuleResponse) String() string {
 func (*SavePromotionRuleResponse) ProtoMessage() {}
 
 func (x *SavePromotionRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[34]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2549,7 +2549,7 @@ func (x *SavePromotionRuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SavePromotionRuleResponse.ProtoReflect.Descriptor instead.
 func (*SavePromotionRuleResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{34}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *SavePromotionRuleResponse) GetRules() []*PromotionRule {
@@ -2576,7 +2576,7 @@ type ResetPromotionRuleRequest struct {
 
 func (x *ResetPromotionRuleRequest) Reset() {
 	*x = ResetPromotionRuleRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[35]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2588,7 +2588,7 @@ func (x *ResetPromotionRuleRequest) String() string {
 func (*ResetPromotionRuleRequest) ProtoMessage() {}
 
 func (x *ResetPromotionRuleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[35]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2601,7 +2601,7 @@ func (x *ResetPromotionRuleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetPromotionRuleRequest.ProtoReflect.Descriptor instead.
 func (*ResetPromotionRuleRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{35}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *ResetPromotionRuleRequest) GetInstitutionSlug() string {
@@ -2628,7 +2628,7 @@ type ResetPromotionRuleResponse struct {
 
 func (x *ResetPromotionRuleResponse) Reset() {
 	*x = ResetPromotionRuleResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[36]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2640,7 +2640,7 @@ func (x *ResetPromotionRuleResponse) String() string {
 func (*ResetPromotionRuleResponse) ProtoMessage() {}
 
 func (x *ResetPromotionRuleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[36]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2653,7 +2653,7 @@ func (x *ResetPromotionRuleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetPromotionRuleResponse.ProtoReflect.Descriptor instead.
 func (*ResetPromotionRuleResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{36}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ResetPromotionRuleResponse) GetRules() []*PromotionRule {
@@ -2683,7 +2683,7 @@ type SetSiagieGradesRequest struct {
 
 func (x *SetSiagieGradesRequest) Reset() {
 	*x = SetSiagieGradesRequest{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[37]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2695,7 +2695,7 @@ func (x *SetSiagieGradesRequest) String() string {
 func (*SetSiagieGradesRequest) ProtoMessage() {}
 
 func (x *SetSiagieGradesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[37]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2708,7 +2708,7 @@ func (x *SetSiagieGradesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetSiagieGradesRequest.ProtoReflect.Descriptor instead.
 func (*SetSiagieGradesRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{37}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *SetSiagieGradesRequest) GetInstitutionSlug() string {
@@ -2755,7 +2755,7 @@ type SetSiagieGradesResponse struct {
 
 func (x *SetSiagieGradesResponse) Reset() {
 	*x = SetSiagieGradesResponse{}
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[38]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2767,7 +2767,7 @@ func (x *SetSiagieGradesResponse) String() string {
 func (*SetSiagieGradesResponse) ProtoMessage() {}
 
 func (x *SetSiagieGradesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_assessment_v1_closing_proto_msgTypes[38]
+	mi := &file_ltedu_assessment_v1_closing_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2780,7 +2780,7 @@ func (x *SetSiagieGradesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetSiagieGradesResponse.ProtoReflect.Descriptor instead.
 func (*SetSiagieGradesResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_assessment_v1_closing_proto_rawDescGZIP(), []int{38}
+	return file_ltedu_assessment_v1_closing_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *SetSiagieGradesResponse) GetSection() *SectionClosing {
@@ -2790,11 +2790,11 @@ func (x *SetSiagieGradesResponse) GetSection() *SectionClosing {
 	return nil
 }
 
-var File_joseph_assessment_v1_closing_proto protoreflect.FileDescriptor
+var File_ltedu_assessment_v1_closing_proto protoreflect.FileDescriptor
 
-const file_joseph_assessment_v1_closing_proto_rawDesc = "" +
+const file_ltedu_assessment_v1_closing_proto_rawDesc = "" +
 	"\n" +
-	"\"joseph/assessment/v1/closing.proto\x12\x14joseph.assessment.v1\x1a!joseph/academic/v1/academic.proto\x1a%joseph/assessment/v1/assessment.proto\"\xe0\x02\n" +
+	"!ltedu/assessment/v1/closing.proto\x12\x13ltedu.assessment.v1\x1a ltedu/academic/v1/academic.proto\x1a$ltedu/assessment/v1/assessment.proto\"\xe0\x02\n" +
 	"\n" +
 	"RecordInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
@@ -2812,18 +2812,18 @@ const file_joseph_assessment_v1_closing_proto_rawDesc = "" +
 	" \x01(\tR\bissuedAt\x12$\n" +
 	"\x0eact_version_id\x18\v \x01(\tR\factVersionId\x12\x1d\n" +
 	"\n" +
-	"act_status\x18\f \x01(\tR\tactStatus\"\xb0\x02\n" +
+	"act_status\x18\f \x01(\tR\tactStatus\"\xaf\x02\n" +
 	"\x15SectionClosingSummary\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x01 \x01(\tR\tsectionId\x12\x14\n" +
 	"\x05label\x18\x02 \x01(\tR\x05label\x12\x1a\n" +
-	"\bstudents\x18\x03 \x01(\x05R\bstudents\x12O\n" +
-	"\x06counts\x18\x04 \x03(\v27.joseph.assessment.v1.SectionClosingSummary.CountsEntryR\x06counts\x12\x1c\n" +
+	"\bstudents\x18\x03 \x01(\x05R\bstudents\x12N\n" +
+	"\x06counts\x18\x04 \x03(\v26.ltedu.assessment.v1.SectionClosingSummary.CountsEntryR\x06counts\x12\x1c\n" +
 	"\tconfirmed\x18\x05 \x01(\x05R\tconfirmed\x12\x1c\n" +
 	"\trecovered\x18\x06 \x01(\x05R\trecovered\x1a9\n" +
 	"\vCountsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x82\x03\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x81\x03\n" +
 	"\x12UnitClosingSummary\x12#\n" +
 	"\rassignment_id\x18\x01 \x01(\tR\fassignmentId\x12\x1d\n" +
 	"\n" +
@@ -2833,34 +2833,34 @@ const file_joseph_assessment_v1_closing_proto_rawDesc = "" +
 	"\n" +
 	"staff_name\x18\x05 \x01(\tR\tstaffName\x12\x1a\n" +
 	"\bstudents\x18\x06 \x01(\x05R\bstudents\x12\x1c\n" +
-	"\tconfirmed\x18\a \x01(\bR\tconfirmed\x12L\n" +
-	"\x06counts\x18\b \x03(\v24.joseph.assessment.v1.UnitClosingSummary.CountsEntryR\x06counts\x1a9\n" +
+	"\tconfirmed\x18\a \x01(\bR\tconfirmed\x12K\n" +
+	"\x06counts\x18\b \x03(\v23.ltedu.assessment.v1.UnitClosingSummary.CountsEntryR\x06counts\x1a9\n" +
 	"\vCountsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"[\n" +
 	"\x11GetClosingRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
-	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xa0\x03\n" +
+	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\x9b\x03\n" +
 	"\x12GetClosingResponse\x12\x12\n" +
-	"\x04mode\x18\x01 \x01(\tR\x04mode\x124\n" +
-	"\aperiods\x18\x02 \x03(\v2\x1a.joseph.academic.v1.PeriodR\aperiods\x122\n" +
-	"\x06period\x18\x03 \x01(\v2\x1a.joseph.academic.v1.PeriodR\x06period\x12(\n" +
+	"\x04mode\x18\x01 \x01(\tR\x04mode\x123\n" +
+	"\aperiods\x18\x02 \x03(\v2\x19.ltedu.academic.v1.PeriodR\aperiods\x121\n" +
+	"\x06period\x18\x03 \x01(\v2\x19.ltedu.academic.v1.PeriodR\x06period\x12(\n" +
 	"\x10last_term_closed\x18\x04 \x01(\bR\x0elastTermClosed\x12\x1d\n" +
 	"\n" +
-	"can_manage\x18\x05 \x01(\bR\tcanManage\x12G\n" +
-	"\bsections\x18\x06 \x03(\v2+.joseph.assessment.v1.SectionClosingSummaryR\bsections\x12>\n" +
-	"\x05units\x18\a \x03(\v2(.joseph.assessment.v1.UnitClosingSummaryR\x05units\x12:\n" +
-	"\arecords\x18\b \x03(\v2 .joseph.assessment.v1.RecordInfoR\arecords\"\xa9\x01\n" +
+	"can_manage\x18\x05 \x01(\bR\tcanManage\x12F\n" +
+	"\bsections\x18\x06 \x03(\v2*.ltedu.assessment.v1.SectionClosingSummaryR\bsections\x12=\n" +
+	"\x05units\x18\a \x03(\v2'.ltedu.assessment.v1.UnitClosingSummaryR\x05units\x129\n" +
+	"\arecords\x18\b \x03(\v2\x1f.ltedu.assessment.v1.RecordInfoR\arecords\"\xa8\x01\n" +
 	"\vClosingArea\x12\x1d\n" +
 	"\n" +
 	"subject_id\x18\x01 \x01(\tR\tsubjectId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12D\n" +
-	"\fcompetencies\x18\x03 \x03(\v2 .joseph.assessment.v1.CompetencyR\fcompetencies\x12!\n" +
-	"\fsubject_code\x18\x04 \x01(\tR\vsubjectCode\"\xb3\x06\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12C\n" +
+	"\fcompetencies\x18\x03 \x03(\v2\x1f.ltedu.assessment.v1.CompetencyR\fcompetencies\x12!\n" +
+	"\fsubject_code\x18\x04 \x01(\tR\vsubjectCode\"\xb0\x06\n" +
 	"\n" +
-	"ClosingRow\x12:\n" +
-	"\astudent\x18\x01 \x01(\v2 .joseph.assessment.v1.StudentRefR\astudent\x12A\n" +
-	"\x05final\x18\x02 \x03(\v2+.joseph.assessment.v1.ClosingRow.FinalEntryR\x05final\x12\x1a\n" +
+	"ClosingRow\x129\n" +
+	"\astudent\x18\x01 \x01(\v2\x1f.ltedu.assessment.v1.StudentRefR\astudent\x12@\n" +
+	"\x05final\x18\x02 \x03(\v2*.ltedu.assessment.v1.ClosingRow.FinalEntryR\x05final\x12\x1a\n" +
 	"\bcomputed\x18\x03 \x01(\tR\bcomputed\x12\x16\n" +
 	"\x06reason\x18\x04 \x01(\tR\x06reason\x12\x18\n" +
 	"\adecided\x18\x05 \x01(\tR\adecided\x12#\n" +
@@ -2869,8 +2869,8 @@ const file_joseph_assessment_v1_closing_proto_rawDesc = "" +
 	"\tsituation\x18\b \x01(\tR\tsituation\x12\x1c\n" +
 	"\tconfirmed\x18\t \x01(\bR\tconfirmed\x12\x18\n" +
 	"\atargets\x18\n" +
-	" \x03(\tR\atargets\x12J\n" +
-	"\brecovery\x18\v \x03(\v2..joseph.assessment.v1.ClosingRow.RecoveryEntryR\brecovery\x12%\n" +
+	" \x03(\tR\atargets\x12I\n" +
+	"\brecovery\x18\v \x03(\v2-.ltedu.assessment.v1.ClosingRow.RecoveryEntryR\brecovery\x12%\n" +
 	"\x0eafter_recovery\x18\f \x01(\tR\rafterRecovery\x12#\n" +
 	"\renrollment_id\x18\r \x01(\tR\fenrollmentId\x12\x1f\n" +
 	"\vgrade_short\x18\x0e \x01(\tR\n" +
@@ -2886,7 +2886,7 @@ const file_joseph_assessment_v1_closing_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a;\n" +
 	"\rRecoveryEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x98\x04\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x95\x04\n" +
 	"\x0eSectionClosing\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x01 \x01(\tR\tsectionId\x12#\n" +
@@ -2904,16 +2904,16 @@ const file_joseph_assessment_v1_closing_proto_rawDesc = "" +
 	"\x10last_term_closed\x18\n" +
 	" \x01(\bR\x0elastTermClosed\x12\x1d\n" +
 	"\n" +
-	"can_manage\x18\v \x01(\bR\tcanManage\x127\n" +
-	"\x05areas\x18\f \x03(\v2!.joseph.assessment.v1.ClosingAreaR\x05areas\x124\n" +
-	"\x04rows\x18\r \x03(\v2 .joseph.assessment.v1.ClosingRowR\x04rows\x12:\n" +
-	"\arecords\x18\x0e \x03(\v2 .joseph.assessment.v1.RecordInfoR\arecords\"d\n" +
+	"can_manage\x18\v \x01(\bR\tcanManage\x126\n" +
+	"\x05areas\x18\f \x03(\v2 .ltedu.assessment.v1.ClosingAreaR\x05areas\x123\n" +
+	"\x04rows\x18\r \x03(\v2\x1f.ltedu.assessment.v1.ClosingRowR\x04rows\x129\n" +
+	"\arecords\x18\x0e \x03(\v2\x1f.ltedu.assessment.v1.RecordInfoR\arecords\"d\n" +
 	"\x18GetSectionClosingRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"section_id\x18\x02 \x01(\tR\tsectionId\"[\n" +
-	"\x19GetSectionClosingResponse\x12>\n" +
-	"\aclosing\x18\x01 \x01(\v2$.joseph.assessment.v1.SectionClosingR\aclosing\"\xb3\x01\n" +
+	"section_id\x18\x02 \x01(\tR\tsectionId\"Z\n" +
+	"\x19GetSectionClosingResponse\x12=\n" +
+	"\aclosing\x18\x01 \x01(\v2#.ltedu.assessment.v1.SectionClosingR\aclosing\"\xb3\x01\n" +
 	"\x16DecideSituationRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
@@ -2921,30 +2921,30 @@ const file_joseph_assessment_v1_closing_proto_rawDesc = "" +
 	"\n" +
 	"student_id\x18\x03 \x01(\tR\tstudentId\x12\x1c\n" +
 	"\tsituation\x18\x04 \x01(\tR\tsituation\x12\x12\n" +
-	"\x04note\x18\x05 \x01(\tR\x04note\"Y\n" +
-	"\x17DecideSituationResponse\x12>\n" +
-	"\aclosing\x18\x01 \x01(\v2$.joseph.assessment.v1.SectionClosingR\aclosing\"a\n" +
+	"\x04note\x18\x05 \x01(\tR\x04note\"X\n" +
+	"\x17DecideSituationResponse\x12=\n" +
+	"\aclosing\x18\x01 \x01(\v2#.ltedu.assessment.v1.SectionClosingR\aclosing\"a\n" +
 	"\x15ConfirmSectionRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
-	"section_id\x18\x02 \x01(\tR\tsectionId\"X\n" +
-	"\x16ConfirmSectionResponse\x12>\n" +
-	"\aclosing\x18\x01 \x01(\v2$.joseph.assessment.v1.SectionClosingR\aclosing\"\x88\x02\n" +
+	"section_id\x18\x02 \x01(\tR\tsectionId\"W\n" +
+	"\x16ConfirmSectionResponse\x12=\n" +
+	"\aclosing\x18\x01 \x01(\v2#.ltedu.assessment.v1.SectionClosingR\aclosing\"\x87\x02\n" +
 	"\x13SaveRecoveryRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x02 \x01(\tR\tsectionId\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x03 \x01(\tR\tstudentId\x12M\n" +
-	"\x06levels\x18\x04 \x03(\v25.joseph.assessment.v1.SaveRecoveryRequest.LevelsEntryR\x06levels\x1a9\n" +
+	"student_id\x18\x03 \x01(\tR\tstudentId\x12L\n" +
+	"\x06levels\x18\x04 \x03(\v24.ltedu.assessment.v1.SaveRecoveryRequest.LevelsEntryR\x06levels\x1a9\n" +
 	"\vLevelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"V\n" +
-	"\x14SaveRecoveryResponse\x12>\n" +
-	"\aclosing\x18\x01 \x01(\v2$.joseph.assessment.v1.SectionClosingR\aclosing\"\xff\x03\n" +
-	"\aUnitRow\x12:\n" +
-	"\astudent\x18\x01 \x01(\v2 .joseph.assessment.v1.StudentRefR\astudent\x12A\n" +
-	"\x06scores\x18\x02 \x03(\v2).joseph.assessment.v1.UnitRow.ScoresEntryR\x06scores\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"U\n" +
+	"\x14SaveRecoveryResponse\x12=\n" +
+	"\aclosing\x18\x01 \x01(\v2#.ltedu.assessment.v1.SectionClosingR\aclosing\"\xfd\x03\n" +
+	"\aUnitRow\x129\n" +
+	"\astudent\x18\x01 \x01(\v2\x1f.ltedu.assessment.v1.StudentRefR\astudent\x12@\n" +
+	"\x06scores\x18\x02 \x03(\v2(.ltedu.assessment.v1.UnitRow.ScoresEntryR\x06scores\x12\x1d\n" +
 	"\aaverage\x18\x03 \x01(\x01H\x00R\aaverage\x88\x01\x01\x12\x19\n" +
 	"\x05grade\x18\x04 \x01(\x05H\x01R\x05grade\x88\x01\x01\x12\x18\n" +
 	"\amissing\x18\x05 \x01(\x05R\amissing\x12%\n" +
@@ -2962,7 +2962,7 @@ const file_joseph_assessment_v1_closing_proto_rawDesc = "" +
 	"\b_averageB\b\n" +
 	"\x06_gradeB\x11\n" +
 	"\x0f_recovery_scoreB\x0e\n" +
-	"\f_final_grade\"\x94\x04\n" +
+	"\f_final_grade\"\x91\x04\n" +
 	"\vUnitClosing\x12#\n" +
 	"\rassignment_id\x18\x01 \x01(\tR\fassignmentId\x12!\n" +
 	"\fsubject_name\x18\x02 \x01(\tR\vsubjectName\x12\x1d\n" +
@@ -2979,42 +2979,42 @@ const file_joseph_assessment_v1_closing_proto_rawDesc = "" +
 	"\rabsence_limit\x18\t \x01(\x05R\fabsenceLimit\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\n" +
-	" \x01(\bR\tcanManage\x12B\n" +
-	"\vevaluations\x18\v \x03(\v2 .joseph.assessment.v1.EvaluationR\vevaluations\x121\n" +
-	"\x04rows\x18\f \x03(\v2\x1d.joseph.assessment.v1.UnitRowR\x04rows\x12:\n" +
-	"\arecords\x18\r \x03(\v2 .joseph.assessment.v1.RecordInfoR\arecords\"g\n" +
+	" \x01(\bR\tcanManage\x12A\n" +
+	"\vevaluations\x18\v \x03(\v2\x1f.ltedu.assessment.v1.EvaluationR\vevaluations\x120\n" +
+	"\x04rows\x18\f \x03(\v2\x1c.ltedu.assessment.v1.UnitRowR\x04rows\x129\n" +
+	"\arecords\x18\r \x03(\v2\x1f.ltedu.assessment.v1.RecordInfoR\arecords\"g\n" +
 	"\x15GetUnitClosingRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
-	"\rassignment_id\x18\x02 \x01(\tR\fassignmentId\"U\n" +
-	"\x16GetUnitClosingResponse\x12;\n" +
-	"\aclosing\x18\x01 \x01(\v2!.joseph.assessment.v1.UnitClosingR\aclosing\"d\n" +
+	"\rassignment_id\x18\x02 \x01(\tR\fassignmentId\"T\n" +
+	"\x16GetUnitClosingResponse\x12:\n" +
+	"\aclosing\x18\x01 \x01(\v2 .ltedu.assessment.v1.UnitClosingR\aclosing\"d\n" +
 	"\x12ConfirmUnitRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
-	"\rassignment_id\x18\x02 \x01(\tR\fassignmentId\"R\n" +
-	"\x13ConfirmUnitResponse\x12;\n" +
-	"\aclosing\x18\x01 \x01(\v2!.joseph.assessment.v1.UnitClosingR\aclosing\"\xad\x01\n" +
+	"\rassignment_id\x18\x02 \x01(\tR\fassignmentId\"Q\n" +
+	"\x13ConfirmUnitResponse\x12:\n" +
+	"\aclosing\x18\x01 \x01(\v2 .ltedu.assessment.v1.UnitClosingR\aclosing\"\xad\x01\n" +
 	"\x17SaveUnitRecoveryRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12#\n" +
 	"\rassignment_id\x18\x02 \x01(\tR\fassignmentId\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x03 \x01(\tR\tstudentId\x12\x19\n" +
 	"\x05score\x18\x04 \x01(\x05H\x00R\x05score\x88\x01\x01B\b\n" +
-	"\x06_score\"W\n" +
-	"\x18SaveUnitRecoveryResponse\x12;\n" +
-	"\aclosing\x18\x01 \x01(\v2!.joseph.assessment.v1.UnitClosingR\aclosing\"\x97\x01\n" +
+	"\x06_score\"V\n" +
+	"\x18SaveUnitRecoveryResponse\x12:\n" +
+	"\aclosing\x18\x01 \x01(\v2 .ltedu.assessment.v1.UnitClosingR\aclosing\"\x97\x01\n" +
 	"\x12IssueRecordRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
 	"section_id\x18\x02 \x01(\tR\tsectionId\x12#\n" +
 	"\rassignment_id\x18\x03 \x01(\tR\fassignmentId\x12\x12\n" +
-	"\x04kind\x18\x04 \x01(\tR\x04kind\"O\n" +
-	"\x13IssueRecordResponse\x128\n" +
-	"\x06record\x18\x01 \x01(\v2 .joseph.assessment.v1.RecordInfoR\x06record\"M\n" +
+	"\x04kind\x18\x04 \x01(\tR\x04kind\"N\n" +
+	"\x13IssueRecordResponse\x127\n" +
+	"\x06record\x18\x01 \x01(\v2\x1f.ltedu.assessment.v1.RecordInfoR\x06record\"M\n" +
 	"\x10GetRecordRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"g\n" +
-	"\x11GetRecordResponse\x128\n" +
-	"\x06record\x18\x01 \x01(\v2 .joseph.assessment.v1.RecordInfoR\x06record\x12\x18\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"f\n" +
+	"\x11GetRecordResponse\x127\n" +
+	"\x06record\x18\x01 \x01(\v2\x1f.ltedu.assessment.v1.RecordInfoR\x06record\x12\x18\n" +
 	"\acontent\x18\x02 \x01(\tR\acontent\"\x85\x01\n" +
 	"\x14ExportResultsRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
@@ -3042,9 +3042,9 @@ const file_joseph_assessment_v1_closing_proto_rawDesc = "" +
 	"\rdefault_areas\x18\v \x01(\x05R\fdefaultAreas\x12+\n" +
 	"\x11default_automatic\x18\f \x01(\bR\x10defaultAutomatic\"E\n" +
 	"\x18GetPromotionRulesRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"u\n" +
-	"\x19GetPromotionRulesResponse\x129\n" +
-	"\x05rules\x18\x01 \x03(\v2#.joseph.assessment.v1.PromotionRuleR\x05rules\x12\x1d\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"t\n" +
+	"\x19GetPromotionRulesResponse\x128\n" +
+	"\x05rules\x18\x01 \x03(\v2\".ltedu.assessment.v1.PromotionRuleR\x05rules\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\x02 \x01(\bR\tcanManage\"\xa8\x01\n" +
 	"\x18SavePromotionRuleRequest\x12)\n" +
@@ -3052,16 +3052,16 @@ const file_joseph_assessment_v1_closing_proto_rawDesc = "" +
 	"\blevel_id\x18\x02 \x01(\tR\alevelId\x12\x1c\n" +
 	"\tautomatic\x18\x03 \x01(\bR\tautomatic\x12\x14\n" +
 	"\x05areas\x18\x04 \x01(\x05R\x05areas\x12\x12\n" +
-	"\x04note\x18\x05 \x01(\tR\x04note\"u\n" +
-	"\x19SavePromotionRuleResponse\x129\n" +
-	"\x05rules\x18\x01 \x03(\v2#.joseph.assessment.v1.PromotionRuleR\x05rules\x12\x1d\n" +
+	"\x04note\x18\x05 \x01(\tR\x04note\"t\n" +
+	"\x19SavePromotionRuleResponse\x128\n" +
+	"\x05rules\x18\x01 \x03(\v2\".ltedu.assessment.v1.PromotionRuleR\x05rules\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\x02 \x01(\bR\tcanManage\"a\n" +
 	"\x19ResetPromotionRuleRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x19\n" +
-	"\blevel_id\x18\x02 \x01(\tR\alevelId\"v\n" +
-	"\x1aResetPromotionRuleResponse\x129\n" +
-	"\x05rules\x18\x01 \x03(\v2#.joseph.assessment.v1.PromotionRuleR\x05rules\x12\x1d\n" +
+	"\blevel_id\x18\x02 \x01(\tR\alevelId\"u\n" +
+	"\x1aResetPromotionRuleResponse\x128\n" +
+	"\x05rules\x18\x01 \x03(\v2\".ltedu.assessment.v1.PromotionRuleR\x05rules\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\x02 \x01(\bR\tcanManage\"\xaf\x01\n" +
 	"\x16SetSiagieGradesRequest\x12)\n" +
@@ -3071,155 +3071,155 @@ const file_joseph_assessment_v1_closing_proto_rawDesc = "" +
 	"\vstudent_ids\x18\x03 \x03(\tR\n" +
 	"studentIds\x12\x16\n" +
 	"\x06status\x18\x04 \x01(\tR\x06status\x12\x12\n" +
-	"\x04note\x18\x05 \x01(\tR\x04note\"Y\n" +
-	"\x17SetSiagieGradesResponse\x12>\n" +
-	"\asection\x18\x01 \x01(\v2$.joseph.assessment.v1.SectionClosingR\asection2\xf0\f\n" +
-	"\x0eClosingService\x12_\n" +
+	"\x04note\x18\x05 \x01(\tR\x04note\"X\n" +
+	"\x17SetSiagieGradesResponse\x12=\n" +
+	"\asection\x18\x01 \x01(\v2#.ltedu.assessment.v1.SectionClosingR\asection2\xd2\f\n" +
+	"\x0eClosingService\x12]\n" +
 	"\n" +
-	"GetClosing\x12'.joseph.assessment.v1.GetClosingRequest\x1a(.joseph.assessment.v1.GetClosingResponse\x12t\n" +
-	"\x11GetSectionClosing\x12..joseph.assessment.v1.GetSectionClosingRequest\x1a/.joseph.assessment.v1.GetSectionClosingResponse\x12n\n" +
-	"\x0fDecideSituation\x12,.joseph.assessment.v1.DecideSituationRequest\x1a-.joseph.assessment.v1.DecideSituationResponse\x12k\n" +
-	"\x0eConfirmSection\x12+.joseph.assessment.v1.ConfirmSectionRequest\x1a,.joseph.assessment.v1.ConfirmSectionResponse\x12e\n" +
-	"\fSaveRecovery\x12).joseph.assessment.v1.SaveRecoveryRequest\x1a*.joseph.assessment.v1.SaveRecoveryResponse\x12k\n" +
-	"\x0eGetUnitClosing\x12+.joseph.assessment.v1.GetUnitClosingRequest\x1a,.joseph.assessment.v1.GetUnitClosingResponse\x12b\n" +
-	"\vConfirmUnit\x12(.joseph.assessment.v1.ConfirmUnitRequest\x1a).joseph.assessment.v1.ConfirmUnitResponse\x12q\n" +
-	"\x10SaveUnitRecovery\x12-.joseph.assessment.v1.SaveUnitRecoveryRequest\x1a..joseph.assessment.v1.SaveUnitRecoveryResponse\x12b\n" +
-	"\vIssueRecord\x12(.joseph.assessment.v1.IssueRecordRequest\x1a).joseph.assessment.v1.IssueRecordResponse\x12\\\n" +
-	"\tGetRecord\x12&.joseph.assessment.v1.GetRecordRequest\x1a'.joseph.assessment.v1.GetRecordResponse\x12h\n" +
-	"\rExportResults\x12*.joseph.assessment.v1.ExportResultsRequest\x1a+.joseph.assessment.v1.ExportResultsResponse\x12t\n" +
-	"\x11GetPromotionRules\x12..joseph.assessment.v1.GetPromotionRulesRequest\x1a/.joseph.assessment.v1.GetPromotionRulesResponse\x12t\n" +
-	"\x11SavePromotionRule\x12..joseph.assessment.v1.SavePromotionRuleRequest\x1a/.joseph.assessment.v1.SavePromotionRuleResponse\x12w\n" +
-	"\x12ResetPromotionRule\x12/.joseph.assessment.v1.ResetPromotionRuleRequest\x1a0.joseph.assessment.v1.ResetPromotionRuleResponse\x12n\n" +
-	"\x0fSetSiagieGrades\x12,.joseph.assessment.v1.SetSiagieGradesRequest\x1a-.joseph.assessment.v1.SetSiagieGradesResponseBAZ?api/internal/adapter/inbound/grpc/gen/assessmentv1;assessmentv1b\x06proto3"
+	"GetClosing\x12&.ltedu.assessment.v1.GetClosingRequest\x1a'.ltedu.assessment.v1.GetClosingResponse\x12r\n" +
+	"\x11GetSectionClosing\x12-.ltedu.assessment.v1.GetSectionClosingRequest\x1a..ltedu.assessment.v1.GetSectionClosingResponse\x12l\n" +
+	"\x0fDecideSituation\x12+.ltedu.assessment.v1.DecideSituationRequest\x1a,.ltedu.assessment.v1.DecideSituationResponse\x12i\n" +
+	"\x0eConfirmSection\x12*.ltedu.assessment.v1.ConfirmSectionRequest\x1a+.ltedu.assessment.v1.ConfirmSectionResponse\x12c\n" +
+	"\fSaveRecovery\x12(.ltedu.assessment.v1.SaveRecoveryRequest\x1a).ltedu.assessment.v1.SaveRecoveryResponse\x12i\n" +
+	"\x0eGetUnitClosing\x12*.ltedu.assessment.v1.GetUnitClosingRequest\x1a+.ltedu.assessment.v1.GetUnitClosingResponse\x12`\n" +
+	"\vConfirmUnit\x12'.ltedu.assessment.v1.ConfirmUnitRequest\x1a(.ltedu.assessment.v1.ConfirmUnitResponse\x12o\n" +
+	"\x10SaveUnitRecovery\x12,.ltedu.assessment.v1.SaveUnitRecoveryRequest\x1a-.ltedu.assessment.v1.SaveUnitRecoveryResponse\x12`\n" +
+	"\vIssueRecord\x12'.ltedu.assessment.v1.IssueRecordRequest\x1a(.ltedu.assessment.v1.IssueRecordResponse\x12Z\n" +
+	"\tGetRecord\x12%.ltedu.assessment.v1.GetRecordRequest\x1a&.ltedu.assessment.v1.GetRecordResponse\x12f\n" +
+	"\rExportResults\x12).ltedu.assessment.v1.ExportResultsRequest\x1a*.ltedu.assessment.v1.ExportResultsResponse\x12r\n" +
+	"\x11GetPromotionRules\x12-.ltedu.assessment.v1.GetPromotionRulesRequest\x1a..ltedu.assessment.v1.GetPromotionRulesResponse\x12r\n" +
+	"\x11SavePromotionRule\x12-.ltedu.assessment.v1.SavePromotionRuleRequest\x1a..ltedu.assessment.v1.SavePromotionRuleResponse\x12u\n" +
+	"\x12ResetPromotionRule\x12..ltedu.assessment.v1.ResetPromotionRuleRequest\x1a/.ltedu.assessment.v1.ResetPromotionRuleResponse\x12l\n" +
+	"\x0fSetSiagieGrades\x12+.ltedu.assessment.v1.SetSiagieGradesRequest\x1a,.ltedu.assessment.v1.SetSiagieGradesResponseBAZ?api/internal/adapter/inbound/grpc/gen/assessmentv1;assessmentv1b\x06proto3"
 
 var (
-	file_joseph_assessment_v1_closing_proto_rawDescOnce sync.Once
-	file_joseph_assessment_v1_closing_proto_rawDescData []byte
+	file_ltedu_assessment_v1_closing_proto_rawDescOnce sync.Once
+	file_ltedu_assessment_v1_closing_proto_rawDescData []byte
 )
 
-func file_joseph_assessment_v1_closing_proto_rawDescGZIP() []byte {
-	file_joseph_assessment_v1_closing_proto_rawDescOnce.Do(func() {
-		file_joseph_assessment_v1_closing_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_assessment_v1_closing_proto_rawDesc), len(file_joseph_assessment_v1_closing_proto_rawDesc)))
+func file_ltedu_assessment_v1_closing_proto_rawDescGZIP() []byte {
+	file_ltedu_assessment_v1_closing_proto_rawDescOnce.Do(func() {
+		file_ltedu_assessment_v1_closing_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_assessment_v1_closing_proto_rawDesc), len(file_ltedu_assessment_v1_closing_proto_rawDesc)))
 	})
-	return file_joseph_assessment_v1_closing_proto_rawDescData
+	return file_ltedu_assessment_v1_closing_proto_rawDescData
 }
 
-var file_joseph_assessment_v1_closing_proto_msgTypes = make([]protoimpl.MessageInfo, 45)
-var file_joseph_assessment_v1_closing_proto_goTypes = []any{
-	(*RecordInfo)(nil),                 // 0: joseph.assessment.v1.RecordInfo
-	(*SectionClosingSummary)(nil),      // 1: joseph.assessment.v1.SectionClosingSummary
-	(*UnitClosingSummary)(nil),         // 2: joseph.assessment.v1.UnitClosingSummary
-	(*GetClosingRequest)(nil),          // 3: joseph.assessment.v1.GetClosingRequest
-	(*GetClosingResponse)(nil),         // 4: joseph.assessment.v1.GetClosingResponse
-	(*ClosingArea)(nil),                // 5: joseph.assessment.v1.ClosingArea
-	(*ClosingRow)(nil),                 // 6: joseph.assessment.v1.ClosingRow
-	(*SectionClosing)(nil),             // 7: joseph.assessment.v1.SectionClosing
-	(*GetSectionClosingRequest)(nil),   // 8: joseph.assessment.v1.GetSectionClosingRequest
-	(*GetSectionClosingResponse)(nil),  // 9: joseph.assessment.v1.GetSectionClosingResponse
-	(*DecideSituationRequest)(nil),     // 10: joseph.assessment.v1.DecideSituationRequest
-	(*DecideSituationResponse)(nil),    // 11: joseph.assessment.v1.DecideSituationResponse
-	(*ConfirmSectionRequest)(nil),      // 12: joseph.assessment.v1.ConfirmSectionRequest
-	(*ConfirmSectionResponse)(nil),     // 13: joseph.assessment.v1.ConfirmSectionResponse
-	(*SaveRecoveryRequest)(nil),        // 14: joseph.assessment.v1.SaveRecoveryRequest
-	(*SaveRecoveryResponse)(nil),       // 15: joseph.assessment.v1.SaveRecoveryResponse
-	(*UnitRow)(nil),                    // 16: joseph.assessment.v1.UnitRow
-	(*UnitClosing)(nil),                // 17: joseph.assessment.v1.UnitClosing
-	(*GetUnitClosingRequest)(nil),      // 18: joseph.assessment.v1.GetUnitClosingRequest
-	(*GetUnitClosingResponse)(nil),     // 19: joseph.assessment.v1.GetUnitClosingResponse
-	(*ConfirmUnitRequest)(nil),         // 20: joseph.assessment.v1.ConfirmUnitRequest
-	(*ConfirmUnitResponse)(nil),        // 21: joseph.assessment.v1.ConfirmUnitResponse
-	(*SaveUnitRecoveryRequest)(nil),    // 22: joseph.assessment.v1.SaveUnitRecoveryRequest
-	(*SaveUnitRecoveryResponse)(nil),   // 23: joseph.assessment.v1.SaveUnitRecoveryResponse
-	(*IssueRecordRequest)(nil),         // 24: joseph.assessment.v1.IssueRecordRequest
-	(*IssueRecordResponse)(nil),        // 25: joseph.assessment.v1.IssueRecordResponse
-	(*GetRecordRequest)(nil),           // 26: joseph.assessment.v1.GetRecordRequest
-	(*GetRecordResponse)(nil),          // 27: joseph.assessment.v1.GetRecordResponse
-	(*ExportResultsRequest)(nil),       // 28: joseph.assessment.v1.ExportResultsRequest
-	(*ExportResultsResponse)(nil),      // 29: joseph.assessment.v1.ExportResultsResponse
-	(*PromotionRule)(nil),              // 30: joseph.assessment.v1.PromotionRule
-	(*GetPromotionRulesRequest)(nil),   // 31: joseph.assessment.v1.GetPromotionRulesRequest
-	(*GetPromotionRulesResponse)(nil),  // 32: joseph.assessment.v1.GetPromotionRulesResponse
-	(*SavePromotionRuleRequest)(nil),   // 33: joseph.assessment.v1.SavePromotionRuleRequest
-	(*SavePromotionRuleResponse)(nil),  // 34: joseph.assessment.v1.SavePromotionRuleResponse
-	(*ResetPromotionRuleRequest)(nil),  // 35: joseph.assessment.v1.ResetPromotionRuleRequest
-	(*ResetPromotionRuleResponse)(nil), // 36: joseph.assessment.v1.ResetPromotionRuleResponse
-	(*SetSiagieGradesRequest)(nil),     // 37: joseph.assessment.v1.SetSiagieGradesRequest
-	(*SetSiagieGradesResponse)(nil),    // 38: joseph.assessment.v1.SetSiagieGradesResponse
-	nil,                                // 39: joseph.assessment.v1.SectionClosingSummary.CountsEntry
-	nil,                                // 40: joseph.assessment.v1.UnitClosingSummary.CountsEntry
-	nil,                                // 41: joseph.assessment.v1.ClosingRow.FinalEntry
-	nil,                                // 42: joseph.assessment.v1.ClosingRow.RecoveryEntry
-	nil,                                // 43: joseph.assessment.v1.SaveRecoveryRequest.LevelsEntry
-	nil,                                // 44: joseph.assessment.v1.UnitRow.ScoresEntry
-	(*academicv1.Period)(nil),          // 45: joseph.academic.v1.Period
-	(*Competency)(nil),                 // 46: joseph.assessment.v1.Competency
-	(*StudentRef)(nil),                 // 47: joseph.assessment.v1.StudentRef
-	(*Evaluation)(nil),                 // 48: joseph.assessment.v1.Evaluation
+var file_ltedu_assessment_v1_closing_proto_msgTypes = make([]protoimpl.MessageInfo, 45)
+var file_ltedu_assessment_v1_closing_proto_goTypes = []any{
+	(*RecordInfo)(nil),                 // 0: ltedu.assessment.v1.RecordInfo
+	(*SectionClosingSummary)(nil),      // 1: ltedu.assessment.v1.SectionClosingSummary
+	(*UnitClosingSummary)(nil),         // 2: ltedu.assessment.v1.UnitClosingSummary
+	(*GetClosingRequest)(nil),          // 3: ltedu.assessment.v1.GetClosingRequest
+	(*GetClosingResponse)(nil),         // 4: ltedu.assessment.v1.GetClosingResponse
+	(*ClosingArea)(nil),                // 5: ltedu.assessment.v1.ClosingArea
+	(*ClosingRow)(nil),                 // 6: ltedu.assessment.v1.ClosingRow
+	(*SectionClosing)(nil),             // 7: ltedu.assessment.v1.SectionClosing
+	(*GetSectionClosingRequest)(nil),   // 8: ltedu.assessment.v1.GetSectionClosingRequest
+	(*GetSectionClosingResponse)(nil),  // 9: ltedu.assessment.v1.GetSectionClosingResponse
+	(*DecideSituationRequest)(nil),     // 10: ltedu.assessment.v1.DecideSituationRequest
+	(*DecideSituationResponse)(nil),    // 11: ltedu.assessment.v1.DecideSituationResponse
+	(*ConfirmSectionRequest)(nil),      // 12: ltedu.assessment.v1.ConfirmSectionRequest
+	(*ConfirmSectionResponse)(nil),     // 13: ltedu.assessment.v1.ConfirmSectionResponse
+	(*SaveRecoveryRequest)(nil),        // 14: ltedu.assessment.v1.SaveRecoveryRequest
+	(*SaveRecoveryResponse)(nil),       // 15: ltedu.assessment.v1.SaveRecoveryResponse
+	(*UnitRow)(nil),                    // 16: ltedu.assessment.v1.UnitRow
+	(*UnitClosing)(nil),                // 17: ltedu.assessment.v1.UnitClosing
+	(*GetUnitClosingRequest)(nil),      // 18: ltedu.assessment.v1.GetUnitClosingRequest
+	(*GetUnitClosingResponse)(nil),     // 19: ltedu.assessment.v1.GetUnitClosingResponse
+	(*ConfirmUnitRequest)(nil),         // 20: ltedu.assessment.v1.ConfirmUnitRequest
+	(*ConfirmUnitResponse)(nil),        // 21: ltedu.assessment.v1.ConfirmUnitResponse
+	(*SaveUnitRecoveryRequest)(nil),    // 22: ltedu.assessment.v1.SaveUnitRecoveryRequest
+	(*SaveUnitRecoveryResponse)(nil),   // 23: ltedu.assessment.v1.SaveUnitRecoveryResponse
+	(*IssueRecordRequest)(nil),         // 24: ltedu.assessment.v1.IssueRecordRequest
+	(*IssueRecordResponse)(nil),        // 25: ltedu.assessment.v1.IssueRecordResponse
+	(*GetRecordRequest)(nil),           // 26: ltedu.assessment.v1.GetRecordRequest
+	(*GetRecordResponse)(nil),          // 27: ltedu.assessment.v1.GetRecordResponse
+	(*ExportResultsRequest)(nil),       // 28: ltedu.assessment.v1.ExportResultsRequest
+	(*ExportResultsResponse)(nil),      // 29: ltedu.assessment.v1.ExportResultsResponse
+	(*PromotionRule)(nil),              // 30: ltedu.assessment.v1.PromotionRule
+	(*GetPromotionRulesRequest)(nil),   // 31: ltedu.assessment.v1.GetPromotionRulesRequest
+	(*GetPromotionRulesResponse)(nil),  // 32: ltedu.assessment.v1.GetPromotionRulesResponse
+	(*SavePromotionRuleRequest)(nil),   // 33: ltedu.assessment.v1.SavePromotionRuleRequest
+	(*SavePromotionRuleResponse)(nil),  // 34: ltedu.assessment.v1.SavePromotionRuleResponse
+	(*ResetPromotionRuleRequest)(nil),  // 35: ltedu.assessment.v1.ResetPromotionRuleRequest
+	(*ResetPromotionRuleResponse)(nil), // 36: ltedu.assessment.v1.ResetPromotionRuleResponse
+	(*SetSiagieGradesRequest)(nil),     // 37: ltedu.assessment.v1.SetSiagieGradesRequest
+	(*SetSiagieGradesResponse)(nil),    // 38: ltedu.assessment.v1.SetSiagieGradesResponse
+	nil,                                // 39: ltedu.assessment.v1.SectionClosingSummary.CountsEntry
+	nil,                                // 40: ltedu.assessment.v1.UnitClosingSummary.CountsEntry
+	nil,                                // 41: ltedu.assessment.v1.ClosingRow.FinalEntry
+	nil,                                // 42: ltedu.assessment.v1.ClosingRow.RecoveryEntry
+	nil,                                // 43: ltedu.assessment.v1.SaveRecoveryRequest.LevelsEntry
+	nil,                                // 44: ltedu.assessment.v1.UnitRow.ScoresEntry
+	(*academicv1.Period)(nil),          // 45: ltedu.academic.v1.Period
+	(*Competency)(nil),                 // 46: ltedu.assessment.v1.Competency
+	(*StudentRef)(nil),                 // 47: ltedu.assessment.v1.StudentRef
+	(*Evaluation)(nil),                 // 48: ltedu.assessment.v1.Evaluation
 }
-var file_joseph_assessment_v1_closing_proto_depIdxs = []int32{
-	39, // 0: joseph.assessment.v1.SectionClosingSummary.counts:type_name -> joseph.assessment.v1.SectionClosingSummary.CountsEntry
-	40, // 1: joseph.assessment.v1.UnitClosingSummary.counts:type_name -> joseph.assessment.v1.UnitClosingSummary.CountsEntry
-	45, // 2: joseph.assessment.v1.GetClosingResponse.periods:type_name -> joseph.academic.v1.Period
-	45, // 3: joseph.assessment.v1.GetClosingResponse.period:type_name -> joseph.academic.v1.Period
-	1,  // 4: joseph.assessment.v1.GetClosingResponse.sections:type_name -> joseph.assessment.v1.SectionClosingSummary
-	2,  // 5: joseph.assessment.v1.GetClosingResponse.units:type_name -> joseph.assessment.v1.UnitClosingSummary
-	0,  // 6: joseph.assessment.v1.GetClosingResponse.records:type_name -> joseph.assessment.v1.RecordInfo
-	46, // 7: joseph.assessment.v1.ClosingArea.competencies:type_name -> joseph.assessment.v1.Competency
-	47, // 8: joseph.assessment.v1.ClosingRow.student:type_name -> joseph.assessment.v1.StudentRef
-	41, // 9: joseph.assessment.v1.ClosingRow.final:type_name -> joseph.assessment.v1.ClosingRow.FinalEntry
-	42, // 10: joseph.assessment.v1.ClosingRow.recovery:type_name -> joseph.assessment.v1.ClosingRow.RecoveryEntry
-	5,  // 11: joseph.assessment.v1.SectionClosing.areas:type_name -> joseph.assessment.v1.ClosingArea
-	6,  // 12: joseph.assessment.v1.SectionClosing.rows:type_name -> joseph.assessment.v1.ClosingRow
-	0,  // 13: joseph.assessment.v1.SectionClosing.records:type_name -> joseph.assessment.v1.RecordInfo
-	7,  // 14: joseph.assessment.v1.GetSectionClosingResponse.closing:type_name -> joseph.assessment.v1.SectionClosing
-	7,  // 15: joseph.assessment.v1.DecideSituationResponse.closing:type_name -> joseph.assessment.v1.SectionClosing
-	7,  // 16: joseph.assessment.v1.ConfirmSectionResponse.closing:type_name -> joseph.assessment.v1.SectionClosing
-	43, // 17: joseph.assessment.v1.SaveRecoveryRequest.levels:type_name -> joseph.assessment.v1.SaveRecoveryRequest.LevelsEntry
-	7,  // 18: joseph.assessment.v1.SaveRecoveryResponse.closing:type_name -> joseph.assessment.v1.SectionClosing
-	47, // 19: joseph.assessment.v1.UnitRow.student:type_name -> joseph.assessment.v1.StudentRef
-	44, // 20: joseph.assessment.v1.UnitRow.scores:type_name -> joseph.assessment.v1.UnitRow.ScoresEntry
-	48, // 21: joseph.assessment.v1.UnitClosing.evaluations:type_name -> joseph.assessment.v1.Evaluation
-	16, // 22: joseph.assessment.v1.UnitClosing.rows:type_name -> joseph.assessment.v1.UnitRow
-	0,  // 23: joseph.assessment.v1.UnitClosing.records:type_name -> joseph.assessment.v1.RecordInfo
-	17, // 24: joseph.assessment.v1.GetUnitClosingResponse.closing:type_name -> joseph.assessment.v1.UnitClosing
-	17, // 25: joseph.assessment.v1.ConfirmUnitResponse.closing:type_name -> joseph.assessment.v1.UnitClosing
-	17, // 26: joseph.assessment.v1.SaveUnitRecoveryResponse.closing:type_name -> joseph.assessment.v1.UnitClosing
-	0,  // 27: joseph.assessment.v1.IssueRecordResponse.record:type_name -> joseph.assessment.v1.RecordInfo
-	0,  // 28: joseph.assessment.v1.GetRecordResponse.record:type_name -> joseph.assessment.v1.RecordInfo
-	30, // 29: joseph.assessment.v1.GetPromotionRulesResponse.rules:type_name -> joseph.assessment.v1.PromotionRule
-	30, // 30: joseph.assessment.v1.SavePromotionRuleResponse.rules:type_name -> joseph.assessment.v1.PromotionRule
-	30, // 31: joseph.assessment.v1.ResetPromotionRuleResponse.rules:type_name -> joseph.assessment.v1.PromotionRule
-	7,  // 32: joseph.assessment.v1.SetSiagieGradesResponse.section:type_name -> joseph.assessment.v1.SectionClosing
-	3,  // 33: joseph.assessment.v1.ClosingService.GetClosing:input_type -> joseph.assessment.v1.GetClosingRequest
-	8,  // 34: joseph.assessment.v1.ClosingService.GetSectionClosing:input_type -> joseph.assessment.v1.GetSectionClosingRequest
-	10, // 35: joseph.assessment.v1.ClosingService.DecideSituation:input_type -> joseph.assessment.v1.DecideSituationRequest
-	12, // 36: joseph.assessment.v1.ClosingService.ConfirmSection:input_type -> joseph.assessment.v1.ConfirmSectionRequest
-	14, // 37: joseph.assessment.v1.ClosingService.SaveRecovery:input_type -> joseph.assessment.v1.SaveRecoveryRequest
-	18, // 38: joseph.assessment.v1.ClosingService.GetUnitClosing:input_type -> joseph.assessment.v1.GetUnitClosingRequest
-	20, // 39: joseph.assessment.v1.ClosingService.ConfirmUnit:input_type -> joseph.assessment.v1.ConfirmUnitRequest
-	22, // 40: joseph.assessment.v1.ClosingService.SaveUnitRecovery:input_type -> joseph.assessment.v1.SaveUnitRecoveryRequest
-	24, // 41: joseph.assessment.v1.ClosingService.IssueRecord:input_type -> joseph.assessment.v1.IssueRecordRequest
-	26, // 42: joseph.assessment.v1.ClosingService.GetRecord:input_type -> joseph.assessment.v1.GetRecordRequest
-	28, // 43: joseph.assessment.v1.ClosingService.ExportResults:input_type -> joseph.assessment.v1.ExportResultsRequest
-	31, // 44: joseph.assessment.v1.ClosingService.GetPromotionRules:input_type -> joseph.assessment.v1.GetPromotionRulesRequest
-	33, // 45: joseph.assessment.v1.ClosingService.SavePromotionRule:input_type -> joseph.assessment.v1.SavePromotionRuleRequest
-	35, // 46: joseph.assessment.v1.ClosingService.ResetPromotionRule:input_type -> joseph.assessment.v1.ResetPromotionRuleRequest
-	37, // 47: joseph.assessment.v1.ClosingService.SetSiagieGrades:input_type -> joseph.assessment.v1.SetSiagieGradesRequest
-	4,  // 48: joseph.assessment.v1.ClosingService.GetClosing:output_type -> joseph.assessment.v1.GetClosingResponse
-	9,  // 49: joseph.assessment.v1.ClosingService.GetSectionClosing:output_type -> joseph.assessment.v1.GetSectionClosingResponse
-	11, // 50: joseph.assessment.v1.ClosingService.DecideSituation:output_type -> joseph.assessment.v1.DecideSituationResponse
-	13, // 51: joseph.assessment.v1.ClosingService.ConfirmSection:output_type -> joseph.assessment.v1.ConfirmSectionResponse
-	15, // 52: joseph.assessment.v1.ClosingService.SaveRecovery:output_type -> joseph.assessment.v1.SaveRecoveryResponse
-	19, // 53: joseph.assessment.v1.ClosingService.GetUnitClosing:output_type -> joseph.assessment.v1.GetUnitClosingResponse
-	21, // 54: joseph.assessment.v1.ClosingService.ConfirmUnit:output_type -> joseph.assessment.v1.ConfirmUnitResponse
-	23, // 55: joseph.assessment.v1.ClosingService.SaveUnitRecovery:output_type -> joseph.assessment.v1.SaveUnitRecoveryResponse
-	25, // 56: joseph.assessment.v1.ClosingService.IssueRecord:output_type -> joseph.assessment.v1.IssueRecordResponse
-	27, // 57: joseph.assessment.v1.ClosingService.GetRecord:output_type -> joseph.assessment.v1.GetRecordResponse
-	29, // 58: joseph.assessment.v1.ClosingService.ExportResults:output_type -> joseph.assessment.v1.ExportResultsResponse
-	32, // 59: joseph.assessment.v1.ClosingService.GetPromotionRules:output_type -> joseph.assessment.v1.GetPromotionRulesResponse
-	34, // 60: joseph.assessment.v1.ClosingService.SavePromotionRule:output_type -> joseph.assessment.v1.SavePromotionRuleResponse
-	36, // 61: joseph.assessment.v1.ClosingService.ResetPromotionRule:output_type -> joseph.assessment.v1.ResetPromotionRuleResponse
-	38, // 62: joseph.assessment.v1.ClosingService.SetSiagieGrades:output_type -> joseph.assessment.v1.SetSiagieGradesResponse
+var file_ltedu_assessment_v1_closing_proto_depIdxs = []int32{
+	39, // 0: ltedu.assessment.v1.SectionClosingSummary.counts:type_name -> ltedu.assessment.v1.SectionClosingSummary.CountsEntry
+	40, // 1: ltedu.assessment.v1.UnitClosingSummary.counts:type_name -> ltedu.assessment.v1.UnitClosingSummary.CountsEntry
+	45, // 2: ltedu.assessment.v1.GetClosingResponse.periods:type_name -> ltedu.academic.v1.Period
+	45, // 3: ltedu.assessment.v1.GetClosingResponse.period:type_name -> ltedu.academic.v1.Period
+	1,  // 4: ltedu.assessment.v1.GetClosingResponse.sections:type_name -> ltedu.assessment.v1.SectionClosingSummary
+	2,  // 5: ltedu.assessment.v1.GetClosingResponse.units:type_name -> ltedu.assessment.v1.UnitClosingSummary
+	0,  // 6: ltedu.assessment.v1.GetClosingResponse.records:type_name -> ltedu.assessment.v1.RecordInfo
+	46, // 7: ltedu.assessment.v1.ClosingArea.competencies:type_name -> ltedu.assessment.v1.Competency
+	47, // 8: ltedu.assessment.v1.ClosingRow.student:type_name -> ltedu.assessment.v1.StudentRef
+	41, // 9: ltedu.assessment.v1.ClosingRow.final:type_name -> ltedu.assessment.v1.ClosingRow.FinalEntry
+	42, // 10: ltedu.assessment.v1.ClosingRow.recovery:type_name -> ltedu.assessment.v1.ClosingRow.RecoveryEntry
+	5,  // 11: ltedu.assessment.v1.SectionClosing.areas:type_name -> ltedu.assessment.v1.ClosingArea
+	6,  // 12: ltedu.assessment.v1.SectionClosing.rows:type_name -> ltedu.assessment.v1.ClosingRow
+	0,  // 13: ltedu.assessment.v1.SectionClosing.records:type_name -> ltedu.assessment.v1.RecordInfo
+	7,  // 14: ltedu.assessment.v1.GetSectionClosingResponse.closing:type_name -> ltedu.assessment.v1.SectionClosing
+	7,  // 15: ltedu.assessment.v1.DecideSituationResponse.closing:type_name -> ltedu.assessment.v1.SectionClosing
+	7,  // 16: ltedu.assessment.v1.ConfirmSectionResponse.closing:type_name -> ltedu.assessment.v1.SectionClosing
+	43, // 17: ltedu.assessment.v1.SaveRecoveryRequest.levels:type_name -> ltedu.assessment.v1.SaveRecoveryRequest.LevelsEntry
+	7,  // 18: ltedu.assessment.v1.SaveRecoveryResponse.closing:type_name -> ltedu.assessment.v1.SectionClosing
+	47, // 19: ltedu.assessment.v1.UnitRow.student:type_name -> ltedu.assessment.v1.StudentRef
+	44, // 20: ltedu.assessment.v1.UnitRow.scores:type_name -> ltedu.assessment.v1.UnitRow.ScoresEntry
+	48, // 21: ltedu.assessment.v1.UnitClosing.evaluations:type_name -> ltedu.assessment.v1.Evaluation
+	16, // 22: ltedu.assessment.v1.UnitClosing.rows:type_name -> ltedu.assessment.v1.UnitRow
+	0,  // 23: ltedu.assessment.v1.UnitClosing.records:type_name -> ltedu.assessment.v1.RecordInfo
+	17, // 24: ltedu.assessment.v1.GetUnitClosingResponse.closing:type_name -> ltedu.assessment.v1.UnitClosing
+	17, // 25: ltedu.assessment.v1.ConfirmUnitResponse.closing:type_name -> ltedu.assessment.v1.UnitClosing
+	17, // 26: ltedu.assessment.v1.SaveUnitRecoveryResponse.closing:type_name -> ltedu.assessment.v1.UnitClosing
+	0,  // 27: ltedu.assessment.v1.IssueRecordResponse.record:type_name -> ltedu.assessment.v1.RecordInfo
+	0,  // 28: ltedu.assessment.v1.GetRecordResponse.record:type_name -> ltedu.assessment.v1.RecordInfo
+	30, // 29: ltedu.assessment.v1.GetPromotionRulesResponse.rules:type_name -> ltedu.assessment.v1.PromotionRule
+	30, // 30: ltedu.assessment.v1.SavePromotionRuleResponse.rules:type_name -> ltedu.assessment.v1.PromotionRule
+	30, // 31: ltedu.assessment.v1.ResetPromotionRuleResponse.rules:type_name -> ltedu.assessment.v1.PromotionRule
+	7,  // 32: ltedu.assessment.v1.SetSiagieGradesResponse.section:type_name -> ltedu.assessment.v1.SectionClosing
+	3,  // 33: ltedu.assessment.v1.ClosingService.GetClosing:input_type -> ltedu.assessment.v1.GetClosingRequest
+	8,  // 34: ltedu.assessment.v1.ClosingService.GetSectionClosing:input_type -> ltedu.assessment.v1.GetSectionClosingRequest
+	10, // 35: ltedu.assessment.v1.ClosingService.DecideSituation:input_type -> ltedu.assessment.v1.DecideSituationRequest
+	12, // 36: ltedu.assessment.v1.ClosingService.ConfirmSection:input_type -> ltedu.assessment.v1.ConfirmSectionRequest
+	14, // 37: ltedu.assessment.v1.ClosingService.SaveRecovery:input_type -> ltedu.assessment.v1.SaveRecoveryRequest
+	18, // 38: ltedu.assessment.v1.ClosingService.GetUnitClosing:input_type -> ltedu.assessment.v1.GetUnitClosingRequest
+	20, // 39: ltedu.assessment.v1.ClosingService.ConfirmUnit:input_type -> ltedu.assessment.v1.ConfirmUnitRequest
+	22, // 40: ltedu.assessment.v1.ClosingService.SaveUnitRecovery:input_type -> ltedu.assessment.v1.SaveUnitRecoveryRequest
+	24, // 41: ltedu.assessment.v1.ClosingService.IssueRecord:input_type -> ltedu.assessment.v1.IssueRecordRequest
+	26, // 42: ltedu.assessment.v1.ClosingService.GetRecord:input_type -> ltedu.assessment.v1.GetRecordRequest
+	28, // 43: ltedu.assessment.v1.ClosingService.ExportResults:input_type -> ltedu.assessment.v1.ExportResultsRequest
+	31, // 44: ltedu.assessment.v1.ClosingService.GetPromotionRules:input_type -> ltedu.assessment.v1.GetPromotionRulesRequest
+	33, // 45: ltedu.assessment.v1.ClosingService.SavePromotionRule:input_type -> ltedu.assessment.v1.SavePromotionRuleRequest
+	35, // 46: ltedu.assessment.v1.ClosingService.ResetPromotionRule:input_type -> ltedu.assessment.v1.ResetPromotionRuleRequest
+	37, // 47: ltedu.assessment.v1.ClosingService.SetSiagieGrades:input_type -> ltedu.assessment.v1.SetSiagieGradesRequest
+	4,  // 48: ltedu.assessment.v1.ClosingService.GetClosing:output_type -> ltedu.assessment.v1.GetClosingResponse
+	9,  // 49: ltedu.assessment.v1.ClosingService.GetSectionClosing:output_type -> ltedu.assessment.v1.GetSectionClosingResponse
+	11, // 50: ltedu.assessment.v1.ClosingService.DecideSituation:output_type -> ltedu.assessment.v1.DecideSituationResponse
+	13, // 51: ltedu.assessment.v1.ClosingService.ConfirmSection:output_type -> ltedu.assessment.v1.ConfirmSectionResponse
+	15, // 52: ltedu.assessment.v1.ClosingService.SaveRecovery:output_type -> ltedu.assessment.v1.SaveRecoveryResponse
+	19, // 53: ltedu.assessment.v1.ClosingService.GetUnitClosing:output_type -> ltedu.assessment.v1.GetUnitClosingResponse
+	21, // 54: ltedu.assessment.v1.ClosingService.ConfirmUnit:output_type -> ltedu.assessment.v1.ConfirmUnitResponse
+	23, // 55: ltedu.assessment.v1.ClosingService.SaveUnitRecovery:output_type -> ltedu.assessment.v1.SaveUnitRecoveryResponse
+	25, // 56: ltedu.assessment.v1.ClosingService.IssueRecord:output_type -> ltedu.assessment.v1.IssueRecordResponse
+	27, // 57: ltedu.assessment.v1.ClosingService.GetRecord:output_type -> ltedu.assessment.v1.GetRecordResponse
+	29, // 58: ltedu.assessment.v1.ClosingService.ExportResults:output_type -> ltedu.assessment.v1.ExportResultsResponse
+	32, // 59: ltedu.assessment.v1.ClosingService.GetPromotionRules:output_type -> ltedu.assessment.v1.GetPromotionRulesResponse
+	34, // 60: ltedu.assessment.v1.ClosingService.SavePromotionRule:output_type -> ltedu.assessment.v1.SavePromotionRuleResponse
+	36, // 61: ltedu.assessment.v1.ClosingService.ResetPromotionRule:output_type -> ltedu.assessment.v1.ResetPromotionRuleResponse
+	38, // 62: ltedu.assessment.v1.ClosingService.SetSiagieGrades:output_type -> ltedu.assessment.v1.SetSiagieGradesResponse
 	48, // [48:63] is the sub-list for method output_type
 	33, // [33:48] is the sub-list for method input_type
 	33, // [33:33] is the sub-list for extension type_name
@@ -3227,29 +3227,29 @@ var file_joseph_assessment_v1_closing_proto_depIdxs = []int32{
 	0,  // [0:33] is the sub-list for field type_name
 }
 
-func init() { file_joseph_assessment_v1_closing_proto_init() }
-func file_joseph_assessment_v1_closing_proto_init() {
-	if File_joseph_assessment_v1_closing_proto != nil {
+func init() { file_ltedu_assessment_v1_closing_proto_init() }
+func file_ltedu_assessment_v1_closing_proto_init() {
+	if File_ltedu_assessment_v1_closing_proto != nil {
 		return
 	}
-	file_joseph_assessment_v1_assessment_proto_init()
-	file_joseph_assessment_v1_closing_proto_msgTypes[16].OneofWrappers = []any{}
-	file_joseph_assessment_v1_closing_proto_msgTypes[22].OneofWrappers = []any{}
+	file_ltedu_assessment_v1_assessment_proto_init()
+	file_ltedu_assessment_v1_closing_proto_msgTypes[16].OneofWrappers = []any{}
+	file_ltedu_assessment_v1_closing_proto_msgTypes[22].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_assessment_v1_closing_proto_rawDesc), len(file_joseph_assessment_v1_closing_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_assessment_v1_closing_proto_rawDesc), len(file_ltedu_assessment_v1_closing_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   45,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_assessment_v1_closing_proto_goTypes,
-		DependencyIndexes: file_joseph_assessment_v1_closing_proto_depIdxs,
-		MessageInfos:      file_joseph_assessment_v1_closing_proto_msgTypes,
+		GoTypes:           file_ltedu_assessment_v1_closing_proto_goTypes,
+		DependencyIndexes: file_ltedu_assessment_v1_closing_proto_depIdxs,
+		MessageInfos:      file_ltedu_assessment_v1_closing_proto_msgTypes,
 	}.Build()
-	File_joseph_assessment_v1_closing_proto = out.File
-	file_joseph_assessment_v1_closing_proto_goTypes = nil
-	file_joseph_assessment_v1_closing_proto_depIdxs = nil
+	File_ltedu_assessment_v1_closing_proto = out.File
+	file_ltedu_assessment_v1_closing_proto_goTypes = nil
+	file_ltedu_assessment_v1_closing_proto_depIdxs = nil
 }

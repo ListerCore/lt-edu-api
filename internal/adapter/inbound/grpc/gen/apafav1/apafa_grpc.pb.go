@@ -2,10 +2,10 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/apafa/v1/apafa.proto
+// source: ltedu/apafa/v1/apafa.proto
 
 // APAFA (Asociación de Padres de Familia, Ley N.° 28628) of public institutions of Educación Básica: the meetings
-// it convenes, their acta and the board. Same metadata and institution scoping as joseph.academic.v1. Private
+// it convenes, their acta and the board. Same metadata and institution scoping as ltedu.academic.v1. Private
 // institutions get apafa_private on every call
 
 package apafav1
@@ -23,16 +23,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ApafaService_GetApafa_FullMethodName          = "/joseph.apafa.v1.ApafaService/GetApafa"
-	ApafaService_GetMeeting_FullMethodName        = "/joseph.apafa.v1.ApafaService/GetMeeting"
-	ApafaService_SaveMeeting_FullMethodName       = "/joseph.apafa.v1.ApafaService/SaveMeeting"
-	ApafaService_ConveneMeeting_FullMethodName    = "/joseph.apafa.v1.ApafaService/ConveneMeeting"
-	ApafaService_RescheduleMeeting_FullMethodName = "/joseph.apafa.v1.ApafaService/RescheduleMeeting"
-	ApafaService_CancelMeeting_FullMethodName     = "/joseph.apafa.v1.ApafaService/CancelMeeting"
-	ApafaService_RecordMinutes_FullMethodName     = "/joseph.apafa.v1.ApafaService/RecordMinutes"
-	ApafaService_DeleteMeeting_FullMethodName     = "/joseph.apafa.v1.ApafaService/DeleteMeeting"
-	ApafaService_SaveBoardMember_FullMethodName   = "/joseph.apafa.v1.ApafaService/SaveBoardMember"
-	ApafaService_DeleteBoardMember_FullMethodName = "/joseph.apafa.v1.ApafaService/DeleteBoardMember"
+	ApafaService_GetApafa_FullMethodName          = "/ltedu.apafa.v1.ApafaService/GetApafa"
+	ApafaService_GetMeeting_FullMethodName        = "/ltedu.apafa.v1.ApafaService/GetMeeting"
+	ApafaService_SaveMeeting_FullMethodName       = "/ltedu.apafa.v1.ApafaService/SaveMeeting"
+	ApafaService_ConveneMeeting_FullMethodName    = "/ltedu.apafa.v1.ApafaService/ConveneMeeting"
+	ApafaService_RescheduleMeeting_FullMethodName = "/ltedu.apafa.v1.ApafaService/RescheduleMeeting"
+	ApafaService_CancelMeeting_FullMethodName     = "/ltedu.apafa.v1.ApafaService/CancelMeeting"
+	ApafaService_RecordMinutes_FullMethodName     = "/ltedu.apafa.v1.ApafaService/RecordMinutes"
+	ApafaService_DeleteMeeting_FullMethodName     = "/ltedu.apafa.v1.ApafaService/DeleteMeeting"
+	ApafaService_SaveBoardMember_FullMethodName   = "/ltedu.apafa.v1.ApafaService/SaveBoardMember"
+	ApafaService_DeleteBoardMember_FullMethodName = "/ltedu.apafa.v1.ApafaService/DeleteBoardMember"
 )
 
 // ApafaServiceClient is the client API for ApafaService service.
@@ -424,7 +424,7 @@ func _ApafaService_DeleteBoardMember_Handler(srv interface{}, ctx context.Contex
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ApafaService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.apafa.v1.ApafaService",
+	ServiceName: "ltedu.apafa.v1.ApafaService",
 	HandlerType: (*ApafaServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -469,5 +469,5 @@ var ApafaService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/apafa/v1/apafa.proto",
+	Metadata: "ltedu/apafa/v1/apafa.proto",
 }

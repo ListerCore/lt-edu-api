@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/compliance/v1/compliance.proto
+// source: ltedu/compliance/v1/compliance.proto
 
 // DRE compliance of a CEBA (phase E8 of docs/ceba/PLAN.md, RSG 613-2014-MINEDU 6.2.1, Anexo 2 and 6.3.2 c).
 // Device kinds: desktop | laptop | tablet | network | printer | other; purposes: virtual_tutoring | student_support
@@ -46,7 +46,7 @@ type Room struct {
 
 func (x *Room) Reset() {
 	*x = Room{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[0]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -58,7 +58,7 @@ func (x *Room) String() string {
 func (*Room) ProtoMessage() {}
 
 func (x *Room) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[0]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -71,7 +71,7 @@ func (x *Room) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Room.ProtoReflect.Descriptor instead.
 func (*Room) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Room) GetId() string {
@@ -169,7 +169,7 @@ type Device struct {
 
 func (x *Device) Reset() {
 	*x = Device{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[1]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -181,7 +181,7 @@ func (x *Device) String() string {
 func (*Device) ProtoMessage() {}
 
 func (x *Device) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[1]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -194,7 +194,7 @@ func (x *Device) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Device.ProtoReflect.Descriptor instead.
 func (*Device) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Device) GetId() string {
@@ -334,7 +334,7 @@ type Check struct {
 
 func (x *Check) Reset() {
 	*x = Check{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[2]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -346,7 +346,7 @@ func (x *Check) String() string {
 func (*Check) ProtoMessage() {}
 
 func (x *Check) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[2]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -359,7 +359,7 @@ func (x *Check) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Check.ProtoReflect.Descriptor instead.
 func (*Check) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Check) GetId() string {
@@ -500,7 +500,7 @@ type Report struct {
 
 func (x *Report) Reset() {
 	*x = Report{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[3]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -512,7 +512,7 @@ func (x *Report) String() string {
 func (*Report) ProtoMessage() {}
 
 func (x *Report) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[3]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -525,7 +525,7 @@ func (x *Report) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Report.ProtoReflect.Descriptor instead.
 func (*Report) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Report) GetKind() string {
@@ -628,7 +628,7 @@ type Item struct {
 
 func (x *Item) Reset() {
 	*x = Item{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[4]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -640,7 +640,7 @@ func (x *Item) String() string {
 func (*Item) ProtoMessage() {}
 
 func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[4]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -653,7 +653,7 @@ func (x *Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Item.ProtoReflect.Descriptor instead.
 func (*Item) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Item) GetId() string {
@@ -775,7 +775,7 @@ type UptimeCheck struct {
 
 func (x *UptimeCheck) Reset() {
 	*x = UptimeCheck{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[5]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -787,7 +787,7 @@ func (x *UptimeCheck) String() string {
 func (*UptimeCheck) ProtoMessage() {}
 
 func (x *UptimeCheck) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[5]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -800,7 +800,7 @@ func (x *UptimeCheck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UptimeCheck.ProtoReflect.Descriptor instead.
 func (*UptimeCheck) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *UptimeCheck) GetUrl() string {
@@ -860,7 +860,7 @@ type Uptime struct {
 
 func (x *Uptime) Reset() {
 	*x = Uptime{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[6]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -872,7 +872,7 @@ func (x *Uptime) String() string {
 func (*Uptime) ProtoMessage() {}
 
 func (x *Uptime) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[6]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -885,7 +885,7 @@ func (x *Uptime) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Uptime.ProtoReflect.Descriptor instead.
 func (*Uptime) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Uptime) GetUrl() string {
@@ -951,7 +951,7 @@ type PlatformInfo struct {
 
 func (x *PlatformInfo) Reset() {
 	*x = PlatformInfo{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[7]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -963,7 +963,7 @@ func (x *PlatformInfo) String() string {
 func (*PlatformInfo) ProtoMessage() {}
 
 func (x *PlatformInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[7]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -976,7 +976,7 @@ func (x *PlatformInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlatformInfo.ProtoReflect.Descriptor instead.
 func (*PlatformInfo) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *PlatformInfo) GetPlatformName() string {
@@ -1030,7 +1030,7 @@ type GetBoardRequest struct {
 
 func (x *GetBoardRequest) Reset() {
 	*x = GetBoardRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[8]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1042,7 +1042,7 @@ func (x *GetBoardRequest) String() string {
 func (*GetBoardRequest) ProtoMessage() {}
 
 func (x *GetBoardRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[8]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1055,7 +1055,7 @@ func (x *GetBoardRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBoardRequest.ProtoReflect.Descriptor instead.
 func (*GetBoardRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetBoardRequest) GetInstitutionSlug() string {
@@ -1082,7 +1082,7 @@ type GetBoardResponse struct {
 
 func (x *GetBoardResponse) Reset() {
 	*x = GetBoardResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[9]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1094,7 +1094,7 @@ func (x *GetBoardResponse) String() string {
 func (*GetBoardResponse) ProtoMessage() {}
 
 func (x *GetBoardResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[9]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1107,7 +1107,7 @@ func (x *GetBoardResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBoardResponse.ProtoReflect.Descriptor instead.
 func (*GetBoardResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GetBoardResponse) GetPlatform() *PlatformInfo {
@@ -1183,7 +1183,7 @@ type SaveRoomRequest struct {
 
 func (x *SaveRoomRequest) Reset() {
 	*x = SaveRoomRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[10]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1195,7 +1195,7 @@ func (x *SaveRoomRequest) String() string {
 func (*SaveRoomRequest) ProtoMessage() {}
 
 func (x *SaveRoomRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[10]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1208,7 +1208,7 @@ func (x *SaveRoomRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveRoomRequest.ProtoReflect.Descriptor instead.
 func (*SaveRoomRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *SaveRoomRequest) GetInstitutionSlug() string {
@@ -1234,7 +1234,7 @@ type SaveRoomResponse struct {
 
 func (x *SaveRoomResponse) Reset() {
 	*x = SaveRoomResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[11]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1246,7 +1246,7 @@ func (x *SaveRoomResponse) String() string {
 func (*SaveRoomResponse) ProtoMessage() {}
 
 func (x *SaveRoomResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[11]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1259,7 +1259,7 @@ func (x *SaveRoomResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveRoomResponse.ProtoReflect.Descriptor instead.
 func (*SaveRoomResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *SaveRoomResponse) GetRoom() *Room {
@@ -1279,7 +1279,7 @@ type DeleteRoomRequest struct {
 
 func (x *DeleteRoomRequest) Reset() {
 	*x = DeleteRoomRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[12]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1291,7 +1291,7 @@ func (x *DeleteRoomRequest) String() string {
 func (*DeleteRoomRequest) ProtoMessage() {}
 
 func (x *DeleteRoomRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[12]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1304,7 +1304,7 @@ func (x *DeleteRoomRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRoomRequest.ProtoReflect.Descriptor instead.
 func (*DeleteRoomRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeleteRoomRequest) GetInstitutionSlug() string {
@@ -1329,7 +1329,7 @@ type DeleteRoomResponse struct {
 
 func (x *DeleteRoomResponse) Reset() {
 	*x = DeleteRoomResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[13]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1341,7 +1341,7 @@ func (x *DeleteRoomResponse) String() string {
 func (*DeleteRoomResponse) ProtoMessage() {}
 
 func (x *DeleteRoomResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[13]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1354,7 +1354,7 @@ func (x *DeleteRoomResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRoomResponse.ProtoReflect.Descriptor instead.
 func (*DeleteRoomResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{13}
 }
 
 type SaveDeviceRequest struct {
@@ -1367,7 +1367,7 @@ type SaveDeviceRequest struct {
 
 func (x *SaveDeviceRequest) Reset() {
 	*x = SaveDeviceRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[14]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1379,7 +1379,7 @@ func (x *SaveDeviceRequest) String() string {
 func (*SaveDeviceRequest) ProtoMessage() {}
 
 func (x *SaveDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[14]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1392,7 +1392,7 @@ func (x *SaveDeviceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveDeviceRequest.ProtoReflect.Descriptor instead.
 func (*SaveDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *SaveDeviceRequest) GetInstitutionSlug() string {
@@ -1418,7 +1418,7 @@ type SaveDeviceResponse struct {
 
 func (x *SaveDeviceResponse) Reset() {
 	*x = SaveDeviceResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[15]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1430,7 +1430,7 @@ func (x *SaveDeviceResponse) String() string {
 func (*SaveDeviceResponse) ProtoMessage() {}
 
 func (x *SaveDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[15]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1443,7 +1443,7 @@ func (x *SaveDeviceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveDeviceResponse.ProtoReflect.Descriptor instead.
 func (*SaveDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SaveDeviceResponse) GetDevice() *Device {
@@ -1463,7 +1463,7 @@ type DeleteDeviceRequest struct {
 
 func (x *DeleteDeviceRequest) Reset() {
 	*x = DeleteDeviceRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[16]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1475,7 +1475,7 @@ func (x *DeleteDeviceRequest) String() string {
 func (*DeleteDeviceRequest) ProtoMessage() {}
 
 func (x *DeleteDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[16]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1488,7 +1488,7 @@ func (x *DeleteDeviceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDeviceRequest.ProtoReflect.Descriptor instead.
 func (*DeleteDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *DeleteDeviceRequest) GetInstitutionSlug() string {
@@ -1513,7 +1513,7 @@ type DeleteDeviceResponse struct {
 
 func (x *DeleteDeviceResponse) Reset() {
 	*x = DeleteDeviceResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[17]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1525,7 +1525,7 @@ func (x *DeleteDeviceResponse) String() string {
 func (*DeleteDeviceResponse) ProtoMessage() {}
 
 func (x *DeleteDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[17]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1538,7 +1538,7 @@ func (x *DeleteDeviceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDeviceResponse.ProtoReflect.Descriptor instead.
 func (*DeleteDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{17}
 }
 
 type AddCheckRequest struct {
@@ -1551,7 +1551,7 @@ type AddCheckRequest struct {
 
 func (x *AddCheckRequest) Reset() {
 	*x = AddCheckRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[18]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1563,7 +1563,7 @@ func (x *AddCheckRequest) String() string {
 func (*AddCheckRequest) ProtoMessage() {}
 
 func (x *AddCheckRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[18]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1576,7 +1576,7 @@ func (x *AddCheckRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddCheckRequest.ProtoReflect.Descriptor instead.
 func (*AddCheckRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *AddCheckRequest) GetInstitutionSlug() string {
@@ -1602,7 +1602,7 @@ type AddCheckResponse struct {
 
 func (x *AddCheckResponse) Reset() {
 	*x = AddCheckResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[19]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1614,7 +1614,7 @@ func (x *AddCheckResponse) String() string {
 func (*AddCheckResponse) ProtoMessage() {}
 
 func (x *AddCheckResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[19]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1627,7 +1627,7 @@ func (x *AddCheckResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddCheckResponse.ProtoReflect.Descriptor instead.
 func (*AddCheckResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *AddCheckResponse) GetCheck() *Check {
@@ -1647,7 +1647,7 @@ type DeleteCheckRequest struct {
 
 func (x *DeleteCheckRequest) Reset() {
 	*x = DeleteCheckRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[20]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1659,7 +1659,7 @@ func (x *DeleteCheckRequest) String() string {
 func (*DeleteCheckRequest) ProtoMessage() {}
 
 func (x *DeleteCheckRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[20]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1672,7 +1672,7 @@ func (x *DeleteCheckRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCheckRequest.ProtoReflect.Descriptor instead.
 func (*DeleteCheckRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *DeleteCheckRequest) GetInstitutionSlug() string {
@@ -1697,7 +1697,7 @@ type DeleteCheckResponse struct {
 
 func (x *DeleteCheckResponse) Reset() {
 	*x = DeleteCheckResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[21]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1709,7 +1709,7 @@ func (x *DeleteCheckResponse) String() string {
 func (*DeleteCheckResponse) ProtoMessage() {}
 
 func (x *DeleteCheckResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[21]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1722,7 +1722,7 @@ func (x *DeleteCheckResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCheckResponse.ProtoReflect.Descriptor instead.
 func (*DeleteCheckResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{21}
 }
 
 type SaveItemRequest struct {
@@ -1740,7 +1740,7 @@ type SaveItemRequest struct {
 
 func (x *SaveItemRequest) Reset() {
 	*x = SaveItemRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[22]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1752,7 +1752,7 @@ func (x *SaveItemRequest) String() string {
 func (*SaveItemRequest) ProtoMessage() {}
 
 func (x *SaveItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[22]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1765,7 +1765,7 @@ func (x *SaveItemRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveItemRequest.ProtoReflect.Descriptor instead.
 func (*SaveItemRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *SaveItemRequest) GetInstitutionSlug() string {
@@ -1826,7 +1826,7 @@ type SaveItemResponse struct {
 
 func (x *SaveItemResponse) Reset() {
 	*x = SaveItemResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[23]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1838,7 +1838,7 @@ func (x *SaveItemResponse) String() string {
 func (*SaveItemResponse) ProtoMessage() {}
 
 func (x *SaveItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[23]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1851,7 +1851,7 @@ func (x *SaveItemResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveItemResponse.ProtoReflect.Descriptor instead.
 func (*SaveItemResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{23}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *SaveItemResponse) GetItem() *Item {
@@ -1872,7 +1872,7 @@ type SetItemStatusRequest struct {
 
 func (x *SetItemStatusRequest) Reset() {
 	*x = SetItemStatusRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[24]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1884,7 +1884,7 @@ func (x *SetItemStatusRequest) String() string {
 func (*SetItemStatusRequest) ProtoMessage() {}
 
 func (x *SetItemStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[24]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1897,7 +1897,7 @@ func (x *SetItemStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetItemStatusRequest.ProtoReflect.Descriptor instead.
 func (*SetItemStatusRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{24}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *SetItemStatusRequest) GetInstitutionSlug() string {
@@ -1930,7 +1930,7 @@ type SetItemStatusResponse struct {
 
 func (x *SetItemStatusResponse) Reset() {
 	*x = SetItemStatusResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[25]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1942,7 +1942,7 @@ func (x *SetItemStatusResponse) String() string {
 func (*SetItemStatusResponse) ProtoMessage() {}
 
 func (x *SetItemStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[25]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1955,7 +1955,7 @@ func (x *SetItemStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetItemStatusResponse.ProtoReflect.Descriptor instead.
 func (*SetItemStatusResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{25}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *SetItemStatusResponse) GetItem() *Item {
@@ -1975,7 +1975,7 @@ type SaveReportRequest struct {
 
 func (x *SaveReportRequest) Reset() {
 	*x = SaveReportRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[26]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1987,7 +1987,7 @@ func (x *SaveReportRequest) String() string {
 func (*SaveReportRequest) ProtoMessage() {}
 
 func (x *SaveReportRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[26]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2000,7 +2000,7 @@ func (x *SaveReportRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveReportRequest.ProtoReflect.Descriptor instead.
 func (*SaveReportRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{26}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *SaveReportRequest) GetInstitutionSlug() string {
@@ -2026,7 +2026,7 @@ type SaveReportResponse struct {
 
 func (x *SaveReportResponse) Reset() {
 	*x = SaveReportResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[27]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2038,7 +2038,7 @@ func (x *SaveReportResponse) String() string {
 func (*SaveReportResponse) ProtoMessage() {}
 
 func (x *SaveReportResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[27]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2051,7 +2051,7 @@ func (x *SaveReportResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaveReportResponse.ProtoReflect.Descriptor instead.
 func (*SaveReportResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{27}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *SaveReportResponse) GetReport() *Report {
@@ -2070,7 +2070,7 @@ type CheckUptimeRequest struct {
 
 func (x *CheckUptimeRequest) Reset() {
 	*x = CheckUptimeRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[28]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2082,7 +2082,7 @@ func (x *CheckUptimeRequest) String() string {
 func (*CheckUptimeRequest) ProtoMessage() {}
 
 func (x *CheckUptimeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[28]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2095,7 +2095,7 @@ func (x *CheckUptimeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckUptimeRequest.ProtoReflect.Descriptor instead.
 func (*CheckUptimeRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{28}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *CheckUptimeRequest) GetInstitutionSlug() string {
@@ -2114,7 +2114,7 @@ type CheckUptimeResponse struct {
 
 func (x *CheckUptimeResponse) Reset() {
 	*x = CheckUptimeResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[29]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2126,7 +2126,7 @@ func (x *CheckUptimeResponse) String() string {
 func (*CheckUptimeResponse) ProtoMessage() {}
 
 func (x *CheckUptimeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[29]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2139,7 +2139,7 @@ func (x *CheckUptimeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckUptimeResponse.ProtoReflect.Descriptor instead.
 func (*CheckUptimeResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{29}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *CheckUptimeResponse) GetCheck() *UptimeCheck {
@@ -2158,7 +2158,7 @@ type PlatformReportPdfRequest struct {
 
 func (x *PlatformReportPdfRequest) Reset() {
 	*x = PlatformReportPdfRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[30]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2170,7 +2170,7 @@ func (x *PlatformReportPdfRequest) String() string {
 func (*PlatformReportPdfRequest) ProtoMessage() {}
 
 func (x *PlatformReportPdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[30]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2183,7 +2183,7 @@ func (x *PlatformReportPdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlatformReportPdfRequest.ProtoReflect.Descriptor instead.
 func (*PlatformReportPdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{30}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *PlatformReportPdfRequest) GetInstitutionSlug() string {
@@ -2202,7 +2202,7 @@ type PlatformReportPdfResponse struct {
 
 func (x *PlatformReportPdfResponse) Reset() {
 	*x = PlatformReportPdfResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[31]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2214,7 +2214,7 @@ func (x *PlatformReportPdfResponse) String() string {
 func (*PlatformReportPdfResponse) ProtoMessage() {}
 
 func (x *PlatformReportPdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[31]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2227,7 +2227,7 @@ func (x *PlatformReportPdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlatformReportPdfResponse.ProtoReflect.Descriptor instead.
 func (*PlatformReportPdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{31}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *PlatformReportPdfResponse) GetFile() *documentsv1.PdfFile {
@@ -2246,7 +2246,7 @@ type EquipmentReportPdfRequest struct {
 
 func (x *EquipmentReportPdfRequest) Reset() {
 	*x = EquipmentReportPdfRequest{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[32]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2258,7 +2258,7 @@ func (x *EquipmentReportPdfRequest) String() string {
 func (*EquipmentReportPdfRequest) ProtoMessage() {}
 
 func (x *EquipmentReportPdfRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[32]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2271,7 +2271,7 @@ func (x *EquipmentReportPdfRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EquipmentReportPdfRequest.ProtoReflect.Descriptor instead.
 func (*EquipmentReportPdfRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{32}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *EquipmentReportPdfRequest) GetInstitutionSlug() string {
@@ -2290,7 +2290,7 @@ type EquipmentReportPdfResponse struct {
 
 func (x *EquipmentReportPdfResponse) Reset() {
 	*x = EquipmentReportPdfResponse{}
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[33]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2302,7 +2302,7 @@ func (x *EquipmentReportPdfResponse) String() string {
 func (*EquipmentReportPdfResponse) ProtoMessage() {}
 
 func (x *EquipmentReportPdfResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_compliance_v1_compliance_proto_msgTypes[33]
+	mi := &file_ltedu_compliance_v1_compliance_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2315,7 +2315,7 @@ func (x *EquipmentReportPdfResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EquipmentReportPdfResponse.ProtoReflect.Descriptor instead.
 func (*EquipmentReportPdfResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_compliance_v1_compliance_proto_rawDescGZIP(), []int{33}
+	return file_ltedu_compliance_v1_compliance_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *EquipmentReportPdfResponse) GetFile() *documentsv1.PdfFile {
@@ -2325,11 +2325,11 @@ func (x *EquipmentReportPdfResponse) GetFile() *documentsv1.PdfFile {
 	return nil
 }
 
-var File_joseph_compliance_v1_compliance_proto protoreflect.FileDescriptor
+var File_ltedu_compliance_v1_compliance_proto protoreflect.FileDescriptor
 
-const file_joseph_compliance_v1_compliance_proto_rawDesc = "" +
+const file_ltedu_compliance_v1_compliance_proto_rawDesc = "" +
 	"\n" +
-	"%joseph/compliance/v1/compliance.proto\x12\x14joseph.compliance.v1\x1a#joseph/documents/v1/documents.proto\"\x9b\x02\n" +
+	"$ltedu/compliance/v1/compliance.proto\x12\x13ltedu.compliance.v1\x1a\"ltedu/documents/v1/documents.proto\"\x9b\x02\n" +
 	"\x04Room\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
@@ -2437,15 +2437,15 @@ const file_joseph_compliance_v1_compliance_proto_rawDesc = "" +
 	"\x02ok\x18\x05 \x01(\bR\x02ok\x12\x14\n" +
 	"\x05error\x18\x06 \x01(\tR\x05errorB\x0e\n" +
 	"\f_status_codeB\x0e\n" +
-	"\f_response_ms\"\xe5\x01\n" +
+	"\f_response_ms\"\xe3\x01\n" +
 	"\x06Uptime\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\x12\x16\n" +
 	"\x06checks\x18\x02 \x01(\x05R\x06checks\x12\x0e\n" +
 	"\x02up\x18\x03 \x01(\x05R\x02up\x12\x18\n" +
 	"\apercent\x18\x04 \x01(\x01R\apercent\x12\x15\n" +
-	"\x06avg_ms\x18\x05 \x01(\x05R\x05avgMs\x125\n" +
-	"\x04last\x18\x06 \x01(\v2!.joseph.compliance.v1.UptimeCheckR\x04last\x129\n" +
-	"\x06recent\x18\a \x03(\v2!.joseph.compliance.v1.UptimeCheckR\x06recent\"\xba\x01\n" +
+	"\x06avg_ms\x18\x05 \x01(\x05R\x05avgMs\x124\n" +
+	"\x04last\x18\x06 \x01(\v2 .ltedu.compliance.v1.UptimeCheckR\x04last\x128\n" +
+	"\x06recent\x18\a \x03(\v2 .ltedu.compliance.v1.UptimeCheckR\x06recent\"\xba\x01\n" +
 	"\fPlatformInfo\x12#\n" +
 	"\rplatform_name\x18\x01 \x01(\tR\fplatformName\x12\x10\n" +
 	"\x03url\x18\x02 \x01(\tR\x03url\x12%\n" +
@@ -2454,41 +2454,41 @@ const file_joseph_compliance_v1_compliance_proto_rawDesc = "" +
 	"\binstance\x18\x05 \x01(\tR\binstance\x12\x14\n" +
 	"\x05files\x18\x06 \x01(\x05R\x05files\"<\n" +
 	"\x0fGetBoardRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xcd\x03\n" +
-	"\x10GetBoardResponse\x12>\n" +
-	"\bplatform\x18\x01 \x01(\v2\".joseph.compliance.v1.PlatformInfoR\bplatform\x126\n" +
-	"\areports\x18\x02 \x03(\v2\x1c.joseph.compliance.v1.ReportR\areports\x120\n" +
-	"\x05items\x18\x03 \x03(\v2\x1a.joseph.compliance.v1.ItemR\x05items\x120\n" +
-	"\x05rooms\x18\x04 \x03(\v2\x1a.joseph.compliance.v1.RoomR\x05rooms\x126\n" +
-	"\adevices\x18\x05 \x03(\v2\x1c.joseph.compliance.v1.DeviceR\adevices\x123\n" +
-	"\x06checks\x18\x06 \x03(\v2\x1b.joseph.compliance.v1.CheckR\x06checks\x124\n" +
-	"\x06uptime\x18\a \x01(\v2\x1c.joseph.compliance.v1.UptimeR\x06uptime\x12\x1b\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\xc6\x03\n" +
+	"\x10GetBoardResponse\x12=\n" +
+	"\bplatform\x18\x01 \x01(\v2!.ltedu.compliance.v1.PlatformInfoR\bplatform\x125\n" +
+	"\areports\x18\x02 \x03(\v2\x1b.ltedu.compliance.v1.ReportR\areports\x12/\n" +
+	"\x05items\x18\x03 \x03(\v2\x19.ltedu.compliance.v1.ItemR\x05items\x12/\n" +
+	"\x05rooms\x18\x04 \x03(\v2\x19.ltedu.compliance.v1.RoomR\x05rooms\x125\n" +
+	"\adevices\x18\x05 \x03(\v2\x1b.ltedu.compliance.v1.DeviceR\adevices\x122\n" +
+	"\x06checks\x18\x06 \x03(\v2\x1a.ltedu.compliance.v1.CheckR\x06checks\x123\n" +
+	"\x06uptime\x18\a \x01(\v2\x1b.ltedu.compliance.v1.UptimeR\x06uptime\x12\x1b\n" +
 	"\tcan_write\x18\b \x01(\bR\bcanWrite\x12\x1d\n" +
 	"\n" +
-	"can_verify\x18\t \x01(\bR\tcanVerify\"l\n" +
+	"can_verify\x18\t \x01(\bR\tcanVerify\"k\n" +
 	"\x0fSaveRoomRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12.\n" +
-	"\x04room\x18\x02 \x01(\v2\x1a.joseph.compliance.v1.RoomR\x04room\"B\n" +
-	"\x10SaveRoomResponse\x12.\n" +
-	"\x04room\x18\x01 \x01(\v2\x1a.joseph.compliance.v1.RoomR\x04room\"N\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12-\n" +
+	"\x04room\x18\x02 \x01(\v2\x19.ltedu.compliance.v1.RoomR\x04room\"A\n" +
+	"\x10SaveRoomResponse\x12-\n" +
+	"\x04room\x18\x01 \x01(\v2\x19.ltedu.compliance.v1.RoomR\x04room\"N\n" +
 	"\x11DeleteRoomRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x14\n" +
-	"\x12DeleteRoomResponse\"t\n" +
+	"\x12DeleteRoomResponse\"s\n" +
 	"\x11SaveDeviceRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x124\n" +
-	"\x06device\x18\x02 \x01(\v2\x1c.joseph.compliance.v1.DeviceR\x06device\"J\n" +
-	"\x12SaveDeviceResponse\x124\n" +
-	"\x06device\x18\x01 \x01(\v2\x1c.joseph.compliance.v1.DeviceR\x06device\"P\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x123\n" +
+	"\x06device\x18\x02 \x01(\v2\x1b.ltedu.compliance.v1.DeviceR\x06device\"I\n" +
+	"\x12SaveDeviceResponse\x123\n" +
+	"\x06device\x18\x01 \x01(\v2\x1b.ltedu.compliance.v1.DeviceR\x06device\"P\n" +
 	"\x13DeleteDeviceRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x16\n" +
-	"\x14DeleteDeviceResponse\"o\n" +
+	"\x14DeleteDeviceResponse\"n\n" +
 	"\x0fAddCheckRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x121\n" +
-	"\x05check\x18\x02 \x01(\v2\x1b.joseph.compliance.v1.CheckR\x05check\"E\n" +
-	"\x10AddCheckResponse\x121\n" +
-	"\x05check\x18\x01 \x01(\v2\x1b.joseph.compliance.v1.CheckR\x05check\"O\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x120\n" +
+	"\x05check\x18\x02 \x01(\v2\x1a.ltedu.compliance.v1.CheckR\x05check\"D\n" +
+	"\x10AddCheckResponse\x120\n" +
+	"\x05check\x18\x01 \x01(\v2\x1a.ltedu.compliance.v1.CheckR\x05check\"O\n" +
 	"\x12DeleteCheckRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x15\n" +
@@ -2500,150 +2500,150 @@ const file_joseph_compliance_v1_compliance_proto_rawDesc = "" +
 	"\x05route\x18\x04 \x01(\tR\x05route\x12\x14\n" +
 	"\x05annex\x18\x05 \x01(\tR\x05annex\x12\x14\n" +
 	"\x05folio\x18\x06 \x01(\tR\x05folio\x12\x14\n" +
-	"\x05notes\x18\a \x01(\tR\x05notes\"B\n" +
-	"\x10SaveItemResponse\x12.\n" +
-	"\x04item\x18\x01 \x01(\v2\x1a.joseph.compliance.v1.ItemR\x04item\"i\n" +
+	"\x05notes\x18\a \x01(\tR\x05notes\"A\n" +
+	"\x10SaveItemResponse\x12-\n" +
+	"\x04item\x18\x01 \x01(\v2\x19.ltedu.compliance.v1.ItemR\x04item\"i\n" +
 	"\x14SetItemStatusRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\tR\x06status\"G\n" +
-	"\x15SetItemStatusResponse\x12.\n" +
-	"\x04item\x18\x01 \x01(\v2\x1a.joseph.compliance.v1.ItemR\x04item\"t\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\"F\n" +
+	"\x15SetItemStatusResponse\x12-\n" +
+	"\x04item\x18\x01 \x01(\v2\x19.ltedu.compliance.v1.ItemR\x04item\"s\n" +
 	"\x11SaveReportRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x124\n" +
-	"\x06report\x18\x02 \x01(\v2\x1c.joseph.compliance.v1.ReportR\x06report\"J\n" +
-	"\x12SaveReportResponse\x124\n" +
-	"\x06report\x18\x01 \x01(\v2\x1c.joseph.compliance.v1.ReportR\x06report\"?\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x123\n" +
+	"\x06report\x18\x02 \x01(\v2\x1b.ltedu.compliance.v1.ReportR\x06report\"I\n" +
+	"\x12SaveReportResponse\x123\n" +
+	"\x06report\x18\x01 \x01(\v2\x1b.ltedu.compliance.v1.ReportR\x06report\"?\n" +
 	"\x12CheckUptimeRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"N\n" +
-	"\x13CheckUptimeResponse\x127\n" +
-	"\x05check\x18\x01 \x01(\v2!.joseph.compliance.v1.UptimeCheckR\x05check\"E\n" +
-	"\x18PlatformReportPdfRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"M\n" +
-	"\x19PlatformReportPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file\"F\n" +
+	"\x13CheckUptimeResponse\x126\n" +
+	"\x05check\x18\x01 \x01(\v2 .ltedu.compliance.v1.UptimeCheckR\x05check\"E\n" +
+	"\x18PlatformReportPdfRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"L\n" +
+	"\x19PlatformReportPdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file\"F\n" +
 	"\x19EquipmentReportPdfRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"N\n" +
-	"\x1aEquipmentReportPdfResponse\x120\n" +
-	"\x04file\x18\x01 \x01(\v2\x1c.joseph.documents.v1.PdfFileR\x04file2\xaa\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"M\n" +
+	"\x1aEquipmentReportPdfResponse\x12/\n" +
+	"\x04file\x18\x01 \x01(\v2\x1b.ltedu.documents.v1.PdfFileR\x04file2\x90\n" +
 	"\n" +
-	"\x11ComplianceService\x12Y\n" +
-	"\bGetBoard\x12%.joseph.compliance.v1.GetBoardRequest\x1a&.joseph.compliance.v1.GetBoardResponse\x12Y\n" +
-	"\bSaveRoom\x12%.joseph.compliance.v1.SaveRoomRequest\x1a&.joseph.compliance.v1.SaveRoomResponse\x12_\n" +
+	"\x11ComplianceService\x12W\n" +
+	"\bGetBoard\x12$.ltedu.compliance.v1.GetBoardRequest\x1a%.ltedu.compliance.v1.GetBoardResponse\x12W\n" +
+	"\bSaveRoom\x12$.ltedu.compliance.v1.SaveRoomRequest\x1a%.ltedu.compliance.v1.SaveRoomResponse\x12]\n" +
 	"\n" +
-	"DeleteRoom\x12'.joseph.compliance.v1.DeleteRoomRequest\x1a(.joseph.compliance.v1.DeleteRoomResponse\x12_\n" +
+	"DeleteRoom\x12&.ltedu.compliance.v1.DeleteRoomRequest\x1a'.ltedu.compliance.v1.DeleteRoomResponse\x12]\n" +
 	"\n" +
-	"SaveDevice\x12'.joseph.compliance.v1.SaveDeviceRequest\x1a(.joseph.compliance.v1.SaveDeviceResponse\x12e\n" +
-	"\fDeleteDevice\x12).joseph.compliance.v1.DeleteDeviceRequest\x1a*.joseph.compliance.v1.DeleteDeviceResponse\x12Y\n" +
-	"\bAddCheck\x12%.joseph.compliance.v1.AddCheckRequest\x1a&.joseph.compliance.v1.AddCheckResponse\x12b\n" +
-	"\vDeleteCheck\x12(.joseph.compliance.v1.DeleteCheckRequest\x1a).joseph.compliance.v1.DeleteCheckResponse\x12Y\n" +
-	"\bSaveItem\x12%.joseph.compliance.v1.SaveItemRequest\x1a&.joseph.compliance.v1.SaveItemResponse\x12h\n" +
-	"\rSetItemStatus\x12*.joseph.compliance.v1.SetItemStatusRequest\x1a+.joseph.compliance.v1.SetItemStatusResponse\x12_\n" +
+	"SaveDevice\x12&.ltedu.compliance.v1.SaveDeviceRequest\x1a'.ltedu.compliance.v1.SaveDeviceResponse\x12c\n" +
+	"\fDeleteDevice\x12(.ltedu.compliance.v1.DeleteDeviceRequest\x1a).ltedu.compliance.v1.DeleteDeviceResponse\x12W\n" +
+	"\bAddCheck\x12$.ltedu.compliance.v1.AddCheckRequest\x1a%.ltedu.compliance.v1.AddCheckResponse\x12`\n" +
+	"\vDeleteCheck\x12'.ltedu.compliance.v1.DeleteCheckRequest\x1a(.ltedu.compliance.v1.DeleteCheckResponse\x12W\n" +
+	"\bSaveItem\x12$.ltedu.compliance.v1.SaveItemRequest\x1a%.ltedu.compliance.v1.SaveItemResponse\x12f\n" +
+	"\rSetItemStatus\x12).ltedu.compliance.v1.SetItemStatusRequest\x1a*.ltedu.compliance.v1.SetItemStatusResponse\x12]\n" +
 	"\n" +
-	"SaveReport\x12'.joseph.compliance.v1.SaveReportRequest\x1a(.joseph.compliance.v1.SaveReportResponse\x12b\n" +
-	"\vCheckUptime\x12(.joseph.compliance.v1.CheckUptimeRequest\x1a).joseph.compliance.v1.CheckUptimeResponse\x12t\n" +
-	"\x11PlatformReportPdf\x12..joseph.compliance.v1.PlatformReportPdfRequest\x1a/.joseph.compliance.v1.PlatformReportPdfResponse\x12w\n" +
-	"\x12EquipmentReportPdf\x12/.joseph.compliance.v1.EquipmentReportPdfRequest\x1a0.joseph.compliance.v1.EquipmentReportPdfResponseBAZ?api/internal/adapter/inbound/grpc/gen/compliancev1;compliancev1b\x06proto3"
+	"SaveReport\x12&.ltedu.compliance.v1.SaveReportRequest\x1a'.ltedu.compliance.v1.SaveReportResponse\x12`\n" +
+	"\vCheckUptime\x12'.ltedu.compliance.v1.CheckUptimeRequest\x1a(.ltedu.compliance.v1.CheckUptimeResponse\x12r\n" +
+	"\x11PlatformReportPdf\x12-.ltedu.compliance.v1.PlatformReportPdfRequest\x1a..ltedu.compliance.v1.PlatformReportPdfResponse\x12u\n" +
+	"\x12EquipmentReportPdf\x12..ltedu.compliance.v1.EquipmentReportPdfRequest\x1a/.ltedu.compliance.v1.EquipmentReportPdfResponseBAZ?api/internal/adapter/inbound/grpc/gen/compliancev1;compliancev1b\x06proto3"
 
 var (
-	file_joseph_compliance_v1_compliance_proto_rawDescOnce sync.Once
-	file_joseph_compliance_v1_compliance_proto_rawDescData []byte
+	file_ltedu_compliance_v1_compliance_proto_rawDescOnce sync.Once
+	file_ltedu_compliance_v1_compliance_proto_rawDescData []byte
 )
 
-func file_joseph_compliance_v1_compliance_proto_rawDescGZIP() []byte {
-	file_joseph_compliance_v1_compliance_proto_rawDescOnce.Do(func() {
-		file_joseph_compliance_v1_compliance_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_compliance_v1_compliance_proto_rawDesc), len(file_joseph_compliance_v1_compliance_proto_rawDesc)))
+func file_ltedu_compliance_v1_compliance_proto_rawDescGZIP() []byte {
+	file_ltedu_compliance_v1_compliance_proto_rawDescOnce.Do(func() {
+		file_ltedu_compliance_v1_compliance_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_compliance_v1_compliance_proto_rawDesc), len(file_ltedu_compliance_v1_compliance_proto_rawDesc)))
 	})
-	return file_joseph_compliance_v1_compliance_proto_rawDescData
+	return file_ltedu_compliance_v1_compliance_proto_rawDescData
 }
 
-var file_joseph_compliance_v1_compliance_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
-var file_joseph_compliance_v1_compliance_proto_goTypes = []any{
-	(*Room)(nil),                       // 0: joseph.compliance.v1.Room
-	(*Device)(nil),                     // 1: joseph.compliance.v1.Device
-	(*Check)(nil),                      // 2: joseph.compliance.v1.Check
-	(*Report)(nil),                     // 3: joseph.compliance.v1.Report
-	(*Item)(nil),                       // 4: joseph.compliance.v1.Item
-	(*UptimeCheck)(nil),                // 5: joseph.compliance.v1.UptimeCheck
-	(*Uptime)(nil),                     // 6: joseph.compliance.v1.Uptime
-	(*PlatformInfo)(nil),               // 7: joseph.compliance.v1.PlatformInfo
-	(*GetBoardRequest)(nil),            // 8: joseph.compliance.v1.GetBoardRequest
-	(*GetBoardResponse)(nil),           // 9: joseph.compliance.v1.GetBoardResponse
-	(*SaveRoomRequest)(nil),            // 10: joseph.compliance.v1.SaveRoomRequest
-	(*SaveRoomResponse)(nil),           // 11: joseph.compliance.v1.SaveRoomResponse
-	(*DeleteRoomRequest)(nil),          // 12: joseph.compliance.v1.DeleteRoomRequest
-	(*DeleteRoomResponse)(nil),         // 13: joseph.compliance.v1.DeleteRoomResponse
-	(*SaveDeviceRequest)(nil),          // 14: joseph.compliance.v1.SaveDeviceRequest
-	(*SaveDeviceResponse)(nil),         // 15: joseph.compliance.v1.SaveDeviceResponse
-	(*DeleteDeviceRequest)(nil),        // 16: joseph.compliance.v1.DeleteDeviceRequest
-	(*DeleteDeviceResponse)(nil),       // 17: joseph.compliance.v1.DeleteDeviceResponse
-	(*AddCheckRequest)(nil),            // 18: joseph.compliance.v1.AddCheckRequest
-	(*AddCheckResponse)(nil),           // 19: joseph.compliance.v1.AddCheckResponse
-	(*DeleteCheckRequest)(nil),         // 20: joseph.compliance.v1.DeleteCheckRequest
-	(*DeleteCheckResponse)(nil),        // 21: joseph.compliance.v1.DeleteCheckResponse
-	(*SaveItemRequest)(nil),            // 22: joseph.compliance.v1.SaveItemRequest
-	(*SaveItemResponse)(nil),           // 23: joseph.compliance.v1.SaveItemResponse
-	(*SetItemStatusRequest)(nil),       // 24: joseph.compliance.v1.SetItemStatusRequest
-	(*SetItemStatusResponse)(nil),      // 25: joseph.compliance.v1.SetItemStatusResponse
-	(*SaveReportRequest)(nil),          // 26: joseph.compliance.v1.SaveReportRequest
-	(*SaveReportResponse)(nil),         // 27: joseph.compliance.v1.SaveReportResponse
-	(*CheckUptimeRequest)(nil),         // 28: joseph.compliance.v1.CheckUptimeRequest
-	(*CheckUptimeResponse)(nil),        // 29: joseph.compliance.v1.CheckUptimeResponse
-	(*PlatformReportPdfRequest)(nil),   // 30: joseph.compliance.v1.PlatformReportPdfRequest
-	(*PlatformReportPdfResponse)(nil),  // 31: joseph.compliance.v1.PlatformReportPdfResponse
-	(*EquipmentReportPdfRequest)(nil),  // 32: joseph.compliance.v1.EquipmentReportPdfRequest
-	(*EquipmentReportPdfResponse)(nil), // 33: joseph.compliance.v1.EquipmentReportPdfResponse
-	(*documentsv1.PdfFile)(nil),        // 34: joseph.documents.v1.PdfFile
+var file_ltedu_compliance_v1_compliance_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
+var file_ltedu_compliance_v1_compliance_proto_goTypes = []any{
+	(*Room)(nil),                       // 0: ltedu.compliance.v1.Room
+	(*Device)(nil),                     // 1: ltedu.compliance.v1.Device
+	(*Check)(nil),                      // 2: ltedu.compliance.v1.Check
+	(*Report)(nil),                     // 3: ltedu.compliance.v1.Report
+	(*Item)(nil),                       // 4: ltedu.compliance.v1.Item
+	(*UptimeCheck)(nil),                // 5: ltedu.compliance.v1.UptimeCheck
+	(*Uptime)(nil),                     // 6: ltedu.compliance.v1.Uptime
+	(*PlatformInfo)(nil),               // 7: ltedu.compliance.v1.PlatformInfo
+	(*GetBoardRequest)(nil),            // 8: ltedu.compliance.v1.GetBoardRequest
+	(*GetBoardResponse)(nil),           // 9: ltedu.compliance.v1.GetBoardResponse
+	(*SaveRoomRequest)(nil),            // 10: ltedu.compliance.v1.SaveRoomRequest
+	(*SaveRoomResponse)(nil),           // 11: ltedu.compliance.v1.SaveRoomResponse
+	(*DeleteRoomRequest)(nil),          // 12: ltedu.compliance.v1.DeleteRoomRequest
+	(*DeleteRoomResponse)(nil),         // 13: ltedu.compliance.v1.DeleteRoomResponse
+	(*SaveDeviceRequest)(nil),          // 14: ltedu.compliance.v1.SaveDeviceRequest
+	(*SaveDeviceResponse)(nil),         // 15: ltedu.compliance.v1.SaveDeviceResponse
+	(*DeleteDeviceRequest)(nil),        // 16: ltedu.compliance.v1.DeleteDeviceRequest
+	(*DeleteDeviceResponse)(nil),       // 17: ltedu.compliance.v1.DeleteDeviceResponse
+	(*AddCheckRequest)(nil),            // 18: ltedu.compliance.v1.AddCheckRequest
+	(*AddCheckResponse)(nil),           // 19: ltedu.compliance.v1.AddCheckResponse
+	(*DeleteCheckRequest)(nil),         // 20: ltedu.compliance.v1.DeleteCheckRequest
+	(*DeleteCheckResponse)(nil),        // 21: ltedu.compliance.v1.DeleteCheckResponse
+	(*SaveItemRequest)(nil),            // 22: ltedu.compliance.v1.SaveItemRequest
+	(*SaveItemResponse)(nil),           // 23: ltedu.compliance.v1.SaveItemResponse
+	(*SetItemStatusRequest)(nil),       // 24: ltedu.compliance.v1.SetItemStatusRequest
+	(*SetItemStatusResponse)(nil),      // 25: ltedu.compliance.v1.SetItemStatusResponse
+	(*SaveReportRequest)(nil),          // 26: ltedu.compliance.v1.SaveReportRequest
+	(*SaveReportResponse)(nil),         // 27: ltedu.compliance.v1.SaveReportResponse
+	(*CheckUptimeRequest)(nil),         // 28: ltedu.compliance.v1.CheckUptimeRequest
+	(*CheckUptimeResponse)(nil),        // 29: ltedu.compliance.v1.CheckUptimeResponse
+	(*PlatformReportPdfRequest)(nil),   // 30: ltedu.compliance.v1.PlatformReportPdfRequest
+	(*PlatformReportPdfResponse)(nil),  // 31: ltedu.compliance.v1.PlatformReportPdfResponse
+	(*EquipmentReportPdfRequest)(nil),  // 32: ltedu.compliance.v1.EquipmentReportPdfRequest
+	(*EquipmentReportPdfResponse)(nil), // 33: ltedu.compliance.v1.EquipmentReportPdfResponse
+	(*documentsv1.PdfFile)(nil),        // 34: ltedu.documents.v1.PdfFile
 }
-var file_joseph_compliance_v1_compliance_proto_depIdxs = []int32{
-	5,  // 0: joseph.compliance.v1.Uptime.last:type_name -> joseph.compliance.v1.UptimeCheck
-	5,  // 1: joseph.compliance.v1.Uptime.recent:type_name -> joseph.compliance.v1.UptimeCheck
-	7,  // 2: joseph.compliance.v1.GetBoardResponse.platform:type_name -> joseph.compliance.v1.PlatformInfo
-	3,  // 3: joseph.compliance.v1.GetBoardResponse.reports:type_name -> joseph.compliance.v1.Report
-	4,  // 4: joseph.compliance.v1.GetBoardResponse.items:type_name -> joseph.compliance.v1.Item
-	0,  // 5: joseph.compliance.v1.GetBoardResponse.rooms:type_name -> joseph.compliance.v1.Room
-	1,  // 6: joseph.compliance.v1.GetBoardResponse.devices:type_name -> joseph.compliance.v1.Device
-	2,  // 7: joseph.compliance.v1.GetBoardResponse.checks:type_name -> joseph.compliance.v1.Check
-	6,  // 8: joseph.compliance.v1.GetBoardResponse.uptime:type_name -> joseph.compliance.v1.Uptime
-	0,  // 9: joseph.compliance.v1.SaveRoomRequest.room:type_name -> joseph.compliance.v1.Room
-	0,  // 10: joseph.compliance.v1.SaveRoomResponse.room:type_name -> joseph.compliance.v1.Room
-	1,  // 11: joseph.compliance.v1.SaveDeviceRequest.device:type_name -> joseph.compliance.v1.Device
-	1,  // 12: joseph.compliance.v1.SaveDeviceResponse.device:type_name -> joseph.compliance.v1.Device
-	2,  // 13: joseph.compliance.v1.AddCheckRequest.check:type_name -> joseph.compliance.v1.Check
-	2,  // 14: joseph.compliance.v1.AddCheckResponse.check:type_name -> joseph.compliance.v1.Check
-	4,  // 15: joseph.compliance.v1.SaveItemResponse.item:type_name -> joseph.compliance.v1.Item
-	4,  // 16: joseph.compliance.v1.SetItemStatusResponse.item:type_name -> joseph.compliance.v1.Item
-	3,  // 17: joseph.compliance.v1.SaveReportRequest.report:type_name -> joseph.compliance.v1.Report
-	3,  // 18: joseph.compliance.v1.SaveReportResponse.report:type_name -> joseph.compliance.v1.Report
-	5,  // 19: joseph.compliance.v1.CheckUptimeResponse.check:type_name -> joseph.compliance.v1.UptimeCheck
-	34, // 20: joseph.compliance.v1.PlatformReportPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	34, // 21: joseph.compliance.v1.EquipmentReportPdfResponse.file:type_name -> joseph.documents.v1.PdfFile
-	8,  // 22: joseph.compliance.v1.ComplianceService.GetBoard:input_type -> joseph.compliance.v1.GetBoardRequest
-	10, // 23: joseph.compliance.v1.ComplianceService.SaveRoom:input_type -> joseph.compliance.v1.SaveRoomRequest
-	12, // 24: joseph.compliance.v1.ComplianceService.DeleteRoom:input_type -> joseph.compliance.v1.DeleteRoomRequest
-	14, // 25: joseph.compliance.v1.ComplianceService.SaveDevice:input_type -> joseph.compliance.v1.SaveDeviceRequest
-	16, // 26: joseph.compliance.v1.ComplianceService.DeleteDevice:input_type -> joseph.compliance.v1.DeleteDeviceRequest
-	18, // 27: joseph.compliance.v1.ComplianceService.AddCheck:input_type -> joseph.compliance.v1.AddCheckRequest
-	20, // 28: joseph.compliance.v1.ComplianceService.DeleteCheck:input_type -> joseph.compliance.v1.DeleteCheckRequest
-	22, // 29: joseph.compliance.v1.ComplianceService.SaveItem:input_type -> joseph.compliance.v1.SaveItemRequest
-	24, // 30: joseph.compliance.v1.ComplianceService.SetItemStatus:input_type -> joseph.compliance.v1.SetItemStatusRequest
-	26, // 31: joseph.compliance.v1.ComplianceService.SaveReport:input_type -> joseph.compliance.v1.SaveReportRequest
-	28, // 32: joseph.compliance.v1.ComplianceService.CheckUptime:input_type -> joseph.compliance.v1.CheckUptimeRequest
-	30, // 33: joseph.compliance.v1.ComplianceService.PlatformReportPdf:input_type -> joseph.compliance.v1.PlatformReportPdfRequest
-	32, // 34: joseph.compliance.v1.ComplianceService.EquipmentReportPdf:input_type -> joseph.compliance.v1.EquipmentReportPdfRequest
-	9,  // 35: joseph.compliance.v1.ComplianceService.GetBoard:output_type -> joseph.compliance.v1.GetBoardResponse
-	11, // 36: joseph.compliance.v1.ComplianceService.SaveRoom:output_type -> joseph.compliance.v1.SaveRoomResponse
-	13, // 37: joseph.compliance.v1.ComplianceService.DeleteRoom:output_type -> joseph.compliance.v1.DeleteRoomResponse
-	15, // 38: joseph.compliance.v1.ComplianceService.SaveDevice:output_type -> joseph.compliance.v1.SaveDeviceResponse
-	17, // 39: joseph.compliance.v1.ComplianceService.DeleteDevice:output_type -> joseph.compliance.v1.DeleteDeviceResponse
-	19, // 40: joseph.compliance.v1.ComplianceService.AddCheck:output_type -> joseph.compliance.v1.AddCheckResponse
-	21, // 41: joseph.compliance.v1.ComplianceService.DeleteCheck:output_type -> joseph.compliance.v1.DeleteCheckResponse
-	23, // 42: joseph.compliance.v1.ComplianceService.SaveItem:output_type -> joseph.compliance.v1.SaveItemResponse
-	25, // 43: joseph.compliance.v1.ComplianceService.SetItemStatus:output_type -> joseph.compliance.v1.SetItemStatusResponse
-	27, // 44: joseph.compliance.v1.ComplianceService.SaveReport:output_type -> joseph.compliance.v1.SaveReportResponse
-	29, // 45: joseph.compliance.v1.ComplianceService.CheckUptime:output_type -> joseph.compliance.v1.CheckUptimeResponse
-	31, // 46: joseph.compliance.v1.ComplianceService.PlatformReportPdf:output_type -> joseph.compliance.v1.PlatformReportPdfResponse
-	33, // 47: joseph.compliance.v1.ComplianceService.EquipmentReportPdf:output_type -> joseph.compliance.v1.EquipmentReportPdfResponse
+var file_ltedu_compliance_v1_compliance_proto_depIdxs = []int32{
+	5,  // 0: ltedu.compliance.v1.Uptime.last:type_name -> ltedu.compliance.v1.UptimeCheck
+	5,  // 1: ltedu.compliance.v1.Uptime.recent:type_name -> ltedu.compliance.v1.UptimeCheck
+	7,  // 2: ltedu.compliance.v1.GetBoardResponse.platform:type_name -> ltedu.compliance.v1.PlatformInfo
+	3,  // 3: ltedu.compliance.v1.GetBoardResponse.reports:type_name -> ltedu.compliance.v1.Report
+	4,  // 4: ltedu.compliance.v1.GetBoardResponse.items:type_name -> ltedu.compliance.v1.Item
+	0,  // 5: ltedu.compliance.v1.GetBoardResponse.rooms:type_name -> ltedu.compliance.v1.Room
+	1,  // 6: ltedu.compliance.v1.GetBoardResponse.devices:type_name -> ltedu.compliance.v1.Device
+	2,  // 7: ltedu.compliance.v1.GetBoardResponse.checks:type_name -> ltedu.compliance.v1.Check
+	6,  // 8: ltedu.compliance.v1.GetBoardResponse.uptime:type_name -> ltedu.compliance.v1.Uptime
+	0,  // 9: ltedu.compliance.v1.SaveRoomRequest.room:type_name -> ltedu.compliance.v1.Room
+	0,  // 10: ltedu.compliance.v1.SaveRoomResponse.room:type_name -> ltedu.compliance.v1.Room
+	1,  // 11: ltedu.compliance.v1.SaveDeviceRequest.device:type_name -> ltedu.compliance.v1.Device
+	1,  // 12: ltedu.compliance.v1.SaveDeviceResponse.device:type_name -> ltedu.compliance.v1.Device
+	2,  // 13: ltedu.compliance.v1.AddCheckRequest.check:type_name -> ltedu.compliance.v1.Check
+	2,  // 14: ltedu.compliance.v1.AddCheckResponse.check:type_name -> ltedu.compliance.v1.Check
+	4,  // 15: ltedu.compliance.v1.SaveItemResponse.item:type_name -> ltedu.compliance.v1.Item
+	4,  // 16: ltedu.compliance.v1.SetItemStatusResponse.item:type_name -> ltedu.compliance.v1.Item
+	3,  // 17: ltedu.compliance.v1.SaveReportRequest.report:type_name -> ltedu.compliance.v1.Report
+	3,  // 18: ltedu.compliance.v1.SaveReportResponse.report:type_name -> ltedu.compliance.v1.Report
+	5,  // 19: ltedu.compliance.v1.CheckUptimeResponse.check:type_name -> ltedu.compliance.v1.UptimeCheck
+	34, // 20: ltedu.compliance.v1.PlatformReportPdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	34, // 21: ltedu.compliance.v1.EquipmentReportPdfResponse.file:type_name -> ltedu.documents.v1.PdfFile
+	8,  // 22: ltedu.compliance.v1.ComplianceService.GetBoard:input_type -> ltedu.compliance.v1.GetBoardRequest
+	10, // 23: ltedu.compliance.v1.ComplianceService.SaveRoom:input_type -> ltedu.compliance.v1.SaveRoomRequest
+	12, // 24: ltedu.compliance.v1.ComplianceService.DeleteRoom:input_type -> ltedu.compliance.v1.DeleteRoomRequest
+	14, // 25: ltedu.compliance.v1.ComplianceService.SaveDevice:input_type -> ltedu.compliance.v1.SaveDeviceRequest
+	16, // 26: ltedu.compliance.v1.ComplianceService.DeleteDevice:input_type -> ltedu.compliance.v1.DeleteDeviceRequest
+	18, // 27: ltedu.compliance.v1.ComplianceService.AddCheck:input_type -> ltedu.compliance.v1.AddCheckRequest
+	20, // 28: ltedu.compliance.v1.ComplianceService.DeleteCheck:input_type -> ltedu.compliance.v1.DeleteCheckRequest
+	22, // 29: ltedu.compliance.v1.ComplianceService.SaveItem:input_type -> ltedu.compliance.v1.SaveItemRequest
+	24, // 30: ltedu.compliance.v1.ComplianceService.SetItemStatus:input_type -> ltedu.compliance.v1.SetItemStatusRequest
+	26, // 31: ltedu.compliance.v1.ComplianceService.SaveReport:input_type -> ltedu.compliance.v1.SaveReportRequest
+	28, // 32: ltedu.compliance.v1.ComplianceService.CheckUptime:input_type -> ltedu.compliance.v1.CheckUptimeRequest
+	30, // 33: ltedu.compliance.v1.ComplianceService.PlatformReportPdf:input_type -> ltedu.compliance.v1.PlatformReportPdfRequest
+	32, // 34: ltedu.compliance.v1.ComplianceService.EquipmentReportPdf:input_type -> ltedu.compliance.v1.EquipmentReportPdfRequest
+	9,  // 35: ltedu.compliance.v1.ComplianceService.GetBoard:output_type -> ltedu.compliance.v1.GetBoardResponse
+	11, // 36: ltedu.compliance.v1.ComplianceService.SaveRoom:output_type -> ltedu.compliance.v1.SaveRoomResponse
+	13, // 37: ltedu.compliance.v1.ComplianceService.DeleteRoom:output_type -> ltedu.compliance.v1.DeleteRoomResponse
+	15, // 38: ltedu.compliance.v1.ComplianceService.SaveDevice:output_type -> ltedu.compliance.v1.SaveDeviceResponse
+	17, // 39: ltedu.compliance.v1.ComplianceService.DeleteDevice:output_type -> ltedu.compliance.v1.DeleteDeviceResponse
+	19, // 40: ltedu.compliance.v1.ComplianceService.AddCheck:output_type -> ltedu.compliance.v1.AddCheckResponse
+	21, // 41: ltedu.compliance.v1.ComplianceService.DeleteCheck:output_type -> ltedu.compliance.v1.DeleteCheckResponse
+	23, // 42: ltedu.compliance.v1.ComplianceService.SaveItem:output_type -> ltedu.compliance.v1.SaveItemResponse
+	25, // 43: ltedu.compliance.v1.ComplianceService.SetItemStatus:output_type -> ltedu.compliance.v1.SetItemStatusResponse
+	27, // 44: ltedu.compliance.v1.ComplianceService.SaveReport:output_type -> ltedu.compliance.v1.SaveReportResponse
+	29, // 45: ltedu.compliance.v1.ComplianceService.CheckUptime:output_type -> ltedu.compliance.v1.CheckUptimeResponse
+	31, // 46: ltedu.compliance.v1.ComplianceService.PlatformReportPdf:output_type -> ltedu.compliance.v1.PlatformReportPdfResponse
+	33, // 47: ltedu.compliance.v1.ComplianceService.EquipmentReportPdf:output_type -> ltedu.compliance.v1.EquipmentReportPdfResponse
 	35, // [35:48] is the sub-list for method output_type
 	22, // [22:35] is the sub-list for method input_type
 	22, // [22:22] is the sub-list for extension type_name
@@ -2651,29 +2651,29 @@ var file_joseph_compliance_v1_compliance_proto_depIdxs = []int32{
 	0,  // [0:22] is the sub-list for field type_name
 }
 
-func init() { file_joseph_compliance_v1_compliance_proto_init() }
-func file_joseph_compliance_v1_compliance_proto_init() {
-	if File_joseph_compliance_v1_compliance_proto != nil {
+func init() { file_ltedu_compliance_v1_compliance_proto_init() }
+func file_ltedu_compliance_v1_compliance_proto_init() {
+	if File_ltedu_compliance_v1_compliance_proto != nil {
 		return
 	}
-	file_joseph_compliance_v1_compliance_proto_msgTypes[0].OneofWrappers = []any{}
-	file_joseph_compliance_v1_compliance_proto_msgTypes[2].OneofWrappers = []any{}
-	file_joseph_compliance_v1_compliance_proto_msgTypes[5].OneofWrappers = []any{}
+	file_ltedu_compliance_v1_compliance_proto_msgTypes[0].OneofWrappers = []any{}
+	file_ltedu_compliance_v1_compliance_proto_msgTypes[2].OneofWrappers = []any{}
+	file_ltedu_compliance_v1_compliance_proto_msgTypes[5].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_compliance_v1_compliance_proto_rawDesc), len(file_joseph_compliance_v1_compliance_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_compliance_v1_compliance_proto_rawDesc), len(file_ltedu_compliance_v1_compliance_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_joseph_compliance_v1_compliance_proto_goTypes,
-		DependencyIndexes: file_joseph_compliance_v1_compliance_proto_depIdxs,
-		MessageInfos:      file_joseph_compliance_v1_compliance_proto_msgTypes,
+		GoTypes:           file_ltedu_compliance_v1_compliance_proto_goTypes,
+		DependencyIndexes: file_ltedu_compliance_v1_compliance_proto_depIdxs,
+		MessageInfos:      file_ltedu_compliance_v1_compliance_proto_msgTypes,
 	}.Build()
-	File_joseph_compliance_v1_compliance_proto = out.File
-	file_joseph_compliance_v1_compliance_proto_goTypes = nil
-	file_joseph_compliance_v1_compliance_proto_depIdxs = nil
+	File_ltedu_compliance_v1_compliance_proto = out.File
+	file_ltedu_compliance_v1_compliance_proto_goTypes = nil
+	file_ltedu_compliance_v1_compliance_proto_depIdxs = nil
 }

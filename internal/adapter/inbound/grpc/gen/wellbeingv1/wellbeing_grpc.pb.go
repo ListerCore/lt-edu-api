@@ -2,11 +2,11 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: joseph/wellbeing/v1/wellbeing.proto
+// source: ltedu/wellbeing/v1/wellbeing.proto
 
 // Wellbeing (phase 11 of docs/plan-academico.md): tutoring, psychology (confidential), school discipline
 // (DS 021-2026-MINEDU) and, in special education, the individual plan (POI) and therapies. Same metadata and
-// institution scoping as joseph.academic.v1. Dates are "YYYY-MM-DD"
+// institution scoping as ltedu.academic.v1. Dates are "YYYY-MM-DD"
 
 package wellbeingv1
 
@@ -23,39 +23,39 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	WellbeingService_ListStudents_FullMethodName           = "/joseph.wellbeing.v1.WellbeingService/ListStudents"
-	WellbeingService_GetStudentFile_FullMethodName         = "/joseph.wellbeing.v1.WellbeingService/GetStudentFile"
-	WellbeingService_GetAlerts_FullMethodName              = "/joseph.wellbeing.v1.WellbeingService/GetAlerts"
-	WellbeingService_GetTutoring_FullMethodName            = "/joseph.wellbeing.v1.WellbeingService/GetTutoring"
-	WellbeingService_SaveInterview_FullMethodName          = "/joseph.wellbeing.v1.WellbeingService/SaveInterview"
-	WellbeingService_DeleteInterview_FullMethodName        = "/joseph.wellbeing.v1.WellbeingService/DeleteInterview"
-	WellbeingService_SaveCommitment_FullMethodName         = "/joseph.wellbeing.v1.WellbeingService/SaveCommitment"
-	WellbeingService_CheckCommitment_FullMethodName        = "/joseph.wellbeing.v1.WellbeingService/CheckCommitment"
-	WellbeingService_DeleteCommitment_FullMethodName       = "/joseph.wellbeing.v1.WellbeingService/DeleteCommitment"
-	WellbeingService_Refer_FullMethodName                  = "/joseph.wellbeing.v1.WellbeingService/Refer"
-	WellbeingService_GetPsychology_FullMethodName          = "/joseph.wellbeing.v1.WellbeingService/GetPsychology"
-	WellbeingService_GetCase_FullMethodName                = "/joseph.wellbeing.v1.WellbeingService/GetCase"
-	WellbeingService_UpdateCase_FullMethodName             = "/joseph.wellbeing.v1.WellbeingService/UpdateCase"
-	WellbeingService_AddSession_FullMethodName             = "/joseph.wellbeing.v1.WellbeingService/AddSession"
-	WellbeingService_DeleteSession_FullMethodName          = "/joseph.wellbeing.v1.WellbeingService/DeleteSession"
-	WellbeingService_GetDiscipline_FullMethodName          = "/joseph.wellbeing.v1.WellbeingService/GetDiscipline"
-	WellbeingService_SaveIncident_FullMethodName           = "/joseph.wellbeing.v1.WellbeingService/SaveIncident"
-	WellbeingService_DeleteIncident_FullMethodName         = "/joseph.wellbeing.v1.WellbeingService/DeleteIncident"
-	WellbeingService_SetIncidentStatus_FullMethodName      = "/joseph.wellbeing.v1.WellbeingService/SetIncidentStatus"
-	WellbeingService_GetMeasureContext_FullMethodName      = "/joseph.wellbeing.v1.WellbeingService/GetMeasureContext"
-	WellbeingService_AddMeasure_FullMethodName             = "/joseph.wellbeing.v1.WellbeingService/AddMeasure"
-	WellbeingService_NotifyMeasure_FullMethodName          = "/joseph.wellbeing.v1.WellbeingService/NotifyMeasure"
-	WellbeingService_RequestReconsideration_FullMethodName = "/joseph.wellbeing.v1.WellbeingService/RequestReconsideration"
-	WellbeingService_ResolveReconsideration_FullMethodName = "/joseph.wellbeing.v1.WellbeingService/ResolveReconsideration"
-	WellbeingService_DeleteMeasure_FullMethodName          = "/joseph.wellbeing.v1.WellbeingService/DeleteMeasure"
-	WellbeingService_ListPlans_FullMethodName              = "/joseph.wellbeing.v1.WellbeingService/ListPlans"
-	WellbeingService_GetPlan_FullMethodName                = "/joseph.wellbeing.v1.WellbeingService/GetPlan"
-	WellbeingService_SavePlan_FullMethodName               = "/joseph.wellbeing.v1.WellbeingService/SavePlan"
-	WellbeingService_SetPlanStatus_FullMethodName          = "/joseph.wellbeing.v1.WellbeingService/SetPlanStatus"
-	WellbeingService_DeletePlan_FullMethodName             = "/joseph.wellbeing.v1.WellbeingService/DeletePlan"
-	WellbeingService_ListTherapies_FullMethodName          = "/joseph.wellbeing.v1.WellbeingService/ListTherapies"
-	WellbeingService_SaveTherapy_FullMethodName            = "/joseph.wellbeing.v1.WellbeingService/SaveTherapy"
-	WellbeingService_DeleteTherapy_FullMethodName          = "/joseph.wellbeing.v1.WellbeingService/DeleteTherapy"
+	WellbeingService_ListStudents_FullMethodName           = "/ltedu.wellbeing.v1.WellbeingService/ListStudents"
+	WellbeingService_GetStudentFile_FullMethodName         = "/ltedu.wellbeing.v1.WellbeingService/GetStudentFile"
+	WellbeingService_GetAlerts_FullMethodName              = "/ltedu.wellbeing.v1.WellbeingService/GetAlerts"
+	WellbeingService_GetTutoring_FullMethodName            = "/ltedu.wellbeing.v1.WellbeingService/GetTutoring"
+	WellbeingService_SaveInterview_FullMethodName          = "/ltedu.wellbeing.v1.WellbeingService/SaveInterview"
+	WellbeingService_DeleteInterview_FullMethodName        = "/ltedu.wellbeing.v1.WellbeingService/DeleteInterview"
+	WellbeingService_SaveCommitment_FullMethodName         = "/ltedu.wellbeing.v1.WellbeingService/SaveCommitment"
+	WellbeingService_CheckCommitment_FullMethodName        = "/ltedu.wellbeing.v1.WellbeingService/CheckCommitment"
+	WellbeingService_DeleteCommitment_FullMethodName       = "/ltedu.wellbeing.v1.WellbeingService/DeleteCommitment"
+	WellbeingService_Refer_FullMethodName                  = "/ltedu.wellbeing.v1.WellbeingService/Refer"
+	WellbeingService_GetPsychology_FullMethodName          = "/ltedu.wellbeing.v1.WellbeingService/GetPsychology"
+	WellbeingService_GetCase_FullMethodName                = "/ltedu.wellbeing.v1.WellbeingService/GetCase"
+	WellbeingService_UpdateCase_FullMethodName             = "/ltedu.wellbeing.v1.WellbeingService/UpdateCase"
+	WellbeingService_AddSession_FullMethodName             = "/ltedu.wellbeing.v1.WellbeingService/AddSession"
+	WellbeingService_DeleteSession_FullMethodName          = "/ltedu.wellbeing.v1.WellbeingService/DeleteSession"
+	WellbeingService_GetDiscipline_FullMethodName          = "/ltedu.wellbeing.v1.WellbeingService/GetDiscipline"
+	WellbeingService_SaveIncident_FullMethodName           = "/ltedu.wellbeing.v1.WellbeingService/SaveIncident"
+	WellbeingService_DeleteIncident_FullMethodName         = "/ltedu.wellbeing.v1.WellbeingService/DeleteIncident"
+	WellbeingService_SetIncidentStatus_FullMethodName      = "/ltedu.wellbeing.v1.WellbeingService/SetIncidentStatus"
+	WellbeingService_GetMeasureContext_FullMethodName      = "/ltedu.wellbeing.v1.WellbeingService/GetMeasureContext"
+	WellbeingService_AddMeasure_FullMethodName             = "/ltedu.wellbeing.v1.WellbeingService/AddMeasure"
+	WellbeingService_NotifyMeasure_FullMethodName          = "/ltedu.wellbeing.v1.WellbeingService/NotifyMeasure"
+	WellbeingService_RequestReconsideration_FullMethodName = "/ltedu.wellbeing.v1.WellbeingService/RequestReconsideration"
+	WellbeingService_ResolveReconsideration_FullMethodName = "/ltedu.wellbeing.v1.WellbeingService/ResolveReconsideration"
+	WellbeingService_DeleteMeasure_FullMethodName          = "/ltedu.wellbeing.v1.WellbeingService/DeleteMeasure"
+	WellbeingService_ListPlans_FullMethodName              = "/ltedu.wellbeing.v1.WellbeingService/ListPlans"
+	WellbeingService_GetPlan_FullMethodName                = "/ltedu.wellbeing.v1.WellbeingService/GetPlan"
+	WellbeingService_SavePlan_FullMethodName               = "/ltedu.wellbeing.v1.WellbeingService/SavePlan"
+	WellbeingService_SetPlanStatus_FullMethodName          = "/ltedu.wellbeing.v1.WellbeingService/SetPlanStatus"
+	WellbeingService_DeletePlan_FullMethodName             = "/ltedu.wellbeing.v1.WellbeingService/DeletePlan"
+	WellbeingService_ListTherapies_FullMethodName          = "/ltedu.wellbeing.v1.WellbeingService/ListTherapies"
+	WellbeingService_SaveTherapy_FullMethodName            = "/ltedu.wellbeing.v1.WellbeingService/SaveTherapy"
+	WellbeingService_DeleteTherapy_FullMethodName          = "/ltedu.wellbeing.v1.WellbeingService/DeleteTherapy"
 )
 
 // WellbeingServiceClient is the client API for WellbeingService service.
@@ -1210,7 +1210,7 @@ func _WellbeingService_DeleteTherapy_Handler(srv interface{}, ctx context.Contex
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var WellbeingService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "joseph.wellbeing.v1.WellbeingService",
+	ServiceName: "ltedu.wellbeing.v1.WellbeingService",
 	HandlerType: (*WellbeingServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -1347,5 +1347,5 @@ var WellbeingService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "joseph/wellbeing/v1/wellbeing.proto",
+	Metadata: "ltedu/wellbeing/v1/wellbeing.proto",
 }

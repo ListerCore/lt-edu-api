@@ -2,10 +2,10 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        (unknown)
-// source: joseph/teaching/v1/teaching.proto
+// source: ltedu/teaching/v1/teaching.proto
 
 // Staff, teaching load and timetables (phase 4 of docs/plan-academico.md). Same metadata and institution scoping
-// as joseph.academic.v1. Times travel as HH:MM and dates as YYYY-MM-DD; weekdays are 1 = Monday … 7 = Sunday
+// as ltedu.academic.v1. Times travel as HH:MM and dates as YYYY-MM-DD; weekdays are 1 = Monday … 7 = Sunday
 
 package teachingv1
 
@@ -53,7 +53,7 @@ type Staff struct {
 
 func (x *Staff) Reset() {
 	*x = Staff{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[0]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -65,7 +65,7 @@ func (x *Staff) String() string {
 func (*Staff) ProtoMessage() {}
 
 func (x *Staff) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[0]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -78,7 +78,7 @@ func (x *Staff) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Staff.ProtoReflect.Descriptor instead.
 func (*Staff) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{0}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Staff) GetId() string {
@@ -236,7 +236,7 @@ type StaffInput struct {
 
 func (x *StaffInput) Reset() {
 	*x = StaffInput{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[1]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -248,7 +248,7 @@ func (x *StaffInput) String() string {
 func (*StaffInput) ProtoMessage() {}
 
 func (x *StaffInput) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[1]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -261,7 +261,7 @@ func (x *StaffInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StaffInput.ProtoReflect.Descriptor instead.
 func (*StaffInput) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{1}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *StaffInput) GetCode() string {
@@ -378,7 +378,7 @@ type TimeBlock struct {
 
 func (x *TimeBlock) Reset() {
 	*x = TimeBlock{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[2]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -390,7 +390,7 @@ func (x *TimeBlock) String() string {
 func (*TimeBlock) ProtoMessage() {}
 
 func (x *TimeBlock) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[2]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -403,7 +403,7 @@ func (x *TimeBlock) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TimeBlock.ProtoReflect.Descriptor instead.
 func (*TimeBlock) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{2}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *TimeBlock) GetId() string {
@@ -469,7 +469,7 @@ type Assignment struct {
 
 func (x *Assignment) Reset() {
 	*x = Assignment{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[3]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -481,7 +481,7 @@ func (x *Assignment) String() string {
 func (*Assignment) ProtoMessage() {}
 
 func (x *Assignment) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[3]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -494,7 +494,7 @@ func (x *Assignment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Assignment.ProtoReflect.Descriptor instead.
 func (*Assignment) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{3}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Assignment) GetId() string {
@@ -610,7 +610,7 @@ type ScheduleEntry struct {
 
 func (x *ScheduleEntry) Reset() {
 	*x = ScheduleEntry{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[4]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -622,7 +622,7 @@ func (x *ScheduleEntry) String() string {
 func (*ScheduleEntry) ProtoMessage() {}
 
 func (x *ScheduleEntry) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[4]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -635,7 +635,7 @@ func (x *ScheduleEntry) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScheduleEntry.ProtoReflect.Descriptor instead.
 func (*ScheduleEntry) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{4}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ScheduleEntry) GetId() string {
@@ -750,7 +750,7 @@ type ListStaffRequest struct {
 
 func (x *ListStaffRequest) Reset() {
 	*x = ListStaffRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[5]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -762,7 +762,7 @@ func (x *ListStaffRequest) String() string {
 func (*ListStaffRequest) ProtoMessage() {}
 
 func (x *ListStaffRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[5]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -775,7 +775,7 @@ func (x *ListStaffRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStaffRequest.ProtoReflect.Descriptor instead.
 func (*ListStaffRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{5}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListStaffRequest) GetInstitutionSlug() string {
@@ -832,7 +832,7 @@ type ListStaffResponse struct {
 
 func (x *ListStaffResponse) Reset() {
 	*x = ListStaffResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[6]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -844,7 +844,7 @@ func (x *ListStaffResponse) String() string {
 func (*ListStaffResponse) ProtoMessage() {}
 
 func (x *ListStaffResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[6]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -857,7 +857,7 @@ func (x *ListStaffResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListStaffResponse.ProtoReflect.Descriptor instead.
 func (*ListStaffResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{6}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ListStaffResponse) GetStaff() []*Staff {
@@ -898,7 +898,7 @@ type GetStaffRequest struct {
 
 func (x *GetStaffRequest) Reset() {
 	*x = GetStaffRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[7]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -910,7 +910,7 @@ func (x *GetStaffRequest) String() string {
 func (*GetStaffRequest) ProtoMessage() {}
 
 func (x *GetStaffRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[7]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -923,7 +923,7 @@ func (x *GetStaffRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStaffRequest.ProtoReflect.Descriptor instead.
 func (*GetStaffRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{7}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetStaffRequest) GetInstitutionSlug() string {
@@ -953,7 +953,7 @@ type GetStaffResponse struct {
 
 func (x *GetStaffResponse) Reset() {
 	*x = GetStaffResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[8]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -965,7 +965,7 @@ func (x *GetStaffResponse) String() string {
 func (*GetStaffResponse) ProtoMessage() {}
 
 func (x *GetStaffResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[8]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -978,7 +978,7 @@ func (x *GetStaffResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStaffResponse.ProtoReflect.Descriptor instead.
 func (*GetStaffResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{8}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetStaffResponse) GetStaff() *Staff {
@@ -1019,7 +1019,7 @@ type CreateStaffRequest struct {
 
 func (x *CreateStaffRequest) Reset() {
 	*x = CreateStaffRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[9]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1031,7 +1031,7 @@ func (x *CreateStaffRequest) String() string {
 func (*CreateStaffRequest) ProtoMessage() {}
 
 func (x *CreateStaffRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[9]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1044,7 +1044,7 @@ func (x *CreateStaffRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateStaffRequest.ProtoReflect.Descriptor instead.
 func (*CreateStaffRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{9}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *CreateStaffRequest) GetInstitutionSlug() string {
@@ -1070,7 +1070,7 @@ type CreateStaffResponse struct {
 
 func (x *CreateStaffResponse) Reset() {
 	*x = CreateStaffResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[10]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1082,7 +1082,7 @@ func (x *CreateStaffResponse) String() string {
 func (*CreateStaffResponse) ProtoMessage() {}
 
 func (x *CreateStaffResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[10]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1095,7 +1095,7 @@ func (x *CreateStaffResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateStaffResponse.ProtoReflect.Descriptor instead.
 func (*CreateStaffResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{10}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CreateStaffResponse) GetStaff() *Staff {
@@ -1116,7 +1116,7 @@ type UpdateStaffRequest struct {
 
 func (x *UpdateStaffRequest) Reset() {
 	*x = UpdateStaffRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[11]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1128,7 +1128,7 @@ func (x *UpdateStaffRequest) String() string {
 func (*UpdateStaffRequest) ProtoMessage() {}
 
 func (x *UpdateStaffRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[11]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1141,7 +1141,7 @@ func (x *UpdateStaffRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateStaffRequest.ProtoReflect.Descriptor instead.
 func (*UpdateStaffRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{11}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *UpdateStaffRequest) GetInstitutionSlug() string {
@@ -1174,7 +1174,7 @@ type UpdateStaffResponse struct {
 
 func (x *UpdateStaffResponse) Reset() {
 	*x = UpdateStaffResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[12]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1186,7 +1186,7 @@ func (x *UpdateStaffResponse) String() string {
 func (*UpdateStaffResponse) ProtoMessage() {}
 
 func (x *UpdateStaffResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[12]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1199,7 +1199,7 @@ func (x *UpdateStaffResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateStaffResponse.ProtoReflect.Descriptor instead.
 func (*UpdateStaffResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{12}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *UpdateStaffResponse) GetStaff() *Staff {
@@ -1219,7 +1219,7 @@ type DeleteStaffRequest struct {
 
 func (x *DeleteStaffRequest) Reset() {
 	*x = DeleteStaffRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[13]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1231,7 +1231,7 @@ func (x *DeleteStaffRequest) String() string {
 func (*DeleteStaffRequest) ProtoMessage() {}
 
 func (x *DeleteStaffRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[13]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1244,7 +1244,7 @@ func (x *DeleteStaffRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteStaffRequest.ProtoReflect.Descriptor instead.
 func (*DeleteStaffRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{13}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *DeleteStaffRequest) GetInstitutionSlug() string {
@@ -1269,7 +1269,7 @@ type DeleteStaffResponse struct {
 
 func (x *DeleteStaffResponse) Reset() {
 	*x = DeleteStaffResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[14]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1281,7 +1281,7 @@ func (x *DeleteStaffResponse) String() string {
 func (*DeleteStaffResponse) ProtoMessage() {}
 
 func (x *DeleteStaffResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[14]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1294,7 +1294,7 @@ func (x *DeleteStaffResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteStaffResponse.ProtoReflect.Descriptor instead.
 func (*DeleteStaffResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{14}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{14}
 }
 
 type GrantRoleRequest struct {
@@ -1308,7 +1308,7 @@ type GrantRoleRequest struct {
 
 func (x *GrantRoleRequest) Reset() {
 	*x = GrantRoleRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[15]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1320,7 +1320,7 @@ func (x *GrantRoleRequest) String() string {
 func (*GrantRoleRequest) ProtoMessage() {}
 
 func (x *GrantRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[15]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1333,7 +1333,7 @@ func (x *GrantRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantRoleRequest.ProtoReflect.Descriptor instead.
 func (*GrantRoleRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{15}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GrantRoleRequest) GetInstitutionSlug() string {
@@ -1366,7 +1366,7 @@ type GrantRoleResponse struct {
 
 func (x *GrantRoleResponse) Reset() {
 	*x = GrantRoleResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[16]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1378,7 +1378,7 @@ func (x *GrantRoleResponse) String() string {
 func (*GrantRoleResponse) ProtoMessage() {}
 
 func (x *GrantRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[16]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1391,7 +1391,7 @@ func (x *GrantRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantRoleResponse.ProtoReflect.Descriptor instead.
 func (*GrantRoleResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{16}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GrantRoleResponse) GetStaff() *Staff {
@@ -1411,7 +1411,7 @@ type GetPlannerRequest struct {
 
 func (x *GetPlannerRequest) Reset() {
 	*x = GetPlannerRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[17]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1423,7 +1423,7 @@ func (x *GetPlannerRequest) String() string {
 func (*GetPlannerRequest) ProtoMessage() {}
 
 func (x *GetPlannerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[17]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1436,7 +1436,7 @@ func (x *GetPlannerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPlannerRequest.ProtoReflect.Descriptor instead.
 func (*GetPlannerRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{17}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetPlannerRequest) GetInstitutionSlug() string {
@@ -1470,7 +1470,7 @@ type GetPlannerResponse struct {
 
 func (x *GetPlannerResponse) Reset() {
 	*x = GetPlannerResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[18]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1482,7 +1482,7 @@ func (x *GetPlannerResponse) String() string {
 func (*GetPlannerResponse) ProtoMessage() {}
 
 func (x *GetPlannerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[18]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1495,7 +1495,7 @@ func (x *GetPlannerResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPlannerResponse.ProtoReflect.Descriptor instead.
 func (*GetPlannerResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{18}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetPlannerResponse) GetContext() *academicv1.AcademicContext {
@@ -1564,7 +1564,7 @@ type PrepareLoadRequest struct {
 
 func (x *PrepareLoadRequest) Reset() {
 	*x = PrepareLoadRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[19]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1576,7 +1576,7 @@ func (x *PrepareLoadRequest) String() string {
 func (*PrepareLoadRequest) ProtoMessage() {}
 
 func (x *PrepareLoadRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[19]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1589,7 +1589,7 @@ func (x *PrepareLoadRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PrepareLoadRequest.ProtoReflect.Descriptor instead.
 func (*PrepareLoadRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{19}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *PrepareLoadRequest) GetInstitutionSlug() string {
@@ -1615,7 +1615,7 @@ type PrepareLoadResponse struct {
 
 func (x *PrepareLoadResponse) Reset() {
 	*x = PrepareLoadResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[20]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1627,7 +1627,7 @@ func (x *PrepareLoadResponse) String() string {
 func (*PrepareLoadResponse) ProtoMessage() {}
 
 func (x *PrepareLoadResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[20]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1640,7 +1640,7 @@ func (x *PrepareLoadResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PrepareLoadResponse.ProtoReflect.Descriptor instead.
 func (*PrepareLoadResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{20}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *PrepareLoadResponse) GetAdded() int32 {
@@ -1663,7 +1663,7 @@ type UpdateAssignmentRequest struct {
 
 func (x *UpdateAssignmentRequest) Reset() {
 	*x = UpdateAssignmentRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[21]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1675,7 +1675,7 @@ func (x *UpdateAssignmentRequest) String() string {
 func (*UpdateAssignmentRequest) ProtoMessage() {}
 
 func (x *UpdateAssignmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[21]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1688,7 +1688,7 @@ func (x *UpdateAssignmentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAssignmentRequest.ProtoReflect.Descriptor instead.
 func (*UpdateAssignmentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{21}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *UpdateAssignmentRequest) GetInstitutionSlug() string {
@@ -1728,7 +1728,7 @@ type UpdateAssignmentResponse struct {
 
 func (x *UpdateAssignmentResponse) Reset() {
 	*x = UpdateAssignmentResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[22]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1740,7 +1740,7 @@ func (x *UpdateAssignmentResponse) String() string {
 func (*UpdateAssignmentResponse) ProtoMessage() {}
 
 func (x *UpdateAssignmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[22]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1753,7 +1753,7 @@ func (x *UpdateAssignmentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAssignmentResponse.ProtoReflect.Descriptor instead.
 func (*UpdateAssignmentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{22}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *UpdateAssignmentResponse) GetAssignment() *Assignment {
@@ -1773,7 +1773,7 @@ type DeleteAssignmentRequest struct {
 
 func (x *DeleteAssignmentRequest) Reset() {
 	*x = DeleteAssignmentRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[23]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1785,7 +1785,7 @@ func (x *DeleteAssignmentRequest) String() string {
 func (*DeleteAssignmentRequest) ProtoMessage() {}
 
 func (x *DeleteAssignmentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[23]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1798,7 +1798,7 @@ func (x *DeleteAssignmentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAssignmentRequest.ProtoReflect.Descriptor instead.
 func (*DeleteAssignmentRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{23}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *DeleteAssignmentRequest) GetInstitutionSlug() string {
@@ -1823,7 +1823,7 @@ type DeleteAssignmentResponse struct {
 
 func (x *DeleteAssignmentResponse) Reset() {
 	*x = DeleteAssignmentResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[24]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1835,7 +1835,7 @@ func (x *DeleteAssignmentResponse) String() string {
 func (*DeleteAssignmentResponse) ProtoMessage() {}
 
 func (x *DeleteAssignmentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[24]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1848,7 +1848,7 @@ func (x *DeleteAssignmentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAssignmentResponse.ProtoReflect.Descriptor instead.
 func (*DeleteAssignmentResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{24}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{24}
 }
 
 type SetTutorRequest struct {
@@ -1863,7 +1863,7 @@ type SetTutorRequest struct {
 
 func (x *SetTutorRequest) Reset() {
 	*x = SetTutorRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[25]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1875,7 +1875,7 @@ func (x *SetTutorRequest) String() string {
 func (*SetTutorRequest) ProtoMessage() {}
 
 func (x *SetTutorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[25]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1888,7 +1888,7 @@ func (x *SetTutorRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetTutorRequest.ProtoReflect.Descriptor instead.
 func (*SetTutorRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{25}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *SetTutorRequest) GetInstitutionSlug() string {
@@ -1920,7 +1920,7 @@ type SetTutorResponse struct {
 
 func (x *SetTutorResponse) Reset() {
 	*x = SetTutorResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[26]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1932,7 +1932,7 @@ func (x *SetTutorResponse) String() string {
 func (*SetTutorResponse) ProtoMessage() {}
 
 func (x *SetTutorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[26]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1945,7 +1945,7 @@ func (x *SetTutorResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetTutorResponse.ProtoReflect.Descriptor instead.
 func (*SetTutorResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{26}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{26}
 }
 
 type SetTimeBlocksRequest struct {
@@ -1959,7 +1959,7 @@ type SetTimeBlocksRequest struct {
 
 func (x *SetTimeBlocksRequest) Reset() {
 	*x = SetTimeBlocksRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[27]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1971,7 +1971,7 @@ func (x *SetTimeBlocksRequest) String() string {
 func (*SetTimeBlocksRequest) ProtoMessage() {}
 
 func (x *SetTimeBlocksRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[27]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1984,7 +1984,7 @@ func (x *SetTimeBlocksRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetTimeBlocksRequest.ProtoReflect.Descriptor instead.
 func (*SetTimeBlocksRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{27}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *SetTimeBlocksRequest) GetInstitutionSlug() string {
@@ -2017,7 +2017,7 @@ type SetTimeBlocksResponse struct {
 
 func (x *SetTimeBlocksResponse) Reset() {
 	*x = SetTimeBlocksResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[28]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2029,7 +2029,7 @@ func (x *SetTimeBlocksResponse) String() string {
 func (*SetTimeBlocksResponse) ProtoMessage() {}
 
 func (x *SetTimeBlocksResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[28]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2042,7 +2042,7 @@ func (x *SetTimeBlocksResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetTimeBlocksResponse.ProtoReflect.Descriptor instead.
 func (*SetTimeBlocksResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{28}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *SetTimeBlocksResponse) GetBlocks() []*TimeBlock {
@@ -2066,7 +2066,7 @@ type PlaceClassRequest struct {
 
 func (x *PlaceClassRequest) Reset() {
 	*x = PlaceClassRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[29]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2078,7 +2078,7 @@ func (x *PlaceClassRequest) String() string {
 func (*PlaceClassRequest) ProtoMessage() {}
 
 func (x *PlaceClassRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[29]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2091,7 +2091,7 @@ func (x *PlaceClassRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlaceClassRequest.ProtoReflect.Descriptor instead.
 func (*PlaceClassRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{29}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *PlaceClassRequest) GetInstitutionSlug() string {
@@ -2145,7 +2145,7 @@ type PlaceClassResponse struct {
 
 func (x *PlaceClassResponse) Reset() {
 	*x = PlaceClassResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[30]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2157,7 +2157,7 @@ func (x *PlaceClassResponse) String() string {
 func (*PlaceClassResponse) ProtoMessage() {}
 
 func (x *PlaceClassResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[30]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2170,7 +2170,7 @@ func (x *PlaceClassResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlaceClassResponse.ProtoReflect.Descriptor instead.
 func (*PlaceClassResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{30}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *PlaceClassResponse) GetEntry() *ScheduleEntry {
@@ -2190,7 +2190,7 @@ type RemoveClassRequest struct {
 
 func (x *RemoveClassRequest) Reset() {
 	*x = RemoveClassRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[31]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2202,7 +2202,7 @@ func (x *RemoveClassRequest) String() string {
 func (*RemoveClassRequest) ProtoMessage() {}
 
 func (x *RemoveClassRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[31]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2215,7 +2215,7 @@ func (x *RemoveClassRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveClassRequest.ProtoReflect.Descriptor instead.
 func (*RemoveClassRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{31}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *RemoveClassRequest) GetInstitutionSlug() string {
@@ -2240,7 +2240,7 @@ type RemoveClassResponse struct {
 
 func (x *RemoveClassResponse) Reset() {
 	*x = RemoveClassResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[32]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2252,7 +2252,7 @@ func (x *RemoveClassResponse) String() string {
 func (*RemoveClassResponse) ProtoMessage() {}
 
 func (x *RemoveClassResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[32]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2265,7 +2265,7 @@ func (x *RemoveClassResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveClassResponse.ProtoReflect.Descriptor instead.
 func (*RemoveClassResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{32}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{32}
 }
 
 type ClearSectionRequest struct {
@@ -2278,7 +2278,7 @@ type ClearSectionRequest struct {
 
 func (x *ClearSectionRequest) Reset() {
 	*x = ClearSectionRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[33]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2290,7 +2290,7 @@ func (x *ClearSectionRequest) String() string {
 func (*ClearSectionRequest) ProtoMessage() {}
 
 func (x *ClearSectionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[33]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2303,7 +2303,7 @@ func (x *ClearSectionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClearSectionRequest.ProtoReflect.Descriptor instead.
 func (*ClearSectionRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{33}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *ClearSectionRequest) GetInstitutionSlug() string {
@@ -2328,7 +2328,7 @@ type ClearSectionResponse struct {
 
 func (x *ClearSectionResponse) Reset() {
 	*x = ClearSectionResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[34]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2340,7 +2340,7 @@ func (x *ClearSectionResponse) String() string {
 func (*ClearSectionResponse) ProtoMessage() {}
 
 func (x *ClearSectionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[34]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2353,7 +2353,7 @@ func (x *ClearSectionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClearSectionResponse.ProtoReflect.Descriptor instead.
 func (*ClearSectionResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{34}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{34}
 }
 
 type AutoFillRequest struct {
@@ -2368,7 +2368,7 @@ type AutoFillRequest struct {
 
 func (x *AutoFillRequest) Reset() {
 	*x = AutoFillRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[35]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2380,7 +2380,7 @@ func (x *AutoFillRequest) String() string {
 func (*AutoFillRequest) ProtoMessage() {}
 
 func (x *AutoFillRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[35]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2393,7 +2393,7 @@ func (x *AutoFillRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AutoFillRequest.ProtoReflect.Descriptor instead.
 func (*AutoFillRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{35}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *AutoFillRequest) GetInstitutionSlug() string {
@@ -2427,7 +2427,7 @@ type AutoFillResponse struct {
 
 func (x *AutoFillResponse) Reset() {
 	*x = AutoFillResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[36]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2439,7 +2439,7 @@ func (x *AutoFillResponse) String() string {
 func (*AutoFillResponse) ProtoMessage() {}
 
 func (x *AutoFillResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[36]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2452,7 +2452,7 @@ func (x *AutoFillResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AutoFillResponse.ProtoReflect.Descriptor instead.
 func (*AutoFillResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{36}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *AutoFillResponse) GetPlaced() int32 {
@@ -2478,7 +2478,7 @@ type MyScheduleRequest struct {
 
 func (x *MyScheduleRequest) Reset() {
 	*x = MyScheduleRequest{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[37]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2490,7 +2490,7 @@ func (x *MyScheduleRequest) String() string {
 func (*MyScheduleRequest) ProtoMessage() {}
 
 func (x *MyScheduleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[37]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2503,7 +2503,7 @@ func (x *MyScheduleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MyScheduleRequest.ProtoReflect.Descriptor instead.
 func (*MyScheduleRequest) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{37}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *MyScheduleRequest) GetInstitutionSlug() string {
@@ -2524,7 +2524,7 @@ type ScheduleGroup struct {
 
 func (x *ScheduleGroup) Reset() {
 	*x = ScheduleGroup{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[38]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2536,7 +2536,7 @@ func (x *ScheduleGroup) String() string {
 func (*ScheduleGroup) ProtoMessage() {}
 
 func (x *ScheduleGroup) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[38]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2549,7 +2549,7 @@ func (x *ScheduleGroup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScheduleGroup.ProtoReflect.Descriptor instead.
 func (*ScheduleGroup) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{38}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *ScheduleGroup) GetTitle() string {
@@ -2586,7 +2586,7 @@ type MyScheduleResponse struct {
 
 func (x *MyScheduleResponse) Reset() {
 	*x = MyScheduleResponse{}
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[39]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2598,7 +2598,7 @@ func (x *MyScheduleResponse) String() string {
 func (*MyScheduleResponse) ProtoMessage() {}
 
 func (x *MyScheduleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_joseph_teaching_v1_teaching_proto_msgTypes[39]
+	mi := &file_ltedu_teaching_v1_teaching_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2611,7 +2611,7 @@ func (x *MyScheduleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MyScheduleResponse.ProtoReflect.Descriptor instead.
 func (*MyScheduleResponse) Descriptor() ([]byte, []int) {
-	return file_joseph_teaching_v1_teaching_proto_rawDescGZIP(), []int{39}
+	return file_ltedu_teaching_v1_teaching_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *MyScheduleResponse) GetKind() string {
@@ -2642,11 +2642,11 @@ func (x *MyScheduleResponse) GetGroups() []*ScheduleGroup {
 	return nil
 }
 
-var File_joseph_teaching_v1_teaching_proto protoreflect.FileDescriptor
+var File_ltedu_teaching_v1_teaching_proto protoreflect.FileDescriptor
 
-const file_joseph_teaching_v1_teaching_proto_rawDesc = "" +
+const file_ltedu_teaching_v1_teaching_proto_rawDesc = "" +
 	"\n" +
-	"!joseph/teaching/v1/teaching.proto\x12\x12joseph.teaching.v1\x1a!joseph/academic/v1/academic.proto\"\xba\x04\n" +
+	" ltedu/teaching/v1/teaching.proto\x12\x11ltedu.teaching.v1\x1a ltedu/academic/v1/academic.proto\"\xba\x04\n" +
 	"\x05Staff\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12#\n" +
@@ -2742,33 +2742,33 @@ const file_joseph_teaching_v1_teaching_proto_rawDesc = "" +
 	"\x06status\x18\x03 \x01(\tR\x06status\x12#\n" +
 	"\rteachers_only\x18\x04 \x01(\bR\fteachersOnly\x12\x14\n" +
 	"\x05limit\x18\x05 \x01(\x05R\x05limit\x12\x16\n" +
-	"\x06offset\x18\x06 \x01(\x05R\x06offset\"\x96\x01\n" +
-	"\x11ListStaffResponse\x12/\n" +
-	"\x05staff\x18\x01 \x03(\v2\x19.joseph.teaching.v1.StaffR\x05staff\x12\x14\n" +
+	"\x06offset\x18\x06 \x01(\x05R\x06offset\"\x95\x01\n" +
+	"\x11ListStaffResponse\x12.\n" +
+	"\x05staff\x18\x01 \x03(\v2\x18.ltedu.teaching.v1.StaffR\x05staff\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x05R\x05total\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\x03 \x01(\bR\tcanManage\x12\x1b\n" +
 	"\tcan_grant\x18\x04 \x01(\bR\bcanGrant\"L\n" +
 	"\x0fGetStaffRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"\xc1\x01\n" +
-	"\x10GetStaffResponse\x12/\n" +
-	"\x05staff\x18\x01 \x01(\v2\x19.joseph.teaching.v1.StaffR\x05staff\x12@\n" +
-	"\vassignments\x18\x02 \x03(\v2\x1e.joseph.teaching.v1.AssignmentR\vassignments\x12\x1d\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"\xbf\x01\n" +
+	"\x10GetStaffResponse\x12.\n" +
+	"\x05staff\x18\x01 \x01(\v2\x18.ltedu.teaching.v1.StaffR\x05staff\x12?\n" +
+	"\vassignments\x18\x02 \x03(\v2\x1d.ltedu.teaching.v1.AssignmentR\vassignments\x12\x1d\n" +
 	"\n" +
 	"can_manage\x18\x03 \x01(\bR\tcanManage\x12\x1b\n" +
-	"\tcan_grant\x18\x04 \x01(\bR\bcanGrant\"u\n" +
+	"\tcan_grant\x18\x04 \x01(\bR\bcanGrant\"t\n" +
 	"\x12CreateStaffRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x124\n" +
-	"\x05staff\x18\x02 \x01(\v2\x1e.joseph.teaching.v1.StaffInputR\x05staff\"F\n" +
-	"\x13CreateStaffResponse\x12/\n" +
-	"\x05staff\x18\x01 \x01(\v2\x19.joseph.teaching.v1.StaffR\x05staff\"\x85\x01\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x123\n" +
+	"\x05staff\x18\x02 \x01(\v2\x1d.ltedu.teaching.v1.StaffInputR\x05staff\"E\n" +
+	"\x13CreateStaffResponse\x12.\n" +
+	"\x05staff\x18\x01 \x01(\v2\x18.ltedu.teaching.v1.StaffR\x05staff\"\x84\x01\n" +
 	"\x12UpdateStaffRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\x124\n" +
-	"\x05staff\x18\x03 \x01(\v2\x1e.joseph.teaching.v1.StaffInputR\x05staff\"F\n" +
-	"\x13UpdateStaffResponse\x12/\n" +
-	"\x05staff\x18\x01 \x01(\v2\x19.joseph.teaching.v1.StaffR\x05staff\"O\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\x123\n" +
+	"\x05staff\x18\x03 \x01(\v2\x1d.ltedu.teaching.v1.StaffInputR\x05staff\"E\n" +
+	"\x13UpdateStaffResponse\x12.\n" +
+	"\x05staff\x18\x01 \x01(\v2\x18.ltedu.teaching.v1.StaffR\x05staff\"O\n" +
 	"\x12DeleteStaffRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x15\n" +
@@ -2776,21 +2776,21 @@ const file_joseph_teaching_v1_teaching_proto_rawDesc = "" +
 	"\x10GrantRoleRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x12\n" +
-	"\x04role\x18\x03 \x01(\tR\x04role\"D\n" +
-	"\x11GrantRoleResponse\x12/\n" +
-	"\x05staff\x18\x01 \x01(\v2\x19.joseph.teaching.v1.StaffR\x05staff\"[\n" +
+	"\x04role\x18\x03 \x01(\tR\x04role\"C\n" +
+	"\x11GrantRoleResponse\x12.\n" +
+	"\x05staff\x18\x01 \x01(\v2\x18.ltedu.teaching.v1.StaffR\x05staff\"[\n" +
 	"\x11GetPlannerRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
-	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xee\x03\n" +
-	"\x12GetPlannerResponse\x12=\n" +
-	"\acontext\x18\x01 \x01(\v2#.joseph.academic.v1.AcademicContextR\acontext\x122\n" +
-	"\x06period\x18\x02 \x01(\v2\x1a.joseph.academic.v1.PeriodR\x06period\x127\n" +
-	"\bsections\x18\x03 \x03(\v2\x1b.joseph.academic.v1.SectionR\bsections\x125\n" +
-	"\x06blocks\x18\x04 \x03(\v2\x1d.joseph.teaching.v1.TimeBlockR\x06blocks\x12@\n" +
-	"\vassignments\x18\x05 \x03(\v2\x1e.joseph.teaching.v1.AssignmentR\vassignments\x12;\n" +
-	"\aentries\x18\x06 \x03(\v2!.joseph.teaching.v1.ScheduleEntryR\aentries\x125\n" +
-	"\bteachers\x18\a \x03(\v2\x19.joseph.teaching.v1.StaffR\bteachers\x12?\n" +
-	"\telsewhere\x18\b \x03(\v2!.joseph.teaching.v1.ScheduleEntryR\telsewhere\"\\\n" +
+	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"\xe6\x03\n" +
+	"\x12GetPlannerResponse\x12<\n" +
+	"\acontext\x18\x01 \x01(\v2\".ltedu.academic.v1.AcademicContextR\acontext\x121\n" +
+	"\x06period\x18\x02 \x01(\v2\x19.ltedu.academic.v1.PeriodR\x06period\x126\n" +
+	"\bsections\x18\x03 \x03(\v2\x1a.ltedu.academic.v1.SectionR\bsections\x124\n" +
+	"\x06blocks\x18\x04 \x03(\v2\x1c.ltedu.teaching.v1.TimeBlockR\x06blocks\x12?\n" +
+	"\vassignments\x18\x05 \x03(\v2\x1d.ltedu.teaching.v1.AssignmentR\vassignments\x12:\n" +
+	"\aentries\x18\x06 \x03(\v2 .ltedu.teaching.v1.ScheduleEntryR\aentries\x124\n" +
+	"\bteachers\x18\a \x03(\v2\x18.ltedu.teaching.v1.StaffR\bteachers\x12>\n" +
+	"\telsewhere\x18\b \x03(\v2 .ltedu.teaching.v1.ScheduleEntryR\telsewhere\"\\\n" +
 	"\x12PrepareLoadRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1b\n" +
 	"\tperiod_id\x18\x02 \x01(\tR\bperiodId\"+\n" +
@@ -2800,10 +2800,10 @@ const file_joseph_teaching_v1_teaching_proto_rawDesc = "" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x19\n" +
 	"\bstaff_id\x18\x03 \x01(\tR\astaffId\x12!\n" +
-	"\fweekly_hours\x18\x04 \x01(\x05R\vweeklyHours\"Z\n" +
-	"\x18UpdateAssignmentResponse\x12>\n" +
+	"\fweekly_hours\x18\x04 \x01(\x05R\vweeklyHours\"Y\n" +
+	"\x18UpdateAssignmentResponse\x12=\n" +
 	"\n" +
-	"assignment\x18\x01 \x01(\v2\x1e.joseph.teaching.v1.AssignmentR\n" +
+	"assignment\x18\x01 \x01(\v2\x1d.ltedu.teaching.v1.AssignmentR\n" +
 	"assignment\"T\n" +
 	"\x17DeleteAssignmentRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
@@ -2814,13 +2814,13 @@ const file_joseph_teaching_v1_teaching_proto_rawDesc = "" +
 	"\n" +
 	"section_id\x18\x02 \x01(\tR\tsectionId\x12\x19\n" +
 	"\bstaff_id\x18\x03 \x01(\tR\astaffId\"\x12\n" +
-	"\x10SetTutorResponse\"\x8e\x01\n" +
+	"\x10SetTutorResponse\"\x8d\x01\n" +
 	"\x14SetTimeBlocksRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x14\n" +
-	"\x05shift\x18\x02 \x01(\tR\x05shift\x125\n" +
-	"\x06blocks\x18\x03 \x03(\v2\x1d.joseph.teaching.v1.TimeBlockR\x06blocks\"N\n" +
-	"\x15SetTimeBlocksResponse\x125\n" +
-	"\x06blocks\x18\x01 \x03(\v2\x1d.joseph.teaching.v1.TimeBlockR\x06blocks\"\xcb\x01\n" +
+	"\x05shift\x18\x02 \x01(\tR\x05shift\x124\n" +
+	"\x06blocks\x18\x03 \x03(\v2\x1c.ltedu.teaching.v1.TimeBlockR\x06blocks\"M\n" +
+	"\x15SetTimeBlocksResponse\x124\n" +
+	"\x06blocks\x18\x01 \x03(\v2\x1c.ltedu.teaching.v1.TimeBlockR\x06blocks\"\xcb\x01\n" +
 	"\x11PlaceClassRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1d\n" +
 	"\n" +
@@ -2828,9 +2828,9 @@ const file_joseph_teaching_v1_teaching_proto_rawDesc = "" +
 	"\rassignment_id\x18\x03 \x01(\tR\fassignmentId\x12\x18\n" +
 	"\aweekday\x18\x04 \x01(\x05R\aweekday\x12\x19\n" +
 	"\bblock_id\x18\x05 \x01(\tR\ablockId\x12\x12\n" +
-	"\x04room\x18\x06 \x01(\tR\x04room\"M\n" +
-	"\x12PlaceClassResponse\x127\n" +
-	"\x05entry\x18\x01 \x01(\v2!.joseph.teaching.v1.ScheduleEntryR\x05entry\"O\n" +
+	"\x04room\x18\x06 \x01(\tR\x04room\"L\n" +
+	"\x12PlaceClassResponse\x126\n" +
+	"\x05entry\x18\x01 \x01(\v2 .ltedu.teaching.v1.ScheduleEntryR\x05entry\"O\n" +
 	"\x12RemoveClassRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x15\n" +
@@ -2849,155 +2849,155 @@ const file_joseph_teaching_v1_teaching_proto_rawDesc = "" +
 	"\x06placed\x18\x01 \x01(\x05R\x06placed\x12\x18\n" +
 	"\apending\x18\x02 \x01(\x05R\apending\">\n" +
 	"\x11MyScheduleRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"z\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"y\n" +
 	"\rScheduleGroup\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x16\n" +
-	"\x06detail\x18\x02 \x01(\tR\x06detail\x12;\n" +
-	"\aentries\x18\x03 \x03(\v2!.joseph.teaching.v1.ScheduleEntryR\aentries\"\xb7\x01\n" +
+	"\x06detail\x18\x02 \x01(\tR\x06detail\x12:\n" +
+	"\aentries\x18\x03 \x03(\v2 .ltedu.teaching.v1.ScheduleEntryR\aentries\"\xb5\x01\n" +
 	"\x12MyScheduleResponse\x12\x12\n" +
 	"\x04kind\x18\x01 \x01(\tR\x04kind\x12\x1b\n" +
-	"\tweek_days\x18\x02 \x03(\x05R\bweekDays\x125\n" +
-	"\x06blocks\x18\x03 \x03(\v2\x1d.joseph.teaching.v1.TimeBlockR\x06blocks\x129\n" +
-	"\x06groups\x18\x04 \x03(\v2!.joseph.teaching.v1.ScheduleGroupR\x06groups2\xb9\x04\n" +
-	"\fStaffService\x12X\n" +
-	"\tListStaff\x12$.joseph.teaching.v1.ListStaffRequest\x1a%.joseph.teaching.v1.ListStaffResponse\x12U\n" +
-	"\bGetStaff\x12#.joseph.teaching.v1.GetStaffRequest\x1a$.joseph.teaching.v1.GetStaffResponse\x12^\n" +
-	"\vCreateStaff\x12&.joseph.teaching.v1.CreateStaffRequest\x1a'.joseph.teaching.v1.CreateStaffResponse\x12^\n" +
-	"\vUpdateStaff\x12&.joseph.teaching.v1.UpdateStaffRequest\x1a'.joseph.teaching.v1.UpdateStaffResponse\x12^\n" +
-	"\vDeleteStaff\x12&.joseph.teaching.v1.DeleteStaffRequest\x1a'.joseph.teaching.v1.DeleteStaffResponse\x12X\n" +
-	"\tGrantRole\x12$.joseph.teaching.v1.GrantRoleRequest\x1a%.joseph.teaching.v1.GrantRoleResponse2\xbd\b\n" +
-	"\x0fTeachingService\x12[\n" +
+	"\tweek_days\x18\x02 \x03(\x05R\bweekDays\x124\n" +
+	"\x06blocks\x18\x03 \x03(\v2\x1c.ltedu.teaching.v1.TimeBlockR\x06blocks\x128\n" +
+	"\x06groups\x18\x04 \x03(\v2 .ltedu.teaching.v1.ScheduleGroupR\x06groups2\xad\x04\n" +
+	"\fStaffService\x12V\n" +
+	"\tListStaff\x12#.ltedu.teaching.v1.ListStaffRequest\x1a$.ltedu.teaching.v1.ListStaffResponse\x12S\n" +
+	"\bGetStaff\x12\".ltedu.teaching.v1.GetStaffRequest\x1a#.ltedu.teaching.v1.GetStaffResponse\x12\\\n" +
+	"\vCreateStaff\x12%.ltedu.teaching.v1.CreateStaffRequest\x1a&.ltedu.teaching.v1.CreateStaffResponse\x12\\\n" +
+	"\vUpdateStaff\x12%.ltedu.teaching.v1.UpdateStaffRequest\x1a&.ltedu.teaching.v1.UpdateStaffResponse\x12\\\n" +
+	"\vDeleteStaff\x12%.ltedu.teaching.v1.DeleteStaffRequest\x1a&.ltedu.teaching.v1.DeleteStaffResponse\x12V\n" +
+	"\tGrantRole\x12#.ltedu.teaching.v1.GrantRoleRequest\x1a$.ltedu.teaching.v1.GrantRoleResponse2\xa7\b\n" +
+	"\x0fTeachingService\x12Y\n" +
 	"\n" +
-	"GetPlanner\x12%.joseph.teaching.v1.GetPlannerRequest\x1a&.joseph.teaching.v1.GetPlannerResponse\x12^\n" +
-	"\vPrepareLoad\x12&.joseph.teaching.v1.PrepareLoadRequest\x1a'.joseph.teaching.v1.PrepareLoadResponse\x12m\n" +
-	"\x10UpdateAssignment\x12+.joseph.teaching.v1.UpdateAssignmentRequest\x1a,.joseph.teaching.v1.UpdateAssignmentResponse\x12m\n" +
-	"\x10DeleteAssignment\x12+.joseph.teaching.v1.DeleteAssignmentRequest\x1a,.joseph.teaching.v1.DeleteAssignmentResponse\x12U\n" +
-	"\bSetTutor\x12#.joseph.teaching.v1.SetTutorRequest\x1a$.joseph.teaching.v1.SetTutorResponse\x12d\n" +
-	"\rSetTimeBlocks\x12(.joseph.teaching.v1.SetTimeBlocksRequest\x1a).joseph.teaching.v1.SetTimeBlocksResponse\x12[\n" +
+	"GetPlanner\x12$.ltedu.teaching.v1.GetPlannerRequest\x1a%.ltedu.teaching.v1.GetPlannerResponse\x12\\\n" +
+	"\vPrepareLoad\x12%.ltedu.teaching.v1.PrepareLoadRequest\x1a&.ltedu.teaching.v1.PrepareLoadResponse\x12k\n" +
+	"\x10UpdateAssignment\x12*.ltedu.teaching.v1.UpdateAssignmentRequest\x1a+.ltedu.teaching.v1.UpdateAssignmentResponse\x12k\n" +
+	"\x10DeleteAssignment\x12*.ltedu.teaching.v1.DeleteAssignmentRequest\x1a+.ltedu.teaching.v1.DeleteAssignmentResponse\x12S\n" +
+	"\bSetTutor\x12\".ltedu.teaching.v1.SetTutorRequest\x1a#.ltedu.teaching.v1.SetTutorResponse\x12b\n" +
+	"\rSetTimeBlocks\x12'.ltedu.teaching.v1.SetTimeBlocksRequest\x1a(.ltedu.teaching.v1.SetTimeBlocksResponse\x12Y\n" +
 	"\n" +
-	"PlaceClass\x12%.joseph.teaching.v1.PlaceClassRequest\x1a&.joseph.teaching.v1.PlaceClassResponse\x12^\n" +
-	"\vRemoveClass\x12&.joseph.teaching.v1.RemoveClassRequest\x1a'.joseph.teaching.v1.RemoveClassResponse\x12a\n" +
-	"\fClearSection\x12'.joseph.teaching.v1.ClearSectionRequest\x1a(.joseph.teaching.v1.ClearSectionResponse\x12U\n" +
-	"\bAutoFill\x12#.joseph.teaching.v1.AutoFillRequest\x1a$.joseph.teaching.v1.AutoFillResponse\x12[\n" +
+	"PlaceClass\x12$.ltedu.teaching.v1.PlaceClassRequest\x1a%.ltedu.teaching.v1.PlaceClassResponse\x12\\\n" +
+	"\vRemoveClass\x12%.ltedu.teaching.v1.RemoveClassRequest\x1a&.ltedu.teaching.v1.RemoveClassResponse\x12_\n" +
+	"\fClearSection\x12&.ltedu.teaching.v1.ClearSectionRequest\x1a'.ltedu.teaching.v1.ClearSectionResponse\x12S\n" +
+	"\bAutoFill\x12\".ltedu.teaching.v1.AutoFillRequest\x1a#.ltedu.teaching.v1.AutoFillResponse\x12Y\n" +
 	"\n" +
-	"MySchedule\x12%.joseph.teaching.v1.MyScheduleRequest\x1a&.joseph.teaching.v1.MyScheduleResponseB=Z;api/internal/adapter/inbound/grpc/gen/teachingv1;teachingv1b\x06proto3"
+	"MySchedule\x12$.ltedu.teaching.v1.MyScheduleRequest\x1a%.ltedu.teaching.v1.MyScheduleResponseB=Z;api/internal/adapter/inbound/grpc/gen/teachingv1;teachingv1b\x06proto3"
 
 var (
-	file_joseph_teaching_v1_teaching_proto_rawDescOnce sync.Once
-	file_joseph_teaching_v1_teaching_proto_rawDescData []byte
+	file_ltedu_teaching_v1_teaching_proto_rawDescOnce sync.Once
+	file_ltedu_teaching_v1_teaching_proto_rawDescData []byte
 )
 
-func file_joseph_teaching_v1_teaching_proto_rawDescGZIP() []byte {
-	file_joseph_teaching_v1_teaching_proto_rawDescOnce.Do(func() {
-		file_joseph_teaching_v1_teaching_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_joseph_teaching_v1_teaching_proto_rawDesc), len(file_joseph_teaching_v1_teaching_proto_rawDesc)))
+func file_ltedu_teaching_v1_teaching_proto_rawDescGZIP() []byte {
+	file_ltedu_teaching_v1_teaching_proto_rawDescOnce.Do(func() {
+		file_ltedu_teaching_v1_teaching_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_ltedu_teaching_v1_teaching_proto_rawDesc), len(file_ltedu_teaching_v1_teaching_proto_rawDesc)))
 	})
-	return file_joseph_teaching_v1_teaching_proto_rawDescData
+	return file_ltedu_teaching_v1_teaching_proto_rawDescData
 }
 
-var file_joseph_teaching_v1_teaching_proto_msgTypes = make([]protoimpl.MessageInfo, 40)
-var file_joseph_teaching_v1_teaching_proto_goTypes = []any{
-	(*Staff)(nil),                      // 0: joseph.teaching.v1.Staff
-	(*StaffInput)(nil),                 // 1: joseph.teaching.v1.StaffInput
-	(*TimeBlock)(nil),                  // 2: joseph.teaching.v1.TimeBlock
-	(*Assignment)(nil),                 // 3: joseph.teaching.v1.Assignment
-	(*ScheduleEntry)(nil),              // 4: joseph.teaching.v1.ScheduleEntry
-	(*ListStaffRequest)(nil),           // 5: joseph.teaching.v1.ListStaffRequest
-	(*ListStaffResponse)(nil),          // 6: joseph.teaching.v1.ListStaffResponse
-	(*GetStaffRequest)(nil),            // 7: joseph.teaching.v1.GetStaffRequest
-	(*GetStaffResponse)(nil),           // 8: joseph.teaching.v1.GetStaffResponse
-	(*CreateStaffRequest)(nil),         // 9: joseph.teaching.v1.CreateStaffRequest
-	(*CreateStaffResponse)(nil),        // 10: joseph.teaching.v1.CreateStaffResponse
-	(*UpdateStaffRequest)(nil),         // 11: joseph.teaching.v1.UpdateStaffRequest
-	(*UpdateStaffResponse)(nil),        // 12: joseph.teaching.v1.UpdateStaffResponse
-	(*DeleteStaffRequest)(nil),         // 13: joseph.teaching.v1.DeleteStaffRequest
-	(*DeleteStaffResponse)(nil),        // 14: joseph.teaching.v1.DeleteStaffResponse
-	(*GrantRoleRequest)(nil),           // 15: joseph.teaching.v1.GrantRoleRequest
-	(*GrantRoleResponse)(nil),          // 16: joseph.teaching.v1.GrantRoleResponse
-	(*GetPlannerRequest)(nil),          // 17: joseph.teaching.v1.GetPlannerRequest
-	(*GetPlannerResponse)(nil),         // 18: joseph.teaching.v1.GetPlannerResponse
-	(*PrepareLoadRequest)(nil),         // 19: joseph.teaching.v1.PrepareLoadRequest
-	(*PrepareLoadResponse)(nil),        // 20: joseph.teaching.v1.PrepareLoadResponse
-	(*UpdateAssignmentRequest)(nil),    // 21: joseph.teaching.v1.UpdateAssignmentRequest
-	(*UpdateAssignmentResponse)(nil),   // 22: joseph.teaching.v1.UpdateAssignmentResponse
-	(*DeleteAssignmentRequest)(nil),    // 23: joseph.teaching.v1.DeleteAssignmentRequest
-	(*DeleteAssignmentResponse)(nil),   // 24: joseph.teaching.v1.DeleteAssignmentResponse
-	(*SetTutorRequest)(nil),            // 25: joseph.teaching.v1.SetTutorRequest
-	(*SetTutorResponse)(nil),           // 26: joseph.teaching.v1.SetTutorResponse
-	(*SetTimeBlocksRequest)(nil),       // 27: joseph.teaching.v1.SetTimeBlocksRequest
-	(*SetTimeBlocksResponse)(nil),      // 28: joseph.teaching.v1.SetTimeBlocksResponse
-	(*PlaceClassRequest)(nil),          // 29: joseph.teaching.v1.PlaceClassRequest
-	(*PlaceClassResponse)(nil),         // 30: joseph.teaching.v1.PlaceClassResponse
-	(*RemoveClassRequest)(nil),         // 31: joseph.teaching.v1.RemoveClassRequest
-	(*RemoveClassResponse)(nil),        // 32: joseph.teaching.v1.RemoveClassResponse
-	(*ClearSectionRequest)(nil),        // 33: joseph.teaching.v1.ClearSectionRequest
-	(*ClearSectionResponse)(nil),       // 34: joseph.teaching.v1.ClearSectionResponse
-	(*AutoFillRequest)(nil),            // 35: joseph.teaching.v1.AutoFillRequest
-	(*AutoFillResponse)(nil),           // 36: joseph.teaching.v1.AutoFillResponse
-	(*MyScheduleRequest)(nil),          // 37: joseph.teaching.v1.MyScheduleRequest
-	(*ScheduleGroup)(nil),              // 38: joseph.teaching.v1.ScheduleGroup
-	(*MyScheduleResponse)(nil),         // 39: joseph.teaching.v1.MyScheduleResponse
-	(*academicv1.AcademicContext)(nil), // 40: joseph.academic.v1.AcademicContext
-	(*academicv1.Period)(nil),          // 41: joseph.academic.v1.Period
-	(*academicv1.Section)(nil),         // 42: joseph.academic.v1.Section
+var file_ltedu_teaching_v1_teaching_proto_msgTypes = make([]protoimpl.MessageInfo, 40)
+var file_ltedu_teaching_v1_teaching_proto_goTypes = []any{
+	(*Staff)(nil),                      // 0: ltedu.teaching.v1.Staff
+	(*StaffInput)(nil),                 // 1: ltedu.teaching.v1.StaffInput
+	(*TimeBlock)(nil),                  // 2: ltedu.teaching.v1.TimeBlock
+	(*Assignment)(nil),                 // 3: ltedu.teaching.v1.Assignment
+	(*ScheduleEntry)(nil),              // 4: ltedu.teaching.v1.ScheduleEntry
+	(*ListStaffRequest)(nil),           // 5: ltedu.teaching.v1.ListStaffRequest
+	(*ListStaffResponse)(nil),          // 6: ltedu.teaching.v1.ListStaffResponse
+	(*GetStaffRequest)(nil),            // 7: ltedu.teaching.v1.GetStaffRequest
+	(*GetStaffResponse)(nil),           // 8: ltedu.teaching.v1.GetStaffResponse
+	(*CreateStaffRequest)(nil),         // 9: ltedu.teaching.v1.CreateStaffRequest
+	(*CreateStaffResponse)(nil),        // 10: ltedu.teaching.v1.CreateStaffResponse
+	(*UpdateStaffRequest)(nil),         // 11: ltedu.teaching.v1.UpdateStaffRequest
+	(*UpdateStaffResponse)(nil),        // 12: ltedu.teaching.v1.UpdateStaffResponse
+	(*DeleteStaffRequest)(nil),         // 13: ltedu.teaching.v1.DeleteStaffRequest
+	(*DeleteStaffResponse)(nil),        // 14: ltedu.teaching.v1.DeleteStaffResponse
+	(*GrantRoleRequest)(nil),           // 15: ltedu.teaching.v1.GrantRoleRequest
+	(*GrantRoleResponse)(nil),          // 16: ltedu.teaching.v1.GrantRoleResponse
+	(*GetPlannerRequest)(nil),          // 17: ltedu.teaching.v1.GetPlannerRequest
+	(*GetPlannerResponse)(nil),         // 18: ltedu.teaching.v1.GetPlannerResponse
+	(*PrepareLoadRequest)(nil),         // 19: ltedu.teaching.v1.PrepareLoadRequest
+	(*PrepareLoadResponse)(nil),        // 20: ltedu.teaching.v1.PrepareLoadResponse
+	(*UpdateAssignmentRequest)(nil),    // 21: ltedu.teaching.v1.UpdateAssignmentRequest
+	(*UpdateAssignmentResponse)(nil),   // 22: ltedu.teaching.v1.UpdateAssignmentResponse
+	(*DeleteAssignmentRequest)(nil),    // 23: ltedu.teaching.v1.DeleteAssignmentRequest
+	(*DeleteAssignmentResponse)(nil),   // 24: ltedu.teaching.v1.DeleteAssignmentResponse
+	(*SetTutorRequest)(nil),            // 25: ltedu.teaching.v1.SetTutorRequest
+	(*SetTutorResponse)(nil),           // 26: ltedu.teaching.v1.SetTutorResponse
+	(*SetTimeBlocksRequest)(nil),       // 27: ltedu.teaching.v1.SetTimeBlocksRequest
+	(*SetTimeBlocksResponse)(nil),      // 28: ltedu.teaching.v1.SetTimeBlocksResponse
+	(*PlaceClassRequest)(nil),          // 29: ltedu.teaching.v1.PlaceClassRequest
+	(*PlaceClassResponse)(nil),         // 30: ltedu.teaching.v1.PlaceClassResponse
+	(*RemoveClassRequest)(nil),         // 31: ltedu.teaching.v1.RemoveClassRequest
+	(*RemoveClassResponse)(nil),        // 32: ltedu.teaching.v1.RemoveClassResponse
+	(*ClearSectionRequest)(nil),        // 33: ltedu.teaching.v1.ClearSectionRequest
+	(*ClearSectionResponse)(nil),       // 34: ltedu.teaching.v1.ClearSectionResponse
+	(*AutoFillRequest)(nil),            // 35: ltedu.teaching.v1.AutoFillRequest
+	(*AutoFillResponse)(nil),           // 36: ltedu.teaching.v1.AutoFillResponse
+	(*MyScheduleRequest)(nil),          // 37: ltedu.teaching.v1.MyScheduleRequest
+	(*ScheduleGroup)(nil),              // 38: ltedu.teaching.v1.ScheduleGroup
+	(*MyScheduleResponse)(nil),         // 39: ltedu.teaching.v1.MyScheduleResponse
+	(*academicv1.AcademicContext)(nil), // 40: ltedu.academic.v1.AcademicContext
+	(*academicv1.Period)(nil),          // 41: ltedu.academic.v1.Period
+	(*academicv1.Section)(nil),         // 42: ltedu.academic.v1.Section
 }
-var file_joseph_teaching_v1_teaching_proto_depIdxs = []int32{
-	0,  // 0: joseph.teaching.v1.ListStaffResponse.staff:type_name -> joseph.teaching.v1.Staff
-	0,  // 1: joseph.teaching.v1.GetStaffResponse.staff:type_name -> joseph.teaching.v1.Staff
-	3,  // 2: joseph.teaching.v1.GetStaffResponse.assignments:type_name -> joseph.teaching.v1.Assignment
-	1,  // 3: joseph.teaching.v1.CreateStaffRequest.staff:type_name -> joseph.teaching.v1.StaffInput
-	0,  // 4: joseph.teaching.v1.CreateStaffResponse.staff:type_name -> joseph.teaching.v1.Staff
-	1,  // 5: joseph.teaching.v1.UpdateStaffRequest.staff:type_name -> joseph.teaching.v1.StaffInput
-	0,  // 6: joseph.teaching.v1.UpdateStaffResponse.staff:type_name -> joseph.teaching.v1.Staff
-	0,  // 7: joseph.teaching.v1.GrantRoleResponse.staff:type_name -> joseph.teaching.v1.Staff
-	40, // 8: joseph.teaching.v1.GetPlannerResponse.context:type_name -> joseph.academic.v1.AcademicContext
-	41, // 9: joseph.teaching.v1.GetPlannerResponse.period:type_name -> joseph.academic.v1.Period
-	42, // 10: joseph.teaching.v1.GetPlannerResponse.sections:type_name -> joseph.academic.v1.Section
-	2,  // 11: joseph.teaching.v1.GetPlannerResponse.blocks:type_name -> joseph.teaching.v1.TimeBlock
-	3,  // 12: joseph.teaching.v1.GetPlannerResponse.assignments:type_name -> joseph.teaching.v1.Assignment
-	4,  // 13: joseph.teaching.v1.GetPlannerResponse.entries:type_name -> joseph.teaching.v1.ScheduleEntry
-	0,  // 14: joseph.teaching.v1.GetPlannerResponse.teachers:type_name -> joseph.teaching.v1.Staff
-	4,  // 15: joseph.teaching.v1.GetPlannerResponse.elsewhere:type_name -> joseph.teaching.v1.ScheduleEntry
-	3,  // 16: joseph.teaching.v1.UpdateAssignmentResponse.assignment:type_name -> joseph.teaching.v1.Assignment
-	2,  // 17: joseph.teaching.v1.SetTimeBlocksRequest.blocks:type_name -> joseph.teaching.v1.TimeBlock
-	2,  // 18: joseph.teaching.v1.SetTimeBlocksResponse.blocks:type_name -> joseph.teaching.v1.TimeBlock
-	4,  // 19: joseph.teaching.v1.PlaceClassResponse.entry:type_name -> joseph.teaching.v1.ScheduleEntry
-	4,  // 20: joseph.teaching.v1.ScheduleGroup.entries:type_name -> joseph.teaching.v1.ScheduleEntry
-	2,  // 21: joseph.teaching.v1.MyScheduleResponse.blocks:type_name -> joseph.teaching.v1.TimeBlock
-	38, // 22: joseph.teaching.v1.MyScheduleResponse.groups:type_name -> joseph.teaching.v1.ScheduleGroup
-	5,  // 23: joseph.teaching.v1.StaffService.ListStaff:input_type -> joseph.teaching.v1.ListStaffRequest
-	7,  // 24: joseph.teaching.v1.StaffService.GetStaff:input_type -> joseph.teaching.v1.GetStaffRequest
-	9,  // 25: joseph.teaching.v1.StaffService.CreateStaff:input_type -> joseph.teaching.v1.CreateStaffRequest
-	11, // 26: joseph.teaching.v1.StaffService.UpdateStaff:input_type -> joseph.teaching.v1.UpdateStaffRequest
-	13, // 27: joseph.teaching.v1.StaffService.DeleteStaff:input_type -> joseph.teaching.v1.DeleteStaffRequest
-	15, // 28: joseph.teaching.v1.StaffService.GrantRole:input_type -> joseph.teaching.v1.GrantRoleRequest
-	17, // 29: joseph.teaching.v1.TeachingService.GetPlanner:input_type -> joseph.teaching.v1.GetPlannerRequest
-	19, // 30: joseph.teaching.v1.TeachingService.PrepareLoad:input_type -> joseph.teaching.v1.PrepareLoadRequest
-	21, // 31: joseph.teaching.v1.TeachingService.UpdateAssignment:input_type -> joseph.teaching.v1.UpdateAssignmentRequest
-	23, // 32: joseph.teaching.v1.TeachingService.DeleteAssignment:input_type -> joseph.teaching.v1.DeleteAssignmentRequest
-	25, // 33: joseph.teaching.v1.TeachingService.SetTutor:input_type -> joseph.teaching.v1.SetTutorRequest
-	27, // 34: joseph.teaching.v1.TeachingService.SetTimeBlocks:input_type -> joseph.teaching.v1.SetTimeBlocksRequest
-	29, // 35: joseph.teaching.v1.TeachingService.PlaceClass:input_type -> joseph.teaching.v1.PlaceClassRequest
-	31, // 36: joseph.teaching.v1.TeachingService.RemoveClass:input_type -> joseph.teaching.v1.RemoveClassRequest
-	33, // 37: joseph.teaching.v1.TeachingService.ClearSection:input_type -> joseph.teaching.v1.ClearSectionRequest
-	35, // 38: joseph.teaching.v1.TeachingService.AutoFill:input_type -> joseph.teaching.v1.AutoFillRequest
-	37, // 39: joseph.teaching.v1.TeachingService.MySchedule:input_type -> joseph.teaching.v1.MyScheduleRequest
-	6,  // 40: joseph.teaching.v1.StaffService.ListStaff:output_type -> joseph.teaching.v1.ListStaffResponse
-	8,  // 41: joseph.teaching.v1.StaffService.GetStaff:output_type -> joseph.teaching.v1.GetStaffResponse
-	10, // 42: joseph.teaching.v1.StaffService.CreateStaff:output_type -> joseph.teaching.v1.CreateStaffResponse
-	12, // 43: joseph.teaching.v1.StaffService.UpdateStaff:output_type -> joseph.teaching.v1.UpdateStaffResponse
-	14, // 44: joseph.teaching.v1.StaffService.DeleteStaff:output_type -> joseph.teaching.v1.DeleteStaffResponse
-	16, // 45: joseph.teaching.v1.StaffService.GrantRole:output_type -> joseph.teaching.v1.GrantRoleResponse
-	18, // 46: joseph.teaching.v1.TeachingService.GetPlanner:output_type -> joseph.teaching.v1.GetPlannerResponse
-	20, // 47: joseph.teaching.v1.TeachingService.PrepareLoad:output_type -> joseph.teaching.v1.PrepareLoadResponse
-	22, // 48: joseph.teaching.v1.TeachingService.UpdateAssignment:output_type -> joseph.teaching.v1.UpdateAssignmentResponse
-	24, // 49: joseph.teaching.v1.TeachingService.DeleteAssignment:output_type -> joseph.teaching.v1.DeleteAssignmentResponse
-	26, // 50: joseph.teaching.v1.TeachingService.SetTutor:output_type -> joseph.teaching.v1.SetTutorResponse
-	28, // 51: joseph.teaching.v1.TeachingService.SetTimeBlocks:output_type -> joseph.teaching.v1.SetTimeBlocksResponse
-	30, // 52: joseph.teaching.v1.TeachingService.PlaceClass:output_type -> joseph.teaching.v1.PlaceClassResponse
-	32, // 53: joseph.teaching.v1.TeachingService.RemoveClass:output_type -> joseph.teaching.v1.RemoveClassResponse
-	34, // 54: joseph.teaching.v1.TeachingService.ClearSection:output_type -> joseph.teaching.v1.ClearSectionResponse
-	36, // 55: joseph.teaching.v1.TeachingService.AutoFill:output_type -> joseph.teaching.v1.AutoFillResponse
-	39, // 56: joseph.teaching.v1.TeachingService.MySchedule:output_type -> joseph.teaching.v1.MyScheduleResponse
+var file_ltedu_teaching_v1_teaching_proto_depIdxs = []int32{
+	0,  // 0: ltedu.teaching.v1.ListStaffResponse.staff:type_name -> ltedu.teaching.v1.Staff
+	0,  // 1: ltedu.teaching.v1.GetStaffResponse.staff:type_name -> ltedu.teaching.v1.Staff
+	3,  // 2: ltedu.teaching.v1.GetStaffResponse.assignments:type_name -> ltedu.teaching.v1.Assignment
+	1,  // 3: ltedu.teaching.v1.CreateStaffRequest.staff:type_name -> ltedu.teaching.v1.StaffInput
+	0,  // 4: ltedu.teaching.v1.CreateStaffResponse.staff:type_name -> ltedu.teaching.v1.Staff
+	1,  // 5: ltedu.teaching.v1.UpdateStaffRequest.staff:type_name -> ltedu.teaching.v1.StaffInput
+	0,  // 6: ltedu.teaching.v1.UpdateStaffResponse.staff:type_name -> ltedu.teaching.v1.Staff
+	0,  // 7: ltedu.teaching.v1.GrantRoleResponse.staff:type_name -> ltedu.teaching.v1.Staff
+	40, // 8: ltedu.teaching.v1.GetPlannerResponse.context:type_name -> ltedu.academic.v1.AcademicContext
+	41, // 9: ltedu.teaching.v1.GetPlannerResponse.period:type_name -> ltedu.academic.v1.Period
+	42, // 10: ltedu.teaching.v1.GetPlannerResponse.sections:type_name -> ltedu.academic.v1.Section
+	2,  // 11: ltedu.teaching.v1.GetPlannerResponse.blocks:type_name -> ltedu.teaching.v1.TimeBlock
+	3,  // 12: ltedu.teaching.v1.GetPlannerResponse.assignments:type_name -> ltedu.teaching.v1.Assignment
+	4,  // 13: ltedu.teaching.v1.GetPlannerResponse.entries:type_name -> ltedu.teaching.v1.ScheduleEntry
+	0,  // 14: ltedu.teaching.v1.GetPlannerResponse.teachers:type_name -> ltedu.teaching.v1.Staff
+	4,  // 15: ltedu.teaching.v1.GetPlannerResponse.elsewhere:type_name -> ltedu.teaching.v1.ScheduleEntry
+	3,  // 16: ltedu.teaching.v1.UpdateAssignmentResponse.assignment:type_name -> ltedu.teaching.v1.Assignment
+	2,  // 17: ltedu.teaching.v1.SetTimeBlocksRequest.blocks:type_name -> ltedu.teaching.v1.TimeBlock
+	2,  // 18: ltedu.teaching.v1.SetTimeBlocksResponse.blocks:type_name -> ltedu.teaching.v1.TimeBlock
+	4,  // 19: ltedu.teaching.v1.PlaceClassResponse.entry:type_name -> ltedu.teaching.v1.ScheduleEntry
+	4,  // 20: ltedu.teaching.v1.ScheduleGroup.entries:type_name -> ltedu.teaching.v1.ScheduleEntry
+	2,  // 21: ltedu.teaching.v1.MyScheduleResponse.blocks:type_name -> ltedu.teaching.v1.TimeBlock
+	38, // 22: ltedu.teaching.v1.MyScheduleResponse.groups:type_name -> ltedu.teaching.v1.ScheduleGroup
+	5,  // 23: ltedu.teaching.v1.StaffService.ListStaff:input_type -> ltedu.teaching.v1.ListStaffRequest
+	7,  // 24: ltedu.teaching.v1.StaffService.GetStaff:input_type -> ltedu.teaching.v1.GetStaffRequest
+	9,  // 25: ltedu.teaching.v1.StaffService.CreateStaff:input_type -> ltedu.teaching.v1.CreateStaffRequest
+	11, // 26: ltedu.teaching.v1.StaffService.UpdateStaff:input_type -> ltedu.teaching.v1.UpdateStaffRequest
+	13, // 27: ltedu.teaching.v1.StaffService.DeleteStaff:input_type -> ltedu.teaching.v1.DeleteStaffRequest
+	15, // 28: ltedu.teaching.v1.StaffService.GrantRole:input_type -> ltedu.teaching.v1.GrantRoleRequest
+	17, // 29: ltedu.teaching.v1.TeachingService.GetPlanner:input_type -> ltedu.teaching.v1.GetPlannerRequest
+	19, // 30: ltedu.teaching.v1.TeachingService.PrepareLoad:input_type -> ltedu.teaching.v1.PrepareLoadRequest
+	21, // 31: ltedu.teaching.v1.TeachingService.UpdateAssignment:input_type -> ltedu.teaching.v1.UpdateAssignmentRequest
+	23, // 32: ltedu.teaching.v1.TeachingService.DeleteAssignment:input_type -> ltedu.teaching.v1.DeleteAssignmentRequest
+	25, // 33: ltedu.teaching.v1.TeachingService.SetTutor:input_type -> ltedu.teaching.v1.SetTutorRequest
+	27, // 34: ltedu.teaching.v1.TeachingService.SetTimeBlocks:input_type -> ltedu.teaching.v1.SetTimeBlocksRequest
+	29, // 35: ltedu.teaching.v1.TeachingService.PlaceClass:input_type -> ltedu.teaching.v1.PlaceClassRequest
+	31, // 36: ltedu.teaching.v1.TeachingService.RemoveClass:input_type -> ltedu.teaching.v1.RemoveClassRequest
+	33, // 37: ltedu.teaching.v1.TeachingService.ClearSection:input_type -> ltedu.teaching.v1.ClearSectionRequest
+	35, // 38: ltedu.teaching.v1.TeachingService.AutoFill:input_type -> ltedu.teaching.v1.AutoFillRequest
+	37, // 39: ltedu.teaching.v1.TeachingService.MySchedule:input_type -> ltedu.teaching.v1.MyScheduleRequest
+	6,  // 40: ltedu.teaching.v1.StaffService.ListStaff:output_type -> ltedu.teaching.v1.ListStaffResponse
+	8,  // 41: ltedu.teaching.v1.StaffService.GetStaff:output_type -> ltedu.teaching.v1.GetStaffResponse
+	10, // 42: ltedu.teaching.v1.StaffService.CreateStaff:output_type -> ltedu.teaching.v1.CreateStaffResponse
+	12, // 43: ltedu.teaching.v1.StaffService.UpdateStaff:output_type -> ltedu.teaching.v1.UpdateStaffResponse
+	14, // 44: ltedu.teaching.v1.StaffService.DeleteStaff:output_type -> ltedu.teaching.v1.DeleteStaffResponse
+	16, // 45: ltedu.teaching.v1.StaffService.GrantRole:output_type -> ltedu.teaching.v1.GrantRoleResponse
+	18, // 46: ltedu.teaching.v1.TeachingService.GetPlanner:output_type -> ltedu.teaching.v1.GetPlannerResponse
+	20, // 47: ltedu.teaching.v1.TeachingService.PrepareLoad:output_type -> ltedu.teaching.v1.PrepareLoadResponse
+	22, // 48: ltedu.teaching.v1.TeachingService.UpdateAssignment:output_type -> ltedu.teaching.v1.UpdateAssignmentResponse
+	24, // 49: ltedu.teaching.v1.TeachingService.DeleteAssignment:output_type -> ltedu.teaching.v1.DeleteAssignmentResponse
+	26, // 50: ltedu.teaching.v1.TeachingService.SetTutor:output_type -> ltedu.teaching.v1.SetTutorResponse
+	28, // 51: ltedu.teaching.v1.TeachingService.SetTimeBlocks:output_type -> ltedu.teaching.v1.SetTimeBlocksResponse
+	30, // 52: ltedu.teaching.v1.TeachingService.PlaceClass:output_type -> ltedu.teaching.v1.PlaceClassResponse
+	32, // 53: ltedu.teaching.v1.TeachingService.RemoveClass:output_type -> ltedu.teaching.v1.RemoveClassResponse
+	34, // 54: ltedu.teaching.v1.TeachingService.ClearSection:output_type -> ltedu.teaching.v1.ClearSectionResponse
+	36, // 55: ltedu.teaching.v1.TeachingService.AutoFill:output_type -> ltedu.teaching.v1.AutoFillResponse
+	39, // 56: ltedu.teaching.v1.TeachingService.MySchedule:output_type -> ltedu.teaching.v1.MyScheduleResponse
 	40, // [40:57] is the sub-list for method output_type
 	23, // [23:40] is the sub-list for method input_type
 	23, // [23:23] is the sub-list for extension type_name
@@ -3005,28 +3005,28 @@ var file_joseph_teaching_v1_teaching_proto_depIdxs = []int32{
 	0,  // [0:23] is the sub-list for field type_name
 }
 
-func init() { file_joseph_teaching_v1_teaching_proto_init() }
-func file_joseph_teaching_v1_teaching_proto_init() {
-	if File_joseph_teaching_v1_teaching_proto != nil {
+func init() { file_ltedu_teaching_v1_teaching_proto_init() }
+func file_ltedu_teaching_v1_teaching_proto_init() {
+	if File_ltedu_teaching_v1_teaching_proto != nil {
 		return
 	}
-	file_joseph_teaching_v1_teaching_proto_msgTypes[0].OneofWrappers = []any{}
-	file_joseph_teaching_v1_teaching_proto_msgTypes[1].OneofWrappers = []any{}
+	file_ltedu_teaching_v1_teaching_proto_msgTypes[0].OneofWrappers = []any{}
+	file_ltedu_teaching_v1_teaching_proto_msgTypes[1].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_joseph_teaching_v1_teaching_proto_rawDesc), len(file_joseph_teaching_v1_teaching_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_teaching_v1_teaching_proto_rawDesc), len(file_ltedu_teaching_v1_teaching_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   40,
 			NumExtensions: 0,
 			NumServices:   2,
 		},
-		GoTypes:           file_joseph_teaching_v1_teaching_proto_goTypes,
-		DependencyIndexes: file_joseph_teaching_v1_teaching_proto_depIdxs,
-		MessageInfos:      file_joseph_teaching_v1_teaching_proto_msgTypes,
+		GoTypes:           file_ltedu_teaching_v1_teaching_proto_goTypes,
+		DependencyIndexes: file_ltedu_teaching_v1_teaching_proto_depIdxs,
+		MessageInfos:      file_ltedu_teaching_v1_teaching_proto_msgTypes,
 	}.Build()
-	File_joseph_teaching_v1_teaching_proto = out.File
-	file_joseph_teaching_v1_teaching_proto_goTypes = nil
-	file_joseph_teaching_v1_teaching_proto_depIdxs = nil
+	File_ltedu_teaching_v1_teaching_proto = out.File
+	file_ltedu_teaching_v1_teaching_proto_goTypes = nil
+	file_ltedu_teaching_v1_teaching_proto_depIdxs = nil
 }
