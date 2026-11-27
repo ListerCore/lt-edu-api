@@ -1,0 +1,126 @@
+meta {
+  name: GetClosing
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.assessment.v1.ClosingService/GetClosing
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": ""
+    }
+  '''
+}
+
+docs {
+  # ClosingService.GetClosing
+
+  `/ltedu.assessment.v1.ClosingService/GetClosing` · unary · `ltedu/assessment/v1/closing.proto`
+
+  ## Request — `GetClosingRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+
+  ## Response — `GetClosingResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `mode` | `string` | basic \| units |
+  | `periods` | `repeated Period` |  |
+  | `period` | `Period` |  |
+  | `last_term_closed` | `bool` |  |
+  | `can_manage` | `bool` |  |
+  | `sections` | `repeated SectionClosingSummary` |  |
+  | `units` | `repeated UnitClosingSummary` |  |
+  | `records` | `repeated RecordInfo` |  |
+
+  ## Tipos
+
+  ### `Period`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` |  |
+  | `name` | `string` |  |
+  | `season` | `string` | CEPRE: summer \| annual \| semester \| intensive \| review \| school \| other |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `term_scheme` | `string` |  |
+  | `status` | `string` | planning \| active \| closed |
+  | `terms` | `repeated Term` |  |
+  | `section_count` | `int32` |  |
+  | `capacity_total` | `int32` |  |
+
+  ### `Term`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `number` | `int32` |  |
+  | `name` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `status` | `string` | open \| closed |
+
+  ### `SectionClosingSummary`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `section_id` | `string` |  |
+  | `label` | `string` |  |
+  | `students` | `int32` |  |
+  | `counts` | `map<string, int32>` |  |
+  | `confirmed` | `int32` |  |
+  | `recovered` | `int32` |  |
+
+  ### `UnitClosingSummary`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `assignment_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `students` | `int32` |  |
+  | `confirmed` | `bool` |  |
+  | `counts` | `map<string, int32>` |  |
+
+  ### `RecordInfo`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `kind` | `string` |  |
+  | `number` | `int32` |  |
+  | `code` | `string` |  |
+  | `status` | `string` | issued \| replaced |
+  | `issued_name` | `string` |  |
+  | `issued_at` | `string` |  |
+  | `act_version_id` | `string` | Phase E7: the newest signed version of the acta (empty until generated) and its state |
+  | `act_status` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

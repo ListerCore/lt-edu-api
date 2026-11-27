@@ -1,0 +1,47 @@
+meta {
+  name: DeleteGrade
+  type: grpc
+  seq: 11
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.AcademicService/DeleteGrade
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # AcademicService.DeleteGrade
+
+  `/ltedu.academic.v1.AcademicService/DeleteGrade` · unary · `ltedu/academic/v1/academic.proto`
+
+  ## Request — `DeleteGradeRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `DeleteGradeResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

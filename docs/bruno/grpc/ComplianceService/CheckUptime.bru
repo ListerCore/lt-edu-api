@@ -1,0 +1,62 @@
+meta {
+  name: CheckUptime
+  type: grpc
+  seq: 11
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.compliance.v1.ComplianceService/CheckUptime
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # ComplianceService.CheckUptime
+
+  Probes the platform URL now (the monitor also does it on its own)
+
+  `/ltedu.compliance.v1.ComplianceService/CheckUptime` · unary · `ltedu/compliance/v1/compliance.proto`
+
+  ## Request — `CheckUptimeRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `CheckUptimeResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `check` | `UptimeCheck` |  |
+
+  ## Tipos
+
+  ### `UptimeCheck`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `url` | `string` |  |
+  | `checked_at` | `string` |  |
+  | `status_code` | `optional int32` |  |
+  | `response_ms` | `optional int32` |  |
+  | `ok` | `bool` |  |
+  | `error` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

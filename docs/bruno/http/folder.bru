@@ -1,0 +1,12 @@
+meta {
+  name: HTTP
+  seq: 1
+}
+
+docs {
+  # HTTP (Fiber, `/api/v1`)
+
+  Autenticación, cuenta, MFA, publicación de anuncios y adjuntos (multipart) y salud. El resto va por gRPC.
+  El WebSocket `GET /live` (eventos en vivo) no está en la colección: exige un `Origin` de `APP__WS__ORIGINS`;
+  su primer mensaje es `{"type":"ready"}` y luego `{"type", "id", "data"}` con ids de lo que cambió.
+}

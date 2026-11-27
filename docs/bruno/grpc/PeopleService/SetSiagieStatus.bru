@@ -1,0 +1,55 @@
+meta {
+  name: SetSiagieStatus
+  type: grpc
+  seq: 26
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/SetSiagieStatus
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "enrollment_ids": [
+        ""
+      ],
+      "status": "",
+      "note": ""
+    }
+  '''
+}
+
+docs {
+  # PeopleService.SetSiagieStatus
+
+  `/ltedu.people.v1.PeopleService/SetSiagieStatus` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `SetSiagieStatusRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `enrollment_ids` | `repeated string` |  |
+  | `status` | `string` |  |
+  | `note` | `string` | Required when observed |
+
+  ## Response — `SetSiagieStatusResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `updated` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

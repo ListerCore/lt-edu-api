@@ -1,0 +1,76 @@
+meta {
+  name: ListClasses
+  type: grpc
+  seq: 10
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.attendance.v1.AttendanceService/ListClasses
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "day": "",
+      "section_id": ""
+    }
+  '''
+}
+
+docs {
+  # AttendanceService.ListClasses
+
+  The teacher's classes of a day, or a section's
+
+  `/ltedu.attendance.v1.AttendanceService/ListClasses` · unary · `ltedu/attendance/v1/attendance.proto`
+
+  ## Request — `ListClassesRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `day` | `string` |  |
+  | `section_id` | `string` | Empty: the signed-in teacher's classes |
+
+  ## Response — `ListClassesResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `day` | `string` |  |
+  | `school_day` | `bool` |  |
+  | `slots` | `repeated ClassSlot` |  |
+  | `scope` | `string` | teacher \| section |
+
+  ## Tipos
+
+  ### `ClassSlot`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `assignment_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `block_id` | `string` |  |
+  | `starts_at` | `string` |  |
+  | `ends_at` | `string` |  |
+  | `room` | `string` |  |
+  | `session_id` | `string` | Empty: attendance not taken yet |
+  | `topic` | `string` |  |
+  | `absent` | `int32` |  |
+  | `students` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

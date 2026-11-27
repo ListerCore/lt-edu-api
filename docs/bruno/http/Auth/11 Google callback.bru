@@ -1,0 +1,37 @@
+meta {
+  name: Google callback
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{baseUrl}}/auth/google/callback
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "code": "",
+    "code_verifier": ""
+  }
+}
+
+script:post-response {
+  const token = res.body?.session?.token;
+  if (token) bru.setEnvVar("token", token);
+  if (res.body?.challenge_token) bru.setEnvVar("challengeToken", res.body.challenge_token);
+}
+
+docs {
+  # POST /auth/google/callback
+
+  Canjea el `code` que devuelve Google (redirect `APP__GOOGLE__OAUTH__REDIRECT_URL`).
+
+  | Campo | Tipo |
+  |---|---|
+  | `code` | string |
+  | `code_verifier` | string |
+
+  200 `{session: {token, expires_at}}` o el paso TOTP `{challenge_token, method, email, expires_at}`
+}

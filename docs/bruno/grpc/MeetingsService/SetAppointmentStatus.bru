@@ -1,0 +1,71 @@
+meta {
+  name: SetAppointmentStatus
+  type: grpc
+  seq: 7
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.meetings.v1.MeetingsService/SetAppointmentStatus
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "status": ""
+    }
+  '''
+}
+
+docs {
+  # MeetingsService.SetAppointmentStatus
+
+  status: scheduled \| held \| missed \| cancelled
+
+  `/ltedu.meetings.v1.MeetingsService/SetAppointmentStatus` · unary · `ltedu/meetings/v1/meetings.proto`
+
+  ## Request — `SetAppointmentStatusRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `status` | `string` |  |
+
+  ## Response — `SetAppointmentStatusResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `appointment` | `Appointment` |  |
+
+  ## Tipos
+
+  ### `Appointment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `case_id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `scheduled_at` | `string` |  |
+  | `duration_min` | `int32` |  |
+  | `mode` | `string` | virtual \| in_person |
+  | `provider` | `string` |  |
+  | `link` | `string` |  |
+  | `status` | `string` |  |
+  | `created_name` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,53 @@
+meta {
+  name: ReorderCompetencies
+  type: grpc
+  seq: 18
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.CurriculumService/ReorderCompetencies
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "curriculum_id": "",
+      "subject_id": "",
+      "ids": [
+        ""
+      ]
+    }
+  '''
+}
+
+docs {
+  # CurriculumService.ReorderCompetencies
+
+  `/ltedu.academic.v1.CurriculumService/ReorderCompetencies` · unary · `ltedu/academic/v1/curriculum.proto`
+
+  ## Request — `ReorderCompetenciesRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `curriculum_id` | `string` |  |
+  | `subject_id` | `string` | Empty: the transversal ones |
+  | `ids` | `repeated string` |  |
+
+  ## Response — `ReorderCompetenciesResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,81 @@
+meta {
+  name: SaveQuestion
+  type: grpc
+  seq: 3
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.exams.v1.ExamsService/SaveQuestion
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "question": {
+        "id": "",
+        "course_code": "",
+        "topic": "",
+        "stem": "",
+        "options": [
+          ""
+        ],
+        "answer": "",
+        "difficulty": "",
+        "explanation": "",
+        "author_name": "",
+        "mine": false,
+        "uses": 0
+      }
+    }
+  '''
+}
+
+docs {
+  # ExamsService.SaveQuestion
+
+  `/ltedu.exams.v1.ExamsService/SaveQuestion` · unary · `ltedu/exams/v1/exams.proto`
+
+  ## Request — `SaveQuestionRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `question` | `Question` |  |
+
+  ## Response — `SaveQuestionResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `question` | `Question` |  |
+
+  ## Tipos
+
+  ### `Question`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `course_code` | `string` |  |
+  | `topic` | `string` |  |
+  | `stem` | `string` |  |
+  | `options` | `repeated string` |  |
+  | `answer` | `string` |  |
+  | `difficulty` | `string` | easy \| medium \| hard |
+  | `explanation` | `string` |  |
+  | `author_name` | `string` |  |
+  | `mine` | `bool` |  |
+  | `uses` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

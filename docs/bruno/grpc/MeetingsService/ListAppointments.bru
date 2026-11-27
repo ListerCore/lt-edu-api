@@ -1,0 +1,70 @@
+meta {
+  name: ListAppointments
+  type: grpc
+  seq: 5
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.meetings.v1.MeetingsService/ListAppointments
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "case_id": ""
+    }
+  '''
+}
+
+docs {
+  # MeetingsService.ListAppointments
+
+  Psychology appointments with the student of a case (psychology only)
+
+  `/ltedu.meetings.v1.MeetingsService/ListAppointments` · unary · `ltedu/meetings/v1/meetings.proto`
+
+  ## Request — `ListAppointmentsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `case_id` | `string` |  |
+
+  ## Response — `ListAppointmentsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `appointments` | `repeated Appointment` |  |
+  | `platform_available` | `bool` |  |
+
+  ## Tipos
+
+  ### `Appointment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `case_id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `scheduled_at` | `string` |  |
+  | `duration_min` | `int32` |  |
+  | `mode` | `string` | virtual \| in_person |
+  | `provider` | `string` |  |
+  | `link` | `string` |  |
+  | `status` | `string` |  |
+  | `created_name` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,42 @@
+auth {
+  mode: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  # ListerCore Edu API (lt-edu-api)
+
+  Dos puertas, mismo token de sesión:
+
+  - **HTTP** (`APP__HOST__PORT`, 5050 en local), base `{{baseUrl}}` = `http://localhost:5050/api/v1`:
+    autenticación, cuenta y MFA, publicación de anuncios y adjuntos (multipart), archivos y salud.
+  - **gRPC** (`APP__GRPC__PORT`, 5051 en local), `{{grpcUrl}}` = `grpc://localhost:5051`: todo lo demás
+    (académico, personas, asistencia, evaluación, finanzas, aula virtual...). La reflexión está activa fuera de
+    producción, así que Bruno descubre los métodos solo; los `.proto` están en `../../proto`.
+
+  ## Autenticación
+
+  1. `HTTP › Auth › Sign in` con `{{email}}` / `{{password}}`. Su script guarda `session.token` en `{{token}}`.
+     Si la cuenta tiene app autenticadora, la respuesta trae `challenge_token`: usa `Sign in verify`.
+  2. HTTP: `Authorization: Bearer {{token}}` (heredado de la colección).
+  3. gRPC: metadata `authorization: Bearer {{token}}` (puesta en cada petición).
+
+  Metadata opcional de gRPC: `x-forwarded-for` (solo se respeta desde proxies de confianza) y `x-user-agent`.
+
+  ## Errores
+
+  - HTTP: `{"error": {"code", "message", "fields"}}` con el status que corresponde (400, 401, 403, 404, 409, 429...).
+  - gRPC: status con un `ltedu.common.v1.ErrorDetail` (mismo `code`, `message`, `fields`) en los details.
+
+  Los endpoints que reciben contraseñas o códigos tienen freno por IP: 10/min (100/min en development).
+
+  ## Instituciones
+
+  Casi todos los métodos gRPC piden `institution_slug`; la variable `{{institution}}` (por defecto `demo-eba`,
+  de los seeds) ya viene puesta en los cuerpos de ejemplo.
+
+  La carpeta `gRPC` se genera con `python3 scripts/bruno-gen.py` desde `proto/`; la carpeta `HTTP` es manual.
+}

@@ -1,0 +1,97 @@
+meta {
+  name: UpdateSection
+  type: grpc
+  seq: 22
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.AcademicService/UpdateSection
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "section": {
+        "name": "",
+        "shift": "",
+        "attention_mode": "",
+        "capacity": 0,
+        "room": "",
+        "program": "",
+        "distance_variant": "",
+        "multigrade": false
+      }
+    }
+  '''
+}
+
+docs {
+  # AcademicService.UpdateSection
+
+  `/ltedu.academic.v1.AcademicService/UpdateSection` · unary · `ltedu/academic/v1/academic.proto`
+
+  ## Request — `UpdateSectionRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `section` | `SectionInput` |  |
+
+  ## Response — `UpdateSectionResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `section` | `Section` |  |
+
+  ## Tipos
+
+  ### `SectionInput`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `name` | `string` |  |
+  | `shift` | `string` |  |
+  | `attention_mode` | `string` |  |
+  | `capacity` | `int32` |  |
+  | `room` | `string` |  |
+  | `program` | `string` | EBA only; empty program means PEBAJA, empty variant of a distance section means virtual |
+  | `distance_variant` | `string` |  |
+  | `multigrade` | `bool` |  |
+
+  ### `Section`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `grade_short` | `string` |  |
+  | `name` | `string` |  |
+  | `shift` | `string` |  |
+  | `attention_mode` | `string` |  |
+  | `capacity` | `int32` |  |
+  | `room` | `string` |  |
+  | `tutor_id` | `string` | Tutor of the section (staff), empty when none |
+  | `tutor_name` | `string` |  |
+  | `program` | `string` | EBA only: pebaja \| literacy, and virtual \| itinerant when attention_mode is distance |
+  | `distance_variant` | `string` |  |
+  | `multigrade` | `bool` | EBA only: gathers students of several grades of the cycle; grade_id is the lowest |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

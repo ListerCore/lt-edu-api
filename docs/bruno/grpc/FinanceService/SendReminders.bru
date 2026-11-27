@@ -1,0 +1,53 @@
+meta {
+  name: SendReminders
+  type: grpc
+  seq: 16
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.finance.v1.FinanceService/SendReminders
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": "",
+      "student_ids": [
+        ""
+      ]
+    }
+  '''
+}
+
+docs {
+  # FinanceService.SendReminders
+
+  `/ltedu.finance.v1.FinanceService/SendReminders` · unary · `ltedu/finance/v1/finance.proto`
+
+  ## Request — `SendRemindersRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+  | `student_ids` | `repeated string` | Empty: every family with overdue charges |
+
+  ## Response — `SendRemindersResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `sent` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

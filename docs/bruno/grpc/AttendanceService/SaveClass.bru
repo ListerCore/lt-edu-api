@@ -1,0 +1,111 @@
+meta {
+  name: SaveClass
+  type: grpc
+  seq: 12
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.attendance.v1.AttendanceService/SaveClass
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "assignment_id": "",
+      "block_id": "",
+      "day": "",
+      "topic": "",
+      "marks": [
+        {
+          "person_id": "",
+          "status": "",
+          "note": ""
+        }
+      ]
+    }
+  '''
+}
+
+docs {
+  # AttendanceService.SaveClass
+
+  `/ltedu.attendance.v1.AttendanceService/SaveClass` · unary · `ltedu/attendance/v1/attendance.proto`
+
+  ## Request — `SaveClassRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `block_id` | `string` |  |
+  | `day` | `string` |  |
+  | `topic` | `string` |  |
+  | `marks` | `repeated MarkInput` |  |
+
+  ## Response — `SaveClassResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `sheet` | `GetClassResponse` |  |
+
+  ## Tipos
+
+  ### `MarkInput`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `person_id` | `string` |  |
+  | `status` | `string` |  |
+  | `note` | `string` |  |
+
+  ### `GetClassResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `day` | `string` |  |
+  | `slot` | `ClassSlot` |  |
+  | `marks` | `repeated ClassMark` |  |
+  | `can_edit` | `bool` |  |
+
+  ### `ClassSlot`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `assignment_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `block_id` | `string` |  |
+  | `starts_at` | `string` |  |
+  | `ends_at` | `string` |  |
+  | `room` | `string` |  |
+  | `session_id` | `string` | Empty: attendance not taken yet |
+  | `topic` | `string` |  |
+  | `absent` | `int32` |  |
+  | `students` | `int32` |  |
+
+  ### `ClassMark`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `status` | `string` | Empty: not taken yet |
+  | `note` | `string` |  |
+  | `day_status` | `string` | The day's mark, to suggest the class mark |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

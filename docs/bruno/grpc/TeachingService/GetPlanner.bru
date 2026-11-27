@@ -1,0 +1,229 @@
+meta {
+  name: GetPlanner
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.teaching.v1.TeachingService/GetPlanner
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": ""
+    }
+  '''
+}
+
+docs {
+  # TeachingService.GetPlanner
+
+  `/ltedu.teaching.v1.TeachingService/GetPlanner` · unary · `ltedu/teaching/v1/teaching.proto`
+
+  ## Request — `GetPlannerRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+
+  ## Response — `GetPlannerResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `context` | `AcademicContext` |  |
+  | `period` | `Period` |  |
+  | `sections` | `repeated Section` |  |
+  | `blocks` | `repeated TimeBlock` |  |
+  | `assignments` | `repeated Assignment` |  |
+  | `entries` | `repeated ScheduleEntry` |  |
+  | `teachers` | `repeated Staff` |  |
+  | `elsewhere` | `repeated ScheduleEntry` | Classes of other periods running at the same time |
+
+  ## Tipos
+
+  ### `AcademicContext`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `institution_name` | `string` |  |
+  | `institution_kind` | `string` | ebr \| eba \| ebe \| cepre \| institute |
+  | `vocabulary` | `Vocabulary` |  |
+  | `period_kind` | `string` | school_year \| promotional \| cycle \| semester |
+  | `term_schemes` | `repeated string` |  |
+  | `has_grades` | `bool` |  |
+  | `uses_attention_modes` | `bool` |  |
+  | `uses_seasons` | `bool` |  |
+  | `uses_formative_levels` | `bool` |  |
+  | `single_active_period` | `bool` |  |
+  | `can_manage` | `bool` |  |
+  | `settings` | `Settings` |  |
+
+  ### `Vocabulary`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `level` | `string` |  |
+  | `levels` | `string` |  |
+  | `grade` | `string` | Empty when the kind has no grades (CEPRE) |
+  | `grades` | `string` |  |
+  | `section` | `string` |  |
+  | `sections` | `string` |  |
+  | `period` | `string` |  |
+  | `periods` | `string` |  |
+
+  ### `Settings`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `term_scheme` | `string` | bimester \| trimester \| semester \| none |
+  | `grading_scale` | `string` | literal \| vigesimal \| score (fixed by the institution kind) |
+  | `passing_grade` | `optional int32` |  |
+  | `conduct_grade` | `bool` |  |
+  | `attention_modes` | `repeated string` | in_person \| blended \| distance (EBA) |
+  | `shifts` | `repeated string` | morning \| afternoon \| evening |
+  | `week_days` | `repeated int32` | Teaching days, 1 = Monday … 7 = Sunday |
+  | `late_after_minutes` | `int32` | Attendance: minutes of tolerance after the first class, and the absence share (%) that raises an alert |
+  | `absence_limit_percent` | `int32` |  |
+  | `dre` | `optional string` | Official data for the report card; unset on an update keeps what is stored. Logo: image data URL (PNG, JPG, WebP or SVG, under 100 KB), "" removes it |
+  | `ugel` | `optional string` |  |
+  | `modular_code` | `optional string` |  |
+  | `logo` | `optional string` |  |
+  | `management` | `optional string` | Tipo de gestión: public (no tuition; families pay the enrollment and the APAFA fee) \| private. Unset on an update keeps what is stored; turning public fails while open periods still have tuition in plans or owed |
+
+  ### `Period`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` |  |
+  | `name` | `string` |  |
+  | `season` | `string` | CEPRE: summer \| annual \| semester \| intensive \| review \| school \| other |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `term_scheme` | `string` |  |
+  | `status` | `string` | planning \| active \| closed |
+  | `terms` | `repeated Term` |  |
+  | `section_count` | `int32` |  |
+  | `capacity_total` | `int32` |  |
+
+  ### `Term`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `number` | `int32` |  |
+  | `name` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `status` | `string` | open \| closed |
+
+  ### `Section`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `grade_short` | `string` |  |
+  | `name` | `string` |  |
+  | `shift` | `string` |  |
+  | `attention_mode` | `string` |  |
+  | `capacity` | `int32` |  |
+  | `room` | `string` |  |
+  | `tutor_id` | `string` | Tutor of the section (staff), empty when none |
+  | `tutor_name` | `string` |  |
+  | `program` | `string` | EBA only: pebaja \| literacy, and virtual \| itinerant when attention_mode is distance |
+  | `distance_variant` | `string` |  |
+  | `multigrade` | `bool` | EBA only: gathers students of several grades of the cycle; grade_id is the lowest |
+
+  ### `TimeBlock`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `shift` | `string` | morning \| afternoon \| evening |
+  | `position` | `int32` |  |
+  | `starts_at` | `string` |  |
+  | `ends_at` | `string` |  |
+  | `kind` | `string` | class \| break |
+
+  ### `Assignment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `subject_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `subject_kind` | `string` |  |
+  | `subject_code` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `weekly_hours` | `int32` |  |
+  | `scheduled` | `int32` |  |
+  | `section_label` | `string` |  |
+  | `period_name` | `string` |  |
+
+  ### `ScheduleEntry`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `shift` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `weekday` | `int32` |  |
+  | `block_id` | `string` |  |
+  | `starts_at` | `string` |  |
+  | `ends_at` | `string` |  |
+  | `room` | `string` |  |
+
+  ### `Staff`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `document_type` | `string` |  |
+  | `document_number` | `string` |  |
+  | `given_names` | `string` |  |
+  | `surnames` | `string` |  |
+  | `email` | `string` |  |
+  | `phone` | `string` |  |
+  | `position` | `string` |  |
+  | `is_teacher` | `bool` |  |
+  | `specialty` | `string` |  |
+  | `max_weekly_hours` | `optional int32` |  |
+  | `hired_on` | `string` |  |
+  | `status` | `string` | active \| inactive |
+  | `notes` | `string` |  |
+  | `roles` | `repeated string` |  |
+  | `invited` | `repeated string` |  |
+  | `assigned_hours` | `int32` |  |
+  | `tutor_of` | `repeated string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

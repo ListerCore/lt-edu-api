@@ -1,0 +1,79 @@
+meta {
+  name: ApplyTemplate
+  type: grpc
+  seq: 13
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.AcademicService/ApplyTemplate
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # AcademicService.ApplyTemplate
+
+  Loads the usual structure of the institution kind into an empty institution
+
+  `/ltedu.academic.v1.AcademicService/ApplyTemplate` · unary · `ltedu/academic/v1/academic.proto`
+
+  ## Request — `ApplyTemplateRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `ApplyTemplateResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `levels` | `repeated Level` |  |
+
+  ## Tipos
+
+  ### `Level`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `description` | `string` |  |
+  | `position` | `int32` |  |
+  | `formative_level` | `string` | technical \| professional_technical \| professional (IEST) |
+  | `credits` | `optional int32` |  |
+  | `attention_modes` | `repeated string` |  |
+  | `is_active` | `bool` |  |
+  | `grades` | `repeated Grade` |  |
+  | `section_count` | `int32` |  |
+
+  ### `Grade`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `level_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `short_name` | `string` |  |
+  | `position` | `int32` |  |
+  | `section_count` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

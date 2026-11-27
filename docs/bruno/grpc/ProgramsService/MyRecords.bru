@@ -1,0 +1,178 @@
+meta {
+  name: MyRecords
+  type: grpc
+  seq: 5
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.programs.v1.ProgramsService/MyRecords
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # ProgramsService.MyRecords
+
+  `/ltedu.programs.v1.ProgramsService/MyRecords` · unary · `ltedu/programs/v1/programs.proto`
+
+  ## Request — `MyRecordsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `MyRecordsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `records` | `repeated StudentRecord` |  |
+
+  ## Tipos
+
+  ### `StudentRecord`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student` | `StudentProgress` |  |
+  | `program_name` | `string` |  |
+  | `level_id` | `string` |  |
+  | `modules` | `repeated RecordModule` |  |
+  | `requirements` | `repeated Requirement` |  |
+  | `degree` | `Certificate` |  |
+  | `eligible` | `bool` |  |
+  | `approved` | `int32` |  |
+  | `total` | `int32` |  |
+  | `can_manage` | `bool` |  |
+  | `can_issue` | `bool` |  |
+  | `passing_grade` | `int32` |  |
+  | `certificates` | `repeated Certificate` |  |
+
+  ### `StudentProgress`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `document` | `string` |  |
+  | `status` | `string` |  |
+  | `semester` | `string` |  |
+  | `approved_credits` | `int32` |  |
+  | `total_credits` | `int32` |  |
+  | `modules` | `int32` |  |
+  | `certified` | `int32` |  |
+  | `degree` | `bool` |  |
+  | `efsrt_done` | `int32` |  |
+  | `efsrt_total` | `int32` |  |
+
+  ### `RecordModule`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `units` | `repeated RecordUnit` |  |
+  | `complete` | `bool` |  |
+  | `certificate` | `Certificate` |  |
+  | `credits` | `int32` |  |
+  | `approved` | `int32` |  |
+
+  ### `RecordUnit`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `subject_id` | `string` |  |
+  | `kind` | `string` |  |
+  | `name` | `string` |  |
+  | `credits` | `int32` |  |
+  | `semester` | `string` |  |
+  | `standing` | `Standing` | Not set: not taken yet |
+  | `internships` | `repeated Internship` |  |
+  | `hours` | `int32` |  |
+
+  ### `Standing`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `status` | `string` | approved \| failed \| ongoing |
+  | `grade` | `optional int32` |  |
+  | `period_name` | `string` |  |
+  | `source` | `string` | closing \| history \| validation \| enrolled \| efsrt |
+
+  ### `Internship`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `subject_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `module_name` | `string` |  |
+  | `level_id` | `string` |  |
+  | `program_name` | `string` |  |
+  | `company` | `string` |  |
+  | `company_ruc` | `string` |  |
+  | `area` | `string` |  |
+  | `supervisor` | `string` |  |
+  | `supervisor_contact` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `required_hours` | `int32` |  |
+  | `logged_hours` | `double` |  |
+  | `status` | `string` | ongoing \| approved \| failed |
+  | `score` | `optional int32` |  |
+  | `evaluation` | `string` |  |
+  | `evaluated_name` | `string` |  |
+  | `evaluated_at` | `string` |  |
+
+  ### `Certificate`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `level_id` | `string` |  |
+  | `program_name` | `string` |  |
+  | `kind` | `string` | modular \| degree |
+  | `module_id` | `string` |  |
+  | `module_name` | `string` |  |
+  | `code` | `string` |  |
+  | `status` | `string` | issued \| annulled |
+  | `issued_on` | `string` |  |
+  | `issued_name` | `string` |  |
+  | `annul_reason` | `string` |  |
+
+  ### `Requirement`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `auto` | `bool` |  |
+  | `done` | `bool` |  |
+  | `note` | `string` |  |
+  | `checked_name` | `string` |  |
+  | `checked_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

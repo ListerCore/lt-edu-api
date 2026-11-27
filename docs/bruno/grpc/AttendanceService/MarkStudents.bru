@@ -1,0 +1,114 @@
+meta {
+  name: MarkStudents
+  type: grpc
+  seq: 5
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.attendance.v1.AttendanceService/MarkStudents
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "section_id": "",
+      "day": "",
+      "marks": [
+        {
+          "person_id": "",
+          "status": "",
+          "note": ""
+        }
+      ]
+    }
+  '''
+}
+
+docs {
+  # AttendanceService.MarkStudents
+
+  `/ltedu.attendance.v1.AttendanceService/MarkStudents` · unary · `ltedu/attendance/v1/attendance.proto`
+
+  ## Request — `MarkStudentsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `section_id` | `string` |  |
+  | `day` | `string` |  |
+  | `marks` | `repeated MarkInput` |  |
+
+  ## Response — `MarkStudentsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `roster` | `GetRosterResponse` |  |
+
+  ## Tipos
+
+  ### `MarkInput`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `person_id` | `string` |  |
+  | `status` | `string` |  |
+  | `note` | `string` |  |
+
+  ### `GetRosterResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `day` | `string` |  |
+  | `school_day` | `bool` |  |
+  | `section` | `SectionDay` |  |
+  | `rows` | `repeated RosterRow` |  |
+  | `can_edit` | `bool` |  |
+  | `late_after` | `string` |  |
+
+  ### `SectionDay`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `level_name` | `string` |  |
+  | `shift` | `string` |  |
+  | `tutor_name` | `string` |  |
+  | `enrolled` | `int32` |  |
+  | `tally` | `Tally` |  |
+
+  ### `Tally`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `present` | `int32` |  |
+  | `late` | `int32` |  |
+  | `absent` | `int32` |  |
+  | `justified` | `int32` |  |
+
+  ### `RosterRow`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `status` | `string` |  |
+  | `arrived_at` | `string` |  |
+  | `source` | `string` | gate \| manual \| closing \| justification |
+  | `note` | `string` |  |
+  | `pending_justification` | `bool` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

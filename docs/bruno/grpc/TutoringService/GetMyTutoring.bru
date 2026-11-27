@@ -1,0 +1,133 @@
+meta {
+  name: GetMyTutoring
+  type: grpc
+  seq: 12
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.TutoringService/GetMyTutoring
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # TutoringService.GetMyTutoring
+
+  `/ltedu.wellbeing.v1.TutoringService/GetMyTutoring` · unary · `ltedu/wellbeing/v1/tutoring.proto`
+
+  ## Request — `GetMyTutoringRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `GetMyTutoringResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `has_tutor` | `bool` |  |
+  | `tutor` | `TutorStudent` |  |
+  | `sessions` | `repeated TutoringSession` |  |
+  | `thread` | `ThreadView` |  |
+
+  ## Tipos
+
+  ### `TutorStudent`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `placement` | `string` |  |
+  | `section_id` | `string` |  |
+  | `attention_mode` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `individual` | `bool` |  |
+  | `last_at` | `string` |  |
+
+  ### `TutoringSession`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `kind` | `string` |  |
+  | `mode` | `string` |  |
+  | `scheduled_at` | `string` |  |
+  | `duration_min` | `int32` |  |
+  | `link` | `string` |  |
+  | `reason` | `string` |  |
+  | `alert_kind` | `string` | inactive \| overdue \| low_permanence: the dropout alert it answers |
+  | `status` | `string` |  |
+  | `notes` | `string` | Staff only (empty for the student) |
+  | `agreements` | `string` |  |
+  | `held_at` | `string` |  |
+  | `created_name` | `string` |  |
+  | `attendees` | `repeated SessionAttendee` |  |
+  | `provider` | `string` | Virtual sessions: platform (video inside ListerCore Edu) \| meet (link) |
+
+  ### `SessionAttendee`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `attended` | `optional bool` | Unset until held |
+  | `interview_id` | `string` |  |
+
+  ### `ThreadView`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `thread` | `Thread` |  |
+  | `messages` | `repeated TutoringMessage` |  |
+  | `side` | `string` | staff \| student; empty: reads only |
+
+  ### `Thread`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `last_message_at` | `string` |  |
+  | `last_body` | `string` |  |
+  | `last_side` | `string` |  |
+  | `unread` | `int32` | Messages of the other side the viewer has not read |
+
+  ### `TutoringMessage`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `thread_id` | `string` |  |
+  | `side` | `string` |  |
+  | `author_name` | `string` |  |
+  | `body` | `string` |  |
+  | `created_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

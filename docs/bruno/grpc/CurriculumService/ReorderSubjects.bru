@@ -1,0 +1,51 @@
+meta {
+  name: ReorderSubjects
+  type: grpc
+  seq: 14
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.CurriculumService/ReorderSubjects
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "curriculum_id": "",
+      "ids": [
+        ""
+      ]
+    }
+  '''
+}
+
+docs {
+  # CurriculumService.ReorderSubjects
+
+  `/ltedu.academic.v1.CurriculumService/ReorderSubjects` · unary · `ltedu/academic/v1/curriculum.proto`
+
+  ## Request — `ReorderSubjectsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `curriculum_id` | `string` |  |
+  | `ids` | `repeated string` |  |
+
+  ## Response — `ReorderSubjectsResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

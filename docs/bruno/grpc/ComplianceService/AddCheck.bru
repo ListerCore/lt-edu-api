@@ -1,0 +1,91 @@
+meta {
+  name: AddCheck
+  type: grpc
+  seq: 6
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.compliance.v1.ComplianceService/AddCheck
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "check": {
+        "id": "",
+        "kind": "",
+        "room_id": "",
+        "room_name": "",
+        "device_id": "",
+        "device_code": "",
+        "checked_on": "",
+        "provider": "",
+        "link_kind": "",
+        "download_mbps": 0,
+        "upload_mbps": 0,
+        "latency_ms": 0,
+        "profile": "",
+        "passed": false,
+        "result": "",
+        "checked_by_name": "",
+        "files": 0
+      }
+    }
+  '''
+}
+
+docs {
+  # ComplianceService.AddCheck
+
+  `/ltedu.compliance.v1.ComplianceService/AddCheck` · unary · `ltedu/compliance/v1/compliance.proto`
+
+  ## Request — `AddCheckRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `check` | `Check` |  |
+
+  ## Response — `AddCheckResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `check` | `Check` |  |
+
+  ## Tipos
+
+  ### `Check`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` |  |
+  | `room_id` | `string` |  |
+  | `room_name` | `string` |  |
+  | `device_id` | `string` |  |
+  | `device_code` | `string` |  |
+  | `checked_on` | `string` |  |
+  | `provider` | `string` |  |
+  | `link_kind` | `string` |  |
+  | `download_mbps` | `optional double` |  |
+  | `upload_mbps` | `optional double` |  |
+  | `latency_ms` | `optional int32` |  |
+  | `profile` | `string` |  |
+  | `passed` | `bool` |  |
+  | `result` | `string` |  |
+  | `checked_by_name` | `string` |  |
+  | `files` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

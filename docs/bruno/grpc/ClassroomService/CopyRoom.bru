@@ -1,0 +1,51 @@
+meta {
+  name: CopyRoom
+  type: grpc
+  seq: 5
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/CopyRoom
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "from_room_id": ""
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.CopyRoom
+
+  `/ltedu.classroom.v1.ClassroomService/CopyRoom` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `CopyRoomRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `from_room_id` | `string` |  |
+
+  ## Response — `CopyRoomResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `units` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

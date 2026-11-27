@@ -1,0 +1,58 @@
+meta {
+  name: PermanenceXlsx
+  type: grpc
+  seq: 12
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/PermanenceXlsx
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "section_id": ""
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.PermanenceXlsx
+
+  `/ltedu.documents.v1.DocumentsService/PermanenceXlsx` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `PermanenceXlsxRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `section_id` | `string` |  |
+
+  ## Response — `PermanenceXlsxResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file` | `PdfFile` |  |
+
+  ## Tipos
+
+  ### `PdfFile`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file_name` | `string` |  |
+  | `content` | `bytes` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

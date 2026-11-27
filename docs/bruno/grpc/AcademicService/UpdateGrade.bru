@@ -1,0 +1,77 @@
+meta {
+  name: UpdateGrade
+  type: grpc
+  seq: 10
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.AcademicService/UpdateGrade
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "grade": {
+        "code": "",
+        "name": "",
+        "short_name": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # AcademicService.UpdateGrade
+
+  `/ltedu.academic.v1.AcademicService/UpdateGrade` · unary · `ltedu/academic/v1/academic.proto`
+
+  ## Request — `UpdateGradeRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `grade` | `GradeInput` |  |
+
+  ## Response — `UpdateGradeResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `grade` | `Grade` |  |
+
+  ## Tipos
+
+  ### `GradeInput`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `short_name` | `string` |  |
+
+  ### `Grade`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `level_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `short_name` | `string` |  |
+  | `position` | `int32` |  |
+  | `section_count` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

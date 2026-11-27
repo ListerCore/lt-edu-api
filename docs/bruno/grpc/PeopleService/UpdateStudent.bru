@@ -1,0 +1,129 @@
+meta {
+  name: UpdateStudent
+  type: grpc
+  seq: 5
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/UpdateStudent
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "student": {
+        "code": "",
+        "document_type": "",
+        "document_number": "",
+        "given_names": "",
+        "paternal_surname": "",
+        "maternal_surname": "",
+        "birth_date": "",
+        "sex": "",
+        "email": "",
+        "phone": "",
+        "address": "",
+        "special_needs": false,
+        "notes": "",
+        "status": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # PeopleService.UpdateStudent
+
+  `/ltedu.people.v1.PeopleService/UpdateStudent` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `UpdateStudentRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `student` | `StudentInput` |  |
+
+  ## Response — `UpdateStudentResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student` | `Student` |  |
+
+  ## Tipos
+
+  ### `StudentInput`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `code` | `string` |  |
+  | `document_type` | `string` |  |
+  | `document_number` | `string` |  |
+  | `given_names` | `string` |  |
+  | `paternal_surname` | `string` |  |
+  | `maternal_surname` | `string` |  |
+  | `birth_date` | `string` |  |
+  | `sex` | `string` |  |
+  | `email` | `string` |  |
+  | `phone` | `string` |  |
+  | `address` | `string` |  |
+  | `special_needs` | `bool` |  |
+  | `notes` | `string` |  |
+  | `status` | `string` |  |
+
+  ### `Student`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `document_type` | `string` | dni \| ce \| passport \| other |
+  | `document_number` | `string` |  |
+  | `given_names` | `string` |  |
+  | `paternal_surname` | `string` |  |
+  | `maternal_surname` | `string` |  |
+  | `birth_date` | `string` |  |
+  | `sex` | `string` | f \| m \| empty |
+  | `email` | `string` |  |
+  | `phone` | `string` |  |
+  | `address` | `string` |  |
+  | `special_needs` | `bool` |  |
+  | `notes` | `string` |  |
+  | `status` | `string` | active \| inactive \| graduated \| withdrawn |
+  | `access` | `string` | none \| invited \| account |
+  | `enrollment` | `EnrollmentSummary` |  |
+  | `primary_guardian_name` | `string` |  |
+  | `primary_guardian_phone` | `string` |  |
+  | `guardian_count` | `int32` |  |
+
+  ### `EnrollmentSummary`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `grade_short` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_name` | `string` |  |
+  | `shift` | `string` |  |
+  | `status` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

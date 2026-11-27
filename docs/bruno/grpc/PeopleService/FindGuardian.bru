@@ -1,0 +1,74 @@
+meta {
+  name: FindGuardian
+  type: grpc
+  seq: 7
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/FindGuardian
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "document_type": "",
+      "document_number": ""
+    }
+  '''
+}
+
+docs {
+  # PeopleService.FindGuardian
+
+  A guardian of the institution by document, to link a sibling's guardian
+
+  `/ltedu.people.v1.PeopleService/FindGuardian` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `FindGuardianRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `document_type` | `string` |  |
+  | `document_number` | `string` |  |
+
+  ## Response — `FindGuardianResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `guardian` | `Guardian` |  |
+
+  ## Tipos
+
+  ### `Guardian`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `document_type` | `string` |  |
+  | `document_number` | `string` |  |
+  | `given_names` | `string` |  |
+  | `surnames` | `string` |  |
+  | `email` | `string` |  |
+  | `phone` | `string` |  |
+  | `occupation` | `string` |  |
+  | `access` | `string` |  |
+  | `relationship` | `string` | mother \| father \| legal_guardian \| grandparent \| sibling \| other |
+  | `is_primary` | `bool` |  |
+  | `can_pick_up` | `bool` |  |
+  | `lives_with` | `bool` |  |
+  | `student_count` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

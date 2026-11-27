@@ -1,0 +1,67 @@
+meta {
+  name: GetStaffDay
+  type: grpc
+  seq: 7
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.attendance.v1.AttendanceService/GetStaffDay
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "day": ""
+    }
+  '''
+}
+
+docs {
+  # AttendanceService.GetStaffDay
+
+  `/ltedu.attendance.v1.AttendanceService/GetStaffDay` · unary · `ltedu/attendance/v1/attendance.proto`
+
+  ## Request — `GetStaffDayRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `day` | `string` |  |
+
+  ## Response — `GetStaffDayResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `day` | `string` |  |
+  | `school_day` | `bool` |  |
+  | `rows` | `repeated StaffRow` |  |
+  | `late_after` | `string` |  |
+
+  ## Tipos
+
+  ### `StaffRow`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `staff_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `string` |  |
+  | `status` | `string` |  |
+  | `arrived_at` | `string` |  |
+  | `source` | `string` |  |
+  | `note` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

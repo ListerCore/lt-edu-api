@@ -1,0 +1,68 @@
+meta {
+  name: CreateCompetency
+  type: grpc
+  seq: 15
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.CurriculumService/CreateCompetency
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "curriculum_id": "",
+      "subject_id": "",
+      "code": "",
+      "name": ""
+    }
+  '''
+}
+
+docs {
+  # CurriculumService.CreateCompetency
+
+  `/ltedu.academic.v1.CurriculumService/CreateCompetency` · unary · `ltedu/academic/v1/curriculum.proto`
+
+  ## Request — `CreateCompetencyRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `curriculum_id` | `string` |  |
+  | `subject_id` | `string` | Empty: transversal (Educación Básica only) |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+
+  ## Response — `CreateCompetencyResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `competency` | `Competency` |  |
+
+  ## Tipos
+
+  ### `Competency`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `subject_id` | `string` | Empty for transversal competencies |
+  | `kind` | `string` | competency \| capacity \| topic |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

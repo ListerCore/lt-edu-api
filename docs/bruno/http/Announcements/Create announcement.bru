@@ -1,0 +1,45 @@
+meta {
+  name: Create announcement
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/panel/announcements
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  institution: {{institution}}
+  kind: 
+  audience: 
+  title: 
+  body: 
+  is_public: false
+  ~featured_from: 
+  ~featured_until: 
+  ~cta_label: 
+  ~cta_url: 
+  ~files: @file()
+}
+
+docs {
+  # POST /panel/announcements
+
+  Publica un anuncio.
+
+  Multipart:
+
+  | Campo | Descripción |
+  |---|---|
+  | `institution` | slug de la institución |
+  | `kind`, `audience` | tipo y público del anuncio |
+  | `title`, `body` | texto |
+  | `is_public` | `true` lo muestra también fuera de la plataforma |
+  | `featured_from`, `featured_until` | RFC 3339, opcionales: periodo destacado |
+  | `cta_label`, `cta_url` | botón de llamada a la acción, opcional |
+  | `files` | hasta 6 imágenes o PDF (máx. ~11 MB cada uno) |
+
+  201 `{announcement}`
+}

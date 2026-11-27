@@ -1,0 +1,66 @@
+meta {
+  name: GetAttendance
+  type: grpc
+  seq: 4
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.meetings.v1.MeetingsService/GetAttendance
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "source": "",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # MeetingsService.GetAttendance
+
+  Who joined a session; hosts only
+
+  `/ltedu.meetings.v1.MeetingsService/GetAttendance` · unary · `ltedu/meetings/v1/meetings.proto`
+
+  ## Request — `GetAttendanceRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `source` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `GetAttendanceResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `attendees` | `repeated Attendee` |  |
+
+  ## Tipos
+
+  ### `Attendee`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `user_id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `display_name` | `string` |  |
+  | `first_at` | `string` |  |
+  | `last_at` | `string` |  |
+  | `joins` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

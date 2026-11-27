@@ -1,0 +1,75 @@
+meta {
+  name: GetPsychology
+  type: grpc
+  seq: 11
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/GetPsychology
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "status": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.GetPsychology
+
+  `/ltedu.wellbeing.v1.WellbeingService/GetPsychology` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `GetPsychologyRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `status` | `string` | Empty: every case; "active": not closed |
+
+  ## Response — `GetPsychologyResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `cases` | `repeated PsychCase` |  |
+  | `by_status` | `map<string, int32>` |  |
+  | `urgent` | `int32` |  |
+  | `confidential` | `bool` | True: only counts and the person's own referrals |
+  | `can_manage` | `bool` |  |
+
+  ## Tipos
+
+  ### `PsychCase`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `origin` | `string` | tutor \| teacher \| family \| direction \| self \| psychologist |
+  | `referred_name` | `string` |  |
+  | `reason` | `string` |  |
+  | `priority` | `string` | normal \| urgent |
+  | `status` | `string` | referred \| open \| follow_up \| closed |
+  | `opened_on` | `string` |  |
+  | `closed_on` | `string` |  |
+  | `psychologist_name` | `string` |  |
+  | `shared_note` | `string` |  |
+  | `sessions` | `int32` |  |
+  | `last_session` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

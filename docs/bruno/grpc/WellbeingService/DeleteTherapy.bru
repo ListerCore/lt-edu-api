@@ -1,0 +1,47 @@
+meta {
+  name: DeleteTherapy
+  type: grpc
+  seq: 33
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/DeleteTherapy
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.DeleteTherapy
+
+  `/ltedu.wellbeing.v1.WellbeingService/DeleteTherapy` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `DeleteTherapyRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `DeleteTherapyResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

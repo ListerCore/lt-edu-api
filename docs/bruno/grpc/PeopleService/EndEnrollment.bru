@@ -1,0 +1,89 @@
+meta {
+  name: EndEnrollment
+  type: grpc
+  seq: 15
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/EndEnrollment
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "status": "",
+      "ended_on": "",
+      "destination": ""
+    }
+  '''
+}
+
+docs {
+  # PeopleService.EndEnrollment
+
+  Withdrawal or transfer out; status active brings it back
+
+  `/ltedu.people.v1.PeopleService/EndEnrollment` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `EndEnrollmentRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `status` | `string` | withdrawn \| transferred \| active |
+  | `ended_on` | `string` |  |
+  | `destination` | `string` |  |
+
+  ## Response — `EndEnrollmentResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `enrollment` | `Enrollment` |  |
+
+  ## Tipos
+
+  ### `Enrollment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `student_document` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `grade_short` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_name` | `string` |  |
+  | `shift` | `string` |  |
+  | `attention_mode` | `string` |  |
+  | `kind` | `string` | new \| continuing \| transfer_in \| re_entry |
+  | `status` | `string` | active \| withdrawn \| transferred \| completed |
+  | `enrolled_on` | `string` |  |
+  | `ended_on` | `string` |  |
+  | `origin` | `string` |  |
+  | `destination` | `string` |  |
+  | `notes` | `string` |  |
+  | `unit_ids` | `repeated string` |  |
+  | `credits` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

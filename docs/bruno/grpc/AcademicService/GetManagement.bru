@@ -1,0 +1,50 @@
+meta {
+  name: GetManagement
+  type: grpc
+  seq: 3
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.AcademicService/GetManagement
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # AcademicService.GetManagement
+
+  Management type (public \| private), readable by every role of the institution, families included
+
+  `/ltedu.academic.v1.AcademicService/GetManagement` · unary · `ltedu/academic/v1/academic.proto`
+
+  ## Request — `GetManagementRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `GetManagementResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` | The institution the session works on (an institution role always gets its own) |
+  | `management` | `string` | public \| private |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

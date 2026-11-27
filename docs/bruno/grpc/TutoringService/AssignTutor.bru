@@ -1,0 +1,98 @@
+meta {
+  name: AssignTutor
+  type: grpc
+  seq: 3
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.TutoringService/AssignTutor
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_ids": [
+        ""
+      ],
+      "staff_id": ""
+    }
+  '''
+}
+
+docs {
+  # TutoringService.AssignTutor
+
+  staff_id empty: back to the tutor of the section
+
+  `/ltedu.wellbeing.v1.TutoringService/AssignTutor` · unary · `ltedu/wellbeing/v1/tutoring.proto`
+
+  ## Request — `AssignTutorRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_ids` | `repeated string` |  |
+  | `staff_id` | `string` |  |
+
+  ## Response — `AssignTutorResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `assignments` | `GetTutorAssignmentsResponse` |  |
+
+  ## Tipos
+
+  ### `GetTutorAssignmentsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `loads` | `repeated TutorLoad` |  |
+  | `candidates` | `repeated TutorCandidate` |  |
+  | `students` | `repeated TutorStudent` |  |
+
+  ### `TutorLoad`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `staff_id` | `string` |  |
+  | `name` | `string` |  |
+  | `sections` | `repeated string` |  |
+  | `by_section` | `int32` |  |
+  | `individual` | `int32` |  |
+
+  ### `TutorCandidate`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `staff_id` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `string` |  |
+
+  ### `TutorStudent`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `placement` | `string` |  |
+  | `section_id` | `string` |  |
+  | `attention_mode` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `individual` | `bool` |  |
+  | `last_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

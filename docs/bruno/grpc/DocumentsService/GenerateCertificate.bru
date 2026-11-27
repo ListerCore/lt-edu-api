@@ -1,0 +1,111 @@
+meta {
+  name: GenerateCertificate
+  type: grpc
+  seq: 17
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/GenerateCertificate
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": "",
+      "kind": "",
+      "period_id": "",
+      "level_id": "",
+      "purpose": "",
+      "note": ""
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.GenerateCertificate
+
+  `/ltedu.documents.v1.DocumentsService/GenerateCertificate` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `GenerateCertificateRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+  | `kind` | `string` |  |
+  | `period_id` | `string` | enrollment: the period; cycle: the level |
+  | `level_id` | `string` |  |
+  | `purpose` | `string` |  |
+  | `note` | `string` |  |
+
+  ## Response — `GenerateCertificateResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `certificate` | `StudentCertificate` |  |
+  | `version` | `DocumentVersion` |  |
+
+  ## Tipos
+
+  ### `StudentCertificate`
+
+  kind: enrollment \| studies \| cycle
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `kind` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `purpose` | `string` |  |
+  | `year` | `int32` |  |
+  | `number` | `int32` |  |
+  | `code` | `string` | "N.° 004-2026" |
+  | `version_id` | `string` |  |
+  | `version_status` | `string` | State of the newest version: pending \| published \| superseded \| cancelled |
+  | `created_name` | `string` |  |
+  | `created_at` | `string` |  |
+
+  ### `DocumentVersion`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `number` | `int32` |  |
+  | `verification_code` | `string` |  |
+  | `status` | `string` | pending \| published \| superseded \| cancelled |
+  | `note` | `string` |  |
+  | `created_name` | `string` |  |
+  | `created_at` | `string` |  |
+  | `published_at` | `string` |  |
+  | `signatures` | `repeated Signature` |  |
+  | `content_hash` | `string` |  |
+
+  ### `Signature`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `sort` | `int32` |  |
+  | `staff_id` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `string` |  |
+  | `signed_at` | `string` | RFC 3339; empty while waiting |
+  | `code` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

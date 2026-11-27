@@ -1,0 +1,81 @@
+meta {
+  name: SaveItem
+  type: grpc
+  seq: 8
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.compliance.v1.ComplianceService/SaveItem
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "module": "",
+      "route": "",
+      "annex": "",
+      "folio": "",
+      "notes": ""
+    }
+  '''
+}
+
+docs {
+  # ComplianceService.SaveItem
+
+  `/ltedu.compliance.v1.ComplianceService/SaveItem` · unary · `ltedu/compliance/v1/compliance.proto`
+
+  ## Request — `SaveItemRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `module` | `string` |  |
+  | `route` | `string` |  |
+  | `annex` | `string` |  |
+  | `folio` | `string` |  |
+  | `notes` | `string` |  |
+
+  ## Response — `SaveItemResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `item` | `Item` |  |
+
+  ## Tipos
+
+  ### `Item`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `report` | `string` |  |
+  | `section` | `string` |  |
+  | `code` | `string` |  |
+  | `position` | `int32` |  |
+  | `element` | `string` |  |
+  | `module` | `string` |  |
+  | `route` | `string` |  |
+  | `annex` | `string` |  |
+  | `folio` | `string` |  |
+  | `status` | `string` |  |
+  | `notes` | `string` |  |
+  | `verified_by_name` | `string` |  |
+  | `verified_at` | `string` |  |
+  | `files` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

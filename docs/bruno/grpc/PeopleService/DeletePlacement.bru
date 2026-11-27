@@ -1,0 +1,47 @@
+meta {
+  name: DeletePlacement
+  type: grpc
+  seq: 20
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/DeletePlacement
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # PeopleService.DeletePlacement
+
+  `/ltedu.people.v1.PeopleService/DeletePlacement` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `DeletePlacementRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `DeletePlacementResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

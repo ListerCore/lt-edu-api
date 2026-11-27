@@ -1,0 +1,47 @@
+meta {
+  name: RemoveClass
+  type: grpc
+  seq: 8
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.teaching.v1.TeachingService/RemoveClass
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # TeachingService.RemoveClass
+
+  `/ltedu.teaching.v1.TeachingService/RemoveClass` · unary · `ltedu/teaching/v1/teaching.proto`
+
+  ## Request — `RemoveClassRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `RemoveClassResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

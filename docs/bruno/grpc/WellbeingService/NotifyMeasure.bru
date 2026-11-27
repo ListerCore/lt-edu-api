@@ -1,0 +1,49 @@
+meta {
+  name: NotifyMeasure
+  type: grpc
+  seq: 22
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/NotifyMeasure
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "notified_on": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.NotifyMeasure
+
+  `/ltedu.wellbeing.v1.WellbeingService/NotifyMeasure` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `NotifyMeasureRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `notified_on` | `string` |  |
+
+  ## Response — `NotifyMeasureResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

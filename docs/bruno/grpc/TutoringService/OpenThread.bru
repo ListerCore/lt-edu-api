@@ -1,0 +1,87 @@
+meta {
+  name: OpenThread
+  type: grpc
+  seq: 9
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.TutoringService/OpenThread
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": ""
+    }
+  '''
+}
+
+docs {
+  # TutoringService.OpenThread
+
+  With a student (staff) or, for a student account, with its tutor (student_id empty); created on first use
+
+  `/ltedu.wellbeing.v1.TutoringService/OpenThread` · unary · `ltedu/wellbeing/v1/tutoring.proto`
+
+  ## Request — `OpenThreadRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+
+  ## Response — `OpenThreadResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `view` | `ThreadView` |  |
+
+  ## Tipos
+
+  ### `ThreadView`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `thread` | `Thread` |  |
+  | `messages` | `repeated TutoringMessage` |  |
+  | `side` | `string` | staff \| student; empty: reads only |
+
+  ### `Thread`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `last_message_at` | `string` |  |
+  | `last_body` | `string` |  |
+  | `last_side` | `string` |  |
+  | `unread` | `int32` | Messages of the other side the viewer has not read |
+
+  ### `TutoringMessage`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `thread_id` | `string` |  |
+  | `side` | `string` |  |
+  | `author_name` | `string` |  |
+  | `body` | `string` |  |
+  | `created_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

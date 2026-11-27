@@ -1,0 +1,79 @@
+meta {
+  name: SaveLibraryItem
+  type: grpc
+  seq: 14
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/SaveLibraryItem
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "item": {
+        "id": "",
+        "kind": "",
+        "title": "",
+        "description": "",
+        "body": "",
+        "url": "",
+        "topic": "",
+        "created_name": "",
+        "updated_at": "",
+        "files": 0,
+        "uses": 0
+      }
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.SaveLibraryItem
+
+  `/ltedu.classroom.v1.ClassroomService/SaveLibraryItem` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `SaveLibraryItemRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `item` | `LibraryItem` |  |
+
+  ## Response — `SaveLibraryItemResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `item` | `LibraryItem` |  |
+
+  ## Tipos
+
+  ### `LibraryItem`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` | reading \| file \| video \| link |
+  | `title` | `string` |  |
+  | `description` | `string` |  |
+  | `body` | `string` |  |
+  | `url` | `string` |  |
+  | `topic` | `string` |  |
+  | `created_name` | `string` |  |
+  | `updated_at` | `string` |  |
+  | `files` | `int32` |  |
+  | `uses` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

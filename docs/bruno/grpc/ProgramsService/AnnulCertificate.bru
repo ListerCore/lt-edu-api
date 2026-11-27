@@ -1,0 +1,49 @@
+meta {
+  name: AnnulCertificate
+  type: grpc
+  seq: 18
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.programs.v1.ProgramsService/AnnulCertificate
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "reason": ""
+    }
+  '''
+}
+
+docs {
+  # ProgramsService.AnnulCertificate
+
+  `/ltedu.programs.v1.ProgramsService/AnnulCertificate` · unary · `ltedu/programs/v1/programs.proto`
+
+  ## Request — `AnnulCertificateRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `reason` | `string` |  |
+
+  ## Response — `AnnulCertificateResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

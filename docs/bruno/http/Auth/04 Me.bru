@@ -1,0 +1,21 @@
+meta {
+  name: Me
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/auth/me
+  body: none
+  auth: inherit
+}
+
+docs {
+  # GET /auth/me
+
+  Usuario de la sesión.
+
+  200 `{user: {id, email, full_name, avatar_url, email_verified, has_password, created_at}, password_changed_at,
+  last_sign_in_at, google_linked, roles: [{id, code, name, scope, institution: {id, slug, name, kind} | null}],
+  active_role_id, totp_enabled, session_expires_at}`
+}

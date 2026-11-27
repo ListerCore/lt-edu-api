@@ -1,0 +1,72 @@
+meta {
+  name: UpdateTerm
+  type: grpc
+  seq: 20
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.AcademicService/UpdateTerm
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": "",
+      "id": "",
+      "name": "",
+      "starts_on": "",
+      "ends_on": "",
+      "status": ""
+    }
+  '''
+}
+
+docs {
+  # AcademicService.UpdateTerm
+
+  `/ltedu.academic.v1.AcademicService/UpdateTerm` · unary · `ltedu/academic/v1/academic.proto`
+
+  ## Request — `UpdateTermRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `status` | `string` |  |
+
+  ## Response — `UpdateTermResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `term` | `Term` |  |
+
+  ## Tipos
+
+  ### `Term`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `number` | `int32` |  |
+  | `name` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `status` | `string` | open \| closed |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

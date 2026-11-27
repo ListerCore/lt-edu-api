@@ -1,0 +1,103 @@
+meta {
+  name: SaveInternship
+  type: grpc
+  seq: 8
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.programs.v1.ProgramsService/SaveInternship
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "internship": {
+        "id": "",
+        "student_id": "",
+        "student_name": "",
+        "student_code": "",
+        "subject_id": "",
+        "subject_name": "",
+        "module_name": "",
+        "level_id": "",
+        "program_name": "",
+        "company": "",
+        "company_ruc": "",
+        "area": "",
+        "supervisor": "",
+        "supervisor_contact": "",
+        "starts_on": "",
+        "ends_on": "",
+        "required_hours": 0,
+        "logged_hours": 0,
+        "status": "",
+        "score": 0,
+        "evaluation": "",
+        "evaluated_name": "",
+        "evaluated_at": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # ProgramsService.SaveInternship
+
+  `/ltedu.programs.v1.ProgramsService/SaveInternship` · unary · `ltedu/programs/v1/programs.proto`
+
+  ## Request — `SaveInternshipRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `internship` | `Internship` |  |
+
+  ## Response — `SaveInternshipResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `internship` | `Internship` |  |
+
+  ## Tipos
+
+  ### `Internship`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `subject_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `module_name` | `string` |  |
+  | `level_id` | `string` |  |
+  | `program_name` | `string` |  |
+  | `company` | `string` |  |
+  | `company_ruc` | `string` |  |
+  | `area` | `string` |  |
+  | `supervisor` | `string` |  |
+  | `supervisor_contact` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `required_hours` | `int32` |  |
+  | `logged_hours` | `double` |  |
+  | `status` | `string` | ongoing \| approved \| failed |
+  | `score` | `optional int32` |  |
+  | `evaluation` | `string` |  |
+  | `evaluated_name` | `string` |  |
+  | `evaluated_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

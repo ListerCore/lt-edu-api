@@ -1,0 +1,65 @@
+meta {
+  name: ListAdmissions
+  type: grpc
+  seq: 20
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.exams.v1.ExamsService/ListAdmissions
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # ExamsService.ListAdmissions
+
+  `/ltedu.exams.v1.ExamsService/ListAdmissions` · unary · `ltedu/exams/v1/exams.proto`
+
+  ## Request — `ListAdmissionsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `ListAdmissionsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `admissions` | `repeated Admission` |  |
+  | `can_manage` | `bool` |  |
+
+  ## Tipos
+
+  ### `Admission`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `university` | `string` |  |
+  | `career` | `string` |  |
+  | `exam` | `string` |  |
+  | `admitted_on` | `string` |  |
+  | `place` | `optional int32` |  |
+  | `score` | `optional double` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

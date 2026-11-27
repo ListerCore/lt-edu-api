@@ -1,0 +1,49 @@
+meta {
+  name: CloseStaffDay
+  type: grpc
+  seq: 9
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.attendance.v1.AttendanceService/CloseStaffDay
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "day": ""
+    }
+  '''
+}
+
+docs {
+  # AttendanceService.CloseStaffDay
+
+  `/ltedu.attendance.v1.AttendanceService/CloseStaffDay` · unary · `ltedu/attendance/v1/attendance.proto`
+
+  ## Request — `CloseStaffDayRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `day` | `string` |  |
+
+  ## Response — `CloseStaffDayResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `marked` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

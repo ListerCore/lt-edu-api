@@ -1,0 +1,49 @@
+meta {
+  name: DeleteStaff
+  type: grpc
+  seq: 5
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.teaching.v1.StaffService/DeleteStaff
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # StaffService.DeleteStaff
+
+  Only people without teaching load or tutorship; the others become inactive
+
+  `/ltedu.teaching.v1.StaffService/DeleteStaff` · unary · `ltedu/teaching/v1/teaching.proto`
+
+  ## Request — `DeleteStaffRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `DeleteStaffResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

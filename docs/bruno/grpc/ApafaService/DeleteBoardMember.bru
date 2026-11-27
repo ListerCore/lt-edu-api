@@ -1,0 +1,47 @@
+meta {
+  name: DeleteBoardMember
+  type: grpc
+  seq: 10
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.apafa.v1.ApafaService/DeleteBoardMember
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # ApafaService.DeleteBoardMember
+
+  `/ltedu.apafa.v1.ApafaService/DeleteBoardMember` · unary · `ltedu/apafa/v1/apafa.proto`
+
+  ## Request — `DeleteBoardMemberRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `DeleteBoardMemberResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,189 @@
+meta {
+  name: ListCurricula
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.CurriculumService/ListCurricula
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # CurriculumService.ListCurricula
+
+  Every plan of the institution with the levels they belong to
+
+  `/ltedu.academic.v1.CurriculumService/ListCurricula` · unary · `ltedu/academic/v1/curriculum.proto`
+
+  ## Request — `ListCurriculaRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `ListCurriculaResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `context` | `AcademicContext` |  |
+  | `levels` | `repeated Level` |  |
+  | `curricula` | `repeated Curriculum` |  |
+  | `template_level_ids` | `repeated string` | Levels that have a suggested plan to start from |
+
+  ## Tipos
+
+  ### `AcademicContext`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `institution_name` | `string` |  |
+  | `institution_kind` | `string` | ebr \| eba \| ebe \| cepre \| institute |
+  | `vocabulary` | `Vocabulary` |  |
+  | `period_kind` | `string` | school_year \| promotional \| cycle \| semester |
+  | `term_schemes` | `repeated string` |  |
+  | `has_grades` | `bool` |  |
+  | `uses_attention_modes` | `bool` |  |
+  | `uses_seasons` | `bool` |  |
+  | `uses_formative_levels` | `bool` |  |
+  | `single_active_period` | `bool` |  |
+  | `can_manage` | `bool` |  |
+  | `settings` | `Settings` |  |
+
+  ### `Vocabulary`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `level` | `string` |  |
+  | `levels` | `string` |  |
+  | `grade` | `string` | Empty when the kind has no grades (CEPRE) |
+  | `grades` | `string` |  |
+  | `section` | `string` |  |
+  | `sections` | `string` |  |
+  | `period` | `string` |  |
+  | `periods` | `string` |  |
+
+  ### `Settings`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `term_scheme` | `string` | bimester \| trimester \| semester \| none |
+  | `grading_scale` | `string` | literal \| vigesimal \| score (fixed by the institution kind) |
+  | `passing_grade` | `optional int32` |  |
+  | `conduct_grade` | `bool` |  |
+  | `attention_modes` | `repeated string` | in_person \| blended \| distance (EBA) |
+  | `shifts` | `repeated string` | morning \| afternoon \| evening |
+  | `week_days` | `repeated int32` | Teaching days, 1 = Monday … 7 = Sunday |
+  | `late_after_minutes` | `int32` | Attendance: minutes of tolerance after the first class, and the absence share (%) that raises an alert |
+  | `absence_limit_percent` | `int32` |  |
+  | `dre` | `optional string` | Official data for the report card; unset on an update keeps what is stored. Logo: image data URL (PNG, JPG, WebP or SVG, under 100 KB), "" removes it |
+  | `ugel` | `optional string` |  |
+  | `modular_code` | `optional string` |  |
+  | `logo` | `optional string` |  |
+  | `management` | `optional string` | Tipo de gestión: public (no tuition; families pay the enrollment and the APAFA fee) \| private. Unset on an update keeps what is stored; turning public fails while open periods still have tuition in plans or owed |
+
+  ### `Level`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `description` | `string` |  |
+  | `position` | `int32` |  |
+  | `formative_level` | `string` | technical \| professional_technical \| professional (IEST) |
+  | `credits` | `optional int32` |  |
+  | `attention_modes` | `repeated string` |  |
+  | `is_active` | `bool` |  |
+  | `grades` | `repeated Grade` |  |
+  | `section_count` | `int32` |  |
+
+  ### `Grade`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `level_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `short_name` | `string` |  |
+  | `position` | `int32` |  |
+  | `section_count` | `int32` |  |
+
+  ### `Curriculum`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `name` | `string` |  |
+  | `notes` | `string` |  |
+  | `status` | `string` | draft \| active \| archived |
+  | `activated_at` | `string` | RFC 3339, empty until it first comes into force |
+  | `updated_at` | `string` |  |
+  | `subject_count` | `int32` |  |
+  | `total_credits` | `int32` |  |
+  | `modules` | `repeated Module` | Filled by GetCurriculum only |
+  | `subjects` | `repeated Subject` |  |
+  | `transversal` | `repeated Competency` |  |
+
+  ### `Module`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `description` | `string` |  |
+  | `position` | `int32` |  |
+
+  ### `Subject`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `module_id` | `string` |  |
+  | `kind` | `string` | area \| workshop \| tutoring \| course \| unit \| efsrt |
+  | `component` | `string` | specific \| employability \| efsrt (institutes) |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `description` | `string` |  |
+  | `weekly_hours` | `optional int32` |  |
+  | `theory_credits` | `optional int32` |  |
+  | `practice_credits` | `optional int32` |  |
+  | `position` | `int32` |  |
+  | `grade_ids` | `repeated string` |  |
+  | `competencies` | `repeated Competency` |  |
+
+  ### `Competency`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `subject_id` | `string` | Empty for transversal competencies |
+  | `kind` | `string` | competency \| capacity \| topic |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

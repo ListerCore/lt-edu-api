@@ -1,0 +1,12 @@
+meta {
+  name: Auth
+  seq: 2
+}
+
+docs {
+  Sesión y cuenta. El token de sesión (TTL `APP__SESSION__TTL`, 168h por defecto) se envía como
+  `Authorization: Bearer <token>`. lt-edu-app lo guarda en una cookie httpOnly.
+
+  Los endpoints con contraseña o código tienen freno por IP (10/min; 100/min en development) y responden
+  429 `{"error": {"code": "rate_limited"}}` al pasarlo.
+}

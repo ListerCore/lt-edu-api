@@ -1,0 +1,67 @@
+meta {
+  name: GetRoomParticipation
+  type: grpc
+  seq: 5
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.participation.v1.ParticipationService/GetRoomParticipation
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "room_id": ""
+    }
+  '''
+}
+
+docs {
+  # ParticipationService.GetRoomParticipation
+
+  `/ltedu.participation.v1.ParticipationService/GetRoomParticipation` · unary · `ltedu/participation/v1/participation.proto`
+
+  ## Request — `GetRoomParticipationRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `room_id` | `string` |  |
+
+  ## Response — `GetRoomParticipationResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `students` | `repeated RoomParticipation` |  |
+
+  ## Tipos
+
+  ### `RoomParticipation`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `items_seen` | `int32` | Distinct materials opened |
+  | `views` | `int32` |  |
+  | `live` | `int32` |  |
+  | `attempts` | `int32` |  |
+  | `submissions` | `int32` |  |
+  | `posts` | `int32` |  |
+  | `active_days` | `int32` |  |
+  | `last_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

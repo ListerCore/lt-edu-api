@@ -1,0 +1,86 @@
+meta {
+  name: ListStaff
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.teaching.v1.StaffService/ListStaff
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "query": "",
+      "status": "",
+      "teachers_only": false,
+      "limit": 0,
+      "offset": 0
+    }
+  '''
+}
+
+docs {
+  # StaffService.ListStaff
+
+  `/ltedu.teaching.v1.StaffService/ListStaff` · unary · `ltedu/teaching/v1/teaching.proto`
+
+  ## Request — `ListStaffRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `query` | `string` |  |
+  | `status` | `string` |  |
+  | `teachers_only` | `bool` |  |
+  | `limit` | `int32` |  |
+  | `offset` | `int32` |  |
+
+  ## Response — `ListStaffResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `staff` | `repeated Staff` |  |
+  | `total` | `int32` |  |
+  | `can_manage` | `bool` |  |
+  | `can_grant` | `bool` |  |
+
+  ## Tipos
+
+  ### `Staff`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `document_type` | `string` |  |
+  | `document_number` | `string` |  |
+  | `given_names` | `string` |  |
+  | `surnames` | `string` |  |
+  | `email` | `string` |  |
+  | `phone` | `string` |  |
+  | `position` | `string` |  |
+  | `is_teacher` | `bool` |  |
+  | `specialty` | `string` |  |
+  | `max_weekly_hours` | `optional int32` |  |
+  | `hired_on` | `string` |  |
+  | `status` | `string` | active \| inactive |
+  | `notes` | `string` |  |
+  | `roles` | `repeated string` |  |
+  | `invited` | `repeated string` |  |
+  | `assigned_hours` | `int32` |  |
+  | `tutor_of` | `repeated string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,31 @@
+meta {
+  name: Google authorize
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{baseUrl}}/auth/google/authorize
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "state": "",
+    "code_challenge": ""
+  }
+}
+
+docs {
+  # POST /auth/google/authorize
+
+  URL de la pantalla de consentimiento de Google (OAuth con PKCE).
+
+  | Campo | Tipo |
+  |---|---|
+  | `state` | string |
+  | `code_challenge` | string (S256) |
+
+  200 `{url}`
+}

@@ -1,0 +1,45 @@
+meta {
+  name: GetLiveConfig
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.meetings.v1.MeetingsService/GetLiveConfig
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {}
+  '''
+}
+
+docs {
+  # MeetingsService.GetLiveConfig
+
+  Whether calls inside the platform are set up (else only Google Meet links are offered)
+
+  `/ltedu.meetings.v1.MeetingsService/GetLiveConfig` · unary · `ltedu/meetings/v1/meetings.proto`
+
+  ## Request — `GetLiveConfigRequest`
+
+  _Sin campos._
+
+  ## Response — `GetLiveConfigResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `platform_available` | `bool` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

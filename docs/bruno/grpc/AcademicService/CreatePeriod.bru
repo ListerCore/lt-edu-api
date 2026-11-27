@@ -1,0 +1,94 @@
+meta {
+  name: CreatePeriod
+  type: grpc
+  seq: 16
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.AcademicService/CreatePeriod
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period": {
+        "name": "",
+        "season": "",
+        "starts_on": "",
+        "ends_on": "",
+        "term_scheme": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # AcademicService.CreatePeriod
+
+  `/ltedu.academic.v1.AcademicService/CreatePeriod` · unary · `ltedu/academic/v1/academic.proto`
+
+  ## Request — `CreatePeriodRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period` | `PeriodInput` |  |
+
+  ## Response — `CreatePeriodResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `period` | `Period` |  |
+
+  ## Tipos
+
+  ### `PeriodInput`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `name` | `string` |  |
+  | `season` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `term_scheme` | `string` | Empty: the institution's default |
+
+  ### `Period`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` |  |
+  | `name` | `string` |  |
+  | `season` | `string` | CEPRE: summer \| annual \| semester \| intensive \| review \| school \| other |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `term_scheme` | `string` |  |
+  | `status` | `string` | planning \| active \| closed |
+  | `terms` | `repeated Term` |  |
+  | `section_count` | `int32` |  |
+  | `capacity_total` | `int32` |  |
+
+  ### `Term`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `number` | `int32` |  |
+  | `name` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `status` | `string` | open \| closed |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,87 @@
+meta {
+  name: GetReport
+  type: grpc
+  seq: 16
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.attendance.v1.AttendanceService/GetReport
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": "",
+      "section_id": ""
+    }
+  '''
+}
+
+docs {
+  # AttendanceService.GetReport
+
+  `/ltedu.attendance.v1.AttendanceService/GetReport` · unary · `ltedu/attendance/v1/attendance.proto`
+
+  ## Request — `GetReportRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` | Empty: the period running today |
+  | `section_id` | `string` |  |
+
+  ## Response — `GetReportResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `period_id` | `string` |  |
+  | `limit` | `int32` |  |
+  | `students` | `repeated StudentTally` |  |
+  | `subjects` | `repeated SubjectTally` | Students at or above three quarters of the limit in some subject |
+
+  ## Tipos
+
+  ### `StudentTally`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `days` | `Tally` |  |
+
+  ### `Tally`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `present` | `int32` |  |
+  | `late` | `int32` |  |
+  | `absent` | `int32` |  |
+  | `justified` | `int32` |  |
+
+  ### `SubjectTally`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `section_label` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `classes` | `Tally` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

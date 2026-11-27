@@ -1,0 +1,47 @@
+meta {
+  name: RevokeMember
+  type: grpc
+  seq: 8
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.institution.v1.InstitutionService/RevokeMember
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # InstitutionService.RevokeMember
+
+  `/ltedu.institution.v1.InstitutionService/RevokeMember` · unary · `ltedu/institution/v1/institution.proto`
+
+  ## Request — `RevokeMemberRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `RevokeMemberResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,25 @@
+meta {
+  name: Delete attachment
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{baseUrl}}/panel/attachments/:id?institution={{institution}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  institution: {{institution}}
+}
+
+params:path {
+  id: 
+}
+
+docs {
+  # DELETE /panel/attachments/:id?institution=
+
+  Borra el archivo y su objeto en el almacenamiento. 204
+}

@@ -1,0 +1,67 @@
+meta {
+  name: UpdateModule
+  type: grpc
+  seq: 9
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.CurriculumService/UpdateModule
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "code": "",
+      "name": "",
+      "description": ""
+    }
+  '''
+}
+
+docs {
+  # CurriculumService.UpdateModule
+
+  `/ltedu.academic.v1.CurriculumService/UpdateModule` · unary · `ltedu/academic/v1/curriculum.proto`
+
+  ## Request — `UpdateModuleRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `description` | `string` |  |
+
+  ## Response — `UpdateModuleResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `module` | `Module` |  |
+
+  ## Tipos
+
+  ### `Module`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `description` | `string` |  |
+  | `position` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,47 @@
+meta {
+  name: DeleteCompetency
+  type: grpc
+  seq: 17
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.CurriculumService/DeleteCompetency
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # CurriculumService.DeleteCompetency
+
+  `/ltedu.academic.v1.CurriculumService/DeleteCompetency` · unary · `ltedu/academic/v1/curriculum.proto`
+
+  ## Request — `DeleteCompetencyRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `DeleteCompetencyResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

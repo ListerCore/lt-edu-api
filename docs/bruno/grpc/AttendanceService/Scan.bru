@@ -1,0 +1,66 @@
+meta {
+  name: Scan
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.attendance.v1.AttendanceService/Scan
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "input": ""
+    }
+  '''
+}
+
+docs {
+  # AttendanceService.Scan
+
+  A QR payload or a code / DNI typed by hand
+
+  `/ltedu.attendance.v1.AttendanceService/Scan` · unary · `ltedu/attendance/v1/attendance.proto`
+
+  ## Request — `ScanRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `input` | `string` |  |
+
+  ## Response — `ScanResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `holder` | `CardHolder` |  |
+  | `status` | `string` |  |
+  | `arrived_at` | `string` |  |
+  | `repeated` | `bool` |  |
+
+  ## Tipos
+
+  ### `CardHolder`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `kind` | `string` | student \| staff |
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `code` | `string` |  |
+  | `detail` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,192 @@
+meta {
+  name: GetTutorBoard
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.TutoringService/GetTutorBoard
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "staff_id": ""
+    }
+  '''
+}
+
+docs {
+  # TutoringService.GetTutorBoard
+
+  staff_id: dirección picks the tutor (empty: every student)
+
+  `/ltedu.wellbeing.v1.TutoringService/GetTutorBoard` · unary · `ltedu/wellbeing/v1/tutoring.proto`
+
+  ## Request — `GetTutorBoardRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `staff_id` | `string` |  |
+
+  ## Response — `GetTutorBoardResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `tutors` | `repeated TutorLoad` |  |
+  | `rows` | `repeated TutorBoardRow` |  |
+  | `alerts` | `repeated TutorBoardAlert` |  |
+  | `pending` | `repeated PendingWork` |  |
+  | `sessions` | `repeated TutoringSession` |  |
+  | `threads` | `repeated Thread` |  |
+  | `can_assign` | `bool` |  |
+  | `can_message` | `bool` |  |
+  | `today` | `string` |  |
+  | `saanee` | `repeated SaaneeReferral` | SAANEE referrals still open of these students |
+
+  ## Tipos
+
+  ### `TutorLoad`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `staff_id` | `string` |  |
+  | `name` | `string` |  |
+  | `sections` | `repeated string` |  |
+  | `by_section` | `int32` |  |
+  | `individual` | `int32` |  |
+
+  ### `TutorBoardRow`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student` | `TutorStudent` |  |
+  | `idle_days` | `int32` | -1: never active |
+  | `alerts` | `repeated string` | inactive \| overdue \| low_permanence \| commitment |
+  | `overdue` | `int32` |  |
+  | `due_soon` | `int32` |  |
+  | `unread` | `int32` |  |
+  | `next_session` | `string` |  |
+  | `saanee` | `string` | Status of an open SAANEE referral |
+
+  ### `TutorStudent`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `placement` | `string` |  |
+  | `section_id` | `string` |  |
+  | `attention_mode` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `individual` | `bool` |  |
+  | `last_at` | `string` |  |
+
+  ### `TutorBoardAlert`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `kind` | `string` |  |
+  | `code` | `string` |  |
+  | `level` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `title` | `string` |  |
+  | `detail` | `string` |  |
+  | `since` | `string` |  |
+
+  ### `PendingWork`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `item_id` | `string` |  |
+  | `room_id` | `string` |  |
+  | `title` | `string` |  |
+  | `subject` | `string` |  |
+  | `closes_at` | `string` |  |
+  | `overdue` | `bool` |  |
+
+  ### `TutoringSession`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `kind` | `string` |  |
+  | `mode` | `string` |  |
+  | `scheduled_at` | `string` |  |
+  | `duration_min` | `int32` |  |
+  | `link` | `string` |  |
+  | `reason` | `string` |  |
+  | `alert_kind` | `string` | inactive \| overdue \| low_permanence: the dropout alert it answers |
+  | `status` | `string` |  |
+  | `notes` | `string` | Staff only (empty for the student) |
+  | `agreements` | `string` |  |
+  | `held_at` | `string` |  |
+  | `created_name` | `string` |  |
+  | `attendees` | `repeated SessionAttendee` |  |
+  | `provider` | `string` | Virtual sessions: platform (video inside ListerCore Edu) \| meet (link) |
+
+  ### `SessionAttendee`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `attended` | `optional bool` | Unset until held |
+  | `interview_id` | `string` |  |
+
+  ### `Thread`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `last_message_at` | `string` |  |
+  | `last_body` | `string` |  |
+  | `last_side` | `string` |  |
+  | `unread` | `int32` | Messages of the other side the viewer has not read |
+
+  ### `SaaneeReferral`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `reason` | `string` |  |
+  | `status` | `string` |  |
+  | `sent_on` | `string` |  |
+  | `reference` | `string` |  |
+  | `response` | `string` |  |
+  | `referred_name` | `string` |  |
+  | `updated_name` | `string` |  |
+  | `updated_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

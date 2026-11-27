@@ -1,0 +1,75 @@
+meta {
+  name: SaveInterview
+  type: grpc
+  seq: 5
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/SaveInterview
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "interview": {
+        "id": "",
+        "student_id": "",
+        "student_name": "",
+        "kind": "",
+        "held_on": "",
+        "topic": "",
+        "notes": "",
+        "agreements": "",
+        "author_name": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.SaveInterview
+
+  `/ltedu.wellbeing.v1.WellbeingService/SaveInterview` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `SaveInterviewRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `interview` | `Interview` |  |
+
+  ## Response — `SaveInterviewResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `interview` | `Interview` |  |
+
+  ## Tipos
+
+  ### `Interview`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `kind` | `string` | student \| family |
+  | `held_on` | `string` |  |
+  | `topic` | `string` |  |
+  | `notes` | `string` | Empty for families |
+  | `agreements` | `string` |  |
+  | `author_name` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

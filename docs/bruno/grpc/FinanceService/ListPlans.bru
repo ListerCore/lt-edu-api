@@ -1,0 +1,75 @@
+meta {
+  name: ListPlans
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.finance.v1.FinanceService/ListPlans
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": ""
+    }
+  '''
+}
+
+docs {
+  # FinanceService.ListPlans
+
+  `/ltedu.finance.v1.FinanceService/ListPlans` · unary · `ltedu/finance/v1/finance.proto`
+
+  ## Request — `ListPlansRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+
+  ## Response — `ListPlansResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `plans` | `repeated FeePlan` |  |
+  | `can_manage` | `bool` |  |
+
+  ## Tipos
+
+  ### `FeePlan`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `level_id` | `string` | Empty: every level of the period |
+  | `level_name` | `string` |  |
+  | `name` | `string` |  |
+  | `items` | `repeated FeeItem` |  |
+  | `students` | `int32` |  |
+
+  ### `FeeItem`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `concept` | `string` | enrollment \| tuition \| apafa \| other. Public institutions take no tuition (apafa: cuota APAFA) |
+  | `name` | `string` |  |
+  | `amount` | `int64` |  |
+  | `due_on` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

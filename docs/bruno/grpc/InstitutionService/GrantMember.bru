@@ -1,0 +1,51 @@
+meta {
+  name: GrantMember
+  type: grpc
+  seq: 7
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.institution.v1.InstitutionService/GrantMember
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "email": "",
+      "role": ""
+    }
+  '''
+}
+
+docs {
+  # InstitutionService.GrantMember
+
+  `/ltedu.institution.v1.InstitutionService/GrantMember` · unary · `ltedu/institution/v1/institution.proto`
+
+  ## Request — `GrantMemberRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `email` | `string` |  |
+  | `role` | `string` |  |
+
+  ## Response — `GrantMemberResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `pending` | `bool` | true: no account yet, an invitation was left |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

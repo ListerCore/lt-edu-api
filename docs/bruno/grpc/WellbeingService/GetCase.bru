@@ -1,0 +1,84 @@
+meta {
+  name: GetCase
+  type: grpc
+  seq: 12
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/GetCase
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.GetCase
+
+  `/ltedu.wellbeing.v1.WellbeingService/GetCase` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `GetCaseRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `GetCaseResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `case` | `PsychCase` |  |
+  | `sessions` | `repeated PsychSession` |  |
+
+  ## Tipos
+
+  ### `PsychCase`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `origin` | `string` | tutor \| teacher \| family \| direction \| self \| psychologist |
+  | `referred_name` | `string` |  |
+  | `reason` | `string` |  |
+  | `priority` | `string` | normal \| urgent |
+  | `status` | `string` | referred \| open \| follow_up \| closed |
+  | `opened_on` | `string` |  |
+  | `closed_on` | `string` |  |
+  | `psychologist_name` | `string` |  |
+  | `shared_note` | `string` |  |
+  | `sessions` | `int32` |  |
+  | `last_session` | `string` |  |
+
+  ### `PsychSession`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `case_id` | `string` |  |
+  | `held_on` | `string` |  |
+  | `kind` | `string` | individual \| family \| evaluation \| coordination |
+  | `notes` | `string` |  |
+  | `next_steps` | `string` |  |
+  | `author_name` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

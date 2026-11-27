@@ -1,0 +1,84 @@
+meta {
+  name: ListPublicAnnouncements
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.announcements.v1.AnnouncementService/ListPublicAnnouncements
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # AnnouncementService.ListPublicAnnouncements
+
+  Public announcements of an institution, pinned first and newest first
+
+  `/ltedu.announcements.v1.AnnouncementService/ListPublicAnnouncements` · unary · `ltedu/announcements/v1/announcements.proto`
+
+  ## Request — `ListPublicAnnouncementsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `ListPublicAnnouncementsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `announcements` | `repeated Announcement` |  |
+
+  ## Tipos
+
+  ### `Announcement`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `slug` | `string` | 18 characters of [a-z0-9] |
+  | `kind` | `string` | announcement \| notice \| alert |
+  | `audience` | `string` | community \| students \| guardians \| staff |
+  | `title` | `string` |  |
+  | `body` | `string` |  |
+  | `is_public` | `bool` |  |
+  | `pinned` | `bool` |  |
+  | `author_name` | `string` |  |
+  | `published_at` | `Timestamp` |  |
+  | `institution_slug` | `string` |  |
+  | `attachments` | `repeated Attachment` | In order; the first image is the cover |
+  | `featured_from` | `optional Timestamp` | Validity window of the home modal (unset: not featured) |
+  | `featured_until` | `optional Timestamp` |  |
+  | `cta_label` | `string` | Ir \| Continuar (empty when not featured) |
+  | `cta_url` | `string` | Where the button leads: a site path or an https address; empty means the announcement's own page |
+  | `updated_at` | `Timestamp` |  |
+
+  ### `Attachment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` | image \| document |
+  | `file_name` | `string` |  |
+  | `content_type` | `string` |  |
+  | `size_bytes` | `int64` |  |
+  | `position` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

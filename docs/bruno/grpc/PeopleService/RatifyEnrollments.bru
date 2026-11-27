@@ -1,0 +1,59 @@
+meta {
+  name: RatifyEnrollments
+  type: grpc
+  seq: 17
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/RatifyEnrollments
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "from_period_id": "",
+      "to_period_id": "",
+      "preview": false
+    }
+  '''
+}
+
+docs {
+  # PeopleService.RatifyEnrollments
+
+  Continuing students of a period into the next grade of another one
+
+  `/ltedu.people.v1.PeopleService/RatifyEnrollments` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `RatifyEnrollmentsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `from_period_id` | `string` |  |
+  | `to_period_id` | `string` |  |
+  | `preview` | `bool` | Count only, change nothing |
+
+  ## Response — `RatifyEnrollmentsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `enrolled` | `int32` |  |
+  | `without_section` | `int32` |  |
+  | `already` | `int32` |  |
+  | `finishing` | `int32` |  |
+  | `inactive` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

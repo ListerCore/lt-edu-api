@@ -1,0 +1,61 @@
+meta {
+  name: SiagieGradesXlsx
+  type: grpc
+  seq: 15
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/SiagieGradesXlsx
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "section_id": "",
+      "mark_exported": false
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.SiagieGradesXlsx
+
+  `/ltedu.documents.v1.DocumentsService/SiagieGradesXlsx` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `SiagieGradesXlsxRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `section_id` | `string` |  |
+  | `mark_exported` | `bool` | Mark the students of the file as exported |
+
+  ## Response — `SiagieGradesXlsxResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file` | `PdfFile` |  |
+  | `marked` | `int32` |  |
+
+  ## Tipos
+
+  ### `PdfFile`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file_name` | `string` |  |
+  | `content` | `bytes` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

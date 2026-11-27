@@ -1,0 +1,111 @@
+meta {
+  name: UpdateStaff
+  type: grpc
+  seq: 4
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.teaching.v1.StaffService/UpdateStaff
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "staff": {
+        "code": "",
+        "document_type": "",
+        "document_number": "",
+        "given_names": "",
+        "surnames": "",
+        "email": "",
+        "phone": "",
+        "position": "",
+        "is_teacher": false,
+        "specialty": "",
+        "max_weekly_hours": 0,
+        "hired_on": "",
+        "status": "",
+        "notes": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # StaffService.UpdateStaff
+
+  `/ltedu.teaching.v1.StaffService/UpdateStaff` · unary · `ltedu/teaching/v1/teaching.proto`
+
+  ## Request — `UpdateStaffRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `staff` | `StaffInput` |  |
+
+  ## Response — `UpdateStaffResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `staff` | `Staff` |  |
+
+  ## Tipos
+
+  ### `StaffInput`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `code` | `string` |  |
+  | `document_type` | `string` |  |
+  | `document_number` | `string` |  |
+  | `given_names` | `string` |  |
+  | `surnames` | `string` |  |
+  | `email` | `string` |  |
+  | `phone` | `string` |  |
+  | `position` | `string` |  |
+  | `is_teacher` | `bool` |  |
+  | `specialty` | `string` |  |
+  | `max_weekly_hours` | `optional int32` |  |
+  | `hired_on` | `string` |  |
+  | `status` | `string` |  |
+  | `notes` | `string` |  |
+
+  ### `Staff`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `document_type` | `string` |  |
+  | `document_number` | `string` |  |
+  | `given_names` | `string` |  |
+  | `surnames` | `string` |  |
+  | `email` | `string` |  |
+  | `phone` | `string` |  |
+  | `position` | `string` |  |
+  | `is_teacher` | `bool` |  |
+  | `specialty` | `string` |  |
+  | `max_weekly_hours` | `optional int32` |  |
+  | `hired_on` | `string` |  |
+  | `status` | `string` | active \| inactive |
+  | `notes` | `string` |  |
+  | `roles` | `repeated string` |  |
+  | `invited` | `repeated string` |  |
+  | `assigned_hours` | `int32` |  |
+  | `tutor_of` | `repeated string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

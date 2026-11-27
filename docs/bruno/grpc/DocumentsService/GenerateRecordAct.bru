@@ -1,0 +1,81 @@
+meta {
+  name: GenerateRecordAct
+  type: grpc
+  seq: 13
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/GenerateRecordAct
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "record_id": "",
+      "note": ""
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.GenerateRecordAct
+
+  EBA closing (phase E7): the consolidated acta as a version for its signers and its PDF, the SIAGIE spreadsheet of the final grades of a section, and the certificates of enrollment, studies and conclusion of a cycle
+
+  `/ltedu.documents.v1.DocumentsService/GenerateRecordAct` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `GenerateRecordActRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `record_id` | `string` |  |
+  | `note` | `string` |  |
+
+  ## Response — `GenerateRecordActResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `version` | `DocumentVersion` |  |
+
+  ## Tipos
+
+  ### `DocumentVersion`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `number` | `int32` |  |
+  | `verification_code` | `string` |  |
+  | `status` | `string` | pending \| published \| superseded \| cancelled |
+  | `note` | `string` |  |
+  | `created_name` | `string` |  |
+  | `created_at` | `string` |  |
+  | `published_at` | `string` |  |
+  | `signatures` | `repeated Signature` |  |
+  | `content_hash` | `string` |  |
+
+  ### `Signature`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `sort` | `int32` |  |
+  | `staff_id` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `string` |  |
+  | `signed_at` | `string` | RFC 3339; empty while waiting |
+  | `code` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

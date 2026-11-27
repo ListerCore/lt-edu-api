@@ -1,0 +1,49 @@
+meta {
+  name: RecordView
+  type: grpc
+  seq: 12
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/RecordView
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "item_id": ""
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.RecordView
+
+  A student opened a piece of material or joined a live session; a no-op for anyone else
+
+  `/ltedu.classroom.v1.ClassroomService/RecordView` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `RecordViewRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `item_id` | `string` |  |
+
+  ## Response — `RecordViewResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

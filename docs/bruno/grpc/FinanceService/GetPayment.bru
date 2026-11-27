@@ -1,0 +1,80 @@
+meta {
+  name: GetPayment
+  type: grpc
+  seq: 10
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.finance.v1.FinanceService/GetPayment
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # FinanceService.GetPayment
+
+  `/ltedu.finance.v1.FinanceService/GetPayment` · unary · `ltedu/finance/v1/finance.proto`
+
+  ## Request — `GetPaymentRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `GetPaymentResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `payment` | `Payment` |  |
+  | `institution` | `string` |  |
+
+  ## Tipos
+
+  ### `Payment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `receipt` | `string` |  |
+  | `paid_on` | `string` |  |
+  | `amount` | `int64` |  |
+  | `method` | `string` | cash \| transfer \| yape \| plin \| card \| deposit |
+  | `reference` | `string` |  |
+  | `payer` | `string` |  |
+  | `notes` | `string` |  |
+  | `status` | `string` | valid \| annulled |
+  | `annul_reason` | `string` |  |
+  | `received_name` | `string` |  |
+  | `allocations` | `repeated Allocation` |  |
+
+  ### `Allocation`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `charge_id` | `string` |  |
+  | `charge_name` | `string` |  |
+  | `amount` | `int64` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

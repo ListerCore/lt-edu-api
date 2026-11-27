@@ -1,0 +1,60 @@
+meta {
+  name: TrackPdf
+  type: grpc
+  seq: 27
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/TrackPdf
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "tracking_code": "",
+      "number": 0
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.TrackPdf
+
+  Public: the PDF of a published (current or superseded) version
+
+  `/ltedu.documents.v1.DocumentsService/TrackPdf` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `TrackPdfRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `tracking_code` | `string` |  |
+  | `number` | `int32` |  |
+
+  ## Response — `TrackPdfResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file` | `PdfFile` |  |
+
+  ## Tipos
+
+  ### `PdfFile`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file_name` | `string` |  |
+  | `content` | `bytes` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

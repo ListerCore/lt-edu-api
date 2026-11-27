@@ -1,0 +1,60 @@
+meta {
+  name: PermanencePdf
+  type: grpc
+  seq: 11
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/PermanencePdf
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "section_id": ""
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.PermanencePdf
+
+  Permanence of a distance section (phase E5): summary PDF and the spreadsheet with every week
+
+  `/ltedu.documents.v1.DocumentsService/PermanencePdf` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `PermanencePdfRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `section_id` | `string` |  |
+
+  ## Response — `PermanencePdfResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file` | `PdfFile` |  |
+
+  ## Tipos
+
+  ### `PdfFile`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file_name` | `string` |  |
+  | `content` | `bytes` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,51 @@
+meta {
+  name: ReorderGrades
+  type: grpc
+  seq: 12
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.AcademicService/ReorderGrades
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "level_id": "",
+      "ids": [
+        ""
+      ]
+    }
+  '''
+}
+
+docs {
+  # AcademicService.ReorderGrades
+
+  `/ltedu.academic.v1.AcademicService/ReorderGrades` · unary · `ltedu/academic/v1/academic.proto`
+
+  ## Request — `ReorderGradesRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `level_id` | `string` |  |
+  | `ids` | `repeated string` |  |
+
+  ## Response — `ReorderGradesResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

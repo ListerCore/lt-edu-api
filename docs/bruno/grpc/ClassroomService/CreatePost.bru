@@ -1,0 +1,73 @@
+meta {
+  name: CreatePost
+  type: grpc
+  seq: 28
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/CreatePost
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "item_id": "",
+      "parent_id": "",
+      "body": ""
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.CreatePost
+
+  `/ltedu.classroom.v1.ClassroomService/CreatePost` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `CreatePostRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `item_id` | `string` |  |
+  | `parent_id` | `string` | Empty starts a thread |
+  | `body` | `string` |  |
+
+  ## Response — `CreatePostResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `post` | `Post` |  |
+
+  ## Tipos
+
+  ### `Post`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `parent_id` | `string` |  |
+  | `author_user_id` | `string` |  |
+  | `author_name` | `string` |  |
+  | `author_role` | `string` | Role code of the author (student, teacher, tutor…) |
+  | `body` | `string` | Empty for families when hidden |
+  | `pinned` | `bool` |  |
+  | `hidden` | `bool` |  |
+  | `hidden_reason` | `string` |  |
+  | `hidden_by_name` | `string` |  |
+  | `created_at` | `string` |  |
+  | `edited_at` | `string` |  |
+  | `is_new` | `bool` | Posted after the person's previous visit, by someone else |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

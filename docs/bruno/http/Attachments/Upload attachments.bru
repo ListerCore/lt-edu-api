@@ -1,0 +1,36 @@
+meta {
+  name: Upload attachments
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/panel/attachments
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  institution: {{institution}}
+  owner_kind: 
+  owner_id: 
+  category: 
+  title: 
+  description: 
+  ~files: @file()
+}
+
+docs {
+  # POST /panel/attachments
+
+  Multipart:
+
+  | Campo | Descripción |
+  |---|---|
+  | `institution` | slug |
+  | `owner_kind`, `owner_id` | registro al que se cuelgan |
+  | `category`, `title`, `description` | metadatos |
+  | `files` | hasta 10 archivos de máx. 10 MB |
+
+  201 `{attachments}`
+}

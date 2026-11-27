@@ -1,0 +1,105 @@
+meta {
+  name: SaveMeeting
+  type: grpc
+  seq: 3
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.apafa.v1.ApafaService/SaveMeeting
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "meeting": {
+        "id": "",
+        "title": "",
+        "kind": "",
+        "scheduled_at": "",
+        "modality": "",
+        "place": "",
+        "meeting_url": "",
+        "agenda": "",
+        "audience": "",
+        "status": "",
+        "previous_at": "",
+        "reschedule_reason": "",
+        "cancel_reason": "",
+        "minutes": "",
+        "agreements": "",
+        "attendees": 0,
+        "minutes_published_at": "",
+        "announcement_id": "",
+        "notified_at": "",
+        "created_name": "",
+        "created_at": "",
+        "updated_at": "",
+        "files": 0
+      },
+      "notify": false
+    }
+  '''
+}
+
+docs {
+  # ApafaService.SaveMeeting
+
+  `/ltedu.apafa.v1.ApafaService/SaveMeeting` · unary · `ltedu/apafa/v1/apafa.proto`
+
+  ## Request — `SaveMeetingRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `meeting` | `Meeting` | Empty id: a new meeting. Only title, kind, scheduled_at, modality, place, meeting_url, agenda and audience are read |
+  | `notify` | `bool` | Convene it (a draft) or tell the families what changed (already convened) |
+
+  ## Response — `SaveMeetingResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `meeting` | `Meeting` |  |
+
+  ## Tipos
+
+  ### `Meeting`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `title` | `string` |  |
+  | `kind` | `string` | ordinary \| extraordinary \| assembly \| board |
+  | `scheduled_at` | `string` | RFC 3339 |
+  | `modality` | `string` | in_person \| virtual \| hybrid |
+  | `place` | `string` |  |
+  | `meeting_url` | `string` |  |
+  | `agenda` | `string` |  |
+  | `audience` | `string` | guardians \| community |
+  | `status` | `string` | scheduled \| rescheduled \| held \| cancelled |
+  | `previous_at` | `string` |  |
+  | `reschedule_reason` | `string` |  |
+  | `cancel_reason` | `string` |  |
+  | `minutes` | `string` |  |
+  | `agreements` | `string` |  |
+  | `attendees` | `optional int32` |  |
+  | `minutes_published_at` | `string` | When the acta was published to the families (empty: not yet) |
+  | `announcement_id` | `string` | Last notice sent (comms announcement) and when it was first convened (empty: a draft) |
+  | `notified_at` | `string` |  |
+  | `created_name` | `string` |  |
+  | `created_at` | `string` |  |
+  | `updated_at` | `string` |  |
+  | `files` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

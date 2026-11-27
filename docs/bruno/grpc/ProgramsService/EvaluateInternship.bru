@@ -1,0 +1,101 @@
+meta {
+  name: EvaluateInternship
+  type: grpc
+  seq: 12
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.programs.v1.ProgramsService/EvaluateInternship
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "score": 0,
+      "evaluation": ""
+    }
+  '''
+}
+
+docs {
+  # ProgramsService.EvaluateInternship
+
+  `/ltedu.programs.v1.ProgramsService/EvaluateInternship` · unary · `ltedu/programs/v1/programs.proto`
+
+  ## Request — `EvaluateInternshipRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `score` | `int32` |  |
+  | `evaluation` | `string` |  |
+
+  ## Response — `EvaluateInternshipResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `internship` | `GetInternshipResponse` |  |
+
+  ## Tipos
+
+  ### `GetInternshipResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `internship` | `Internship` |  |
+  | `logs` | `repeated InternshipLog` |  |
+  | `can_edit` | `bool` |  |
+  | `passing_grade` | `int32` |  |
+
+  ### `Internship`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `subject_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `module_name` | `string` |  |
+  | `level_id` | `string` |  |
+  | `program_name` | `string` |  |
+  | `company` | `string` |  |
+  | `company_ruc` | `string` |  |
+  | `area` | `string` |  |
+  | `supervisor` | `string` |  |
+  | `supervisor_contact` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `required_hours` | `int32` |  |
+  | `logged_hours` | `double` |  |
+  | `status` | `string` | ongoing \| approved \| failed |
+  | `score` | `optional int32` |  |
+  | `evaluation` | `string` |  |
+  | `evaluated_name` | `string` |  |
+  | `evaluated_at` | `string` |  |
+
+  ### `InternshipLog`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `day` | `string` |  |
+  | `hours` | `double` |  |
+  | `activity` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

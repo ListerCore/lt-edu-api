@@ -1,0 +1,77 @@
+meta {
+  name: SaveRoom
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.compliance.v1.ComplianceService/SaveRoom
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "room": {
+        "id": "",
+        "name": "",
+        "location": "",
+        "area_m2": 0,
+        "workstations": 0,
+        "furniture": "",
+        "power_supply": "",
+        "notes": "",
+        "devices": 0,
+        "files": 0
+      }
+    }
+  '''
+}
+
+docs {
+  # ComplianceService.SaveRoom
+
+  `/ltedu.compliance.v1.ComplianceService/SaveRoom` · unary · `ltedu/compliance/v1/compliance.proto`
+
+  ## Request — `SaveRoomRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `room` | `Room` |  |
+
+  ## Response — `SaveRoomResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `room` | `Room` |  |
+
+  ## Tipos
+
+  ### `Room`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `location` | `string` |  |
+  | `area_m2` | `optional double` |  |
+  | `workstations` | `int32` |  |
+  | `furniture` | `string` |  |
+  | `power_supply` | `string` |  |
+  | `notes` | `string` |  |
+  | `devices` | `int32` |  |
+  | `files` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

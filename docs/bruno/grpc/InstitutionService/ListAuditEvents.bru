@@ -1,0 +1,84 @@
+meta {
+  name: ListAuditEvents
+  type: grpc
+  seq: 5
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.institution.v1.InstitutionService/ListAuditEvents
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "module": "",
+      "user_id": "",
+      "from": "",
+      "to": "",
+      "before_at": "",
+      "before_id": "",
+      "limit": 0
+    }
+  '''
+}
+
+docs {
+  # InstitutionService.ListAuditEvents
+
+  Audit log (Configuración › Auditoría), dirección only. Newest first, paged with the cursor of the last page
+
+  `/ltedu.institution.v1.InstitutionService/ListAuditEvents` · unary · `ltedu/institution/v1/institution.proto`
+
+  ## Request — `ListAuditEventsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `module` | `string` | Optional filters; from / to are YYYY-MM-DD, to included |
+  | `user_id` | `string` |  |
+  | `from` | `string` |  |
+  | `to` | `string` |  |
+  | `before_at` | `string` | Cursor from the previous page (both or neither) |
+  | `before_id` | `string` |  |
+  | `limit` | `int32` |  |
+
+  ## Response — `ListAuditEventsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `events` | `repeated AuditEvent` |  |
+  | `has_more` | `bool` |  |
+  | `next_before_at` | `string` |  |
+  | `next_before_id` | `string` |  |
+
+  ## Tipos
+
+  ### `AuditEvent`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `user_id` | `string` |  |
+  | `user_name` | `string` |  |
+  | `role` | `string` |  |
+  | `module` | `string` | Panel module (institution, structure, periods, users…) |
+  | `action` | `string` | create \| update \| delete \| status \| grant \| revoke \| other |
+  | `entity` | `string` |  |
+  | `entity_id` | `string` |  |
+  | `summary` | `string` |  |
+  | `changes_json` | `string` | Detail as JSON ({"field": [before, after]}), "{}" when none |
+  | `created_at` | `string` | RFC 3339 |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

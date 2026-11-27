@@ -1,0 +1,64 @@
+meta {
+  name: SendMessage
+  type: grpc
+  seq: 11
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.TutoringService/SendMessage
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "thread_id": "",
+      "body": ""
+    }
+  '''
+}
+
+docs {
+  # TutoringService.SendMessage
+
+  `/ltedu.wellbeing.v1.TutoringService/SendMessage` · unary · `ltedu/wellbeing/v1/tutoring.proto`
+
+  ## Request — `SendMessageRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `thread_id` | `string` |  |
+  | `body` | `string` |  |
+
+  ## Response — `SendMessageResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `message` | `TutoringMessage` |  |
+
+  ## Tipos
+
+  ### `TutoringMessage`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `thread_id` | `string` |  |
+  | `side` | `string` |  |
+  | `author_name` | `string` |  |
+  | `body` | `string` |  |
+  | `created_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

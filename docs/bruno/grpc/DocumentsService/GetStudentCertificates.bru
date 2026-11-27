@@ -1,0 +1,98 @@
+meta {
+  name: GetStudentCertificates
+  type: grpc
+  seq: 16
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/GetStudentCertificates
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": ""
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.GetStudentCertificates
+
+  `/ltedu.documents.v1.DocumentsService/GetStudentCertificates` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `GetStudentCertificatesRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+
+  ## Response — `GetStudentCertificatesResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `certificates` | `repeated StudentCertificate` |  |
+  | `studies` | `repeated StudyRecord` |  |
+  | `concluded` | `repeated StudyRecord` | The cycles the student concluded: a conclusion certificate can be issued for them |
+  | `can_manage` | `bool` |  |
+
+  ## Tipos
+
+  ### `StudentCertificate`
+
+  kind: enrollment \| studies \| cycle
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `kind` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `purpose` | `string` |  |
+  | `year` | `int32` |  |
+  | `number` | `int32` |  |
+  | `code` | `string` | "N.° 004-2026" |
+  | `version_id` | `string` |  |
+  | `version_status` | `string` | State of the newest version: pending \| published \| superseded \| cancelled |
+  | `created_name` | `string` |  |
+  | `created_at` | `string` |  |
+
+  ### `StudyRecord`
+
+  One period the student studied with the final situation in force (after recovery)
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `enrollment_id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `year` | `int32` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `grade_short` | `string` |  |
+  | `last_grade` | `bool` |  |
+  | `section_name` | `string` |  |
+  | `attention_mode` | `string` |  |
+  | `status` | `string` |  |
+  | `situation` | `string` | PRO \| PER \| RR, empty while not confirmed |
+  | `confirmed` | `bool` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

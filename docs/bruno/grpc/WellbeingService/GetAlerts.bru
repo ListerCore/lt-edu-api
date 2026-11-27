@@ -1,0 +1,65 @@
+meta {
+  name: GetAlerts
+  type: grpc
+  seq: 3
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/GetAlerts
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.GetAlerts
+
+  `/ltedu.wellbeing.v1.WellbeingService/GetAlerts` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `GetAlertsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `GetAlertsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `alerts` | `repeated WellAlert` |  |
+  | `counts` | `map<string, int32>` |  |
+  | `today` | `string` |  |
+
+  ## Tipos
+
+  ### `WellAlert`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `kind` | `string` | attendance \| conduct \| discipline \| reconsideration \| commitment \| psychology \| plan |
+  | `level` | `string` | high \| medium |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `title` | `string` |  |
+  | `detail` | `string` |  |
+  | `since` | `string` |  |
+  | `code` | `string` | The precise signal: dropout inactive \| overdue \| low_permanence; commitment |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

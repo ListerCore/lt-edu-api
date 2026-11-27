@@ -1,0 +1,93 @@
+meta {
+  name: GetPrograms
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.programs.v1.ProgramsService/GetPrograms
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # ProgramsService.GetPrograms
+
+  `/ltedu.programs.v1.ProgramsService/GetPrograms` · unary · `ltedu/programs/v1/programs.proto`
+
+  ## Request — `GetProgramsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `GetProgramsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `programs` | `repeated Program` |  |
+  | `can_assign` | `bool` |  |
+  | `staff` | `repeated Staff` |  |
+
+  ## Tipos
+
+  ### `Program`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `level_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `coordinator_id` | `string` |  |
+  | `coordinator_name` | `string` |  |
+  | `students` | `int32` |  |
+  | `ongoing` | `int32` |  |
+  | `to_evaluate` | `int32` |  |
+  | `modulars` | `int32` |  |
+  | `degrees` | `int32` |  |
+  | `can_manage` | `bool` |  |
+  | `modules` | `int32` |  |
+  | `total_credits` | `int32` |  |
+
+  ### `Staff`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `document_type` | `string` |  |
+  | `document_number` | `string` |  |
+  | `given_names` | `string` |  |
+  | `surnames` | `string` |  |
+  | `email` | `string` |  |
+  | `phone` | `string` |  |
+  | `position` | `string` |  |
+  | `is_teacher` | `bool` |  |
+  | `specialty` | `string` |  |
+  | `max_weekly_hours` | `optional int32` |  |
+  | `hired_on` | `string` |  |
+  | `status` | `string` | active \| inactive |
+  | `notes` | `string` |  |
+  | `roles` | `repeated string` |  |
+  | `invited` | `repeated string` |  |
+  | `assigned_hours` | `int32` |  |
+  | `tutor_of` | `repeated string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

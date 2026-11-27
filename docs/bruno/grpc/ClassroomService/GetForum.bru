@@ -1,0 +1,107 @@
+meta {
+  name: GetForum
+  type: grpc
+  seq: 26
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/GetForum
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "item_id": ""
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.GetForum
+
+  Forums (forum items). Opening a forum marks it read for the person
+
+  `/ltedu.classroom.v1.ClassroomService/GetForum` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `GetForumRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `item_id` | `string` |  |
+
+  ## Response — `GetForumResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `forum` | `Forum` |  |
+  | `threads` | `repeated Thread` |  |
+  | `can_post` | `bool` |  |
+  | `can_moderate` | `bool` |  |
+  | `my_user_id` | `string` |  |
+  | `new_posts` | `int32` |  |
+  | `participation` | `repeated Participation` | Staff only |
+
+  ## Tipos
+
+  ### `Forum`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `item_id` | `string` |  |
+  | `room_id` | `string` |  |
+  | `title` | `string` |  |
+  | `prompt` | `string` | The teacher's opening question or guidance |
+  | `kind` | `string` | debate \| questions \| intro |
+  | `closed` | `bool` |  |
+  | `closed_by_name` | `string` |  |
+
+  ### `Thread`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `post` | `Post` |  |
+  | `replies` | `repeated Post` |  |
+
+  ### `Post`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `parent_id` | `string` |  |
+  | `author_user_id` | `string` |  |
+  | `author_name` | `string` |  |
+  | `author_role` | `string` | Role code of the author (student, teacher, tutor…) |
+  | `body` | `string` | Empty for families when hidden |
+  | `pinned` | `bool` |  |
+  | `hidden` | `bool` |  |
+  | `hidden_reason` | `string` |  |
+  | `hidden_by_name` | `string` |  |
+  | `created_at` | `string` |  |
+  | `edited_at` | `string` |  |
+  | `is_new` | `bool` | Posted after the person's previous visit, by someone else |
+
+  ### `Participation`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `threads` | `int32` |  |
+  | `replies` | `int32` |  |
+  | `last_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

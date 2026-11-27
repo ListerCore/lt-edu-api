@@ -1,0 +1,143 @@
+meta {
+  name: GetAssessment
+  type: grpc
+  seq: 18
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/GetAssessment
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "item_id": ""
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.GetAssessment
+
+  Online assessments (quiz and task items). Staff read the right answers and the roster; students their attempts
+
+  `/ltedu.classroom.v1.ClassroomService/GetAssessment` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `GetAssessmentRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `item_id` | `string` |  |
+
+  ## Response — `GetAssessmentResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `assessment` | `Assessment` |  |
+  | `can_edit` | `bool` |  |
+  | `family` | `bool` |  |
+  | `competencies` | `repeated Competency` |  |
+  | `roster` | `repeated RosterRow` |  |
+  | `questions_locked` | `bool` |  |
+  | `attempts` | `repeated Submission` |  |
+  | `extension` | `string` |  |
+  | `open_now` | `bool` |  |
+  | `can_start` | `bool` |  |
+
+  ## Tipos
+
+  ### `Assessment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `item_id` | `string` |  |
+  | `room_id` | `string` |  |
+  | `unit_id` | `string` |  |
+  | `kind` | `string` | quiz \| task |
+  | `title` | `string` |  |
+  | `instructions` | `string` |  |
+  | `published` | `bool` |  |
+  | `opens_at` | `string` | RFC 3339 or empty |
+  | `closes_at` | `string` |  |
+  | `max_attempts` | `int32` |  |
+  | `competency_ids` | `repeated string` |  |
+  | `show_answers` | `bool` |  |
+  | `questions` | `repeated Question` |  |
+
+  ### `Question`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` | single \| multiple \| short \| open |
+  | `prompt` | `string` |  |
+  | `options` | `repeated string` |  |
+  | `correct` | `repeated int32` | Staff, or a student once graded when the answers are shown: right option indexes and accepted short answers |
+  | `accepted` | `repeated string` |  |
+  | `points` | `int32` |  |
+
+  ### `Competency`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+
+  ### `RosterRow`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `latest` | `Submission` |  |
+  | `attempts` | `int32` |  |
+  | `extension` | `string` | RFC 3339 or empty |
+
+  ### `Submission`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `item_id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `attempt` | `int32` |  |
+  | `status` | `string` | in_progress \| submitted \| graded |
+  | `answers` | `map<string, Answer>` |  |
+  | `auto_points` | `int32` |  |
+  | `auto_total` | `int32` |  |
+  | `open_points` | `map<string, int32>` |  |
+  | `levels` | `map<string, string>` | competency id → AD \| A \| B \| C |
+  | `feedback` | `string` |  |
+  | `started_at` | `string` |  |
+  | `submitted_at` | `string` |  |
+  | `late` | `bool` |  |
+  | `graded_at` | `string` |  |
+  | `graded_name` | `string` |  |
+  | `recorded_at` | `string` |  |
+  | `files` | `int32` |  |
+  | `suggested_level` | `string` | Level the points suggest (AD from 90 %, A from 70 %, B from 50 %); the teacher confirms |
+
+  ### `Answer`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `choices` | `repeated int32` |  |
+  | `text` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

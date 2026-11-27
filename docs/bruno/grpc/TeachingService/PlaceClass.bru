@@ -1,0 +1,78 @@
+meta {
+  name: PlaceClass
+  type: grpc
+  seq: 7
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.teaching.v1.TeachingService/PlaceClass
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "section_id": "",
+      "assignment_id": "",
+      "weekday": 0,
+      "block_id": "",
+      "room": ""
+    }
+  '''
+}
+
+docs {
+  # TeachingService.PlaceClass
+
+  `/ltedu.teaching.v1.TeachingService/PlaceClass` · unary · `ltedu/teaching/v1/teaching.proto`
+
+  ## Request — `PlaceClassRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `section_id` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `weekday` | `int32` |  |
+  | `block_id` | `string` |  |
+  | `room` | `string` |  |
+
+  ## Response — `PlaceClassResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `entry` | `ScheduleEntry` |  |
+
+  ## Tipos
+
+  ### `ScheduleEntry`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `shift` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `weekday` | `int32` |  |
+  | `block_id` | `string` |  |
+  | `starts_at` | `string` |  |
+  | `ends_at` | `string` |  |
+  | `room` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

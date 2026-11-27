@@ -1,0 +1,25 @@
+meta {
+  name: Confirm TOTP
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/auth/mfa/totp/confirm
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "code": ""
+  }
+}
+
+docs {
+  # POST /auth/mfa/totp/confirm
+
+  Confirma con un código de la app autenticadora y la activa.
+
+  200 `{recovery_codes}` (se muestran una sola vez)
+}

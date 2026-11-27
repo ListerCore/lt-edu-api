@@ -1,0 +1,21 @@
+meta {
+  name: Download attachment
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/attachments/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+docs {
+  # GET /attachments/:id
+
+  Descarga un adjunto (nunca se cachea). PDF e imágenes se abren inline; Word y Excel se descargan.
+}

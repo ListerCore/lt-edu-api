@@ -1,0 +1,119 @@
+meta {
+  name: ConfirmUnit
+  type: grpc
+  seq: 7
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.assessment.v1.ClosingService/ConfirmUnit
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "assignment_id": ""
+    }
+  '''
+}
+
+docs {
+  # ClosingService.ConfirmUnit
+
+  `/ltedu.assessment.v1.ClosingService/ConfirmUnit` · unary · `ltedu/assessment/v1/closing.proto`
+
+  ## Request — `ConfirmUnitRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `assignment_id` | `string` |  |
+
+  ## Response — `ConfirmUnitResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `closing` | `UnitClosing` |  |
+
+  ## Tipos
+
+  ### `UnitClosing`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `assignment_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `level_name` | `string` |  |
+  | `period_name` | `string` |  |
+  | `passing_grade` | `int32` |  |
+  | `absence_limit` | `int32` |  |
+  | `can_manage` | `bool` |  |
+  | `evaluations` | `repeated Evaluation` |  |
+  | `rows` | `repeated UnitRow` |  |
+  | `records` | `repeated RecordInfo` |  |
+
+  ### `Evaluation`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `weight` | `int32` |  |
+  | `held_on` | `string` |  |
+
+  ### `UnitRow`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student` | `StudentRef` |  |
+  | `scores` | `map<string, int32>` |  |
+  | `average` | `optional double` |  |
+  | `grade` | `optional int32` |  |
+  | `missing` | `int32` |  |
+  | `absent_percent` | `double` |  |
+  | `status` | `string` |  |
+  | `recovery_score` | `optional int32` |  |
+  | `final_grade` | `optional int32` |  |
+  | `confirmed` | `bool` |  |
+
+  ### `StudentRef`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `document` | `string` |  |
+
+  ### `RecordInfo`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `kind` | `string` |  |
+  | `number` | `int32` |  |
+  | `code` | `string` |  |
+  | `status` | `string` | issued \| replaced |
+  | `issued_name` | `string` |  |
+  | `issued_at` | `string` |  |
+  | `act_version_id` | `string` | Phase E7: the newest signed version of the acta (empty until generated) and its state |
+  | `act_status` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

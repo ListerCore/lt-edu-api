@@ -1,0 +1,66 @@
+meta {
+  name: ListLibrary
+  type: grpc
+  seq: 13
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/ListLibrary
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.ListLibrary
+
+  `/ltedu.classroom.v1.ClassroomService/ListLibrary` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `ListLibraryRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `ListLibraryResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `items` | `repeated LibraryItem` |  |
+  | `can_edit` | `bool` |  |
+
+  ## Tipos
+
+  ### `LibraryItem`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` | reading \| file \| video \| link |
+  | `title` | `string` |  |
+  | `description` | `string` |  |
+  | `body` | `string` |  |
+  | `url` | `string` |  |
+  | `topic` | `string` |  |
+  | `created_name` | `string` |  |
+  | `updated_at` | `string` |  |
+  | `files` | `int32` |  |
+  | `uses` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

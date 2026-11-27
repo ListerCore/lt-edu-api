@@ -1,0 +1,150 @@
+meta {
+  name: GetSectionCards
+  type: grpc
+  seq: 11
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.assessment.v1.AssessmentService/GetSectionCards
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "section_id": "",
+      "term_id": ""
+    }
+  '''
+}
+
+docs {
+  # AssessmentService.GetSectionCards
+
+  `/ltedu.assessment.v1.AssessmentService/GetSectionCards` · unary · `ltedu/assessment/v1/assessment.proto`
+
+  ## Request — `GetSectionCardsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `section_id` | `string` |  |
+  | `term_id` | `string` |  |
+
+  ## Response — `GetSectionCardsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `cards` | `repeated ReportCard` |  |
+
+  ## Tipos
+
+  ### `ReportCard`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution` | `string` |  |
+  | `kind` | `string` |  |
+  | `student` | `StudentRef` |  |
+  | `section_label` | `string` |  |
+  | `level_name` | `string` |  |
+  | `tutor_name` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `scale` | `string` |  |
+  | `passing_grade` | `optional int32` |  |
+  | `terms` | `repeated CardTerm` |  |
+  | `term_id` | `string` |  |
+  | `subjects` | `repeated CardSubject` |  |
+  | `transversal` | `repeated CardCompetency` |  |
+  | `tutor_comment` | `string` |  |
+  | `provisional` | `bool` |  |
+  | `periods` | `repeated PeriodRef` |  |
+  | `dre` | `string` | Official header (SIAGIE format): regional office, UGEL, modular code and the institution's logo (data URL) |
+  | `ugel` | `string` |  |
+  | `modular_code` | `string` |  |
+  | `logo` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `section_name` | `string` |  |
+  | `final` | `bool` | The selected term is the last of the period: the annual levels and the final conclusions apply |
+  | `issued_on` | `string` |  |
+  | `term_count` | `int32` | Terms of the whole period (the card shows a column for each, filled up to the selected one) |
+
+  ### `StudentRef`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `document` | `string` |  |
+
+  ### `CardTerm`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `status` | `string` |  |
+  | `attendance` | `AttendanceTally` |  |
+  | `conduct` | `optional int32` |  |
+  | `comment` | `string` | The tutor's descriptive conclusion of the term |
+
+  ### `AttendanceTally`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `present` | `int32` |  |
+  | `late` | `int32` |  |
+  | `absent` | `int32` |  |
+  | `justified` | `int32` |  |
+
+  ### `CardSubject`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `kind` | `string` |  |
+  | `teacher_name` | `string` |  |
+  | `competencies` | `repeated CardCompetency` |  |
+  | `averages` | `map<string, double>` | term id ("" for the whole period) → average, missing when there are no scores |
+  | `evaluations` | `repeated CardEvaluation` |  |
+
+  ### `CardCompetency`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `levels` | `map<string, string>` | term id → level |
+  | `conclusion` | `string` |  |
+  | `conclusions` | `map<string, string>` | term id → conclusion, for every term shown |
+
+  ### `CardEvaluation`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `name` | `string` |  |
+  | `weight` | `int32` |  |
+  | `score` | `optional int32` |  |
+
+  ### `PeriodRef`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

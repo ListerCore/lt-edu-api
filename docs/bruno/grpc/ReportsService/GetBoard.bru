@@ -1,0 +1,242 @@
+meta {
+  name: GetBoard
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.reports.v1.ReportsService/GetBoard
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": "",
+      "level_id": "",
+      "subject": "",
+      "from": "",
+      "to": ""
+    }
+  '''
+}
+
+docs {
+  # ReportsService.GetBoard
+
+  `/ltedu.reports.v1.ReportsService/GetBoard` · unary · `ltedu/reports/v1/reports.proto`
+
+  ## Request — `GetBoardRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` | Empty: the current period |
+  | `level_id` | `string` | Empty: every level |
+  | `subject` | `string` | Literal scale: an area name, to break the performance down by its competencies |
+  | `from` | `string` | Attendance range; empty: the last ninety days of the period |
+  | `to` | `string` |  |
+
+  ## Response — `GetBoardResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `periods` | `repeated Period` |  |
+  | `period` | `Period` |  |
+  | `levels` | `repeated Option` |  |
+  | `level_id` | `string` |  |
+  | `subject` | `string` |  |
+  | `scale` | `string` | literal \| vigesimal \| score |
+  | `passing` | `int32` |  |
+  | `from` | `string` |  |
+  | `to` | `string` |  |
+  | `today` | `string` |  |
+  | `academic` | `bool` | False for treasurers: only the collection |
+  | `enrollment` | `Enrollment` |  |
+  | `attendance_days` | `repeated AttendanceDay` |  |
+  | `attendance_groups` | `repeated GroupAttendance` | By level, or by grade when a level is chosen |
+  | `attendance_timeline` | `repeated GroupAttendance` | By term, or by month when the period has no terms |
+  | `result_terms` | `repeated ResultMix` | Literal: by term; score: by mock exam |
+  | `result_subjects` | `repeated ResultMix` | Literal: by area (or competency); vigesimal: by unit; score: by course |
+  | `result_groups` | `repeated ResultMix` |  |
+  | `conduct_terms` | `repeated ResultMix` |  |
+  | `finance` | `FinanceTotals` |  |
+  | `months` | `repeated MoneyFlow` |  |
+  | `methods` | `repeated MethodTotal` |  |
+  | `aging` | `repeated AgingBucket` |  |
+  | `finance_groups` | `repeated GroupDebt` |  |
+  | `compare` | `repeated PeriodKpi` |  |
+
+  ## Tipos
+
+  ### `Period`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` |  |
+  | `name` | `string` |  |
+  | `season` | `string` | CEPRE: summer \| annual \| semester \| intensive \| review \| school \| other |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `term_scheme` | `string` |  |
+  | `status` | `string` | planning \| active \| closed |
+  | `terms` | `repeated Term` |  |
+  | `section_count` | `int32` |  |
+  | `capacity_total` | `int32` |  |
+
+  ### `Term`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `number` | `int32` |  |
+  | `name` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `status` | `string` | open \| closed |
+
+  ### `Option`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+
+  ### `Enrollment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `active` | `int32` |  |
+  | `withdrawn` | `int32` |  |
+  | `transferred` | `int32` |  |
+  | `completed` | `int32` |  |
+  | `new` | `int32` |  |
+  | `continuing` | `int32` |  |
+  | `transfer_in` | `int32` |  |
+  | `re_entry` | `int32` |  |
+  | `capacity` | `int32` |  |
+  | `groups` | `repeated GroupEnrollment` |  |
+
+  ### `GroupEnrollment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `label` | `string` |  |
+  | `active` | `int32` |  |
+  | `capacity` | `int32` |  |
+
+  ### `AttendanceDay`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `day` | `string` |  |
+  | `counts` | `StatusCount` |  |
+
+  ### `StatusCount`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `present` | `int32` |  |
+  | `late` | `int32` |  |
+  | `absent` | `int32` |  |
+  | `justified` | `int32` |  |
+
+  ### `GroupAttendance`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `label` | `string` |  |
+  | `counts` | `StatusCount` |  |
+
+  ### `ResultMix`
+
+  Literal: ad, a, b, c over count. Vigesimal: average, max, approved and failed over count (students by unit). Score: average and max over count (answer sheets); for courses, average is the share of right answers
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `label` | `string` |  |
+  | `ad` | `int32` |  |
+  | `a` | `int32` |  |
+  | `b` | `int32` |  |
+  | `c` | `int32` |  |
+  | `average` | `double` |  |
+  | `max` | `double` |  |
+  | `approved` | `int32` |  |
+  | `failed` | `int32` |  |
+  | `count` | `int32` |  |
+
+  ### `FinanceTotals`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `expected` | `int64` |  |
+  | `discounts` | `int64` |  |
+  | `collected` | `int64` |  |
+  | `overdue` | `int64` |  |
+  | `debtors` | `int32` |  |
+  | `students` | `int32` |  |
+
+  ### `MoneyFlow`
+
+  A month: what fell due (net of discounts) and how much of it is paid, and what came in that month
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `month` | `string` |  |
+  | `expected` | `int64` |  |
+  | `collected` | `int64` |  |
+  | `received` | `int64` |  |
+
+  ### `MethodTotal`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `method` | `string` |  |
+  | `amount` | `int64` |  |
+  | `count` | `int32` |  |
+
+  ### `AgingBucket`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `label` | `string` |  |
+  | `amount` | `int64` |  |
+  | `students` | `int32` |  |
+
+  ### `GroupDebt`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `label` | `string` |  |
+  | `expected` | `int64` |  |
+  | `collected` | `int64` |  |
+  | `overdue` | `int64` |  |
+  | `debtors` | `int32` |  |
+
+  ### `PeriodKpi`
+
+  A period in the comparison; a rate is -1 when the period has no data for it. Achievement: literal, share of AD and A; vigesimal, share of passing unit averages; score, the average mock exam score
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `period_id` | `string` |  |
+  | `name` | `string` |  |
+  | `status` | `string` |  |
+  | `students` | `int32` |  |
+  | `attendance` | `double` |  |
+  | `achievement` | `double` |  |
+  | `collection` | `double` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

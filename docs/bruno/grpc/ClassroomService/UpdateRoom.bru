@@ -1,0 +1,81 @@
+meta {
+  name: UpdateRoom
+  type: grpc
+  seq: 4
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/UpdateRoom
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "description": "",
+      "status": "",
+      "staff_id": ""
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.UpdateRoom
+
+  `/ltedu.classroom.v1.ClassroomService/UpdateRoom` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `UpdateRoomRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `description` | `string` |  |
+  | `status` | `string` |  |
+  | `staff_id` | `string` | Only dirección and coordinación change it; empty leaves it without a teacher in charge |
+
+  ## Response — `UpdateRoomResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `room` | `Room` |  |
+
+  ## Tipos
+
+  ### `Room`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `subject_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `subject_code` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `grade_short` | `string` |  |
+  | `description` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `status` | `string` | draft \| published |
+  | `units` | `int32` |  |
+  | `items` | `int32` |  |
+  | `students` | `int32` |  |
+  | `updated_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

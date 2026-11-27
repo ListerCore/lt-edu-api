@@ -1,0 +1,115 @@
+meta {
+  name: SaveMock
+  type: grpc
+  seq: 6
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.exams.v1.ExamsService/SaveMock
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "mock": {
+        "id": "",
+        "period_id": "",
+        "period_name": "",
+        "name": "",
+        "held_on": "",
+        "duration_minutes": 0,
+        "points_right": 0,
+        "points_wrong": 0,
+        "status": "",
+        "notes": "",
+        "courses": [
+          {
+            "code": "",
+            "name": "",
+            "questions": 0
+          }
+        ],
+        "weights": [
+          {
+            "level_id": "",
+            "course_code": "",
+            "weight": 0
+          }
+        ],
+        "questions": 0,
+        "keyed": 0,
+        "sheets": 0
+      }
+    }
+  '''
+}
+
+docs {
+  # ExamsService.SaveMock
+
+  `/ltedu.exams.v1.ExamsService/SaveMock` · unary · `ltedu/exams/v1/exams.proto`
+
+  ## Request — `SaveMockRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `mock` | `MockExam` |  |
+
+  ## Response — `SaveMockResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `mock` | `MockExam` |  |
+
+  ## Tipos
+
+  ### `MockExam`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `name` | `string` |  |
+  | `held_on` | `string` |  |
+  | `duration_minutes` | `int32` |  |
+  | `points_right` | `double` |  |
+  | `points_wrong` | `double` |  |
+  | `status` | `string` | draft \| published |
+  | `notes` | `string` |  |
+  | `courses` | `repeated MockCourse` |  |
+  | `weights` | `repeated MockWeight` |  |
+  | `questions` | `int32` |  |
+  | `keyed` | `int32` |  |
+  | `sheets` | `int32` |  |
+
+  ### `MockCourse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `questions` | `int32` |  |
+
+  ### `MockWeight`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `level_id` | `string` |  |
+  | `course_code` | `string` |  |
+  | `weight` | `double` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

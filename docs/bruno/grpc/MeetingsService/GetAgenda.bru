@@ -1,0 +1,70 @@
+meta {
+  name: GetAgenda
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.meetings.v1.MeetingsService/GetAgenda
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "from": "",
+      "to": ""
+    }
+  '''
+}
+
+docs {
+  # MeetingsService.GetAgenda
+
+  The person's live sessions between two instants (at most 62 days), soonest first
+
+  `/ltedu.meetings.v1.MeetingsService/GetAgenda` · unary · `ltedu/meetings/v1/meetings.proto`
+
+  ## Request — `GetAgendaRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `from` | `string` | RFC 3339; empty: from now to 14 days later |
+  | `to` | `string` |  |
+
+  ## Response — `GetAgendaResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `sessions` | `repeated Session` |  |
+  | `platform_available` | `bool` | Whether calls inside the platform are set up (else only Google Meet links are offered) |
+
+  ## Tipos
+
+  ### `Session`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `source` | `string` |  |
+  | `id` | `string` |  |
+  | `title` | `string` |  |
+  | `context` | `string` | Subject and grade, "Tutoría virtual" or "Psicología" |
+  | `starts_at` | `string` | RFC 3339 |
+  | `duration_min` | `int32` |  |
+  | `provider` | `string` |  |
+  | `host_name` | `string` |  |
+  | `is_host` | `bool` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

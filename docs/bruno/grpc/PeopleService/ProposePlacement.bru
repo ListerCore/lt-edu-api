@@ -1,0 +1,57 @@
+meta {
+  name: ProposePlacement
+  type: grpc
+  seq: 21
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/ProposePlacement
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "origin": "",
+      "passed": 0
+    }
+  '''
+}
+
+docs {
+  # PeopleService.ProposePlacement
+
+  Cycle and grade the cuadro de equivalencias (RVM 0018-2007-ED) proposes for EBR studies
+
+  `/ltedu.people.v1.PeopleService/ProposePlacement` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `ProposePlacementRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `origin` | `string` | ebr_primaria \| ebr_secundaria |
+  | `passed` | `int32` | Grades passed (0 to 6) |
+
+  ## Response — `ProposePlacementResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `done` | `bool` | The studies already complete the EBA |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

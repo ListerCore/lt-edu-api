@@ -1,0 +1,77 @@
+meta {
+  name: Refer
+  type: grpc
+  seq: 10
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/Refer
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": "",
+      "reason": "",
+      "priority": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.Refer
+
+  Psychology: anyone who sees the student refers; only psychologists read cases and sessions
+
+  `/ltedu.wellbeing.v1.WellbeingService/Refer` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `ReferRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+  | `reason` | `string` |  |
+  | `priority` | `string` |  |
+
+  ## Response — `ReferResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `case` | `PsychCase` |  |
+
+  ## Tipos
+
+  ### `PsychCase`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `origin` | `string` | tutor \| teacher \| family \| direction \| self \| psychologist |
+  | `referred_name` | `string` |  |
+  | `reason` | `string` |  |
+  | `priority` | `string` | normal \| urgent |
+  | `status` | `string` | referred \| open \| follow_up \| closed |
+  | `opened_on` | `string` |  |
+  | `closed_on` | `string` |  |
+  | `psychologist_name` | `string` |  |
+  | `shared_note` | `string` |  |
+  | `sessions` | `int32` |  |
+  | `last_session` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

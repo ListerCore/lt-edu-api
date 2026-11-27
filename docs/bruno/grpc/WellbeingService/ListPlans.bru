@@ -1,0 +1,109 @@
+meta {
+  name: ListPlans
+  type: grpc
+  seq: 26
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/ListPlans
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.ListPlans
+
+  Special education
+
+  `/ltedu.wellbeing.v1.WellbeingService/ListPlans` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `ListPlansRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+
+  ## Response — `ListPlansResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `plans` | `repeated IndividualPlan` |  |
+  | `students` | `repeated WellStudent` | For coordinación: students and specialists to open a plan |
+  | `specialists` | `repeated StaffRef` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `can_manage` | `bool` |  |
+  | `can_write` | `bool` |  |
+
+  ## Tipos
+
+  ### `IndividualPlan`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `specialist_id` | `string` |  |
+  | `specialist_name` | `string` |  |
+  | `needs` | `string` |  |
+  | `strengths` | `string` |  |
+  | `educational_response` | `string` |  |
+  | `curricular_adaptations` | `string` |  |
+  | `access_adaptations` | `string` |  |
+  | `evaluation_criteria` | `string` |  |
+  | `actors` | `string` |  |
+  | `family_commitments` | `string` |  |
+  | `status` | `string` | draft \| approved |
+  | `approved_name` | `string` |  |
+  | `approved_on` | `string` |  |
+  | `updated_at` | `string` |  |
+  | `therapies` | `int32` |  |
+
+  ### `WellStudent`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `placement` | `string` |  |
+  | `section_id` | `string` |  |
+  | `special_needs` | `bool` |  |
+  | `pending_commitments` | `int32` |  |
+  | `open_incidents` | `int32` |  |
+  | `active_case` | `bool` |  |
+  | `has_plan` | `bool` |  |
+  | `last_interview` | `string` |  |
+
+  ### `StaffRef`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

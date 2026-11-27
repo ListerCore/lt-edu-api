@@ -1,0 +1,79 @@
+meta {
+  name: SaveReport
+  type: grpc
+  seq: 10
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.compliance.v1.ComplianceService/SaveReport
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "report": {
+        "kind": "",
+        "number": "",
+        "file_number": "",
+        "city": "",
+        "location": "",
+        "evaluated_on": "",
+        "general_result": "",
+        "limitations": "",
+        "conclusion": "",
+        "updated_by_name": "",
+        "updated_at": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # ComplianceService.SaveReport
+
+  `/ltedu.compliance.v1.ComplianceService/SaveReport` · unary · `ltedu/compliance/v1/compliance.proto`
+
+  ## Request — `SaveReportRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `report` | `Report` |  |
+
+  ## Response — `SaveReportResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `report` | `Report` |  |
+
+  ## Tipos
+
+  ### `Report`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `kind` | `string` |  |
+  | `number` | `string` |  |
+  | `file_number` | `string` |  |
+  | `city` | `string` |  |
+  | `location` | `string` |  |
+  | `evaluated_on` | `string` |  |
+  | `general_result` | `string` |  |
+  | `limitations` | `string` |  |
+  | `conclusion` | `string` |  |
+  | `updated_by_name` | `string` |  |
+  | `updated_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

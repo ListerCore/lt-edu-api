@@ -1,0 +1,70 @@
+meta {
+  name: IssueDegree
+  type: grpc
+  seq: 14
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.programs.v1.ProgramsService/IssueDegree
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": ""
+    }
+  '''
+}
+
+docs {
+  # ProgramsService.IssueDegree
+
+  `/ltedu.programs.v1.ProgramsService/IssueDegree` · unary · `ltedu/programs/v1/programs.proto`
+
+  ## Request — `IssueDegreeRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+
+  ## Response — `IssueDegreeResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `certificate` | `Certificate` |  |
+
+  ## Tipos
+
+  ### `Certificate`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `level_id` | `string` |  |
+  | `program_name` | `string` |  |
+  | `kind` | `string` | modular \| degree |
+  | `module_id` | `string` |  |
+  | `module_name` | `string` |  |
+  | `code` | `string` |  |
+  | `status` | `string` | issued \| annulled |
+  | `issued_on` | `string` |  |
+  | `issued_name` | `string` |  |
+  | `annul_reason` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

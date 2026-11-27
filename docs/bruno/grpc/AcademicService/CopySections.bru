@@ -1,0 +1,51 @@
+meta {
+  name: CopySections
+  type: grpc
+  seq: 24
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.AcademicService/CopySections
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": "",
+      "from_period_id": ""
+    }
+  '''
+}
+
+docs {
+  # AcademicService.CopySections
+
+  `/ltedu.academic.v1.AcademicService/CopySections` · unary · `ltedu/academic/v1/academic.proto`
+
+  ## Request — `CopySectionsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+  | `from_period_id` | `string` |  |
+
+  ## Response — `CopySectionsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `added` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,91 @@
+meta {
+  name: SavePlan
+  type: grpc
+  seq: 3
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.finance.v1.FinanceService/SavePlan
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "plan": {
+        "id": "",
+        "period_id": "",
+        "period_name": "",
+        "level_id": "",
+        "level_name": "",
+        "name": "",
+        "items": [
+          {
+            "id": "",
+            "concept": "",
+            "name": "",
+            "amount": 0,
+            "due_on": ""
+          }
+        ],
+        "students": 0
+      }
+    }
+  '''
+}
+
+docs {
+  # FinanceService.SavePlan
+
+  `/ltedu.finance.v1.FinanceService/SavePlan` · unary · `ltedu/finance/v1/finance.proto`
+
+  ## Request — `SavePlanRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `plan` | `FeePlan` |  |
+
+  ## Response — `SavePlanResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `plan` | `FeePlan` |  |
+
+  ## Tipos
+
+  ### `FeePlan`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `level_id` | `string` | Empty: every level of the period |
+  | `level_name` | `string` |  |
+  | `name` | `string` |  |
+  | `items` | `repeated FeeItem` |  |
+  | `students` | `int32` |  |
+
+  ### `FeeItem`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `concept` | `string` | enrollment \| tuition \| apafa \| other. Public institutions take no tuition (apafa: cuota APAFA) |
+  | `name` | `string` |  |
+  | `amount` | `int64` |  |
+  | `due_on` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,47 @@
+meta {
+  name: DeleteIncident
+  type: grpc
+  seq: 18
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/DeleteIncident
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.DeleteIncident
+
+  `/ltedu.wellbeing.v1.WellbeingService/DeleteIncident` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `DeleteIncidentRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `DeleteIncidentResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

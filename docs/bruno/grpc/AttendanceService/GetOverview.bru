@@ -1,0 +1,96 @@
+meta {
+  name: GetOverview
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.attendance.v1.AttendanceService/GetOverview
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "day": ""
+    }
+  '''
+}
+
+docs {
+  # AttendanceService.GetOverview
+
+  `/ltedu.attendance.v1.AttendanceService/GetOverview` · unary · `ltedu/attendance/v1/attendance.proto`
+
+  ## Request — `GetOverviewRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `day` | `string` |  |
+
+  ## Response — `GetOverviewResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `day` | `string` |  |
+  | `today` | `string` |  |
+  | `school_day` | `bool` |  |
+  | `late_after_minutes` | `int32` |  |
+  | `absence_limit_percent` | `int32` |  |
+  | `sections` | `repeated SectionDay` |  |
+  | `can_scan` | `bool` |  |
+  | `can_manage_staff` | `bool` |  |
+  | `can_review` | `bool` |  |
+  | `can_take_classes` | `bool` |  |
+  | `tutoring` | `repeated string` |  |
+  | `pending_justifications` | `int32` |  |
+  | `vocabulary` | `Vocabulary` |  |
+  | `staff_tally` | `Tally` |  |
+  | `staff_total` | `int32` |  |
+  | `week_days` | `repeated int32` |  |
+
+  ## Tipos
+
+  ### `SectionDay`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `level_name` | `string` |  |
+  | `shift` | `string` |  |
+  | `tutor_name` | `string` |  |
+  | `enrolled` | `int32` |  |
+  | `tally` | `Tally` |  |
+
+  ### `Tally`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `present` | `int32` |  |
+  | `late` | `int32` |  |
+  | `absent` | `int32` |  |
+  | `justified` | `int32` |  |
+
+  ### `Vocabulary`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `level` | `string` |  |
+  | `grade` | `string` |  |
+  | `section` | `string` |  |
+  | `period` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

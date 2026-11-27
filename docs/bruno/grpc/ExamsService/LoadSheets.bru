@@ -1,0 +1,75 @@
+meta {
+  name: LoadSheets
+  type: grpc
+  seq: 14
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.exams.v1.ExamsService/LoadSheets
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "entries": [
+        {
+          "student_id": "",
+          "code": "",
+          "answers": ""
+        }
+      ]
+    }
+  '''
+}
+
+docs {
+  # ExamsService.LoadSheets
+
+  `/ltedu.exams.v1.ExamsService/LoadSheets` · unary · `ltedu/exams/v1/exams.proto`
+
+  ## Request — `LoadSheetsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `entries` | `repeated SheetEntry` |  |
+
+  ## Response — `LoadSheetsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `report` | `LoadReport` |  |
+
+  ## Tipos
+
+  ### `SheetEntry`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `code` | `string` |  |
+  | `answers` | `string` |  |
+
+  ### `LoadReport`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `saved` | `int32` |  |
+  | `unknown` | `repeated string` |  |
+  | `other_area` | `repeated string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

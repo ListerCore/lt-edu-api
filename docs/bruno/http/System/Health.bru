@@ -1,0 +1,19 @@
+meta {
+  name: Health
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/health
+  body: none
+  auth: none
+}
+
+docs {
+  # GET /health
+
+  Estado general del servicio (y de la base de datos y Redis). Sin autenticación.
+
+  200 `{status, service, timestamp, ...}` · `status`: `ok` | `degraded`
+}

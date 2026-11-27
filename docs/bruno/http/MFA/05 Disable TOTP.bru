@@ -1,0 +1,24 @@
+meta {
+  name: Disable TOTP
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/auth/mfa/totp/disable
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "challenge_token": "{{challengeToken}}",
+    "code": ""
+  }
+}
+
+docs {
+  # POST /auth/mfa/totp/disable
+
+  Desactiva la app autenticadora con el código del correo (`purpose: mfa_disable`). 204
+}

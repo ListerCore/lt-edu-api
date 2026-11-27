@@ -1,0 +1,79 @@
+meta {
+  name: ConveneMeeting
+  type: grpc
+  seq: 4
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.apafa.v1.ApafaService/ConveneMeeting
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # ApafaService.ConveneMeeting
+
+  `/ltedu.apafa.v1.ApafaService/ConveneMeeting` · unary · `ltedu/apafa/v1/apafa.proto`
+
+  ## Request — `ConveneMeetingRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `ConveneMeetingResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `meeting` | `Meeting` |  |
+
+  ## Tipos
+
+  ### `Meeting`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `title` | `string` |  |
+  | `kind` | `string` | ordinary \| extraordinary \| assembly \| board |
+  | `scheduled_at` | `string` | RFC 3339 |
+  | `modality` | `string` | in_person \| virtual \| hybrid |
+  | `place` | `string` |  |
+  | `meeting_url` | `string` |  |
+  | `agenda` | `string` |  |
+  | `audience` | `string` | guardians \| community |
+  | `status` | `string` | scheduled \| rescheduled \| held \| cancelled |
+  | `previous_at` | `string` |  |
+  | `reschedule_reason` | `string` |  |
+  | `cancel_reason` | `string` |  |
+  | `minutes` | `string` |  |
+  | `agreements` | `string` |  |
+  | `attendees` | `optional int32` |  |
+  | `minutes_published_at` | `string` | When the acta was published to the families (empty: not yet) |
+  | `announcement_id` | `string` | Last notice sent (comms announcement) and when it was first convened (empty: a draft) |
+  | `notified_at` | `string` |  |
+  | `created_name` | `string` |  |
+  | `created_at` | `string` |  |
+  | `updated_at` | `string` |  |
+  | `files` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

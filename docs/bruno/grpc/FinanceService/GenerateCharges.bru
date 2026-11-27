@@ -1,0 +1,51 @@
+meta {
+  name: GenerateCharges
+  type: grpc
+  seq: 5
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.finance.v1.FinanceService/GenerateCharges
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # FinanceService.GenerateCharges
+
+  Gives the enrolled students the charges of the plan they still lack
+
+  `/ltedu.finance.v1.FinanceService/GenerateCharges` · unary · `ltedu/finance/v1/finance.proto`
+
+  ## Request — `GenerateChargesRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `GenerateChargesResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `created` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

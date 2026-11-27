@@ -1,0 +1,12 @@
+meta {
+  name: AcademicService
+  seq: 1
+}
+
+docs {
+  # ltedu.academic.v1.AcademicService
+
+  Metadata: authorization: Bearer <session token>   (every method) x-forwarded-for, x-user-agent           (as every lt-edu-api service) Every request carries institution_slug: institution roles work on their own institution whatever it says; the platform superadmin opens the one named. Staff roles read; director, academic coordinator and superadmin change. Dates travel as YYYY-MM-DD. Failed calls return a gRPC status whose details hold one ltedu.common.v1.ErrorDetail
+
+  Definido en `proto/ltedu/academic/v1/academic.proto` · 24 métodos.
+}

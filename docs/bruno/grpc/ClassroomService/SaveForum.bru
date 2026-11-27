@@ -1,0 +1,51 @@
+meta {
+  name: SaveForum
+  type: grpc
+  seq: 27
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/SaveForum
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "item_id": "",
+      "kind": "",
+      "closed": false
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.SaveForum
+
+  `/ltedu.classroom.v1.ClassroomService/SaveForum` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `SaveForumRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `item_id` | `string` |  |
+  | `kind` | `string` |  |
+  | `closed` | `bool` |  |
+
+  ## Response — `SaveForumResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

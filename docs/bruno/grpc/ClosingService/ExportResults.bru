@@ -1,0 +1,54 @@
+meta {
+  name: ExportResults
+  type: grpc
+  seq: 11
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.assessment.v1.ClosingService/ExportResults
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "section_id": "",
+      "assignment_id": ""
+    }
+  '''
+}
+
+docs {
+  # ClosingService.ExportResults
+
+  CSV for SIAGIE (section) or the unit's results (assignment)
+
+  `/ltedu.assessment.v1.ClosingService/ExportResults` · unary · `ltedu/assessment/v1/closing.proto`
+
+  ## Request — `ExportResultsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `section_id` | `string` |  |
+  | `assignment_id` | `string` |  |
+
+  ## Response — `ExportResultsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file_name` | `string` |  |
+  | `content` | `bytes` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

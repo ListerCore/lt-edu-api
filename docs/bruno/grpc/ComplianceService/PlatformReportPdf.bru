@@ -1,0 +1,56 @@
+meta {
+  name: PlatformReportPdf
+  type: grpc
+  seq: 12
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.compliance.v1.ComplianceService/PlatformReportPdf
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # ComplianceService.PlatformReportPdf
+
+  `/ltedu.compliance.v1.ComplianceService/PlatformReportPdf` · unary · `ltedu/compliance/v1/compliance.proto`
+
+  ## Request — `PlatformReportPdfRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `PlatformReportPdfResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file` | `PdfFile` |  |
+
+  ## Tipos
+
+  ### `PdfFile`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file_name` | `string` |  |
+  | `content` | `bytes` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

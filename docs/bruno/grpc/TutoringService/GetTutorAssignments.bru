@@ -1,0 +1,84 @@
+meta {
+  name: GetTutorAssignments
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.TutoringService/GetTutorAssignments
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # TutoringService.GetTutorAssignments
+
+  `/ltedu.wellbeing.v1.TutoringService/GetTutorAssignments` · unary · `ltedu/wellbeing/v1/tutoring.proto`
+
+  ## Request — `GetTutorAssignmentsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `GetTutorAssignmentsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `loads` | `repeated TutorLoad` |  |
+  | `candidates` | `repeated TutorCandidate` |  |
+  | `students` | `repeated TutorStudent` |  |
+
+  ## Tipos
+
+  ### `TutorLoad`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `staff_id` | `string` |  |
+  | `name` | `string` |  |
+  | `sections` | `repeated string` |  |
+  | `by_section` | `int32` |  |
+  | `individual` | `int32` |  |
+
+  ### `TutorCandidate`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `staff_id` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `string` |  |
+
+  ### `TutorStudent`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `placement` | `string` |  |
+  | `section_id` | `string` |  |
+  | `attention_mode` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `individual` | `bool` |  |
+  | `last_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

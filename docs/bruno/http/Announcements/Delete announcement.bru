@@ -1,0 +1,25 @@
+meta {
+  name: Delete announcement
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{baseUrl}}/panel/announcements/:id?institution={{institution}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  institution: {{institution}}
+}
+
+params:path {
+  id: 
+}
+
+docs {
+  # DELETE /panel/announcements/:id?institution=
+
+  Borra el anuncio y sus archivos. 204
+}

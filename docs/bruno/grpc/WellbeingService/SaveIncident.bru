@@ -1,0 +1,131 @@
+meta {
+  name: SaveIncident
+  type: grpc
+  seq: 17
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/SaveIncident
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "incident": {
+        "id": "",
+        "student_id": "",
+        "student_name": "",
+        "placement": "",
+        "occurred_on": "",
+        "severity": "",
+        "category": "",
+        "description": "",
+        "reported_name": "",
+        "family_notified_on": "",
+        "status": "",
+        "measures": [
+          {
+            "id": "",
+            "student_id": "",
+            "incident_id": "",
+            "kind": "",
+            "ground": "",
+            "detail": "",
+            "starts_on": "",
+            "days": 0,
+            "decided_name": "",
+            "notified_on": "",
+            "reconsideration_on": "",
+            "reconsideration_reason": "",
+            "reconsideration_by": "",
+            "resolved_on": "",
+            "outcome": "",
+            "resolution": "",
+            "reconsider_until": "",
+            "resolve_until": "",
+            "student_name": "",
+            "placement": ""
+          }
+        ],
+        "mine": false
+      }
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.SaveIncident
+
+  `/ltedu.wellbeing.v1.WellbeingService/SaveIncident` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `SaveIncidentRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `incident` | `Incident` |  |
+
+  ## Response — `SaveIncidentResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `incident` | `Incident` |  |
+
+  ## Tipos
+
+  ### `Incident`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `occurred_on` | `string` |  |
+  | `severity` | `string` | minor \| serious \| very_serious |
+  | `category` | `string` |  |
+  | `description` | `string` |  |
+  | `reported_name` | `string` |  |
+  | `family_notified_on` | `string` |  |
+  | `status` | `string` | open \| closed |
+  | `measures` | `repeated Measure` |  |
+  | `mine` | `bool` |  |
+
+  ### `Measure`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `incident_id` | `string` |  |
+  | `kind` | `string` | corrective \| suspension \| conditional \| expulsion |
+  | `ground` | `string` |  |
+  | `detail` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `days` | `int32` |  |
+  | `decided_name` | `string` |  |
+  | `notified_on` | `string` |  |
+  | `reconsideration_on` | `string` |  |
+  | `reconsideration_reason` | `string` |  |
+  | `reconsideration_by` | `string` |  |
+  | `resolved_on` | `string` |  |
+  | `outcome` | `string` | upheld \| revoked |
+  | `resolution` | `string` |  |
+  | `reconsider_until` | `string` | Last day to ask for reconsideration (three school days after notified_on) and to resolve it (five after the request) |
+  | `resolve_until` | `string` |  |
+  | `student_name` | `string` | Filled in the register of measures |
+  | `placement` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

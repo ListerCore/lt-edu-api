@@ -1,0 +1,129 @@
+meta {
+  name: ImportRoll
+  type: grpc
+  seq: 27
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/ImportRoll
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": "",
+      "rows": [
+        {
+          "line": 0,
+          "document_type": "",
+          "document_number": "",
+          "paternal_surname": "",
+          "maternal_surname": "",
+          "given_names": "",
+          "birth_date": "",
+          "sex": "",
+          "email": "",
+          "phone": "",
+          "cycle": "",
+          "grade": "",
+          "section": "",
+          "kind": "",
+          "origin": ""
+        }
+      ],
+      "commit": false
+    }
+  '''
+}
+
+docs {
+  # PeopleService.ImportRoll
+
+  Loads the real roll from a spreadsheet (phase E9): commit=false checks every row and reconciles the totals per section; commit=true imports, and only when the check has no errors
+
+  `/ltedu.people.v1.PeopleService/ImportRoll` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `ImportRollRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+  | `rows` | `repeated ImportRow` |  |
+  | `commit` | `bool` |  |
+
+  ## Response — `ImportRollResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `rows` | `repeated ImportResult` |  |
+  | `sections` | `repeated ImportSection` |  |
+  | `total` | `int32` |  |
+  | `ready` | `int32` |  |
+  | `skipped` | `int32` |  |
+  | `errors` | `int32` |  |
+  | `created` | `int32` |  |
+  | `enrolled` | `int32` |  |
+  | `committed` | `bool` |  |
+  | `period_before` | `int32` |  |
+  | `period_after` | `int32` |  |
+
+  ## Tipos
+
+  ### `ImportRow`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `line` | `int32` |  |
+  | `document_type` | `string` |  |
+  | `document_number` | `string` |  |
+  | `paternal_surname` | `string` |  |
+  | `maternal_surname` | `string` |  |
+  | `given_names` | `string` |  |
+  | `birth_date` | `string` | dd/mm/aaaa |
+  | `sex` | `string` | M (mujer) \| H (hombre) |
+  | `email` | `string` |  |
+  | `phone` | `string` |  |
+  | `cycle` | `string` |  |
+  | `grade` | `string` |  |
+  | `section` | `string` |  |
+  | `kind` | `string` | nuevo \| promovido \| trasladado \| reentrante |
+  | `origin` | `string` |  |
+
+  ### `ImportResult`
+
+  status: ready \| existing (the student is already in the institution) \| skipped (already enrolled) \| enrolled \| error
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `line` | `int32` |  |
+  | `status` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `known` | `bool` |  |
+  | `message` | `string` |  |
+
+  ### `ImportSection`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `section_id` | `string` |  |
+  | `label` | `string` |  |
+  | `capacity` | `int32` |  |
+  | `before` | `int32` |  |
+  | `incoming` | `int32` |  |
+  | `after` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

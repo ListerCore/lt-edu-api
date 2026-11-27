@@ -1,0 +1,83 @@
+meta {
+  name: SaveAuthorization
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.institution.v1.InstitutionService/SaveAuthorization
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "authorization": {
+        "id": "",
+        "kind": "",
+        "level_id": "",
+        "level_name": "",
+        "attention_mode": "",
+        "resolution": "",
+        "issued_by": "",
+        "issued_on": "",
+        "expires_on": "",
+        "file_number": "",
+        "notes": "",
+        "in_force": false,
+        "files": 0
+      }
+    }
+  '''
+}
+
+docs {
+  # InstitutionService.SaveAuthorization
+
+  `/ltedu.institution.v1.InstitutionService/SaveAuthorization` · unary · `ltedu/institution/v1/institution.proto`
+
+  ## Request — `SaveAuthorizationRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `authorization` | `Authorization` | Empty id creates |
+
+  ## Response — `SaveAuthorizationResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `authorization` | `Authorization` |  |
+
+  ## Tipos
+
+  ### `Authorization`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` | creation \| attention_mode \| expansion \| other |
+  | `level_id` | `string` | attention_mode only: the cycle (empty = every cycle) and the form it authorizes |
+  | `level_name` | `string` |  |
+  | `attention_mode` | `string` |  |
+  | `resolution` | `string` |  |
+  | `issued_by` | `string` |  |
+  | `issued_on` | `string` | YYYY-MM-DD; expires_on empty when it has no term |
+  | `expires_on` | `string` |  |
+  | `file_number` | `string` |  |
+  | `notes` | `string` |  |
+  | `in_force` | `bool` | In force today |
+  | `files` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

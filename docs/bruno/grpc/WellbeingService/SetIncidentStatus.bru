@@ -1,0 +1,49 @@
+meta {
+  name: SetIncidentStatus
+  type: grpc
+  seq: 19
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/SetIncidentStatus
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "status": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.SetIncidentStatus
+
+  `/ltedu.wellbeing.v1.WellbeingService/SetIncidentStatus` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `SetIncidentStatusRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `status` | `string` |  |
+
+  ## Response — `SetIncidentStatusResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

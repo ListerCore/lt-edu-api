@@ -1,0 +1,49 @@
+meta {
+  name: AnnulPayment
+  type: grpc
+  seq: 9
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.finance.v1.FinanceService/AnnulPayment
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "reason": ""
+    }
+  '''
+}
+
+docs {
+  # FinanceService.AnnulPayment
+
+  `/ltedu.finance.v1.FinanceService/AnnulPayment` · unary · `ltedu/finance/v1/finance.proto`
+
+  ## Request — `AnnulPaymentRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `reason` | `string` |  |
+
+  ## Response — `AnnulPaymentResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

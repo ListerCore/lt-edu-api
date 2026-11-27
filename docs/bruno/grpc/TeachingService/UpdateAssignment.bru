@@ -1,0 +1,73 @@
+meta {
+  name: UpdateAssignment
+  type: grpc
+  seq: 3
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.teaching.v1.TeachingService/UpdateAssignment
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "staff_id": "",
+      "weekly_hours": 0
+    }
+  '''
+}
+
+docs {
+  # TeachingService.UpdateAssignment
+
+  `/ltedu.teaching.v1.TeachingService/UpdateAssignment` · unary · `ltedu/teaching/v1/teaching.proto`
+
+  ## Request — `UpdateAssignmentRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `staff_id` | `string` | Empty: unassigned |
+  | `weekly_hours` | `int32` |  |
+
+  ## Response — `UpdateAssignmentResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `assignment` | `Assignment` |  |
+
+  ## Tipos
+
+  ### `Assignment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `subject_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `subject_kind` | `string` |  |
+  | `subject_code` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `weekly_hours` | `int32` |  |
+  | `scheduled` | `int32` |  |
+  | `section_label` | `string` |  |
+  | `period_name` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,49 @@
+meta {
+  name: GenerateRooms
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/GenerateRooms
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": ""
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.GenerateRooms
+
+  `/ltedu.classroom.v1.ClassroomService/GenerateRooms` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `GenerateRoomsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+
+  ## Response — `GenerateRoomsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `created` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

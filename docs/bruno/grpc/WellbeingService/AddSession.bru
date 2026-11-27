@@ -1,0 +1,71 @@
+meta {
+  name: AddSession
+  type: grpc
+  seq: 14
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/AddSession
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "session": {
+        "id": "",
+        "case_id": "",
+        "held_on": "",
+        "kind": "",
+        "notes": "",
+        "next_steps": "",
+        "author_name": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.AddSession
+
+  `/ltedu.wellbeing.v1.WellbeingService/AddSession` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `AddSessionRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `session` | `PsychSession` |  |
+
+  ## Response — `AddSessionResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `session` | `PsychSession` |  |
+
+  ## Tipos
+
+  ### `PsychSession`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `case_id` | `string` |  |
+  | `held_on` | `string` |  |
+  | `kind` | `string` | individual \| family \| evaluation \| coordination |
+  | `notes` | `string` |  |
+  | `next_steps` | `string` |  |
+  | `author_name` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

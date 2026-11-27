@@ -1,0 +1,55 @@
+meta {
+  name: AdjustPermanence
+  type: grpc
+  seq: 4
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.participation.v1.ParticipationService/AdjustPermanence
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "enrollment_id": "",
+      "window_start": "",
+      "present": false,
+      "clear": false,
+      "reason": ""
+    }
+  '''
+}
+
+docs {
+  # ParticipationService.AdjustPermanence
+
+  `/ltedu.participation.v1.ParticipationService/AdjustPermanence` · unary · `ltedu/participation/v1/participation.proto`
+
+  ## Request — `AdjustPermanenceRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `enrollment_id` | `string` |  |
+  | `window_start` | `string` | First day of the window (YYYY-MM-DD) |
+  | `present` | `bool` |  |
+  | `clear` | `bool` | Removes the adjustment instead |
+  | `reason` | `string` |  |
+
+  ## Response — `AdjustPermanenceResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

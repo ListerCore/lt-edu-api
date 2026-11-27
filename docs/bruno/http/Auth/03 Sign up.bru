@@ -1,0 +1,37 @@
+meta {
+  name: Sign up
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/auth/sign-up
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "full_name": "",
+    "email": "",
+    "password": ""
+  }
+}
+
+script:post-response {
+  const token = res.body?.session?.token;
+  if (token) bru.setEnvVar("token", token);
+  if (res.body?.challenge_token) bru.setEnvVar("challengeToken", res.body.challenge_token);
+}
+
+docs {
+  # POST /auth/sign-up
+
+  Crea una cuenta. Header opcional `X-Captcha-Token`.
+
+  | Campo | Tipo |
+  |---|---|
+  | `full_name` | string |
+  | `email` | string |
+  | `password` | string |
+}

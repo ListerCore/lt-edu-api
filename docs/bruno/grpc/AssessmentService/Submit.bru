@@ -1,0 +1,55 @@
+meta {
+  name: Submit
+  type: grpc
+  seq: 9
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.assessment.v1.AssessmentService/Submit
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "section_id": "",
+      "assignment_id": "",
+      "term_id": "",
+      "sent": false
+    }
+  '''
+}
+
+docs {
+  # AssessmentService.Submit
+
+  The teacher sends the sheet to coordinación (or takes it back); assignment_id empty: the tutor's sheet
+
+  `/ltedu.assessment.v1.AssessmentService/Submit` · unary · `ltedu/assessment/v1/assessment.proto`
+
+  ## Request — `SubmitRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `section_id` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `term_id` | `string` |  |
+  | `sent` | `bool` |  |
+
+  ## Response — `SubmitResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

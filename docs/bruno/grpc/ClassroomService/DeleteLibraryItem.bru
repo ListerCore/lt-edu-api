@@ -1,0 +1,47 @@
+meta {
+  name: DeleteLibraryItem
+  type: grpc
+  seq: 15
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/DeleteLibraryItem
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.DeleteLibraryItem
+
+  `/ltedu.classroom.v1.ClassroomService/DeleteLibraryItem` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `DeleteLibraryItemRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `DeleteLibraryItemResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

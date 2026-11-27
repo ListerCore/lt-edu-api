@@ -1,0 +1,51 @@
+meta {
+  name: ReorderUnits
+  type: grpc
+  seq: 8
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/ReorderUnits
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "room_id": "",
+      "ids": [
+        ""
+      ]
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.ReorderUnits
+
+  `/ltedu.classroom.v1.ClassroomService/ReorderUnits` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `ReorderUnitsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `room_id` | `string` |  |
+  | `ids` | `repeated string` |  |
+
+  ## Response — `ReorderUnitsResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

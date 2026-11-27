@@ -1,0 +1,79 @@
+meta {
+  name: GetPermanenceBoard
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.participation.v1.ParticipationService/GetPermanenceBoard
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": ""
+    }
+  '''
+}
+
+docs {
+  # ParticipationService.GetPermanenceBoard
+
+  `/ltedu.participation.v1.ParticipationService/GetPermanenceBoard` · unary · `ltedu/participation/v1/participation.proto`
+
+  ## Request — `GetPermanenceBoardRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` | Empty: the period in course |
+
+  ## Response — `GetPermanenceBoardResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `rule` | `PermanenceRule` |  |
+  | `period_id` | `string` |  |
+  | `sections` | `repeated DistanceSection` |  |
+  | `can_edit_rule` | `bool` |  |
+
+  ## Tipos
+
+  ### `PermanenceRule`
+
+  A week (window_days) counts when the student was active on min_active_days of its days
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `window_days` | `int32` |  |
+  | `min_active_days` | `int32` |  |
+  | `inactive_days` | `int32` | Days without activity that raise a dropout alert |
+  | `low_percent` | `int32` | Permanence under this percent raises an alert |
+  | `updated_by_name` | `string` |  |
+  | `updated_at` | `string` |  |
+
+  ### `DistanceSection`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `variant` | `string` | virtual \| itinerant |
+  | `tutor_name` | `string` |  |
+  | `students` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

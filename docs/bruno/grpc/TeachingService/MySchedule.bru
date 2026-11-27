@@ -1,0 +1,90 @@
+meta {
+  name: MySchedule
+  type: grpc
+  seq: 11
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.teaching.v1.TeachingService/MySchedule
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # TeachingService.MySchedule
+
+  `/ltedu.teaching.v1.TeachingService/MySchedule` · unary · `ltedu/teaching/v1/teaching.proto`
+
+  ## Request — `MyScheduleRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `MyScheduleResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `kind` | `string` | teacher \| student \| none |
+  | `week_days` | `repeated int32` |  |
+  | `blocks` | `repeated TimeBlock` |  |
+  | `groups` | `repeated ScheduleGroup` |  |
+
+  ## Tipos
+
+  ### `TimeBlock`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `shift` | `string` | morning \| afternoon \| evening |
+  | `position` | `int32` |  |
+  | `starts_at` | `string` |  |
+  | `ends_at` | `string` |  |
+  | `kind` | `string` | class \| break |
+
+  ### `ScheduleGroup`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `title` | `string` |  |
+  | `detail` | `string` |  |
+  | `entries` | `repeated ScheduleEntry` |  |
+
+  ### `ScheduleEntry`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `shift` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `weekday` | `int32` |  |
+  | `block_id` | `string` |  |
+  | `starts_at` | `string` |  |
+  | `ends_at` | `string` |  |
+  | `room` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

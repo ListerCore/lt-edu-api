@@ -1,0 +1,124 @@
+meta {
+  name: GetStudent
+  type: grpc
+  seq: 17
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.attendance.v1.AttendanceService/GetStudent
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": ""
+    }
+  '''
+}
+
+docs {
+  # AttendanceService.GetStudent
+
+  `/ltedu.attendance.v1.AttendanceService/GetStudent` · unary · `ltedu/attendance/v1/attendance.proto`
+
+  ## Request — `GetStudentRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+
+  ## Response — `GetStudentResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `attendance` | `StudentAttendance` |  |
+
+  ## Tipos
+
+  ### `StudentAttendance`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student` | `CardHolder` |  |
+  | `section_label` | `string` |  |
+  | `limit` | `int32` |  |
+  | `today` | `DailyMark` | Not set: no mark today |
+  | `days` | `Tally` |  |
+  | `marks` | `repeated DailyMark` | Days that were not plain present, newest first |
+  | `subjects` | `repeated SubjectTally` |  |
+  | `justifications` | `repeated Justification` |  |
+
+  ### `CardHolder`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `kind` | `string` | student \| staff |
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `code` | `string` |  |
+  | `detail` | `string` |  |
+
+  ### `DailyMark`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `day` | `string` |  |
+  | `status` | `string` |  |
+  | `arrived_at` | `string` |  |
+  | `source` | `string` |  |
+  | `note` | `string` |  |
+
+  ### `Tally`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `present` | `int32` |  |
+  | `late` | `int32` |  |
+  | `absent` | `int32` |  |
+  | `justified` | `int32` |  |
+
+  ### `SubjectTally`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `section_label` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `classes` | `Tally` |  |
+
+  ### `Justification`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `section_label` | `string` |  |
+  | `from_day` | `string` |  |
+  | `to_day` | `string` |  |
+  | `reason` | `string` | health \| family \| procedure \| other |
+  | `description` | `string` |  |
+  | `status` | `string` | pending \| approved \| rejected |
+  | `submitted_name` | `string` |  |
+  | `submitted_at` | `string` |  |
+  | `reviewed_name` | `string` |  |
+  | `reviewed_at` | `string` |  |
+  | `review_note` | `string` |  |
+  | `absent_days` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

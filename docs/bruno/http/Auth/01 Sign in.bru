@@ -1,0 +1,41 @@
+meta {
+  name: Sign in
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/auth/sign-in
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "{{email}}",
+    "password": "{{password}}"
+  }
+}
+
+script:post-response {
+  const token = res.body?.session?.token;
+  if (token) bru.setEnvVar("token", token);
+  if (res.body?.challenge_token) bru.setEnvVar("challengeToken", res.body.challenge_token);
+}
+
+docs {
+  # POST /auth/sign-in
+
+  Comprueba email y contraseña. Header opcional `X-Captcha-Token` (Cloudflare Turnstile) cuando está configurado.
+
+  | Campo | Tipo |
+  |---|---|
+  | `email` | string |
+  | `password` | string |
+
+  200 — una de dos:
+  - `{session: {token, expires_at}}`
+  - paso de app autenticadora: `{challenge_token, method, email, expires_at}` → continuar con **Sign in verify**
+
+  El script guarda `token` (o `challengeToken`) en el entorno.
+}

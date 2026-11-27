@@ -1,0 +1,111 @@
+meta {
+  name: GenerateSchedules
+  type: grpc
+  seq: 23
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/GenerateSchedules
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": "",
+      "mode": "",
+      "target_id": "",
+      "note": ""
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.GenerateSchedules
+
+  Freezes a mode and target as a new version waiting for signatures (created false: nothing changed)
+
+  `/ltedu.documents.v1.DocumentsService/GenerateSchedules` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `GenerateSchedulesRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+  | `mode` | `string` |  |
+  | `target_id` | `string` |  |
+  | `note` | `string` | What changed, for the history |
+
+  ## Response — `GenerateSchedulesResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `document` | `IssuedDocument` |  |
+  | `version` | `DocumentVersion` |  |
+  | `created` | `bool` |  |
+
+  ## Tipos
+
+  ### `IssuedDocument`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `title` | `string` |  |
+  | `tracking_code` | `string` |  |
+  | `tracking_url` | `string` |  |
+  | `mode` | `string` | section \| grade \| teacher \| general, and the target (empty: all) |
+  | `target_id` | `string` |  |
+  | `versions` | `repeated DocumentVersion` |  |
+  | `events` | `repeated DocumentEvent` |  |
+  | `institution_name` | `string` |  |
+
+  ### `DocumentVersion`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `number` | `int32` |  |
+  | `verification_code` | `string` |  |
+  | `status` | `string` | pending \| published \| superseded \| cancelled |
+  | `note` | `string` |  |
+  | `created_name` | `string` |  |
+  | `created_at` | `string` |  |
+  | `published_at` | `string` |  |
+  | `signatures` | `repeated Signature` |  |
+  | `content_hash` | `string` |  |
+
+  ### `Signature`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `sort` | `int32` |  |
+  | `staff_id` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `string` |  |
+  | `signed_at` | `string` | RFC 3339; empty while waiting |
+  | `code` | `string` |  |
+
+  ### `DocumentEvent`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `version` | `int32` |  |
+  | `action` | `string` | generated \| signed \| published \| superseded \| cancelled \| signers (the signers of a pending version changed) |
+  | `actor` | `string` |  |
+  | `note` | `string` |  |
+  | `at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

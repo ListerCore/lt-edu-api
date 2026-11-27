@@ -1,0 +1,115 @@
+meta {
+  name: GetSummary
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.finance.v1.FinanceService/GetSummary
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": ""
+    }
+  '''
+}
+
+docs {
+  # FinanceService.GetSummary
+
+  `/ltedu.finance.v1.FinanceService/GetSummary` · unary · `ltedu/finance/v1/finance.proto`
+
+  ## Request — `GetSummaryRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+
+  ## Response — `GetSummaryResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `periods` | `repeated Period` |  |
+  | `period` | `Period` |  |
+  | `expected` | `int64` |  |
+  | `discounts` | `int64` |  |
+  | `collected` | `int64` |  |
+  | `pending` | `int64` |  |
+  | `overdue` | `int64` |  |
+  | `debtors` | `int32` |  |
+  | `students` | `int32` |  |
+  | `months` | `repeated MonthTotal` |  |
+  | `accounts` | `repeated Account` |  |
+  | `can_manage` | `bool` |  |
+  | `today` | `string` |  |
+
+  ## Tipos
+
+  ### `Period`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` |  |
+  | `name` | `string` |  |
+  | `season` | `string` | CEPRE: summer \| annual \| semester \| intensive \| review \| school \| other |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `term_scheme` | `string` |  |
+  | `status` | `string` | planning \| active \| closed |
+  | `terms` | `repeated Term` |  |
+  | `section_count` | `int32` |  |
+  | `capacity_total` | `int32` |  |
+
+  ### `Term`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `number` | `int32` |  |
+  | `name` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `status` | `string` | open \| closed |
+
+  ### `MonthTotal`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `month` | `string` |  |
+  | `expected` | `int64` |  |
+  | `collected` | `int64` |  |
+
+  ### `Account`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `placement` | `string` |  |
+  | `level_id` | `string` |  |
+  | `charged` | `int64` |  |
+  | `discounts` | `int64` |  |
+  | `paid` | `int64` |  |
+  | `overdue` | `int64` |  |
+  | `overdue_count` | `int32` |  |
+  | `oldest_due` | `string` |  |
+  | `last_reminder` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

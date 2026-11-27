@@ -1,0 +1,49 @@
+meta {
+  name: EditPost
+  type: grpc
+  seq: 29
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/EditPost
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "body": ""
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.EditPost
+
+  `/ltedu.classroom.v1.ClassroomService/EditPost` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `EditPostRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `body` | `string` |  |
+
+  ## Response — `EditPostResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

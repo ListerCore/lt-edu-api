@@ -1,0 +1,54 @@
+meta {
+  name: AutoFill
+  type: grpc
+  seq: 10
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.teaching.v1.TeachingService/AutoFill
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": "",
+      "section_id": ""
+    }
+  '''
+}
+
+docs {
+  # TeachingService.AutoFill
+
+  Fills the missing hours of a section (or of every section) without putting a teacher in two places at once
+
+  `/ltedu.teaching.v1.TeachingService/AutoFill` · unary · `ltedu/teaching/v1/teaching.proto`
+
+  ## Request — `AutoFillRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+  | `section_id` | `string` | Empty: every section of the period |
+
+  ## Response — `AutoFillResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `placed` | `int32` |  |
+  | `pending` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

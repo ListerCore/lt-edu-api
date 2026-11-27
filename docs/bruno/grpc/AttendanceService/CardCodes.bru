@@ -1,0 +1,64 @@
+meta {
+  name: CardCodes
+  type: grpc
+  seq: 19
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.attendance.v1.AttendanceService/CardCodes
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "kind": "",
+      "ids": [
+        ""
+      ]
+    }
+  '''
+}
+
+docs {
+  # AttendanceService.CardCodes
+
+  `/ltedu.attendance.v1.AttendanceService/CardCodes` · unary · `ltedu/attendance/v1/attendance.proto`
+
+  ## Request — `CardCodesRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `kind` | `string` | student \| staff |
+  | `ids` | `repeated string` |  |
+
+  ## Response — `CardCodesResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `codes` | `repeated CardCode` |  |
+
+  ## Tipos
+
+  ### `CardCode`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `payload` | `string` |  |
+  | `size` | `int32` | Side in modules, and the modules row by row as 0/1 |
+  | `modules` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

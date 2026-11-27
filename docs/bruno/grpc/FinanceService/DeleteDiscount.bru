@@ -1,0 +1,135 @@
+meta {
+  name: DeleteDiscount
+  type: grpc
+  seq: 13
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.finance.v1.FinanceService/DeleteDiscount
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": "",
+      "period_id": ""
+    }
+  '''
+}
+
+docs {
+  # FinanceService.DeleteDiscount
+
+  `/ltedu.finance.v1.FinanceService/DeleteDiscount` · unary · `ltedu/finance/v1/finance.proto`
+
+  ## Request — `DeleteDiscountRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+  | `period_id` | `string` |  |
+
+  ## Response — `DeleteDiscountResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `statement` | `Statement` |  |
+
+  ## Tipos
+
+  ### `Statement`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `charges` | `repeated Charge` |  |
+  | `payments` | `repeated Payment` |  |
+  | `discounts` | `repeated Discount` |  |
+  | `reminders` | `repeated Reminder` |  |
+  | `balance` | `int64` |  |
+  | `overdue` | `int64` |  |
+  | `can_manage` | `bool` |  |
+  | `today` | `string` |  |
+
+  ### `Charge`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `concept` | `string` | enrollment \| tuition \| apafa \| other |
+  | `name` | `string` |  |
+  | `amount` | `int64` |  |
+  | `discount` | `int64` |  |
+  | `paid` | `int64` |  |
+  | `balance` | `int64` |  |
+  | `due_on` | `string` |  |
+  | `status` | `string` | pending \| void |
+  | `void_reason` | `string` |  |
+
+  ### `Payment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `receipt` | `string` |  |
+  | `paid_on` | `string` |  |
+  | `amount` | `int64` |  |
+  | `method` | `string` | cash \| transfer \| yape \| plin \| card \| deposit |
+  | `reference` | `string` |  |
+  | `payer` | `string` |  |
+  | `notes` | `string` |  |
+  | `status` | `string` | valid \| annulled |
+  | `annul_reason` | `string` |  |
+  | `received_name` | `string` |  |
+  | `allocations` | `repeated Allocation` |  |
+
+  ### `Allocation`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `charge_id` | `string` |  |
+  | `charge_name` | `string` |  |
+  | `amount` | `int64` |  |
+
+  ### `Discount`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `period_id` | `string` |  |
+  | `percent` | `double` |  |
+  | `tuition_only` | `bool` |  |
+  | `reason` | `string` |  |
+
+  ### `Reminder`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `message` | `string` |  |
+  | `overdue` | `int64` |  |
+  | `sent_name` | `string` |  |
+  | `sent_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

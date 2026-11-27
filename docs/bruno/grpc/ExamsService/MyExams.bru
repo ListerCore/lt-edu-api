@@ -1,0 +1,149 @@
+meta {
+  name: MyExams
+  type: grpc
+  seq: 19
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.exams.v1.ExamsService/MyExams
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # ExamsService.MyExams
+
+  `/ltedu.exams.v1.ExamsService/MyExams` · unary · `ltedu/exams/v1/exams.proto`
+
+  ## Request — `MyExamsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `MyExamsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `students` | `repeated StudentExams` |  |
+
+  ## Tipos
+
+  ### `StudentExams`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `mocks` | `repeated StudentMock` |  |
+  | `admissions` | `repeated Admission` |  |
+
+  ### `StudentMock`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `mock` | `MockExam` |  |
+  | `sheet` | `AnswerSheet` |  |
+  | `takers` | `int32` |  |
+  | `in_level` | `int32` |  |
+
+  ### `MockExam`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `name` | `string` |  |
+  | `held_on` | `string` |  |
+  | `duration_minutes` | `int32` |  |
+  | `points_right` | `double` |  |
+  | `points_wrong` | `double` |  |
+  | `status` | `string` | draft \| published |
+  | `notes` | `string` |  |
+  | `courses` | `repeated MockCourse` |  |
+  | `weights` | `repeated MockWeight` |  |
+  | `questions` | `int32` |  |
+  | `keyed` | `int32` |  |
+  | `sheets` | `int32` |  |
+
+  ### `MockCourse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `questions` | `int32` |  |
+
+  ### `MockWeight`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `level_id` | `string` |  |
+  | `course_code` | `string` |  |
+  | `weight` | `double` |  |
+
+  ### `AnswerSheet`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `student_code` | `string` |  |
+  | `student_name` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `answers` | `string` |  |
+  | `source` | `string` |  |
+  | `score` | `double` |  |
+  | `right` | `int32` |  |
+  | `wrong` | `int32` |  |
+  | `blank` | `int32` |  |
+  | `by_course` | `map<string, CourseScore>` |  |
+  | `rank_section` | `int32` |  |
+  | `rank_level` | `int32` |  |
+  | `rank_all` | `int32` |  |
+
+  ### `CourseScore`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `right` | `int32` |  |
+  | `wrong` | `int32` |  |
+  | `blank` | `int32` |  |
+  | `score` | `double` |  |
+
+  ### `Admission`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `university` | `string` |  |
+  | `career` | `string` |  |
+  | `exam` | `string` |  |
+  | `admitted_on` | `string` |  |
+  | `place` | `optional int32` |  |
+  | `score` | `optional double` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

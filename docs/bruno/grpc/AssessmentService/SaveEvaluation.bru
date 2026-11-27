@@ -1,0 +1,154 @@
+meta {
+  name: SaveEvaluation
+  type: grpc
+  seq: 4
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.assessment.v1.AssessmentService/SaveEvaluation
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "assignment_id": "",
+      "term_id": "",
+      "id": "",
+      "name": "",
+      "weight": 0,
+      "held_on": ""
+    }
+  '''
+}
+
+docs {
+  # AssessmentService.SaveEvaluation
+
+  `/ltedu.assessment.v1.AssessmentService/SaveEvaluation` · unary · `ltedu/assessment/v1/assessment.proto`
+
+  ## Request — `SaveEvaluationRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `term_id` | `string` |  |
+  | `id` | `string` | Empty: a new evaluation |
+  | `name` | `string` |  |
+  | `weight` | `int32` |  |
+  | `held_on` | `string` |  |
+
+  ## Response — `SaveEvaluationResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `sheet` | `Sheet` |  |
+
+  ## Tipos
+
+  ### `Sheet`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `kind` | `string` | literal \| numeric \| tutor |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `level_name` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `term_id` | `string` |  |
+  | `term_name` | `string` |  |
+  | `locked` | `bool` |  |
+  | `can_edit` | `bool` |  |
+  | `passing_grade` | `optional int32` |  |
+  | `conduct` | `bool` |  |
+  | `students` | `repeated StudentRef` |  |
+  | `competencies` | `repeated Competency` |  |
+  | `marks` | `repeated LevelMark` |  |
+  | `evaluations` | `repeated Evaluation` |  |
+  | `scores` | `repeated ScoreMark` |  |
+  | `conduct_marks` | `repeated ConductMark` |  |
+  | `comments` | `repeated TutorComment` |  |
+  | `submitted` | `Submission` |  |
+  | `tutor_name` | `string` |  |
+
+  ### `StudentRef`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `document` | `string` |  |
+
+  ### `Competency`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `transversal` | `bool` |  |
+
+  ### `LevelMark`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `competency_id` | `string` |  |
+  | `level` | `string` |  |
+  | `conclusion` | `string` |  |
+
+  ### `Evaluation`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `weight` | `int32` |  |
+  | `held_on` | `string` |  |
+
+  ### `ScoreMark`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `evaluation_id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `score` | `int32` |  |
+
+  ### `ConductMark`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `score` | `int32` |  |
+  | `note` | `string` |  |
+
+  ### `TutorComment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `comment` | `string` |  |
+
+  ### `Submission`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `submitted_name` | `string` |  |
+  | `submitted_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

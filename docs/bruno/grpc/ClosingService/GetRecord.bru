@@ -1,0 +1,69 @@
+meta {
+  name: GetRecord
+  type: grpc
+  seq: 10
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.assessment.v1.ClosingService/GetRecord
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # ClosingService.GetRecord
+
+  `/ltedu.assessment.v1.ClosingService/GetRecord` · unary · `ltedu/assessment/v1/closing.proto`
+
+  ## Request — `GetRecordRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `GetRecordResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `record` | `RecordInfo` |  |
+  | `content` | `string` | The frozen acta as JSON (title, institution, groups, rows, summary, legend, signatures…) |
+
+  ## Tipos
+
+  ### `RecordInfo`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `kind` | `string` |  |
+  | `number` | `int32` |  |
+  | `code` | `string` |  |
+  | `status` | `string` | issued \| replaced |
+  | `issued_name` | `string` |  |
+  | `issued_at` | `string` |  |
+  | `act_version_id` | `string` | Phase E7: the newest signed version of the acta (empty until generated) and its state |
+  | `act_status` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,75 @@
+meta {
+  name: SavePromotionRule
+  type: grpc
+  seq: 13
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.assessment.v1.ClosingService/SavePromotionRule
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "level_id": "",
+      "automatic": false,
+      "areas": 0,
+      "note": ""
+    }
+  '''
+}
+
+docs {
+  # ClosingService.SavePromotionRule
+
+  `/ltedu.assessment.v1.ClosingService/SavePromotionRule` · unary · `ltedu/assessment/v1/closing.proto`
+
+  ## Request — `SavePromotionRuleRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `level_id` | `string` |  |
+  | `automatic` | `bool` |  |
+  | `areas` | `int32` |  |
+  | `note` | `string` |  |
+
+  ## Response — `SavePromotionRuleResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `rules` | `repeated PromotionRule` |  |
+  | `can_manage` | `bool` |  |
+
+  ## Tipos
+
+  ### `PromotionRule`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `level_id` | `string` |  |
+  | `level_code` | `string` |  |
+  | `level_name` | `string` |  |
+  | `automatic` | `bool` |  |
+  | `areas` | `int32` |  |
+  | `note` | `string` |  |
+  | `custom` | `bool` | false: the rule of the code (default_*) |
+  | `updated_name` | `string` |  |
+  | `updated_at` | `string` |  |
+  | `default_name` | `string` |  |
+  | `default_areas` | `int32` |  |
+  | `default_automatic` | `bool` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

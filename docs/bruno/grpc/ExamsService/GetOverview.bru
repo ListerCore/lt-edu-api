@@ -1,0 +1,139 @@
+meta {
+  name: GetOverview
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.exams.v1.ExamsService/GetOverview
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": ""
+    }
+  '''
+}
+
+docs {
+  # ExamsService.GetOverview
+
+  `/ltedu.exams.v1.ExamsService/GetOverview` · unary · `ltedu/exams/v1/exams.proto`
+
+  ## Request — `GetOverviewRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+
+  ## Response — `GetOverviewResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `periods` | `repeated Period` |  |
+  | `period` | `Period` |  |
+  | `levels` | `repeated Level` |  |
+  | `courses` | `repeated Course` |  |
+  | `mocks` | `repeated MockExam` |  |
+  | `can_manage` | `bool` |  |
+  | `can_write_bank` | `bool` |  |
+  | `can_load` | `bool` |  |
+
+  ## Tipos
+
+  ### `Period`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` |  |
+  | `name` | `string` |  |
+  | `season` | `string` | CEPRE: summer \| annual \| semester \| intensive \| review \| school \| other |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `term_scheme` | `string` |  |
+  | `status` | `string` | planning \| active \| closed |
+  | `terms` | `repeated Term` |  |
+  | `section_count` | `int32` |  |
+  | `capacity_total` | `int32` |  |
+
+  ### `Term`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `number` | `int32` |  |
+  | `name` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `ends_on` | `string` |  |
+  | `status` | `string` | open \| closed |
+
+  ### `Level`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+
+  ### `Course`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `topics` | `repeated string` |  |
+  | `hours` | `map<string, int32>` | level id → weekly hours |
+  | `bank` | `int32` |  |
+
+  ### `MockExam`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `name` | `string` |  |
+  | `held_on` | `string` |  |
+  | `duration_minutes` | `int32` |  |
+  | `points_right` | `double` |  |
+  | `points_wrong` | `double` |  |
+  | `status` | `string` | draft \| published |
+  | `notes` | `string` |  |
+  | `courses` | `repeated MockCourse` |  |
+  | `weights` | `repeated MockWeight` |  |
+  | `questions` | `int32` |  |
+  | `keyed` | `int32` |  |
+  | `sheets` | `int32` |  |
+
+  ### `MockCourse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `questions` | `int32` |  |
+
+  ### `MockWeight`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `level_id` | `string` |  |
+  | `course_code` | `string` |  |
+  | `weight` | `double` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

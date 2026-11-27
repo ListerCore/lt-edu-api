@@ -1,0 +1,102 @@
+meta {
+  name: ListRoll
+  type: grpc
+  seq: 25
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/ListRoll
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "filter": {
+        "period_id": "",
+        "level_id": "",
+        "grade_id": "",
+        "section_id": "",
+        "siagie_status": "",
+        "all": false
+      }
+    }
+  '''
+}
+
+docs {
+  # PeopleService.ListRoll
+
+  `/ltedu.people.v1.PeopleService/ListRoll` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `ListRollRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `filter` | `RollFilter` |  |
+
+  ## Response — `ListRollResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `rows` | `repeated RollRow` |  |
+  | `pending` | `int32` |  |
+  | `exported` | `int32` |  |
+  | `observed` | `int32` |  |
+  | `exempt` | `int32` |  |
+  | `can_manage` | `bool` |  |
+
+  ## Tipos
+
+  ### `RollFilter`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `period_id` | `string` |  |
+  | `level_id` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `siagie_status` | `string` | pending \| exported \| observed, empty for all |
+  | `all` | `bool` | Also withdrawn and transferred |
+
+  ### `RollRow`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `enrollment_id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_code` | `string` |  |
+  | `document_type` | `string` |  |
+  | `document_number` | `string` |  |
+  | `student_name` | `string` |  |
+  | `sex` | `string` |  |
+  | `birth_date` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_name` | `string` |  |
+  | `attention_mode` | `string` |  |
+  | `kind` | `string` |  |
+  | `status` | `string` |  |
+  | `enrolled_on` | `string` |  |
+  | `religion_exempt` | `bool` |  |
+  | `siagie_status` | `string` | pending \| exported \| observed |
+  | `siagie_note` | `string` |  |
+  | `siagie_exported_at` | `string` |  |
+  | `placement` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

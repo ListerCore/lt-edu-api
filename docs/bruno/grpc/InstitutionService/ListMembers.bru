@@ -1,0 +1,66 @@
+meta {
+  name: ListMembers
+  type: grpc
+  seq: 6
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.institution.v1.InstitutionService/ListMembers
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # InstitutionService.ListMembers
+
+  Staff accesses (Configuración › Usuarios), dirección only. Granting to an email without an account leaves an invitation the person accepts by signing up with it
+
+  `/ltedu.institution.v1.InstitutionService/ListMembers` · unary · `ltedu/institution/v1/institution.proto`
+
+  ## Request — `ListMembersRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `ListMembersResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `members` | `repeated Member` |  |
+  | `grantable_roles` | `repeated string` | Role codes this page can give in the institution's kind |
+  | `self_user_id` | `string` | The person asking, who cannot revoke their own access |
+
+  ## Tipos
+
+  ### `Member`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` | Role assignment id, or invitation id when pending |
+  | `pending` | `bool` |  |
+  | `user_id` | `string` |  |
+  | `email` | `string` |  |
+  | `full_name` | `string` |  |
+  | `role` | `string` |  |
+  | `since` | `string` | RFC 3339: granted or invited at; last sign-in empty when never |
+  | `last_sign_in_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

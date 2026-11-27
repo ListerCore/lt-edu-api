@@ -1,0 +1,93 @@
+meta {
+  name: SavePlatformSheet
+  type: grpc
+  seq: 4
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.institution.v1.InstitutionService/SavePlatformSheet
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "platform": {
+        "platform_name": "",
+        "url": "",
+        "technology": "",
+        "administrator": "",
+        "access_profiles": "",
+        "hosting_kind": "",
+        "hosting_other": "",
+        "provider": "",
+        "instance": "",
+        "contract_reference": "",
+        "service_status": "",
+        "valid_until": "",
+        "technical_lead": "",
+        "technical_lead_specialty": "",
+        "technical_lead_cip": "",
+        "updated_by_name": "",
+        "updated_at": "",
+        "files": 0
+      }
+    }
+  '''
+}
+
+docs {
+  # InstitutionService.SavePlatformSheet
+
+  `/ltedu.institution.v1.InstitutionService/SavePlatformSheet` · unary · `ltedu/institution/v1/institution.proto`
+
+  ## Request — `SavePlatformSheetRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `platform` | `PlatformSheet` |  |
+
+  ## Response — `SavePlatformSheetResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `platform` | `PlatformSheet` |  |
+
+  ## Tipos
+
+  ### `PlatformSheet`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `platform_name` | `string` |  |
+  | `url` | `string` |  |
+  | `technology` | `string` |  |
+  | `administrator` | `string` |  |
+  | `access_profiles` | `string` |  |
+  | `hosting_kind` | `string` | hosting \| own_server \| other |
+  | `hosting_other` | `string` |  |
+  | `provider` | `string` |  |
+  | `instance` | `string` |  |
+  | `contract_reference` | `string` |  |
+  | `service_status` | `string` |  |
+  | `valid_until` | `string` | YYYY-MM-DD or empty |
+  | `technical_lead` | `string` |  |
+  | `technical_lead_specialty` | `string` |  |
+  | `technical_lead_cip` | `string` |  |
+  | `updated_by_name` | `string` | Read-only |
+  | `updated_at` | `string` |  |
+  | `files` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,71 @@
+meta {
+  name: ListStudents
+  type: grpc
+  seq: 3
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.programs.v1.ProgramsService/ListStudents
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "level_id": "",
+      "query": ""
+    }
+  '''
+}
+
+docs {
+  # ProgramsService.ListStudents
+
+  `/ltedu.programs.v1.ProgramsService/ListStudents` · unary · `ltedu/programs/v1/programs.proto`
+
+  ## Request — `ListStudentsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `level_id` | `string` |  |
+  | `query` | `string` |  |
+
+  ## Response — `ListStudentsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `students` | `repeated StudentProgress` |  |
+
+  ## Tipos
+
+  ### `StudentProgress`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `document` | `string` |  |
+  | `status` | `string` |  |
+  | `semester` | `string` |  |
+  | `approved_credits` | `int32` |  |
+  | `total_credits` | `int32` |  |
+  | `modules` | `int32` |  |
+  | `certified` | `int32` |  |
+  | `degree` | `bool` |  |
+  | `efsrt_done` | `int32` |  |
+  | `efsrt_total` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

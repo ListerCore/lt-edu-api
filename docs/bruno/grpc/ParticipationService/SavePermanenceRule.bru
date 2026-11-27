@@ -1,0 +1,71 @@
+meta {
+  name: SavePermanenceRule
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.participation.v1.ParticipationService/SavePermanenceRule
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "rule": {
+        "window_days": 0,
+        "min_active_days": 0,
+        "inactive_days": 0,
+        "low_percent": 0,
+        "updated_by_name": "",
+        "updated_at": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # ParticipationService.SavePermanenceRule
+
+  `/ltedu.participation.v1.ParticipationService/SavePermanenceRule` · unary · `ltedu/participation/v1/participation.proto`
+
+  ## Request — `SavePermanenceRuleRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `rule` | `PermanenceRule` |  |
+
+  ## Response — `SavePermanenceRuleResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `rule` | `PermanenceRule` |  |
+
+  ## Tipos
+
+  ### `PermanenceRule`
+
+  A week (window_days) counts when the student was active on min_active_days of its days
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `window_days` | `int32` |  |
+  | `min_active_days` | `int32` |  |
+  | `inactive_days` | `int32` | Days without activity that raise a dropout alert |
+  | `low_percent` | `int32` | Permanence under this percent raises an alert |
+  | `updated_by_name` | `string` |  |
+  | `updated_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

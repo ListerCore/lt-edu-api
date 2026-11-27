@@ -1,0 +1,64 @@
+meta {
+  name: SchedulesPdf
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/SchedulesPdf
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": "",
+      "mode": "",
+      "target_id": ""
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.SchedulesPdf
+
+  `/ltedu.documents.v1.DocumentsService/SchedulesPdf` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `SchedulesPdfRequest`
+
+  The preview of the timetables as they are now (crossed VISTA PREVIA, without codes)
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+  | `mode` | `string` | section \| grade \| teacher \| general |
+  | `target_id` | `string` | A section, grade or staff id; empty: all of them |
+
+  ## Response — `SchedulesPdfResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file` | `PdfFile` |  |
+
+  ## Tipos
+
+  ### `PdfFile`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file_name` | `string` |  |
+  | `content` | `bytes` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

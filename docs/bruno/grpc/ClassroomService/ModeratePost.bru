@@ -1,0 +1,53 @@
+meta {
+  name: ModeratePost
+  type: grpc
+  seq: 31
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/ModeratePost
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "pinned": false,
+      "hidden": false,
+      "reason": ""
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.ModeratePost
+
+  `/ltedu.classroom.v1.ClassroomService/ModeratePost` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `ModeratePostRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `pinned` | `bool` |  |
+  | `hidden` | `bool` |  |
+  | `reason` | `string` |  |
+
+  ## Response — `ModeratePostResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

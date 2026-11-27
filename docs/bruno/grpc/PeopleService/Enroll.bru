@@ -1,0 +1,101 @@
+meta {
+  name: Enroll
+  type: grpc
+  seq: 13
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/Enroll
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": "",
+      "period_id": "",
+      "level_id": "",
+      "grade_id": "",
+      "section_id": "",
+      "kind": "",
+      "enrolled_on": "",
+      "origin": "",
+      "notes": "",
+      "unit_ids": [
+        ""
+      ]
+    }
+  '''
+}
+
+docs {
+  # PeopleService.Enroll
+
+  `/ltedu.people.v1.PeopleService/Enroll` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `EnrollRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `level_id` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `kind` | `string` |  |
+  | `enrolled_on` | `string` |  |
+  | `origin` | `string` |  |
+  | `notes` | `string` |  |
+  | `unit_ids` | `repeated string` | Institutes; empty enrolls every unit of the semester |
+
+  ## Response — `EnrollResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `enrollment` | `Enrollment` |  |
+
+  ## Tipos
+
+  ### `Enrollment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `student_document` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `grade_short` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_name` | `string` |  |
+  | `shift` | `string` |  |
+  | `attention_mode` | `string` |  |
+  | `kind` | `string` | new \| continuing \| transfer_in \| re_entry |
+  | `status` | `string` | active \| withdrawn \| transferred \| completed |
+  | `enrolled_on` | `string` |  |
+  | `ended_on` | `string` |  |
+  | `origin` | `string` |  |
+  | `destination` | `string` |  |
+  | `notes` | `string` |  |
+  | `unit_ids` | `repeated string` |  |
+  | `credits` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

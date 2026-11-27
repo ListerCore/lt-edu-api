@@ -1,0 +1,93 @@
+meta {
+  name: SaveUnit
+  type: grpc
+  seq: 6
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/SaveUnit
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "room_id": "",
+      "title": "",
+      "summary": "",
+      "opens_on": "",
+      "published": false
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.SaveUnit
+
+  `/ltedu.classroom.v1.ClassroomService/SaveUnit` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `SaveUnitRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` | Empty id creates it at the end of room_id |
+  | `room_id` | `string` |  |
+  | `title` | `string` |  |
+  | `summary` | `string` |  |
+  | `opens_on` | `string` |  |
+  | `published` | `bool` |  |
+
+  ## Response — `SaveUnitResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `unit` | `Unit` |  |
+
+  ## Tipos
+
+  ### `Unit`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `title` | `string` |  |
+  | `summary` | `string` |  |
+  | `opens_on` | `string` | YYYY-MM-DD or empty (open as soon as published) |
+  | `published` | `bool` |  |
+  | `items` | `repeated Item` |  |
+
+  ### `Item`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `unit_id` | `string` |  |
+  | `kind` | `string` | reading \| file \| video \| link \| live \| activity \| quiz \| task \| forum |
+  | `title` | `string` |  |
+  | `body` | `string` |  |
+  | `url` | `string` |  |
+  | `complementary` | `bool` |  |
+  | `starts_at` | `string` | live only: RFC 3339 start and length |
+  | `duration_minutes` | `optional int32` |  |
+  | `recording_url` | `string` |  |
+  | `library_item_id` | `string` | Taken from the library: body, url and files come from there |
+  | `published` | `bool` |  |
+  | `files` | `int32` |  |
+  | `viewed` | `bool` | For a student: whether they opened it. For staff: how many students did |
+  | `views` | `int32` |  |
+  | `provider` | `string` | live only: platform (video inside ListerCore Edu) \| meet (url is the external link). Empty: meet |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

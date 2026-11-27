@@ -1,0 +1,110 @@
+meta {
+  name: ListStudents
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/ListStudents
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "query": "",
+      "status": "",
+      "period_id": "",
+      "level_id": "",
+      "grade_id": "",
+      "section_id": "",
+      "not_enrolled": false,
+      "limit": 0,
+      "offset": 0
+    }
+  '''
+}
+
+docs {
+  # PeopleService.ListStudents
+
+  `/ltedu.people.v1.PeopleService/ListStudents` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `ListStudentsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `query` | `string` |  |
+  | `status` | `string` |  |
+  | `period_id` | `string` | Filters by enrollment in this period (and shows it); empty shows the latest enrollment |
+  | `level_id` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `not_enrolled` | `bool` | Only students not enrolled in period_id |
+  | `limit` | `int32` |  |
+  | `offset` | `int32` |  |
+
+  ## Response — `ListStudentsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `students` | `repeated Student` |  |
+  | `total` | `int32` |  |
+
+  ## Tipos
+
+  ### `Student`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `document_type` | `string` | dni \| ce \| passport \| other |
+  | `document_number` | `string` |  |
+  | `given_names` | `string` |  |
+  | `paternal_surname` | `string` |  |
+  | `maternal_surname` | `string` |  |
+  | `birth_date` | `string` |  |
+  | `sex` | `string` | f \| m \| empty |
+  | `email` | `string` |  |
+  | `phone` | `string` |  |
+  | `address` | `string` |  |
+  | `special_needs` | `bool` |  |
+  | `notes` | `string` |  |
+  | `status` | `string` | active \| inactive \| graduated \| withdrawn |
+  | `access` | `string` | none \| invited \| account |
+  | `enrollment` | `EnrollmentSummary` |  |
+  | `primary_guardian_name` | `string` |  |
+  | `primary_guardian_phone` | `string` |  |
+  | `guardian_count` | `int32` |  |
+
+  ### `EnrollmentSummary`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `grade_short` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_name` | `string` |  |
+  | `shift` | `string` |  |
+  | `status` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

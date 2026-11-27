@@ -1,0 +1,79 @@
+meta {
+  name: SetPlanStatus
+  type: grpc
+  seq: 29
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/SetPlanStatus
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "status": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.SetPlanStatus
+
+  `/ltedu.wellbeing.v1.WellbeingService/SetPlanStatus` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `SetPlanStatusRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `status` | `string` | approved \| draft |
+
+  ## Response — `SetPlanStatusResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `plan` | `IndividualPlan` |  |
+
+  ## Tipos
+
+  ### `IndividualPlan`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `specialist_id` | `string` |  |
+  | `specialist_name` | `string` |  |
+  | `needs` | `string` |  |
+  | `strengths` | `string` |  |
+  | `educational_response` | `string` |  |
+  | `curricular_adaptations` | `string` |  |
+  | `access_adaptations` | `string` |  |
+  | `evaluation_criteria` | `string` |  |
+  | `actors` | `string` |  |
+  | `family_commitments` | `string` |  |
+  | `status` | `string` | draft \| approved |
+  | `approved_name` | `string` |  |
+  | `approved_on` | `string` |  |
+  | `updated_at` | `string` |  |
+  | `therapies` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

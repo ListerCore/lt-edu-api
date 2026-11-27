@@ -1,0 +1,82 @@
+meta {
+  name: GeneratePlacementAct
+  type: grpc
+  seq: 9
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/GeneratePlacementAct
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "placement_id": "",
+      "note": ""
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.GeneratePlacementAct
+
+  Acta de ubicación o convalidación: a version for its signers (sign with SignVersion), and its PDF
+
+  `/ltedu.documents.v1.DocumentsService/GeneratePlacementAct` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `GeneratePlacementActRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `placement_id` | `string` |  |
+  | `note` | `string` |  |
+
+  ## Response — `GeneratePlacementActResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `version` | `DocumentVersion` |  |
+  | `act_code` | `string` | "N.° 003-2026" |
+
+  ## Tipos
+
+  ### `DocumentVersion`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `number` | `int32` |  |
+  | `verification_code` | `string` |  |
+  | `status` | `string` | pending \| published \| superseded \| cancelled |
+  | `note` | `string` |  |
+  | `created_name` | `string` |  |
+  | `created_at` | `string` |  |
+  | `published_at` | `string` |  |
+  | `signatures` | `repeated Signature` |  |
+  | `content_hash` | `string` |  |
+
+  ### `Signature`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `sort` | `int32` |  |
+  | `staff_id` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `string` |  |
+  | `signed_at` | `string` | RFC 3339; empty while waiting |
+  | `code` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

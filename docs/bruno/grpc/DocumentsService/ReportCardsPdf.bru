@@ -1,0 +1,66 @@
+meta {
+  name: ReportCardsPdf
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/ReportCardsPdf
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "section_id": "",
+      "student_id": "",
+      "period_id": "",
+      "term_id": ""
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.ReportCardsPdf
+
+  `/ltedu.documents.v1.DocumentsService/ReportCardsPdf` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `ReportCardsPdfRequest`
+
+  One student's card (student_id, families included) or every card of a section (section_id, staff)
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `section_id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `term_id` | `string` |  |
+
+  ## Response — `ReportCardsPdfResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file` | `PdfFile` |  |
+
+  ## Tipos
+
+  ### `PdfFile`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file_name` | `string` |  |
+  | `content` | `bytes` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

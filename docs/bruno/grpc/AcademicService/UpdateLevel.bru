@@ -1,0 +1,103 @@
+meta {
+  name: UpdateLevel
+  type: grpc
+  seq: 6
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.AcademicService/UpdateLevel
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "level": {
+        "code": "",
+        "name": "",
+        "description": "",
+        "formative_level": "",
+        "credits": 0,
+        "attention_modes": [
+          ""
+        ],
+        "is_active": false
+      }
+    }
+  '''
+}
+
+docs {
+  # AcademicService.UpdateLevel
+
+  `/ltedu.academic.v1.AcademicService/UpdateLevel` · unary · `ltedu/academic/v1/academic.proto`
+
+  ## Request — `UpdateLevelRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `level` | `LevelInput` |  |
+
+  ## Response — `UpdateLevelResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `level` | `Level` |  |
+
+  ## Tipos
+
+  ### `LevelInput`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `description` | `string` |  |
+  | `formative_level` | `string` |  |
+  | `credits` | `optional int32` |  |
+  | `attention_modes` | `repeated string` |  |
+  | `is_active` | `bool` |  |
+
+  ### `Level`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `description` | `string` |  |
+  | `position` | `int32` |  |
+  | `formative_level` | `string` | technical \| professional_technical \| professional (IEST) |
+  | `credits` | `optional int32` |  |
+  | `attention_modes` | `repeated string` |  |
+  | `is_active` | `bool` |  |
+  | `grades` | `repeated Grade` |  |
+  | `section_count` | `int32` |  |
+
+  ### `Grade`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `level_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `short_name` | `string` |  |
+  | `position` | `int32` |  |
+  | `section_count` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

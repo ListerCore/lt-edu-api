@@ -1,0 +1,81 @@
+meta {
+  name: SiagieXlsx
+  type: grpc
+  seq: 8
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/SiagieXlsx
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "filter": {
+        "period_id": "",
+        "level_id": "",
+        "grade_id": "",
+        "section_id": "",
+        "siagie_status": "",
+        "all": false
+      },
+      "mark_exported": false
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.SiagieXlsx
+
+  `/ltedu.documents.v1.DocumentsService/SiagieXlsx` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `SiagieXlsxRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `filter` | `RollQuery` |  |
+  | `mark_exported` | `bool` | Mark the enrollments of the file as exported |
+
+  ## Response — `SiagieXlsxResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file` | `PdfFile` |  |
+  | `marked` | `int32` |  |
+
+  ## Tipos
+
+  ### `RollQuery`
+
+  Same as ltedu.people.v1.RollFilter
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `period_id` | `string` |  |
+  | `level_id` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `siagie_status` | `string` |  |
+  | `all` | `bool` |  |
+
+  ### `PdfFile`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file_name` | `string` |  |
+  | `content` | `bytes` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

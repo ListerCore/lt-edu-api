@@ -1,0 +1,71 @@
+meta {
+  name: SaveDelivery
+  type: grpc
+  seq: 17
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/SaveDelivery
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "delivery": {
+        "unit_id": "",
+        "student_id": "",
+        "student_name": "",
+        "student_code": "",
+        "delivered_on": "",
+        "returned_on": "",
+        "notes": "",
+        "recorded_by_name": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.SaveDelivery
+
+  `/ltedu.classroom.v1.ClassroomService/SaveDelivery` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `SaveDeliveryRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `delivery` | `Delivery` | Empty delivered_on removes the record |
+
+  ## Response — `SaveDeliveryResponse`
+
+  _Sin campos._
+
+  ## Tipos
+
+  ### `Delivery`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `unit_id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `delivered_on` | `string` | YYYY-MM-DD or empty |
+  | `returned_on` | `string` |  |
+  | `notes` | `string` |  |
+  | `recorded_by_name` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,71 @@
+meta {
+  name: RecentScans
+  type: grpc
+  seq: 3
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.attendance.v1.AttendanceService/RecentScans
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "limit": 0
+    }
+  '''
+}
+
+docs {
+  # AttendanceService.RecentScans
+
+  `/ltedu.attendance.v1.AttendanceService/RecentScans` · unary · `ltedu/attendance/v1/attendance.proto`
+
+  ## Request — `RecentScansRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `limit` | `int32` |  |
+
+  ## Response — `RecentScansResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `scans` | `repeated GateScan` |  |
+
+  ## Tipos
+
+  ### `GateScan`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `holder` | `CardHolder` |  |
+  | `scanned_at` | `string` |  |
+  | `source` | `string` | qr \| manual |
+  | `status` | `string` |  |
+
+  ### `CardHolder`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `kind` | `string` | student \| staff |
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `code` | `string` |  |
+  | `detail` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

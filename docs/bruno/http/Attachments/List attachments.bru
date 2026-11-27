@@ -1,0 +1,23 @@
+meta {
+  name: List attachments
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/panel/attachments?institution={{institution}}&owner_kind=&owner_id=
+  body: none
+  auth: inherit
+}
+
+params:query {
+  institution: {{institution}}
+  owner_kind: 
+  owner_id: 
+}
+
+docs {
+  # GET /panel/attachments?institution=&owner_kind=&owner_id=
+
+  200 `{attachments: [...], can_edit, categories, max_files}`
+}

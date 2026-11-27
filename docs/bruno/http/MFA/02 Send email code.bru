@@ -1,0 +1,33 @@
+meta {
+  name: Send email code
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/auth/mfa/email-code
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "purpose": "mfa_enable"
+  }
+}
+
+script:post-response {
+  if (res.body?.challenge_token) bru.setEnvVar("challengeToken", res.body.challenge_token);
+}
+
+docs {
+  # POST /auth/mfa/email-code
+
+  Envía el código que confirma un cambio.
+
+  | Campo | Valores |
+  |---|---|
+  | `purpose` | `mfa_enable` \| `mfa_disable` \| `mfa_recovery_codes` |
+
+  200 `{challenge_token, email, expires_at}` (el script guarda `challengeToken`)
+}

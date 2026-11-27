@@ -1,0 +1,58 @@
+meta {
+  name: VersionPdf
+  type: grpc
+  seq: 25
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/VersionPdf
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "version_id": ""
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.VersionPdf
+
+  `/ltedu.documents.v1.DocumentsService/VersionPdf` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `VersionPdfRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `version_id` | `string` |  |
+
+  ## Response — `VersionPdfResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file` | `PdfFile` |  |
+
+  ## Tipos
+
+  ### `PdfFile`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file_name` | `string` |  |
+  | `content` | `bytes` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

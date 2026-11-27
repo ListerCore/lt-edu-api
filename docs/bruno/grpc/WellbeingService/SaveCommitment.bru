@@ -1,0 +1,79 @@
+meta {
+  name: SaveCommitment
+  type: grpc
+  seq: 7
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/SaveCommitment
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "commitment": {
+        "id": "",
+        "student_id": "",
+        "student_name": "",
+        "placement": "",
+        "interview_id": "",
+        "party": "",
+        "description": "",
+        "due_on": "",
+        "status": "",
+        "checked_on": "",
+        "author_name": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.SaveCommitment
+
+  `/ltedu.wellbeing.v1.WellbeingService/SaveCommitment` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `SaveCommitmentRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `commitment` | `Commitment` |  |
+
+  ## Response — `SaveCommitmentResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `commitment` | `Commitment` |  |
+
+  ## Tipos
+
+  ### `Commitment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `interview_id` | `string` |  |
+  | `party` | `string` | student \| family \| school |
+  | `description` | `string` |  |
+  | `due_on` | `string` |  |
+  | `status` | `string` | pending \| met \| unmet |
+  | `checked_on` | `string` |  |
+  | `author_name` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

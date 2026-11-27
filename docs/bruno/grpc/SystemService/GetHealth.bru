@@ -1,0 +1,64 @@
+meta {
+  name: GetHealth
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.system.v1.SystemService/GetHealth
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "include_db": false,
+      "include_redis": false
+    }
+  '''
+}
+
+docs {
+  # SystemService.GetHealth
+
+  Overall state plus, when asked, the database and Redis
+
+  `/ltedu.system.v1.SystemService/GetHealth` · unary · `ltedu/system/v1/system.proto`
+
+  ## Request — `GetHealthRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `include_db` | `bool` |  |
+  | `include_redis` | `bool` |  |
+
+  ## Response — `GetHealthResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `status` | `string` | ok \| degraded |
+  | `service` | `string` |  |
+  | `timestamp` | `Timestamp` |  |
+  | `db` | `optional ComponentStatus` | Set only when asked for |
+  | `redis` | `optional ComponentStatus` |  |
+
+  ## Tipos
+
+  ### `ComponentStatus`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `status` | `string` | ok \| degraded |
+  | `latency` | `string` | Round trip of the ping, e.g. "1.2ms" |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

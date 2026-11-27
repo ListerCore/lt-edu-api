@@ -1,0 +1,26 @@
+meta {
+  name: Regenerate recovery codes
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/auth/mfa/recovery-codes
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "challenge_token": "{{challengeToken}}",
+    "code": ""
+  }
+}
+
+docs {
+  # POST /auth/mfa/recovery-codes
+
+  Nuevos códigos de recuperación con el código del correo (`purpose: mfa_recovery_codes`).
+
+  200 `{recovery_codes}` (se muestran una sola vez)
+}

@@ -1,0 +1,83 @@
+meta {
+  name: SaveEnrollmentFile
+  type: grpc
+  seq: 23
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/SaveEnrollmentFile
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "file": {
+        "student_id": "",
+        "mother_tongue": "",
+        "mother_tongue_other": "",
+        "occupation": "",
+        "disability": "",
+        "internet": "",
+        "device": "",
+        "preferred_mode": "",
+        "last_studies": "",
+        "documents": [
+          ""
+        ],
+        "updated_by_name": "",
+        "updated_at": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # PeopleService.SaveEnrollmentFile
+
+  `/ltedu.people.v1.PeopleService/SaveEnrollmentFile` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `SaveEnrollmentFileRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `file` | `EnrollmentFile` |  |
+
+  ## Response — `SaveEnrollmentFileResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file` | `EnrollmentFile` |  |
+
+  ## Tipos
+
+  ### `EnrollmentFile`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `mother_tongue` | `string` | castellano \| quechua \| aimara \| ashaninka \| other |
+  | `mother_tongue_other` | `string` |  |
+  | `occupation` | `string` |  |
+  | `disability` | `string` |  |
+  | `internet` | `string` | none \| mobile \| home \| public \| unknown |
+  | `device` | `string` | none \| phone \| tablet \| computer \| unknown |
+  | `preferred_mode` | `string` | in_person \| blended \| distance, empty when not said |
+  | `last_studies` | `string` |  |
+  | `documents` | `repeated string` | dni \| study_certificate \| birth_certificate \| placement_act \| other |
+  | `updated_by_name` | `string` |  |
+  | `updated_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

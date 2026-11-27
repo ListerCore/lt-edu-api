@@ -1,0 +1,62 @@
+meta {
+  name: EnrollmentFormPdf
+  type: grpc
+  seq: 5
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/EnrollmentFormPdf
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": "",
+      "period_id": ""
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.EnrollmentFormPdf
+
+  EBA enrollment (phase E1): ficha única, nómina (PDF and spreadsheet) and the SIAGIE upload spreadsheet
+
+  `/ltedu.documents.v1.DocumentsService/EnrollmentFormPdf` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `EnrollmentFormPdfRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+  | `period_id` | `string` | Enrollment of this period (empty: the latest) |
+
+  ## Response — `EnrollmentFormPdfResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file` | `PdfFile` |  |
+
+  ## Tipos
+
+  ### `PdfFile`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `file_name` | `string` |  |
+  | `content` | `bytes` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

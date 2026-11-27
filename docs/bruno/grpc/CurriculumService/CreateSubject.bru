@@ -1,0 +1,110 @@
+meta {
+  name: CreateSubject
+  type: grpc
+  seq: 11
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.CurriculumService/CreateSubject
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "curriculum_id": "",
+      "subject": {
+        "module_id": "",
+        "kind": "",
+        "component": "",
+        "code": "",
+        "name": "",
+        "description": "",
+        "weekly_hours": 0,
+        "theory_credits": 0,
+        "practice_credits": 0,
+        "grade_ids": [
+          ""
+        ]
+      }
+    }
+  '''
+}
+
+docs {
+  # CurriculumService.CreateSubject
+
+  `/ltedu.academic.v1.CurriculumService/CreateSubject` · unary · `ltedu/academic/v1/curriculum.proto`
+
+  ## Request — `CreateSubjectRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `curriculum_id` | `string` |  |
+  | `subject` | `SubjectInput` |  |
+
+  ## Response — `CreateSubjectResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `subject` | `Subject` |  |
+
+  ## Tipos
+
+  ### `SubjectInput`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `module_id` | `string` |  |
+  | `kind` | `string` |  |
+  | `component` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `description` | `string` |  |
+  | `weekly_hours` | `optional int32` |  |
+  | `theory_credits` | `optional int32` |  |
+  | `practice_credits` | `optional int32` |  |
+  | `grade_ids` | `repeated string` |  |
+
+  ### `Subject`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `module_id` | `string` |  |
+  | `kind` | `string` | area \| workshop \| tutoring \| course \| unit \| efsrt |
+  | `component` | `string` | specific \| employability \| efsrt (institutes) |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `description` | `string` |  |
+  | `weekly_hours` | `optional int32` |  |
+  | `theory_credits` | `optional int32` |  |
+  | `practice_credits` | `optional int32` |  |
+  | `position` | `int32` |  |
+  | `grade_ids` | `repeated string` |  |
+  | `competencies` | `repeated Competency` |  |
+
+  ### `Competency`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `subject_id` | `string` | Empty for transversal competencies |
+  | `kind` | `string` | competency \| capacity \| topic |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

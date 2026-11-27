@@ -1,0 +1,75 @@
+meta {
+  name: ListPlacements
+  type: grpc
+  seq: 18
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.people.v1.PeopleService/ListPlacements
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # PeopleService.ListPlacements
+
+  EBA placement tests and validations
+
+  `/ltedu.people.v1.PeopleService/ListPlacements` · unary · `ltedu/people/v1/people.proto`
+
+  ## Request — `ListPlacementsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `ListPlacementsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `placements` | `repeated Placement` |  |
+
+  ## Tipos
+
+  ### `Placement`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `kind` | `string` | placement_test \| validation \| revalidation \| equivalence |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `decided_on` | `string` |  |
+  | `reference` | `string` |  |
+  | `notes` | `string` |  |
+  | `origin` | `string` | Where the student comes from and the studies they bring |
+  | `origin_studies` | `string` |  |
+  | `subject_ids` | `repeated string` |  |
+  | `subject_names` | `repeated string` |  |
+  | `act_year` | `int32` | Acta: "N.° 003-2026" when generated, its newest version and state (pending \| published \| superseded \| cancelled) |
+  | `act_number` | `int32` |  |
+  | `act_version_id` | `string` |  |
+  | `act_status` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

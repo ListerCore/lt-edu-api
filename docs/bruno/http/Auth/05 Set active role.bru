@@ -1,0 +1,25 @@
+meta {
+  name: Set active role
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/auth/me/active-role
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "user_role_id": ""
+  }
+}
+
+docs {
+  # PUT /auth/me/active-role
+
+  Cambia el rol activo de la sesión. `user_role_id` es un `roles[].id` de **Me**.
+
+  204
+}

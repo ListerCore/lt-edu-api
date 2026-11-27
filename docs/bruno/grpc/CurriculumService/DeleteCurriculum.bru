@@ -1,0 +1,49 @@
+meta {
+  name: DeleteCurriculum
+  type: grpc
+  seq: 7
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.academic.v1.CurriculumService/DeleteCurriculum
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # CurriculumService.DeleteCurriculum
+
+  Drafts only
+
+  `/ltedu.academic.v1.CurriculumService/DeleteCurriculum` · unary · `ltedu/academic/v1/curriculum.proto`
+
+  ## Request — `DeleteCurriculumRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `DeleteCurriculumResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

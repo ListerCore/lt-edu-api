@@ -1,0 +1,17 @@
+meta {
+  name: MFA status
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/auth/mfa
+  body: none
+  auth: inherit
+}
+
+docs {
+  # GET /auth/mfa
+
+  200 `{totp_enabled, enabled_at, recovery_codes: {total, remaining, used: [{code, used_at}]}}`
+}

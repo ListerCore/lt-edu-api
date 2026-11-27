@@ -1,0 +1,51 @@
+meta {
+  name: PrepareLoad
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.teaching.v1.TeachingService/PrepareLoad
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": ""
+    }
+  '''
+}
+
+docs {
+  # TeachingService.PrepareLoad
+
+  One assignment per subject of the plan in force in every section of the period (missing ones only)
+
+  `/ltedu.teaching.v1.TeachingService/PrepareLoad` · unary · `ltedu/teaching/v1/teaching.proto`
+
+  ## Request — `PrepareLoadRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` |  |
+
+  ## Response — `PrepareLoadResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `added` | `int32` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

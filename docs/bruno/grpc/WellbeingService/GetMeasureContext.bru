@@ -1,0 +1,57 @@
+meta {
+  name: GetMeasureContext
+  type: grpc
+  seq: 20
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/GetMeasureContext
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": "",
+      "incident_id": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.GetMeasureContext
+
+  `/ltedu.wellbeing.v1.WellbeingService/GetMeasureContext` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `GetMeasureContextRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+  | `incident_id` | `string` |  |
+
+  ## Response — `GetMeasureContextResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `minor_in_term` | `int32` |  |
+  | `minor_in_year` | `int32` |  |
+  | `suspensions` | `int32` |  |
+  | `conditional` | `bool` |  |
+  | `expelled` | `bool` |  |
+  | `conduct_average` | `double` | -1 when there is no conduct grade yet |
+  | `very_serious_fault` | `bool` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

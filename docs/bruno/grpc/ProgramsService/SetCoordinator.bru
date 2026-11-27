@@ -1,0 +1,49 @@
+meta {
+  name: SetCoordinator
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.programs.v1.ProgramsService/SetCoordinator
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "level_id": "",
+      "staff_id": ""
+    }
+  '''
+}
+
+docs {
+  # ProgramsService.SetCoordinator
+
+  `/ltedu.programs.v1.ProgramsService/SetCoordinator` · unary · `ltedu/programs/v1/programs.proto`
+
+  ## Request — `SetCoordinatorRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `level_id` | `string` |  |
+  | `staff_id` | `string` | Empty: no coordinator |
+
+  ## Response — `SetCoordinatorResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,17 @@
+meta {
+  name: Sign out
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/auth/sign-out
+  body: none
+  auth: inherit
+}
+
+docs {
+  # POST /auth/sign-out
+
+  Cierra la sesión del token. 204
+}

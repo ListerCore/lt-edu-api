@@ -1,0 +1,113 @@
+meta {
+  name: SaveAssessment
+  type: grpc
+  seq: 19
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/SaveAssessment
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "item_id": "",
+      "opens_at": "",
+      "closes_at": "",
+      "max_attempts": 0,
+      "competency_ids": [
+        ""
+      ],
+      "show_answers": false,
+      "replace_questions": false,
+      "questions": [
+        {
+          "id": "",
+          "kind": "",
+          "prompt": "",
+          "options": [
+            ""
+          ],
+          "correct": [
+            0
+          ],
+          "accepted": [
+            ""
+          ],
+          "points": 0
+        }
+      ]
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.SaveAssessment
+
+  `/ltedu.classroom.v1.ClassroomService/SaveAssessment` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `SaveAssessmentRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `item_id` | `string` |  |
+  | `opens_at` | `string` |  |
+  | `closes_at` | `string` |  |
+  | `max_attempts` | `int32` |  |
+  | `competency_ids` | `repeated string` |  |
+  | `show_answers` | `bool` |  |
+  | `replace_questions` | `bool` | Quizzes only: replace the questions (refused once someone handed it in) |
+  | `questions` | `repeated Question` |  |
+
+  ## Response — `SaveAssessmentResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `assessment` | `Assessment` |  |
+
+  ## Tipos
+
+  ### `Question`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `kind` | `string` | single \| multiple \| short \| open |
+  | `prompt` | `string` |  |
+  | `options` | `repeated string` |  |
+  | `correct` | `repeated int32` | Staff, or a student once graded when the answers are shown: right option indexes and accepted short answers |
+  | `accepted` | `repeated string` |  |
+  | `points` | `int32` |  |
+
+  ### `Assessment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `item_id` | `string` |  |
+  | `room_id` | `string` |  |
+  | `unit_id` | `string` |  |
+  | `kind` | `string` | quiz \| task |
+  | `title` | `string` |  |
+  | `instructions` | `string` |  |
+  | `published` | `bool` |  |
+  | `opens_at` | `string` | RFC 3339 or empty |
+  | `closes_at` | `string` |  |
+  | `max_attempts` | `int32` |  |
+  | `competency_ids` | `repeated string` |  |
+  | `show_answers` | `bool` |  |
+  | `questions` | `repeated Question` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

@@ -1,0 +1,67 @@
+meta {
+  name: SetScheduleSigners
+  type: grpc
+  seq: 21
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.documents.v1.DocumentsService/SetScheduleSigners
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "signers": [
+        {
+          "staff_id": "",
+          "name": "",
+          "position": ""
+        }
+      ],
+      "kind": ""
+    }
+  '''
+}
+
+docs {
+  # DocumentsService.SetScheduleSigners
+
+  `/ltedu.documents.v1.DocumentsService/SetScheduleSigners` · unary · `ltedu/documents/v1/documents.proto`
+
+  ## Request — `SetScheduleSignersRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `signers` | `repeated Signer` | In signing order; name is ignored |
+  | `kind` | `string` | schedules (default) \| placement |
+
+  ## Response — `SetScheduleSignersResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `signers` | `repeated Signer` |  |
+
+  ## Tipos
+
+  ### `Signer`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `staff_id` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `string` | Printed under the name: "Director(a)", "Responsable de la Oficina de Tecnologías de la Información" |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

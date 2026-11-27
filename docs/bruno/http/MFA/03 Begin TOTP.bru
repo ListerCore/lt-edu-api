@@ -1,0 +1,26 @@
+meta {
+  name: Begin TOTP
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/auth/mfa/totp
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "challenge_token": "{{challengeToken}}",
+    "code": ""
+  }
+}
+
+docs {
+  # POST /auth/mfa/totp
+
+  Con el código del correo (`purpose: mfa_enable`) empieza a configurar la app autenticadora.
+
+  200 `{secret, otpauth_uri, qr_png}` · `qr_png` es una data URL
+}

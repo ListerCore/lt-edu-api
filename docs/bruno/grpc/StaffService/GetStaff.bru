@@ -1,0 +1,96 @@
+meta {
+  name: GetStaff
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.teaching.v1.StaffService/GetStaff
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # StaffService.GetStaff
+
+  `/ltedu.teaching.v1.StaffService/GetStaff` · unary · `ltedu/teaching/v1/teaching.proto`
+
+  ## Request — `GetStaffRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `GetStaffResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `staff` | `Staff` |  |
+  | `assignments` | `repeated Assignment` | Teaching load in open periods |
+  | `can_manage` | `bool` |  |
+  | `can_grant` | `bool` |  |
+
+  ## Tipos
+
+  ### `Staff`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `document_type` | `string` |  |
+  | `document_number` | `string` |  |
+  | `given_names` | `string` |  |
+  | `surnames` | `string` |  |
+  | `email` | `string` |  |
+  | `phone` | `string` |  |
+  | `position` | `string` |  |
+  | `is_teacher` | `bool` |  |
+  | `specialty` | `string` |  |
+  | `max_weekly_hours` | `optional int32` |  |
+  | `hired_on` | `string` |  |
+  | `status` | `string` | active \| inactive |
+  | `notes` | `string` |  |
+  | `roles` | `repeated string` |  |
+  | `invited` | `repeated string` |  |
+  | `assigned_hours` | `int32` |  |
+  | `tutor_of` | `repeated string` |  |
+
+  ### `Assignment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `subject_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `subject_kind` | `string` |  |
+  | `subject_code` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `weekly_hours` | `int32` |  |
+  | `scheduled` | `int32` |  |
+  | `section_label` | `string` |  |
+  | `period_name` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

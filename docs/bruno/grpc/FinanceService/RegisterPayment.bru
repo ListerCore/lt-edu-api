@@ -1,0 +1,97 @@
+meta {
+  name: RegisterPayment
+  type: grpc
+  seq: 8
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.finance.v1.FinanceService/RegisterPayment
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": "",
+      "paid_on": "",
+      "amount": 0,
+      "method": "",
+      "reference": "",
+      "payer": "",
+      "notes": "",
+      "charge_ids": [
+        ""
+      ]
+    }
+  '''
+}
+
+docs {
+  # FinanceService.RegisterPayment
+
+  Settles the chosen charges, or the oldest pending ones
+
+  `/ltedu.finance.v1.FinanceService/RegisterPayment` · unary · `ltedu/finance/v1/finance.proto`
+
+  ## Request — `RegisterPaymentRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+  | `paid_on` | `string` |  |
+  | `amount` | `int64` |  |
+  | `method` | `string` |  |
+  | `reference` | `string` |  |
+  | `payer` | `string` |  |
+  | `notes` | `string` |  |
+  | `charge_ids` | `repeated string` | Empty: the oldest pending charges |
+
+  ## Response — `RegisterPaymentResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `payment` | `Payment` |  |
+
+  ## Tipos
+
+  ### `Payment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `receipt` | `string` |  |
+  | `paid_on` | `string` |  |
+  | `amount` | `int64` |  |
+  | `method` | `string` | cash \| transfer \| yape \| plin \| card \| deposit |
+  | `reference` | `string` |  |
+  | `payer` | `string` |  |
+  | `notes` | `string` |  |
+  | `status` | `string` | valid \| annulled |
+  | `annul_reason` | `string` |  |
+  | `received_name` | `string` |  |
+  | `allocations` | `repeated Allocation` |  |
+
+  ### `Allocation`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `charge_id` | `string` |  |
+  | `charge_name` | `string` |  |
+  | `amount` | `int64` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

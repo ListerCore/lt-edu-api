@@ -1,0 +1,64 @@
+meta {
+  name: ListThreads
+  type: grpc
+  seq: 8
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.TutoringService/ListThreads
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # TutoringService.ListThreads
+
+  `/ltedu.wellbeing.v1.TutoringService/ListThreads` · unary · `ltedu/wellbeing/v1/tutoring.proto`
+
+  ## Request — `ListThreadsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `ListThreadsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `threads` | `repeated Thread` |  |
+
+  ## Tipos
+
+  ### `Thread`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `last_message_at` | `string` |  |
+  | `last_body` | `string` |  |
+  | `last_side` | `string` |  |
+  | `unread` | `int32` | Messages of the other side the viewer has not read |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

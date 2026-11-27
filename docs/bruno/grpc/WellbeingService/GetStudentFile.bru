@@ -1,0 +1,288 @@
+meta {
+  name: GetStudentFile
+  type: grpc
+  seq: 2
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/GetStudentFile
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.GetStudentFile
+
+  `/ltedu.wellbeing.v1.WellbeingService/GetStudentFile` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `GetStudentFileRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+
+  ## Response — `GetStudentFileResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student` | `WellStudent` |  |
+  | `interviews` | `repeated Interview` |  |
+  | `commitments` | `repeated Commitment` |  |
+  | `incidents` | `repeated Incident` |  |
+  | `measures` | `repeated Measure` | Every measure of the school year (conditional enrollment and expulsion may have no incident) |
+  | `conduct` | `repeated TermConduct` |  |
+  | `cases` | `repeated PsychCase` |  |
+  | `plans` | `repeated IndividualPlan` |  |
+  | `therapies` | `repeated TherapySession` |  |
+  | `can_tutor` | `bool` |  |
+  | `can_refer` | `bool` |  |
+  | `can_report` | `bool` |  |
+  | `can_decide` | `bool` |  |
+  | `can_plan` | `bool` |  |
+  | `family` | `bool` |  |
+  | `today` | `string` |  |
+  | `catalog` | `repeated IncidentCategory` |  |
+  | `sessions` | `repeated TutoringSession` | Virtual tutoring (phase E6): sessions the student was called to and the SAANEE referrals |
+  | `saanee` | `repeated SaaneeReferral` |  |
+
+  ## Tipos
+
+  ### `WellStudent`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `placement` | `string` |  |
+  | `section_id` | `string` |  |
+  | `special_needs` | `bool` |  |
+  | `pending_commitments` | `int32` |  |
+  | `open_incidents` | `int32` |  |
+  | `active_case` | `bool` |  |
+  | `has_plan` | `bool` |  |
+  | `last_interview` | `string` |  |
+
+  ### `Interview`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `kind` | `string` | student \| family |
+  | `held_on` | `string` |  |
+  | `topic` | `string` |  |
+  | `notes` | `string` | Empty for families |
+  | `agreements` | `string` |  |
+  | `author_name` | `string` |  |
+
+  ### `Commitment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `interview_id` | `string` |  |
+  | `party` | `string` | student \| family \| school |
+  | `description` | `string` |  |
+  | `due_on` | `string` |  |
+  | `status` | `string` | pending \| met \| unmet |
+  | `checked_on` | `string` |  |
+  | `author_name` | `string` |  |
+
+  ### `Incident`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `occurred_on` | `string` |  |
+  | `severity` | `string` | minor \| serious \| very_serious |
+  | `category` | `string` |  |
+  | `description` | `string` |  |
+  | `reported_name` | `string` |  |
+  | `family_notified_on` | `string` |  |
+  | `status` | `string` | open \| closed |
+  | `measures` | `repeated Measure` |  |
+  | `mine` | `bool` |  |
+
+  ### `Measure`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `incident_id` | `string` |  |
+  | `kind` | `string` | corrective \| suspension \| conditional \| expulsion |
+  | `ground` | `string` |  |
+  | `detail` | `string` |  |
+  | `starts_on` | `string` |  |
+  | `days` | `int32` |  |
+  | `decided_name` | `string` |  |
+  | `notified_on` | `string` |  |
+  | `reconsideration_on` | `string` |  |
+  | `reconsideration_reason` | `string` |  |
+  | `reconsideration_by` | `string` |  |
+  | `resolved_on` | `string` |  |
+  | `outcome` | `string` | upheld \| revoked |
+  | `resolution` | `string` |  |
+  | `reconsider_until` | `string` | Last day to ask for reconsideration (three school days after notified_on) and to resolve it (five after the request) |
+  | `resolve_until` | `string` |  |
+  | `student_name` | `string` | Filled in the register of measures |
+  | `placement` | `string` |  |
+
+  ### `TermConduct`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `term_name` | `string` |  |
+  | `score` | `int32` |  |
+  | `note` | `string` |  |
+
+  ### `PsychCase`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `origin` | `string` | tutor \| teacher \| family \| direction \| self \| psychologist |
+  | `referred_name` | `string` |  |
+  | `reason` | `string` |  |
+  | `priority` | `string` | normal \| urgent |
+  | `status` | `string` | referred \| open \| follow_up \| closed |
+  | `opened_on` | `string` |  |
+  | `closed_on` | `string` |  |
+  | `psychologist_name` | `string` |  |
+  | `shared_note` | `string` |  |
+  | `sessions` | `int32` |  |
+  | `last_session` | `string` |  |
+
+  ### `IndividualPlan`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `specialist_id` | `string` |  |
+  | `specialist_name` | `string` |  |
+  | `needs` | `string` |  |
+  | `strengths` | `string` |  |
+  | `educational_response` | `string` |  |
+  | `curricular_adaptations` | `string` |  |
+  | `access_adaptations` | `string` |  |
+  | `evaluation_criteria` | `string` |  |
+  | `actors` | `string` |  |
+  | `family_commitments` | `string` |  |
+  | `status` | `string` | draft \| approved |
+  | `approved_name` | `string` |  |
+  | `approved_on` | `string` |  |
+  | `updated_at` | `string` |  |
+  | `therapies` | `int32` |  |
+
+  ### `TherapySession`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `therapist_name` | `string` |  |
+  | `kind` | `string` | language \| physical \| occupational \| psychomotor \| behavioral \| learning |
+  | `held_on` | `string` |  |
+  | `minutes` | `int32` |  |
+  | `attended` | `bool` |  |
+  | `goal` | `string` |  |
+  | `notes` | `string` | Empty for families |
+  | `home_tasks` | `string` |  |
+  | `mine` | `bool` |  |
+
+  ### `IncidentCategory`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `code` | `string` |  |
+  | `label` | `string` |  |
+  | `severity` | `string` |  |
+  | `crime` | `bool` |  |
+  | `violence` | `bool` |  |
+
+  ### `TutoringSession`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `kind` | `string` |  |
+  | `mode` | `string` |  |
+  | `scheduled_at` | `string` |  |
+  | `duration_min` | `int32` |  |
+  | `link` | `string` |  |
+  | `reason` | `string` |  |
+  | `alert_kind` | `string` | inactive \| overdue \| low_permanence: the dropout alert it answers |
+  | `status` | `string` |  |
+  | `notes` | `string` | Staff only (empty for the student) |
+  | `agreements` | `string` |  |
+  | `held_at` | `string` |  |
+  | `created_name` | `string` |  |
+  | `attendees` | `repeated SessionAttendee` |  |
+  | `provider` | `string` | Virtual sessions: platform (video inside ListerCore Edu) \| meet (link) |
+
+  ### `SessionAttendee`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `attended` | `optional bool` | Unset until held |
+  | `interview_id` | `string` |  |
+
+  ### `SaaneeReferral`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `reason` | `string` |  |
+  | `status` | `string` |  |
+  | `sent_on` | `string` |  |
+  | `reference` | `string` |  |
+  | `response` | `string` |  |
+  | `referred_name` | `string` |  |
+  | `updated_name` | `string` |  |
+  | `updated_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

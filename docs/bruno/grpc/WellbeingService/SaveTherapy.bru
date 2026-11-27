@@ -1,0 +1,81 @@
+meta {
+  name: SaveTherapy
+  type: grpc
+  seq: 32
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/SaveTherapy
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "session": {
+        "id": "",
+        "student_id": "",
+        "student_name": "",
+        "therapist_name": "",
+        "kind": "",
+        "held_on": "",
+        "minutes": 0,
+        "attended": false,
+        "goal": "",
+        "notes": "",
+        "home_tasks": "",
+        "mine": false
+      }
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.SaveTherapy
+
+  `/ltedu.wellbeing.v1.WellbeingService/SaveTherapy` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `SaveTherapyRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `session` | `TherapySession` |  |
+
+  ## Response — `SaveTherapyResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `session` | `TherapySession` |  |
+
+  ## Tipos
+
+  ### `TherapySession`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `therapist_name` | `string` |  |
+  | `kind` | `string` | language \| physical \| occupational \| psychomotor \| behavioral \| learning |
+  | `held_on` | `string` |  |
+  | `minutes` | `int32` |  |
+  | `attended` | `bool` |  |
+  | `goal` | `string` |  |
+  | `notes` | `string` | Empty for families |
+  | `home_tasks` | `string` |  |
+  | `mine` | `bool` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

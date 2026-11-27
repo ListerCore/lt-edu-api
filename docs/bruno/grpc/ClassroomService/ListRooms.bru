@@ -1,0 +1,87 @@
+meta {
+  name: ListRooms
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/ListRooms
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "period_id": ""
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.ListRooms
+
+  `/ltedu.classroom.v1.ClassroomService/ListRooms` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `ListRoomsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `period_id` | `string` | Empty: the period in course |
+
+  ## Response — `ListRoomsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `periods` | `repeated Period` |  |
+  | `period_id` | `string` |  |
+  | `rooms` | `repeated Room` |  |
+  | `can_manage` | `bool` |  |
+  | `mode` | `string` | manager \| teacher \| reader \| family |
+
+  ## Tipos
+
+  ### `Period`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `name` | `string` |  |
+  | `status` | `string` |  |
+
+  ### `Room`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `subject_id` | `string` |  |
+  | `subject_name` | `string` |  |
+  | `subject_code` | `string` |  |
+  | `level_id` | `string` |  |
+  | `level_name` | `string` |  |
+  | `grade_id` | `string` |  |
+  | `grade_name` | `string` |  |
+  | `grade_short` | `string` |  |
+  | `description` | `string` |  |
+  | `staff_id` | `string` |  |
+  | `staff_name` | `string` |  |
+  | `status` | `string` | draft \| published |
+  | `units` | `int32` |  |
+  | `items` | `int32` |  |
+  | `students` | `int32` |  |
+  | `updated_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

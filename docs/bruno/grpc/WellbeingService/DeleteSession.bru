@@ -1,0 +1,49 @@
+meta {
+  name: DeleteSession
+  type: grpc
+  seq: 15
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/DeleteSession
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "case_id": "",
+      "id": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.DeleteSession
+
+  `/ltedu.wellbeing.v1.WellbeingService/DeleteSession` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `DeleteSessionRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `case_id` | `string` |  |
+  | `id` | `string` |  |
+
+  ## Response — `DeleteSessionResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

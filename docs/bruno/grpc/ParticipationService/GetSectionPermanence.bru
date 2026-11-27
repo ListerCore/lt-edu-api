@@ -1,0 +1,111 @@
+meta {
+  name: GetSectionPermanence
+  type: grpc
+  seq: 3
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.participation.v1.ParticipationService/GetSectionPermanence
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "section_id": ""
+    }
+  '''
+}
+
+docs {
+  # ParticipationService.GetSectionPermanence
+
+  `/ltedu.participation.v1.ParticipationService/GetSectionPermanence` · unary · `ltedu/participation/v1/participation.proto`
+
+  ## Request — `GetSectionPermanenceRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `section_id` | `string` |  |
+
+  ## Response — `GetSectionPermanenceResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `label` | `string` |  |
+  | `period_name` | `string` |  |
+  | `rule` | `PermanenceRule` |  |
+  | `students` | `repeated StudentPermanence` |  |
+  | `can_adjust` | `bool` |  |
+  | `from` | `string` |  |
+  | `to` | `string` |  |
+
+  ## Tipos
+
+  ### `PermanenceRule`
+
+  A week (window_days) counts when the student was active on min_active_days of its days
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `window_days` | `int32` |  |
+  | `min_active_days` | `int32` |  |
+  | `inactive_days` | `int32` | Days without activity that raise a dropout alert |
+  | `low_percent` | `int32` | Permanence under this percent raises an alert |
+  | `updated_by_name` | `string` |  |
+  | `updated_at` | `string` |  |
+
+  ### `StudentPermanence`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `enrollment_id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `student_code` | `string` |  |
+  | `status` | `string` | Enrollment status: active \| withdrawn \| transferred \| completed |
+  | `windows` | `repeated PermanenceWindow` |  |
+  | `present` | `int32` |  |
+  | `counted` | `int32` |  |
+  | `percent` | `int32` |  |
+  | `activity` | `Activity` |  |
+  | `idle_days` | `int32` |  |
+
+  ### `PermanenceWindow`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `start` | `string` | YYYY-MM-DD |
+  | `end` | `string` |  |
+  | `active_days` | `int32` |  |
+  | `present` | `bool` |  |
+  | `adjusted` | `bool` |  |
+  | `reason` | `string` |  |
+
+  ### `Activity`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `active_days` | `int32` |  |
+  | `logins` | `int32` |  |
+  | `views` | `int32` |  |
+  | `live` | `int32` |  |
+  | `attempts` | `int32` |  |
+  | `submissions` | `int32` |  |
+  | `posts` | `int32` |  |
+  | `tutoring` | `int32` |  |
+  | `last_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

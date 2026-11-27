@@ -1,0 +1,37 @@
+meta {
+  name: Sign in verify
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/auth/sign-in/verify
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "challenge_token": "{{challengeToken}}",
+    "code": ""
+  }
+}
+
+script:post-response {
+  const token = res.body?.session?.token;
+  if (token) bru.setEnvVar("token", token);
+  if (res.body?.challenge_token) bru.setEnvVar("challengeToken", res.body.challenge_token);
+}
+
+docs {
+  # POST /auth/sign-in/verify
+
+  Segundo paso del inicio de sesión (código de la app autenticadora o de recuperación).
+
+  | Campo | Tipo |
+  |---|---|
+  | `challenge_token` | string |
+  | `code` | string |
+
+  200 `{session: {token, expires_at}}`
+}

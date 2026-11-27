@@ -1,0 +1,147 @@
+meta {
+  name: SetSiagieGrades
+  type: grpc
+  seq: 15
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.assessment.v1.ClosingService/SetSiagieGrades
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "section_id": "",
+      "student_ids": [
+        ""
+      ],
+      "status": "",
+      "note": ""
+    }
+  '''
+}
+
+docs {
+  # ClosingService.SetSiagieGrades
+
+  Every student of the section when student_ids is empty; observed needs the note
+
+  `/ltedu.assessment.v1.ClosingService/SetSiagieGrades` · unary · `ltedu/assessment/v1/closing.proto`
+
+  ## Request — `SetSiagieGradesRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `section_id` | `string` |  |
+  | `student_ids` | `repeated string` |  |
+  | `status` | `string` |  |
+  | `note` | `string` |  |
+
+  ## Response — `SetSiagieGradesResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `section` | `SectionClosing` |  |
+
+  ## Tipos
+
+  ### `SectionClosing`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `level_name` | `string` |  |
+  | `tutor_name` | `string` |  |
+  | `period_id` | `string` |  |
+  | `period_name` | `string` |  |
+  | `rule` | `string` |  |
+  | `referential` | `bool` |  |
+  | `automatic` | `bool` |  |
+  | `last_term_closed` | `bool` |  |
+  | `can_manage` | `bool` |  |
+  | `areas` | `repeated ClosingArea` |  |
+  | `rows` | `repeated ClosingRow` |  |
+  | `records` | `repeated RecordInfo` |  |
+
+  ### `ClosingArea`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `subject_id` | `string` |  |
+  | `name` | `string` |  |
+  | `competencies` | `repeated Competency` |  |
+  | `subject_code` | `string` |  |
+
+  ### `Competency`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `transversal` | `bool` |  |
+
+  ### `ClosingRow`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `student` | `StudentRef` |  |
+  | `final` | `map<string, string>` |  |
+  | `computed` | `string` |  |
+  | `reason` | `string` |  |
+  | `decided` | `string` |  |
+  | `decision_note` | `string` |  |
+  | `decided_name` | `string` |  |
+  | `situation` | `string` |  |
+  | `confirmed` | `bool` |  |
+  | `targets` | `repeated string` |  |
+  | `recovery` | `map<string, string>` |  |
+  | `after_recovery` | `string` |  |
+  | `enrollment_id` | `string` | Phase E7: the student's own grade (multigrade sections), the Religion exemption (its cells read EXO) and the SIAGIE state of the grades: pending \| exported \| observed |
+  | `grade_short` | `string` |  |
+  | `religion_exempt` | `bool` |  |
+  | `siagie_status` | `string` |  |
+  | `siagie_note` | `string` |  |
+  | `siagie_at` | `string` |  |
+
+  ### `StudentRef`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `document` | `string` |  |
+
+  ### `RecordInfo`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `section_id` | `string` |  |
+  | `section_label` | `string` |  |
+  | `assignment_id` | `string` |  |
+  | `kind` | `string` |  |
+  | `number` | `int32` |  |
+  | `code` | `string` |  |
+  | `status` | `string` | issued \| replaced |
+  | `issued_name` | `string` |  |
+  | `issued_at` | `string` |  |
+  | `act_version_id` | `string` | Phase E7: the newest signed version of the acta (empty until generated) and its state |
+  | `act_status` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

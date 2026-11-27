@@ -1,0 +1,74 @@
+meta {
+  name: ReferSaanee
+  type: grpc
+  seq: 13
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.TutoringService/ReferSaanee
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "student_id": "",
+      "reason": "",
+      "reference": "",
+      "sent_on": ""
+    }
+  '''
+}
+
+docs {
+  # TutoringService.ReferSaanee
+
+  `/ltedu.wellbeing.v1.TutoringService/ReferSaanee` · unary · `ltedu/wellbeing/v1/tutoring.proto`
+
+  ## Request — `ReferSaaneeRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `student_id` | `string` |  |
+  | `reason` | `string` |  |
+  | `reference` | `string` |  |
+  | `sent_on` | `string` | YYYY-MM-DD |
+
+  ## Response — `ReferSaaneeResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `referral` | `SaaneeReferral` |  |
+
+  ## Tipos
+
+  ### `SaaneeReferral`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `reason` | `string` |  |
+  | `status` | `string` |  |
+  | `sent_on` | `string` |  |
+  | `reference` | `string` |  |
+  | `response` | `string` |  |
+  | `referred_name` | `string` |  |
+  | `updated_name` | `string` |  |
+  | `updated_at` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

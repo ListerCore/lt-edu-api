@@ -1,0 +1,102 @@
+meta {
+  name: GetTutoring
+  type: grpc
+  seq: 4
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/GetTutoring
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}"
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.GetTutoring
+
+  Tutoring: the tutor of the section (or dirección) runs it; families read the agreements and commitments
+
+  `/ltedu.wellbeing.v1.WellbeingService/GetTutoring` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `GetTutoringRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+
+  ## Response — `GetTutoringResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `students` | `repeated WellStudent` |  |
+  | `due` | `repeated Commitment` |  |
+  | `interviews` | `repeated Interview` |  |
+  | `can_tutor` | `bool` |  |
+  | `family` | `bool` |  |
+  | `today` | `string` |  |
+
+  ## Tipos
+
+  ### `WellStudent`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `placement` | `string` |  |
+  | `section_id` | `string` |  |
+  | `special_needs` | `bool` |  |
+  | `pending_commitments` | `int32` |  |
+  | `open_incidents` | `int32` |  |
+  | `active_case` | `bool` |  |
+  | `has_plan` | `bool` |  |
+  | `last_interview` | `string` |  |
+
+  ### `Commitment`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `placement` | `string` |  |
+  | `interview_id` | `string` |  |
+  | `party` | `string` | student \| family \| school |
+  | `description` | `string` |  |
+  | `due_on` | `string` |  |
+  | `status` | `string` | pending \| met \| unmet |
+  | `checked_on` | `string` |  |
+  | `author_name` | `string` |  |
+
+  ### `Interview`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `kind` | `string` | student \| family |
+  | `held_on` | `string` |  |
+  | `topic` | `string` |  |
+  | `notes` | `string` | Empty for families |
+  | `agreements` | `string` |  |
+  | `author_name` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

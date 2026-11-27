@@ -1,0 +1,47 @@
+meta {
+  name: ClearSection
+  type: grpc
+  seq: 9
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.teaching.v1.TeachingService/ClearSection
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "section_id": ""
+    }
+  '''
+}
+
+docs {
+  # TeachingService.ClearSection
+
+  `/ltedu.teaching.v1.TeachingService/ClearSection` · unary · `ltedu/teaching/v1/teaching.proto`
+
+  ## Request — `ClearSectionRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `section_id` | `string` |  |
+
+  ## Response — `ClearSectionResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

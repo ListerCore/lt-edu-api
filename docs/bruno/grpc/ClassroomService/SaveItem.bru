@@ -1,0 +1,89 @@
+meta {
+  name: SaveItem
+  type: grpc
+  seq: 9
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/SaveItem
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "item": {
+        "id": "",
+        "unit_id": "",
+        "kind": "",
+        "title": "",
+        "body": "",
+        "url": "",
+        "complementary": false,
+        "starts_at": "",
+        "duration_minutes": 0,
+        "recording_url": "",
+        "library_item_id": "",
+        "published": false,
+        "files": 0,
+        "viewed": false,
+        "views": 0,
+        "provider": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.SaveItem
+
+  `/ltedu.classroom.v1.ClassroomService/SaveItem` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `SaveItemRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `item` | `Item` | Empty id creates it at the end of unit_id |
+
+  ## Response — `SaveItemResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `item` | `Item` |  |
+
+  ## Tipos
+
+  ### `Item`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `unit_id` | `string` |  |
+  | `kind` | `string` | reading \| file \| video \| link \| live \| activity \| quiz \| task \| forum |
+  | `title` | `string` |  |
+  | `body` | `string` |  |
+  | `url` | `string` |  |
+  | `complementary` | `bool` |  |
+  | `starts_at` | `string` | live only: RFC 3339 start and length |
+  | `duration_minutes` | `optional int32` |  |
+  | `recording_url` | `string` |  |
+  | `library_item_id` | `string` | Taken from the library: body, url and files come from there |
+  | `published` | `bool` |  |
+  | `files` | `int32` |  |
+  | `viewed` | `bool` | For a student: whether they opened it. For staff: how many students did |
+  | `views` | `int32` |  |
+  | `provider` | `string` | live only: platform (video inside ListerCore Edu) \| meet (url is the external link). Empty: meet |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

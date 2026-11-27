@@ -1,0 +1,23 @@
+meta {
+  name: Announcement attachment
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/announcements/:id/attachments/:attachmentId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+  attachmentId: 
+}
+
+docs {
+  # GET /announcements/:id/attachments/:attachmentId
+
+  Descarga un archivo del anuncio (inline). Los de anuncios públicos no necesitan sesión y se cachean 5 min;
+  los internos exigen una sesión cuyo rol pueda leerlos y nunca se cachean.
+}

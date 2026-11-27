@@ -1,0 +1,75 @@
+meta {
+  name: ListStudents
+  type: grpc
+  seq: 1
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/ListStudents
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "query": "",
+      "special_needs": false
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.ListStudents
+
+  `/ltedu.wellbeing.v1.WellbeingService/ListStudents` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `ListStudentsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `query` | `string` |  |
+  | `special_needs` | `bool` |  |
+
+  ## Response — `ListStudentsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `students` | `repeated WellStudent` |  |
+  | `can_tutor` | `bool` |  |
+  | `can_report` | `bool` |  |
+  | `can_decide` | `bool` |  |
+  | `can_plan` | `bool` |  |
+  | `family` | `bool` |  |
+  | `ebe` | `bool` |  |
+
+  ## Tipos
+
+  ### `WellStudent`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `placement` | `string` |  |
+  | `section_id` | `string` |  |
+  | `special_needs` | `bool` |  |
+  | `pending_commitments` | `int32` |  |
+  | `open_incidents` | `int32` |  |
+  | `active_case` | `bool` |  |
+  | `has_plan` | `bool` |  |
+  | `last_interview` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

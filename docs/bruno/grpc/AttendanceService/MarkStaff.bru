@@ -1,0 +1,89 @@
+meta {
+  name: MarkStaff
+  type: grpc
+  seq: 8
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.attendance.v1.AttendanceService/MarkStaff
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "day": "",
+      "marks": [
+        {
+          "person_id": "",
+          "status": "",
+          "note": ""
+        }
+      ]
+    }
+  '''
+}
+
+docs {
+  # AttendanceService.MarkStaff
+
+  `/ltedu.attendance.v1.AttendanceService/MarkStaff` · unary · `ltedu/attendance/v1/attendance.proto`
+
+  ## Request — `MarkStaffRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `day` | `string` |  |
+  | `marks` | `repeated MarkInput` |  |
+
+  ## Response — `MarkStaffResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `day` | `GetStaffDayResponse` |  |
+
+  ## Tipos
+
+  ### `MarkInput`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `person_id` | `string` |  |
+  | `status` | `string` |  |
+  | `note` | `string` |  |
+
+  ### `GetStaffDayResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `day` | `string` |  |
+  | `school_day` | `bool` |  |
+  | `rows` | `repeated StaffRow` |  |
+  | `late_after` | `string` |  |
+
+  ### `StaffRow`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `staff_id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `position` | `string` |  |
+  | `status` | `string` |  |
+  | `arrived_at` | `string` |  |
+  | `source` | `string` |  |
+  | `note` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

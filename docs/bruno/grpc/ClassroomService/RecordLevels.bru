@@ -1,0 +1,52 @@
+meta {
+  name: RecordLevels
+  type: grpc
+  seq: 25
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.classroom.v1.ClassroomService/RecordLevels
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "item_id": ""
+    }
+  '''
+}
+
+docs {
+  # ClassroomService.RecordLevels
+
+  Takes the levels of the latest graded attempts to the official record of the open term
+
+  `/ltedu.classroom.v1.ClassroomService/RecordLevels` · unary · `ltedu/classroom/v1/classroom.proto`
+
+  ## Request — `RecordLevelsRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `item_id` | `string` |  |
+
+  ## Response — `RecordLevelsResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `recorded` | `int32` |  |
+  | `skipped_student_ids` | `repeated string` | Students left out: their section has no teacher for the area, or its sheet is closed or not yours |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

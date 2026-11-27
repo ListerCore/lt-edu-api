@@ -1,0 +1,91 @@
+meta {
+  name: ListTherapies
+  type: grpc
+  seq: 31
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/ListTherapies
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "from": "",
+      "to": "",
+      "student_id": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.ListTherapies
+
+  `/ltedu.wellbeing.v1.WellbeingService/ListTherapies` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `ListTherapiesRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `from` | `string` |  |
+  | `to` | `string` |  |
+  | `student_id` | `string` |  |
+
+  ## Response — `ListTherapiesResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `sessions` | `repeated TherapySession` |  |
+  | `students` | `repeated WellStudent` |  |
+  | `can_write` | `bool` |  |
+  | `family` | `bool` |  |
+
+  ## Tipos
+
+  ### `TherapySession`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `student_id` | `string` |  |
+  | `student_name` | `string` |  |
+  | `therapist_name` | `string` |  |
+  | `kind` | `string` | language \| physical \| occupational \| psychomotor \| behavioral \| learning |
+  | `held_on` | `string` |  |
+  | `minutes` | `int32` |  |
+  | `attended` | `bool` |  |
+  | `goal` | `string` |  |
+  | `notes` | `string` | Empty for families |
+  | `home_tasks` | `string` |  |
+  | `mine` | `bool` |  |
+
+  ### `WellStudent`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `code` | `string` |  |
+  | `name` | `string` |  |
+  | `placement` | `string` |  |
+  | `section_id` | `string` |  |
+  | `special_needs` | `bool` |  |
+  | `pending_commitments` | `int32` |  |
+  | `open_incidents` | `int32` |  |
+  | `active_case` | `bool` |  |
+  | `has_plan` | `bool` |  |
+  | `last_interview` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

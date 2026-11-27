@@ -1,0 +1,69 @@
+meta {
+  name: SaveBoardMember
+  type: grpc
+  seq: 9
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.apafa.v1.ApafaService/SaveBoardMember
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "member": {
+        "id": "",
+        "full_name": "",
+        "position": "",
+        "phone": "",
+        "starts_on": "",
+        "ends_on": ""
+      }
+    }
+  '''
+}
+
+docs {
+  # ApafaService.SaveBoardMember
+
+  `/ltedu.apafa.v1.ApafaService/SaveBoardMember` · unary · `ltedu/apafa/v1/apafa.proto`
+
+  ## Request — `SaveBoardMemberRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `member` | `BoardMember` | Empty id: a new office |
+
+  ## Response — `SaveBoardMemberResponse`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `member` | `BoardMember` |  |
+
+  ## Tipos
+
+  ### `BoardMember`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `id` | `string` |  |
+  | `full_name` | `string` |  |
+  | `position` | `string` | president \| vice_president \| secretary \| treasurer \| spokesperson |
+  | `phone` | `string` |  |
+  | `starts_on` | `string` | YYYY-MM-DD |
+  | `ends_on` | `string` |  |
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}

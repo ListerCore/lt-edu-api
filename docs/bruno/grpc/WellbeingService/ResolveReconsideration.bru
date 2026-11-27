@@ -1,0 +1,51 @@
+meta {
+  name: ResolveReconsideration
+  type: grpc
+  seq: 24
+}
+
+grpc {
+  url: {{grpcUrl}}
+  method: /ltedu.wellbeing.v1.WellbeingService/ResolveReconsideration
+  body: grpc
+  auth: none
+  methodType: unary
+}
+
+metadata {
+  authorization: Bearer {{token}}
+  x-user-agent: bruno
+}
+
+body:grpc {
+  name: message 1
+  content: '''
+    {
+      "institution_slug": "{{institution}}",
+      "id": "",
+      "outcome": "",
+      "resolution": ""
+    }
+  '''
+}
+
+docs {
+  # WellbeingService.ResolveReconsideration
+
+  `/ltedu.wellbeing.v1.WellbeingService/ResolveReconsideration` · unary · `ltedu/wellbeing/v1/wellbeing.proto`
+
+  ## Request — `ResolveReconsiderationRequest`
+
+  | Campo | Tipo | Descripción |
+  |---|---|---|
+  | `institution_slug` | `string` |  |
+  | `id` | `string` |  |
+  | `outcome` | `string` | upheld \| revoked |
+  | `resolution` | `string` |  |
+
+  ## Response — `ResolveReconsiderationResponse`
+
+  _Sin campos._
+
+  Errores: status gRPC con un `ltedu.common.v1.ErrorDetail` (code, message, fields) en los details.
+}
