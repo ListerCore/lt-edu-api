@@ -1,0 +1,17 @@
+{
+  "name": "lt-edu-api-tests",
+  "private": true,
+  "description": "Pruebas automatizadas de la API REST de lt-edu-api (Jest): reglas de negocio y escenarios de calidad",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:go-coverage": "./run-with-coverage.sh"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "jest-junit": "^16.0.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
