@@ -88,7 +88,7 @@ func (s *MeetingService) Join(ctx context.Context, token, slug, source, id strin
 	if !t.CanJoinAt(now) {
 		return JoinInfo{}, domain.ErrLiveNotOpen
 	}
-	me, err := s.auth.Me(ctx, token)
+	me, err := s.auth.Principal(ctx, token)
 	if err != nil {
 		return JoinInfo{}, err
 	}

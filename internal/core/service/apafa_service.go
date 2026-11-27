@@ -83,7 +83,7 @@ func (s *ApafaService) scope(ctx context.Context, token, slug string) (apafaScop
 	if management != domain.ManagementPublic {
 		return apafaScope{}, domain.ErrApafaPrivate
 	}
-	me, err := s.auth.Me(ctx, token)
+	me, err := s.auth.Principal(ctx, token)
 	if err != nil {
 		return apafaScope{}, err
 	}

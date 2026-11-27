@@ -71,7 +71,7 @@ func (s *ClassroomService) scope(ctx context.Context, token, slug string) (class
 	if !classroomManagers[isc.role] && !classroomTeachers[isc.role] && !classroomReaders[isc.role] && !classroomFamilies[isc.role] {
 		return classroomScope{}, domain.ErrClassroomForbidden
 	}
-	me, err := s.auth.Me(ctx, token)
+	me, err := s.auth.Principal(ctx, token)
 	if err != nil {
 		return classroomScope{}, err
 	}

@@ -56,7 +56,7 @@ func (s *AssessmentService) scope(ctx context.Context, token, slug string) (grad
 		if !gradeReaders[isc.role] {
 			return gradeScope{}, domain.ErrGradesForbidden
 		}
-		me, e := s.academic.auth.Me(ctx, token)
+		me, e := s.academic.auth.Principal(ctx, token)
 		if e != nil {
 			return gradeScope{}, e
 		}

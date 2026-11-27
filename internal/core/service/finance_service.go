@@ -58,7 +58,7 @@ func (s *FinanceService) scope(ctx context.Context, token, slug string) (finance
 	if err != nil {
 		return financeScope{}, err
 	}
-	me, err := s.assessment.academic.auth.Me(ctx, token)
+	me, err := s.assessment.academic.auth.Principal(ctx, token)
 	if err != nil {
 		return financeScope{}, err
 	}

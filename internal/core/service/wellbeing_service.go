@@ -80,7 +80,7 @@ func (s *WellbeingService) scope(ctx context.Context, token, slug string) (wellS
 	if !wellOffice[isc.role] && !wellStaff[isc.role] && !family {
 		return wellScope{}, domain.ErrWellbeingForbidden
 	}
-	me, err := s.attendance.academic.auth.Me(ctx, token)
+	me, err := s.attendance.academic.auth.Principal(ctx, token)
 	if err != nil {
 		return wellScope{}, err
 	}

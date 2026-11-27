@@ -269,7 +269,7 @@ func (s *AttachmentService) scope(ctx context.Context, token, institutionSlug st
 	if err != nil {
 		return attachmentScope{}, err
 	}
-	me, err := s.auth.Me(ctx, token)
+	me, err := s.auth.Principal(ctx, token)
 	if err != nil {
 		return attachmentScope{}, err
 	}
@@ -566,7 +566,7 @@ type StoredFile struct {
 // Open streams a file to anyone holding, in the file's institution, a role that may read its owner (the platform
 // superadmin always). Everyone else gets not found, so nothing tells an outsider the file exists
 func (s *AttachmentService) Open(ctx context.Context, token, id string) (StoredFile, error) {
-	me, err := s.auth.Me(ctx, token)
+	me, err := s.auth.Principal(ctx, token)
 	if err != nil {
 		return StoredFile{}, err
 	}

@@ -72,7 +72,7 @@ func (s *ProgramsService) scope(ctx context.Context, token, slug string) (progra
 	if isc.institution.Kind != domain.KindInstitute {
 		return programScope{}, domain.ErrNotAnInstitute
 	}
-	me, err := s.assessment.academic.auth.Me(ctx, token)
+	me, err := s.assessment.academic.auth.Principal(ctx, token)
 	if err != nil {
 		return programScope{}, err
 	}

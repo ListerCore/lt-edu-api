@@ -39,7 +39,7 @@ func (s *PeopleService) ebaScope(ctx context.Context, token, slug string, write 
 
 // actorName is the signed-in person's name, for the records and the audit
 func (s *PeopleService) actorName(ctx context.Context, token string) string {
-	me, err := s.academic.auth.Me(ctx, token)
+	me, err := s.academic.auth.Principal(ctx, token)
 	if err != nil {
 		return ""
 	}

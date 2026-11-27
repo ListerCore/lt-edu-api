@@ -631,7 +631,7 @@ func (s *TeachingService) Mine(ctx context.Context, token, slug string) (MySched
 	if err != nil {
 		return MySchedule{}, err
 	}
-	me, err := s.academic.auth.Me(ctx, token)
+	me, err := s.academic.auth.Principal(ctx, token)
 	if err != nil {
 		return MySchedule{}, err
 	}

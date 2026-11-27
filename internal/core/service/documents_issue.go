@@ -82,7 +82,7 @@ func contentHash(doc port.ScheduleDoc) (string, []byte, error) {
 
 // actorName is the viewer's name as the history shows it
 func (s *DocumentService) actorName(ctx context.Context, token string) string {
-	me, err := s.assessment.academic.auth.Me(ctx, token)
+	me, err := s.assessment.academic.auth.Principal(ctx, token)
 	if err != nil {
 		return ""
 	}
@@ -241,7 +241,7 @@ func (s *DocumentService) ScheduleIssues(ctx context.Context, token, slug, perio
 		return ScheduleIssues{}, err
 	}
 	out := ScheduleIssues{CanManage: teachingManagers[sc.role]}
-	if me, err := s.assessment.academic.auth.Me(ctx, token); err == nil {
+	if me, err := s.assessment.academic.auth.Principal(ctx, token); err == nil {
 		if st, err := s.staff.StaffByEmail(ctx, sc.institution.ID, me.User.Email); err == nil {
 			out.MyStaffID = st.ID
 		}
@@ -314,7 +314,7 @@ func (s *DocumentService) SignVersion(ctx context.Context, token, slug, versionI
 	if err != nil {
 		return domain.DocumentVersion{}, false, err
 	}
-	me, err := s.assessment.academic.auth.Me(ctx, token)
+	me, err := s.assessment.academic.auth.Principal(ctx, token)
 	if err != nil {
 		return domain.DocumentVersion{}, false, err
 	}

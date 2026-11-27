@@ -52,7 +52,7 @@ func (s *ParticipationService) scope(ctx context.Context, token, slug string) (p
 		return participationScope{}, domain.ErrParticipationForbidden
 	}
 	sc := participationScope{institutionScope: isc}
-	if me, err := s.auth.Me(ctx, token); err == nil {
+	if me, err := s.auth.Principal(ctx, token); err == nil {
 		sc.email, sc.name = me.User.Email, me.User.FullName
 		if sc.name == "" {
 			sc.name = me.User.Email

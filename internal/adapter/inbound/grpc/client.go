@@ -11,6 +11,7 @@ import (
 	"google.golang.org/grpc/peer"
 
 	"api/internal/core/domain"
+	"api/internal/core/service"
 )
 
 // Metadata keys lt-edu-app sends with every call (see proto/ltedu/system/v1/system.proto)
@@ -56,8 +57,9 @@ func (r *clientResolver) isTrusted(addr netip.Addr) bool {
 	return false
 }
 
+// interceptor also opens the request memo, so every service of this call shares one lookup of the session
 func (r *clientResolver) interceptor(ctx context.Context, req any, _ *gogrpc.UnaryServerInfo, handler gogrpc.UnaryHandler) (any, error) {
-	return handler(context.WithValue(ctx, metaKey{}, r.resolve(ctx)), req)
+	return handler(service.WithRequestMemo(context.WithValue(ctx, metaKey{}, r.resolve(ctx))), req)
 }
 
 // wrappedStream hands the resolved RequestMeta to streaming handlers
@@ -69,6 +71,7 @@ type wrappedStream struct {
 func (w *wrappedStream) Context() context.Context { return w.ctx }
 
 func (r *clientResolver) streamInterceptor(srv any, ss gogrpc.ServerStream, _ *gogrpc.StreamServerInfo, handler gogrpc.StreamHandler) error {
+	// No memo here: a stream can outlive a session, and must see a revocation on its next lookup
 	ctx := context.WithValue(ss.Context(), metaKey{}, r.resolve(ss.Context()))
 	return handler(srv, &wrappedStream{ServerStream: ss, ctx: ctx})
 }

@@ -90,7 +90,7 @@ func (s *AttendanceService) scope(ctx context.Context, token, slug string) (atte
 	if !attendanceOffice[isc.role] && !attendanceStaff[isc.role] && isc.role != "student" && isc.role != "guardian" {
 		return attendanceScope{}, domain.ErrAttendanceForbidden
 	}
-	me, err := s.academic.auth.Me(ctx, token)
+	me, err := s.academic.auth.Principal(ctx, token)
 	if err != nil {
 		return attendanceScope{}, err
 	}

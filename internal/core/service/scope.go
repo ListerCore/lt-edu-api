@@ -16,7 +16,7 @@ type institutionScope struct {
 // resolveInstitution picks the institution of a panel request: the one of the active role, or institutionSlug when
 // the person holds a role there; the platform superadmin can open any institution by slug
 func resolveInstitution(ctx context.Context, auth *AuthService, bySlug func(context.Context, string) (domain.Institution, error), token, institutionSlug string) (institutionScope, error) {
-	me, err := auth.Me(ctx, token)
+	me, err := auth.Principal(ctx, token)
 	if err != nil {
 		return institutionScope{}, err
 	}

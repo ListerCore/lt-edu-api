@@ -1074,7 +1074,7 @@ func (s *ExamsService) DeleteAdmission(ctx context.Context, token, slug, id stri
 
 // UserID is the signed-in user (to mark their own questions); empty when the session is not valid
 func (s *ExamsService) UserID(ctx context.Context, token string) string {
-	me, err := s.assessment.academic.auth.Me(ctx, token)
+	me, err := s.assessment.academic.auth.Principal(ctx, token)
 	if err != nil {
 		return ""
 	}

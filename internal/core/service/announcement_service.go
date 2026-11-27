@@ -551,7 +551,7 @@ func (s *AnnouncementService) OpenAttachment(ctx context.Context, token, announc
 		return AttachmentFile{}, domain.ErrNotFound
 	}
 	if !a.IsPublic {
-		me, err := s.auth.Me(ctx, token)
+		me, err := s.auth.Principal(ctx, token)
 		if err != nil {
 			return AttachmentFile{}, err
 		}

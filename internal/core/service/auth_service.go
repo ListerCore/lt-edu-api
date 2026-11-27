@@ -496,8 +496,16 @@ func (s *AuthService) authenticate(ctx context.Context, token string) (domain.Se
 	return session, nil
 }
 
-// Me answers who is signed in, with every role and the one in use
-func (s *AuthService) Me(ctx context.Context, token string) (domain.Me, error) {
+// Principal answers who is signed in, with every role and the one in use: what the other services need to scope
+// a call. Inside a request that carries a memo (WithRequestMemo, set by the gRPC interceptor) it reads the
+// database once, however many services of that request ask
+func (s *AuthService) Principal(ctx context.Context, token string) (domain.Me, error) {
+	memo, _ := ctx.Value(requestMemoKey{}).(*requestMemo)
+	if memo != nil {
+		if me, ok := memo.get(token); ok {
+			return me, nil
+		}
+	}
 	session, err := s.authenticate(ctx, token)
 	if err != nil {
 		return domain.Me{}, err
@@ -520,10 +528,22 @@ func (s *AuthService) Me(ctx context.Context, token string) (domain.Me, error) {
 			me.ActiveRole = &roles[i]
 		}
 	}
-	if me.TOTPEnabled, err = s.totpEnabled(ctx, user.ID); err != nil {
+	if memo != nil {
+		memo.put(token, me)
+	}
+	return me, nil
+}
+
+// Me is Principal plus the account settings the "Mi cuenta" page shows (authenticator app, Google link)
+func (s *AuthService) Me(ctx context.Context, token string) (domain.Me, error) {
+	me, err := s.Principal(ctx, token)
+	if err != nil {
 		return domain.Me{}, err
 	}
-	if me.GoogleLinked, err = s.repo.HasIdentity(ctx, user.ID, domain.ProviderGoogle); err != nil {
+	if me.TOTPEnabled, err = s.totpEnabled(ctx, me.User.ID); err != nil {
+		return domain.Me{}, err
+	}
+	if me.GoogleLinked, err = s.repo.HasIdentity(ctx, me.User.ID, domain.ProviderGoogle); err != nil {
 		return domain.Me{}, err
 	}
 	return me, nil

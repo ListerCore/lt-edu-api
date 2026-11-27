@@ -76,7 +76,7 @@ func (s *InstitutionService) scope(ctx context.Context, token, slug string) (ins
 	if !institutionFileReaders[sc.role] {
 		return institutionFileScope{}, domain.ErrInstitutionFileForbidden
 	}
-	me, err := s.auth.Me(ctx, token)
+	me, err := s.auth.Principal(ctx, token)
 	if err != nil {
 		return institutionFileScope{}, err
 	}
