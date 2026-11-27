@@ -22,6 +22,7 @@ module.exports = async () => {
   const sessions = {
     'demo-ebr': open('demo-ebr', process.env.SESSIONS_EBR),
     'demo-eba': open('demo-eba', process.env.SESSIONS_EBA),
+    'demo-institute': open('demo-institute', process.env.SESSIONS_INSTITUTE),
   };
   fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
   process.env.LT_EDU_SESSIONS_CREATED = process.env.SESSIONS_EBR ? '' : '1';

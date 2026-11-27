@@ -35,6 +35,15 @@ describe('EQ-01 Aislamiento entre instituciones', () => {
     expect(list.body.students.map((s) => s.id)).not.toContain(studentOfEba.id);
   });
 
+  test('el carnet de otra institución no registra asistencia aquí', async () => {
+    const institute = api('demo-institute', 'director');
+    const student = (await institute.get(`/students${query({ limit: 1 })}`)).body.students[0];
+    const codes = await institute.post('/attendance/card-codes', { kind: 'student', ids: [student.id] });
+    const res = await api('demo-ebr', 'director').post('/attendance/scans', { input: codes.body.codes[0].payload });
+    expect(res.status).toBe(404);
+    expect(res.body.error.code).toBe('card_unknown');
+  });
+
   test('500 peticiones concurrentes de dos instituciones nunca se cruzan', async () => {
     const callers = [
       ['demo-ebr', 'director'], ['demo-ebr', 'teacher'], ['demo-ebr', 'secretary'], ['demo-eba', 'tutor'],

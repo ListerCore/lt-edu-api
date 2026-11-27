@@ -38,6 +38,15 @@ describe('Registro de asistencia', () => {
     expect(res.body.roster.section.tally.late).toBeGreaterThanOrEqual(1);
   });
 
+  test('el QR de un carnet válido registra la asistencia del estudiante', async () => {
+    const codes = await api('demo-ebr', 'director').post('/attendance/card-codes', { kind: 'student', ids: [fx.studentId] });
+    expect(codes.status).toBe(200);
+    const res = await api('demo-ebr', 'director').post('/attendance/scans', { input: codes.body.codes[0].payload });
+    expect(res.status).toBe(200);
+    expect(res.body.holder).toEqual(expect.objectContaining({ kind: 'student', id: fx.studentId }));
+    expect(['present', 'late']).toContain(res.body.status);
+  });
+
   test('un carnet desconocido no registra asistencia', async () => {
     const res = await api('demo-ebr', 'director').post('/attendance/scans', { input: 'carnet-que-no-existe' });
     expect(res.status).toBe(404);

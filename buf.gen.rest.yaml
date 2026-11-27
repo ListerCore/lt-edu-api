@@ -11,6 +11,7 @@ inputs:
       - proto/ltedu/attendance/v1/attendance.proto
       - proto/ltedu/assessment/v1/assessment.proto
       - proto/ltedu/assessment/v1/closing.proto
+      - proto/ltedu/finance/v1/finance.proto
 plugins:
   - local: protoc-gen-grpc-gateway
     out: internal/adapter/inbound/grpc/gen

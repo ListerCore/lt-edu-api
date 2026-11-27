@@ -28,6 +28,14 @@ describe('EQ-02 Adaptación por tipo de institución', () => {
     for (const p of res.body.periods) expect(p.kind).toBe(ebr.period_kind);
   });
 
+  test('un instituto usa semestres y escala vigesimal (0 a 20) con el mismo código', async () => {
+    const context = (await api('demo-institute', 'director').get('/context')).body.context;
+    expect(context.institution_kind).toBe('institute');
+    expect(context.period_kind).toBe('semester');
+    const book = await api('demo-institute', 'teacher').get('/gradebook');
+    expect(book.body.scale).toBe('vigesimal');
+  });
+
   test('la escala de calificación de EBR es literal (AD, A, B, C)', async () => {
     const res = await api('demo-ebr', 'teacher').get('/gradebook');
     expect(res.status).toBe(200);
