@@ -17,6 +17,13 @@ http:
       get: /api/v1/institutions/{institution_slug}/members
     - selector: ltedu.institution.v1.InstitutionService.ListAuditEvents
       get: /api/v1/institutions/{institution_slug}/audit-events
+    - selector: ltedu.academic.v1.AcademicService.GetManagement
+      get: /api/v1/institutions/{institution_slug}/management
+    - selector: ltedu.institution.v1.InstitutionService.ListModules
+      get: /api/v1/institutions/{institution_slug}/modules
+    - selector: ltedu.institution.v1.InstitutionService.SetModule
+      put: /api/v1/institutions/{institution_slug}/modules/{key}
+      body: "*"
 
     # ── Estructura académica y periodos (RF05) ────────────────────────────────────────────────────
     - selector: ltedu.academic.v1.AcademicService.GetStructure
@@ -55,12 +62,17 @@ http:
     - selector: ltedu.people.v1.PeopleService.EndEnrollment
       post: /api/v1/institutions/{institution_slug}/enrollments/{id}/end
       body: "*"
+    - selector: ltedu.people.v1.PeopleService.DeleteEnrollment
+      delete: /api/v1/institutions/{institution_slug}/enrollments/{id}
 
     # ── Asistencia (RF07) ─────────────────────────────────────────────────────────────────────────
     - selector: ltedu.attendance.v1.AttendanceService.GetOverview
       get: /api/v1/institutions/{institution_slug}/attendance/overview
     - selector: ltedu.attendance.v1.AttendanceService.Scan
       post: /api/v1/institutions/{institution_slug}/attendance/scans
+      body: "*"
+    - selector: ltedu.attendance.v1.AttendanceService.CardCodes
+      post: /api/v1/institutions/{institution_slug}/attendance/card-codes
       body: "*"
     - selector: ltedu.attendance.v1.AttendanceService.GetRoster
       get: /api/v1/institutions/{institution_slug}/sections/{section_id}/attendance
@@ -91,6 +103,12 @@ http:
       get: /api/v1/institutions/{institution_slug}/students/{student_id}/report-card
     - selector: ltedu.assessment.v1.AssessmentService.MyReportCards
       get: /api/v1/institutions/{institution_slug}/me/report-cards
+
+    # ── Pensiones y pagos (RF13, módulo opcional "payments") ─────────────────────────────────────
+    - selector: ltedu.finance.v1.FinanceService.GetSummary
+      get: /api/v1/institutions/{institution_slug}/finance/summary
+    - selector: ltedu.finance.v1.FinanceService.ListPlans
+      get: /api/v1/institutions/{institution_slug}/finance/plans
 
     # ── Cierre de periodo (RF09) ──────────────────────────────────────────────────────────────────
     - selector: ltedu.assessment.v1.ClosingService.GetClosing
