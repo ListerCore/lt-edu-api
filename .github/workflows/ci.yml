@@ -1,0 +1,100 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  go:
+    name: Go · vet, formato y pruebas unitarias
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Formato
+        run: test -z "$(gofmt -l .)" || (gofmt -l . && exit 1)
+      - name: Vet
+        run: go vet ./...
+      - name: Pruebas unitarias con cobertura
+        run: go test -coverprofile=unit.out ./internal/... && go tool cover -func=unit.out | tail -1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cobertura-unitaria
+          path: unit.out
+
+  api:
+    name: Jest · API REST contra Postgres y Redis
+    runs-on: ubuntu-latest
+    needs: go
+    services:
+      postgres:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_USER: ltedu
+          POSTGRES_PASSWORD: ltedu_dev
+          POSTGRES_DB: ltedu_db
+          TZ: America/Lima
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U ltedu -d ltedu_db" --health-interval 5s --health-timeout 5s --health-retries 10
+      redis:
+        image: redis:8-alpine
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      APP__ENV: development
+      APP__LOG__LEVEL: info
+      APP__DB__HOST: localhost
+      APP__DB__PORT: "5432"
+      APP__REDIS__HOST: localhost
+      APP__REDIS__PORT: "6379"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: tests/api/pnpm-lock.yaml
+      - name: Configuración
+        run: cp .env.example .env
+      - name: Migraciones y datos de demostración
+        run: go run ./cmd/migrate up && go run ./cmd/seed
+      - name: Dependencias de las pruebas
+        working-directory: tests/api
+        run: pnpm install --frozen-lockfile
+      - name: Jest con cobertura del backend
+        working-directory: tests/api
+        run: ./run-with-coverage.sh
+      - name: Resumen de cobertura
+        if: always()
+        run: |
+          {
+            echo "### Cobertura del backend ejercitada por Jest"
+            echo '```'
+            cat tests/api/coverage/go/scope.txt 2>/dev/null || echo "sin datos"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pruebas-api
+          path: |
+            tests/api/coverage/go/index.html
+            tests/api/coverage/go/summary.txt
+            tests/api/coverage/go/scope.txt
+            tests/api/coverage/jest
+            tests/api/reports/junit.xml

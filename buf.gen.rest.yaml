@@ -1,0 +1,32 @@
+version: v2
+# REST gateway and OpenAPI document from rest/http.yaml (run: make rest)
+# Local plugins: go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@latest
+#                go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@latest
+inputs:
+  - directory: proto
+    paths:
+      - proto/ltedu/academic/v1/academic.proto
+      - proto/ltedu/institution/v1/institution.proto
+      - proto/ltedu/people/v1/people.proto
+      - proto/ltedu/attendance/v1/attendance.proto
+      - proto/ltedu/assessment/v1/assessment.proto
+      - proto/ltedu/assessment/v1/closing.proto
+plugins:
+  - local: protoc-gen-grpc-gateway
+    out: internal/adapter/inbound/grpc/gen
+    # rest/http.yaml holds the rules of every file, so the plugin must see them all at once
+    strategy: all
+    opt:
+      - module=api/internal/adapter/inbound/grpc/gen
+      - grpc_api_configuration=rest/http.yaml
+  - local: protoc-gen-openapiv2
+    out: internal/adapter/inbound/rest/openapi
+    # One merged document: the plugin must see every file in a single run
+    strategy: all
+    opt:
+      - grpc_api_configuration=rest/http.yaml
+      - openapi_configuration=rest/openapi.yaml
+      - allow_merge=true
+      - merge_file_name=ltedu
+      - json_names_for_fields=false
+      - disable_default_errors=false

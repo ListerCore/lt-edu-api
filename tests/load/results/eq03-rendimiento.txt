@@ -232,3 +232,54 @@ hora_punta   [  16% ] 0256/2000 VUs  1m11.2s/7m30.0s
 
 running (1m12.4s), 0261/2000 VUs, 4233 complete and 0 interrupted iterations
 hora_punta   [  16% ] 0261/2000 VUs  1m12.2s/7m30.0s
+
+running (1m13.4s), 0266/2000 VUs, 4351 complete and 0 interrupted iterations
+hora_punta   [  16% ] 0266/2000 VUs  1m13.2s/7m30.0s
+
+running (1m14.4s), 0271/2000 VUs, 4478 complete and 0 interrupted iterations
+hora_punta   [  16% ] 0271/2000 VUs  1m14.2s/7m30.0s
+
+running (1m15.4s), 0276/2000 VUs, 4608 complete and 0 interrupted iterations
+hora_punta   [  17% ] 0276/2000 VUs  1m15.2s/7m30.0s
+
+running (1m16.4s), 0281/2000 VUs, 4731 complete and 0 interrupted iterations
+hora_punta   [  17% ] 0281/2000 VUs  1m16.2s/7m30.0s
+
+running (1m17.4s), 0286/2000 VUs, 4869 complete and 0 interrupted iterations
+hora_punta   [  17% ] 0286/2000 VUs  1m17.2s/7m30.0s
+
+running (1m18.4s), 0291/2000 VUs, 5013 complete and 0 interrupted iterations
+hora_punta   [  17% ] 0291/2000 VUs  1m18.2s/7m30.0s
+
+running (1m19.4s), 0296/2000 VUs, 5130 complete and 0 interrupted iterations
+hora_punta   [  18% ] 0296/2000 VUs  1m19.2s/7m30.0s
+
+running (1m20.4s), 0301/2000 VUs, 5287 complete and 0 interrupted iterations
+hora_punta   [  18% ] 0301/2000 VUs  1m20.2s/7m30.0s
+
+running (1m21.4s), 0306/2000 VUs, 5429 complete and 0 interrupted iterations
+hora_punta   [  18% ] 0306/2000 VUs  1m21.2s/7m30.0s
+
+running (1m22.4s), 0311/2000 VUs, 5579 complete and 0 interrupted iterations
+hora_punta   [  18% ] 0311/2000 VUs  1m22.2s/7m30.0s
+
+running (1m23.4s), 0316/2000 VUs, 5741 complete and 0 interrupted iterations
+hora_punta   [  18% ] 0316/2000 VUs  1m23.2s/7m30.0s
+
+running (1m24.4s), 0321/2000 VUs, 5897 complete and 0 interrupted iterations
+hora_punta   [  19% ] 0321/2000 VUs  1m24.2s/7m30.0s
+
+running (1m25.4s), 0326/2000 VUs, 6038 complete and 0 interrupted iterations
+hora_punta   [  19% ] 0326/2000 VUs  1m25.2s/7m30.0s
+
+running (1m26.4s), 0331/2000 VUs, 6198 complete and 0 interrupted iterations
+hora_punta   [  19% ] 0331/2000 VUs  1m26.2s/7m30.0s
+
+running (1m27.4s), 0336/2000 VUs, 6339 complete and 0 interrupted iterations
+hora_punta   [  19% ] 0336/2000 VUs  1m27.2s/7m30.0s
+
+running (1m28.4s), 0341/2000 VUs, 6504 complete and 0 interrupted iterations
+hora_punta   [  20% ] 0341/2000 VUs  1m28.2s/7m30.0s
+
+running (1m29.4s), 0346/2000 VUs, 6658 complete and 0 interrupted iterations
+hora_punta   [  20% ] 0346/2000 VUs  1m29.2s/7m30.0s

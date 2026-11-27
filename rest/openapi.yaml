@@ -1,0 +1,29 @@
+# Options of the OpenAPI document (protoc-gen-openapiv2 openapi_configuration)
+openapiOptions:
+  file:
+    - file: ltedu/academic/v1/academic.proto
+      option:
+        info:
+          title: ListerCore Edu API
+          version: "1.0"
+          description: >-
+            API REST de ListerCore Edu, generada desde los contratos gRPC (grpc-gateway). Cada ruta cuelga de la
+            institución (`/api/v1/institutions/{institution_slug}`) y necesita el token de sesión en
+            `Authorization: Bearer <token>`. El token se obtiene con `POST /api/v1/auth/sign-in`.
+        schemes:
+          - HTTP
+          - HTTPS
+        consumes:
+          - application/json
+        produces:
+          - application/json
+        securityDefinitions:
+          security:
+            bearer:
+              type: TYPE_API_KEY
+              in: IN_HEADER
+              name: Authorization
+              description: "Token de sesión: `Bearer <token>`"
+        security:
+          - securityRequirement:
+              bearer: {}

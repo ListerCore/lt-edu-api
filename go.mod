@@ -3,18 +3,21 @@ module api
 go 1.26.3
 
 require (
+	github.com/go-pdf/fpdf v0.9.0
 	github.com/gofiber/contrib/v3/websocket v1.2.9
 	github.com/gofiber/fiber/v3 v3.6.1
 	github.com/golang-migrate/migrate/v4 v4.20.1
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.34.0
 	github.com/jackc/pgx/v5 v5.11.0
 	github.com/minio/minio-go/v7 v7.4.1
 	github.com/redis/go-redis/v9 v9.22.0
 	github.com/rs/zerolog v1.35.1
 	github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e
 	github.com/spf13/viper v1.21.0
+	github.com/xuri/excelize/v2 v2.11.1
 	golang.org/x/crypto v0.58.0
-	golang.org/x/text v0.43.0
-	google.golang.org/grpc v1.84.0
+	golang.org/x/text v0.44.0
+	google.golang.org/grpc v1.85.0
 	google.golang.org/protobuf v1.36.12
 )
 
@@ -23,7 +26,6 @@ require (
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/fasthttp/websocket v1.5.12 // indirect
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
-	github.com/go-pdf/fpdf v0.9.0 // indirect
 	github.com/go-viper/mapstructure/v2 v2.5.0 // indirect
 	github.com/gofiber/schema v1.9.0 // indirect
 	github.com/gofiber/utils/v2 v2.6.2 // indirect
@@ -57,14 +59,14 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.76.0 // indirect
 	github.com/xuri/efp v0.0.3-0.20260924042702-217b81952dec // indirect
-	github.com/xuri/excelize/v2 v2.11.1 // indirect
 	github.com/xuri/nfp v0.0.2-0.20250530014748-2ddeb826f9a9 // indirect
 	github.com/zeebo/xxh3 v1.1.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/net v0.62.0 // indirect
-	golang.org/x/sync v0.24.0 // indirect
+	golang.org/x/sync v0.25.0 // indirect
 	golang.org/x/sys v0.49.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260706201446-f0a921348800 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20261110000943-09e21b237f2c // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20261104224025-d1e00e9f33ab // indirect
 	gopkg.in/ini.v1 v1.67.3 // indirect
 )

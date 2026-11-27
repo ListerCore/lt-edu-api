@@ -15,7 +15,7 @@ else
     AIR_CONFIG  := .air.toml
 endif
 
-.PHONY: dev dev/run build test lint fmt vet health proto grpc/health grpc/list live/ping \
+.PHONY: dev dev/run build test lint fmt vet health proto rest grpc/health grpc/list live/ping \
         migrate/up migrate/down migrate/version migrate/create seed \
         network/create \
         up setup down \
@@ -74,6 +74,11 @@ migrate/create:
 proto:
 	buf lint
 	buf generate
+	buf generate --template buf.gen.rest.yaml
+
+# REST gateway and OpenAPI document from rest/http.yaml (Swagger UI at /api/docs)
+rest:
+	buf generate --template buf.gen.rest.yaml
 
 # Needs grpcurl; reflection is on outside production
 grpc/list:

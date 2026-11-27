@@ -3,6 +3,9 @@ package main
 import (
 	"context"
 	"net"
+	"os"
+	"os/signal"
+	"syscall"
 	"time"
 
 	"github.com/gofiber/fiber/v3"
@@ -13,6 +16,7 @@ import (
 	inboundgrpc "api/internal/adapter/inbound/grpc"
 	inboundhttp "api/internal/adapter/inbound/http"
 	"api/internal/adapter/inbound/http/handler"
+	inboundrest "api/internal/adapter/inbound/rest"
 	"api/internal/adapter/logging"
 	"api/internal/adapter/outbound/google"
 	"api/internal/adapter/outbound/httpprobe"
@@ -160,6 +164,13 @@ func main() {
 	app.Use(recover.New())
 	app.Use(logging.FiberMiddleware(logger))
 
+	// REST gateway: each REST call becomes a call to this API's own gRPC port, so both share interceptors and services
+	restGateway, err := inboundrest.New(context.Background(), "localhost:"+cfg.GRPCPort, logger)
+	if err != nil {
+		logger.Fatal().Err(err).Msg("failed to build rest gateway")
+	}
+	defer restGateway.Close()
+
 	inboundhttp.RegisterRoutes(app, inboundhttp.Handlers{
 		Health:           healthHandler,
 		Auth:             authHandler,
@@ -168,6 +179,9 @@ func main() {
 		Live:             liveHandler,
 		WebSocketOrigins: cfg.WSOrigins,
 		Development:      !production,
+		REST:             restGateway,
+		OpenAPI:          inboundrest.OpenAPI,
+		SwaggerUI:        inboundrest.SwaggerUI,
 	})
 
 	// gRPC for lt-edu-app's server, on its own port next to the HTTP API
@@ -184,11 +198,23 @@ func main() {
 		}
 	}()
 
+	// SIGINT/SIGTERM (docker stop, a redeploy) drain the open requests, then the deferred closes run
+	stop, cancelStop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer cancelStop()
+	go func() {
+		<-stop.Done()
+		logger.Info().Msg("shutting down")
+		if err := app.ShutdownWithTimeout(15 * time.Second); err != nil {
+			logger.Warn().Err(err).Msg("http shutdown did not finish in time")
+		}
+	}()
+
 	logger.Info().Str("port", cfg.Port).Str("env", cfg.AppEnv).Msg("starting server")
 
 	if err := app.Listen(":" + cfg.Port); err != nil {
 		logger.Fatal().Err(err).Msg("server stopped")
 	}
+	logger.Info().Msg("server stopped")
 }
 
 func logStartupConnection(logger zerolog.Logger, name string, pinger port.Pinger, timeout time.Duration) bool {

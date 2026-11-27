@@ -1,0 +1,102 @@
+# REST mapping of the gRPC API (grpc-gateway). The .proto files stay untouched: every rule here maps one RPC to an
+# HTTP verb and path, and buf generates the REST gateway (internal/adapter/inbound/grpc/gen/**/*.pb.gw.go) and the
+# OpenAPI document (internal/adapter/inbound/rest/openapi/ltedu.swagger.json) from it. Regenerate with: make rest
+#
+# Every path hangs from the institution: /api/v1/institutions/{institution_slug}/... The session token travels as
+# "Authorization: Bearer <token>" and the API checks that the user belongs to that institution.
+# Fields not bound to the path or the body travel as query parameters (GET) and use the proto names (snake_case).
+type: google.api.Service
+config_version: 3
+
+http:
+  rules:
+    # ── Institución (RF01, RF02, RF04) ─────────────────────────────────────────────────────────────
+    - selector: ltedu.academic.v1.AcademicService.GetContext
+      get: /api/v1/institutions/{institution_slug}/context
+    - selector: ltedu.institution.v1.InstitutionService.ListMembers
+      get: /api/v1/institutions/{institution_slug}/members
+    - selector: ltedu.institution.v1.InstitutionService.ListAuditEvents
+      get: /api/v1/institutions/{institution_slug}/audit-events
+
+    # ── Estructura académica y periodos (RF05) ────────────────────────────────────────────────────
+    - selector: ltedu.academic.v1.AcademicService.GetStructure
+      get: /api/v1/institutions/{institution_slug}/structure
+    - selector: ltedu.academic.v1.AcademicService.ListPeriods
+      get: /api/v1/institutions/{institution_slug}/periods
+    - selector: ltedu.academic.v1.AcademicService.GetPeriod
+      get: /api/v1/institutions/{institution_slug}/periods/{id}
+    - selector: ltedu.academic.v1.AcademicService.CreatePeriod
+      post: /api/v1/institutions/{institution_slug}/periods
+      body: period
+    - selector: ltedu.academic.v1.AcademicService.SetPeriodStatus
+      patch: /api/v1/institutions/{institution_slug}/periods/{id}/status
+      body: "*"
+    - selector: ltedu.academic.v1.AcademicService.DeletePeriod
+      delete: /api/v1/institutions/{institution_slug}/periods/{id}
+
+    # ── Personas y matrícula (RF06) ───────────────────────────────────────────────────────────────
+    - selector: ltedu.people.v1.PeopleService.ListStudents
+      get: /api/v1/institutions/{institution_slug}/students
+    - selector: ltedu.people.v1.PeopleService.GetStudent
+      get: /api/v1/institutions/{institution_slug}/students/{id}
+    - selector: ltedu.people.v1.PeopleService.CreateStudent
+      post: /api/v1/institutions/{institution_slug}/students
+      body: student
+    - selector: ltedu.people.v1.PeopleService.UpdateStudent
+      put: /api/v1/institutions/{institution_slug}/students/{id}
+      body: student
+    - selector: ltedu.people.v1.PeopleService.DeleteStudent
+      delete: /api/v1/institutions/{institution_slug}/students/{id}
+    - selector: ltedu.people.v1.PeopleService.GetEnrollmentBoard
+      get: /api/v1/institutions/{institution_slug}/enrollments
+    - selector: ltedu.people.v1.PeopleService.Enroll
+      post: /api/v1/institutions/{institution_slug}/enrollments
+      body: "*"
+    - selector: ltedu.people.v1.PeopleService.EndEnrollment
+      post: /api/v1/institutions/{institution_slug}/enrollments/{id}/end
+      body: "*"
+
+    # ── Asistencia (RF07) ─────────────────────────────────────────────────────────────────────────
+    - selector: ltedu.attendance.v1.AttendanceService.GetOverview
+      get: /api/v1/institutions/{institution_slug}/attendance/overview
+    - selector: ltedu.attendance.v1.AttendanceService.Scan
+      post: /api/v1/institutions/{institution_slug}/attendance/scans
+      body: "*"
+    - selector: ltedu.attendance.v1.AttendanceService.GetRoster
+      get: /api/v1/institutions/{institution_slug}/sections/{section_id}/attendance
+    - selector: ltedu.attendance.v1.AttendanceService.MarkStudents
+      put: /api/v1/institutions/{institution_slug}/sections/{section_id}/attendance
+      body: "*"
+    - selector: ltedu.attendance.v1.AttendanceService.CloseDay
+      post: /api/v1/institutions/{institution_slug}/sections/{section_id}/attendance/close
+      body: "*"
+    - selector: ltedu.attendance.v1.AttendanceService.MyAttendance
+      get: /api/v1/institutions/{institution_slug}/me/attendance
+
+    # ── Evaluación (RF08) ─────────────────────────────────────────────────────────────────────────
+    - selector: ltedu.assessment.v1.AssessmentService.GetGradebook
+      get: /api/v1/institutions/{institution_slug}/gradebook
+    - selector: ltedu.assessment.v1.AssessmentService.GetSheet
+      get: /api/v1/institutions/{institution_slug}/assignments/{assignment_id}/sheet
+    - selector: ltedu.assessment.v1.AssessmentService.SaveLevels
+      put: /api/v1/institutions/{institution_slug}/assignments/{assignment_id}/levels
+      body: "*"
+    - selector: ltedu.assessment.v1.AssessmentService.SaveScores
+      put: /api/v1/institutions/{institution_slug}/assignments/{assignment_id}/scores
+      body: "*"
+    - selector: ltedu.assessment.v1.AssessmentService.Submit
+      post: /api/v1/institutions/{institution_slug}/sections/{section_id}/assignments/{assignment_id}/submit
+      body: "*"
+    - selector: ltedu.assessment.v1.AssessmentService.GetReportCard
+      get: /api/v1/institutions/{institution_slug}/students/{student_id}/report-card
+    - selector: ltedu.assessment.v1.AssessmentService.MyReportCards
+      get: /api/v1/institutions/{institution_slug}/me/report-cards
+
+    # ── Cierre de periodo (RF09) ──────────────────────────────────────────────────────────────────
+    - selector: ltedu.assessment.v1.ClosingService.GetClosing
+      get: /api/v1/institutions/{institution_slug}/periods/{period_id}/closing
+    - selector: ltedu.assessment.v1.ClosingService.GetSectionClosing
+      get: /api/v1/institutions/{institution_slug}/sections/{section_id}/closing
+    - selector: ltedu.assessment.v1.ClosingService.ConfirmSection
+      post: /api/v1/institutions/{institution_slug}/sections/{section_id}/closing/confirm
+      body: "*"
