@@ -283,3 +283,45 @@ hora_punta   [  20% ] 0341/2000 VUs  1m28.2s/7m30.0s
 
 running (1m29.4s), 0346/2000 VUs, 6658 complete and 0 interrupted iterations
 hora_punta   [  20% ] 0346/2000 VUs  1m29.2s/7m30.0s
+
+running (1m30.4s), 0351/2000 VUs, 6830 complete and 0 interrupted iterations
+hora_punta   [  20% ] 0351/2000 VUs  1m30.2s/7m30.0s
+
+running (1m31.4s), 0356/2000 VUs, 6990 complete and 0 interrupted iterations
+hora_punta   [  20% ] 0356/2000 VUs  1m31.2s/7m30.0s
+
+running (1m32.4s), 0361/2000 VUs, 7140 complete and 0 interrupted iterations
+hora_punta   [  20% ] 0361/2000 VUs  1m32.2s/7m30.0s
+
+running (1m33.4s), 0366/2000 VUs, 7276 complete and 0 interrupted iterations
+hora_punta   [  21% ] 0366/2000 VUs  1m33.2s/7m30.0s
+
+running (1m34.4s), 0371/2000 VUs, 7411 complete and 0 interrupted iterations
+hora_punta   [  21% ] 0371/2000 VUs  1m34.2s/7m30.0s
+
+running (1m35.4s), 0376/2000 VUs, 7586 complete and 0 interrupted iterations
+hora_punta   [  21% ] 0376/2000 VUs  1m35.2s/7m30.0s
+
+running (1m36.4s), 0381/2000 VUs, 7748 complete and 0 interrupted iterations
+hora_punta   [  21% ] 0381/2000 VUs  1m36.2s/7m30.0s
+
+running (1m37.4s), 0386/2000 VUs, 7905 complete and 0 interrupted iterations
+hora_punta   [  22% ] 0386/2000 VUs  1m37.2s/7m30.0s
+
+running (1m38.4s), 0391/2000 VUs, 8057 complete and 0 interrupted iterations
+hora_punta   [  22% ] 0391/2000 VUs  1m38.2s/7m30.0s
+
+running (1m39.5s), 0395/2000 VUs, 8236 complete and 0 interrupted iterations
+hora_punta   [  22% ] 0395/2000 VUs  1m39.2s/7m30.0s
+
+running (1m40.4s), 0401/2000 VUs, 8418 complete and 0 interrupted iterations
+hora_punta   [  22% ] 0401/2000 VUs  1m40.2s/7m30.0s
+
+running (1m41.4s), 0406/2000 VUs, 8596 complete and 0 interrupted iterations
+hora_punta   [  22% ] 0406/2000 VUs  1m41.2s/7m30.0s
+
+running (1m42.4s), 0411/2000 VUs, 8740 complete and 0 interrupted iterations
+hora_punta   [  23% ] 0411/2000 VUs  1m42.2s/7m30.0s
+
+running (1m43.4s), 0416/2000 VUs, 8924 complete and 0 interrupted iterations
+hora_punta   [  23% ] 0416/2000 VUs  1m43.2s/7m30.0s
