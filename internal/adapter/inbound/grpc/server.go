@@ -89,6 +89,7 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 			clients.interceptor,
 			logInterceptor(logger),
 			rateLimitInterceptor(limits),
+			moduleInterceptor(services.Institution),
 		),
 		gogrpc.ChainStreamInterceptor(
 			recoverStreamInterceptor(logger),
@@ -101,7 +102,7 @@ func New(services Services, cfg Config, logger zerolog.Logger) *gogrpc.Server {
 	healthServer.SetServingStatus(systemv1.SystemService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	announcementsv1.RegisterAnnouncementServiceServer(server, &announcementServer{announcements: services.Announcements, logger: logger})
 	healthServer.SetServingStatus(announcementsv1.AnnouncementService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
-	academicv1.RegisterAcademicServiceServer(server, &academicServer{academic: services.Academic, logger: logger})
+	academicv1.RegisterAcademicServiceServer(server, &academicServer{academic: services.Academic, institution: services.Institution, logger: logger})
 	healthServer.SetServingStatus(academicv1.AcademicService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
 	academicv1.RegisterCurriculumServiceServer(server, &curriculumServer{curricula: services.Curricula, logger: logger})
 	healthServer.SetServingStatus(academicv1.CurriculumService_ServiceDesc.ServiceName, healthpb.HealthCheckResponse_SERVING)
@@ -198,6 +199,7 @@ func logInterceptor(logger zerolog.Logger) gogrpc.UnaryServerInterceptor {
 			Dur("latency", time.Since(start)).
 			Str("ip", meta.IP).
 			Str("user_agent", meta.UserAgent).
+			Str("user_id", service.RequestUser(ctx)).
 			Msg("grpc_request")
 		return resp, err
 	}

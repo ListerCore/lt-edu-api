@@ -25,6 +25,7 @@ import (
 	"api/internal/adapter/inbound/grpc/gen/assessmentv1"
 	"api/internal/adapter/inbound/grpc/gen/attendancev1"
 	"api/internal/adapter/inbound/grpc/gen/commonv1"
+	"api/internal/adapter/inbound/grpc/gen/financev1"
 	"api/internal/adapter/inbound/grpc/gen/institutionv1"
 	"api/internal/adapter/inbound/grpc/gen/peoplev1"
 )
@@ -67,6 +68,7 @@ func New(ctx context.Context, grpcAddr string, logger zerolog.Logger) (*Gateway,
 		attendancev1.RegisterAttendanceServiceHandler,
 		assessmentv1.RegisterAssessmentServiceHandler,
 		assessmentv1.RegisterClosingServiceHandler,
+		financev1.RegisterFinanceServiceHandler,
 	}
 	for _, register := range registers {
 		if err := register(ctx, mux, conn); err != nil {

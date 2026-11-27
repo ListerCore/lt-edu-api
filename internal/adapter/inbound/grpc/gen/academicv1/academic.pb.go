@@ -1592,9 +1592,11 @@ type GetManagementResponse struct {
 	// The institution the session works on (an institution role always gets its own)
 	InstitutionSlug string `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
 	// public | private
-	Management    string `protobuf:"bytes,2,opt,name=management,proto3" json:"management,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Management string `protobuf:"bytes,2,opt,name=management,proto3" json:"management,omitempty"`
+	// Optional modules the institution turned off (ltedu.institution.v1.InstitutionService.ListModules)
+	DisabledModules []string `protobuf:"bytes,3,rep,name=disabled_modules,json=disabledModules,proto3" json:"disabled_modules,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *GetManagementResponse) Reset() {
@@ -1639,6 +1641,13 @@ func (x *GetManagementResponse) GetManagement() string {
 		return x.Management
 	}
 	return ""
+}
+
+func (x *GetManagementResponse) GetDisabledModules() []string {
+	if x != nil {
+		return x.DisabledModules
+	}
+	return nil
 }
 
 type GetStructureRequest struct {
@@ -3995,12 +4004,13 @@ const file_ltedu_academic_v1_academic_proto_rawDesc = "" +
 	"\x16UpdateSettingsResponse\x12<\n" +
 	"\acontext\x18\x01 \x01(\v2\".ltedu.academic.v1.AcademicContextR\acontext\"A\n" +
 	"\x14GetManagementRequest\x12)\n" +
-	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"b\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x8d\x01\n" +
 	"\x15GetManagementResponse\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x1e\n" +
 	"\n" +
 	"management\x18\x02 \x01(\tR\n" +
-	"management\"@\n" +
+	"management\x12)\n" +
+	"\x10disabled_modules\x18\x03 \x03(\tR\x0fdisabledModules\"@\n" +
 	"\x13GetStructureRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"\x86\x01\n" +
 	"\x14GetStructureResponse\x12<\n" +

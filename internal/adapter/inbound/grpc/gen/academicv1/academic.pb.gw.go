@@ -76,6 +76,45 @@ func local_request_AcademicService_GetContext_0(ctx context.Context, marshaler r
 	return msg, metadata, err
 }
 
+func request_AcademicService_GetManagement_0(ctx context.Context, marshaler runtime.Marshaler, client AcademicServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var (
+		protoReq GetManagementRequest
+		metadata runtime.ServerMetadata
+		err      error
+	)
+	val, ok := pathParams["institution_slug"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "institution_slug")
+	}
+	protoReq.InstitutionSlug, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "institution_slug", err)
+	}
+	if req.Body != nil {
+		_, _ = io.Copy(io.Discard, req.Body)
+	}
+	msg, err := client.GetManagement(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+}
+
+func local_request_AcademicService_GetManagement_0(ctx context.Context, marshaler runtime.Marshaler, server AcademicServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var (
+		protoReq GetManagementRequest
+		metadata runtime.ServerMetadata
+		err      error
+	)
+	val, ok := pathParams["institution_slug"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "institution_slug")
+	}
+	protoReq.InstitutionSlug, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "institution_slug", err)
+	}
+	msg, err := server.GetManagement(ctx, &protoReq)
+	return msg, metadata, err
+}
+
 func request_AcademicService_GetStructure_0(ctx context.Context, marshaler runtime.Marshaler, client AcademicServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq GetStructureRequest
@@ -420,6 +459,26 @@ func RegisterAcademicServiceHandlerServer(ctx context.Context, mux *runtime.Serv
 		}
 		forward_AcademicService_GetContext_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
+	mux.Handle(http.MethodGet, pattern_AcademicService_GetManagement_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/ltedu.academic.v1.AcademicService/GetManagement", runtime.WithHTTPPathPattern("/api/v1/institutions/{institution_slug}/management"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_AcademicService_GetManagement_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		forward_AcademicService_GetManagement_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+	})
 	mux.Handle(http.MethodGet, pattern_AcademicService_GetStructure_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -597,6 +656,23 @@ func RegisterAcademicServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 		}
 		forward_AcademicService_GetContext_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
+	mux.Handle(http.MethodGet, pattern_AcademicService_GetManagement_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/ltedu.academic.v1.AcademicService/GetManagement", runtime.WithHTTPPathPattern("/api/v1/institutions/{institution_slug}/management"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_AcademicService_GetManagement_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		forward_AcademicService_GetManagement_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+	})
 	mux.Handle(http.MethodGet, pattern_AcademicService_GetStructure_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -704,6 +780,7 @@ func RegisterAcademicServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 
 var (
 	pattern_AcademicService_GetContext_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "institutions", "institution_slug", "context"}, ""))
+	pattern_AcademicService_GetManagement_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "institutions", "institution_slug", "management"}, ""))
 	pattern_AcademicService_GetStructure_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "institutions", "institution_slug", "structure"}, ""))
 	pattern_AcademicService_ListPeriods_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "institutions", "institution_slug", "periods"}, ""))
 	pattern_AcademicService_GetPeriod_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "v1", "institutions", "institution_slug", "periods", "id"}, ""))
@@ -714,6 +791,7 @@ var (
 
 var (
 	forward_AcademicService_GetContext_0      = runtime.ForwardResponseMessage
+	forward_AcademicService_GetManagement_0   = runtime.ForwardResponseMessage
 	forward_AcademicService_GetStructure_0    = runtime.ForwardResponseMessage
 	forward_AcademicService_ListPeriods_0     = runtime.ForwardResponseMessage
 	forward_AcademicService_GetPeriod_0       = runtime.ForwardResponseMessage

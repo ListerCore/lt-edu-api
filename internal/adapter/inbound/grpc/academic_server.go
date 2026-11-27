@@ -18,7 +18,9 @@ const dateLayout = "2006-01-02"
 type academicServer struct {
 	academicv1.UnimplementedAcademicServiceServer
 	academic *service.AcademicService
-	logger   zerolog.Logger
+	// institution answers the optional modules the institution turned off (GetManagement)
+	institution *service.InstitutionService
+	logger      zerolog.Logger
 }
 
 func (s *academicServer) fail(method string, err error) error {
@@ -210,7 +212,13 @@ func (s *academicServer) GetManagement(ctx context.Context, req *academicv1.GetM
 	if err != nil {
 		return nil, s.fail("GetManagement", err)
 	}
-	return &academicv1.GetManagementResponse{InstitutionSlug: inst.Slug, Management: management}, nil
+	out := &academicv1.GetManagementResponse{InstitutionSlug: inst.Slug, Management: management}
+	if s.institution != nil {
+		if out.DisabledModules, err = s.institution.DisabledModules(ctx, bearer(ctx), req.GetInstitutionSlug()); err != nil {
+			return nil, s.fail("GetManagement", err)
+		}
+	}
+	return out, nil
 }
 
 // ---------- structure ----------

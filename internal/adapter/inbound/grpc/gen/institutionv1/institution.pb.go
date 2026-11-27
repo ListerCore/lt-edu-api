@@ -1470,6 +1470,267 @@ func (*RevokeMemberResponse) Descriptor() ([]byte, []int) {
 	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{19}
 }
 
+type Module struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Panel module key (payments, classroom, mock-exams, compliance, apafa)
+	Key           string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Name          string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Enabled       bool   `protobuf:"varint,3,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Module) Reset() {
+	*x = Module{}
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Module) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Module) ProtoMessage() {}
+
+func (x *Module) ProtoReflect() protoreflect.Message {
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Module.ProtoReflect.Descriptor instead.
+func (*Module) Descriptor() ([]byte, []int) {
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *Module) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Module) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Module) GetEnabled() bool {
+	if x != nil {
+		return x.Enabled
+	}
+	return false
+}
+
+type ListModulesRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *ListModulesRequest) Reset() {
+	*x = ListModulesRequest{}
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListModulesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListModulesRequest) ProtoMessage() {}
+
+func (x *ListModulesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListModulesRequest.ProtoReflect.Descriptor instead.
+func (*ListModulesRequest) Descriptor() ([]byte, []int) {
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *ListModulesRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+type ListModulesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Modules       []*Module              `protobuf:"bytes,1,rep,name=modules,proto3" json:"modules,omitempty"`
+	CanManage     bool                   `protobuf:"varint,2,opt,name=can_manage,json=canManage,proto3" json:"can_manage,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListModulesResponse) Reset() {
+	*x = ListModulesResponse{}
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListModulesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListModulesResponse) ProtoMessage() {}
+
+func (x *ListModulesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListModulesResponse.ProtoReflect.Descriptor instead.
+func (*ListModulesResponse) Descriptor() ([]byte, []int) {
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *ListModulesResponse) GetModules() []*Module {
+	if x != nil {
+		return x.Modules
+	}
+	return nil
+}
+
+func (x *ListModulesResponse) GetCanManage() bool {
+	if x != nil {
+		return x.CanManage
+	}
+	return false
+}
+
+type SetModuleRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InstitutionSlug string                 `protobuf:"bytes,1,opt,name=institution_slug,json=institutionSlug,proto3" json:"institution_slug,omitempty"`
+	Key             string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Enabled         bool                   `protobuf:"varint,3,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *SetModuleRequest) Reset() {
+	*x = SetModuleRequest{}
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetModuleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetModuleRequest) ProtoMessage() {}
+
+func (x *SetModuleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetModuleRequest.ProtoReflect.Descriptor instead.
+func (*SetModuleRequest) Descriptor() ([]byte, []int) {
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *SetModuleRequest) GetInstitutionSlug() string {
+	if x != nil {
+		return x.InstitutionSlug
+	}
+	return ""
+}
+
+func (x *SetModuleRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *SetModuleRequest) GetEnabled() bool {
+	if x != nil {
+		return x.Enabled
+	}
+	return false
+}
+
+type SetModuleResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Module        *Module                `protobuf:"bytes,1,opt,name=module,proto3" json:"module,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetModuleResponse) Reset() {
+	*x = SetModuleResponse{}
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetModuleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetModuleResponse) ProtoMessage() {}
+
+func (x *SetModuleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_ltedu_institution_v1_institution_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetModuleResponse.ProtoReflect.Descriptor instead.
+func (*SetModuleResponse) Descriptor() ([]byte, []int) {
+	return file_ltedu_institution_v1_institution_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *SetModuleResponse) GetModule() *Module {
+	if x != nil {
+		return x.Module
+	}
+	return nil
+}
+
 var File_ltedu_institution_v1_institution_proto protoreflect.FileDescriptor
 
 const file_ltedu_institution_v1_institution_proto_rawDesc = "" +
@@ -1597,7 +1858,23 @@ const file_ltedu_institution_v1_institution_proto_rawDesc = "" +
 	"\x13RevokeMemberRequest\x12)\n" +
 	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\"\x16\n" +
-	"\x14RevokeMemberResponse2\x94\a\n" +
+	"\x14RevokeMemberResponse\"H\n" +
+	"\x06Module\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
+	"\aenabled\x18\x03 \x01(\bR\aenabled\"?\n" +
+	"\x12ListModulesRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\"l\n" +
+	"\x13ListModulesResponse\x126\n" +
+	"\amodules\x18\x01 \x03(\v2\x1c.ltedu.institution.v1.ModuleR\amodules\x12\x1d\n" +
+	"\n" +
+	"can_manage\x18\x02 \x01(\bR\tcanManage\"i\n" +
+	"\x10SetModuleRequest\x12)\n" +
+	"\x10institution_slug\x18\x01 \x01(\tR\x0finstitutionSlug\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x18\n" +
+	"\aenabled\x18\x03 \x01(\bR\aenabled\"I\n" +
+	"\x11SetModuleResponse\x124\n" +
+	"\x06module\x18\x01 \x01(\v2\x1c.ltedu.institution.v1.ModuleR\x06module2\xd6\b\n" +
 	"\x12InstitutionService\x12w\n" +
 	"\x12GetInstitutionFile\x12/.ltedu.institution.v1.GetInstitutionFileRequest\x1a0.ltedu.institution.v1.GetInstitutionFileResponse\x12t\n" +
 	"\x11SaveAuthorization\x12..ltedu.institution.v1.SaveAuthorizationRequest\x1a/.ltedu.institution.v1.SaveAuthorizationResponse\x12z\n" +
@@ -1606,7 +1883,9 @@ const file_ltedu_institution_v1_institution_proto_rawDesc = "" +
 	"\x0fListAuditEvents\x12,.ltedu.institution.v1.ListAuditEventsRequest\x1a-.ltedu.institution.v1.ListAuditEventsResponse\x12b\n" +
 	"\vListMembers\x12(.ltedu.institution.v1.ListMembersRequest\x1a).ltedu.institution.v1.ListMembersResponse\x12b\n" +
 	"\vGrantMember\x12(.ltedu.institution.v1.GrantMemberRequest\x1a).ltedu.institution.v1.GrantMemberResponse\x12e\n" +
-	"\fRevokeMember\x12).ltedu.institution.v1.RevokeMemberRequest\x1a*.ltedu.institution.v1.RevokeMemberResponseBCZAapi/internal/adapter/inbound/grpc/gen/institutionv1;institutionv1b\x06proto3"
+	"\fRevokeMember\x12).ltedu.institution.v1.RevokeMemberRequest\x1a*.ltedu.institution.v1.RevokeMemberResponse\x12b\n" +
+	"\vListModules\x12(.ltedu.institution.v1.ListModulesRequest\x1a).ltedu.institution.v1.ListModulesResponse\x12\\\n" +
+	"\tSetModule\x12&.ltedu.institution.v1.SetModuleRequest\x1a'.ltedu.institution.v1.SetModuleResponseBCZAapi/internal/adapter/inbound/grpc/gen/institutionv1;institutionv1b\x06proto3"
 
 var (
 	file_ltedu_institution_v1_institution_proto_rawDescOnce sync.Once
@@ -1620,7 +1899,7 @@ func file_ltedu_institution_v1_institution_proto_rawDescGZIP() []byte {
 	return file_ltedu_institution_v1_institution_proto_rawDescData
 }
 
-var file_ltedu_institution_v1_institution_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_ltedu_institution_v1_institution_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_ltedu_institution_v1_institution_proto_goTypes = []any{
 	(*Authorization)(nil),               // 0: ltedu.institution.v1.Authorization
 	(*PlatformSheet)(nil),               // 1: ltedu.institution.v1.PlatformSheet
@@ -1642,6 +1921,11 @@ var file_ltedu_institution_v1_institution_proto_goTypes = []any{
 	(*GrantMemberResponse)(nil),         // 17: ltedu.institution.v1.GrantMemberResponse
 	(*RevokeMemberRequest)(nil),         // 18: ltedu.institution.v1.RevokeMemberRequest
 	(*RevokeMemberResponse)(nil),        // 19: ltedu.institution.v1.RevokeMemberResponse
+	(*Module)(nil),                      // 20: ltedu.institution.v1.Module
+	(*ListModulesRequest)(nil),          // 21: ltedu.institution.v1.ListModulesRequest
+	(*ListModulesResponse)(nil),         // 22: ltedu.institution.v1.ListModulesResponse
+	(*SetModuleRequest)(nil),            // 23: ltedu.institution.v1.SetModuleRequest
+	(*SetModuleResponse)(nil),           // 24: ltedu.institution.v1.SetModuleResponse
 }
 var file_ltedu_institution_v1_institution_proto_depIdxs = []int32{
 	0,  // 0: ltedu.institution.v1.GetInstitutionFileResponse.authorizations:type_name -> ltedu.institution.v1.Authorization
@@ -1652,27 +1936,33 @@ var file_ltedu_institution_v1_institution_proto_depIdxs = []int32{
 	1,  // 5: ltedu.institution.v1.SavePlatformSheetResponse.platform:type_name -> ltedu.institution.v1.PlatformSheet
 	10, // 6: ltedu.institution.v1.ListAuditEventsResponse.events:type_name -> ltedu.institution.v1.AuditEvent
 	13, // 7: ltedu.institution.v1.ListMembersResponse.members:type_name -> ltedu.institution.v1.Member
-	2,  // 8: ltedu.institution.v1.InstitutionService.GetInstitutionFile:input_type -> ltedu.institution.v1.GetInstitutionFileRequest
-	4,  // 9: ltedu.institution.v1.InstitutionService.SaveAuthorization:input_type -> ltedu.institution.v1.SaveAuthorizationRequest
-	6,  // 10: ltedu.institution.v1.InstitutionService.DeleteAuthorization:input_type -> ltedu.institution.v1.DeleteAuthorizationRequest
-	8,  // 11: ltedu.institution.v1.InstitutionService.SavePlatformSheet:input_type -> ltedu.institution.v1.SavePlatformSheetRequest
-	11, // 12: ltedu.institution.v1.InstitutionService.ListAuditEvents:input_type -> ltedu.institution.v1.ListAuditEventsRequest
-	14, // 13: ltedu.institution.v1.InstitutionService.ListMembers:input_type -> ltedu.institution.v1.ListMembersRequest
-	16, // 14: ltedu.institution.v1.InstitutionService.GrantMember:input_type -> ltedu.institution.v1.GrantMemberRequest
-	18, // 15: ltedu.institution.v1.InstitutionService.RevokeMember:input_type -> ltedu.institution.v1.RevokeMemberRequest
-	3,  // 16: ltedu.institution.v1.InstitutionService.GetInstitutionFile:output_type -> ltedu.institution.v1.GetInstitutionFileResponse
-	5,  // 17: ltedu.institution.v1.InstitutionService.SaveAuthorization:output_type -> ltedu.institution.v1.SaveAuthorizationResponse
-	7,  // 18: ltedu.institution.v1.InstitutionService.DeleteAuthorization:output_type -> ltedu.institution.v1.DeleteAuthorizationResponse
-	9,  // 19: ltedu.institution.v1.InstitutionService.SavePlatformSheet:output_type -> ltedu.institution.v1.SavePlatformSheetResponse
-	12, // 20: ltedu.institution.v1.InstitutionService.ListAuditEvents:output_type -> ltedu.institution.v1.ListAuditEventsResponse
-	15, // 21: ltedu.institution.v1.InstitutionService.ListMembers:output_type -> ltedu.institution.v1.ListMembersResponse
-	17, // 22: ltedu.institution.v1.InstitutionService.GrantMember:output_type -> ltedu.institution.v1.GrantMemberResponse
-	19, // 23: ltedu.institution.v1.InstitutionService.RevokeMember:output_type -> ltedu.institution.v1.RevokeMemberResponse
-	16, // [16:24] is the sub-list for method output_type
-	8,  // [8:16] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	20, // 8: ltedu.institution.v1.ListModulesResponse.modules:type_name -> ltedu.institution.v1.Module
+	20, // 9: ltedu.institution.v1.SetModuleResponse.module:type_name -> ltedu.institution.v1.Module
+	2,  // 10: ltedu.institution.v1.InstitutionService.GetInstitutionFile:input_type -> ltedu.institution.v1.GetInstitutionFileRequest
+	4,  // 11: ltedu.institution.v1.InstitutionService.SaveAuthorization:input_type -> ltedu.institution.v1.SaveAuthorizationRequest
+	6,  // 12: ltedu.institution.v1.InstitutionService.DeleteAuthorization:input_type -> ltedu.institution.v1.DeleteAuthorizationRequest
+	8,  // 13: ltedu.institution.v1.InstitutionService.SavePlatformSheet:input_type -> ltedu.institution.v1.SavePlatformSheetRequest
+	11, // 14: ltedu.institution.v1.InstitutionService.ListAuditEvents:input_type -> ltedu.institution.v1.ListAuditEventsRequest
+	14, // 15: ltedu.institution.v1.InstitutionService.ListMembers:input_type -> ltedu.institution.v1.ListMembersRequest
+	16, // 16: ltedu.institution.v1.InstitutionService.GrantMember:input_type -> ltedu.institution.v1.GrantMemberRequest
+	18, // 17: ltedu.institution.v1.InstitutionService.RevokeMember:input_type -> ltedu.institution.v1.RevokeMemberRequest
+	21, // 18: ltedu.institution.v1.InstitutionService.ListModules:input_type -> ltedu.institution.v1.ListModulesRequest
+	23, // 19: ltedu.institution.v1.InstitutionService.SetModule:input_type -> ltedu.institution.v1.SetModuleRequest
+	3,  // 20: ltedu.institution.v1.InstitutionService.GetInstitutionFile:output_type -> ltedu.institution.v1.GetInstitutionFileResponse
+	5,  // 21: ltedu.institution.v1.InstitutionService.SaveAuthorization:output_type -> ltedu.institution.v1.SaveAuthorizationResponse
+	7,  // 22: ltedu.institution.v1.InstitutionService.DeleteAuthorization:output_type -> ltedu.institution.v1.DeleteAuthorizationResponse
+	9,  // 23: ltedu.institution.v1.InstitutionService.SavePlatformSheet:output_type -> ltedu.institution.v1.SavePlatformSheetResponse
+	12, // 24: ltedu.institution.v1.InstitutionService.ListAuditEvents:output_type -> ltedu.institution.v1.ListAuditEventsResponse
+	15, // 25: ltedu.institution.v1.InstitutionService.ListMembers:output_type -> ltedu.institution.v1.ListMembersResponse
+	17, // 26: ltedu.institution.v1.InstitutionService.GrantMember:output_type -> ltedu.institution.v1.GrantMemberResponse
+	19, // 27: ltedu.institution.v1.InstitutionService.RevokeMember:output_type -> ltedu.institution.v1.RevokeMemberResponse
+	22, // 28: ltedu.institution.v1.InstitutionService.ListModules:output_type -> ltedu.institution.v1.ListModulesResponse
+	24, // 29: ltedu.institution.v1.InstitutionService.SetModule:output_type -> ltedu.institution.v1.SetModuleResponse
+	20, // [20:30] is the sub-list for method output_type
+	10, // [10:20] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_ltedu_institution_v1_institution_proto_init() }
@@ -1686,7 +1976,7 @@ func file_ltedu_institution_v1_institution_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_ltedu_institution_v1_institution_proto_rawDesc), len(file_ltedu_institution_v1_institution_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

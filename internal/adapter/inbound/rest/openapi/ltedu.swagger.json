@@ -23,6 +23,10 @@
       "description": "The office (dirección, coordinación, secretaría, auxiliares) scans and marks anyone; tutors mark their sections;\nteachers take their classes; families see their children and send justifications"
     },
     {
+      "name": "FinanceService",
+      "description": "Tesorería and dirección charge and collect; secretaría and coordinación consult; families see their own account"
+    },
+    {
       "name": "InstitutionService",
       "description": "Dirección, coordinación, secretaría and the Responsable técnico read. Dirección records the authorizations;\ndirección and the Responsable técnico edit the platform sheet. PDFs and evidence go through the attachments API\n(owner_kind authorization / platform_sheet)"
     },
@@ -168,6 +172,44 @@
         ],
         "tags": [
           "AssessmentService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/attendance/card-codes": {
+      "post": {
+        "operationId": "AttendanceService_CardCodes",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CardCodesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AttendanceServiceCardCodesBody"
+            }
+          }
+        ],
+        "tags": [
+          "AttendanceService"
         ]
       }
     },
@@ -470,6 +512,42 @@
         ]
       }
     },
+    "/api/v1/institutions/{institution_slug}/enrollments/{id}": {
+      "delete": {
+        "operationId": "PeopleService_DeleteEnrollment",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteEnrollmentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PeopleService"
+        ]
+      }
+    },
     "/api/v1/institutions/{institution_slug}/enrollments/{id}/end": {
       "post": {
         "summary": "Withdrawal or transfer out; status active brings it back",
@@ -515,6 +593,78 @@
         ]
       }
     },
+    "/api/v1/institutions/{institution_slug}/finance/plans": {
+      "get": {
+        "operationId": "FinanceService_ListPlans",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListPlansResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "period_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FinanceService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/finance/summary": {
+      "get": {
+        "operationId": "FinanceService_GetSummary",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetSummaryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "period_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FinanceService"
+        ]
+      }
+    },
     "/api/v1/institutions/{institution_slug}/gradebook": {
       "get": {
         "operationId": "AssessmentService_GetGradebook",
@@ -554,6 +704,37 @@
         ],
         "tags": [
           "AssessmentService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/management": {
+      "get": {
+        "summary": "Management type (public | private), readable by every role of the institution, families included",
+        "operationId": "AcademicService_GetManagement",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetManagementResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AcademicService"
         ]
       }
     },
@@ -642,6 +823,81 @@
             "in": "path",
             "required": true,
             "type": "string"
+          }
+        ],
+        "tags": [
+          "InstitutionService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/modules": {
+      "get": {
+        "summary": "Optional modules (RF01): every role reads them, dirección turns them on and off; a module that is off is refused\nby the API (module_disabled) and hidden by the panel",
+        "operationId": "InstitutionService_ListModules",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListModulesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InstitutionService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/modules/{key}": {
+      "put": {
+        "operationId": "InstitutionService_SetModule",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SetModuleResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InstitutionServiceSetModuleBody"
+            }
           }
         ],
         "tags": [
@@ -1498,6 +1754,21 @@
         }
       }
     },
+    "AttendanceServiceCardCodesBody": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "title": "student | staff"
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "AttendanceServiceCloseDayBody": {
       "type": "object",
       "properties": {
@@ -1531,6 +1802,14 @@
     },
     "ClosingServiceConfirmSectionBody": {
       "type": "object"
+    },
+    "InstitutionServiceSetModuleBody": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      }
     },
     "PeopleServiceEndEnrollmentBody": {
       "type": "object",
@@ -1676,6 +1955,21 @@
         }
       }
     },
+    "lteduInstitutionV1Module": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "title": "Panel module key (payments, classroom, mock-exams, compliance, apafa)"
+        },
+        "name": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      }
+    },
     "lteduPeopleV1GetStudentResponse": {
       "type": "object",
       "properties": {
@@ -1761,6 +2055,52 @@
         }
       }
     },
+    "v1Account": {
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "placement": {
+          "type": "string"
+        },
+        "level_id": {
+          "type": "string"
+        },
+        "charged": {
+          "type": "string",
+          "format": "int64"
+        },
+        "discounts": {
+          "type": "string",
+          "format": "int64"
+        },
+        "paid": {
+          "type": "string",
+          "format": "int64"
+        },
+        "overdue": {
+          "type": "string",
+          "format": "int64"
+        },
+        "overdue_count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "oldest_due": {
+          "type": "string"
+        },
+        "last_reminder": {
+          "type": "string"
+        }
+      }
+    },
     "v1AttendanceTally": {
       "type": "object",
       "properties": {
@@ -1821,6 +2161,37 @@
         "created_at": {
           "type": "string",
           "title": "RFC 3339"
+        }
+      }
+    },
+    "v1CardCode": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "payload": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Side in modules, and the modules row by row as 0/1"
+        },
+        "modules": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CardCodesResponse": {
+      "type": "object",
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CardCode"
+          }
         }
       }
     },
@@ -2111,6 +2482,9 @@
         }
       }
     },
+    "v1DeleteEnrollmentResponse": {
+      "type": "object"
+    },
     "v1DeletePeriodResponse": {
       "type": "object"
     },
@@ -2295,6 +2669,63 @@
         }
       }
     },
+    "v1FeeItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "concept": {
+          "type": "string",
+          "title": "enrollment | tuition | apafa | other. Public institutions take no tuition (apafa: cuota APAFA)"
+        },
+        "name": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "due_on": {
+          "type": "string"
+        }
+      }
+    },
+    "v1FeePlan": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "period_id": {
+          "type": "string"
+        },
+        "period_name": {
+          "type": "string"
+        },
+        "level_id": {
+          "type": "string",
+          "title": "Empty: every level of the period"
+        },
+        "level_name": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1FeeItem"
+          }
+        },
+        "students": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
     "v1GetClosingResponse": {
       "type": "object",
       "properties": {
@@ -2446,6 +2877,26 @@
         },
         "own_only": {
           "type": "boolean"
+        }
+      }
+    },
+    "v1GetManagementResponse": {
+      "type": "object",
+      "properties": {
+        "institution_slug": {
+          "type": "string",
+          "title": "The institution the session works on (an institution role always gets its own)"
+        },
+        "management": {
+          "type": "string",
+          "title": "public | private"
+        },
+        "disabled_modules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Optional modules the institution turned off (ltedu.institution.v1.InstitutionService.ListModules)"
         }
       }
     },
@@ -2613,6 +3064,69 @@
             "type": "object",
             "$ref": "#/definitions/v1Level"
           }
+        }
+      }
+    },
+    "v1GetSummaryResponse": {
+      "type": "object",
+      "properties": {
+        "periods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Period"
+          }
+        },
+        "period": {
+          "$ref": "#/definitions/v1Period"
+        },
+        "expected": {
+          "type": "string",
+          "format": "int64"
+        },
+        "discounts": {
+          "type": "string",
+          "format": "int64"
+        },
+        "collected": {
+          "type": "string",
+          "format": "int64"
+        },
+        "pending": {
+          "type": "string",
+          "format": "int64"
+        },
+        "overdue": {
+          "type": "string",
+          "format": "int64"
+        },
+        "debtors": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "students": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "months": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1MonthTotal"
+          }
+        },
+        "accounts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Account"
+          }
+        },
+        "can_manage": {
+          "type": "boolean"
+        },
+        "today": {
+          "type": "string"
         }
       }
     },
@@ -2856,6 +3370,21 @@
         }
       }
     },
+    "v1ListModulesResponse": {
+      "type": "object",
+      "properties": {
+        "modules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/lteduInstitutionV1Module"
+          }
+        },
+        "can_manage": {
+          "type": "boolean"
+        }
+      }
+    },
     "v1ListPeriodsResponse": {
       "type": "object",
       "properties": {
@@ -2868,6 +3397,21 @@
             "type": "object",
             "$ref": "#/definitions/v1Period"
           }
+        }
+      }
+    },
+    "v1ListPlansResponse": {
+      "type": "object",
+      "properties": {
+        "plans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1FeePlan"
+          }
+        },
+        "can_manage": {
+          "type": "boolean"
         }
       }
     },
@@ -2937,6 +3481,22 @@
         },
         "last_sign_in_at": {
           "type": "string"
+        }
+      }
+    },
+    "v1MonthTotal": {
+      "type": "object",
+      "properties": {
+        "month": {
+          "type": "string"
+        },
+        "expected": {
+          "type": "string",
+          "format": "int64"
+        },
+        "collected": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
@@ -3543,6 +4103,14 @@
         "capacity": {
           "type": "integer",
           "format": "int32"
+        }
+      }
+    },
+    "v1SetModuleResponse": {
+      "type": "object",
+      "properties": {
+        "module": {
+          "$ref": "#/definitions/lteduInstitutionV1Module"
         }
       }
     },

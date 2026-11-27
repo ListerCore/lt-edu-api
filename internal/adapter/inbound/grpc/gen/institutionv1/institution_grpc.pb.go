@@ -32,6 +32,8 @@ const (
 	InstitutionService_ListMembers_FullMethodName         = "/ltedu.institution.v1.InstitutionService/ListMembers"
 	InstitutionService_GrantMember_FullMethodName         = "/ltedu.institution.v1.InstitutionService/GrantMember"
 	InstitutionService_RevokeMember_FullMethodName        = "/ltedu.institution.v1.InstitutionService/RevokeMember"
+	InstitutionService_ListModules_FullMethodName         = "/ltedu.institution.v1.InstitutionService/ListModules"
+	InstitutionService_SetModule_FullMethodName           = "/ltedu.institution.v1.InstitutionService/SetModule"
 )
 
 // InstitutionServiceClient is the client API for InstitutionService service.
@@ -53,6 +55,10 @@ type InstitutionServiceClient interface {
 	ListMembers(ctx context.Context, in *ListMembersRequest, opts ...grpc.CallOption) (*ListMembersResponse, error)
 	GrantMember(ctx context.Context, in *GrantMemberRequest, opts ...grpc.CallOption) (*GrantMemberResponse, error)
 	RevokeMember(ctx context.Context, in *RevokeMemberRequest, opts ...grpc.CallOption) (*RevokeMemberResponse, error)
+	// Optional modules (RF01): every role reads them, dirección turns them on and off; a module that is off is refused
+	// by the API (module_disabled) and hidden by the panel
+	ListModules(ctx context.Context, in *ListModulesRequest, opts ...grpc.CallOption) (*ListModulesResponse, error)
+	SetModule(ctx context.Context, in *SetModuleRequest, opts ...grpc.CallOption) (*SetModuleResponse, error)
 }
 
 type institutionServiceClient struct {
@@ -143,6 +149,26 @@ func (c *institutionServiceClient) RevokeMember(ctx context.Context, in *RevokeM
 	return out, nil
 }
 
+func (c *institutionServiceClient) ListModules(ctx context.Context, in *ListModulesRequest, opts ...grpc.CallOption) (*ListModulesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListModulesResponse)
+	err := c.cc.Invoke(ctx, InstitutionService_ListModules_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *institutionServiceClient) SetModule(ctx context.Context, in *SetModuleRequest, opts ...grpc.CallOption) (*SetModuleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetModuleResponse)
+	err := c.cc.Invoke(ctx, InstitutionService_SetModule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // InstitutionServiceServer is the server API for InstitutionService service.
 // All implementations must embed UnimplementedInstitutionServiceServer
 // for forward compatibility.
@@ -162,6 +188,10 @@ type InstitutionServiceServer interface {
 	ListMembers(context.Context, *ListMembersRequest) (*ListMembersResponse, error)
 	GrantMember(context.Context, *GrantMemberRequest) (*GrantMemberResponse, error)
 	RevokeMember(context.Context, *RevokeMemberRequest) (*RevokeMemberResponse, error)
+	// Optional modules (RF01): every role reads them, dirección turns them on and off; a module that is off is refused
+	// by the API (module_disabled) and hidden by the panel
+	ListModules(context.Context, *ListModulesRequest) (*ListModulesResponse, error)
+	SetModule(context.Context, *SetModuleRequest) (*SetModuleResponse, error)
 	mustEmbedUnimplementedInstitutionServiceServer()
 }
 
@@ -195,6 +225,12 @@ func (UnimplementedInstitutionServiceServer) GrantMember(context.Context, *Grant
 }
 func (UnimplementedInstitutionServiceServer) RevokeMember(context.Context, *RevokeMemberRequest) (*RevokeMemberResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method RevokeMember not implemented")
+}
+func (UnimplementedInstitutionServiceServer) ListModules(context.Context, *ListModulesRequest) (*ListModulesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListModules not implemented")
+}
+func (UnimplementedInstitutionServiceServer) SetModule(context.Context, *SetModuleRequest) (*SetModuleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SetModule not implemented")
 }
 func (UnimplementedInstitutionServiceServer) mustEmbedUnimplementedInstitutionServiceServer() {}
 func (UnimplementedInstitutionServiceServer) testEmbeddedByValue()                            {}
@@ -361,6 +397,42 @@ func _InstitutionService_RevokeMember_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _InstitutionService_ListModules_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListModulesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InstitutionServiceServer).ListModules(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InstitutionService_ListModules_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InstitutionServiceServer).ListModules(ctx, req.(*ListModulesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _InstitutionService_SetModule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetModuleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InstitutionServiceServer).SetModule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InstitutionService_SetModule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InstitutionServiceServer).SetModule(ctx, req.(*SetModuleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // InstitutionService_ServiceDesc is the grpc.ServiceDesc for InstitutionService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -399,6 +471,14 @@ var InstitutionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RevokeMember",
 			Handler:    _InstitutionService_RevokeMember_Handler,
+		},
+		{
+			MethodName: "ListModules",
+			Handler:    _InstitutionService_ListModules_Handler,
+		},
+		{
+			MethodName: "SetModule",
+			Handler:    _InstitutionService_SetModule_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
