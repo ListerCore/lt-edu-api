@@ -25,6 +25,11 @@ type InstitutionRepository interface {
 	// forms authorized for every cycle. ok=false when the institution has no attention_mode authorization at all
 	AuthorizedModes(ctx context.Context, institutionID string, day time.Time) (modes map[string][]string, ok bool, err error)
 
+	// DisabledModules lists the optional modules the institution turned off
+	DisabledModules(ctx context.Context, institutionID string) ([]string, error)
+	// SetModuleDisabled turns one optional module off (disabled=true) or back on
+	SetModuleDisabled(ctx context.Context, institutionID, module string, disabled bool, userID string) error
+
 	// Members lists the accounts holding one of roles in the institution and the pending invitations to them
 	Members(ctx context.Context, institutionID string, roles []string) ([]domain.Member, error)
 	// GrantRole gives roleCode to the account with that email, or leaves an invitation when there is none yet;

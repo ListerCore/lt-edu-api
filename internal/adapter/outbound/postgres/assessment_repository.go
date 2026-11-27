@@ -315,6 +315,47 @@ func (r *AssessmentRepository) Progress(ctx context.Context, institutionID, peri
 	})
 }
 
+// TutorProgress replaces, for a list of sections, the five queries per section of Section, Students, Transversal,
+// CompetencyMarks and Conduct with one aggregate: same filters, counted in the database
+func (r *AssessmentRepository) TutorProgress(ctx context.Context, institutionID, termID string, sectionIDs []string) ([]domain.TutorCounts, error) {
+	if len(sectionIDs) == 0 {
+		return nil, nil
+	}
+	rows, err := r.c.pool.Query(ctx, `WITH sec AS (
+			SELECT sec.id, coalesce(g.short_name || ' ', '') || sec.name AS label, l.name AS level_name, coalesce(t.given_names || ' ' || t.surnames, '') AS tutor_name
+			FROM academic.sections sec JOIN academic.periods p ON p.id = sec.period_id JOIN academic.levels l ON l.id = sec.level_id
+			LEFT JOIN academic.grades g ON g.id = sec.grade_id LEFT JOIN people.staff t ON t.id = sec.tutor_id
+			WHERE p.institution_id = $1 AND sec.id = ANY($2::uuid[])
+		), enrolled AS (
+			SELECT e.section_id, e.student_id FROM enrollment.enrollments e JOIN people.students s ON s.id = e.student_id
+			WHERE e.institution_id = $1 AND e.status = 'active' AND e.section_id IN (SELECT id FROM sec)
+		), comps AS (
+			SELECT DISTINCT a.section_id, c.id AS competency_id
+			FROM academic.assignments a JOIN academic.subjects sub ON sub.id = a.subject_id
+			JOIN academic.competencies c ON c.curriculum_id = sub.curriculum_id JOIN academic.curricula cu ON cu.id = c.curriculum_id
+			WHERE a.section_id IN (SELECT id FROM sec) AND cu.institution_id = $1 AND c.subject_id IS NULL AND c.kind = 'competency'
+		)
+		SELECT sec.id, sec.label, sec.level_name, sec.tutor_name,
+			(SELECT count(*) FROM enrolled en WHERE en.section_id = sec.id),
+			(SELECT count(*) FROM comps co WHERE co.section_id = sec.id),
+			(SELECT count(*) FROM assessment.competency_marks cm
+				WHERE cm.institution_id = $1 AND cm.section_id = sec.id AND `+sameTerm("cm.term_id", "$3")+` AND cm.level <> ''
+					AND EXISTS (SELECT 1 FROM comps co WHERE co.section_id = sec.id AND co.competency_id = cm.competency_id)
+					AND EXISTS (SELECT 1 FROM enrolled en WHERE en.section_id = sec.id AND en.student_id = cm.student_id)),
+			(SELECT count(*) FROM assessment.conduct_marks cd
+				WHERE cd.institution_id = $1 AND cd.section_id = sec.id AND `+sameTerm("cd.term_id", "$3")+`
+					AND EXISTS (SELECT 1 FROM enrolled en WHERE en.section_id = sec.id AND en.student_id = cd.student_id))
+		FROM sec`, institutionID, sectionIDs, termID)
+	if err != nil {
+		return nil, academicErr(err)
+	}
+	return pgx.CollectRows(rows, func(row pgx.CollectableRow) (domain.TutorCounts, error) {
+		var c domain.TutorCounts
+		err := row.Scan(&c.SectionID, &c.Label, &c.LevelName, &c.TutorName, &c.Students, &c.Transversal, &c.Filled, &c.ConductFilled)
+		return c, err
+	})
+}
+
 func (r *AssessmentRepository) StudentSection(ctx context.Context, institutionID, studentID, periodID string) (string, error) {
 	var id string
 	err := r.c.pool.QueryRow(ctx, `SELECT section_id FROM enrollment.enrollments WHERE institution_id = $1 AND student_id = $2 AND period_id = $3 AND section_id IS NOT NULL`,

@@ -91,6 +91,20 @@ type Submission struct {
 }
 
 // SheetProgress is how complete one sheet is, for coordinación's overview
+// TutorCounts is what the gradebook shows of a tutor's register in one section and term, counted by the database
+type TutorCounts struct {
+	SectionID   string
+	Label       string
+	LevelName   string
+	TutorName   string
+	Students    int
+	Transversal int
+	// Transversal competency levels filled for enrolled students
+	Filled int
+	// Conduct marks of enrolled students
+	ConductFilled int
+}
+
 type SheetProgress struct {
 	SectionID    string
 	SectionLabel string

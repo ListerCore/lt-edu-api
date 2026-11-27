@@ -43,6 +43,8 @@ type AssessmentRepository interface {
 	// Progress of the assignments of a period in a term (literal or numeric, by the scale); staffID limits it to
 	// one teacher's courses ("" = every course)
 	Progress(ctx context.Context, institutionID, periodID, termID string, numeric bool, staffID string) ([]domain.SheetProgress, error)
+	// TutorProgress counts the tutor registers of several sections in one query (one row per section found)
+	TutorProgress(ctx context.Context, institutionID, termID string, sectionIDs []string) ([]domain.TutorCounts, error)
 
 	// StudentSection is the section of the student's enrollment in a period
 	StudentSection(ctx context.Context, institutionID, studentID, periodID string) (string, error)

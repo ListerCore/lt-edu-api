@@ -275,3 +275,21 @@ func (r *InstitutionRepository) RevokeMember(ctx context.Context, institutionID,
 	}
 	return nil
 }
+
+func (r *InstitutionRepository) DisabledModules(ctx context.Context, institutionID string) ([]string, error) {
+	rows, err := r.c.pool.Query(ctx, `SELECT module FROM iam.disabled_modules WHERE institution_id = $1 ORDER BY module`, institutionID)
+	if err != nil {
+		return nil, err
+	}
+	return pgx.CollectRows(rows, pgx.RowTo[string])
+}
+
+func (r *InstitutionRepository) SetModuleDisabled(ctx context.Context, institutionID, module string, disabled bool, userID string) error {
+	if !disabled {
+		_, err := r.c.pool.Exec(ctx, `DELETE FROM iam.disabled_modules WHERE institution_id = $1 AND module = $2`, institutionID, module)
+		return err
+	}
+	_, err := r.c.pool.Exec(ctx, `INSERT INTO iam.disabled_modules (institution_id, module, disabled_by) VALUES ($1, $2, nullif($3, '')::uuid)
+		ON CONFLICT (institution_id, module) DO NOTHING`, institutionID, module, userID)
+	return err
+}

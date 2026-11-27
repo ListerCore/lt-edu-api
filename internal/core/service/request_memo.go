@@ -34,3 +34,18 @@ func (m *requestMemo) put(token string, me domain.Me) {
 	defer m.mu.Unlock()
 	m.me[token] = me
 }
+
+// RequestUser is the id of the user the request was resolved to ("" when no service looked the session up), for
+// the request log: a refused call (another institution's record, a module turned off) names who made it
+func RequestUser(ctx context.Context) string {
+	memo, _ := ctx.Value(requestMemoKey{}).(*requestMemo)
+	if memo == nil {
+		return ""
+	}
+	memo.mu.Lock()
+	defer memo.mu.Unlock()
+	for _, me := range memo.me {
+		return me.User.ID
+	}
+	return ""
+}

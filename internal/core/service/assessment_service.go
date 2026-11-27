@@ -253,15 +253,28 @@ func (s *AssessmentService) Gradebook(ctx context.Context, token, slug, periodID
 		if err != nil {
 			return out, err
 		}
+		// One aggregate query for every section shown, instead of five queries per section
+		var ids []string
 		for _, sec := range sections {
-			if out.OwnOnly && !slices.Contains(sc.tutoring, sec.ID) {
-				continue
+			if !out.OwnOnly || slices.Contains(sc.tutoring, sec.ID) {
+				ids = append(ids, sec.ID)
 			}
-			tp, err := s.tutorProgress(ctx, sc, sec.ID, termID)
-			if err != nil {
-				return out, err
+		}
+		counts, err := s.repo.TutorProgress(ctx, sc.institution.ID, termID, ids)
+		if err != nil {
+			return out, err
+		}
+		byID := make(map[string]domain.TutorCounts, len(counts))
+		for _, c := range counts {
+			byID[c.SectionID] = c
+		}
+		for _, id := range ids {
+			c, ok := byID[id]
+			if !ok {
+				return out, domain.ErrNotFound
 			}
-			if x, ok := sent[sec.ID+"|"]; ok {
+			tp := tutorProgressOf(c, sc.settings.ConductGrade)
+			if x, ok := sent[id+"|"]; ok {
 				tp.Submitted = &x
 			}
 			out.Tutor = append(out.Tutor, tp)
@@ -270,50 +283,16 @@ func (s *AssessmentService) Gradebook(ctx context.Context, token, slug, periodID
 	return out, nil
 }
 
-func (s *AssessmentService) tutorProgress(ctx context.Context, sc gradeScope, sectionID, termID string) (TutorProgress, error) {
-	meta, err := s.repo.Section(ctx, sc.institution.ID, sectionID)
-	if err != nil {
-		return TutorProgress{}, err
+// tutorProgressOf turns the counts of a section into the gradebook row: every enrolled student owes a level per
+// transversal competency, plus a conduct mark where the institution grades conduct
+func tutorProgressOf(c domain.TutorCounts, conduct bool) TutorProgress {
+	tp := TutorProgress{SectionID: c.SectionID, SectionLabel: c.Label + " · " + c.LevelName, TutorName: c.TutorName, Students: c.Students,
+		Expected: c.Students * c.Transversal, Filled: c.Filled}
+	if conduct {
+		tp.Expected += c.Students
+		tp.Filled += c.ConductFilled
 	}
-	students, err := s.repo.Students(ctx, sc.institution.ID, sectionID, "")
-	if err != nil {
-		return TutorProgress{}, err
-	}
-	comps, err := s.repo.Transversal(ctx, sc.institution.ID, sectionID)
-	if err != nil {
-		return TutorProgress{}, err
-	}
-	marks, err := s.repo.CompetencyMarks(ctx, sc.institution.ID, sectionID, termID, false)
-	if err != nil {
-		return TutorProgress{}, err
-	}
-	ids := map[string]bool{}
-	for _, c := range comps {
-		ids[c.ID] = true
-	}
-	enrolled := map[string]bool{}
-	for _, st := range students {
-		enrolled[st.ID] = true
-	}
-	tp := TutorProgress{SectionID: sectionID, SectionLabel: meta.Label + " · " + meta.LevelName, TutorName: meta.TutorName, Students: len(students), Expected: len(students) * len(comps)}
-	for _, m := range marks {
-		if ids[m.CompetencyID] && m.Level != "" && enrolled[m.StudentID] {
-			tp.Filled++
-		}
-	}
-	if sc.settings.ConductGrade {
-		tp.Expected += len(students)
-		conduct, err := s.repo.Conduct(ctx, sc.institution.ID, sectionID, termID, false)
-		if err != nil {
-			return tp, err
-		}
-		for _, c := range conduct {
-			if enrolled[c.StudentID] {
-				tp.Filled++
-			}
-		}
-	}
-	return tp, nil
+	return tp
 }
 
 // ---------- one sheet ----------
