@@ -278,7 +278,7 @@ func (r *AssessmentRepository) SetSubmission(ctx context.Context, institutionID,
 	return academicErr(err)
 }
 
-func (r *AssessmentRepository) Progress(ctx context.Context, institutionID, periodID, termID string, numeric bool) ([]domain.SheetProgress, error) {
+func (r *AssessmentRepository) Progress(ctx context.Context, institutionID, periodID, termID string, numeric bool, staffID string) ([]domain.SheetProgress, error) {
 	students := `(SELECT count(*) FROM enrollment.enrollments e WHERE e.section_id = a.section_id AND e.status = 'active' AND ` + unitFilter("a.subject_id::text") + `)`
 	var cells string
 	if numeric {
@@ -298,8 +298,8 @@ func (r *AssessmentRepository) Progress(ctx context.Context, institutionID, peri
 		LEFT JOIN academic.grades g ON g.id = sec.grade_id
 		JOIN academic.subjects sub ON sub.id = a.subject_id
 		LEFT JOIN people.staff st ON st.id = a.staff_id
-		WHERE a.institution_id = $1 AND a.period_id = $2
-		ORDER BY l.position, g.position NULLS FIRST, sec.name, sub.position`, institutionID, periodID, termID)
+		WHERE a.institution_id = $1 AND a.period_id = $2 AND ($4 = '' OR a.staff_id::text = $4)
+		ORDER BY l.position, g.position NULLS FIRST, sec.name, sub.position`, institutionID, periodID, termID, staffID)
 	if err != nil {
 		return nil, academicErr(err)
 	}

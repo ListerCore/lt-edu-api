@@ -216,9 +216,16 @@ func (s *AssessmentService) Gradebook(ctx context.Context, token, slug, periodID
 		return out, err
 	}
 	out.TermID = termID
-	sheets, err := s.repo.Progress(ctx, sc.institution.ID, p.ID, termID, sc.numeric())
-	if err != nil {
-		return out, err
+	// A teacher only sees their own courses: the database counts those alone instead of the whole institution
+	staffFilter := ""
+	if out.OwnOnly {
+		staffFilter = sc.staffID
+	}
+	var sheets []domain.SheetProgress
+	if !out.OwnOnly || sc.staffID != "" {
+		if sheets, err = s.repo.Progress(ctx, sc.institution.ID, p.ID, termID, sc.numeric(), staffFilter); err != nil {
+			return out, err
+		}
 	}
 	subs, err := s.repo.Submissions(ctx, sc.institution.ID, p.ID, termID)
 	if err != nil {

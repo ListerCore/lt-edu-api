@@ -25,7 +25,13 @@ Tras cambiar `proto/`:
 python3 scripts/bruno-gen.py   # desde lt-edu-api/, necesita buf
 ```
 
-Borra y vuelve a escribir `docs/bruno/grpc/`; no edites esos archivos a mano.
+Borra y vuelve a escribir `docs/bruno/grpc/` y `docs/html/index.html`; no edites esos archivos a mano.
+
+## Versión web
+
+`docs/html/index.html` es la misma documentación en una sola página estática (sin dependencias): ábrela en el
+navegador o sírvela en cualquier hosting estático. Tiene filtro de métodos, modo claro/oscuro según el sistema,
+ejemplos `curl` / `grpcurl` y enlaces directos a cada método (`#AcademicService-CreateGrade`).
 
 Los cuerpos usan los nombres de campo del `.proto` (snake_case). `Timestamp` va como `{"seconds", "nanos"}`.
 

@@ -85,6 +85,8 @@ func Load() Config {
 	v.SetDefault("APP__DB__PASSWORD", "ltedu_dev")
 	v.SetDefault("APP__DB__NAME", "ltedu_db")
 	v.SetDefault("APP__DB__SSLMODE", "disable")
+	// Connections of the pool; 0 keeps pgx's default (the number of CPUs)
+	v.SetDefault("APP__DB__MAX_CONNS", "0")
 
 	v.SetDefault("APP__REDIS__HOST", "localhost")
 	v.SetDefault("APP__REDIS__PORT", "6379")
@@ -127,6 +129,9 @@ func Load() Config {
 		v.GetString("APP__DB__NAME"),
 		v.GetString("APP__DB__SSLMODE"),
 	)
+	if maxConns := v.GetInt("APP__DB__MAX_CONNS"); maxConns > 0 {
+		databaseURL += fmt.Sprintf("&pool_max_conns=%d", maxConns)
+	}
 
 	redisAddr := fmt.Sprintf("%s:%s", v.GetString("APP__REDIS__HOST"), v.GetString("APP__REDIS__PORT"))
 

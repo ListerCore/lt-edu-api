@@ -40,8 +40,9 @@ type AssessmentRepository interface {
 
 	Submissions(ctx context.Context, institutionID, periodID, termID string) ([]domain.Submission, error)
 	SetSubmission(ctx context.Context, institutionID, sectionID, assignmentID, termID string, sent bool, userID, name string) error
-	// Progress of every assignment of a period in a term (literal or numeric, by the scale)
-	Progress(ctx context.Context, institutionID, periodID, termID string, numeric bool) ([]domain.SheetProgress, error)
+	// Progress of the assignments of a period in a term (literal or numeric, by the scale); staffID limits it to
+	// one teacher's courses ("" = every course)
+	Progress(ctx context.Context, institutionID, periodID, termID string, numeric bool, staffID string) ([]domain.SheetProgress, error)
 
 	// StudentSection is the section of the student's enrollment in a period
 	StudentSection(ctx context.Context, institutionID, studentID, periodID string) (string, error)
