@@ -1,0 +1,4218 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ListerCore Edu API",
+    "description": "API REST de ListerCore Edu, generada desde los contratos gRPC (grpc-gateway). Cada ruta cuelga de la institución (`/api/v1/institutions/{institution_slug}`) y necesita el token de sesión en `Authorization: Bearer \u003ctoken\u003e`. El token se obtiene con `POST /api/v1/auth/sign-in`.",
+    "version": "1.0"
+  },
+  "tags": [
+    {
+      "name": "AcademicService",
+      "description": "Metadata:\n  authorization: Bearer \u003csession token\u003e   (every method)\n  x-forwarded-for, x-user-agent           (as every lt-edu-api service)\n\nEvery request carries institution_slug: institution roles work on their own institution whatever it says; the\nplatform superadmin opens the one named. Staff roles read; director, academic coordinator and superadmin change.\nDates travel as YYYY-MM-DD. Failed calls return a gRPC status whose details hold one ltedu.common.v1.ErrorDetail"
+    },
+    {
+      "name": "AssessmentService",
+      "description": "Coordinación sees and edits every sheet; each teacher grades their own areas or units; tutors fill the tutor's\nsheet of their section and read its report cards; secretaría reads; families see closed report cards"
+    },
+    {
+      "name": "ClosingService",
+      "description": "Dirección and coordinación close; secretaría reads, prints the actas and exports"
+    },
+    {
+      "name": "AttendanceService",
+      "description": "The office (dirección, coordinación, secretaría, auxiliares) scans and marks anyone; tutors mark their sections;\nteachers take their classes; families see their children and send justifications"
+    },
+    {
+      "name": "InstitutionService",
+      "description": "Dirección, coordinación, secretaría and the Responsable técnico read. Dirección records the authorizations;\ndirección and the Responsable técnico edit the platform sheet. PDFs and evidence go through the attachments API\n(owner_kind authorization / platform_sheet)"
+    },
+    {
+      "name": "PeopleService"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/institutions/{institution_slug}/assignments/{assignment_id}/levels": {
+      "put": {
+        "operationId": "AssessmentService_SaveLevels",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SaveLevelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "assignment_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssessmentServiceSaveLevelsBody"
+            }
+          }
+        ],
+        "tags": [
+          "AssessmentService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/assignments/{assignment_id}/scores": {
+      "put": {
+        "operationId": "AssessmentService_SaveScores",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SaveScoresResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "assignment_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssessmentServiceSaveScoresBody"
+            }
+          }
+        ],
+        "tags": [
+          "AssessmentService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/assignments/{assignment_id}/sheet": {
+      "get": {
+        "operationId": "AssessmentService_GetSheet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetSheetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "assignment_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "term_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssessmentService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/attendance/overview": {
+      "get": {
+        "operationId": "AttendanceService_GetOverview",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetOverviewResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "day",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AttendanceService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/attendance/scans": {
+      "post": {
+        "summary": "A QR payload or a code / DNI typed by hand",
+        "operationId": "AttendanceService_Scan",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ScanResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AttendanceServiceScanBody"
+            }
+          }
+        ],
+        "tags": [
+          "AttendanceService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/audit-events": {
+      "get": {
+        "summary": "Audit log (Configuración › Auditoría), dirección only. Newest first, paged with the cursor of the last page",
+        "operationId": "InstitutionService_ListAuditEvents",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListAuditEventsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "module",
+            "description": "Optional filters; from / to are YYYY-MM-DD, to included",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "before_at",
+            "description": "Cursor from the previous page (both or neither)",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "before_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "InstitutionService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/context": {
+      "get": {
+        "summary": "Institution profile: names, rules of its kind and settings",
+        "operationId": "AcademicService_GetContext",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetContextResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AcademicService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/enrollments": {
+      "get": {
+        "summary": "A period's sections with their occupancy and its enrollments",
+        "operationId": "PeopleService_GetEnrollmentBoard",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetEnrollmentBoardResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "period_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "level_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "grade_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "section_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "PeopleService"
+        ]
+      },
+      "post": {
+        "operationId": "PeopleService_Enroll",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1EnrollResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PeopleServiceEnrollBody"
+            }
+          }
+        ],
+        "tags": [
+          "PeopleService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/enrollments/{id}/end": {
+      "post": {
+        "summary": "Withdrawal or transfer out; status active brings it back",
+        "operationId": "PeopleService_EndEnrollment",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1EndEnrollmentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PeopleServiceEndEnrollmentBody"
+            }
+          }
+        ],
+        "tags": [
+          "PeopleService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/gradebook": {
+      "get": {
+        "operationId": "AssessmentService_GetGradebook",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetGradebookResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "period_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "term_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssessmentService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/me/attendance": {
+      "get": {
+        "summary": "Families: every child (or the adult student)",
+        "operationId": "AttendanceService_MyAttendance",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1MyAttendanceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AttendanceService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/me/report-cards": {
+      "get": {
+        "operationId": "AssessmentService_MyReportCards",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1MyReportCardsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssessmentService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/members": {
+      "get": {
+        "summary": "Staff accesses (Configuración › Usuarios), dirección only. Granting to an email without an account leaves an\ninvitation the person accepts by signing up with it",
+        "operationId": "InstitutionService_ListMembers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListMembersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InstitutionService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/periods": {
+      "get": {
+        "summary": "Periods with their terms",
+        "operationId": "AcademicService_ListPeriods",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListPeriodsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AcademicService"
+        ]
+      },
+      "post": {
+        "operationId": "AcademicService_CreatePeriod",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CreatePeriodResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "period",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1PeriodInput"
+            }
+          }
+        ],
+        "tags": [
+          "AcademicService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/periods/{id}": {
+      "get": {
+        "operationId": "AcademicService_GetPeriod",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetPeriodResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AcademicService"
+        ]
+      },
+      "delete": {
+        "operationId": "AcademicService_DeletePeriod",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeletePeriodResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AcademicService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/periods/{id}/status": {
+      "patch": {
+        "operationId": "AcademicService_SetPeriodStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SetPeriodStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AcademicServiceSetPeriodStatusBody"
+            }
+          }
+        ],
+        "tags": [
+          "AcademicService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/periods/{period_id}/closing": {
+      "get": {
+        "operationId": "ClosingService_GetClosing",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetClosingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "period_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ClosingService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/sections/{section_id}/assignments/{assignment_id}/submit": {
+      "post": {
+        "summary": "The teacher sends the sheet to coordinación (or takes it back); assignment_id empty: the tutor's sheet",
+        "operationId": "AssessmentService_Submit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SubmitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "section_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "assignment_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssessmentServiceSubmitBody"
+            }
+          }
+        ],
+        "tags": [
+          "AssessmentService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/sections/{section_id}/attendance": {
+      "get": {
+        "operationId": "AttendanceService_GetRoster",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetRosterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "section_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "day",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AttendanceService"
+        ]
+      },
+      "put": {
+        "operationId": "AttendanceService_MarkStudents",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1MarkStudentsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "section_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AttendanceServiceMarkStudentsBody"
+            }
+          }
+        ],
+        "tags": [
+          "AttendanceService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/sections/{section_id}/attendance/close": {
+      "post": {
+        "summary": "Absent for whoever has no mark yet (one section, or every section)",
+        "operationId": "AttendanceService_CloseDay",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CloseDayResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "section_id",
+            "description": "Empty: every section of the day (office only)",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AttendanceServiceCloseDayBody"
+            }
+          }
+        ],
+        "tags": [
+          "AttendanceService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/sections/{section_id}/closing": {
+      "get": {
+        "operationId": "ClosingService_GetSectionClosing",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetSectionClosingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "section_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ClosingService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/sections/{section_id}/closing/confirm": {
+      "post": {
+        "operationId": "ClosingService_ConfirmSection",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ConfirmSectionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "section_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ClosingServiceConfirmSectionBody"
+            }
+          }
+        ],
+        "tags": [
+          "ClosingService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/structure": {
+      "get": {
+        "summary": "Levels (cycles, areas, programs) with their grades",
+        "operationId": "AcademicService_GetStructure",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetStructureResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AcademicService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/students": {
+      "get": {
+        "operationId": "PeopleService_ListStudents",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListStudentsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "period_id",
+            "description": "Filters by enrollment in this period (and shows it); empty shows the latest enrollment",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "level_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "grade_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "section_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "not_enrolled",
+            "description": "Only students not enrolled in period_id",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "PeopleService"
+        ]
+      },
+      "post": {
+        "operationId": "PeopleService_CreateStudent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CreateStudentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "student",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1StudentInput"
+            }
+          }
+        ],
+        "tags": [
+          "PeopleService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/students/{id}": {
+      "get": {
+        "operationId": "PeopleService_GetStudent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/lteduPeopleV1GetStudentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PeopleService"
+        ]
+      },
+      "delete": {
+        "summary": "Only students without enrollments; the others change status",
+        "operationId": "PeopleService_DeleteStudent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteStudentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PeopleService"
+        ]
+      },
+      "put": {
+        "operationId": "PeopleService_UpdateStudent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateStudentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "student",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1StudentInput"
+            }
+          }
+        ],
+        "tags": [
+          "PeopleService"
+        ]
+      }
+    },
+    "/api/v1/institutions/{institution_slug}/students/{student_id}/report-card": {
+      "get": {
+        "operationId": "AssessmentService_GetReportCard",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetReportCardResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "institution_slug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "student_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "period_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "term_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssessmentService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AcademicServiceSetPeriodStatusBody": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "title": "planning | active | closed"
+        }
+      }
+    },
+    "AssessmentServiceSaveLevelsBody": {
+      "type": "object",
+      "properties": {
+        "term_id": {
+          "type": "string"
+        },
+        "marks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1LevelMark"
+          }
+        }
+      }
+    },
+    "AssessmentServiceSaveScoresBody": {
+      "type": "object",
+      "properties": {
+        "term_id": {
+          "type": "string"
+        },
+        "evaluation_id": {
+          "type": "string"
+        },
+        "scores": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ScoreInput"
+          }
+        }
+      }
+    },
+    "AssessmentServiceSubmitBody": {
+      "type": "object",
+      "properties": {
+        "term_id": {
+          "type": "string"
+        },
+        "sent": {
+          "type": "boolean"
+        }
+      }
+    },
+    "AttendanceServiceCloseDayBody": {
+      "type": "object",
+      "properties": {
+        "day": {
+          "type": "string"
+        }
+      }
+    },
+    "AttendanceServiceMarkStudentsBody": {
+      "type": "object",
+      "properties": {
+        "day": {
+          "type": "string"
+        },
+        "marks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1MarkInput"
+          }
+        }
+      }
+    },
+    "AttendanceServiceScanBody": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "type": "string"
+        }
+      }
+    },
+    "ClosingServiceConfirmSectionBody": {
+      "type": "object"
+    },
+    "PeopleServiceEndEnrollmentBody": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "title": "withdrawn | transferred | active"
+        },
+        "ended_on": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        }
+      }
+    },
+    "PeopleServiceEnrollBody": {
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "period_id": {
+          "type": "string"
+        },
+        "level_id": {
+          "type": "string"
+        },
+        "grade_id": {
+          "type": "string"
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "enrolled_on": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "unit_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Institutes; empty enrolls every unit of the semester"
+        }
+      }
+    },
+    "lteduAcademicV1Competency": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "subject_id": {
+          "type": "string",
+          "title": "Empty for transversal competencies"
+        },
+        "kind": {
+          "type": "string",
+          "title": "competency | capacity | topic"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "lteduAcademicV1Vocabulary": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "string"
+        },
+        "levels": {
+          "type": "string"
+        },
+        "grade": {
+          "type": "string",
+          "title": "Empty when the kind has no grades (CEPRE)"
+        },
+        "grades": {
+          "type": "string"
+        },
+        "section": {
+          "type": "string"
+        },
+        "sections": {
+          "type": "string"
+        },
+        "period": {
+          "type": "string"
+        },
+        "periods": {
+          "type": "string"
+        }
+      }
+    },
+    "lteduAssessmentV1Competency": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "transversal": {
+          "type": "boolean"
+        }
+      }
+    },
+    "lteduAttendanceV1Vocabulary": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "string"
+        },
+        "grade": {
+          "type": "string"
+        },
+        "section": {
+          "type": "string"
+        },
+        "period": {
+          "type": "string"
+        }
+      }
+    },
+    "lteduPeopleV1GetStudentResponse": {
+      "type": "object",
+      "properties": {
+        "detail": {
+          "$ref": "#/definitions/v1StudentDetail"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1AcademicContext": {
+      "type": "object",
+      "properties": {
+        "institution_slug": {
+          "type": "string"
+        },
+        "institution_name": {
+          "type": "string"
+        },
+        "institution_kind": {
+          "type": "string",
+          "title": "ebr | eba | ebe | cepre | institute"
+        },
+        "vocabulary": {
+          "$ref": "#/definitions/lteduAcademicV1Vocabulary"
+        },
+        "period_kind": {
+          "type": "string",
+          "title": "school_year | promotional | cycle | semester"
+        },
+        "term_schemes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "has_grades": {
+          "type": "boolean"
+        },
+        "uses_attention_modes": {
+          "type": "boolean"
+        },
+        "uses_seasons": {
+          "type": "boolean"
+        },
+        "uses_formative_levels": {
+          "type": "boolean"
+        },
+        "single_active_period": {
+          "type": "boolean"
+        },
+        "can_manage": {
+          "type": "boolean"
+        },
+        "settings": {
+          "$ref": "#/definitions/v1Settings"
+        }
+      }
+    },
+    "v1AttendanceTally": {
+      "type": "object",
+      "properties": {
+        "present": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "late": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "absent": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "justified": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1AuditEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "user_name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string",
+          "title": "Panel module (institution, structure, periods, users…)"
+        },
+        "action": {
+          "type": "string",
+          "title": "create | update | delete | status | grant | revoke | other"
+        },
+        "entity": {
+          "type": "string"
+        },
+        "entity_id": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "changes_json": {
+          "type": "string",
+          "title": "Detail as JSON ({\"field\": [before, after]}), \"{}\" when none"
+        },
+        "created_at": {
+          "type": "string",
+          "title": "RFC 3339"
+        }
+      }
+    },
+    "v1CardCompetency": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "levels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "term id → level"
+        },
+        "conclusion": {
+          "type": "string"
+        },
+        "conclusions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "term id → conclusion, for every term shown"
+        }
+      }
+    },
+    "v1CardEvaluation": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "score": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1CardHolder": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "title": "student | staff"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CardSubject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "teacher_name": {
+          "type": "string"
+        },
+        "competencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CardCompetency"
+          }
+        },
+        "averages": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "double"
+          },
+          "title": "term id (\"\" for the whole period) → average, missing when there are no scores"
+        },
+        "evaluations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CardEvaluation"
+          }
+        }
+      }
+    },
+    "v1CardTerm": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "attendance": {
+          "$ref": "#/definitions/v1AttendanceTally"
+        },
+        "conduct": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "comment": {
+          "type": "string",
+          "title": "The tutor's descriptive conclusion of the term"
+        }
+      }
+    },
+    "v1CloseDayResponse": {
+      "type": "object",
+      "properties": {
+        "marked": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ClosingArea": {
+      "type": "object",
+      "properties": {
+        "subject_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "competencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/lteduAssessmentV1Competency"
+          }
+        },
+        "subject_code": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ClosingRow": {
+      "type": "object",
+      "properties": {
+        "student": {
+          "$ref": "#/definitions/v1StudentRef"
+        },
+        "final": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "computed": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "decided": {
+          "type": "string"
+        },
+        "decision_note": {
+          "type": "string"
+        },
+        "decided_name": {
+          "type": "string"
+        },
+        "situation": {
+          "type": "string"
+        },
+        "confirmed": {
+          "type": "boolean"
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "recovery": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "after_recovery": {
+          "type": "string"
+        },
+        "enrollment_id": {
+          "type": "string",
+          "title": "Phase E7: the student's own grade (multigrade sections), the Religion exemption (its cells read EXO) and the\nSIAGIE state of the grades: pending | exported | observed"
+        },
+        "grade_short": {
+          "type": "string"
+        },
+        "religion_exempt": {
+          "type": "boolean"
+        },
+        "siagie_status": {
+          "type": "string"
+        },
+        "siagie_note": {
+          "type": "string"
+        },
+        "siagie_at": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ConductMark": {
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "score": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ConfirmSectionResponse": {
+      "type": "object",
+      "properties": {
+        "closing": {
+          "$ref": "#/definitions/v1SectionClosing"
+        }
+      }
+    },
+    "v1CreatePeriodResponse": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "$ref": "#/definitions/v1Period"
+        }
+      }
+    },
+    "v1CreateStudentResponse": {
+      "type": "object",
+      "properties": {
+        "student": {
+          "$ref": "#/definitions/v1Student"
+        }
+      }
+    },
+    "v1DailyMark": {
+      "type": "object",
+      "properties": {
+        "day": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "arrived_at": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "v1DeletePeriodResponse": {
+      "type": "object"
+    },
+    "v1DeleteStudentResponse": {
+      "type": "object"
+    },
+    "v1EndEnrollmentResponse": {
+      "type": "object",
+      "properties": {
+        "enrollment": {
+          "$ref": "#/definitions/v1Enrollment"
+        }
+      }
+    },
+    "v1EnrollResponse": {
+      "type": "object",
+      "properties": {
+        "enrollment": {
+          "$ref": "#/definitions/v1Enrollment"
+        }
+      }
+    },
+    "v1Enrollment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "student_id": {
+          "type": "string"
+        },
+        "student_name": {
+          "type": "string"
+        },
+        "student_code": {
+          "type": "string"
+        },
+        "student_document": {
+          "type": "string"
+        },
+        "period_id": {
+          "type": "string"
+        },
+        "period_name": {
+          "type": "string"
+        },
+        "level_id": {
+          "type": "string"
+        },
+        "level_name": {
+          "type": "string"
+        },
+        "grade_id": {
+          "type": "string"
+        },
+        "grade_name": {
+          "type": "string"
+        },
+        "grade_short": {
+          "type": "string"
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "section_name": {
+          "type": "string"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "attention_mode": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "title": "new | continuing | transfer_in | re_entry"
+        },
+        "status": {
+          "type": "string",
+          "title": "active | withdrawn | transferred | completed"
+        },
+        "enrolled_on": {
+          "type": "string"
+        },
+        "ended_on": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "unit_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "credits": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1EnrollmentSummary": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "period_id": {
+          "type": "string"
+        },
+        "period_name": {
+          "type": "string"
+        },
+        "level_id": {
+          "type": "string"
+        },
+        "level_name": {
+          "type": "string"
+        },
+        "grade_id": {
+          "type": "string"
+        },
+        "grade_name": {
+          "type": "string"
+        },
+        "grade_short": {
+          "type": "string"
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "section_name": {
+          "type": "string"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Evaluation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "held_on": {
+          "type": "string"
+        }
+      }
+    },
+    "v1FamilyCard": {
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "student_name": {
+          "type": "string"
+        },
+        "card": {
+          "$ref": "#/definitions/v1ReportCard"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "v1GetClosingResponse": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "title": "basic | units"
+        },
+        "periods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Period"
+          }
+        },
+        "period": {
+          "$ref": "#/definitions/v1Period"
+        },
+        "last_term_closed": {
+          "type": "boolean"
+        },
+        "can_manage": {
+          "type": "boolean"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1SectionClosingSummary"
+          }
+        },
+        "units": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1UnitClosingSummary"
+          }
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RecordInfo"
+          }
+        }
+      }
+    },
+    "v1GetContextResponse": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "$ref": "#/definitions/v1AcademicContext"
+        }
+      }
+    },
+    "v1GetEnrollmentBoardResponse": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "$ref": "#/definitions/v1Period"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Section"
+          }
+        },
+        "occupancy": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1SectionOccupancy"
+          }
+        },
+        "enrollments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Enrollment"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "units": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Subject"
+          },
+          "title": "Institutes: units of the plans in force; subject.curriculum_id is not set, grade_ids give the semester"
+        },
+        "unit_level_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Program (level) of each unit, same order as units"
+        }
+      }
+    },
+    "v1GetGradebookResponse": {
+      "type": "object",
+      "properties": {
+        "periods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Period"
+          }
+        },
+        "period": {
+          "$ref": "#/definitions/v1Period"
+        },
+        "term_id": {
+          "type": "string"
+        },
+        "locked": {
+          "type": "boolean"
+        },
+        "scale": {
+          "type": "string",
+          "title": "literal | vigesimal | score"
+        },
+        "passing_grade": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "conduct": {
+          "type": "boolean"
+        },
+        "sheets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1SheetProgress"
+          }
+        },
+        "tutor": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1TutorProgress"
+          }
+        },
+        "can_manage": {
+          "type": "boolean"
+        },
+        "own_only": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1GetOverviewResponse": {
+      "type": "object",
+      "properties": {
+        "day": {
+          "type": "string"
+        },
+        "today": {
+          "type": "string"
+        },
+        "school_day": {
+          "type": "boolean"
+        },
+        "late_after_minutes": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "absence_limit_percent": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1SectionDay"
+          }
+        },
+        "can_scan": {
+          "type": "boolean"
+        },
+        "can_manage_staff": {
+          "type": "boolean"
+        },
+        "can_review": {
+          "type": "boolean"
+        },
+        "can_take_classes": {
+          "type": "boolean"
+        },
+        "tutoring": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pending_justifications": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "vocabulary": {
+          "$ref": "#/definitions/lteduAttendanceV1Vocabulary"
+        },
+        "staff_tally": {
+          "$ref": "#/definitions/v1Tally"
+        },
+        "staff_total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "week_days": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "v1GetPeriodResponse": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "$ref": "#/definitions/v1AcademicContext"
+        },
+        "period": {
+          "$ref": "#/definitions/v1Period"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Section"
+          }
+        },
+        "levels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Level"
+          }
+        },
+        "other_periods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Period"
+          },
+          "title": "Other periods of the institution, to copy sections from"
+        }
+      }
+    },
+    "v1GetReportCardResponse": {
+      "type": "object",
+      "properties": {
+        "card": {
+          "$ref": "#/definitions/v1ReportCard"
+        }
+      }
+    },
+    "v1GetRosterResponse": {
+      "type": "object",
+      "properties": {
+        "day": {
+          "type": "string"
+        },
+        "school_day": {
+          "type": "boolean"
+        },
+        "section": {
+          "$ref": "#/definitions/v1SectionDay"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RosterRow"
+          }
+        },
+        "can_edit": {
+          "type": "boolean"
+        },
+        "late_after": {
+          "type": "string"
+        }
+      }
+    },
+    "v1GetSectionClosingResponse": {
+      "type": "object",
+      "properties": {
+        "closing": {
+          "$ref": "#/definitions/v1SectionClosing"
+        }
+      }
+    },
+    "v1GetSheetResponse": {
+      "type": "object",
+      "properties": {
+        "sheet": {
+          "$ref": "#/definitions/v1Sheet"
+        }
+      }
+    },
+    "v1GetStructureResponse": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "$ref": "#/definitions/v1AcademicContext"
+        },
+        "levels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Level"
+          }
+        }
+      }
+    },
+    "v1Grade": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "level_id": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "short_name": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "section_count": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1Guardian": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "document_type": {
+          "type": "string"
+        },
+        "document_number": {
+          "type": "string"
+        },
+        "given_names": {
+          "type": "string"
+        },
+        "surnames": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "occupation": {
+          "type": "string"
+        },
+        "access": {
+          "type": "string"
+        },
+        "relationship": {
+          "type": "string",
+          "title": "mother | father | legal_guardian | grandparent | sibling | other"
+        },
+        "is_primary": {
+          "type": "boolean"
+        },
+        "can_pick_up": {
+          "type": "boolean"
+        },
+        "lives_with": {
+          "type": "boolean"
+        },
+        "student_count": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1Justification": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "student_id": {
+          "type": "string"
+        },
+        "student_name": {
+          "type": "string"
+        },
+        "section_label": {
+          "type": "string"
+        },
+        "from_day": {
+          "type": "string"
+        },
+        "to_day": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string",
+          "title": "health | family | procedure | other"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "title": "pending | approved | rejected"
+        },
+        "submitted_name": {
+          "type": "string"
+        },
+        "submitted_at": {
+          "type": "string"
+        },
+        "reviewed_name": {
+          "type": "string"
+        },
+        "reviewed_at": {
+          "type": "string"
+        },
+        "review_note": {
+          "type": "string"
+        },
+        "absent_days": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1Level": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "formative_level": {
+          "type": "string",
+          "title": "technical | professional_technical | professional (IEST)"
+        },
+        "credits": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "attention_modes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "grades": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Grade"
+          }
+        },
+        "section_count": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1LevelMark": {
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "competency_id": {
+          "type": "string"
+        },
+        "level": {
+          "type": "string"
+        },
+        "conclusion": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ListAuditEventsResponse": {
+      "type": "object",
+      "properties": {
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1AuditEvent"
+          }
+        },
+        "has_more": {
+          "type": "boolean"
+        },
+        "next_before_at": {
+          "type": "string"
+        },
+        "next_before_id": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ListMembersResponse": {
+      "type": "object",
+      "properties": {
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Member"
+          }
+        },
+        "grantable_roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Role codes this page can give in the institution's kind"
+        },
+        "self_user_id": {
+          "type": "string",
+          "title": "The person asking, who cannot revoke their own access"
+        }
+      }
+    },
+    "v1ListPeriodsResponse": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "$ref": "#/definitions/v1AcademicContext"
+        },
+        "periods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Period"
+          }
+        }
+      }
+    },
+    "v1ListStudentsResponse": {
+      "type": "object",
+      "properties": {
+        "students": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Student"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1MarkInput": {
+      "type": "object",
+      "properties": {
+        "person_id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "v1MarkStudentsResponse": {
+      "type": "object",
+      "properties": {
+        "roster": {
+          "$ref": "#/definitions/v1GetRosterResponse"
+        }
+      }
+    },
+    "v1Member": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Role assignment id, or invitation id when pending"
+        },
+        "pending": {
+          "type": "boolean"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "since": {
+          "type": "string",
+          "title": "RFC 3339: granted or invited at; last sign-in empty when never"
+        },
+        "last_sign_in_at": {
+          "type": "string"
+        }
+      }
+    },
+    "v1MyAttendanceResponse": {
+      "type": "object",
+      "properties": {
+        "students": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1StudentAttendance"
+          }
+        }
+      }
+    },
+    "v1MyReportCardsResponse": {
+      "type": "object",
+      "properties": {
+        "cards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1FamilyCard"
+          }
+        }
+      }
+    },
+    "v1Period": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "season": {
+          "type": "string",
+          "title": "CEPRE: summer | annual | semester | intensive | review | school | other"
+        },
+        "starts_on": {
+          "type": "string"
+        },
+        "ends_on": {
+          "type": "string"
+        },
+        "term_scheme": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "title": "planning | active | closed"
+        },
+        "terms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Term"
+          }
+        },
+        "section_count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "capacity_total": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1PeriodInput": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "season": {
+          "type": "string"
+        },
+        "starts_on": {
+          "type": "string"
+        },
+        "ends_on": {
+          "type": "string"
+        },
+        "term_scheme": {
+          "type": "string",
+          "title": "Empty: the institution's default"
+        }
+      }
+    },
+    "v1PeriodRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Placement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "student_id": {
+          "type": "string"
+        },
+        "student_name": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "title": "placement_test | validation | revalidation | equivalence"
+        },
+        "level_id": {
+          "type": "string"
+        },
+        "level_name": {
+          "type": "string"
+        },
+        "grade_id": {
+          "type": "string"
+        },
+        "grade_name": {
+          "type": "string"
+        },
+        "decided_on": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string",
+          "title": "Where the student comes from and the studies they bring"
+        },
+        "origin_studies": {
+          "type": "string"
+        },
+        "subject_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subject_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "act_year": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Acta: \"N.° 003-2026\" when generated, its newest version and state (pending | published | superseded | cancelled)"
+        },
+        "act_number": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "act_version_id": {
+          "type": "string"
+        },
+        "act_status": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RecordInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "section_label": {
+          "type": "string"
+        },
+        "assignment_id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "code": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "title": "issued | replaced"
+        },
+        "issued_name": {
+          "type": "string"
+        },
+        "issued_at": {
+          "type": "string"
+        },
+        "act_version_id": {
+          "type": "string",
+          "title": "Phase E7: the newest signed version of the acta (empty until generated) and its state"
+        },
+        "act_status": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ReportCard": {
+      "type": "object",
+      "properties": {
+        "institution": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "student": {
+          "$ref": "#/definitions/v1StudentRef"
+        },
+        "section_label": {
+          "type": "string"
+        },
+        "level_name": {
+          "type": "string"
+        },
+        "tutor_name": {
+          "type": "string"
+        },
+        "period_id": {
+          "type": "string"
+        },
+        "period_name": {
+          "type": "string"
+        },
+        "scale": {
+          "type": "string"
+        },
+        "passing_grade": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "terms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CardTerm"
+          }
+        },
+        "term_id": {
+          "type": "string"
+        },
+        "subjects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CardSubject"
+          }
+        },
+        "transversal": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CardCompetency"
+          }
+        },
+        "tutor_comment": {
+          "type": "string"
+        },
+        "provisional": {
+          "type": "boolean"
+        },
+        "periods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PeriodRef"
+          }
+        },
+        "dre": {
+          "type": "string",
+          "title": "Official header (SIAGIE format): regional office, UGEL, modular code and the institution's logo (data URL)"
+        },
+        "ugel": {
+          "type": "string"
+        },
+        "modular_code": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "grade_name": {
+          "type": "string"
+        },
+        "section_name": {
+          "type": "string"
+        },
+        "final": {
+          "type": "boolean",
+          "title": "The selected term is the last of the period: the annual levels and the final conclusions apply"
+        },
+        "issued_on": {
+          "type": "string"
+        },
+        "term_count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Terms of the whole period (the card shows a column for each, filled up to the selected one)"
+        }
+      }
+    },
+    "v1RosterRow": {
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "arrived_at": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string",
+          "title": "gate | manual | closing | justification"
+        },
+        "note": {
+          "type": "string"
+        },
+        "pending_justification": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1SaveLevelsResponse": {
+      "type": "object",
+      "properties": {
+        "sheet": {
+          "$ref": "#/definitions/v1Sheet"
+        }
+      }
+    },
+    "v1SaveScoresResponse": {
+      "type": "object",
+      "properties": {
+        "sheet": {
+          "$ref": "#/definitions/v1Sheet"
+        }
+      }
+    },
+    "v1ScanResponse": {
+      "type": "object",
+      "properties": {
+        "holder": {
+          "$ref": "#/definitions/v1CardHolder"
+        },
+        "status": {
+          "type": "string"
+        },
+        "arrived_at": {
+          "type": "string"
+        },
+        "repeated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1ScoreInput": {
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "score": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Not set: clear the score"
+        }
+      }
+    },
+    "v1ScoreMark": {
+      "type": "object",
+      "properties": {
+        "evaluation_id": {
+          "type": "string"
+        },
+        "student_id": {
+          "type": "string"
+        },
+        "score": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1Section": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "period_id": {
+          "type": "string"
+        },
+        "level_id": {
+          "type": "string"
+        },
+        "level_name": {
+          "type": "string"
+        },
+        "grade_id": {
+          "type": "string"
+        },
+        "grade_name": {
+          "type": "string"
+        },
+        "grade_short": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "attention_mode": {
+          "type": "string"
+        },
+        "capacity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "room": {
+          "type": "string"
+        },
+        "tutor_id": {
+          "type": "string",
+          "title": "Tutor of the section (staff), empty when none"
+        },
+        "tutor_name": {
+          "type": "string"
+        },
+        "program": {
+          "type": "string",
+          "title": "EBA only: pebaja | literacy, and virtual | itinerant when attention_mode is distance"
+        },
+        "distance_variant": {
+          "type": "string"
+        },
+        "multigrade": {
+          "type": "boolean",
+          "title": "EBA only: gathers students of several grades of the cycle; grade_id is the lowest"
+        }
+      }
+    },
+    "v1SectionClosing": {
+      "type": "object",
+      "properties": {
+        "section_id": {
+          "type": "string"
+        },
+        "section_label": {
+          "type": "string"
+        },
+        "level_name": {
+          "type": "string"
+        },
+        "tutor_name": {
+          "type": "string"
+        },
+        "period_id": {
+          "type": "string"
+        },
+        "period_name": {
+          "type": "string"
+        },
+        "rule": {
+          "type": "string"
+        },
+        "referential": {
+          "type": "boolean"
+        },
+        "automatic": {
+          "type": "boolean"
+        },
+        "last_term_closed": {
+          "type": "boolean"
+        },
+        "can_manage": {
+          "type": "boolean"
+        },
+        "areas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ClosingArea"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ClosingRow"
+          }
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RecordInfo"
+          }
+        }
+      }
+    },
+    "v1SectionClosingSummary": {
+      "type": "object",
+      "properties": {
+        "section_id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "students": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "confirmed": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "recovered": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1SectionDay": {
+      "type": "object",
+      "properties": {
+        "section_id": {
+          "type": "string"
+        },
+        "section_label": {
+          "type": "string"
+        },
+        "level_name": {
+          "type": "string"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "tutor_name": {
+          "type": "string"
+        },
+        "enrolled": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "tally": {
+          "$ref": "#/definitions/v1Tally"
+        }
+      }
+    },
+    "v1SectionOccupancy": {
+      "type": "object",
+      "properties": {
+        "section_id": {
+          "type": "string"
+        },
+        "active": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "capacity": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1SetPeriodStatusResponse": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "$ref": "#/definitions/v1Period"
+        }
+      }
+    },
+    "v1Settings": {
+      "type": "object",
+      "properties": {
+        "term_scheme": {
+          "type": "string",
+          "title": "bimester | trimester | semester | none"
+        },
+        "grading_scale": {
+          "type": "string",
+          "title": "literal | vigesimal | score (fixed by the institution kind)"
+        },
+        "passing_grade": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "conduct_grade": {
+          "type": "boolean"
+        },
+        "attention_modes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "in_person | blended | distance (EBA)"
+        },
+        "shifts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "morning | afternoon | evening"
+        },
+        "week_days": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": "Teaching days, 1 = Monday … 7 = Sunday"
+        },
+        "late_after_minutes": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Attendance: minutes of tolerance after the first class, and the absence share (%) that raises an alert"
+        },
+        "absence_limit_percent": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dre": {
+          "type": "string",
+          "title": "Official data for the report card; unset on an update keeps what is stored. Logo: image data URL (PNG, JPG,\nWebP or SVG, under 100 KB), \"\" removes it"
+        },
+        "ugel": {
+          "type": "string"
+        },
+        "modular_code": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "management": {
+          "type": "string",
+          "title": "Tipo de gestión: public (no tuition; families pay the enrollment and the APAFA fee) | private. Unset on an\nupdate keeps what is stored; turning public fails while open periods still have tuition in plans or owed"
+        }
+      }
+    },
+    "v1Sheet": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "title": "literal | numeric | tutor"
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "section_label": {
+          "type": "string"
+        },
+        "level_name": {
+          "type": "string"
+        },
+        "assignment_id": {
+          "type": "string"
+        },
+        "subject_name": {
+          "type": "string"
+        },
+        "staff_name": {
+          "type": "string"
+        },
+        "term_id": {
+          "type": "string"
+        },
+        "term_name": {
+          "type": "string"
+        },
+        "locked": {
+          "type": "boolean"
+        },
+        "can_edit": {
+          "type": "boolean"
+        },
+        "passing_grade": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "conduct": {
+          "type": "boolean"
+        },
+        "students": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1StudentRef"
+          }
+        },
+        "competencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/lteduAssessmentV1Competency"
+          }
+        },
+        "marks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1LevelMark"
+          }
+        },
+        "evaluations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Evaluation"
+          }
+        },
+        "scores": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ScoreMark"
+          }
+        },
+        "conduct_marks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ConductMark"
+          }
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1TutorComment"
+          }
+        },
+        "submitted": {
+          "$ref": "#/definitions/v1Submission"
+        },
+        "tutor_name": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SheetProgress": {
+      "type": "object",
+      "properties": {
+        "section_id": {
+          "type": "string"
+        },
+        "section_label": {
+          "type": "string"
+        },
+        "assignment_id": {
+          "type": "string"
+        },
+        "subject_id": {
+          "type": "string"
+        },
+        "subject_name": {
+          "type": "string"
+        },
+        "staff_id": {
+          "type": "string"
+        },
+        "staff_name": {
+          "type": "string"
+        },
+        "students": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "expected": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "filled": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "evaluations": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "submitted": {
+          "$ref": "#/definitions/v1Submission",
+          "title": "Not set: not sent yet"
+        }
+      }
+    },
+    "v1Student": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "document_type": {
+          "type": "string",
+          "title": "dni | ce | passport | other"
+        },
+        "document_number": {
+          "type": "string"
+        },
+        "given_names": {
+          "type": "string"
+        },
+        "paternal_surname": {
+          "type": "string"
+        },
+        "maternal_surname": {
+          "type": "string"
+        },
+        "birth_date": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "string",
+          "title": "f | m | empty"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "special_needs": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "title": "active | inactive | graduated | withdrawn"
+        },
+        "access": {
+          "type": "string",
+          "title": "none | invited | account"
+        },
+        "enrollment": {
+          "$ref": "#/definitions/v1EnrollmentSummary"
+        },
+        "primary_guardian_name": {
+          "type": "string"
+        },
+        "primary_guardian_phone": {
+          "type": "string"
+        },
+        "guardian_count": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1StudentAttendance": {
+      "type": "object",
+      "properties": {
+        "student": {
+          "$ref": "#/definitions/v1CardHolder"
+        },
+        "section_label": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "today": {
+          "$ref": "#/definitions/v1DailyMark",
+          "title": "Not set: no mark today"
+        },
+        "days": {
+          "$ref": "#/definitions/v1Tally"
+        },
+        "marks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DailyMark"
+          },
+          "title": "Days that were not plain present, newest first"
+        },
+        "subjects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1SubjectTally"
+          }
+        },
+        "justifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Justification"
+          }
+        }
+      }
+    },
+    "v1StudentDetail": {
+      "type": "object",
+      "properties": {
+        "student": {
+          "$ref": "#/definitions/v1Student"
+        },
+        "guardians": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Guardian"
+          }
+        },
+        "enrollments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Enrollment"
+          }
+        },
+        "placements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Placement"
+          }
+        },
+        "can_manage": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1StudentInput": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "document_type": {
+          "type": "string"
+        },
+        "document_number": {
+          "type": "string"
+        },
+        "given_names": {
+          "type": "string"
+        },
+        "paternal_surname": {
+          "type": "string"
+        },
+        "maternal_surname": {
+          "type": "string"
+        },
+        "birth_date": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "special_needs": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "v1StudentRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "document": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Subject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "module_id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "title": "area | workshop | tutoring | course | unit | efsrt"
+        },
+        "component": {
+          "type": "string",
+          "title": "specific | employability | efsrt (institutes)"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "weekly_hours": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "theory_credits": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "practice_credits": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "position": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "grade_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "competencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/lteduAcademicV1Competency"
+          }
+        }
+      }
+    },
+    "v1SubjectTally": {
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "student_name": {
+          "type": "string"
+        },
+        "section_label": {
+          "type": "string"
+        },
+        "assignment_id": {
+          "type": "string"
+        },
+        "subject_name": {
+          "type": "string"
+        },
+        "classes": {
+          "$ref": "#/definitions/v1Tally"
+        }
+      }
+    },
+    "v1Submission": {
+      "type": "object",
+      "properties": {
+        "submitted_name": {
+          "type": "string"
+        },
+        "submitted_at": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SubmitResponse": {
+      "type": "object"
+    },
+    "v1Tally": {
+      "type": "object",
+      "properties": {
+        "present": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "late": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "absent": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "justified": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1Term": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "starts_on": {
+          "type": "string"
+        },
+        "ends_on": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "title": "open | closed"
+        }
+      }
+    },
+    "v1TutorComment": {
+      "type": "object",
+      "properties": {
+        "student_id": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TutorProgress": {
+      "type": "object",
+      "properties": {
+        "section_id": {
+          "type": "string"
+        },
+        "section_label": {
+          "type": "string"
+        },
+        "tutor_name": {
+          "type": "string"
+        },
+        "students": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "expected": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "filled": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "submitted": {
+          "$ref": "#/definitions/v1Submission"
+        }
+      }
+    },
+    "v1UnitClosingSummary": {
+      "type": "object",
+      "properties": {
+        "assignment_id": {
+          "type": "string"
+        },
+        "section_id": {
+          "type": "string"
+        },
+        "section_label": {
+          "type": "string"
+        },
+        "subject_name": {
+          "type": "string"
+        },
+        "staff_name": {
+          "type": "string"
+        },
+        "students": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "confirmed": {
+          "type": "boolean"
+        },
+        "counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "v1UpdateStudentResponse": {
+      "type": "object",
+      "properties": {
+        "student": {
+          "$ref": "#/definitions/v1Student"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "bearer": {
+      "type": "apiKey",
+      "description": "Token de sesión: `Bearer \u003ctoken\u003e`",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "bearer": []
+    }
+  ]
+}
